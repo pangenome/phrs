@@ -1,0 +1,39 @@
+GO Molecular Function Enrichment Results
+==================================================
+
+ 1. U4 snRNA binding
+     Term ID: GO:0030621
+     P-value: 9.11e-05
+     Genes: 8/18
+     Term size: 1042
+--------------------------------------------------
+ 2. snRNA binding
+     Term ID: GO:0017069
+     P-value: 1.37e-04
+     Genes: 8/18
+     Term size: 1206
+--------------------------------------------------
+ 3. olfactory receptor activity
+     Term ID: GO:0004984
+     P-value: 8.24e-03
+     Genes: 4/18
+     Term size: 397
+--------------------------------------------------
+ 4. U4 snRNA binding
+     Term ID: GO:0030621
+     P-value: 9.11e-05
+     Genes: 8/18
+     Term size: 1042
+--------------------------------------------------
+ 5. snRNA binding
+     Term ID: GO:0017069
+     P-value: 1.37e-04
+     Genes: 8/18
+     Term size: 1206
+--------------------------------------------------
+ 6. olfactory receptor activity
+     Term ID: GO:0004984
+     P-value: 8.24e-03
+     Genes: 4/18
+     Term size: 397
+--------------------------------------------------

@@ -1,0 +1,123 @@
+GO Biological Process Enrichment Results (Top 20)
+============================================================
+
+ 1. formation of quadruple SL/U4/U5/U6 snRNP
+     Term ID: GO:0000353
+     P-value: 1.45e-03
+     Genes: 8/23
+     Term size: 1126
+--------------------------------------------------
+ 2. mRNA trans splicing, via spliceosome
+     Term ID: GO:0000365
+     P-value: 1.45e-03
+     Genes: 8/23
+     Term size: 1126
+--------------------------------------------------
+ 3. mRNA trans splicing, SL addition
+     Term ID: GO:0045291
+     P-value: 1.45e-03
+     Genes: 8/23
+     Term size: 1126
+--------------------------------------------------
+ 4. formation of quadruple SL/U4/U5/U6 snRNP
+     Term ID: GO:0000353
+     P-value: 1.45e-03
+     Genes: 8/23
+     Term size: 1126
+--------------------------------------------------
+ 5. mRNA trans splicing, via spliceosome
+     Term ID: GO:0000365
+     P-value: 1.45e-03
+     Genes: 8/23
+     Term size: 1126
+--------------------------------------------------
+ 6. mRNA trans splicing, SL addition
+     Term ID: GO:0045291
+     P-value: 1.45e-03
+     Genes: 8/23
+     Term size: 1126
+--------------------------------------------------
+ 7. spliceosomal tri-snRNP complex assembly
+     Term ID: GO:0000244
+     P-value: 1.58e-03
+     Genes: 8/23
+     Term size: 1196
+--------------------------------------------------
+ 8. spliceosomal snRNP assembly
+     Term ID: GO:0000387
+     P-value: 1.58e-03
+     Genes: 8/23
+     Term size: 1222
+--------------------------------------------------
+ 9. spliceosomal tri-snRNP complex assembly
+     Term ID: GO:0000244
+     P-value: 1.58e-03
+     Genes: 8/23
+     Term size: 1196
+--------------------------------------------------
+10. spliceosomal snRNP assembly
+     Term ID: GO:0000387
+     P-value: 1.58e-03
+     Genes: 8/23
+     Term size: 1222
+--------------------------------------------------
+11. protein-RNA complex organization
+     Term ID: GO:0071826
+     P-value: 7.34e-03
+     Genes: 8/23
+     Term size: 1592
+--------------------------------------------------
+12. protein-RNA complex assembly
+     Term ID: GO:0022618
+     P-value: 7.34e-03
+     Genes: 8/23
+     Term size: 1582
+--------------------------------------------------
+13. protein-RNA complex organization
+     Term ID: GO:0071826
+     P-value: 7.34e-03
+     Genes: 8/23
+     Term size: 1592
+--------------------------------------------------
+14. protein-RNA complex assembly
+     Term ID: GO:0022618
+     P-value: 7.34e-03
+     Genes: 8/23
+     Term size: 1582
+--------------------------------------------------
+15. RNA splicing, via transesterification reactions
+     Term ID: GO:0000375
+     P-value: 7.92e-03
+     Genes: 8/23
+     Term size: 1695
+--------------------------------------------------
+16. RNA splicing, via transesterification reactions with bulged adenosine as nucleophile
+     Term ID: GO:0000377
+     P-value: 7.92e-03
+     Genes: 8/23
+     Term size: 1691
+--------------------------------------------------
+17. mRNA splicing, via spliceosome
+     Term ID: GO:0000398
+     P-value: 7.92e-03
+     Genes: 8/23
+     Term size: 1691
+--------------------------------------------------
+18. RNA splicing, via transesterification reactions
+     Term ID: GO:0000375
+     P-value: 7.92e-03
+     Genes: 8/23
+     Term size: 1695
+--------------------------------------------------
+19. RNA splicing, via transesterification reactions with bulged adenosine as nucleophile
+     Term ID: GO:0000377
+     P-value: 7.92e-03
+     Genes: 8/23
+     Term size: 1691
+--------------------------------------------------
+20. mRNA splicing, via spliceosome
+     Term ID: GO:0000398
+     P-value: 7.92e-03
+     Genes: 8/23
+     Term size: 1691
+--------------------------------------------------

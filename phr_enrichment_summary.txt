@@ -1,0 +1,29 @@
+PHR Gene Set GO Enrichment Analysis Summary
+==================================================
+
+Total genes analyzed: 245
+Genes recognized by g:Profiler: 245
+Analysis method: g:Profiler web API
+Background: Genome-wide (all human genes)
+P-value threshold: 0.05 (FDR corrected)
+
+Results:
+- GO Biological Process: 25 significant terms
+- GO Molecular Function: 3 significant terms
+- KEGG Pathways: 0 significant pathways
+
+Top enriched processes:
+1. Formation of quadruple SL/U4/U5/U6 snRNP (p=1.45e-03)
+2. mRNA trans splicing, via spliceosome (p=1.45e-03)
+3. Spliceosomal tri-snRNP complex assembly (p=1.58e-03)
+
+Top enriched functions:
+1. U4 snRNA binding (p=9.11e-05)
+2. snRNA binding (p=1.37e-04)
+3. Olfactory receptor activity (p=8.24e-03)
+
+Notable findings:
+- Strong enrichment for RNA splicing and spliceosome assembly
+- Enrichment for snRNA binding functions
+- Some olfactory receptor activity (subtelomeric genes)
+- No significant KEGG pathway enrichment
