@@ -1,0 +1,7 @@
+go_id,go_name,go_domain,gene_families_in_term,copies_in_phrs,total_genome_copies,expected_copies,fold_enrichment,p_value,total_phr_copies,total_genome_copies_all,genes_in_term,p_adjusted
+GO:0007608,sensory perception of smell,BP,4,58,5,0.1,598.166,0,1189,61312,"IL9R,IL9RP1,IL9RP3,IL9RP4",0
+GO:0004984,olfactory receptor activity,MF,4,58,5,0.1,598.166,0,1189,61312,"IL9R,IL9RP1,IL9RP3,IL9RP4",0
+GO:0005525,GTP binding,MF,2,18,3,0.06,309.396,0,1189,61312,"GTPBP6,IQSEC3",0
+GO:0003924,GTPase activity,MF,2,18,3,0.06,309.396,0,1189,61312,"GTPBP6,IQSEC3",0
+GO:0006355,"regulation of transcription, DNA-templated",BP,3,54,3,0.06,928.188,0,1189,61312,"DUX4,FRG2,FRG2B",0
+GO:0005200,structural constituent of cytoskeleton,MF,1,16,1,0.02,825.056,0,1189,61312,IQSEC3,0

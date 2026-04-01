@@ -1,0 +1,6 @@
+go_id,go_name,domain,prev_pvalue,prev_genes,prev_query_size,copy_pvalue,copy_copies,copy_fold_enrichment,pvalue_ratio,significance_change
+GO:0007608,sensory perception of smell,BP,0.04008159818772731,3,9,0,58,598.166,0,stronger
+GO:0004984,olfactory receptor activity,MF,0.02931015800288083,3,9,0,58,598.166,0,stronger
+GO:0005200,structural constituent of cytoskeleton,MF,0.02931015800288083,2,9,0,16,825.056,0,stronger
+GO:0005525,GTP binding,MF,0.02931015800288083,3,9,0,18,309.396,0,stronger
+GO:0003924,GTPase activity,MF,0.03903391626828053,3,9,0,18,309.396,0,stronger
