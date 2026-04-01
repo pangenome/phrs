@@ -1,0 +1,4 @@
+"Dataset","Background_Genes","Query_Genes","Background_Instances","Query_Instances","Direct_Time_ms","Expansion_Time_ms","Custom_Time_ms","Expansion_vs_Direct_Ratio","Custom_vs_Direct_Ratio","Memory_Expansion_vs_Direct","Multi_Pathway_Speedup","Parameters_Match","PValues_Match"
+"small",1000,35,2024,64,0.11,0.073,0.287,0.66,2.62,NA,1.07,TRUE,TRUE
+"medium",5000,500,15215,1551,0.214,0.51,0.962,2.39,4.51,NA,1.05,TRUE,TRUE
+"large",20000,2000,81114,8123,0.648,2.428,2.419,3.74,3.73,NA,NA,TRUE,TRUE
