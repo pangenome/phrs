@@ -1,0 +1,5 @@
+"Dataset","Query_Genes","Background_Genes","Weighted_Time_ms","Expansion_Time_ms","Speedup_Factor","Memory_Ratio","Results_Equivalent"
+"small",100,2000,0.41,0.25,0.61,70.8,TRUE
+"medium",500,10000,1.37,1.09,0.79,219.04,TRUE
+"large",1000,20000,2.87,2.58,0.9,296.12,TRUE
+"extra_large",2000,40000,5.95,4.54,0.76,358.54,TRUE
