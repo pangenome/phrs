@@ -1,0 +1,7 @@
+{
+  "organism": "hsapiens",
+  "query": ["DUX4","FRG2","FRG2B","GTPBP6","IL9R","IQSEC3","LOC105375112","LOC112268260","LOC124905300","OR4F17","OR4F29","OR4F3","OR4F5","PLCXD1","PPP2R3B","SCGB1C1","SHOX","SPRY3","TUBB8","TUBB8B","VAMP7","WASHC1","ZNF595"],
+  "sources": ["GO:BP", "GO:MF", "KEGG"],
+  "user_threshold": 0.05,
+  "significance_threshold_method": "fdr"
+}
