@@ -1,0 +1,187 @@
+# Copy-Number Weighted ORA: Parameter Bounds and Warning Configuration
+# This configuration file defines safety bounds, warning thresholds, and validation criteria
+# for robust copy-number weighted over-representation analysis
+
+# Safety bounds for computational stability
+safety_bounds:
+  # Maximum values to prevent integer overflow and memory issues
+  max_total_copies: 100000000  # 1e8 - Total background instances
+  max_single_copy: 1000000     # 1e6 - Maximum copies for any single gene
+  max_copy_ratio: 10000        # 1e4 - Maximum ratio between highest/lowest non-zero copies
+
+  # Minimum values for statistical reliability
+  min_pathway_size: 3          # Minimum genes in pathway for meaningful test
+  min_query_size: 3            # Minimum genes in query for reliable inference
+  min_expected_overlap: 1e-10  # Numerical precision threshold for fold enrichment
+
+  # Population structure constraints
+  max_population_size: 500000000  # 5e8 - Maximum background + pathway instances
+  min_background_coverage: 0.1    # Minimum fraction of pathway genes in background
+
+# Warning thresholds for statistical interpretation
+warning_thresholds:
+  # Statistical power warnings
+  low_power:
+    min_pathway_genes: 5        # Warn if pathway has fewer genes
+    min_query_genes: 5          # Warn if query has fewer genes
+    min_pathway_instances: 10   # Warn if pathway has fewer total instances
+    min_query_instances: 10     # Warn if query has fewer total instances
+    min_expected_overlap: 1.0   # Warn if expected overlap < 1 instance
+
+  # Extreme enrichment warnings
+  extreme_enrichment:
+    max_fold_enrichment: 100    # Warn if fold enrichment > 100x
+    min_fold_depletion: 0.01    # Warn if fold enrichment < 0.01x (severe depletion)
+    max_log_fold_enrichment: 6.64  # log2(100) - for log-scale warnings
+
+  # Copy number distribution warnings
+  copy_distribution:
+    max_skewness: 5.0           # Warn if copy number distribution highly skewed
+    min_diversity: 0.1          # Warn if >90% genes have same copy number
+    max_zero_fraction: 0.5      # Warn if >50% genes have zero copies
+    extreme_ratio_threshold: 1000  # Warn if max/min copy ratio > 1000
+
+  # Numerical stability warnings
+  numerical_stability:
+    min_p_value: 1e-15          # Warn if p-value near machine precision
+    max_parameter_sum: 50000000 # 5e7 - Warn if parameter sums approach overflow
+    precision_loss_threshold: 1e-12  # Warn about potential precision loss
+
+# Validation criteria for parameter constraints
+validation_criteria:
+  # Hypergeometric parameter constraints
+  hypergeometric:
+    non_negativity: true        # All parameters must be >= 0
+    integer_values: true        # All parameters must be integers
+    overlap_bounds: true        # 0 <= q <= min(k, m)
+    sample_bounds: true         # k <= m + n
+    feasibility: true           # max(0, k-n) <= q <= min(k, m)
+
+  # Logical consistency checks
+  consistency:
+    query_subset_background: true    # All query genes must be in background
+    pathway_subset_background: true  # All pathway genes must be in background
+    positive_copy_numbers: false     # Allow zero copy numbers (handle as edge case)
+    unique_gene_ids: true            # Gene identifiers must be unique
+
+# Edge case handling strategies
+edge_case_handling:
+  zero_copies:
+    all_query_zero:
+      action: "return_null_result"
+      p_value: 1.0
+      fold_enrichment: "NaN"
+      warning: "All query genes have zero copies"
+
+    all_background_zero:
+      action: "return_null_result"
+      p_value: 1.0
+      fold_enrichment: "NaN"
+      warning: "All background genes have zero copies"
+
+    all_pathway_zero:
+      action: "return_null_result"
+      p_value: 1.0
+      fold_enrichment: "NaN"
+      warning: "All pathway genes have zero copies"
+
+  boundary_conditions:
+    perfect_overlap:
+      warning: "Complete query overlap with pathway - maximum enrichment"
+      note: "Biological plausibility should be verified"
+
+    zero_overlap:
+      p_value: 1.0
+      fold_enrichment: 0.0
+      warning: "No overlap between query and pathway"
+
+    query_equals_population:
+      warning: "Query contains all background genes"
+      note: "Consider using different statistical approach"
+
+  extreme_values:
+    large_copy_numbers:
+      action: "proceed_with_warning"
+      warning: "Very large copy numbers - numerical instability risk"
+      threshold: 1000000
+
+    extreme_ratios:
+      action: "proceed_with_warning"
+      warning: "Extreme copy number ratios - precision loss possible"
+      threshold: 10000
+
+    overflow_risk:
+      action: "error"
+      message: "Parameter values exceed computational safety bounds"
+
+# Output formatting and messaging
+output_configuration:
+  # Decimal precision for different metrics
+  precision:
+    p_value: 10                 # Scientific notation for very small p-values
+    fold_enrichment: 3          # 3 decimal places for fold enrichment
+    copy_numbers: 0             # Integer copy numbers
+
+  # Warning message formatting
+  warning_format:
+    prefix: "WARNING"
+    include_parameter_values: true
+    include_recommendations: true
+    severity_levels: ["INFO", "WARNING", "ERROR"]
+
+  # Statistical reporting
+  statistical_reporting:
+    include_confidence_intervals: false  # Not applicable for hypergeometric
+    include_effect_size: true           # Report fold enrichment
+    include_boundary_case_flags: true   # Flag boundary conditions
+    include_power_estimates: false      # Complex for hypergeometric
+
+# Implementation recommendations
+implementation:
+  # Pre-computation validation
+  pre_validation:
+    check_input_formats: true
+    validate_gene_identifiers: true
+    check_copy_number_ranges: true
+    verify_pathway_coverage: true
+
+  # Runtime monitoring
+  runtime_checks:
+    monitor_memory_usage: false     # Optional - can be expensive
+    check_computation_time: false   # Optional - for performance monitoring
+    validate_intermediate_results: true
+
+  # Post-computation validation
+  post_validation:
+    verify_parameter_consistency: true
+    check_result_validity: true
+    validate_statistical_properties: true
+
+# Testing and quality assurance
+testing_configuration:
+  # Test coverage requirements
+  test_coverage:
+    edge_cases: ["zero_copies", "extreme_values", "boundary_conditions"]
+    distributions: ["uniform", "skewed", "bimodal", "sparse"]
+    sample_sizes: ["small", "medium", "large"]
+    parameter_ranges: ["minimal", "typical", "extreme"]
+
+  # Robustness testing
+  robustness:
+    stress_test_iterations: 1000
+    random_scenario_count: 500
+    failure_tolerance: 0.01         # <1% failure rate acceptable
+
+  # Performance benchmarks
+  performance:
+    max_computation_time: 10.0      # seconds for typical analysis
+    memory_limit: "1GB"             # maximum memory usage
+    scalability_test_sizes: [100, 1000, 10000, 100000]
+
+# Version and compatibility
+metadata:
+  version: "1.0.0"
+  compatible_r_versions: [">=4.0.0"]
+  required_packages: ["testthat"]
+  last_updated: "2026-04-01"
+  validation_status: "comprehensive_testing_required"
