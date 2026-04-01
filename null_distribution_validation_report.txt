@@ -1,0 +1,174 @@
+COPY-NUMBER WEIGHTED PHYPER() NULL DISTRIBUTION VALIDATION REPORT
+======================================================================
+Generated: 2026-04-01 15:34:31.738585
+
+EXECUTIVE SUMMARY
+--------------------
+Total scenarios tested: 8
+Scenarios passing uniformity tests: 0
+Overall validation success: FALSE
+
+SCENARIO: SMALL_BG
+------------------------------
+Background genes: 200
+Pathway genes: 20
+Query genes: 15
+Copy distribution: uniform
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.232  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: MEDIUM_BG
+------------------------------
+Background genes: 500
+Pathway genes: 50
+Query genes: 30
+Copy distribution: uniform
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.194  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: LARGE_BG
+------------------------------
+Background genes: 1000
+Pathway genes: 100
+Query genes: 50
+Copy distribution: uniform
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.196  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: SMALL_PATHWAY
+------------------------------
+Background genes: 500
+Pathway genes: 25
+Query genes: 30
+Copy distribution: uniform
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.198  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: LARGE_PATHWAY
+------------------------------
+Background genes: 500
+Pathway genes: 100
+Query genes: 30
+Copy distribution: uniform
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.248  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: UNIFORM_COPIES
+------------------------------
+Background genes: 500
+Pathway genes: 50
+Query genes: 30
+Copy distribution: uniform
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.222  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: SKEWED_COPIES
+------------------------------
+Background genes: 500
+Pathway genes: 50
+Query genes: 30
+Copy distribution: skewed
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.14  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+SCENARIO: REALISTIC_COPIES
+------------------------------
+Background genes: 500
+Pathway genes: 50
+Query genes: 30
+Copy distribution: realistic
+P-values tested: 500
+
+Statistical Tests:
+  Kolmogorov-Smirnov test p-value: 0
+  Anderson-Darling test p-value: NA
+  Type I error rate: 0.114  (expected: 0.050)
+
+Uniformity Assessment:
+  KS test passed: FALSE
+  AD test passed: FALSE
+  Type I rate correct: FALSE
+  Overall uniform: FALSE
+
+CONCLUSIONS
+---------------
+✗ VALIDATION FAILED: Non-uniform p-values detected in scenarios:
+  - small_bg
+  - medium_bg
+  - large_bg
+  - small_pathway
+  - large_pathway
+  - uniform_copies
+  - skewed_copies
+  - realistic_copies
+✗ Implementation requires further debugging and correction.
