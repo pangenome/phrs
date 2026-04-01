@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper script for R verification
+exec Rscript verify_null_distribution_validation.R "$@"
