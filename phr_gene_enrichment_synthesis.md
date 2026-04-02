@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**Copy-number-aware enrichment analysis of subtelomeric pericentromeric homologous regions (PHRs) reveals a dramatic transformation in functional interpretation compared to standard gene-level analysis.** By accounting for the multi-copy nature of PHR gene families (1,189 total copies from 36 unique families), the dominant functional signal shifts from RNA splicing machinery to **olfactory/sensory perception (598-fold enrichment)** and **transcription regulation (928-fold enrichment)**. This copy-aware approach exposes the true genomic architecture of PHRs: **31.3% of all genomic investment** is devoted to olfactory/secretory functions despite representing only 22% of gene families, revealing PHRs as specialized chromatin domains containing massively duplicated sensory and regulatory gene clusters.
+**Copy-number-aware enrichment analysis of PHRs reveals a dramatic transformation in functional interpretation compared to standard gene-level analysis.** By accounting for the multi-copy nature of PHR gene families (1,189 total copies from 36 unique families), the dominant functional signal shifts from RNA splicing machinery to **olfactory/sensory perception (598-fold enrichment)** and **transcription regulation (928-fold enrichment)**. This copy-aware approach exposes the true genomic architecture of PHRs: **31.3% of all genomic investment** is devoted to olfactory/secretory functions despite representing only 22% of gene families, revealing PHRs as specialized chromatin domains containing massively duplicated sensory and regulatory gene clusters.
 
 ## Methodological Revolution: Why Copy Numbers Transform the Analysis
 

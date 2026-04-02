@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-Our copy-number-aware analysis of Palindromic Heterochromatin Repeats (PHRs) reveals four major functional enrichments that collectively tell a coherent story about subtelomeric genome organization and disease susceptibility. The strongest signal—transcription regulation driven by DUX4/FRG2/FRG2B (928-fold enrichment, 54 copies)—represents a known but underappreciated connection between FSHD disease mechanisms and subtelomeric exchange. Combined with olfactory receptor families (598-fold enrichment, 72 copies), cytoskeletal proteins (825-fold enrichment, 11 copies), and GTP binding proteins (309-fold enrichment, 18 copies), these findings reveal PHRs as reservoirs for dosage-sensitive gene families with clear clinical relevance.
+Our copy-number-aware analysis of PHRs reveals four major functional enrichments that collectively tell a coherent story about subtelomeric genome organization and disease susceptibility. The strongest signal—transcription regulation driven by DUX4/FRG2/FRG2B (928-fold enrichment, 54 copies)—represents a known but underappreciated connection between FSHD disease mechanisms and subtelomeric exchange. Combined with olfactory receptor families (598-fold enrichment, 72 copies), cytoskeletal proteins (825-fold enrichment, 11 copies), and GTP binding proteins (309-fold enrichment, 18 copies), these findings reveal PHRs as reservoirs for dosage-sensitive gene families with clear clinical relevance.
 
 ## Biological Narrative: Four Interconnected Stories
 

@@ -8,7 +8,7 @@
 
 This comprehensive analysis integrates deep research findings across six major areas of OR4F olfactory receptor investigation: functional characterization, copy number variation, multi-copy significance, disease associations, subtelomeric biology, and PHR connections. The research reveals that OR4F genes represent one of the most extensively duplicated and evolutionarily dynamic gene families in human subtelomeric regions, with profound implications for olfactory function, disease susceptibility, and evolutionary adaptation.
 
-**Key Finding:** The 72 OR4F copies showing 598-fold enrichment in pericentromeric heterochromatin-like regions (PHRs) constitute a functionally integrated system spanning evolutionary, regulatory, and phenotypic domains, with specific clustering in C3 and C11 communities reflecting shared duplicon architecture and inter-chromosomal exchange patterns.
+**Key Finding:** The 72 OR4F copies showing 598-fold enrichment in PHRs constitute a functionally integrated system spanning evolutionary, regulatory, and phenotypic domains, with specific clustering in C3 and C11 communities reflecting shared duplicon architecture and inter-chromosomal exchange patterns.
 
 ---
 
@@ -213,7 +213,7 @@ This comprehensive analysis integrates deep research findings across six major a
 **Regulatory Networks:**
 - **LINC RNA associations:** LINC01001, LINC01002, LINC01237, LINC01409 linked to "olfactory receptor activity"
 - **Chromatin boundaries:** TAR1 repeats mark telomere-proximal boundaries
-- **Heterochromatic context:** PHRs provide tissue-specific expression control domains
+- **Subtelomeric context:** PHRs provide tissue-specific expression control domains
 - **Distance effects:** OR clusters extend beyond strict PHR boundaries
 
 **Biological Integration:**

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This comprehensive literature review investigates the DUX4/FRG2/FRG2B transcription factor family, which shows exceptional enrichment in Palindromic Heterochromatin Repeats (PHRs) with 54 copies and 928-fold enrichment representing the strongest signal in copy-number-aware analysis. The research addresses seven key questions about DUX4 biology, FRG2/FRG2B genes, D4Z4 macrosatellite structure, multi-chromosome distribution, copy number variation, transcription regulation, and connections to PHR communities.
+This comprehensive literature review investigates the DUX4/FRG2/FRG2B transcription factor family, which shows exceptional enrichment in PHRs with 54 copies and 928-fold enrichment representing the strongest signal in copy-number-aware analysis. The research addresses seven key questions about DUX4 biology, FRG2/FRG2B genes, D4Z4 macrosatellite structure, multi-chromosome distribution, copy number variation, transcription regulation, and connections to PHR communities.
 
 ## 1. DUX4 Biology and Function
 
@@ -131,7 +131,7 @@ The FSHD literature extensively documents subtelomeric exchange as a mechanism f
 ### Research Gaps Identified
 1. **Multi-chromosome characterization**: Limited literature on DUX4-like sequences beyond chromosomes 4 and 10
 2. **Copy number studies**: Insufficient research on inter-chromosomal DUX4 variation effects
-3. **PHR relationship**: No existing literature directly connecting DUX4/D4Z4 to palindromic heterochromatin repeat communities
+3. **PHR relationship**: No existing literature directly connecting DUX4/D4Z4 to PHR communities
 
 ### Validation of PHR Findings
 - **FSHD biology**: Accurately described in literature with detailed molecular mechanisms
