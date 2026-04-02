@@ -41,32 +41,46 @@ Pseudohomologous Regions (PHRs) are subtelomeric regions where non-homologous ch
 
 ## 4. Gene Family Catalog
 
+### Leiden Community Key
+| Community | Representative Arms | Description |
+|-----------|---------------------|-------------|
+| C1 | chr4q, chr10q + 16 q-arms | D4Z4 macrosatellite sharing |
+| C2 | chr18p, chr10p + others | Recurrent transfer pair |
+| C3 | chr3q, chr7p, chr9q, chr11p, chr16q, chr19p + others | Largest community, f7501 sites |
+| C5 | chr20q + others | Shared duplicon modules |
+| C6 | chr17q + acrocentric q-arms | Mixed acrocentric/autosomal |
+| C9 | chr16p (singleton) | AFR-enriched |
+| C11 | chr1p, chr5q, chr6q, chr8p + others | OR4F21 sharing |
+| C12 | chr2q, chr20p | Variable f7501 pair |
+| C14 | chrXq, chrYq | PAR2 sharing |
+| PAR1 | chrXp, chrYp | Pseudoautosomal region 1 |
+
 Master table of all 23 protein-coding gene families with copy counts, chromosomal distribution, function, and disease associations:
 
 | Gene Family | Copies | Arms | Communities | Function | Disease Links |
 |-------------|--------|------|-------------|----------|---------------|
-| **DUX4** | 18 | chr1q,chr2q,chr4q,chr5q,chr6q,chr7q,chr8q,chr9q,chr10q,chr11q,chr13q,chr16q,chr17q,chr18q,chr19q,chr20q,chr21q,chr22q | C1 | Double homeobox transcription factor | FSHD (OMIM 158900) |
-| **FRG2** | 18 | chr1q,chr2q,chr4q,chr5q,chr6q,chr7q,chr8q,chr9q,chr10q,chr11q,chr13q,chr16q,chr17q,chr18q,chr19q,chr20q,chr21q,chr22q | C1 | FSHD region gene, transcription regulation | Potentially involved in FSHD |
-| **FRG2B** | 18 | chr1q,chr2q,chr4q,chr5q,chr6q,chr7q,chr8q,chr9q,chr10q,chr11q,chr13q,chr16q,chr17q,chr18q,chr19q,chr20q,chr21q,chr22q | C1 | FRG2 paralog, transcription regulation | Potentially involved in FSHD |
-| **OR4F17** | 20 | chr1p,chr2p,chr3p,chr4p,chr5p,chr6p,chr7p,chr8p,chr9p,chr10p,chr11p,chr12p,chr15p,chr16p,chr17p,chr19p,chr20p,chr21p,chrXp,chrYp | Multiple | Olfactory receptor, sensory perception | None known |
-| **IL9RP1** | 20 | chr1q,chr2q,chr3q,chr4q,chr5q,chr6q,chr7q,chr8q,chr9q,chr10q,chr11q,chr13q,chr15q,chr16q,chr17q,chr18q,chr19q,chr20q,chr21q,chr22q | Multiple | IL9 receptor pseudogene | Immune system-related |
-| **OR4F3** | 19 | chr1q,chr2q,chr3q,chr4q,chr5q,chr6q,chr7q,chr8q,chr9q,chr10q,chr11q,chr13q,chr15q,chr16q,chr17q,chr19q,chr20q,chr21q,chr22q | C3 | Olfactory receptor, sensory perception | None known |
-| **OR4F5** | 19 | chr1q,chr2q,chr3q,chr5q,chr6q,chr7q,chr8q,chr9q,chr10q,chr11q,chr12q,chr15q,chr16q,chr17q,chr18q,chr19q,chr20q,chrXq,chrYq | Multiple | Olfactory receptor, sensory perception | Genome reference gene |
-| **SCGB1C1** | 17 | chr1p,chr2p,chr3p,chr5p,chr6p,chr7p,chr8p,chr9p,chr11p,chr12p,chr15p,chr16p,chr17p,chr19p,chr20p,chrXp,chrYp | Multiple | Secretoglobin, anti-inflammatory | Respiratory diseases |
-| **IL9R** | 16 | chr1q,chr2q,chr3q,chr5q,chr6q,chr7q,chr8q,chr9q,chr11q,chr12q,chr15q,chr16q,chr19q,chr20q,chrXq,chrYq | Multiple | Cytokine receptor, immune signaling | Asthma susceptibility |
-| **IL9RP3** | 16 | chr1p,chr2p,chr3p,chr5p,chr6p,chr7p,chr8p,chr9p,chr11p,chr12p,chr15p,chr16p,chr19p,chr20p,chrXp,chrYp | Multiple | IL9 receptor pseudogene | Immune system-related |
-| **IQSEC3** | 16 | chr1p,chr2p,chr3p,chr5p,chr6p,chr7p,chr8p,chr9p,chr11p,chr12p,chr15p,chr16p,chr19p,chr20p,chrXp,chrYp | Multiple | ARF GEF, GABAergic synapse regulation | Neurodevelopmental risk |
-| **OR4F29** | 14 | chr1p,chr2p,chr3p,chr5p,chr6p,chr7p,chr8p,chr9p,chr11p,chr15p,chr16p,chr17p,chr19p,chr20p | C11 | Olfactory receptor, sensory perception | 1p36 CNV syndrome |
-| **LOC112268260** | 14 | chr1p,chr2p,chr3p,chr5p,chr6p,chr7p,chr8p,chr9p,chr11p,chr15p,chr16p,chr17p,chr19p,chr20p | C11 | Uncharacterized protein-coding | None known |
-| **TUBB8B** | 6 | chr3p,chr4p,chr9p,chr10p,chr16p,chr18p | C1 | Beta-tubulin paralog, cytoskeleton | Female infertility (related to TUBB8) |
-| **IL9RP4** | 6 | chr3p,chr4p,chr9p,chr10p,chr16p,chr18p | Multiple | IL9 receptor pseudogene | Immune system-related |
-| **TUBB8** | 5 | chr3p,chr9p,chr10p,chr16p,chr18p | C3 | Oocyte-specific beta-tubulin | Female infertility (OMIM 616780) |
+| **DUX4** | 18 | 18 q-arms | C1, C3, C5, C6, C12 | Double homeobox transcription factor | FSHD (OMIM 158900) |
+| **FRG2** | 18 | 18 q-arms | C1, C3, C5, C6, C12 | FSHD region gene, transcription regulation | Potentially involved in FSHD |
+| **FRG2B** | 18 | 18 q-arms | C1, C3, C5, C6, C12 | FRG2 paralog, transcription regulation | Potentially involved in FSHD |
+| **OR4F17** | 20 | 20 p-arms | C3, C11, C12 | Olfactory receptor, sensory perception | None known |
+| **IL9RP1** | 20 | 20 q-arms | C1, C3, C5, C6, C12 | IL9 receptor pseudogene | Immune system-related |
+| **OR4F3** | 19 | 19 q-arms | C1, C3, C11, C12 | Olfactory receptor, sensory perception | None known |
+| **OR4F5** | 19 | 19 q-arms + chrXq,chrYq | C1, C3, C12, C14 | Olfactory receptor, sensory perception | Genome reference gene |
+| **SCGB1C1** | 17 | 17 p-arms | C3, C11, C12 | Secretoglobin, anti-inflammatory | Respiratory diseases |
+| **IL9R** | 16 | 16 q-arms | C1, C3, C12, C14 | Cytokine receptor, immune signaling | Asthma susceptibility |
+| **IL9RP3** | 16 | 16 p-arms | C3, C11, C12 | IL9 receptor pseudogene | Immune system-related |
+| **IQSEC3** | 16 | 16 p-arms | C3, C11, C12 | ARF GEF, GABAergic synapse regulation | Neurodevelopmental risk |
+| **OR4F29** | 14 | 14 p-arms | C11 | Olfactory receptor, sensory perception | 1p36 CNV syndrome |
+| **LOC112268260** | 14 | 14 p-arms | C11 | Uncharacterized protein-coding | None known |
+| **TUBB8B** | 6 | chr3p,chr4p,chr9p,chr10p,chr16p,chr18p | C2, C3 | Beta-tubulin paralog, cytoskeleton | Female infertility (related to TUBB8) |
+| **IL9RP4** | 6 | chr3p,chr4p,chr9p,chr10p,chr16p,chr18p | C2, C3 | IL9 receptor pseudogene | Immune system-related |
+| **TUBB8** | 5 | chr3p,chr9p,chr10p,chr16p,chr18p | C2, C3 | Oocyte-specific beta-tubulin | Female infertility (OMIM 616780) |
 | **GTPBP6** | 2 | chrXp,chrYp | PAR1 | Mitochondrial GTPase, ribosome regulation | Leri-Weill dyschondrosteosis |
 | **SHOX** | 2 | chrXp,chrYp | PAR1 | Short stature homeobox, growth regulator | Leri-Weill, Turner syndrome |
 | **PPP2R3B** | 2 | chrXp,chrYp | PAR1 | Protein phosphatase regulatory subunit | None known |
 | **PLCXD1** | 2 | chrXp,chrYp | PAR1 | Phospholipase C-like, cell signaling | None known |
 | **LOC124905300** | 2 | chrXp,chrYp | PAR1 | Uncharacterized protein-coding | None known |
-| **LOC105375112** | 19 | chr1p,chr2p,chr3p,chr4p,chr5p,chr6p,chr7p,chr8p,chr9p,chr10p,chr11p,chr13p,chr15p,chr16p,chr17p,chr19p,chr20p,chr21p,chr22p | Multiple | Uncharacterized protein-coding | None known |
+| **LOC105375112** | 19 | 19 p-arms | C3, C11, C12 | Uncharacterized protein-coding | None known |
 
 **Total protein-coding genes: 23 families, 284 total copies**
 
