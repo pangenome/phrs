@@ -243,6 +243,43 @@ Based on literature synthesis and functional analysis:
 
 **Major Assembly Improvements for TUBB8 Detection:**
 
+#### Literature Review: Assembly Comparison Studies
+
+**T2T-CHM13 Revolutionary Impact on Gene Discovery:**
+
+Recent comparative genomics literature demonstrates that the T2T-CHM13 genome is substantially more useful than GRCh38 because it is complete and lacks the gaps that hidden 8% of the genome from sequence-based analysis for over 20 years. The T2T-CHM13v1.1 assembly substantially increases the number of known genes and repeats in the human genome, with researchers identifying 67 additional large-scale discrepant regions totaling ~21.6 Mbp (excluding telomeric and centromeric regions) that are highly structurally polymorphic in humans.
+
+**Copy Number Detection Improvements from Literature:**
+
+Comparative studies show that T2T-CHM13 enables detection of over 1 million additional high-quality variants genome-wide compared to GRCh38 across 1000 Genomes Project samples. Specific copy number variations previously missed include:
+- GSTM1 depletion by ~17 kbp deletion in T2T-CHM13
+- ZDHHC11B depletion by ~98 kbp deletion compared to GRCh38
+- Enhanced resolution of gene family expansions and contractions
+
+**Subtelomeric Assembly Breakthroughs from Literature:**
+
+Published T2T assembly studies successfully addressed challenging assembly issues in subtelomeric regions through:
+- **Complete gap closure**: Addition of >200 Mbp of DNA previously absent from reference genomes
+- **Repetitive sequence resolution**: Gap-filled regions dominated by tandemly arrayed repeats and complex repeats
+- **Subtelomeric characterization**: 3.01 Mb of subtelomeric repeat sequences and 2.11 Mb of segmental duplications resolved
+- **Technology integration**: PacBio HiFi + ONT ultra-long reads + Hi-C scaffolding
+
+**Tubulin Gene Family Assembly Challenges from Literature:**
+
+Published evolutionary studies of tubulin genes reveal assembly complications specific to this gene family:
+- **Extensive recent duplications**: Most species contain α- and/or β-tubulin gene duplicates from recent branch- and species-specific duplication events
+- **Paralog resolution challenges**: High sequence similarity between tubulin paralogs complicates ortholog-paralog relationships
+- **Phylogenetic complications**: Tubulins cannot be used for species phylogenies without resolving paralog relationships
+- **Assembly quality control**: Redundant sequences, divergent regions, and unique positions require removal at various stringency levels
+
+**TUBB8-Specific Literature Context:**
+
+Based on literature review, TUBB8 represents a particularly challenging case for assembly:
+- **Subtelomeric location**: TUBB8 maps to chromosome 10p15.3, a subtelomeric region prone to assembly gaps
+- **Copy number variation**: Subtelomeric regions show extensive copy number variation with ~25% of distal 500kb and ~80% of distal 100kb comprised of segmental duplications
+- **Primate-specific evolution**: TUBB8 is a primate-specific β-tubulin isotype, suggesting recent evolutionary origin
+- **Paralog complexity**: Related to TUBB8B with high sequence similarity creating mapping ambiguity
+
 #### T2T CHM13 vs GRCh38 Comparison
 
 **Quantitative Copy Number Changes:**
@@ -284,6 +321,27 @@ Based on literature synthesis and functional analysis:
 2. **Assembly artifacts**: Some "copies" in GRCh38 were likely assembly duplications
 3. **Missing copies**: Subtelomeric gaps concealed genuine TUBB8 copies
 4. **Pseudogene confusion**: Unclear functional status due to incomplete sequences
+
+#### Literature Sources for Assembly Impact Analysis
+
+**T2T-CHM13 vs GRCh38 Assembly Comparison:**
+- [Characterization of large-scale genomic differences in the first complete human genome](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-023-02995-w)
+- [A complete reference genome improves analysis of human genetic variation](https://pmc.ncbi.nlm.nih.gov/articles/PMC9336181/)
+- [Calling variants from telomere to telomere with the new T2T-CHM13 genome reference](https://terra.bio/calling-variants-from-telomere-to-telomere-with-the-new-t2t-chm13-genome-reference/)
+
+**Subtelomeric Assembly and Gap Closure:**
+- [From telomere to telomere: The transcriptional and epigenetic state of human repeat elements](https://www.science.org/doi/10.1126/science.abk3112)
+- [Mapping and initial analysis of human subtelomeric sequence assemblies](https://pubmed.ncbi.nlm.nih.gov/14707167/)
+- [Human subtelomeric copy number variations](https://pubmed.ncbi.nlm.nih.gov/19287161/)
+
+**Tubulin Gene Family Assembly Challenges:**
+- [Six Subgroups and Extensive Recent Duplications Characterize the Evolution of the Eukaryotic Tubulin Protein Family](https://pmc.ncbi.nlm.nih.gov/articles/PMC4202323/)
+- [Understanding molecular mechanisms and predicting phenotypic effects of pathogenic tubulin mutations](https://pmc.ncbi.nlm.nih.gov/articles/PMC9581425/)
+
+**TUBB8-Specific Information:**
+- [TUBB8 Gene - GeneCards](https://www.genecards.org/cgi-bin/carddisp.pl?gene=TUBB8)
+- [TUBB8 tubulin beta 8 class VIII - NCBI Gene](https://www.ncbi.nlm.nih.gov/gene?term=347688)
+- [Mutations in TUBB8 cause a multiplicity of phenotypes in human oocytes and early embryos](https://pmc.ncbi.nlm.nih.gov/articles/PMC5035199/)
 
 ## Preliminary Literature Analysis
 
