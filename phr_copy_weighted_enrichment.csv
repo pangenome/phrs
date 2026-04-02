@@ -1,0 +1,6 @@
+go_id,go_name,go_domain,copies_in_phrs,total_genome_copies,expected_copies,fold_enrichment,p_value,total_phr_copies,total_genome_copies_all,p_adjusted
+GO:0006355,"regulation of transcription, DNA-templated",BP,54,54,54,1,1,1189,1189,1
+GO:0006955,immune response,BP,58,58,58,1,1,1189,1189,1
+GO:0005125,cytokine activity,MF,58,58,58,1,1,1189,1189,1
+GO:0005525,GTP binding,MF,18,18,18,1,1,1189,1189,1
+GO:0003924,GTPase activity,MF,18,18,18,1,1,1189,1189,1

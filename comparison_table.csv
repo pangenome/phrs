@@ -1,0 +1,20 @@
+Category,Term,Angela_1Mb_Status,Angela_NES,Angela_P_adj,PHR_only_Status,PHR_P_adj,PHR_Rank,Interpretation
+Olfactory,detection of chemical stimulus involved in sensory perception,Enriched,6.10,5.4E-19,Enriched,1.3E-02,29,Signal weakened - 1Mb captured neighborhood OR genes
+Olfactory,sensory perception of smell,Enriched,5.59,1.2E-16,Enriched,1.5E-02,30,Signal weakened - 1Mb captured neighborhood OR genes
+Olfactory,olfactory receptor activity,Enriched,5.72,1.3E-17,Enriched,8.2E-03,3,Signal weakened but still significant in MF
+Chromatin,structural constituent of chromatin,Depleted,-6.20,1.6E-29,Absent,NA,NA,Negative artifact completely removed
+Chromatin,protein localization to CENP-A containing chromatin,Depleted,-3.94,1.9E-10,Absent,NA,NA,Negative artifact completely removed
+Chromatin,nucleosome assembly,Depleted,-3.90,7.6E-09,Absent,NA,NA,Negative artifact completely removed
+Chromatin,nucleosome organization,Depleted,-3.58,2.9E-07,Absent,NA,NA,Negative artifact completely removed
+MHC,peptide antigen assembly with MHC class II protein complex,Depleted,-3.69,7.5E-09,Absent,NA,NA,Negative artifact completely removed
+MHC,antigen binding,Depleted,-5.43,2.2E-22,Absent,NA,NA,Negative artifact completely removed
+Keratin,keratinization,Depleted,-3.68,1.1E-07,Absent,NA,NA,Negative artifact completely removed
+Keratin,structural constituent of skin epidermis,Depleted,-4.46,4.5E-13,Absent,NA,NA,Negative artifact completely removed
+Immune,immunoglobulin mediated immune response,Depleted,-3.76,1.1E-08,Absent,NA,NA,Immune signal was neighborhood effect
+Immune,type I interferon-mediated signaling pathway,Enriched,3.16,3.6E-04,Absent,NA,NA,Immune signal was neighborhood effect
+Immune,natural killer cell activation involved in immune response,Enriched,2.61,9.2E-03,Absent,NA,NA,Immune signal was neighborhood effect
+RNA_Processing,formation of quadruple SL/U4/U5/U6 snRNP,Not_detected,NA,NA,Enriched,1.5E-03,1,Novel PHR signature - masked in 1Mb analysis
+RNA_Processing,mRNA trans splicing via spliceosome,Not_detected,NA,NA,Enriched,1.5E-03,2,Novel PHR signature - masked in 1Mb analysis
+RNA_Processing,spliceosomal tri-snRNP complex assembly,Not_detected,NA,NA,Enriched,1.6E-03,4,Novel PHR signature - masked in 1Mb analysis
+RNA_Processing,U4 snRNA binding,Not_detected,NA,NA,Enriched,9.1E-05,1,Novel PHR signature - masked in 1Mb analysis
+RNA_Processing,snRNA binding,Not_detected,NA,NA,Enriched,1.4E-04,2,Novel PHR signature - masked in 1Mb analysis

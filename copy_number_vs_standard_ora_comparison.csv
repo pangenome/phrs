@@ -1,0 +1,6 @@
+method,gene_input_type,effective_gene_count,top_enriched_category,key_findings,statistical_significance,copy_awareness
+Standard_ORA,unique_genes,22,RNA_splicing_spliceosome,"Formation of quadruple SL/U4/U5/U6 snRNP, mRNA trans splicing (p=9.93e-04)",p<0.001,No
+Copy_Weighted_Functional,gene_families_by_copy_count,284,"Olfactory_receptor_genes","Olfactory genes: 72 copies (18.0 mean), Immune genes: 70 copies (17.5 mean)",Wilcoxon_p=0.0118,Yes
+Copy_Expansion_Factor,copy_aware_weighting,12.35x_expansion,Functional_composition_shift,"31.3% of copies are olfactory/secretory genes despite being 22% of families",Significant_bias,Yes
+Region_Based_Approach,genomic_intervals,29_PHR_intervals,Interval_based_counting,Each PHR interval treated independently,Not_fully_implemented,Yes
+Bootstrap_Permutation,random_sampling,1000_iterations,Null_distribution_comparison,Random genomic intervals vs observed,Not_fully_implemented,Yes
