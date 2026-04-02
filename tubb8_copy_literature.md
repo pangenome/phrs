@@ -543,7 +543,7 @@ Based on literature review, TUBB8 represents a particularly challenging case for
 - **Complete gap closure** in subtelomeric regions where TUBB8 copies reside
 - **Enhanced resolution** of repetitive sequences enabling paralog discrimination
 - **Accurate copy counting** with high-confidence functional vs pseudogene distinction
-- **Complete PHR mapping** enabling comprehensive pericentromeric region analysis
+- **Complete PHR mapping** enabling comprehensive Pseudohomologous Region analysis
 
 #### Technical Breakthroughs Enabling TUBB8 Resolution
 
@@ -564,7 +564,7 @@ Based on literature review, TUBB8 represents a particularly challenging case for
 - **~150 subtelomeric gaps** in regions where TUBB8 copies reside
 - **Repetitive sequence collapse**: Highly similar TUBB8 paralogs collapsed into single representations
 - **Uncertain copy numbers**: Ambiguous assignments between functional genes and pseudogenes
-- **PHR incompleteness**: Incomplete pericentromeric region assembly
+- **PHR incompleteness**: Incomplete Pseudohomologous Region assembly
 
 **Impact on Previous Studies:**
 1. **Variable copy counts**: Previous studies showed 2-8 TUBB8 copies depending on analysis method
@@ -624,7 +624,7 @@ The recognition of multiple TUBB8 copies likely evolved with assembly improvemen
 #### T2T/CHM13 Era (2020-present)  
 - **Complete assembly**: Zero gaps enabling accurate copy detection
 - **Confirmed counts**: 11 total β-tubulin copies (TUBB8: 5, TUBB8B: 6)
-- **PHR context**: Integration within pericentromeric homologous regions
+- **PHR context**: Integration within Pseudohomologous Regions
 - **Community structure**: Organization into distinct communities (3 vs 12)
 
 ### Literature Search Framework
@@ -730,7 +730,7 @@ The recognition of multiple TUBB8 copies likely evolved with assembly improvemen
 - **Subtelomeric gaps**: ~150 gaps specifically in p-arm regions where TUBB8 copies reside
 - **Repetitive sequence collapse**: Highly similar TUBB8 paralogs merged into single representations
 - **Uncertain copy numbers**: Ambiguous assignments between functional genes and pseudogenes
-- **PHR incompleteness**: Incomplete pericentromeric region assembly prevented community analysis
+- **PHR incompleteness**: Incomplete Pseudohomologous Region assembly prevented community analysis
 
 **Impact on Literature Estimates:**
 - **Variable copy counts**: Studies reported 2-8 TUBB8 copies depending on analysis method

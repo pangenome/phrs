@@ -43,7 +43,7 @@
 1. **Complete Assembly Resolution (2020-Present)**
    - **6 confirmed TUBB8B copies**: T2T assembly reveals 6 distinct TUBB8B loci
    - **Chromosome distribution**: Copies located on chr3p, chr4p, chr9p, chr10p, chr16p, chr18p
-   - **PHR Community 12 organization**: All copies within pericentromeric homologous regions
+   - **PHR Community 12 organization**: All copies within Pseudohomologous Regions
    - **High confidence annotation**: Complete sequences enable clear functional vs pseudogene classification
 
 #### Chromosome Locations Documented in Literature
@@ -67,7 +67,7 @@
    - **Chr3p24.2**: TUBB8B copy within PHR Community 12
    - **Chr4p16.1**: TUBB8B copy unique to this chromosome (not in TUBB8 distribution)
    - **Chr9p24.1**: TUBB8B copy consistently identified across studies
-   - **Chr10p15.3**: TUBB8B copy within pericentromeric homologous region
+   - **Chr10p15.3**: TUBB8B copy within Pseudohomologous Region
    - **Chr16p13.3**: Well-characterized TUBB8B locus
    - **Chr18p11.32**: TUBB8B copy in subtelomeric region
 
@@ -181,7 +181,7 @@
 1. **Community Structure Confirmation**
    - **6-copy architecture**: Literature estimates converge on 6 TUBB8B copies
    - **Chromosome distribution**: chr3p, chr4p, chr9p, chr10p, chr16p, chr18p confirmed
-   - **PHR organization**: All copies within pericentromeric homologous regions
+   - **PHR organization**: All copies within Pseudohomologous Regions
    - **Community coherence**: Shared duplication history creating homologous organization
 
 2. **Distinction from TUBB8 Community 3**
@@ -216,4 +216,4 @@
 
 Our PHR analysis finding of **6 TUBB8B copies** on chromosomes chr3p, chr4p, chr9p, chr10p, chr16p, chr18p is **fully supported** by the T2T era literature. The recognition of TUBB8B as distinct from TUBB8, organized within PHR Community 12, represents a robust consensus from multiple independent studies using high-quality genome assemblies.
 
-The literature confirms that the multi-copy architecture of TUBB8B, combined with TUBB8's 5 copies, creates an 11-copy β-tubulin system specifically organized within pericentromeric homologous regions and contributes to the massive 825-fold enrichment in cytoskeletal structural constituent function observed in our PHR analysis.
+The literature confirms that the multi-copy architecture of TUBB8B, combined with TUBB8's 5 copies, creates an 11-copy β-tubulin system specifically organized within Pseudohomologous Regions and contributes to the massive 825-fold enrichment in cytoskeletal structural constituent function observed in our PHR analysis.

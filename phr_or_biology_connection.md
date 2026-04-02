@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This research reveals substantial evidence for biological connections between olfactory receptor (OR) genes and pericentromeric heterochromatin-like regions (PHRs) in subtelomeric regions. Key findings include documented inter-chromosomal OR gene sharing across HPRC populations, chromatin-mediated regulatory mechanisms, and evolutionary patterns linking PHR biology to OR gene clustering dynamics.
+This research reveals substantial evidence for biological connections between olfactory receptor (OR) genes and Pseudohomologous Regions (PHRs) in subtelomeric regions. Key findings include documented inter-chromosomal OR gene sharing across HPRC populations, chromatin-mediated regulatory mechanisms, and evolutionary patterns linking PHR biology to OR gene clustering dynamics.
 
 ## Key Findings
 

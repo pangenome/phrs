@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document provides a chromosome arm-by-arm breakdown of the 72 genes driving GO enrichment signals in subtelomeric pericentromeric homologous regions (PHRs). These genes span 18 chromosome arms across 9 Leiden communities, revealing distinct functional and spatial organization patterns.
+This document provides a chromosome arm-by-arm breakdown of the 72 genes driving GO enrichment signals in subtelomeric Pseudohomologous Regions (PHRs). These genes span 18 chromosome arms across 9 Leiden communities, revealing distinct functional and spatial organization patterns.
 
 ## Summary Statistics
 

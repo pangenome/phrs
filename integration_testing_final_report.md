@@ -6,7 +6,7 @@ This integration test successfully demonstrates that **copy-number-aware enrichm
 
 ## Objective
 
-Test the copy-number-aware enrichment methodology developed in the research phase with actual PHR (pericentromeric heterochromatin region) dataset, comparing results to deduplicated g:Profiler ORA analysis.
+Test the copy-number-aware enrichment methodology developed in the research phase with actual PHR (Pseudohomologous Region) dataset, comparing results to deduplicated g:Profiler ORA analysis.
 
 ## Methodology
 

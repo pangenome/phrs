@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-Copy-number-weighted ORA provides significant value for genomic regions with extreme copy number variation but comes with increased computational overhead and complexity. This framework provides quantitative decision criteria based on comprehensive analysis of pericentromeric heterochromatin regions (PHRs) where copy-weighted ORA revealed a 12.35x copy expansion factor and significant functional composition bias (p=0.0118).
+Copy-number-weighted ORA provides significant value for genomic regions with extreme copy number variation but comes with increased computational overhead and complexity. This framework provides quantitative decision criteria based on comprehensive analysis of Pseudohomologous Regions (PHRs) where copy-weighted ORA revealed a 12.35x copy expansion factor and significant functional composition bias (p=0.0118).
 
 ## Decision Criteria
 
@@ -154,7 +154,7 @@ END: Execute selected method
 
 ## Use Case Scenarios
 
-### Scenario 1: Pericentromeric Heterochromatin Regions (PHRs)
+### Scenario 1: Pseudohomologous Regions (PHRs)
 **Context:** 35 unique genes, 1,189 total copies, copy range 2-672
 - **Metrics:** Expansion factor = 34x, CV = 4.2, Max proportion = 56.5%
 - **Recommendation:** Copy-weighted ORA essential (high confidence)

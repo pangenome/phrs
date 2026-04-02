@@ -391,7 +391,7 @@ The copy-number-weighted hypergeometric parameter mapping implementation has suc
 
 The parameter mapping approach successfully addresses the computational scalability challenges of copy-number-aware enrichment analysis while maintaining full statistical rigor. It enables genome-scale analyses that were previously computationally prohibitive and integrates seamlessly with existing ORA workflows.
 
-**Impact Statement:** This implementation makes copy-number-weighted over-representation analysis practical for routine use in genomic studies, with particular value for analyses of segmental duplications, copy number variants, and palindromic genomic regions.
+**Impact Statement:** This implementation makes copy-number-weighted over-representation analysis practical for routine use in genomic studies, with particular value for analyses of segmental duplications, copy number variants, and Pseudohomologous Regions.
 
 ---
 

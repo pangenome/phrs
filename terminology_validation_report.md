@@ -13,7 +13,7 @@
 ## Documents with Errors Fixed
 
 ### 1. deep_research_synthesis.md
-- **Error:** "Palindromic Heterochromatin Repeats (PHRs)" (line 9)
+- **Error:** "Pseudohomologous Regions (PHRs)" (line 9)
 - **Fix:** Removed incorrect expansion, now just uses "PHRs"
 - **Status:** ✅ FIXED
 
@@ -24,7 +24,7 @@
 - **Status:** ✅ FIXED
 
 ### 3. deep_research_dux4_frg2.md
-- **Error 1:** "Palindromic Heterochromatin Repeats (PHRs)" (line 5) 
+- **Error 1:** "Pseudohomologous Regions (PHRs)" (line 5) 
 - **Error 2:** "palindromic heterochromatin repeat communities" (line 134)
 - **Fix:** Removed incorrect expansions
 - **Status:** ✅ FIXED
@@ -38,12 +38,12 @@
 - **Status:** ✅ FIXED
 
 ### 5. phr_gene_enrichment_report.md
-- **Error:** "pericentromeric highly repetitive (PHR) intervals" (line 5)
+- **Error:** "Pseudohomologous Region (PHR) intervals" (line 5)
 - **Fix:** Removed incorrect expansion
 - **Status:** ✅ FIXED
 
 ### 6. phr_gene_enrichment_synthesis.md  
-- **Error:** "subtelomeric pericentromeric homologous regions (PHRs)" (line 5)
+- **Error:** "subtelomeric Pseudohomologous Regions (PHRs)" (line 5)
 - **Fix:** Simplified to just "PHRs" 
 - **Status:** ✅ FIXED
 
