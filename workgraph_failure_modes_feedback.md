@@ -1,15 +1,15 @@
 # Workgraph Failure Modes: Copy-Number-Aware Enrichment Analysis
 
-**Date:** 2026-04-01  
+**Date:** 2026-04-01 (updated 2026-05-01)  
 **Subgraph:** Copy-number-aware enrichment analysis  
 **Timeline:** 14:46 - 19:01 (4h 15m duration)  
-**Tasks:** Started ~85, exploded to 286+, 303 completed  
+**Tasks:** Started ~85, peaked at 337, 303 completed  
 **Agent Churn:** 392 dead agents vs 2 alive (massive churn indicator)  
 **Status:** Core work completed, significant system failures requiring manual intervention
 
 ## Executive Summary
 
-This document provides feedback to workgraph system developers on failure modes encountered during a copy-number-aware enrichment analysis project. While the core research and methodology work completed successfully, we experienced five distinct system failures that required ~15 minutes of manual coordinator intervention and wasted significant compute resources. The most serious issue was an undetected crash loop that spawned 20+ agents over 30 minutes without circuit breaking.
+This document provides feedback to workgraph system developers on failure modes encountered during a copy-number-aware enrichment analysis project. While the core research and methodology work completed successfully, we experienced five distinct system failures plus one identified feature gap that together required ~15 minutes of manual coordinator intervention and wasted significant compute resources. The most serious issue was an undetected crash loop that spawned 20+ agents over 30 minutes without circuit breaking. The most consequential feature gap is the lack of hierarchical graph summarization for agent context, which made `context_scope: graph` unusable at the scale this project reached.
 
 ## Failure Modes
 
@@ -127,6 +127,36 @@ The verification system doesn't distinguish between machine-checkable commands a
 
 ---
 
+### 6. Graph Context Management — Missing Hierarchical Summarization (Feature Request)
+
+**Description:** The graph grew to 337 tasks at peak. At that scale, `context_scope: graph` became unusable: agents loaded the raw dump of every task description and log, blew through their context budget, and crashed (this is the proximate cause of Failure #4, but the underlying gap is broader). The coordinator already has a compaction system that summarizes its own context as the graph grows; that machinery does not extend to per-agent task context.
+
+There should be a way to compact and summarize completed subgraphs so that:
+
+1. **Summarized graph view for agents** — agents that request `context_scope: graph` receive a summarized view of the graph, not a raw dump of 300+ task records.
+2. **Roll-up of completed task trees** — completed subtrees can be collapsed into a single summary node (e.g. `copy-number methodology research: completed, produced X, Y, Z artifacts`) instead of every leaf appearing in agent context.
+3. **Token budget with automatic summarization** — `context_scope: graph` honors a per-agent token budget; if the raw graph would exceed it, the system automatically summarizes oldest/most-completed branches first until the context fits.
+
+**Impact (observed):**
+- `context_scope: graph` became effectively unusable above ~100 tasks
+- Triggered the crash loop in Failure #4 — every spawned agent OOM'd within ~60s
+- Required manual abandonment of the affected task and restructuring to use a narrower context scope
+- Forces users to choose between rich context (`graph`) and reliability (`clean`) with no middle ground
+
+**Root Cause Hypothesis:**
+The compaction system exists in the coordinator but was never extended to agent task context. Coordinator compaction was likely scoped narrowly to "keep the coordinator alive"; agents inherited the unscaled raw-dump path because no agent had previously hit the limit at single-task scale.
+
+**Suggested Implementation:**
+- Reuse the existing coordinator compaction primitives, parameterized by token budget instead of hardcoded coordinator limits
+- Define a stable summary schema for completed subgraphs: task id, title, terminal status, key artifacts produced, evaluation score, child count rolled up
+- Allow tasks to opt into a `context_scope: graph-summarized` mode while keeping `graph` as the explicit "give me everything" escape hatch
+- Emit a warning at task creation time when `context_scope: graph` is requested on a graph above a configurable threshold (e.g. 100 tasks)
+- Track summarization decisions in agent logs so debugging "why didn't I see task X" stays tractable
+
+**Classification:** Feature gap, not a bug. The system behaved as designed; the design did not anticipate this scale.
+
+---
+
 ## Timeline Summary
 
 | Time | Event | Type |
@@ -168,23 +198,25 @@ The verification system doesn't distinguish between machine-checkable commands a
 1. **Circuit Breaker for Task Crash Loops** - If an agent crashes N times on the same task, pause and alert (most dangerous failure - wastes resources silently)
 2. **Context Size Limits and Warnings** - Cap `context_scope: graph` in large graphs, warn when >100 tasks
 
-### High (Next Release)  
+### High (Next Release)
 3. **Task Decomposition Limits** - Max subtask limits per task (e.g., 10-15 direct children), require coordinator approval beyond N
 4. **API Failure Retry Logic** - Exponential backoff for Claude CLI failures in eval/FLIP tasks (retry 3x before failing)
 5. **Dynamic Dependency Checking** - Re-validate dependencies before task execution, eval tasks should re-block if parent not terminal
+6. **Hierarchical Graph Summarization for Agent Context (Feature #6)** - Extend the coordinator's compaction system to per-agent `context_scope: graph` loading: roll up completed subtrees into summary nodes and enforce a token budget so the scope remains usable beyond ~100 tasks
 
 ### Medium (Ongoing Improvement)
-6. **Intelligent Verification Parsing** - Parse verify criteria: if looks like shell command (starts with binary, pipes, etc.) execute it, otherwise use LLM evaluation
-7. **Agent Lifecycle Monitoring** - Better detection and handling of dead agents, 392 dead vs 2 alive indicates major churn issue
-8. **Smart Context Selection** - For large graphs, summarize context instead of full dump, or select most relevant subset
+7. **Intelligent Verification Parsing** - Parse verify criteria: if looks like shell command (starts with binary, pipes, etc.) execute it, otherwise use LLM evaluation
+8. **Agent Lifecycle Monitoring** - Better detection and handling of dead agents, 392 dead vs 2 alive indicates major churn issue
+9. **Smart Context Selection** - For large graphs, summarize context instead of full dump, or select most relevant subset
 
 ## Pattern Analysis
 
-The failures fall into three categories:
+The issues fall into four categories:
 
 1. **Scalability Issues** (#1, #4): Systems that work fine at small scale break down with large graphs
-2. **External Dependencies** (#2, #3): Cascade failures from external API issues  
+2. **External Dependencies** (#2, #3): Cascade failures from external API issues
 3. **Configuration Bugs** (#5): System misinterpretation of user configuration
+4. **Feature Gaps** (#6): Existing infrastructure (coordinator compaction) not extended to a place where it is now needed (agent task context)
 
 **Pattern Keywords Observed:**
 - **Autopoietic decomposition** - Recursive task creation without bounds
@@ -201,8 +233,9 @@ The workgraph system demonstrates strong self-organizing capabilities but needs 
 ## Appendix: Key Statistics
 
 - **Initial Graph Size:** ~85 tasks
+- **Peak Graph Size:** 337 tasks
 - **Final Graph Size:** 286+ tasks (final count: 303 completed)
-- **Task Explosion Ratio:** 3.4x growth from single decomposition
+- **Task Explosion Ratio:** ~4x growth (85 → 337) from a single decomposition
 - **Agent Churn:** 392 dead agents vs 2 alive (196:1 ratio - massive churn indicator)
 - **Simultaneous Failures:** 25 tasks (16:02 cascade)
 - **Crash Loop Duration:** 30 minutes undetected resource waste
