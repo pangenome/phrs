@@ -1,0 +1,10 @@
+panel	source_path	type	rows	notes
+ed8a	paper_prep/surveys/SURVEY_07_integrated.md	md	-	Section §1.6 four-link feedback loop; support level coded by line/colour. No primary data — schematic.
+ed8b_schematic	paper_prep/surveys/SURVEY_07_integrated.md	md	-	Section §1.4 D4Z4-CTCF-lamin tethering for C1; references Ottaviani 2009 (CTCF), Masny 2004 (lamin), Lemmers 2010 (FSHD), Stout 1999 (chr4q/chr10q FISH).
+ed8b_inset	paper_prep/surveys/SURVEY_07_integrated.md	md	-	Inter-arm sharing-by-distance peak at 0–15 kb (D4Z4 location); representative exponential schematic — qualitative pattern from §1.4 (sequence-level community detection, intercommunity contact-by-distance plot referenced from survey 02).
+ed8c_recomb	/moosefs/guarracino/HPRCv2/PHR_III/recombination_maps/subtelomeric_recomb_rates.tsv	tsv	46	Lalli 2025 T2T-CHM13 subtelomeric recombination rate (cM/Mb), 23 chrs × 2 arms; col 4 (header "total_cM") is callable variants per 500-kb arm.
+ed8c_affinity	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/cross_arm_affinity_sequences.tsv	tsv	2484	Per-sequence cross-arm affinity (own_arm vs affinity_arm distance ratio); used to compute per-arm cross-arm sharing fraction.
+ed8c_assignments	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	tsv	15668	Sequence → community → arm assignments. Per-arm denominator for cross-arm sharing fraction.
+ed8d	/moosefs/guarracino/HPRCv2/PHR_III/compartment_analysis.tsv	tsv	92	HG002 100 kb Hi-C eigenvector e1 at chromosome tips; per arm × haplotype; cols: chrom, arm, hap, mean_e1, compartment.
+methods	paper_prep/surveys/SURVEY_07_integrated.md	md	-	§1.6 (feedback loop), §1.4 (D4Z4 model), §1.7 prediction 2 (recombination null), §6 T-2/T-3/T-6 (figure specs).
+methods_radial	paper_prep/surveys/SURVEY_07_integrated.md	md	-	§1.4–§1.5 Dip-C radial: C1 = 0.732 (peripheral); C6 = 0.505; C10 = 0.474 (interior).
