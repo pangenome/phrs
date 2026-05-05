@@ -1,0 +1,6 @@
+warning: unknown font family: liberation serif
+  ┌─ MANUSCRIPT_DRAFT.typ:2:16
+  │
+2 │ #set text(font: ("New Computer Modern", "DejaVu Serif", "Liberation Serif"), size: 10pt)
+  │                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
