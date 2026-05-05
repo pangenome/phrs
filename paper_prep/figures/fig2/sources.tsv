@@ -1,0 +1,10 @@
+panel	content	status	source_path	survey_section
+2a	Allele-vs-paralog Wilcoxon panel	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/allele_vs_paralog_distance.tsv	SURVEY_04 §1.1
+2b_top	Per-arm Spearman gradient bars	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/plots/two_domain_test.tsv	SURVEY_04 §1.3 Test 1
+2b_bottom	Binned mean n_chrs vs distance for chr4p/4q/22q	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/plots/two_domain_binned_means.tsv	SURVEY_04 §1.3
+2b_bottom	Piecewise breakpoint markers	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/plots/two_domain_changepoint.tsv	SURVEY_04 §1.3 Test 2
+2b_bottom	ITS-to-breakpoint colocalization annotation	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/plots/its_breakpoint_coloc.tsv	SURVEY_04 §1.3 Test 3
+2c_left	Cross-arm superpop enrichment heatmap (BH q)	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/cross_arm_superpop_enrichment.tsv	SURVEY_04 §1.4
+2c_right	Hudson Fst superpop matrix	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/fst_superpop_matrix.tsv	SURVEY_04 §1.4
+2c_composite_ref	Existing within_arm composition PDF (composite reference)	READY	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/within_arm_heterogeneity_04_superpop_composition.pdf	SURVEY_04 §2.1
+2d	Out-of-Africa UPGMA dendrogram from Fst	GENERATE	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/fst_superpop_matrix.tsv	SURVEY_10/11/12 §6 T-4
