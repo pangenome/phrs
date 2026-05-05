@@ -1,0 +1,8 @@
+panel	source_path	type	rows	notes
+ed4a	phr_GO_BP_enrichment.csv	csv	35	gprofiler GO:BP enrichment over PHR-only gene set (n=23 protein-coding); top hit p_adj=1.45e-3
+ed4a_legacy	Figure1_GSEA_BP_vertical.pdf	pdf	-	Angela Gyamfi GSEA, 1 Mb window around PHR boundaries; superseded by panel a (PHR-only re-run flagged in WORK_DECOMPOSITION.md ## Gaps)
+ed4b	improved_copy_weighted_vs_deduplicated_comparison.csv	csv	5	Copy-weighted vs dedup GO comparison; sensory perception of smell fold = 598
+ed4c	gene_copy_summary.csv	csv	35	High-copy gene families with arms + biotype (top 15 protein-coding + pseudogene shown)
+ed4d	/moosefs/guarracino/HPRCv2/PHR_III/plots/or4f_pseudogene_fraction.csv	csv	16	Per-arm OR4F pseudogene fraction; cols: chr_arm, total, n_pseudo, n_coding, pseudo_frac
+methods	paper_prep/surveys/SURVEY_DATA_inventory.md	md	-	§2 high-copy gene tables; §3 ORA; §4 copy-weighted analysis
+methods_or4f	paper_prep/surveys/SURVEY_10_11_12_limits_summary_lit.md	md	-	C12 / OR4F pseudogenisation gradient discussion

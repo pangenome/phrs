@@ -1,0 +1,7 @@
+panel	source_path	type	rows	notes
+ed3a	/moosefs/guarracino/HPRCv2/PHR_III/enrichment/community_tar1_by_arm.tsv	tsv	41	Per-arm TAR1 prevalence; cols: community, chr_arm, n_sequences, n_with_tar1, mean_tar1_count, mean_tar1_length, pct_with_tar1
+ed3b_length	/moosefs/guarracino/HPRCv2/PHR_III/ttaggg_analysis/length_distribution.tsv	tsv	7	(TTAGGG)n island length-bin histogram; cols: bin, n_islands, pct
+ed3b_motif	/moosefs/guarracino/HPRCv2/PHR_III/ttaggg_analysis/motif_composition.tsv	tsv	4	Hexamer composition (TTAGGG, TGAGGG, TTGGGG, TCAGGG)
+ed3c	/moosefs/guarracino/HPRCv2/PHR_III/telomere_length_by_community.tsv	tsv	15	Per-community summary stats; Kruskal-Wallis annotation in trailing comment lines
+ed3d	/moosefs/guarracino/HPRCv2/PHR_III/enrichment/tar1_positional/tar1_positional_per_arm.tsv	tsv	41	Per-arm TAR1 positional summary; median/mean distance from telomere
+methods	paper_prep/surveys/SURVEY_02_annotation.md	md	-	Section 02 source survey; statistics quoted in caption
