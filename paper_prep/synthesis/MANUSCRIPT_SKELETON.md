@@ -11,15 +11,17 @@
 
 ## Headline numbers (memorise; quoted across figs/talk)
 
+> **Statistical conventions for this section.** Every p-value below is annotated with either (i) a BH-FDR q-value computed within its named test family or (ii) the literal label `(uncorrected; single combined test)` for pre-specified single hypotheses. Every odds ratio (OR) is given with a 95 % conditional-MLE Fisher exact CI. See `paper_prep/synthesis/STATS_AUDIT.md` and the per-test TSVs in `paper_prep/synthesis/stats_audit/` for the full corrected tables; the f7501 chr16_q OR = 17.4 quoted in `SURVEY_01 §1.9` becomes **OR = 17.24, 95 % CI [9.41, 32.97]**, BH q = 5.3 × 10⁻²⁵ within the 80-test (16 arms × 5 superpops) family.
+
 - **233** individuals · **465** haplotypes · **18,827** flanks · **15,668** PHRs (`SURVEY_01 §1`)
 - **41 arms → 15 arm-level / 50 sequence-level communities** (Leiden; silhouette 0.347 / 0.602; modularity 0.97) (`SURVEY_01 §1.8, §1.10`)
 - **15.9 %** of subtelomeric sequences are cross-arm at the arm level; **11.1 %** at the sequence level (`SURVEY_04 §1.4, §1.11`)
 - **39/48** arms confirm Flint–Mefford two-domain model; **99.7 %** of haplotype sequences show the gradient (`SURVEY_04 §1.3`)
-- **8/9** multi-arm communities have allele closer than paralog (Wilcoxon p < 1e-300); **C7 acrocentric reversed** (70.5 % paralog closer) (`SURVEY_04 §1.1`)
-- **HG002 Pore-C B/W = 0.056, p = 3.9 × 10⁻⁸⁵**; sperm W/B = 0.401 (60 % closer), p = 3.9 × 10⁻⁵¹; mouse zygotene per-pair ρ = 0.715 (`SURVEY_05 §1, SURVEY_06 §1.2, SURVEY_08 §1.7`)
+- **8/9** multi-arm communities have allele closer than paralog (Wilcoxon p < 1e-300, *uncorrected; single combined paired test on 5,946 pairs*); **C7 acrocentric reversed** (70.5 % paralog closer; per-community p = 2.0 × 10⁻⁷, BH q ≤ 1.8 × 10⁻⁶ within the 9-community family) (`SURVEY_04 §1.1`)
+- **HG002 Pore-C B/W = 0.056, p = 3.9 × 10⁻⁸⁵** (BH q = 2.2 × 10⁻⁸⁴ within the 40-test multi-resolution within-vs-between family); sperm W/B = 0.401 (60 % closer), p = 3.9 × 10⁻⁵¹ (*uncorrected; single combined-Fisher meta-statistic across 20 cells*); mouse zygotene per-pair ρ = 0.715 (per-stage p = 4.4 × 10⁻⁵⁵, BH q ≪ 10⁻³⁰ within the 8-test mouse-meiotic family) (`SURVEY_05 §1, SURVEY_06 §1.2, SURVEY_08 §1.7`; corrected tables in `STATS_AUDIT.md` §2–§3)
 - **S_all negative control:** 0/16 GM12878 + 1/20 sperm cells show within-community proximity for the 7 non-sharing arms (11 % / 40 % *farther*) (`SURVEY_06 §1.3`)
 - **Pedigree:** 92 % of 538 WashU T2T HQ inter-chr patches sit in a Leiden community (vs 12–13 % at fragmented CEPH1463) (`SURVEY_14 §1.1`)
-- **Cytogenetic continuity:** f7501 distribution reproduces and extends Mefford & Trask 2002 across 465 haplotypes; 4/6 Ambrosini one-copy regions confirmed; chr7_q/chr12_q redefined as private pair C4 (`SURVEY_01 §1.6, §1.9; SURVEY_FRAMING`)
+- **Cytogenetic continuity:** f7501 distribution reproduces and extends Mefford & Trask 2002 across 465 haplotypes; 4/6 Ambrosini one-copy regions confirmed; chr7_q/chr12_q redefined as private pair C4 (`SURVEY_01 §1.6, §1.9; SURVEY_FRAMING`). After BH-FDR within the 80-test f7501 family, **8 arm × superpop pairs survive q < 0.05** (chr16_q AFR, chr2_q SAS, chr16_p AFR, chr9_q AFR, chr8_p AFR, chr15_q EUR, chr6_p AMR, chr15_q EAS); **chr7_p AFR (raw p = 8.2 × 10⁻³, q_BH = 0.073) is demoted to "suggestive"** (`STATS_AUDIT.md` §2)
 
 ---
 
