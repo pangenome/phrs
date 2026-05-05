@@ -1,0 +1,42 @@
+ChromArm	n_total	n_cross	cross_rate	Community	category	order
+chr18_p	446	0	0	C2	polymorphic	1
+chr19_p	434	10	0.0230414746543779	C3	polymorphic	2
+chr19_q	457	59	0.12910284463895	C6	polymorphic	3
+chr1_p	438	1	0.00228310502283105	C11	polymorphic	4
+chr1_q	445	0	0	C6	polymorphic	5
+chr20_p	453	0	0	C12	polymorphic	6
+chr20_q	409	0	0	C5	polymorphic	7
+chr21_p	116	109	0.939655172413793	C7	fully interchangeable	8
+chr21_q	449	0	0	C6	polymorphic	9
+chr22_p	223	96	0.430493273542601	C7	fully interchangeable	10
+chr22_q	450	231	0.513333333333333	C6	polymorphic	11
+chr2_q	450	1	0.00222222222222222	C12	polymorphic	12
+chr3_q	436	2	0.00458715596330275	C3	polymorphic	13
+chr4_p	448	0	0	C13	homogeneous	14
+chr4_q	357	146	0.408963585434174	C1	polymorphic	15
+chr5_q	447	1	0.00223713646532438	C11	polymorphic	16
+chr6_p	417	245	0.587529976019185	C5	polymorphic	17
+chr10_p	443	0	0	C2	polymorphic	18
+chr10_q	357	26	0.0728291316526611	C1	polymorphic	19
+chr6_q	440	12	0.0272727272727273	C11	polymorphic	20
+chr7_p	438	0	0	C3	polymorphic	21
+chr7_q	446	0	0	C4	polymorphic	22
+chr8_p	458	0	0	C11	polymorphic	23
+chr9_p	448	1	0.00223214285714286	C5	polymorphic	24
+chr9_q	450	130	0.288888888888889	C3	polymorphic	25
+chr11_p	448	332	0.741071428571429	C3	polymorphic	26
+chr12_p	454	0	0	C5	polymorphic	27
+chr12_q	449	1	0.0022271714922049	C4	polymorphic	28
+chr13_p	76	67	0.881578947368421	C7	fully interchangeable	29
+chr13_q	449	3	0.0066815144766147	C6	polymorphic	30
+chr14_p	229	190	0.829694323144105	C7	fully interchangeable	31
+chr15_p	119	91	0.764705882352941	C7	fully interchangeable	32
+chr15_q	449	0	0	C8	homogeneous	33
+chr16_p	442	0	0	C9	homogeneous	34
+chr16_q	449	86	0.191536748329621	C3	polymorphic	35
+chr17_p	448	0	0	C10	homogeneous	36
+chr17_q	451	0	0	C6	polymorphic	37
+chrX_p	327	305	0.932721712538226	C15	fully interchangeable	38
+chrX_q	330	329	0.996969696969697	C14	fully interchangeable	39
+chrY_p	92	10	0.108695652173913	C15	fully interchangeable	40
+chrY_q	101	0	0	C14	fully interchangeable	41

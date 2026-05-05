@@ -1,0 +1,14 @@
+panel	status	role	path	note
+1a	READY	rendered_figure	p_genome_wide_identity_heatmap.png	Genome-wide stacked identity heatmap (465 haplotypes × 24 chromosomes); 100 kb windows; with chr18 q-arm subtelo inset. PDF analogue: p_genome_wide_identity_heatmap_no_inset.pdf. Producer: plot-impg-coverage.R (repo root). SURVEY_FIG_inv §1.
+1a	READY	rendered_figure_pdf	p_genome_wide_identity_heatmap_no_inset.pdf	Vector PDF version (no inset); 2.5 MB. Available as alt panel-1a source if a strictly vector composite is required.
+1b	READY	rendered_figure	p_genome_wide_numchrom_heatmap.png	Genome-wide n-chromosomes-sharing heatmap with PHR BED overlay. Producer: plot-impg-coverage.R. SURVEY_FIG_inv §1.
+1b	READY	rendered_figure_pdf	p_genome_wide_numchrom_heatmap.pdf	Vector PDF version of panel 1b; 2.1 MB.
+1c	GENERATE	input_tsv_dist_matrix	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm_dist_matrix.tsv	41 × 41 arm-level Jaccard distance matrix; rows/cols labelled chr*_p / chr*_q. Source: SURVEY_01 §1.8, §3.
+1c	GENERATE	input_tsv_leiden	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	Leiden k=15 community assignments per arm (3 cols: ChromArm, Community, Arms).
+1c	GENERATE	input_tsv_upgma	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-upgma-k14.assignments.tsv	UPGMA k=14 community assignments per arm (used to compute the 14/15 Leiden agreement annotation).
+1d	GENERATE	input_tsv_cross_arm	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/cross_arm_affinity_sequences.tsv	Per-sequence cross-arm affinity records (2,484 rows); supplies n_cross per arm. Source: SURVEY_04 §1.11.
+1d	GENERATE	input_tsv_seq_total	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	Per-sequence Leiden k=50 community assignments (15,668 rows); supplies n_total per arm for normalisation of the cross-arm rate denominator.
+fig1	GENERATE	figure_pdf	paper_prep/figures/fig1/figure_fig1.pdf	Final 4-panel composite (vector) — produced by figure_fig1.R.
+fig1	GENERATE	figure_png	paper_prep/figures/fig1/figure_fig1.png	Final 4-panel composite (raster, talk re-use) — produced by figure_fig1.R.
+fig1	GENERATE	per_arm_table	paper_prep/figures/fig1/architecture_per_arm.tsv	Per-arm cross-arm rate + architecture-category assignment used in panel 1d (transparency table).
+fig1	GENERATE	script	paper_prep/figures/fig1/figure_fig1.R	Standalone R script. Run via: guix shell -m /tmp/manifest_fig1.scm -- Rscript paper_prep/figures/fig1/figure_fig1.R
