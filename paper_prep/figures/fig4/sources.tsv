@@ -1,0 +1,24 @@
+panel	role	path	description
+4a	primary_data	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/all_pedigrees_patches.tsv	5,984 HQ inter-chr patches across WashU + CEPH1463 pedigrees with Leiden community status; subset to ds=WashU
+4a	annotation	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	HPRCv2 41-arm Leiden community assignments (15 communities, k=15) — colour key
+4a	reference_pdfs	end-to-end-report/pedigree-plots/washu/PAN027.maternal_hap1_from_PAN010_mother.untangle.pdf	Original odgi untangle ribbon plot (full 46-arm) for PAN027 maternal hap1 — supplementary reference
+4a	reference_pdfs	end-to-end-report/pedigree-plots/washu/PAN027.paternal_hap2_from_PAN011_father.untangle.pdf	Original odgi untangle ribbon plot for PAN027 paternal hap2
+4a	reference_pdfs	end-to-end-report/pedigree-plots/washu/PAN028.maternal_hap1_from_PAN027_mother.untangle.pdf	Original odgi untangle ribbon plot for PAN028 maternal hap1 (G3)
+4a	upstream_per_pair	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/untangle/recombination/patches.tsv	Per-pedigree (WashU) per-pair patches with pattern + community_status; aggregated into all_pedigrees_patches.tsv
+4b	primary_data	paper_prep/surveys/SURVEY_14_pedigree_recombination.md	§1.6 table: 11 cross-assembler-validated CEPH1463 parent×chromosome-pair features (literal table embedded in figure_fig4.R)
+4b	upstream_hifi	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/ceph1463/hifiasm/untangle/recombination/patches.tsv	CEPH1463 hifiasm per-pair patches (within_community subset feeds the intersection)
+4b	upstream_verkko	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/ceph1463/verkko/untangle/recombination/patches.tsv	CEPH1463 verkko per-pair patches (within_community subset feeds the intersection)
+4b	annotation	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	Same 15-community Leiden partition used to filter cross-assembler features to within-community
+4c	primary_data_left	/moosefs/guarracino/HPRCv2/PHR_III/RPE1_subtelo/rpe1.dist_matrix.tsv	RPE-1 self-discovered 46-arm Jaccard distance matrix (1 - Jaccard sim); plotted as 1 - distance
+4c	primary_data_right	/moosefs/guarracino/HPRCv2/PHR_III/RPE1_subtelo/hic_validation/50000bp/rpe1_self_async_cifi_contact_matrix.tsv	RPE-1 async CiFi Hi-C arm×arm contact matrix at 50 kb resolution, per-haplotype (HAP1/HAP2 max-collapsed to arm)
+4c	community_assignments	/moosefs/guarracino/HPRCv2/PHR_III/RPE1_subtelo/rpe1.communities.tsv	RPE-1 self-discovered 37-community Leiden partition — confirms C2 = {chr10_q, chrX_q}
+4d	primary_data	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_1Mb/50000bp/zuo2021_zygotene_phr_pair_correlation.tsv	Per-PHR-pair mean Jaccard similarity + zygotene Hi-C contact (50 kb); inter-chr only filter (chr_a != chr_b)
+4d	reference_pdf	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_1Mb/50000bp/zuo2021_zygotene_phr_pair_scatter.pdf	Pre-rendered scatter PDF (paper-ready) for the same data
+4d	cross_stage_summary	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_1Mb/50000bp/zuo2021_leptotene_phr_pair_correlation.tsv	Leptotene PHR-pair correlation (companion stage); used in caption ρ summary
+4d	cross_stage_summary	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_1Mb/50000bp/zuo2021_pachytene_phr_pair_correlation.tsv	Pachytene PHR-pair correlation
+4d	cross_stage_summary	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_1Mb/50000bp/zuo2021_diplotene_phr_pair_correlation.tsv	Diplotene PHR-pair correlation
+4d	mouse_communities	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/similarity_1Mb/mouse.arm-leiden.communities.tsv	Mouse 27-arm Leiden 2-community partition (B6+CAST collapsed) used downstream for community-based tests
+fig	render_script	paper_prep/figures/fig4/figure_fig4.R	R script that produces all 4 panels and composes the final 14x10 inch PDF/PNG
+fig	survey_back_ref	paper_prep/surveys/SURVEY_14_pedigree_recombination.md	Source survey: panels (a)+(b) — pedigree analysis, 92% within-Leiden, 11 cross-assembler features
+fig	survey_back_ref	paper_prep/surveys/SURVEY_09_rpe1_self.md	Source survey: panel (c) — RPE-1 self-discovered communities + t(X;10) rediscovery
+fig	survey_back_ref	paper_prep/surveys/SURVEY_08_mouse.md	Source survey: panel (d) — mouse cross-species, 4 meiotic stages, B6+CAST T2T
