@@ -4,7 +4,7 @@ The files in this directory were produced during a prior synthesis run that hill
 
 Retained here for possible salvage. **Not part of the canonical manuscript pipeline.**
 
-For canonical material, see `paper_prep/synthesis/ABSTRACT.md` and downstream artifacts (`paper_prep/synthesis/MANUSCRIPT_DRAFT.{md,typ}`, `paper_prep/synthesis/STATS_AUDIT.md`, `paper_prep/figures/`, etc.).
+For canonical material, see `paper_prep/synthesis/ABSTRACT.md` (the anchoring abstract). The figures under `paper_prep/figures/` have NOT been moved; their alignment with the abstract is still being audited (see task `audit-canonical-materials`). The render-pipeline artifacts that previously lived in `synthesis/` (`MANUSCRIPT_DRAFT.{md,typ}`, `STATS_AUDIT.md`, `render.log`, etc.) have all been relocated here as well — see "Second relocation batch" below.
 
 **Date of relocation:** 2026-05-05
 **Source:** repository top-level (158 files moved from `/moosefs/erikg/phrs/`)
@@ -213,3 +213,36 @@ Top-level synthesis documents from the prior session (executive summaries, decis
 - Top-level canonical figure assets (`identity_heatmap_chr*.pdf`, `p_*.{pdf,png}`) left in place.
 - Top-level canonical/uncertain-but-on-topic docs (`subtelomeric_analysis_report.{md,pdf}`, `framing_synthesis.md`, `plot-impg-coverage.R`, `phrs.*` gene reference files, `PHR_Subtelomeric Regions_Summary_March 2026.xlsx`, `T2T_Subtelomeric_Gene_Summary (1).xlsx`) left in place per the "leave when uncertain" rule.
 - `paper_prep/synthesis/MANUSCRIPT_DRAFT.{md,typ}`, `MANUSCRIPT_SKELETON.md`, `ARCHITECT_TASK_BRIEF.md`, `WORK_DECOMPOSITION.md`, `ACCEPTANCE_CHECKLIST.md`, `STATS_AUDIT.md`, `SCRIPT_INVENTORY.md`, `TALK_OUTLINE_15MIN.md`, `VERSIONS.md`, `CAPTIONS.md`, `NOVEL_CONTRIBUTIONS.tsv`, `LIMITATIONS_X_FINDINGS.tsv` were inspected and found to anchor on the canonical abstract (41 arms → 15 communities, 233 individuals × 465 haplotypes, Hi-C/Pore-C/CiFi/Dip-C/sperm/mouse meiotic, pedigree, out-of-Africa). They are kept in `paper_prep/synthesis/`.
+
+---
+
+## Second relocation batch (lead-author-directed)
+
+**Date:** 2026-05-05 (later same day)
+**Method:** `git mv` (history preserved)
+**Reason:** The lead author (Erik Garrison) reviewed the rendered `MANUSCRIPT_DRAFT.pdf` and rejected it as "minutiae synthesis" and "from another dimension" relative to the canonical abstract. Despite the parking agent's judgment above that the synthesis docs reference canonical topics (41 arms, 466 haplotypes, Hi-C, etc.), the lead author determined that these materials, as exposition, *do not deliver the actual paper described in `ABSTRACT.md`* — even when the topical surface looks right, the framing, priorities, and HPRC-v2-companion positioning are wrong. **Lead-author judgment overrides agent classification.** All synthesis-dir docs from the prior session (except `ABSTRACT.md` and `REFERENCES.bib`) were therefore relocated here.
+
+Files relocated in this batch (from `paper_prep/synthesis/` to here):
+
+- `ACCEPTANCE_CHECKLIST.md`
+- `ARCHITECT_TASK_BRIEF.md`
+- `CAPTIONS.md`
+- `LIMITATIONS_X_FINDINGS.tsv`
+- `MANUSCRIPT_DRAFT.md` (the off-target draft itself)
+- `MANUSCRIPT_DRAFT.typ` (typst conversion of the off-target draft)
+- `MANUSCRIPT_SKELETON.md`
+- `NOVEL_CONTRIBUTIONS.tsv`
+- `SCRIPT_INVENTORY.md`
+- `STATS_AUDIT.md`
+- `stats_audit/` (subdirectory: f7501 FDR, mantel multires)
+- `TALK_OUTLINE_15MIN.md`
+- `VERSIONS.md`
+- `WORK_DECOMPOSITION.md`
+- `pandoc_convert.log`
+- `render.log`
+
+After this batch, `paper_prep/synthesis/` contains only:
+- `ABSTRACT.md` — canonical anchor (committed in same change as this relocation)
+- `REFERENCES.bib` — citations database (will be reused by the canonical pipeline)
+
+**Salvage potential:** non-zero. The topical references in these docs (e.g., the 41-arms / 15-communities analysis, Hi-C / Pore-C cross-checks, mantel multires correlation tests, per-arm-per-superpop Fisher tests) may correspond to legitimate analyses underlying the abstract's claims. The audit task `audit-canonical-materials` will catalog them; whether any specific text or analysis is salvaged into the canonical manuscript is a downstream decision.

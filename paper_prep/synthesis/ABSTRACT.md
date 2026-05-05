@@ -1,0 +1,15 @@
+# Concerted evolution and unorthodox recombination of human subtelomeres
+
+**Andrea Guarracino and Erik Garrison**
+
+Human subtelomeric regions are among the most dynamic and structurally complex parts of our genome, yet their interchromosomal relationships have remained difficult to characterize due to the limitations of both assembly completeness and alignment methodology. Here we present the most comprehensive survey of subtelomeric sequence relationships to date, leveraging 466 near-complete haplotype assemblies from the Human Pangenome Reference Consortium (HPRC) version 2. To analyze these regions, we introduce the implicit pangenome graph, a reference-free alignment approach that performs all-to-all pairwise comparisons across haplotypes—sampling approximately 12% of all possible combinations—without imposing chromosomal partitioning or positional bias. This yields a truly unbiased view of interchromosomal homology across the pangenome, where every haplotype serves as its own point of reference, allowing a systematic and universal view of human subtelomeric evolution.
+
+A genome-wide survey of alignment identity reveals extended regions of interchromosomal homology spanning tens to hundreds of kilobases at nearly all subtelomeres—comparable in scale to canonical pseudohomologous systems such as PAR2 on the sex chromosomes. This dramatically expands the scope of known pseudohomologous regions in the human genome to include almost all subtelomeric regions. Cladistic analysis based on neighbor-joining trees of subtelomeric similarity uncovers both expected relationships—Xp/Yp and Xq/Yq via the pseudoautosomal regions, acrocentric short arms—and novel associations, including strong 10p–18p homology, a tightly linked clade involving 22q, 21q, 19q, 1q, 13q, and 17q, and extended DUX4-containing homology between 4q and 10q with wide copy number diversity. A large clade of many chromosome arms shares homology at moderate similarity, suggesting broad ongoing interchromosomal exchange. Principal component and community detection analyses of the similarity matrix further resolve subtelomeric clustering across human populations. We hypothesize that these patterns are maintained by recombination facilitated by the physical proximity of subtelomeres at the nuclear envelope, and evaluate this using Hi-C-derived three-dimensional genome maps. Our work exposes the extent to which ongoing recombination shapes these highly dynamic and poorly understood regions of the genome.
+
+---
+
+## Status
+
+This is the canonical anchor for the manuscript. All synthesis, figure work, and drafting must be evaluated against this abstract. **Target venue: Nature, as a companion to the HPRC v2 main paper.** Submission target: ~2-3 weeks. Near-term: Biology of Genomes talk this week — figure improvements and synthesis that support the talk are high priority.
+
+Anything in `paper_prep/_brainstorming/` is *not* part of the canonical manuscript pipeline; it is prior work from an off-target synthesis session retained for possible salvage but otherwise not authoritative.
