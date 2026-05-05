@@ -1,0 +1,7 @@
+panel	source_path	type	rows	notes
+ed5a	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/{5000,10000,20000,50000,100000}bp/<sample>_global_test.tsv	tsv	40 (8 samples × 5 res)	W/B = within_mean / between_mean from row test=within_vs_between; samples=chm13,hg002,hg002_cifi,hg002_porec,hg00658,hg02148,hg02559,na19036
+ed5b	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/{community_based,no_acrocentric}/50000bp/<sample>_global_test.tsv	tsv	7 paired	Mantel ρ from row test=mantel, U_statistic column; full vs no-acrocentric+sex; n_arms also returned (col n_between)
+ed5c	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/<sample>_oe_matrix.tsv	tsv	8 matrices (~75×75 each)	Mean O/E over trans arm-pairs, partitioned by sequence community membership from <sample>_community_bootstrap_tests.tsv "arms" column; cis (same chromosome) excluded
+ed5d_hprc	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/<sample>_community_bootstrap_tests.tsv	tsv	8 datasets × 15 communities	cols: community, n_arms, type, arms, observed_mean_contact, random_mean, random_sd, p_value, p_adjusted_bh
+ed5d_rpe1	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/RPE1/50000bp/<sample>_community_bootstrap_tests.tsv	tsv	3 datasets × 15 communities	rpe1_async_cifi, rpe1_async_porec, rpe1_mitotic_cifi
+methods	paper_prep/surveys/SURVEY_05_hic_validation.md	md	-	§1.5/§1.10/§6.1/§6.2 source survey; statistics quoted in caption
