@@ -1,0 +1,7 @@
+.workgraph
+.wg
+
+# Draft paper PDF renderings — keep markdown sources, not their PDF builds.
+# Figure PDFs under paper_prep/figures/ are NOT excluded — those are figures, not draft renderings.
+paper_prep/synthesis/*.pdf
+paper_prep/synthesis/**/*.pdf
