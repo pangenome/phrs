@@ -1,0 +1,6 @@
+panel	source_path	role	headline_metric
+ED1a	(schematic)	new schematic, drawn in R/grid	"465 → 18,827 → 15,668 → 15/50; silhouette 0.347 / 0.602; modularity 0.97"
+ED1b	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95.id95.len.tsv	per-arm flank count (suffix _chrN_[pq]arm parsed from `seq` column)	"18,826 flanks across 48 arms; median 447/arm; range 76 (chr13_p) – 458 (chr8_p)"
+ED1b	/moosefs/guarracino/HPRCv2/PHR_III/pq-classification/contig_classifications.tsv	mixed-strand-caveat overlay (validation_status != pass)	"16 flagged contigs total: chr14_p=2, chr21_p=2, chr22_p=2, chrY_p=7, chrY_q=5"
+ED1c	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95.id95.len.tsv	region_end − region_start for signal-bearing rows	"n = 15,668 PHRs (83.2 % of 18,826); median 105 kb; mean 144 kb; max 500 kb"
+ED1d	(SURVEY_01 §1.5; chimera schematic)	manual annotation from per-contig survey notes	"NA18982#1 JBKABS010000018.1; chr18 ↔ chrX PAR1 fusion across 100 bp NNN gap at 83.37–83.38 Mb; 966 kb chrX PAR1; 2,826 bp (TTAGGG)n × 471"

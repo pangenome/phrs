@@ -1,0 +1,9 @@
+panel	source_path	role	headline_metric
+ED2a	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.umap.rds	UMAP coordinates (15,668 × 3 matrix; first 2 dims plotted)	"15,668 PHRs; 50 communities; modularity 0.97"
+ED2a	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	per-PHR seq-Leiden community label (column `Community`)	"top 8: C4=770, C3=712, C13=508, C26=490, C25=487, C18=468, C9=466, C8=454"
+ED2b	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.similarity.tsv.gz	pairwise Jaccard from odgi similarity (~12.5 GB; streamed once)	"within-community pairs (full): C1=509,796 C2=790,321 C3=7,049,025 C5=2,985,984 C6=7,295,401 C7=582,169 C11=3,179,089 C12=815,409"
+ED2b	paper_prep/figures/ed2/within_community_jaccard_C{1,2,3,5,6,7,11,12}.tsv	per-community pair filter outputs (intermediate)	"8 TSVs; cols: a, b, jaccard.similarity"
+ED2c	/moosefs/guarracino/HPRCv2/PHR_III/heterogeneity/cross_arm_affinity_sequences.tsv	per-sequence cross-arm affinity assignments	"2,484 cross-arm sequences (1,740 unique sequences if dedupe by `sequence`); 48 (origin→affinity) edges across 41 arms"
+ED2c	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	arm-leiden community labels for chord colouring	"41 arms × 15 communities (C1–C15)"
+ED2d	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	row source: per-PHR seq community + ChromArm	"15,668 PHRs"
+ED2d	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	column source: ChromArm → arm community	"15 arm × 50 seq; ARI 0.3501; NMI 0.7635"
