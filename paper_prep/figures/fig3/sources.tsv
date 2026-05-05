@@ -1,0 +1,25 @@
+panel	role	path	notes
+3a	contact_matrix	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_contact_matrix.tsv	77×77 inter-arm Pore-C contact frequency at 50 kb
+3a	community_assignment	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_hic.arm-leiden.communities.tsv	arm → community label (C1…)
+3a	global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_global_test.tsv	B/W = 0.056, p = 3.9e-85
+3b	hic_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_global_test.tsv	HG002 Hi-C 50 kb
+3b	hic_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/chm13_global_test.tsv	CHM13 Hi-C 50 kb
+3b	hic_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg00658_global_test.tsv	HG00658 Hi-C 50 kb
+3b	hic_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg02148_global_test.tsv	HG02148 Hi-C 50 kb
+3b	hic_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg02559_global_test.tsv	HG02559 Hi-C 50 kb
+3b	hic_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/na19036_global_test.tsv	NA19036 Hi-C 50 kb
+3b	porec_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_global_test.tsv	HG002 Pore-C 50 kb
+3b	cifi_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_cifi_global_test.tsv	HG002 CiFi 50 kb
+3b	dipc_summary	/moosefs/guarracino/HPRCv2/dipc_t2t/output_q0_XX/community_enrichment_16cells_500kb_summary.tsv	GM12878 Dip-C 16-cell wilcoxon W/B
+3b	sperm_summary	/moosefs/guarracino/HPRCv2/dipc_t2t/sperm/enrichment_corrected/sperm_all20_summary.tsv	Sperm scHi-C 20-cell wilcoxon W/B
+3b	mouse_meiotic	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_4Mb/100000bp/zuo2021_leptotene_global_test.tsv	mouse leptotene 4 Mb 100 kb
+3b	mouse_meiotic	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_4Mb/100000bp/zuo2021_zygotene_global_test.tsv	mouse zygotene 4 Mb 100 kb
+3b	mouse_meiotic	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_4Mb/100000bp/zuo2021_pachytene_global_test.tsv	mouse pachytene 4 Mb 100 kb
+3b	mouse_meiotic	/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/community_analysis_4Mb/100000bp/zuo2021_diplotene_global_test.tsv	mouse diplotene 4 Mb 100 kb
+3c	gm12878_per_cell	/moosefs/guarracino/HPRCv2/dipc_t2t/output_q0_XX/community_enrichment_16cells_500kb_per_cell.tsv	per-cell pooled C-community W/B (n=16)
+3c	gm12878_per_community_per_cell	/moosefs/guarracino/HPRCv2/dipc_t2t/output_q0_XX/community_enrichment_16cells_500kb_per_community_per_cell.tsv	per-cell × per-community W/B incl. S_all
+3c	sperm_per_cell	/moosefs/guarracino/HPRCv2/dipc_t2t/sperm/enrichment_corrected/sperm_all20_per_cell.tsv	per-cell pooled C-community W/B (n=20)
+3c	sperm_per_community_per_cell	/moosefs/guarracino/HPRCv2/dipc_t2t/sperm/enrichment_corrected/sperm_all20_per_community_per_cell.tsv	per-cell × per-community W/B incl. S_all
+3d	phr_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/{sample}_global_test.tsv	{sample} ∈ {hg002, hg002_porec, hg002_cifi, chm13, hg00658, hg02148, hg02559, na19036}
+3d	flanking_global_test	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/flanking/100000bp/{sample}_global_test.tsv	{sample} as above except hg002_cifi (no flanking)
+3d	dipc_radial_inset	/moosefs/guarracino/HPRCv2/PHR_III/dipc_flanking_radial.tsv	GM12878 Dip-C flanking vs non-flanking radial (p=1.6e-35)
