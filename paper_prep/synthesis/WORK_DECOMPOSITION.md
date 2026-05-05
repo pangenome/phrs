@@ -112,7 +112,35 @@ The following are **not** new tasks (would violate "no new wet-lab or large new 
 7. **Repeat-class composition of mouse PHRs** (RepeatMasker / Ensembl GFF intersected with PHR) — `SURVEY_08 §5 #1`. Annotations downloaded but not intersected; flagged for the Methods footnote, not for a new analysis task.
 8. **PHR-only re-run of the gene-enrichment analysis** (Angela's GSEA used 1 Mb window; PHR-only re-run pending per `TODO.md`) — flagged for the gene-enrichment figure caption; if the PHR-only re-run materialises before manuscript freeze, swap the panels.
 9. **BH-FDR correction on f7501 per-arm × per-superpopulation enrichment** (~65 tests) — `SURVEY_01 §5 #1`. Captured by `validate-statistics-fdr-cis` (task 10) — counts as validation, not new analysis.
-10. **Filename mismatch `rpe1.communities.tsv` vs `rpe1_subtelo.communities.tsv`** in `SURVEY_09 §5 #1` — captured by `validate-reproducibility-paths` (task 11) as a documentation fix, not a new analysis.
+10. **Filename mismatch `rpe1.communities.tsv` vs `rpe1_subtelo.communities.tsv`** in `SURVEY_09 §5 #1` — **RESOLVED** by `validate-reproducibility-paths` (agent-685). Both files exist on disk (`/moosefs/guarracino/HPRCv2/PHR_III/RPE1_subtelo/`); they are independent Leiden runs (37 communities `rpe1.*` 2026-03-24 — current; 39 communities `rpe1_subtelo.*` 2026-03-20 — earlier sweep). **Manuscript-canonical name is the `rpe1.*` prefix.** See `paper_prep/synthesis/SCRIPT_INVENTORY.md §13` for the full reasoning. Documentation TODO: add a `README.md` inside the `RPE1_subtelo/` directory disambiguating the two prefixes.
+
+### Gaps surfaced by the reproducibility audit (2026-05-05)
+
+The following figure-source paths in `MANUSCRIPT_SKELETON.md` exist conceptually but require either a path-canonicalisation, a new TSV emission, or a schematic / composite that has not yet been authored. They are NOT new analyses (per architect guardrails) and are tracked here so figure-task workers can attend to them or surface them as task-internal sub-blockers.
+
+11. **Fig 1c — `arm-leiden-k15.assignments.tsv` filename canonicalisation.** The canonical file on disk is `/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden.communities.tsv` (15 communities; per `detect_communities.R` output naming). The skeleton's `arm-leiden-k15.assignments.tsv` name is descriptive, not literal. Figure-1 worker should cite the actual filename and verify the `k=15` content matches the headline numbers.
+
+12. **ED2b — `similarity.tsv.gz` per community subsets.** SURVEY_01 §1 cites a ~10.8 GB compressed similarity TSV under `/moosefs/guarracino/HPRCv2/PHR_III/pggb/.../similarity.tsv.gz` but does not give the exact subdirectory. ED2b worker must locate the specific pggb-output subdirectory (Andrea/Pjotr's pggb run) before the within-community Jaccard distance histogram can be generated.
+
+13. **ED3c — `.telo.tsv` canonical path.** SURVEY_02 §5 #1 explicitly flags this gap. The terminal-telomere TSV used for the Kruskal-Wallis test exists upstream of `hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz` (likely RUKKI / `seqtk-telo` output) but its absolute path is not documented. ED3 worker must locate or re-derive this TSV.
+
+14. **ED4d — per-arm pseudogene fraction TSV.** OR4F pseudogenisation gradient (62.1 % pseudogene; 11.1 % chr7_p → 99.8 % chr15_q) is reported in SURVEY_10/11/12 but the per-arm pseudogene-fraction TSV is not yet emitted. ED4 worker may need to derive it from the Liftoff GFF3 (biotype filter) — small computation but pure derivation, not a new analysis.
+
+15. **ED6c — per-arm radial-position TSV.** Table embedded in SURVEY_06 §1.4 (46 arms, 3 radial categories). No per-arm-radial TSV is emitted by current scripts; ED6 worker should export the table from `community_3d_enrichment.py` or copy directly from §1.4.
+
+16. **ED7d — mm39 → hg38 syntenic net for mouse private pairs.** SURVEY_08 §1.6 lists the mouse private pairs but the explicit syntenic-net TSV mapping mm39 mouse-arm pairs to hg38 syntenic intervals is not produced. ED7 worker may need to derive from a UCSC syntenic-net BED (small derivation).
+
+17. **ED8d — HG002 100 kb compartment-eigenvector TSV.** SURVEY_07 §6 T-6 references a compartment-identity-at-tips diagnostic (e1 distribution, 68 % A; mean +0.007) but the eigenvector TSV's path is not in the surveys. ED8 worker must locate the cooltools-`call_compartments` output for HG002 at 100 kb.
+
+18. **ED1a, ED1d, ED8a, ED8b — schematics / composites.** Pipeline schematic, NA18982#1 chr18_q chimera evidence, causal-feedback-loop schematic, and D4Z4-CTCF-lamin tethering schematic are all "new authoring" panels (Inkscape / Affinity / composite). Workers should produce them as the last step of their respective figure tasks; not blockers.
+
+19. **`SURVEY_01 §5 #11` version-pinning TODO.** pggb / odgi / igraph / R-package versions must be captured from a fresh `sessionInfo()` and Guix profile manifest before manuscript freeze. Captured by `validate-reproducibility-paths` in `paper_prep/synthesis/VERSIONS.md` §7 as a Methods TODO; downstream `compile-manuscript-draft` should flag in Methods.
+
+20. **`SURVEY_02 §5 #2` Liftoff version pinning.** HPRC annotation-index Liftoff version (used for 462 of the 465 haplotypes) must be added alongside the JHU v0.6 already documented for HG002. Methods TODO; tracked in `VERSIONS.md`.
+
+21. **`SURVEY_01 §1.5` minimap2 version pinning.** Cross-aligner agreement was run with minimap2 v2.30; the current audit host runs 2.24-r1122. Methods must explicitly cite v2.30 for the chimera-flagging analysis to remain reproducible. Tracked in `VERSIONS.md`.
+
+22. **wfmash `do_not_overfilter` feature branch (RPE-1).** SURVEY_09 §1.1 used `wfmash` from the `do_not_overfilter` feature branch (single-prefix workaround). For publication, this should be replaced by either the merged-canonical wfmash equivalent or an explicit commit-hash pin in the Methods. Tracked in `VERSIONS.md`.
 
 ---
 
