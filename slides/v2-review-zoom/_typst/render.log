@@ -1,32 +1,52 @@
-BoG 2026 review zoom deck render log
+BoG 2026 review zoom deck v2 render log
 Date: 2026-05-06 UTC
 Typst: typst 0.13.1 (8ace67d9)
 
 Commands run from slides/v2-review-zoom/_typst:
-- typst compile zoom_review_deck.typ ../BoG_2026_review_zoom.pdf
-- typst compile --ppi 144 zoom_review_deck.typ page-{0p}.png
+- rm -f page-*.png
+- typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v2.pdf
+- typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 Outputs:
-- ../BoG_2026_review_zoom.pdf: 5.5M
-- page PNGs: 26 files, page-01.png through page-26.png
+- ../BoG_2026_review_zoom_v2.pdf: 6.2M
+- page PNGs: 30 files, page-01.png through page-30.png
 
 PDF validation:
-- /MediaBox [0 0 959.76 540] occurs 26 times in the PDF.
+- `rg -a -o "/MediaBox \[[^]]+\]" ../BoG_2026_review_zoom_v2.pdf | sort | uniq -c`
+  reports 30 entries of `/MediaBox [0 0 959.76 540]`.
+- `rg -a -c "/Type /Page\b" ../BoG_2026_review_zoom_v2.pdf` reports 30.
 - Page size is 959.76 x 540 pt, matching 13.33in x 7.5in and 16:9.
-- Page count is 26, plausible for the requested focus splits.
 
 PNG validation:
-- All generated PNGs are 1920 x 1080 RGBA.
-- Pure standard-library PNG scan found every page nonblank.
-- Nonwhite pixel range across pages: 4.75% to 50.17%.
+- `ls page-*.png | wc -l` reports 30.
+- Representative `file` checks report 1920 x 1080, 8-bit RGBA PNGs for
+  pages 01, 05, 06, 09, 12, 17, 20, 23, 28, and 30.
+- A standard-library PNG filtered-row scan decoded all 30 PNGs, confirmed
+  1920 x 1080 RGBA format, and found every page nonblank.
+- Representative nonblank row counts:
+  - page-01.png: 213/1080
+  - page-05.png: 930/1080
+  - page-06.png: 825/1080
+  - page-09.png: 896/1080
+  - page-12.png: 908/1080
+  - page-17.png: 972/1080
+  - page-20.png: 764/1080
+  - page-23.png: 855/1080
+  - page-28.png: 885/1080
+  - page-30.png: 376/1080
 
-Representative visual review:
-- page-05.png: Fig 1 panel a genome-wide heatmap, one large visual focus.
-- page-07.png: length distribution rendered as a single split-view focus page.
-- page-16.png: Fig 3 panel a Hi-C/Pore-C matrix, one large visual focus.
-- page-18.png: Fig 3 panel c single-cell 3D, one large visual focus.
-- page-21.png: pedigree top-half readability crop, one large visual focus.
-- page-26.png: closing text-only focus page.
+Representative visual review targets:
+- page-05.png: Erdos-Renyi replacement plot.
+- page-06.png: HPRCv2 interchrom karyogram.
+- page-09.png: revised length hierarchy plot.
+- page-12.png: UPGMA heatmap with p/q labels.
+- page-17.png: superpopulation dispersion metric.
+- page-20.png: square Pore-C community contact matrix.
+- page-23.png: mouse zygotene paired visual.
+- page-28.png: OR4F/gene-family signal.
+- page-30.png: closing text-only focus page.
 
 Path hygiene:
-- No stale .wg-worktrees/agent-878 or other stale absolute paths are referenced under slides/v2-review-zoom.
+- `rg` on the revised Typst source found no stale prior-worktree absolute path
+  references. Provenance documents intentionally discuss historical stale paths,
+  but the compiled v2 deck does not read from them.
