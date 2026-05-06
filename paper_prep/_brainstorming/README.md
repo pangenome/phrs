@@ -228,8 +228,8 @@ Files relocated in this batch (from `paper_prep/synthesis/` to here):
 - `ARCHITECT_TASK_BRIEF.md`
 - `CAPTIONS.md`
 - `LIMITATIONS_X_FINDINGS.tsv`
-- `MANUSCRIPT_DRAFT.md` (the off-target draft itself)
-- `MANUSCRIPT_DRAFT.typ` (typst conversion of the off-target draft)
+- `BRAINSTORM.md` (formerly `MANUSCRIPT_DRAFT.md` — the off-target draft itself; renamed to clarify that this was a brainstorm of the prior session, NOT a draft of the canonical Nature companion)
+- `BRAINSTORM.typ` (formerly `MANUSCRIPT_DRAFT.typ` — typst conversion of the brainstorm)
 - `MANUSCRIPT_SKELETON.md`
 - `NOVEL_CONTRIBUTIONS.tsv`
 - `SCRIPT_INVENTORY.md`
