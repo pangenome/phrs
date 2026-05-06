@@ -1,0 +1,6 @@
+warning: unknown font family: liberation sans
+   ┌─ slides/v2/_typst/deck.typ:15:16
+   │
+15 │ #set text(font: ("Liberation Sans", "DejaVu Sans"), size: 14pt)
+   │                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
