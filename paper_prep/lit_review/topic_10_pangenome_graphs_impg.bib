@@ -1,0 +1,189 @@
+% BibTeX entries for Topic 10: Pangenome graph methods and the implicit pangenome graph
+% Key prefix: pangenome_graphs_impg_
+% Checked against paper_prep/synthesis/REFERENCES.bib — none of these keys appear there.
+% Note: some keys also exist in REFERENCES_v2.bib (Garrison2018, Garrison2024pggb, Eizenga2020,
+%   Guarracino2023, Li2020minigraph, Heumos2024); slug-prefixed versions here avoid merge conflicts.
+
+@article{pangenome_graphs_impg_Lee2002,
+  author    = {Lee, Christopher and Grasso, Catherine and Sharlow, Mark F.},
+  title     = {Multiple sequence alignment using partial order graphs},
+  journal   = {Bioinformatics},
+  year      = {2002},
+  volume    = {18},
+  number    = {3},
+  pages     = {452--464},
+  doi       = {10.1093/bioinformatics/18.3.452},
+  url       = {https://academic.oup.com/bioinformatics/article/18/3/452/236691},
+  note      = {Foundational partial-order alignment (POA) paper; DAG-based multiple sequence alignment that aligns sequences directly to a sequence graph; conceptual precursor of variation graphs and smoothxg.}
+}
+
+@article{pangenome_graphs_impg_Garrison2018,
+  author    = {Garrison, Erik and Sirén, Jouni and Novak, Adam M. and Hickey, Glenn and Eizenga, Jordan M. and Dawson, Eric T. and Jones, William and Lin, Michael F. and Paten, Benedict and Durbin, Richard},
+  title     = {Variation graph toolkit improves read mapping by representing genetic variation in the reference},
+  journal   = {Nature Biotechnology},
+  year      = {2018},
+  volume    = {36},
+  number    = {9},
+  pages     = {875--879},
+  doi       = {10.1038/nbt.4227},
+  url       = {https://www.nature.com/articles/nbt.4227},
+  note      = {Introduced vg: bidirected variation graph toolkit with GCSA2 indexing and read alignment; established GFA as the pangenome graph interchange format; demonstrated reduced reference bias.}
+}
+
+@article{pangenome_graphs_impg_Jain2018,
+  author    = {Jain, Chirag and Koren, Sergey and Dilthey, Alexander and Phillippy, Adam M. and Aluru, Srinivas},
+  title     = {A fast adaptive algorithm for computing whole-genome homology maps},
+  journal   = {Bioinformatics},
+  year      = {2018},
+  volume    = {34},
+  number    = {17},
+  pages     = {i748--i756},
+  doi       = {10.1093/bioinformatics/bty597},
+  url       = {https://academic.oup.com/bioinformatics/article/34/17/i748/5093242},
+  note      = {MashMap: sketching-based approximate alignment using minimizers and MinHash; enables rapid whole-genome-to-genome comparison; conceptual precursor of wfmash's k-mer prefiltering step.}
+}
+
+@article{pangenome_graphs_impg_Eizenga2020,
+  author    = {Eizenga, Jordan M. and Novak, Adam M. and Sibbesen, Jonas A. and Heumos, Simon and Ghaffaari, Ali and Hickey, Glenn and Chang, Xian and Seaman, Josiah D. and Rounthwaite, Robin and Ebler, Jana and Rautiainen, Mikko and Garg, Shilpa and Paten, Benedict and Marschall, Tobias and Sirén, Jouni and Garrison, Erik},
+  title     = {Pangenome Graphs},
+  journal   = {Annual Review of Genomics and Human Genetics},
+  year      = {2020},
+  volume    = {21},
+  pages     = {139--162},
+  doi       = {10.1146/annurev-genom-120219-080406},
+  url       = {https://www.annualreviews.org/content/journals/10.1146/annurev-genom-120219-080406},
+  note      = {Comprehensive review of pangenome graph concepts, data structures (sequence graphs, variation graphs, de Bruijn graphs), path-aware indexing, and applications; identified bias-vs-completeness tradeoff in graph construction.}
+}
+
+@article{pangenome_graphs_impg_Li2020,
+  author    = {Li, Heng and Feng, Xiaowen and Chu, Chong},
+  title     = {The design and construction of reference pangenome graphs with minigraph},
+  journal   = {Genome Biology},
+  year      = {2020},
+  volume    = {21},
+  pages     = {265},
+  doi       = {10.1186/s13059-020-02168-z},
+  url       = {https://link.springer.com/article/10.1186/s13059-020-02168-z},
+  note      = {Minigraph: reference-seeded pangenome graph construction via iterative sequence-to-graph alignment; rGFA format preserves linear reference coordinates; efficient for structural variation capture but inherits reference chromosomal partitioning.}
+}
+
+@article{pangenome_graphs_impg_GuarracinoHeumos2022,
+  author    = {Guarracino, Andrea and Heumos, Simon and Nahnsen, Sven and Prins, Pjotr and Garrison, Erik},
+  title     = {{ODGI}: understanding pangenome graphs},
+  journal   = {Bioinformatics},
+  year      = {2022},
+  volume    = {38},
+  number    = {13},
+  pages     = {3319--3326},
+  doi       = {10.1093/bioinformatics/btac308},
+  url       = {https://academic.oup.com/bioinformatics/article/38/13/3319/6585331},
+  note      = {odgi: space-efficient in-memory pangenome graph manipulation toolkit; odgi similarity computes pairwise Jaccard similarity from shared path traversals; path-guided SGD layout; used to produce the 245-million-entry similarity matrix in the current subtelomere project.}
+}
+
+@article{pangenome_graphs_impg_GarrisonGuarracino2023,
+  author    = {Garrison, Erik and Guarracino, Andrea},
+  title     = {Unbiased pangenome graphs},
+  journal   = {Bioinformatics},
+  year      = {2023},
+  volume    = {39},
+  number    = {1},
+  pages     = {btac743},
+  doi       = {10.1093/bioinformatics/btac743},
+  url       = {https://academic.oup.com/bioinformatics/article/39/1/btac743/6854971},
+  note      = {seqwish: lossless conversion of pairwise PAF alignments to variation graph; transitive closure of alignment equivalences via interval tree; external memory, lock-free parallel; eliminates reference bias; graph-induction step in pggb.}
+}
+
+@article{pangenome_graphs_impg_Nurk2022,
+  author    = {Nurk, Sergey and Koren, Sergey and Rhie, Arang and others},
+  title     = {The complete sequence of a human genome},
+  journal   = {Science},
+  year      = {2022},
+  volume    = {376},
+  number    = {6588},
+  pages     = {44--53},
+  doi       = {10.1126/science.abj6987},
+  url       = {https://www.science.org/doi/10.1126/science.abj6987},
+  note      = {T2T-CHM13: first complete gapless human genome assembly resolving centromeres, rDNA arrays, and subtelomeric segmental duplications; enables population-scale subtelomere pangenome analysis.}
+}
+
+@article{pangenome_graphs_impg_Hickey2024,
+  author    = {Hickey, Glenn and Monlong, Jean and Ebler, Jana and Novak, Adam M. and Eizenga, Jordan M. and Gao, Yan and Marschall, Tobias and Li, Heng and Paten, Benedict},
+  title     = {Pangenome graph construction from genome alignments with {Minigraph-Cactus}},
+  journal   = {Nature Biotechnology},
+  year      = {2024},
+  volume    = {42},
+  pages     = {663--673},
+  doi       = {10.1038/s41587-023-01793-w},
+  url       = {https://www.nature.com/articles/s41587-023-01793-w},
+  note      = {Minigraph-Cactus pipeline: combines Minigraph SV enumeration with Cactus progressive alignment; used for HPRC v1 draft pangenome; hierarchical reference-seeded construction that does not capture interchromosomal subtelomeric homology.}
+}
+
+@article{pangenome_graphs_impg_Liao2023,
+  author    = {Liao, Wen-Wei and Asri, Mobin and Ebler, Jana and Doerr, Daniel and Haukness, Marina and Hickey, Glenn and Lu, Shuangjia and Lucas, Julian K. and Monlong, Jean and Abel, Haley J. and others},
+  title     = {A draft human pangenome reference},
+  journal   = {Nature},
+  year      = {2023},
+  volume    = {617},
+  pages     = {312--324},
+  doi       = {10.1038/s41586-023-05896-x},
+  url       = {https://www.nature.com/articles/s41586-023-05896-x},
+  note      = {HPRC v1 draft pangenome: 47 phased diploid assemblies; pggb and Minigraph-Cactus graphs; 34\% fewer small variant errors, 104\% more SVs detected vs GRCh38; direct predecessor of HPRC v2 dataset used in the current study.}
+}
+
+@article{pangenome_graphs_impg_Garrison2024pggb,
+  author    = {Garrison, Erik and Guarracino, Andrea and Heumos, Simon and Villani, Flavia and Bao, Zhigui and Garrison, Niko and Savonen, Candace and Luebbert, Ludwig and Holley, Guillaume and Biederstedt, Evan and others},
+  title     = {Building pangenome graphs},
+  journal   = {Nature Methods},
+  year      = {2024},
+  volume    = {21},
+  pages     = {2008--2012},
+  doi       = {10.1038/s41592-024-02430-3},
+  url       = {https://www.nature.com/articles/s41592-024-02430-3},
+  note      = {pggb: modular all-to-all pangenome graph builder (wfmash + seqwish + smoothxg + gfaffix); reference-free, unbiased at all variant scales; all-to-all PAF set implicitly defines full homology relationship; formal description of the pipeline used in the current subtelomere study.}
+}
+
+@article{pangenome_graphs_impg_Guarracino2023,
+  author    = {Guarracino, Andrea and Buonaiuto, Silvia and de Lima, Leonardo Gomes and Potapova, Tamara and Rhie, Arang and Koren, Sergey and Rubinstein, Boris and Fischer, Christine and Gwinn Gwinn, Melody and Phillippy, Adam M. and Colonna, Vincenza and Eichler, Evan E. and Howe, Kerstin and Garrison, Erik},
+  title     = {Recombination between heterologous human acrocentric chromosomes},
+  journal   = {Nature},
+  year      = {2023},
+  volume    = {617},
+  pages     = {335--343},
+  doi       = {10.1038/s41586-023-05976-y},
+  url       = {https://www.nature.com/articles/s41586-023-05976-y},
+  note      = {Applied wfmash all-to-all / odgi similarity / Leiden community detection to HPRC acrocentric short arms; demonstrated methodology at scale; direct precedent for the current subtelomere study extending the same pipeline to all 48 chromosome arms.}
+}
+
+@misc{pangenome_graphs_impg_IMPG2023,
+  author    = {Guarracino, Andrea and Kille, Bryce and Garrison, Erik},
+  title     = {{IMPG}: implicit pangenome graph},
+  year      = {2023},
+  url       = {https://github.com/pangenome/impg},
+  note      = {Treats all-vs-all PAF pairwise alignments as an implicit pangenome graph; range projection via cache-oblivious interval trees; transitive closure via -x flag; key computational substrate for PHR extraction in the current subtelomere study. Available via Bioconda.}
+}
+
+@article{pangenome_graphs_impg_Siren2021,
+  author    = {Sirén, Jouni and Monlong, Jean and Chang, Xian and Novak, Adam M. and Eizenga, Jordan M. and Markello, Charles and Sibbesen, Jonas A. and Hickey, Glenn and Chang, Pi-Chuan and Carroll, Andrew and Gupta, Namrata and Gabriel, Stacey and Blackwell, Thomas W. and Ratan, Aakrosh and Taylor, Kent D. and Rich, Stephen S. and Rotter, Jerome I. and Haussler, David and Garrison, Erik and Paten, Benedict},
+  title     = {Pangenomics enables genotyping of known structural variants in 5202 diverse genomes},
+  journal   = {Science},
+  year      = {2021},
+  volume    = {374},
+  number    = {6574},
+  pages     = {abg8871},
+  doi       = {10.1126/science.abg8871},
+  url       = {https://www.science.org/doi/10.1126/science.abg8871},
+  note      = {Giraffe haplotype-aware pangenome aligner: maps reads to haplotype-consistent paths; genotyped 167,000 SVs in 5,202 diverse genomes; demonstrates pangenome graphs at population cohort scale.}
+}
+
+@article{pangenome_graphs_impg_Siren2022,
+  author    = {Sirén, Jouni and Garrison, Erik and Novak, Adam M. and Paten, Benedict and Durbin, Richard},
+  title     = {{GBZ} file format for pangenome graphs},
+  journal   = {Bioinformatics},
+  year      = {2022},
+  volume    = {38},
+  number    = {22},
+  pages     = {5012--5018},
+  doi       = {10.1093/bioinformatics/btac656},
+  url       = {https://academic.oup.com/bioinformatics/article/38/22/5012/6731924},
+  note      = {GBZ compressed format for storing pangenome graphs with GBWT path index; space-efficient haplotype representation for reference-coordinate pangenome graphs; contrasts with the coordinate-free implicit graph approach used in the current study.}
+}
