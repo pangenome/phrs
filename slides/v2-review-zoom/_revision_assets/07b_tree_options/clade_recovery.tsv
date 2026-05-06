@@ -1,0 +1,7 @@
+community	short_label	abstract_label	members	monophyletic_on_nj
+C1	C1 DUX4/D4Z4	4q-10q DUX4-containing homology	chr4_q, chr10_q	TRUE
+C2	C2 10p/18p	10p-18p homology	chr10_p, chr18_p	TRUE
+C6	C6 concerted q-arm	tightly linked 22q/21q/19q/1q/13q/17q clade	chr1_q, chr13_q, chr17_q, chr19_q, chr21_q, chr22_q	TRUE
+C7	C7 acro p	acrocentric short arms	chr13_p, chr14_p, chr15_p, chr21_p, chr22_p	TRUE
+C14	C14 PAR2	Xq/Yq via PAR2	chrX_q, chrY_q	TRUE
+C15	C15 PAR1	Xp/Yp via PAR1	chrX_p, chrY_p	TRUE

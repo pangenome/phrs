@@ -1,0 +1,49 @@
+chrom_arm	in_41x41_matrix	leiden_community	community_arms	audit_status	reason
+chr1_p	TRUE	C11	1p, 5q, 6q, 8p	present	present in arm-level distance matrix and NJ tree
+chr1_q	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	present	present in arm-level distance matrix and NJ tree
+chr2_p	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal at the >=95% identity PHR threshold
+chr2_q	TRUE	C12	2q, 20p	present	present in arm-level distance matrix and NJ tree
+chr3_p	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal at the >=95% identity PHR threshold
+chr3_q	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	present	present in arm-level distance matrix and NJ tree
+chr4_p	TRUE	C13	4p	present	present in arm-level distance matrix and NJ tree
+chr4_q	TRUE	C1	4q, 10q	present	present in arm-level distance matrix and NJ tree
+chr5_p	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal at the >=95% identity PHR threshold
+chr5_q	TRUE	C11	1p, 5q, 6q, 8p	present	present in arm-level distance matrix and NJ tree
+chr6_p	TRUE	C5	6p, 9p, 12p, 20q	present	present in arm-level distance matrix and NJ tree
+chr6_q	TRUE	C11	1p, 5q, 6q, 8p	present	present in arm-level distance matrix and NJ tree
+chr7_p	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	present	present in arm-level distance matrix and NJ tree
+chr7_q	TRUE	C4	7q, 12q	present	present in arm-level distance matrix and NJ tree
+chr8_p	TRUE	C11	1p, 5q, 6q, 8p	present	present in arm-level distance matrix and NJ tree
+chr8_q	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal at the >=95% identity PHR threshold
+chr9_p	TRUE	C5	6p, 9p, 12p, 20q	present	present in arm-level distance matrix and NJ tree
+chr9_q	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	present	present in arm-level distance matrix and NJ tree
+chr10_p	TRUE	C2	10p, 18p	present	present in arm-level distance matrix and NJ tree
+chr10_q	TRUE	C1	4q, 10q	present	present in arm-level distance matrix and NJ tree
+chr11_p	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	present	present in arm-level distance matrix and NJ tree
+chr11_q	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal at the >=95% identity PHR threshold
+chr12_p	TRUE	C5	6p, 9p, 12p, 20q	present	present in arm-level distance matrix and NJ tree
+chr12_q	TRUE	C4	7q, 12q	present	present in arm-level distance matrix and NJ tree
+chr13_p	TRUE	C7	13p, 14p, 15p, 21p, 22p	present	present in arm-level distance matrix and NJ tree
+chr13_q	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	present	present in arm-level distance matrix and NJ tree
+chr14_p	TRUE	C7	13p, 14p, 15p, 21p, 22p	present	present in arm-level distance matrix and NJ tree
+chr14_q	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal at the >=95% identity PHR threshold
+chr15_p	TRUE	C7	13p, 14p, 15p, 21p, 22p	present	present in arm-level distance matrix and NJ tree
+chr15_q	TRUE	C8	15q	present	present in arm-level distance matrix and NJ tree
+chr16_p	TRUE	C9	16p	present	present in arm-level distance matrix and NJ tree
+chr16_q	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	present	present in arm-level distance matrix and NJ tree
+chr17_p	TRUE	C10	17p	present	present in arm-level distance matrix and NJ tree
+chr17_q	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	present	present in arm-level distance matrix and NJ tree
+chr18_p	TRUE	C2	10p, 18p	present	present in arm-level distance matrix and NJ tree
+chr18_q	FALSE	NA	NA	absent_by_construction	zero inter-chromosomal PHR signal after removal of the NA18982#1 chr18_q/chrX PAR1 scaffold chimera
+chr19_p	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	present	present in arm-level distance matrix and NJ tree
+chr19_q	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	present	present in arm-level distance matrix and NJ tree
+chr20_p	TRUE	C12	2q, 20p	present	present in arm-level distance matrix and NJ tree
+chr20_q	TRUE	C5	6p, 9p, 12p, 20q	present	present in arm-level distance matrix and NJ tree
+chr21_p	TRUE	C7	13p, 14p, 15p, 21p, 22p	present	present in arm-level distance matrix and NJ tree
+chr21_q	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	present	present in arm-level distance matrix and NJ tree
+chr22_p	TRUE	C7	13p, 14p, 15p, 21p, 22p	present	present in arm-level distance matrix and NJ tree
+chr22_q	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	present	present in arm-level distance matrix and NJ tree
+chrX_p	TRUE	C15	Xp, Yp	present	present in arm-level distance matrix and NJ tree
+chrX_q	TRUE	C14	Xq, Yq	present	present in arm-level distance matrix and NJ tree
+chrY_p	TRUE	C15	Xp, Yp	present	present in arm-level distance matrix and NJ tree
+chrY_q	TRUE	C14	Xq, Yq	present	present in arm-level distance matrix and NJ tree

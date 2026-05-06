@@ -1,0 +1,10 @@
+metric	value
+rows	41
+columns	41
+present_arms	41
+missing_from_48_arm_set	chr2_p, chr3_p, chr5_p, chr8_q, chr11_q, chr14_q, chr18_q
+raw_diagonal_min	0.009725
+raw_diagonal_max	0.597977
+max_asymmetry_raw	0
+off_diagonal_min_after_zero_diag	0.015324
+off_diagonal_max_after_zero_diag	1.000000
