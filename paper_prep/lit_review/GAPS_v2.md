@@ -1,0 +1,60 @@
+# GAPS_v2 — open questions and missing-substrate notes
+
+**Author:** lit-review-v2 (agent-937), 2026-05-06. Supersedes `GAPS.md` (lit-review-synthesis, agent-877).
+**Companion files:** `SYNTHESIS_v2.md`, `CHRONOLOGY_v2.md`, `paper_prep/synthesis/REFERENCES_v3.bib`, `paper_prep/synthesis/CROSSWALK.md`.
+
+This is a one-page note flagging anything the v2 synthesis pass surfaced as missing, mis-cited, or open. It is not a follow-up plan; only a list of items that future passes (or revisions to the manuscript) should resolve. The v1 GAPS.md is retained as historical record; almost all of its entries carry forward unchanged.
+
+## Substrate provenance
+
+All 14 topical reviews are committed under `paper_prep/lit_review/`:
+`topic_01` cytogenetic foundations (21 bib entries), `topic_02` TAR1 / TTAGGG / ITS structure (16), `topic_03` pseudohomologous regions concept (14), `topic_04` sex-chromosome pseudoautosomal regions (28), `topic_05` acrocentric / rDNA / Robertsonian (22 — v3-opus refresh), `topic_06` D4Z4 / DUX4 / FSHD (13), `topic_07` concerted evolution / NAHR / gene conversion (24 — v3-opus refresh), `topic_08` meiotic bouquet / nuclear-envelope tethering (19), `topic_09` Hi-C / Pore-C / single-cell / meiotic 3D (16), `topic_10` pangenome graphs / IMPG (15), `topic_11` pedigree-based recombination detection (20), `topic_12` HPRC v1 / v2 population pangenomes (17), `topic_13` subtelomere population genetics / Fst / out-of-Africa (12), `topic_14` OR / OR4F gradient (17). Total raw substrate: 254 entries across the 14 topic bibs, with 24 in the original `REFERENCES.bib`.
+
+`REFERENCES_v3.bib` merges `REFERENCES.bib` (24), the prior synth-pass merge `REFERENCES_v2.bib` (270; carried forward for canonical-key continuity), and all 14 topic_NN_*.bib (254 raw, 240 unique after intra-topic dedup) into 295 deduplicated entries. Dedup is by DOI (when present) and by (first-author surname, year, normalized-title prefix) with the canonical / prefix-free key preferred on collision so existing `SYNTHESIS_v2.md` citations resolve unchanged. All 168 distinct citations in `SYNTHESIS_v2.md` resolve in `REFERENCES_v3.bib` (verified 2026-05-06).
+
+The substantive change from v1 to v2 is the v3-opus refresh of two topical reviews:
+- **topic_05** grew from ~16 entries to 22, adding Schmickel 1973, Krystal 1981, Worton 1988, Page 1996, Bandyopadhyay 2001/2002, Stults 2008, Stimpson 2014, Cechova/Hartley 2025 (great-ape acrocentric atlas) and Hartley 2026 (UK Biobank ROB-carrier genotyping).
+- **topic_07** grew from ~18 entries to 24, adding Brown 1972, Lupski 1998, Lupski & Stankiewicz 2005, Bailey & Eichler 2006, Eickbush & Eickbush 2007, Ganley & Kobayashi 2007, Llorente 2008, Hastings 2009, Anand 2013, Williams 2015, Logsdon 2024 and the explicit Nei & Rooney 2005 birth-and-death alternative.
+
+Both refreshes are integrated into `SYNTHESIS_v2.md` Parts II (acrocentric/rDNA section) and III (concerted evolution / NAHR section). The closing paragraph of `SYNTHESIS_v2.md` Part V calls out the specific upgrades.
+
+## Bibliography-level gaps (mostly carried forward from v1)
+
+- **`Cechova2025`** is cited as "(in press)" with no DOI; the WashU pedigree paper is not yet on bioRxiv per the lead author's clarification. Update DOI once available.
+- **`Porubsky2025`** is cited as "(in press)" with no DOI; the CEPH1463 paper was published in *Nature* (April 2025) per the lead author's recent comment. Update with the published DOI before submission.
+- **`deLima2025`** is "(in submission)"; verify status before submission. (Note: topic_05 v3-opus refresh assigns this paper a sequence-resolved SST1-mechanism finding that is now load-bearing for C8.)
+- **`Xu2025`** lists "Hanbo Xu and others" — replace with full author list once the manuscript is in its published form.
+- **`Francis2025`** has full DOI (`10.1038/s41588-025-02358-1`) but author list is currently truncated to "Brittany A. Francis and others" — replace with full author list before submission.
+- **Stergachis Fiber-seq telomere companion paper.** `REFERENCES_v3.bib` cites `Stergachis2020` with a note that the specific Fiber-seq-at-39-of-46-telomeres paper is the relevant downstream work — track that paper down before submission.
+- **`StankiewiczLupski2002` and `StankiewiczLupski2010`** are both cited; verify the 2002 *Trends in Genetics* paper and the 2010 *Annual Review of Medicine* paper resolve to the intended NAHR vocabulary in context.
+- **`Computational2018` (consortium-author key)** is the canonical citation for the *Computational pan-genomics* review (Marschall, Marz, Abeel et al., *Briefings in Bioinformatics* 2018, doi:10.1093/bib/bbw089). Duplicate author-led keys are removed in `REFERENCES_v3.bib`.
+- **Topic-prefix vs canonical-key duplication.** Several topical reviews use prefixed keys (e.g. `sexchrompars_charchar2003`, `acrocentric_rdna_robertsonian_henderson1972`, `dux4_d4z4_fshd_lemmers2010`) for papers that the existing `REFERENCES.bib` / prior synthesis pass cite as canonical PascalCase (`Charchar2003`, `Henderson1972`, `Lemmers2010`). The merge into `REFERENCES_v3.bib` keeps the canonical key on each duplicate (per the dedup rule: prefer prefix-free) so `SYNTHESIS_v2.md` and `CHRONOLOGY_v2.md` citations continue to resolve. The `topic_NN_*.md` files (read-only) still use their prefix keys and must therefore be compiled against `topic_NN_*.bib` directly, not against `REFERENCES_v3.bib` alone. The unique-to-topic prefix keys survive in `REFERENCES_v3.bib` unchanged.
+- **One renamed citation in v2.** `SYNTHESIS_v2.md` cites `@ChenCooper2007` rather than the v1 `@Chen2007`; the entry is the same paper (Chen, Cooper, Krawczak, *Hum. Mutat.* 2007 gene-conversion review). The v3 dedup preferred the longer `ChenCooper2007` key on the (Chen, 2007, gene-conversion) collision because both keys are non-prefixed.
+
+## Substantive gaps
+
+- **C7 — direct LAD / Lamin B1 ChIP overlay.** The abstract's "facilitated by the physical proximity of subtelomeres at the nuclear envelope" wording rests on Dip-C radial position as a proxy and on the Masny 2004 / Ottaviani 2009 mechanism for D4Z4 — chapter 05 §"Nuclear lamina cross-reference" does not run a genome-wide LAD intersection. `REWRITE_PLAN.md` TASK-22 is the correct follow-up. Fallback per `CROSSWALK §6`: soften to "consistent with peripheral telomere positioning."
+- **C5 — neighbour-joining tree** is named in the abstract but Andrea uses Leiden + UPGMA (12 of 15 communities agree exactly). One-line fix is `ape::nj()` on the existing arm-distance matrix; alternatively, relax the abstract wording to "cladistic analysis (Leiden / UPGMA)." Per `REWRITE_PLAN.md` TASK-01 / TASK-13.
+- **C2 — "~12% pairwise sampling" computation.** Methods must compute the wfmash k-mer-evaluation rate from the on-disk PAFs (the realised value, not asserted) and write the Erdős-Rényi argument explicitly (n=18,827; p* = log(n)/n ≈ 5.21e-4; 12% is ~230× above). Per `REWRITE_PLAN.md` TASK-10 / TASK-11. The argument is in `CROSSWALK §7b`.
+- **C2 / C3 dataset count.** Andrea reports 465 throughout; the abstract reports 466. Resolve canonically as 466 = 233 individuals × 2 haplotypes + CHM13 reference (per `CROSSWALK §7c`).
+- **C8 — "concerted evolution" loose-sense framing.** The Discussion paragraph should explicitly state the loose-sense usage and tie it to the pedigree (chapter 14) as the empirical anchor. Per `CROSSWALK §3` and `REWRITE_PLAN.md` TASK-19. The v3-opus topic_07 refresh adds Nei & Rooney 2005 [@NeiRooney2005] as the explicit alternative model: not all subtelomeric paralog families behave like rDNA, and the loose-sense framing is what allows the abstract to encompass both homogenising (rDNA) and turnover-prone (OR4F) systems.
+
+## New gaps surfaced by the v2 substrate
+
+- **C5 — acrocentric per-meiosis rate.** Stults et al. 2008 [@acrocentric_Stults2008] reported >10% rDNA-cluster rearrangement per meiosis using optical pulsed-field gel electrophoresis. Andrea's chapter 14 reports 133 gene-conversion-like patches across the WashU pedigree but does not separate intra-NOR conversion from inter-arm transfer at sequence resolution. A direct comparison of Stults' bulk rate vs the pedigree's per-arm rate would either confirm or revise the >10% number — useful for the Discussion.
+- **C5 — rare Robertsonian products (rob(13;15), rob(14;15), rob(15;22)) lack sequence-resolved breakpoints.** de Lima/Guarracino 2025 [@deLima2025] resolved rob(13q14q) and rob(14q21q) via the SST1 mechanism. Whether the rarer products use the same SST1 mechanism or a different homology block (rDNA itself, satellite III subfamilies, distal junction) is open; the Hartley 2026 [@acrocentric_rdna_robertsonian_hartley2026biobank] UK Biobank cohort may eventually carry enough rare carriers to address this.
+- **C8 — relative contribution of NAHR vs gene conversion vs BIR.** The 133 gene-conversion-like + 16 crossover-like + 229 acros-like patches in chapter 14 imply gene conversion dominates by an order of magnitude, but BIR-mediated tracts of 100+ kb may be miscategorised as gene conversion under the current sandwich-pattern heuristic. Anand et al. 2013 [@Anand2013] flags exactly this miscategorisation risk in yeast. A future pass could add a tract-length-aware classifier that distinguishes classical gene conversion (50–500 bp, per Jeffreys & May 2004 [@JeffreysMay2004]) from BIR-style long tracts (10–100+ kb, per Llorente 2008 [@Llorente2008]).
+- **C8 — gBGC fingerprint at PHR boundaries.** Galtier 2001 [@Galtier2001] / Duret & Galtier 2009 [@DuretGaltier2009] establish that gene conversion is GC-biased. A per-PHR-boundary GC-content analysis on the existing pangenome graph is testable from current data and would either confirm or reject gBGC as a contributor to subtelomeric base composition.
+
+## Open empirical questions surfaced by the synthesis (carried forward)
+
+- **Crossover-rate ↔ cross-arm-affinity correlation honest negative.** End-to-end-report chapter 12 testable prediction #7 reports `rho = −0.43, p = 0.006` across all 39 arms but `rho = 0.00` after excluding 7 short-read-confounded arms. Open question: does a higher-quality recombination map (deeper sequencing, longer reads at acrocentric / PAR arms) recover the predicted negative correlation? Probably yes, but cannot be answered without new data.
+- **LINC-complex / SUN1-mutant test of meiotic alignment at PHR scale.** Zuo 2021 wild-type vs SUN1-W151R zygotene Hi-C is available (GEO: GSE155142, GSE155638, GSE155967). The PHR-median 105 kb scale is well below the ~5% mutant tip zone; tip contacts may be maintained without LINC-mediated force transmission, so the predicted effect is uncertain. Per chapter 12 testable prediction #1.
+- **Somatic vs germline exchange.** HPRC v2 sample-source metadata (LCL vs blood) is not currently available; the manuscript cannot directly distinguish meiotic from somatic-LCL exchange in chapter 14 patches. The pedigree's *inheritance* across three generations does rule out purely somatic origin for the transmitted patches but does not directly establish meiotic timing in cells.
+- **Subtelomeric Fiber-seq / nucleosome footprint at PHR boundaries.** The Stergachis 2020 framework supports single-molecule CTCF / nucleosome footprinting; a per-PHR-boundary analysis at 39 / 46 telomeres would either confirm or reject the CTCF-cohesin boundary prediction (chapter 12 testable prediction #4). Not currently in scope but a clean follow-up.
+
+## What this synthesis does *not* claim
+
+This document does not extend any of the abstract's claims beyond what `paper_prep/synthesis/CROSSWALK.md`, `paper_prep/synthesis/REFERENCES.bib`, the 14 committed topical reviews (`topic_01_*` through `topic_14_*`), the v3-opus topic_05 and topic_07 refreshes, and `end-to-end-report/report/12_literature.md` already establish. The prose in `SYNTHESIS_v2.md` operates at the field-history-and-framework level; where deeper per-paper analysis is needed, the corresponding `topic_NN_*.md` provides it. No new analytical claim is made; this is a literature synthesis only.
+
+*End of GAPS_v2.md.*
