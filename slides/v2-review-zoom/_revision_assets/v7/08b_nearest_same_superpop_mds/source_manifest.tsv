@@ -1,0 +1,7 @@
+source	path	exists	sha256
+mds_rds	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.full_mds.rds	TRUE	2d3eceece6bbcacbd8a8ba68a321f612a7ab5f3b12dcc555cf832cde30a69416
+label_export_tsv	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	TRUE	17bb574dfd4ab661437d7de02c200d2b1abf7e745e9628ea273b77393d8a7f82
+sample_metadata_tsv	/moosefs/guarracino/HPRCv2/data/hprc-sequence-production.tsv	TRUE	2c3043714e61e401c7f3172097ee819caf4cfa95baa5b4ba6f97cfb82ddefa6b
+source_png	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.mds.color-by-superpopulation.png	TRUE	3999f3eb17ec07c231e936258628e3dbbd78ebf66c369b3bb3db8c1f8ad66fb8
+current_slide_png	slides/v2-review-zoom/_typst/assets/s08b_mds_superpop.png	TRUE	3999f3eb17ec07c231e936258628e3dbbd78ebf66c369b3bb3db8c1f8ad66fb8
+source_script	/moosefs/guarracino/HPRCv2/scripts/similarity/plot-similarity-subtelo.R	TRUE	0655e57e643b78f7023765c3154f91feb7cfe4e78997dbdc1bdd2c3057cf2d5e
