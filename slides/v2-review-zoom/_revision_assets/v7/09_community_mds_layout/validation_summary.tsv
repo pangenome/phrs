@@ -1,0 +1,14 @@
+check	value
+coordinate_method	Classical MDS / cmdscale on 1 - graph-path Jaccard distances
+coordinate_source	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.full_mds.rds
+assignment_source	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv
+layout_reference	slides/v2-review-zoom/_typst/assets/s08a_mds_chrom.png; 12 x 10 inch frame, right legend, theme_bw grammar
+output_plot_inches	12 x 10
+output_png_pixels	3600 x 3000
+coord_fixed_ratio	1
+axis_limit_x	-0.68,0.68
+axis_limit_y	-0.68,0.68
+point_count	15668
+labels_present	C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15
+support_text	C1-C15 assigned from arm-level graph-path Jaccard distances, not 3D/gene labels
+pca_used	no
