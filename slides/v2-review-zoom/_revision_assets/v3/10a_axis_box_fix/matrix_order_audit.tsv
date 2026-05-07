@@ -1,0 +1,26 @@
+check	value
+source_matrix_rows	77
+source_matrix_columns	77
+source_row_names_equal_column_names	TRUE
+source_row_name_set_equal_column_name_set	TRUE
+source_matrix_symmetric	TRUE
+source_matrix_max_abs_symmetry_delta	0e+00
+source_matrix_all_arms_have_sequence_community	TRUE
+source_sequence_community_table	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden.communities.tsv
+v2_generator	slides/v2-review-zoom/_revision_assets/hic_visual_redesign/make_hic_visual_redesign.R
+v2_asset_dimensions	1800x1800
+v2_contact_community_table	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_hic.arm-leiden.communities.tsv
+v2_contact_community_count	42
+sequence_community_count_in_matrix	15
+v2_contact_partition_pair_agreement_with_sequence_partition	2712/2926
+ordered_row_names_equal_ordered_column_names	TRUE
+ordered_source_row_indices_equal_ordered_source_column_indices	TRUE
+analytical_matrix_transpose_applied	FALSE
+visual_raster_transform	t(color_matrix)[, n:1] for R display coordinates only
+boxes_applied_after_visual_coordinate_mapping	TRUE
+computed_within_mean_matches_source_tsv	TRUE
+computed_between_mean_matches_source_tsv	TRUE
+computed_bw_matches_source_tsv	TRUE
+source_bw	0.055530602
+source_p_value	3.856e-85
+v2_plot_transposed_incorrectly	FALSE
