@@ -1,0 +1,9 @@
+check	value
+labels_present	C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15
+coordinate_source	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.full_mds.rds
+assignment_source	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv
+terminology	MDS / PCoA, not PCA
+coord_fixed_ratio	1
+axis_limit_x	-0.68,0.68
+axis_limit_y	-0.68,0.68
+output_inches	12 x 12
