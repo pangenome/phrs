@@ -1,0 +1,42 @@
+position_top_to_bottom	position_left_to_right	ChromArm	label	arm_side	Leiden	Leiden_members	ordering_method
+1	1	chrX_q	Xq	q	C14	Xq, Yq	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+2	2	chrY_q	Yq	q	C14	Xq, Yq	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+3	3	chrX_p	Xp	p	C15	Xp, Yp	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+4	4	chrY_p	Yp	p	C15	Xp, Yp	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+5	5	chr4_p	4p	p	C13	4p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+6	6	chr13_p	13p	p	C7	13p, 14p, 15p, 21p, 22p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+7	7	chr21_p	21p	p	C7	13p, 14p, 15p, 21p, 22p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+8	8	chr14_p	14p	p	C7	13p, 14p, 15p, 21p, 22p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+9	9	chr15_p	15p	p	C7	13p, 14p, 15p, 21p, 22p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+10	10	chr22_p	22p	p	C7	13p, 14p, 15p, 21p, 22p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+11	11	chr12_q	12q	q	C4	7q, 12q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+12	12	chr7_q	7q	q	C4	7q, 12q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+13	13	chr10_p	10p	p	C2	10p, 18p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+14	14	chr18_p	18p	p	C2	10p, 18p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+15	15	chr17_p	17p	p	C10	17p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+16	16	chr16_p	16p	p	C9	16p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+17	17	chr9_p	9p	p	C5	6p, 9p, 12p, 20q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+18	18	chr6_p	6p	p	C5	6p, 9p, 12p, 20q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+19	19	chr12_p	12p	p	C5	6p, 9p, 12p, 20q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+20	20	chr20_q	20q	q	C5	6p, 9p, 12p, 20q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+21	21	chr2_q	2q	q	C12	2q, 20p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+22	22	chr1_p	1p	p	C11	1p, 5q, 6q, 8p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+23	23	chr8_p	8p	p	C11	1p, 5q, 6q, 8p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+24	24	chr5_q	5q	q	C11	1p, 5q, 6q, 8p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+25	25	chr6_q	6q	q	C11	1p, 5q, 6q, 8p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+26	26	chr15_q	15q	q	C8	15q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+27	27	chr11_p	11p	p	C3	3q, 7p, 9q, 11p, 16q, 19p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+28	28	chr19_p	19p	p	C3	3q, 7p, 9q, 11p, 16q, 19p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+29	29	chr3_q	3q	q	C3	3q, 7p, 9q, 11p, 16q, 19p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+30	30	chr20_p	20p	p	C12	2q, 20p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+31	31	chr9_q	9q	q	C3	3q, 7p, 9q, 11p, 16q, 19p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+32	32	chr16_q	16q	q	C3	3q, 7p, 9q, 11p, 16q, 19p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+33	33	chr7_p	7p	p	C3	3q, 7p, 9q, 11p, 16q, 19p	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+34	34	chr10_q	10q	q	C1	4q, 10q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+35	35	chr4_q	4q	q	C1	4q, 10q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+36	36	chr17_q	17q	q	C6	1q, 13q, 17q, 19q, 21q, 22q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+37	37	chr13_q	13q	q	C6	1q, 13q, 17q, 19q, 21q, 22q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+38	38	chr1_q	1q	q	C6	1q, 13q, 17q, 19q, 21q, 22q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+39	39	chr19_q	19q	q	C6	1q, 13q, 17q, 19q, 21q, 22q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+40	40	chr21_q	21q	q	C6	1q, 13q, 17q, 19q, 21q, 22q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix
+41	41	chr22_q	22q	q	C6	1q, 13q, 17q, 19q, 21q, 22q	UPGMA average linkage on the 41x41 arm-level Jaccard distance matrix

@@ -1,0 +1,13 @@
+check	value
+tree_tip_order_equals_heatmap_row_order	TRUE
+tree_tip_order_equals_heatmap_column_order	TRUE
+heatmap_rows_equal_heatmap_columns	TRUE
+matrix_rows_equal_tree_labels	TRUE
+ordering_method	UPGMA average linkage via hclust(method = 'average')
+tree_method_label	UPGMA
+rendering_method	PDF vector cells/tree; PNG rendered directly from the same vector scene
+source_matrix_rows	41
+source_matrix_columns	41
+max_source_asymmetry	0
+raw_diagonal_min	0.009725
+raw_diagonal_max	0.597977
