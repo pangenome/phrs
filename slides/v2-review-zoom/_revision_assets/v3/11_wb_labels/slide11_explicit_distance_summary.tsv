@@ -1,0 +1,5 @@
+group	plotted_mean_within_over_between_3d_distance	cells_lower_than_one
+GM12878 Dip-C C communities	0.930261625	16/16 lower than 1
+GM12878 Dip-C S_all zero-sharing control	1.1180906875	0/16 lower than 1
+Sperm scHi-C C communities	0.40096785	20/20 lower than 1
+Sperm scHi-C S_all zero-sharing control	1.39917045	1/20 lower than 1
