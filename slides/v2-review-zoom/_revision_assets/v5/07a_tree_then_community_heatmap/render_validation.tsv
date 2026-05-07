@@ -1,0 +1,19 @@
+check	value
+tree_tip_order_equals_tree_heatmap_row_order	TRUE
+tree_tip_order_equals_tree_heatmap_column_order	TRUE
+community_order_rows_equal_columns	TRUE
+community_order_is_C1_to_C15_numeric_order	TRUE
+matrix_rows_equal_tree_labels	TRUE
+source_matrix_rows	41
+source_matrix_columns	41
+max_source_asymmetry	0
+raw_diagonal_min	0.009725
+raw_diagonal_max	0.597977
+community_assigned_arms_without_called_chm13_phr_bed_interval	chr6_p,chr13_p,chrY_p,chrY_q
+tree_label_font_points_row_col	8.9/8.6
+community_label_font_points_row_col	8.6/8.3
+color_scale_policy	same Jaccard similarity palette and [0,1] scale used for both tree and community assets
+07a_tree_ordered_heatmap_pdf_exists_nonzero	TRUE
+07a_tree_ordered_heatmap_png_exists_nonzero	TRUE
+07a_community_ordered_heatmap_pdf_exists_nonzero	TRUE
+07a_community_ordered_heatmap_png_exists_nonzero	TRUE

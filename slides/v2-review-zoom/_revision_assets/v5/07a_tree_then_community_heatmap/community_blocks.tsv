@@ -1,0 +1,16 @@
+Community	start_position	end_position	n_arms	arms	order_note
+C1	1	2	2	10q, 4q	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C2	3	4	2	10p, 18p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C3	5	10	6	11p, 19p, 3q, 9q, 16q, 7p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C4	11	12	2	12q, 7q	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C5	13	16	4	9p, 6p, 12p, 20q	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C6	17	22	6	17q, 13q, 1q, 19q, 21q, 22q	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C7	23	27	5	13p, 21p, 14p, 15p, 22p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C8	28	28	1	15q	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C9	29	29	1	16p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C10	30	30	1	17p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C11	31	34	4	1p, 8p, 5q, 6q	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C12	35	36	2	2q, 20p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C13	37	37	1	4p	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C14	38	39	2	Xq, Yq	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
+C15	40	41	2	Xp, Yp	Positions are top-to-bottom rows and left-to-right columns in 07a_community_ordered_heatmap
