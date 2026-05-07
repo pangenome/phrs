@@ -24,6 +24,10 @@ Prior reference renders remain in place:
 
 ## What Changed From v5
 
+- Re-rendered slide `07j.1`, the PGGB ODGI 2D layout main-component view, with
+  dark charcoal graph marks on a white background. This keeps the v5
+  component-8/main-component decision and source provenance while removing the
+  low-contrast blue graph styling for projection.
 - Inserted slide `11a`, a 2x2 panel of existing rendered GM12878 Dip-C and
   sperm scHi-C Mantel/radial plots. The source PDFs were copied into
   `_revision_assets/v6/dipc_validation/source_pdfs/` and converted with Poppler
@@ -84,6 +88,32 @@ The conversion hashes and sizes are recorded in:
 - `_revision_assets/v6/dipc_validation/source_manifest.tsv`
 - `_revision_assets/v6/dipc_validation/conversion_log.tsv`
 
+## PGGB Graph Readability Recolor
+
+Slide `07j.1` now uses:
+
+- `_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png`
+
+This asset was re-rendered from the existing ODGI layout TSV rather than by
+running a new graph extraction, layout, ODGI draw, or gfalook job. It preserves
+the v5 provenance:
+
+- ODGI layout TSV component `8`
+- Main graph component, not the full graph
+- 727,156 layout nodes
+- Existing ODGI X/Y coordinates plotted as Y/X for the 16:9 slide frame
+
+The reproducible render pipeline is:
+
+- `_revision_assets/v6/pggb_graph_black/render_pggb_graph_black.sh`
+- `_revision_assets/v6/pggb_graph_black/render_pggb_layout_component8_black.R`
+- `_revision_assets/v6/pggb_graph_black/render_log.tsv`
+
+Palette parameters are recorded in `render_log.tsv`: charcoal graph marks
+(`#111111`, alpha `0.30`) on a white background with a neutral border
+(`#b8c0cc`). No SLURM job was used because this lightweight render reads only
+the existing 41 MB layout TSV.
+
 ## Generated Summary Assets
 
 The generated summary plots are reproducible with:
@@ -121,6 +151,7 @@ Observed checks:
 - Page size scan reports `/MediaBox [0 0 959.76 540]`.
 - Page PNG export produced `page-01.png` through `page-42.png`, each
   1920 x 1080 RGBA.
+- Page `13` / slide `07j.1` uses the v6 black PGGB graph asset and is nonblank.
 - New slides are `page-26.png` through `page-28.png`; context exports include
   `page-25.png` and `page-29.png`.
 - `git diff --check` passes.
@@ -131,6 +162,7 @@ Nonblank PNG scan for the new slides and nearby context:
 
 | Page PNG | Slide | Mean RGBA value | Extrema |
 | --- | --- | ---: | --- |
+| `page-13.png` | `07j.1` | 252.46 | 0-255 |
 | `page-25.png` | `11` | 250.54 | 0-255 |
 | `page-26.png` | `11a` | 246.51 | 0-255 |
 | `page-27.png` | `11b` | 246.67 | 0-255 |

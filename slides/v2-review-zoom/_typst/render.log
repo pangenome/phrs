@@ -14,8 +14,11 @@ Validation summary:
 - PDF page size scan: /MediaBox [0 0 959.76 540].
 - PNG export: page-01.png through page-42.png at 1920 x 1080 RGBA.
 - New PHR Jaccard workflow slide: page-12.png.
-- PGGB graph main-component ODGI layout slide: page-13.png.
+- PGGB graph main-component ODGI layout slide: page-13.png, updated to use
+  v6/pggb_graph_black charcoal-on-white asset.
 - Heatmap slides shifted to page-14.png and page-15.png.
 - Preserved v4 slide 10a fix: page-23.png.
 - Dip-C/sperm validation section: page-26.png through page-28.png.
 - Copy-number-aware enrichment section shifted to page-33.png through page-36.png.
+- PGGB black graph asset: 1920 x 1080, nonblank, zero saturated-blue or
+  blue-dominant pixels by RGB scan; page-13.png is nonblank after export.

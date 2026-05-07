@@ -69,7 +69,8 @@ Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 - PNG export produced 42 pages at 1920 x 1080 RGBA.
 - Page 12 / slide `07j` remains the PHR path-to-Jaccard workflow slide.
 - Page 13 / slide `07j.1` remains the PGGB graph main-component ODGI layout
-  view.
+  view and now uses
+  `_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png`.
 - Page 14 / slide `07a.1` and page 15 / slide `07a.2` remain the v5 heatmap
   pair.
 - Page 23 / slide `10a` preserves the v4 corrected X-axis orientation asset:
@@ -86,10 +87,18 @@ Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 - The v6 Dip-C section does not imply PBMC community-free analysis exists.
 - Page 33 through page 36 provide the v5 copy-number-aware enrichment section,
   shifted by the three new Dip-C validation slides.
+- The PGGB graph asset was re-rendered from the existing component-8 ODGI
+  layout TSV with charcoal marks (`#111111`, alpha `0.30`) on white, preserving
+  the v5 main-component provenance and avoiding blue graph strokes.
+- RGB scan of `_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png`
+  reports 42,327 nonwhite pixels, 21,666 dark pixels, and 0 saturated-blue or
+  blue-dominant pixels. A page-13 graph-region crop excluding the deck header
+  and footer also reports 0 saturated-blue or blue-dominant pixels.
 - Critical page PNGs are nonblank by PNG pixel scan:
 
 | Page PNG | Slide | Mean RGBA value | Extrema |
 | --- | --- | ---: | --- |
+| `page-13.png` | `07j.1` | 252.46 | 0-255 |
 | `page-25.png` | `11` | 250.54 | 0-255 |
 | `page-26.png` | `11a` | 246.51 | 0-255 |
 | `page-27.png` | `11b` | 246.67 | 0-255 |
@@ -99,6 +108,9 @@ Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 - `_revision_assets/v6/dipc_validation/README.md` records exact sources and
   whether each asset came from an existing PDF or from a TSV-generated summary
   plot.
+- `_revision_assets/v6/pggb_graph_black/README.md` and `render_log.tsv` record
+  the PGGB black graph source paths, retained component decision, render command,
+  palette parameters, and no-SLURM provenance.
 - `_revision_assets/v6/dipc_validation/source_manifest.tsv`,
   `_revision_assets/v6/dipc_validation/conversion_log.tsv`,
   `_revision_assets/v6/dipc_validation/plots/wb_negative_control_summary.tsv`,

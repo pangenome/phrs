@@ -435,8 +435,8 @@
 #figure-slide(
   "07j.1",
   "PGGB graph main component: ODGI 2D layout",
-  "../_revision_assets/v5/pggb_graph_odgi/pggb_graph_2d.png",
-  source: "v5/pggb_graph_odgi; ODGI layout TSV component 8 main component; 727,156 nodes; rotated 16:9",
+  "../_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png",
+  source: "v6/pggb_graph_black; derived from v5/pggb_graph_odgi; ODGI layout TSV component 8 main component; 727,156 nodes; rotated 16:9; charcoal-on-white recolor",
 )
 
 #pagebreak()
