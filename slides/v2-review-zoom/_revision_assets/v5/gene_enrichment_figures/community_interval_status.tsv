@@ -1,0 +1,16 @@
+community	community_arms	community_arms_short	n_community_arms	n_called_chm13_phr_arms	n_missing_chm13_phr_arms	missing_chm13_phr_arms	interval_scope_label
+C1	chr10_q, chr4_q	10q 4q	2	2	0		all community arms have called CHM13 PHR rows
+C2	chr10_p, chr18_p	10p 18p	2	2	0		all community arms have called CHM13 PHR rows
+C3	chr11_p, chr16_q, chr19_p, chr3_q, chr7_p, chr9_q	11p 16q 19p 3q 7p 9q	6	6	0		all community arms have called CHM13 PHR rows
+C4	chr12_q, chr7_q	12q 7q	2	2	0		all community arms have called CHM13 PHR rows
+C5	chr12_p, chr20_q, chr6_p, chr9_p	12p 20q 6p 9p	4	3	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C6	chr13_q, chr17_q, chr19_q, chr1_q, chr21_q, chr22_q	13q 17q 19q 1q 21q 22q	6	6	0		all community arms have called CHM13 PHR rows
+C7	chr13_p, chr14_p, chr15_p, chr21_p, chr22_p	13p 14p 15p 21p 22p	5	4	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C8	chr15_q	15q	1	1	0		all community arms have called CHM13 PHR rows
+C9	chr16_p	16p	1	1	0		all community arms have called CHM13 PHR rows
+C10	chr17_p	17p	1	1	0		all community arms have called CHM13 PHR rows
+C11	chr1_p, chr5_q, chr6_q, chr8_p	1p 5q 6q 8p	4	4	0		all community arms have called CHM13 PHR rows
+C12	chr20_p, chr2_q	20p 2q	2	2	0		all community arms have called CHM13 PHR rows
+C13	chr4_p	4p	1	1	0		all community arms have called CHM13 PHR rows
+C14	chrX_q, chrY_q	Xq Yq	2	1	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C15	chrX_p, chrY_p	Xp Yp	2	1	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p

@@ -1,0 +1,82 @@
+community	signal	support_arms	support_value	tile_label	source_table	signal_scope	n_missing_chm13_phr_arms	missing_chm13_phr_arms	interval_scope_label
+C1	OR	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	RPL	2	11	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	SEPTIN	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	DDX11L	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	WASH	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	FAM138	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	DUX4L specific	2	22	22 genes; 2 arms	community_specific_genes.tsv	community-specific genes	0		all community arms have called CHM13 PHR rows
+C1	MTCO specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C1	PAR1 coding anchors	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	OR	6	16	6 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	RPL	6	11	6 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	SEPTIN	6	11	6 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	DDX11L	6	7	6 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	WASH	6	8	6 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	FAM138	6	5	6 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	DUX4L specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	MTCO specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C3	PAR1 coding anchors	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C5	OR	1	11	1 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	RPL	3	10	3 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	SEPTIN	2	9	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	DDX11L	4	7	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	WASH	4	8	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	FAM138	4	6	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	DUX4L specific	0	0			HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	MTCO specific	0	0			HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C5	PAR1 coding anchors	0	0			HPRCv2 community-arm support	1	chr6_p	broader community signal; missing CHM13 called PHR: chr6_p
+C7	OR	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	RPL	4	4	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	SEPTIN	4	4	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	DDX11L	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	WASH	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	FAM138	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	DUX4L specific	0	0			HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	MTCO specific	5	9	9 genes; 5 arms	community_specific_genes.tsv	community-specific genes	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C7	PAR1 coding anchors	0	0			HPRCv2 community-arm support	1	chr13_p	broader community signal; missing CHM13 called PHR: chr13_p
+C11	OR	4	16	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	RPL	4	12	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	SEPTIN	4	9	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	DDX11L	4	7	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	WASH	4	7	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	FAM138	4	5	4 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	DUX4L specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	MTCO specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C11	PAR1 coding anchors	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	OR	2	12	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	RPL	2	11	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	SEPTIN	2	9	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	DDX11L	2	6	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	WASH	2	7	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	FAM138	2	5	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	DUX4L specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	MTCO specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C12	PAR1 coding anchors	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C14	OR	1	4	1 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	RPL	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	SEPTIN	1	2	1 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	DDX11L	2	7	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	WASH	2	3	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	FAM138	1	1	1 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	DUX4L specific	0	0			HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	MTCO specific	0	0			HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C14	PAR1 coding anchors	0	0			HPRCv2 community-arm support	1	chrY_q	broader community signal; missing CHM13 called PHR: chrY_q
+C15	OR	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	RPL	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	SEPTIN	0	0		community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	DDX11L	2	2	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	WASH	2	2	2 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	FAM138	1	1	1 arms	community_gene_families.tsv	HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	DUX4L specific	0	0			HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	MTCO specific	0	0			HPRCv2 community-arm support	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C15	PAR1 coding anchors	2	5	5 coding; 2 arms	community_gene_enrichment.tsv	community-specific coding anchors	1	chrY_p	broader community signal; missing CHM13 called PHR: chrY_p
+C4	OR	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	RPL	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	SEPTIN	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	DDX11L	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	WASH	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	FAM138	0	0		community_gene_families.tsv	HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	DUX4L specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	MTCO specific	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
+C4	PAR1 coding anchors	0	0			HPRCv2 community-arm support	0		all community arms have called CHM13 PHR rows
