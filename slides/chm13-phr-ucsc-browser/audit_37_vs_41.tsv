@@ -1,0 +1,42 @@
+arm	in_chm13_phrs_bed	in_architecture_per_arm	status	note
+chr18_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr19_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr19_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr1_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr1_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr20_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr20_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr21_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr21_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr22_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr22_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr2_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr3_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr4_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr4_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr5_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr6_p	false	true	missing_from_chm13_phrs_bed	Present in architecture_per_arm.tsv but absent from chm13.phrs.bed; no UCSC panel rendered
+chr10_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr10_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr6_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr7_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr7_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr8_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr9_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr9_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr11_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr12_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr12_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr13_p	false	true	missing_from_chm13_phrs_bed	Present in architecture_per_arm.tsv but absent from chm13.phrs.bed; no UCSC panel rendered
+chr13_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr14_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr15_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr15_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr16_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr16_q	true	true	rendered	Rendered from chm13.phrs.bed
+chr17_p	true	true	rendered	Rendered from chm13.phrs.bed
+chr17_q	true	true	rendered	Rendered from chm13.phrs.bed
+chrX_p	true	true	rendered	Rendered from chm13.phrs.bed
+chrX_q	true	true	rendered	Rendered from chm13.phrs.bed
+chrY_p	false	true	missing_from_chm13_phrs_bed	Present in architecture_per_arm.tsv but absent from chm13.phrs.bed; no UCSC panel rendered
+chrY_q	false	true	missing_from_chm13_phrs_bed	Present in architecture_per_arm.tsv but absent from chm13.phrs.bed; no UCSC panel rendered
