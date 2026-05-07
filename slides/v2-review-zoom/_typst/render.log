@@ -1,2 +1,18 @@
-Render v4 started: 2026-05-07T13:54:00Z UTC
-Render v4 completed: 2026-05-07T13:54:37Z UTC
+BoG 2026 review zoom v5 render log
+Generated: 2026-05-07 UTC
+Typst: 0.13.1
+
+Commands run from slides/v2-review-zoom/_typst:
+
+typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v5.pdf
+typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
+
+Typst emitted no warnings or errors.
+
+Validation summary:
+- PDF text scan: 37 /Type /Page entries.
+- PDF page size scan: /MediaBox [0 0 959.76 540].
+- PNG export: page-01.png through page-37.png at 1920 x 1080 RGBA.
+- New heatmap slides: page-12.png and page-13.png.
+- Preserved v4 slide 10a fix: page-21.png.
+- New copy-number-aware enrichment section: page-28.png through page-31.png.

@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v4 review revision.
+// BoG 2026 review zoom deck, v5 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v4.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v5.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -35,7 +35,7 @@
   if source != "" {
     align(center)[#text(size: 5.6pt, fill: col-cap)[#source]]
   } else {
-    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v4 focus page]]
+    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v5 focus page]]
   }
 }
 
@@ -259,16 +259,25 @@
     Labeling p arms and q arms separately prevents chromosome-end vocabulary from drifting.
   ],
   [The heatmap, tree, and MDS block should be read as one sequence-similarity system, not independent assays.],
-  source: "narrative_density README; 07a_heatmap_tree_pq and 09_mds_community READMEs",
+  source: "narrative_density README; v5/07a_tree_then_community_heatmap and 09_mds_community READMEs",
 )
 
 #pagebreak()
 
 #figure-slide(
-  "07a",
-  "Arm-level similarity recovers named clades",
-  "../_revision_assets/v3/07a_crisp_aligned/candidate_07a_upgma_crisp_aligned.png",
-  source: "v3/07a_crisp_aligned/make_07a_crisp_aligned.R; order_validation.tsv confirms tree tips equal heatmap rows",
+  "07a.1",
+  "Tree-ordered arm similarity heatmap",
+  "../_revision_assets/v5/07a_tree_then_community_heatmap/07a_tree_ordered_heatmap.png",
+  source: "v5/07a_tree_then_community_heatmap/make_07a_tree_then_community_heatmap.R; UPGMA leaf order drives side tree, rows, and columns",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "07a.2",
+  "Same matrix grouped by Leiden community",
+  "../_revision_assets/v5/07a_tree_then_community_heatmap/07a_community_ordered_heatmap.png",
+  source: "v5/07a_tree_then_community_heatmap; same Jaccard similarity palette/scale, no side tree, C1-C15 boxes and bands",
 )
 
 #pagebreak()
@@ -418,23 +427,52 @@
 #method-slide(
   "14m",
   "Method transition",
-  "How gene cargo is counted",
+  "Copy-number-aware enrichment: what is counted",
   [
-    Intersect PHRs with subtelomeric annotation.
+    Standard ORA asks whether each gene name is present once; subtelomeric PHR biology repeats gene copies across arms.
 
-    Count copies and gene families across arms and communities.
+    The v5 question is which families recur across gene instances, HPRCv2 arms, and Leiden communities.
 
-    Treat DUX4/D4Z4, OR4F, and TAR1 as cargo or markers carried by the exchange network, not as causes of the network.
+    The slide section uses community-arm support and the OR4F copy gradient, not parked genome-wide copy-weighted ORA p-values.
+
+    Caveat: community assignment is not identical to a called CHM13 PHR interval. C5 chr6_p, C7 chr13_p, C14 chrY_q, and C15 chrY_p do not have called rows in chm13.phrs.bed.
   ],
-  [Gene cargo is a copy-aware catalog and enrichment context layered onto the PHR communities.],
-  source: "v3/gene_browser_panels README; v3/gene_browser_inventory README; fixed track grammar",
+  [Say copy-aware support or copy-number-aware candidate signal; do not present exploratory weighted-ORA fold enrichments or p=0 rows as final statistics.],
+  source: "v5/gene_enrichment_narrative/method_box.md and slide_text.md; v5/gene_enrichment_figures README",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14a",
-  "Gene cargo: DUX4/D4Z4 is a paired C1 chr4q/chr10q PHR view",
+  "Copy-number-aware enrichment: method boundary",
+  "../_revision_assets/v5/gene_enrichment_figures/copy_aware_method_comparison.png",
+  source: "v5/gene_enrichment_figures/copy_aware_method_comparison.png; method_comparison_support.tsv",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "14b",
+  "Copy-aware candidate signals ranked by support",
+  "../_revision_assets/v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png",
+  source: "v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png; ranked_signal_support.tsv; bars are support counts, not q-values",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "14c",
+  "Community/family map separates support from interval scope",
+  "../_revision_assets/v5/gene_enrichment_figures/community_family_signal_map.png",
+  source: "v5/gene_enrichment_figures/community_family_signal_map.png; community_family_map_support.tsv and community_interval_status.tsv",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "14d",
+  "Backup: DUX4/D4Z4 paired C1 chr4q/chr10q PHR view",
   "../_revision_assets/v3/gene_browser_panels/panel_01_dux4_d4z4_c1_chr4_chr10.png",
   source: "v3/gene_browser_panels/render_gene_browser_panels.R; panel_manifest.tsv; input_manifest.tsv",
 )
@@ -442,8 +480,8 @@
 #pagebreak()
 
 #figure-slide(
-  "14b",
-  "Gene cargo: OR4F-rich C3 chr3q PHR",
+  "14e",
+  "Backup: OR4F-rich C3 chr3q PHR",
   "../_revision_assets/v3/gene_browser_panels/panel_02_or4f_c3_chr3q.png",
   source: "v3/gene_browser_panels/render_gene_browser_panels.R; target_loci.tsv; fixed track schema",
 )
@@ -451,8 +489,8 @@
 #pagebreak()
 
 #figure-slide(
-  "14c",
-  "Gene cargo: OR4F pseudogene endpoint in C8 chr15q",
+  "14f",
+  "Backup: OR4F pseudogene endpoint in C8 chr15q",
   "../_revision_assets/v3/gene_browser_panels/panel_03_or4f_decay_c8_chr15q.png",
   source: "v3/gene_browser_panels/render_gene_browser_panels.R; OR4F pseudogene summary in input_manifest.tsv",
 )
@@ -460,8 +498,8 @@
 #pagebreak()
 
 #figure-slide(
-  "14d",
-  "Gene cargo: TAR1-rich C2 chr18p PHR",
+  "14g",
+  "Backup: TAR1-rich C2 chr18p PHR",
   "../_revision_assets/v3/gene_browser_panels/panel_04_tar1_c2_chr18p.png",
   source: "v3/gene_browser_panels/render_gene_browser_panels.R; TAR1 repeat lane kept separate from gene models",
 )
@@ -469,8 +507,8 @@
 #pagebreak()
 
 #figure-slide(
-  "14e",
-  "Gene cargo: C7 acrocentric p-arm panel uses one track grammar",
+  "14h",
+  "Backup: C7 acrocentric p-arm panel uses one track grammar",
   "../_revision_assets/v3/gene_browser_panels/panel_05_acrocentric_c7_p_arm_group.png",
   source: "v3/gene_browser_panels/render_gene_browser_panels.R; C7 PanSN relative offsets from all-vs-all length TSV",
 )
