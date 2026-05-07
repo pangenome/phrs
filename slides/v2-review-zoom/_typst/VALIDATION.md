@@ -1,17 +1,17 @@
-# BoG 2026 Review Zoom Deck v5 Manifest
+# BoG 2026 Review Zoom Deck v6 Manifest
 
 Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 
 ## Artifacts
 
-- `../BoG_2026_review_zoom_v5.pdf`
+- `../BoG_2026_review_zoom_v6.pdf`
 - `zoom_review_deck.typ`
 - `render.log`
-- `page-01.png` through `page-39.png`
-- `../REVISION_NOTES_V5.md`
+- `page-01.png` through `page-42.png`
+- `../REVISION_NOTES_V6.md`
 - `../BoG_2026_review_zoom.pdf`, `../BoG_2026_review_zoom_v2.pdf`,
-  `../BoG_2026_review_zoom_v3.pdf`, and `../BoG_2026_review_zoom_v4.pdf`
-  remain in place as prior reference renders.
+  `../BoG_2026_review_zoom_v3.pdf`, `../BoG_2026_review_zoom_v4.pdf`, and
+  `../BoG_2026_review_zoom_v5.pdf` remain in place as prior reference renders.
 
 ## Page Map
 
@@ -42,59 +42,68 @@ Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 | 23 | 10a | X-axis-orientation-corrected Pore-C community matrix |
 | 24 | 10b | Mantel exclusion clarity plot |
 | 25 | 11 | Explicit within-community vs between-community single-cell distance plot |
-| 26 | 12 | Mouse zygotene plus stage trajectory |
-| 27 | 12b | Human sequence-similarity vs 3D-contact arm-pair analog |
-| 28 | 13a | Pedigree proof, top readability crop |
-| 29 | 13b | Pedigree details, bottom readability crop |
-| 30 | 14m | Copy-number-aware enrichment method transition |
-| 31 | 14a | Copy-number-aware method boundary figure |
-| 32 | 14b | Ranked copy-aware candidate support signals |
-| 33 | 14c | Community/family support map with interval-scope caveat |
-| 34 | 14d | Backup DUX4/D4Z4 C1 genome-browser panel |
-| 35 | 14e | Backup OR4F-rich C3 genome-browser panel |
-| 36 | 14f | Backup OR4F pseudogene endpoint C8 genome-browser panel |
-| 37 | 14g | Backup TAR1-rich C2 genome-browser panel |
-| 38 | 14h | Backup C7 acrocentric p-arm genome-browser panel |
-| 39 | 15 | Closing text-only focus page |
+| 26 | 11a | Dip-C/sperm Mantel and radial panels from existing rendered PDFs |
+| 27 | 11b | S_all negative-control W/B summary |
+| 28 | 11c | Community-free per-cell rho distribution |
+| 29 | 12 | Mouse zygotene plus stage trajectory |
+| 30 | 12b | Human sequence-similarity vs 3D-contact arm-pair analog |
+| 31 | 13a | Pedigree proof, top readability crop |
+| 32 | 13b | Pedigree details, bottom readability crop |
+| 33 | 14m | Copy-number-aware enrichment method transition |
+| 34 | 14a | Copy-number-aware method boundary figure |
+| 35 | 14b | Ranked copy-aware candidate support signals |
+| 36 | 14c | Community/family support map with interval-scope caveat |
+| 37 | 14d | Backup DUX4/D4Z4 C1 genome-browser panel |
+| 38 | 14e | Backup OR4F-rich C3 genome-browser panel |
+| 39 | 14f | Backup OR4F pseudogene endpoint C8 genome-browser panel |
+| 40 | 14g | Backup TAR1-rich C2 genome-browser panel |
+| 41 | 14h | Backup C7 acrocentric p-arm genome-browser panel |
+| 42 | 15 | Closing text-only focus page |
 
 ## Validation
 
 - PDF compiles with Typst 0.13.1 using `--root ..`.
-- PDF page scan reports 39 `/Type /Page` entries.
+- Strict PDF page scan reports 42 `/Type /Page` entries.
 - PDF page size scan reports `/MediaBox [0 0 959.76 540]`, matching 13.33 in
   x 7.5 in and 16:9.
-- PNG export produced 39 pages at 1920 x 1080 RGBA.
-- Page 12 / slide `07j` is the PHR path-to-Jaccard workflow slide. It names
-  IMPG, PGGB, ODGI/Jaccard, arm/haplotype bundles, and same-arm self-bundle
-  averaging, and states why `A x A` can be below 1.
-- Page 13 / slide `07j.1` is the PGGB graph main-component ODGI layout view.
-  It is labeled as component `8` and uses the 1920 x 1080 PNG asset from
-  `_revision_assets/v5/pggb_graph_odgi`.
-- Page 14 / slide `07a.1` is the tree/UPGMA-ordered heatmap with side tree.
-- Page 15 / slide `07a.2` is the same matrix in community order with no side
-  tree and with community bands/boxes.
-- The heatmap assets are the v5 4800 x 2700 renders with larger arm labels and
-  shared Jaccard similarity palette/scale.
+- PNG export produced 42 pages at 1920 x 1080 RGBA.
+- Page 12 / slide `07j` remains the PHR path-to-Jaccard workflow slide.
+- Page 13 / slide `07j.1` remains the PGGB graph main-component ODGI layout
+  view.
+- Page 14 / slide `07a.1` and page 15 / slide `07a.2` remain the v5 heatmap
+  pair.
 - Page 23 / slide `10a` preserves the v4 corrected X-axis orientation asset:
   `_revision_assets/v4/10a_xaxis_orientation/candidate_10a_xaxis_orientation.png`.
-- Page 30 through page 33 provide a copy-number-aware enrichment section with
-  method/caveat wording and three support-focused figure slides.
+- Page 26 / slide `11a` uses four existing rendered PDFs converted to PNG:
+  GM12878 Mantel, GM12878 radial, sperm Mantel, and sperm radial.
+- Page 27 / slide `11b` includes the required negative-control values:
+  GM12878 `S_all` W/B = 1.106 with 0/16 cells below 1, and sperm `S_all`
+  W/B = 1.397 with 1/20 cells below 1.
+- Page 28 / slide `11c` includes the required community-free per-cell rho
+  values: GM12878 median rho = 0.093 with 15/16 positive cells, and sperm
+  median rho = 0.029 with 15/20 positive cells. The sperm arm-level pooled
+  rho is explicitly labeled as a caveat.
+- The v6 Dip-C section does not imply PBMC community-free analysis exists.
+- Page 33 through page 36 provide the v5 copy-number-aware enrichment section,
+  shifted by the three new Dip-C validation slides.
 - Critical page PNGs are nonblank by PNG pixel scan:
 
 | Page PNG | Slide | Mean RGBA value | Extrema |
 | --- | --- | ---: | --- |
-| `page-12.png` | `07j` | 248.88 | 10-255 |
-| `page-13.png` | `07j.1` | 253.12 | 0-255 |
-| `page-14.png` | `07a.1` | 248.70 | 0-255 |
-| `page-15.png` | `07a.2` | 248.18 | 0-255 |
-| `page-23.png` | `10a` | 247.05 | 0-255 |
-| `page-30.png` | `14m` | 246.53 | 10-255 |
-| `page-31.png` | `14a` | 247.68 | 0-255 |
-| `page-32.png` | `14b` | 245.12 | 0-255 |
-| `page-33.png` | `14c` | 235.25 | 0-255 |
+| `page-25.png` | `11` | 250.54 | 0-255 |
+| `page-26.png` | `11a` | 246.51 | 0-255 |
+| `page-27.png` | `11b` | 246.67 | 0-255 |
+| `page-28.png` | `11c` | 247.18 | 0-255 |
+| `page-29.png` | `12` | 250.62 | 0-255 |
 
-- `_revision_assets/v4/10a_xaxis_orientation/orientation_audit.tsv` records
-  `v3_x_axis_mirrored = TRUE` and the corrected X-axis policy.
-- The slide directory contains no stale prior-agent absolute worktree paths.
-- Detailed provenance for the v5 additions is recorded in
-  `../REVISION_NOTES_V5.md`.
+- `_revision_assets/v6/dipc_validation/README.md` records exact sources and
+  whether each asset came from an existing PDF or from a TSV-generated summary
+  plot.
+- `_revision_assets/v6/dipc_validation/source_manifest.tsv`,
+  `_revision_assets/v6/dipc_validation/conversion_log.tsv`,
+  `_revision_assets/v6/dipc_validation/plots/wb_negative_control_summary.tsv`,
+  and `_revision_assets/v6/dipc_validation/plots/community_free_rho_summary.tsv`
+  record the reproducible asset pipeline outputs.
+- The slide directory contains no stale prior-agent worktree absolute paths.
+- Detailed provenance for the v6 additions is recorded in
+  `../REVISION_NOTES_V6.md`.

@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v5 review revision.
+// BoG 2026 review zoom deck, v6 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v5.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v6.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -35,7 +35,7 @@
   if source != "" {
     align(center)[#text(size: 5.6pt, fill: col-cap)[#source]]
   } else {
-    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v5 focus page]]
+    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v6 focus page]]
   }
 }
 
@@ -69,6 +69,53 @@
         box(width: 100%, height: 3.27in)[#image(b, width: 100%, height: 100%, fit: "contain")],
         box(width: 100%, height: 3.27in)[#image(c, width: 100%, height: 100%, fit: "contain")],
         box(width: 100%, height: 3.27in)[#image(d, width: 100%, height: 100%, fit: "contain")],
+      )
+    ],
+    footer(source),
+  )
+}
+
+#let dipc-metric-card(title, body) = block(
+  width: 100%,
+  fill: col-card-bg,
+  stroke: 0.75pt + col-hdr-bg.darken(15%),
+  inset: (x: 0.13in, y: 0.075in),
+  radius: 3pt,
+)[
+  #text(size: 11pt, weight: "bold", fill: col-title)[#title]
+  #linebreak()
+  #text(size: 8.8pt, fill: col-text)[#body]
+]
+
+#let dipc-validation-panel-slide(num, label, source: "") = {
+  grid(
+    rows: (0.34in, 0.63in, 1fr, 0.13in),
+    row-gutter: 0.035in,
+    align: center,
+    header(num, label),
+    grid(
+      columns: (1fr, 1fr),
+      column-gutter: 0.10in,
+      dipc-metric-card(
+        "GM12878 Dip-C",
+        [W/B = 0.931 (6.9% closer); Fisher p = 2.4e-05; Mantel rho = 0.296, p = 0.002.],
+      ),
+      dipc-metric-card(
+        "Sperm scHi-C",
+        [W/B = 0.401 (60% closer); Fisher p = 3.9e-51; Mantel rho = 0.202, p = 0.023.],
+      ),
+    ),
+    box(width: 100%, height: 100%)[
+      #grid(
+        columns: (1fr, 1fr),
+        rows: (2.76in, 2.76in),
+        column-gutter: 0.08in,
+        row-gutter: 0.055in,
+        align: center,
+        box(width: 100%, height: 2.76in)[#image("../_revision_assets/v6/dipc_validation/pdf_pngs/gm12878_mantel_scatter.png", width: 100%, height: 100%, fit: "contain")],
+        box(width: 100%, height: 2.76in)[#image("../_revision_assets/v6/dipc_validation/pdf_pngs/gm12878_radial_community.png", width: 100%, height: 100%, fit: "contain")],
+        box(width: 100%, height: 2.76in)[#image("../_revision_assets/v6/dipc_validation/pdf_pngs/sperm_all20_mantel_scatter.png", width: 100%, height: 100%, fit: "contain")],
+        box(width: 100%, height: 2.76in)[#image("../_revision_assets/v6/dipc_validation/pdf_pngs/sperm_all20_radial_community.png", width: 100%, height: 100%, fit: "contain")],
       )
     ],
     footer(source),
@@ -514,6 +561,32 @@
   "Single-cell 3D: within-community arms are closer than between-community arms",
   "../_revision_assets/v3/11_wb_labels/slide11_explicit_distance_labels_candidate.png",
   source: "v3/11_wb_labels/make_slide11_explicit_distance_labels.R; explicit within-community vs between-community distance labels",
+)
+
+#pagebreak()
+
+#dipc-validation-panel-slide(
+  "11a",
+  "Dip-C/sperm validation: Mantel and radial panels",
+  source: "v6/dipc_validation/prepare_dipc_validation_assets.sh; existing rendered PDFs converted with Poppler",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "11b",
+  "Negative control: non-sharing S_all arms are farther apart",
+  "../_revision_assets/v6/dipc_validation/plots/wb_negative_control.png",
+  source: "v6/dipc_validation/make_dipc_validation_summary_plots.R; GM12878 and sperm per-cell/per-community TSVs; no 3D rerun",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "11c",
+  "Community-free per-cell rho: sequence similarity predicts proximity",
+  "../_revision_assets/v6/dipc_validation/plots/community_free_rho_distribution.png",
+  source: "v6/dipc_validation/make_dipc_validation_summary_plots.R; *_community_free_per_cell.tsv and *_community_free_arm.tsv",
 )
 
 #pagebreak()
