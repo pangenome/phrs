@@ -1,0 +1,11 @@
+input	path	exists
+target_loci	slides/v2-review-zoom/_revision_assets/v3/gene_browser_inventory/target_loci.tsv	TRUE
+inventory_readme	slides/v2-review-zoom/_revision_assets/v3/gene_browser_inventory/README.md	TRUE
+inventory_track_schema	slides/v2-review-zoom/_revision_assets/v3/gene_browser_inventory/track_schema.tsv	TRUE
+chm13_phr_bed	chm13.phrs.bed	TRUE
+phr_gene_gff	phrs.genes.gff3	TRUE
+hprc_all_vs_all	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95.id95.len.tsv	TRUE
+chm13_repeatmasker	/moosefs/guarracino/HPRCv2/PHR_III/hprc_repeatmasker/chm13v2.0_RepeatMasker_4.1.2p1.2022Apr14.bed.gz	TRUE
+d4z4_dux4l_by_community	/moosefs/guarracino/HPRCv2/PHR_III/plots/d4z4_dux4l_by_community.tsv	TRUE
+or4f_pseudogene_fraction	/moosefs/guarracino/HPRCv2/PHR_III/plots/or4f_pseudogene_fraction.csv	TRUE
+community_tar1_by_arm	/moosefs/guarracino/HPRCv2/PHR_III/enrichment/community_tar1_by_arm.tsv	TRUE

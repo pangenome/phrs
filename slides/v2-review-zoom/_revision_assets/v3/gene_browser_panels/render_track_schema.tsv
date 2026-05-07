@@ -1,0 +1,5 @@
+track_order	track_name	color_rule	coordinate_rule
+1	community_band	Community-specific fill using fixed C1/C2/C3/C7/C8 palette	No genomic span; row-level arm community label
+2	phr_interval	Dark blue filled block for the selected PHR interval	0-based half-open interval, shown as kb from window start
+3	curated_gene_models	Family/biotype-aware directional glyphs with compact labels	GFF3 1-based closed converted to 0-based half-open before plotting
+4	repeat_or_proxy_markers	TAR1 repeat blocks or DUX4L/D4Z4 proxy ticks; empty lane is still retained	RepeatMasker BED is already 0-based half-open; DUX4L proxy uses converted gene rows
