@@ -1,28 +1,31 @@
-BoG 2026 review zoom v6 render log
+BoG 2026 review zoom v7 render log
 Generated: 2026-05-07 UTC
 Typst: 0.13.1
 
 Commands run from slides/v2-review-zoom/_typst:
 
-typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v6.pdf
+typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v7.pdf
+rm -f page-*.png
 typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 Typst emitted no warnings or errors.
 
 Validation summary:
-- PDF compile: success, Typst emitted no warnings or errors.
-- PDF page size scan: /MediaBox [0 0 959.76 540].
-- PNG export: page-01.png through page-43.png at 1920 x 1080 RGBA.
-- New PHR Jaccard workflow slide: page-12.png.
-- PGGB graph main-component ODGI layout slide: page-13.png, updated to use
-  v6/pggb_graph_black charcoal-on-white asset.
-- Community assignment methods slide: page-14.png, inserted between the PGGB
-  graph slide and heatmap sequence.
-- Heatmap slides shifted to page-15.png and page-16.png.
-- Preserved v4 slide 10a fix: page-24.png.
-- Dip-C/sperm validation section shifted to page-27.png through page-29.png.
-- Copy-number-aware enrichment section shifted to page-34.png through page-37.png.
-- PGGB black graph asset: 1920 x 1080, nonblank, zero saturated-blue or
-  blue-dominant pixels by RGB scan; page-13.png is nonblank after export.
-- Community assignment slide page-14.png: 1920 x 1080, nonblank/readable, mean
-  RGBA 247.17, extrema 10-255.
+- PDF compile: success.
+- PDF MediaBox scan: /MediaBox [0 0 959.76 540].
+- PNG export: page-01.png through page-46.png at 1920 x 1080 RGBA.
+- Slide 06a page-09 uses the v7 histogram-style PHR length distribution and
+  visibly marks the 500 kb analysis-window ceiling.
+- Slide 08b page-21 uses the original-style superpopulation-labeled MDS.
+- Slide 08b.1 page-22 uses nearest same-superpopulation MDS-neighbor distance;
+  the footer states that the metric is not centroid/all-pairwise.
+- Slide 09 page-23 is the v7 all-community MDS layout with C1-C15 labels,
+  1:1 axes, and not-PCA provenance.
+- Slide 10m.1 page-25 adds the MAPQ0/multimapper methods caveat.
+- Slide 10m.2 page-26 adds the CHM13 Hi-C 3D MDS contact-space view and labels
+  it as not a physical single-cell reconstruction.
+- Slide 14m page-37 and slide 14a page-38 add report-backed gene-family/GO
+  caveats: 116 Fisher rows, 0 BH-significant rows, C3 OR and C7 MTCO as
+  near-miss candidate presence patterns, and GO/ORA as method contrast.
+- Changed slide proof PNGs are nonblank and readable at slide scale by visual
+  inspection and pixel scan.

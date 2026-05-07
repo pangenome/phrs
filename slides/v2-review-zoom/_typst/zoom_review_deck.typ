@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v6 review revision.
+// BoG 2026 review zoom deck, v7 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v6.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v7.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -35,7 +35,7 @@
   if source != "" {
     align(center)[#text(size: 5.6pt, fill: col-cap)[#source]]
   } else {
-    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v6 focus page]]
+    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v7 focus page]]
   }
 }
 
@@ -507,9 +507,9 @@
 
 #figure-slide(
   "06a",
-  "PHR length distributions by named clade, censored at 500 kb",
-  "../_revision_assets/v3/06_violin_censor/candidate_06a_named_clade_violin_censor.png",
-  source: "v3/06_violin_censor/make_06_violin_censor.R; named_clade_violin_summary.tsv; 500 kb analysis cap",
+  "PHR lengths within the 500 kb discovery window",
+  "../_revision_assets/v7/06a_length_histogram_restore/phr_length_histogram_restore.png",
+  source: "v7/06a_length_histogram_restore/make_06a_length_histogram_restore.R; length_distribution_summary.tsv; right edge is the 500 kb analysis ceiling",
 )
 
 #pagebreak()
@@ -604,16 +604,16 @@
 #method-slide(
   "08m",
   "Method transition",
-  "How to read MDS / PCoA and population spread",
+  "How to read MDS and population-neighbor spread",
   [
-    MDS / PCoA places sequence-level PHR flanks by Jaccard distance.
+    MDS places sequence-level PHR flanks by graph-path Jaccard distance.
 
-    Population variation is summarized with same-superpopulation pairwise distances in the displayed MDS / PCoA space, not a distance-to-center summary.
+    Population spread is summarized as each point's nearest other same-superpopulation neighbor in displayed D1-D2 MDS space.
 
     The unit is a subtelomeric flank, so arm-community structure dominates the geometry.
   ],
-  [Use MDS / PCoA language consistently and keep population spread as a secondary within-population variation check.],
-  source: "v3/08b_within_pop_pairwise README; v3/09_all_communities_1to1 README",
+  [The v7 distance plot is nearest same-superpopulation neighbor only: self is excluded, and it is not centroid or all-pairwise distance.],
+  source: "v7/08b_nearest_same_superpop_mds README; v7/09_community_mds_layout README",
 )
 
 #pagebreak()
@@ -629,18 +629,27 @@
 
 #figure-slide(
   "08b",
-  "Within-population pairwise variation on the PHR MDS / PCoA",
-  "../_revision_assets/v3/08b_within_pop_pairwise/within_pop_pairwise_2d_distribution.png",
-  source: "v3/08b_within_pop_pairwise/make_within_pop_pairwise.R; within_pop_pairwise_summary.tsv",
+  "MDS colored by continental superpopulation",
+  "../_revision_assets/v7/08b_nearest_same_superpop_mds/superpopulation_mds_original_style.png",
+  source: "v7/08b_nearest_same_superpop_mds/make_nearest_same_superpop_mds.R; original D1-D2 MDS coordinates; color is superpopulation; 1:1 axes",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "08b.1",
+  "Nearest same-superpopulation neighbor in MDS space",
+  "../_revision_assets/v7/08b_nearest_same_superpop_mds/nearest_same_superpop_distance_distribution.png",
+  source: "v7/08b_nearest_same_superpop_mds/nearest_same_superpop_mds_distances.tsv; nearest other same-superpopulation point in displayed D1-D2 MDS; not centroid/all-pairwise",
 )
 
 #pagebreak()
 
 #figure-slide(
   "09",
-  "MDS / PCoA: all Leiden communities C1-C15 labeled",
-  "../_revision_assets/v3/09_all_communities_1to1/mds_pcoa_all_communities_1to1.png",
-  source: "v3/09_all_communities_1to1/make_all_communities_1to1.R; validation_summary.tsv confirms all C1-C15 labels",
+  "MDS: all Leiden communities C1-C15 labeled",
+  "../_revision_assets/v7/09_community_mds_layout/mds_community_layout.png",
+  source: "v7/09_community_mds_layout/make_community_mds_layout.R; MDS from hprcv2.1Mb.subtelo.full_mds.rds; C1-C15 from graph-path Jaccard Leiden assignments; 1:1 axes; not PCA",
 )
 
 #pagebreak()
@@ -658,6 +667,24 @@
   ],
   [The 3D block is validation of the sequence communities, not another way to call them.],
   source: "hic_methods README; v4/10a_xaxis_orientation README; v3/11_wb_labels README",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "10m.1",
+  "Making Hi-C work at subtelomeric repeats",
+  "../_revision_assets/v7/hic_mapq0_methods/hic_mapq0_methods_flow.svg",
+  source: "v7/hic_mapq0_methods/README.md; reports 05:5-11, 06:5-7, 07:34-42, 10:35-37; MAPQ0 aggregate signal caveat",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "10m.2",
+  "Hi-C MDS gives a 3D contact-space view",
+  "../_revision_assets/v7/hic_3d_plots/pngs/chm13_hic_mds_3d_coords.png",
+  source: "v7/hic_3d_plots README; CHM13 Hi-C 3D MDS contact-frequency embedding; not a physical single-cell genome reconstruction",
 )
 
 #pagebreak()
@@ -754,45 +781,45 @@
 #method-slide(
   "14m",
   "Method transition",
-  "Copy-number-aware enrichment: what is counted",
+  "Gene enrichment: report-backed biology, conservative statistics",
   [
-    Standard ORA asks whether each gene name is present once; subtelomeric PHR biology repeats gene copies across arms.
+    The canonical HPRCv2 community-family Fisher screen tested 116 rows and has 0 BH-significant rows.
 
-    The v5 question is which families recur across gene instances, HPRCv2 arms, and Leiden communities.
+    C3 OR and C7 MTCO are near-miss copy-aware candidate signals with BH q = 0.07118, not definitive enriched classes.
 
-    The slide section uses community-arm support and the OR4F copy gradient, not parked genome-wide copy-weighted ORA p-values.
+    The biology is still report-backed: recurrent OR4F architecture, C1 D4Z4/DUX4L, C5 DDX11L/WASH/FAM138/IQSEC3, C15 PAR1 coding genes, C7 MTCO pseudogenes, and a pseudogene/ncRNA-rich backbone.
 
-    Caveat: community assignment is not identical to a called CHM13 PHR interval. C5 chr6_p, C7 chr13_p, C14 chrY_q, and C15 chrY_p do not have called rows in chm13.phrs.bed.
+    GO/ORA tables are useful context or method contrast only: standard/coding-only outputs collapse copy number, and exploratory copy-weighted ORA still needs calibrated validation.
   ],
-  [Say copy-aware support or copy-number-aware candidate signal; do not present exploratory weighted-ORA fold enrichments or p=0 rows as final statistics.],
-  source: "v5/gene_enrichment_narrative/method_box.md and slide_text.md; v5/gene_enrichment_figures README",
+  [Say recurrent gene-family architecture, report-backed community-arm support, or copy-aware candidate signal; do not present GO or Fisher rows as BH-significant proof.],
+  source: "subtelomeric_analysis_report.md:477-600; end-to-end-report/report/03_gene_enrichment.md; v7/gene_enrichment_report_backed README",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14a",
-  "Copy-number-aware enrichment: method boundary",
-  "../_revision_assets/v5/gene_enrichment_figures/copy_aware_method_comparison.png",
-  source: "v5/gene_enrichment_figures/copy_aware_method_comparison.png; method_comparison_support.tsv",
+  "Report-backed gene-family architecture",
+  "../_revision_assets/v7/gene_enrichment_report_backed/gene_enrichment_report_backed_summary.svg",
+  source: "v7/gene_enrichment_report_backed/gene_enrichment_report_backed_summary.svg; report section 9; canonical Fisher screen has 116 rows and 0 BH-significant rows",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14b",
-  "Copy-aware candidate signals ranked by support",
+  "Copy-aware candidate signals ranked by community-arm support",
   "../_revision_assets/v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png",
-  source: "v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png; ranked_signal_support.tsv; bars are support counts, not q-values",
+  source: "v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png; ranked_signal_support.tsv; bars are support counts, not q-values or BH-significant effects",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14c",
-  "Community/family map separates support from interval scope",
+  "Community/family map separates support from statistical proof",
   "../_revision_assets/v5/gene_enrichment_figures/community_family_signal_map.png",
-  source: "v5/gene_enrichment_figures/community_family_signal_map.png; community_family_map_support.tsv and community_interval_status.tsv",
+  source: "v5/gene_enrichment_figures/community_family_signal_map.png; community_family_map_support.tsv; v7 caveat: report-backed presence patterns, not definitive enriched classes",
 )
 
 #pagebreak()
