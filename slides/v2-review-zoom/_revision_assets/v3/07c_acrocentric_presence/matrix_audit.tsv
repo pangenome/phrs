@@ -1,0 +1,15 @@
+metric	value
+source_length_rows	18826
+source_length_rows_with_interchrom_signal	15668
+source_length_rows_without_interchrom_signal	3158
+matrix_rows	41
+matrix_columns	41
+present_arms	41
+excluded_arms	chr2_p, chr3_p, chr5_p, chr8_q, chr11_q, chr14_q, chr18_q
+acrocentric_p_arms_present	chr13_p, chr14_p, chr15_p, chr21_p, chr22_p
+acrocentric_p_arms_monophyletic	TRUE
+raw_diagonal_min	0.009725
+raw_diagonal_max	0.597977
+max_asymmetry_raw	0
+off_diagonal_min_after_zero_diag	0.015324
+off_diagonal_max_after_zero_diag	1.000000

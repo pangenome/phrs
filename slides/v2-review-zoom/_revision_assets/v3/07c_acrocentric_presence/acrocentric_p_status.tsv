@@ -1,0 +1,6 @@
+chrom_arm	source_rows	retained_interchrom_signal_rows	zero_signal_rows	in_41x41_matrix	leiden_community	community_arms	tree_tip_status	collapsed_with	audit_status	reason	tip_label_in_plot	nj_tip_branch_length	monophyletic_c7
+chr13_p	76	76	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip	13p	0.293096	TRUE
+chr14_p	230	229	1	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip	14p	0.265027	TRUE
+chr15_p	119	119	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip	15p	0.260955	TRUE
+chr21_p	116	116	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip	21p	0.281827	TRUE
+chr22_p	223	223	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip	22p	0.259659	TRUE

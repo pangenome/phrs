@@ -1,0 +1,49 @@
+chrom_arm	source_rows	retained_interchrom_signal_rows	zero_signal_rows	in_41x41_matrix	leiden_community	community_arms	tree_tip_status	collapsed_with	audit_status	reason
+chr1_p	439	438	1	TRUE	C11	1p, 5q, 6q, 8p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr1_q	445	445	0	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr2_p	438	0	438	FALSE	NA	NA	no_tip_matrix_excluded	NA	zero_signal_excluded	excluded from 41x41 matrix because all source rows have zero retained inter-chromosomal PHR signal at the >=95% identity threshold
+chr2_q	450	450	0	TRUE	C12	2q, 20p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr3_p	453	0	453	FALSE	NA	NA	no_tip_matrix_excluded	NA	zero_signal_excluded	excluded from 41x41 matrix because all source rows have zero retained inter-chromosomal PHR signal at the >=95% identity threshold
+chr3_q	436	436	0	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr4_p	448	448	0	TRUE	C13	4p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr4_q	357	357	0	TRUE	C1	4q, 10q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr5_p	451	0	451	FALSE	NA	NA	no_tip_matrix_excluded	NA	zero_signal_excluded	excluded from 41x41 matrix because all source rows have zero retained inter-chromosomal PHR signal at the >=95% identity threshold
+chr5_q	447	447	0	TRUE	C11	1p, 5q, 6q, 8p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr6_p	447	417	30	TRUE	C5	6p, 9p, 12p, 20q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr6_q	440	440	0	TRUE	C11	1p, 5q, 6q, 8p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr7_p	438	438	0	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr7_q	447	446	1	TRUE	C4	7q, 12q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr8_p	458	458	0	TRUE	C11	1p, 5q, 6q, 8p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr8_q	452	0	452	FALSE	NA	NA	no_tip_matrix_excluded	NA	zero_signal_excluded	excluded from 41x41 matrix because all source rows have zero retained inter-chromosomal PHR signal at the >=95% identity threshold
+chr9_p	448	448	0	TRUE	C5	6p, 9p, 12p, 20q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr9_q	450	450	0	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr10_p	443	443	0	TRUE	C2	10p, 18p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr10_q	358	357	1	TRUE	C1	4q, 10q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr11_p	448	448	0	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr11_q	451	0	451	FALSE	NA	NA	no_tip_matrix_excluded	NA	zero_signal_excluded	excluded from 41x41 matrix because all source rows have zero retained inter-chromosomal PHR signal at the >=95% identity threshold
+chr12_p	454	454	0	TRUE	C5	6p, 9p, 12p, 20q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr12_q	450	449	1	TRUE	C4	7q, 12q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr13_p	76	76	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr13_q	449	449	0	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr14_p	230	229	1	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr14_q	390	0	390	FALSE	NA	NA	no_tip_matrix_excluded	NA	zero_signal_excluded	excluded from 41x41 matrix because all source rows have zero retained inter-chromosomal PHR signal at the >=95% identity threshold
+chr15_p	119	119	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr15_q	449	449	0	TRUE	C8	15q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr16_p	442	442	0	TRUE	C9	16p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr16_q	449	449	0	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr17_p	448	448	0	TRUE	C10	17p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr17_q	451	451	0	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr18_p	446	446	0	TRUE	C2	10p, 18p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr18_q	456	0	456	FALSE	NA	NA	no_tip_matrix_excluded	NA	artifact_filtered_then_zero_signal_excluded	excluded from 41x41 matrix after the NA18982#1 chr18_q/chrX PAR1 scaffold chimera was removed; remaining source rows have zero retained inter-chromosomal signal
+chr19_p	434	434	0	TRUE	C3	3q, 7p, 9q, 11p, 16q, 19p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr19_q	457	457	0	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr20_p	453	453	0	TRUE	C12	2q, 20p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr20_q	441	409	32	TRUE	C5	6p, 9p, 12p, 20q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr21_p	116	116	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr21_q	449	449	0	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr22_p	223	223	0	TRUE	C7	13p, 14p, 15p, 21p, 22p	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chr22_q	450	450	0	TRUE	C6	1q, 13q, 17q, 19q, 21q, 22q	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chrX_p	327	327	0	TRUE	C15	Xp, Yp	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chrX_q	330	330	0	TRUE	C14	Xq, Yq	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chrY_p	92	92	0	TRUE	C15	Xp, Yp	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
+chrY_q	101	101	0	TRUE	C14	Xq, Yq	distinct_tip	none	present_distinct_tree_tip	present in source matrix and rendered as an individual NJ tip
