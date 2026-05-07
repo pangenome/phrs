@@ -1,0 +1,17 @@
+metric	value
+source_tsv	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95.id95.len.tsv
+non_empty_intervals	15,668
+arms_with_called_intervals	41
+total_arms_checked	48
+zero_signal_arms	2p, 3p, 5p, 8q, 11q, 14q, 18q
+min_kb	5
+p25_kb	40
+median_kb	105
+mean_kb	143.8
+p75_kb	200
+p90_kb	330
+p95_kb	500
+max_reported_kb	500
+reported_at_500kb_n	1,087
+reported_at_500kb_pct	6.9
+analysis_ceiling_note	analysis window ends at 500 kb; longer shared sequence is not measured
