@@ -1,0 +1,29 @@
+check	value
+source_matrix_rows	77
+source_matrix_columns	77
+source_row_names_equal_column_names	TRUE
+source_row_name_set_equal_column_name_set	TRUE
+source_matrix_symmetric	TRUE
+source_matrix_max_abs_symmetry_delta	0e+00
+source_matrix_all_arms_have_sequence_community	TRUE
+source_sequence_community_table	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden.communities.tsv
+v3_generator	slides/v2-review-zoom/_revision_assets/v3/10a_axis_box_fix/make_10a_axis_box_fix.R
+v3_asset_dimensions	1800x1800
+v3_audit	slides/v2-review-zoom/_revision_assets/v3/10a_axis_box_fix/matrix_order_audit.tsv
+v3_visual_x_axis_mirrored	TRUE
+v3_implicit_displayed_column_order_left_to_right	reverse(ordered_arms); leftmost v3 displayed column was the last ordered arm-haplotype
+corrected_displayed_column_order_left_to_right	ordered_arms; leftmost v4 displayed column is the first ordered arm-haplotype
+corrected_x_axis_policy	display columns left-to-right as ordered_arms[1:n], matching the sequence-community order; draw rasterImage(as.raster(color_matrix)) directly and compute x boxes in this displayed column coordinate system.
+corrected_raster_transform	rasterImage(as.raster(color_matrix)); no t(color_matrix)[, n:1] raster transform
+original_fig3_panel_a_display_transform	paper Fig. 3 panel A uses base image(..., t(vals_norm)[, n:1]); that transform is correct for image() but not for rasterImage()
+v2_redesign_generator_inspected	slides/v2-review-zoom/_revision_assets/hic_visual_redesign/make_hic_visual_redesign.R
+v2_contact_community_table	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_hic.arm-leiden.communities.tsv
+v2_contact_community_count	42
+sequence_community_count_in_matrix	15
+v2_contact_partition_pair_agreement_with_sequence_partition	2712/2926
+ordered_row_names_equal_ordered_column_names	TRUE
+computed_within_mean_matches_source_tsv	TRUE
+computed_between_mean_matches_source_tsv	TRUE
+computed_bw_matches_source_tsv	TRUE
+source_bw	0.055530602
+source_p_value	3.856e-85

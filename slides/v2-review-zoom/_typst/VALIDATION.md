@@ -1,16 +1,16 @@
-# BoG 2026 Review Zoom Deck v3 Manifest
+# BoG 2026 Review Zoom Deck v4 Manifest
 
 Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 
 ## Artifacts
 
-- `../BoG_2026_review_zoom_v3.pdf`
+- `../BoG_2026_review_zoom_v4.pdf`
 - `zoom_review_deck.typ`
 - `render.log`
 - `page-01.png` through `page-33.png`
-- `../REVISION_NOTES_V3.md`
-- `../BoG_2026_review_zoom.pdf` and `../BoG_2026_review_zoom_v2.pdf`
-  remain in place as the v1 and v2 reference renders.
+- `../REVISION_NOTES_V4.md`
+- `../BoG_2026_review_zoom.pdf`, `../BoG_2026_review_zoom_v2.pdf`, and
+  `../BoG_2026_review_zoom_v3.pdf` remain in place as prior reference renders.
 
 ## Page Map
 
@@ -35,7 +35,7 @@ Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 | 17 | 08b | Within-population pairwise variation metric |
 | 18 | 09 | 1:1 all-community MDS / PCoA labels |
 | 19 | 10m | Method transition: explicit 3D contact validation language |
-| 20 | 10a | Axis/box-corrected Pore-C community matrix |
+| 20 | 10a | X-axis-orientation-corrected Pore-C community matrix |
 | 21 | 10b | Mantel exclusion clarity plot |
 | 22 | 11 | Explicit within-community vs between-community single-cell distance plot |
 | 23 | 12 | Mouse zygotene plus stage trajectory |
@@ -53,11 +53,15 @@ Generated on 2026-05-07 UTC from `zoom_review_deck.typ`.
 ## Validation
 
 - PDF compiles with Typst 0.13.1 using `--root ..`.
-- PDF has 33 pages and 33 `/MediaBox [0 0 959.76 540]` entries.
+- `pdfinfo ../BoG_2026_review_zoom_v4.pdf` reports 33 pages.
 - Page size is 959.76 x 540 pt, matching 13.33 in x 7.5 in and 16:9.
 - PNG export produced 33 pages at 1920 x 1080 RGBA.
-- Representative corrected pages were scanned for nonblank pixels: pages 09,
-  12, 14, 17, 18, 20, 22, 24, 28, 32, and 33.
+- Page 20 / slide `10a` is nonblank: ImageMagick reported
+  `page-20.png 1920x1080 mean=63491.8 extrema=0-65535`.
+- The corrected slide 10a asset is nonblank:
+  `candidate_10a_xaxis_orientation.png 1800x1800 mean=59990.9 extrema=0-65535`.
+- `_revision_assets/v4/10a_xaxis_orientation/orientation_audit.tsv` records
+  `v3_x_axis_mirrored = TRUE` and the corrected X-axis policy.
 - The slide directory contains no stale prior-agent absolute worktree paths.
-- Detailed provenance for every new or changed v3 asset is recorded in
-  `../REVISION_NOTES_V3.md`.
+- Detailed provenance for the v4 slide 10a correction is recorded in
+  `../REVISION_NOTES_V4.md`.

@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v3 review revision.
+// BoG 2026 review zoom deck, v4 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v3.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v4.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -35,7 +35,7 @@
   if source != "" {
     align(center)[#text(size: 5.6pt, fill: col-cap)[#source]]
   } else {
-    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v3 focus page]]
+    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v4 focus page]]
   }
 }
 
@@ -347,7 +347,7 @@
     Within-community versus between-community distance ratios, Mantel rho, and exclusion tests are robustness checks on the same question.
   ],
   [The 3D block is validation of the sequence communities, not another way to call them.],
-  source: "hic_methods README; v3/10a_axis_box_fix README; v3/11_wb_labels README",
+  source: "hic_methods README; v4/10a_xaxis_orientation README; v3/11_wb_labels README",
 )
 
 #pagebreak()
@@ -355,8 +355,8 @@
 #figure-slide(
   "10a",
   "Sequence communities co-localize in 3D",
-  "../_revision_assets/v3/10a_axis_box_fix/candidate_10a_axis_box_fix.png",
-  source: "v3/10a_axis_box_fix/make_10a_axis_box_fix.R; matrix_order_audit.tsv; community boxes aligned to square matrix",
+  "../_revision_assets/v4/10a_xaxis_orientation/candidate_10a_xaxis_orientation.png",
+  source: "v4/10a_xaxis_orientation/make_10a_xaxis_orientation.R; orientation_audit.tsv; corrected X left-to-right orientation",
 )
 
 #pagebreak()
