@@ -10,15 +10,19 @@ typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 Typst emitted no warnings or errors.
 
 Validation summary:
-- PDF page scan: 42 strict /Type /Page entries.
+- PDF compile: success, Typst emitted no warnings or errors.
 - PDF page size scan: /MediaBox [0 0 959.76 540].
-- PNG export: page-01.png through page-42.png at 1920 x 1080 RGBA.
+- PNG export: page-01.png through page-43.png at 1920 x 1080 RGBA.
 - New PHR Jaccard workflow slide: page-12.png.
 - PGGB graph main-component ODGI layout slide: page-13.png, updated to use
   v6/pggb_graph_black charcoal-on-white asset.
-- Heatmap slides shifted to page-14.png and page-15.png.
-- Preserved v4 slide 10a fix: page-23.png.
-- Dip-C/sperm validation section: page-26.png through page-28.png.
-- Copy-number-aware enrichment section shifted to page-33.png through page-36.png.
+- Community assignment methods slide: page-14.png, inserted between the PGGB
+  graph slide and heatmap sequence.
+- Heatmap slides shifted to page-15.png and page-16.png.
+- Preserved v4 slide 10a fix: page-24.png.
+- Dip-C/sperm validation section shifted to page-27.png through page-29.png.
+- Copy-number-aware enrichment section shifted to page-34.png through page-37.png.
 - PGGB black graph asset: 1920 x 1080, nonblank, zero saturated-blue or
   blue-dominant pixels by RGB scan; page-13.png is nonblank after export.
+- Community assignment slide page-14.png: 1920 x 1080, nonblank/readable, mean
+  RGBA 247.17, extrema 10-255.

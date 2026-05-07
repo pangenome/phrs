@@ -305,6 +305,122 @@
   )
 }
 
+#let community-method-stat(value, label) = block(
+  width: 100%,
+  fill: rgb("#ffffff"),
+  stroke: 0.75pt + col-hdr-bg.darken(12%),
+  inset: (x: 0.09in, y: 0.065in),
+  radius: 3pt,
+)[
+  #align(center)[
+    #text(size: 17pt, weight: "bold", fill: col-title)[#value]
+    #linebreak()
+    #text(size: 7.8pt, fill: col-text)[#label]
+  ]
+]
+
+#let community-method-card(title, body) = block(
+  width: 100%,
+  fill: col-card-bg,
+  stroke: 0.75pt + col-hdr-bg.darken(15%),
+  inset: (x: 0.13in, y: 0.08in),
+  radius: 3pt,
+)[
+  #text(size: 10.2pt, weight: "bold", fill: col-title)[#title]
+  #linebreak()
+  #text(size: 8.7pt, fill: col-text)[#body]
+]
+
+#let community-assignment-method-slide(num, label, source: "") = {
+  grid(
+    rows: (0.34in, 1fr, 0.13in),
+    row-gutter: 0.02in,
+    align: center,
+    header(num, label),
+    align(center + horizon)[
+      #block(width: 11.95in)[
+        #align(center)[
+          #text(size: 22pt, weight: "bold", fill: col-title)[How we assigned PHR communities]
+        ]
+        #v(0.11in)
+        #grid(
+          columns: (1fr, 1fr, 1fr, 1fr),
+          column-gutter: 0.08in,
+          community-method-stat("15,668", [HPRCv2 PHR paths with inter-chromosomal signal]),
+          community-method-stat("41 x 41", [arm distance matrix; 7 zero-signal arms excluded]),
+          community-method-stat("15", [output Leiden arm-level communities, C1-C15]),
+          community-method-stat("1.16 / 0.347", [resolution / mean silhouette]),
+        )
+        #v(0.11in)
+        #grid(
+          columns: (1.15fr, 1fr),
+          column-gutter: 0.16in,
+          align: top,
+          [
+            #block(
+              width: 100%,
+              height: 3.28in,
+              fill: rgb("#ffffff"),
+              stroke: 0.75pt + col-hdr-bg.darken(15%),
+              inset: (x: 0.05in, y: 0.05in),
+              radius: 3pt,
+            )[
+              #image("../_revision_assets/v6/community_assignment_method/community_assignment_method_schematic.svg", width: 100%, height: 100%, fit: "contain")
+            ]
+            #v(0.08in)
+            #block(
+              width: 100%,
+              fill: col-note-bg,
+              stroke: (left: 4pt + col-note-bar),
+              inset: (x: 0.14in, y: 0.09in),
+              radius: 3pt,
+            )[
+              #text(size: 9.2pt, weight: "bold", fill: col-text)[No gene labels or 3D data were used to define communities.]
+              #linebreak()
+              #text(size: 8.6pt, fill: col-text)[Biological labels such as D4Z4, acrocentric p, PAR1/PAR2, and f7501/OR4F were added after clustering.]
+            ]
+          ],
+          [
+            #grid(
+              rows: (auto, auto, auto),
+              row-gutter: 0.075in,
+              community-method-card(
+                "Inputs: graph-path Jaccard only",
+                [Build one PGGB graph (`pggb -p 95`) and compute all-vs-all path Jaccard with `odgi similarity --all -P`.],
+              ),
+              community-method-card(
+                "Collapse paths to chromosome arms",
+                [For each arm pair A x B, average all haplotype/path pair distances using `distance = 1 - Jaccard`.],
+              ),
+              community-method-card(
+                "Leiden call, silhouette-selected",
+                [Run Leiden on a fully connected weighted arm graph with `w_ij = exp(-d_ij / median(d))`; scan resolution 0.1-3.0 by 0.01 and choose maximum mean silhouette.],
+              ),
+            )
+            #v(0.075in)
+            #block(
+              width: 100%,
+              fill: rgb("#ffffff"),
+              stroke: 0.75pt + col-hdr-bg.darken(12%),
+              inset: (x: 0.13in, y: 0.085in),
+              radius: 3pt,
+            )[
+              #text(size: 10.2pt, weight: "bold", fill: col-title)[Robustness check]
+              #linebreak()
+              #text(size: 8.6pt, fill: col-text)[UPGMA average-linkage on the same matrix gives 14 communities, silhouette 0.342, and agrees exactly on 12/15 Leiden communities; differences are f7501-like boundary cases.]
+            ]
+          ],
+        )
+        #v(0.10in)
+        #align(center)[
+          #text(size: 8.3pt, fill: col-cap)[This slide is arm-level C1-C15 across 41 detected-signal arms only; the sequence-level 50-community partition is a separate finer-grained analysis.]
+        ]
+      ]
+    ],
+    footer(source),
+  )
+}
+
 #text-slide(
   "01",
   "Title - review focus page",
@@ -437,6 +553,14 @@
   "PGGB graph main component: ODGI 2D layout",
   "../_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png",
   source: "v6/pggb_graph_black; derived from v5/pggb_graph_odgi; ODGI layout TSV component 8 main component; 727,156 nodes; rotated 16:9; charcoal-on-white recolor",
+)
+
+#pagebreak()
+
+#community-assignment-method-slide(
+  "07j.2",
+  "Community assignment method",
+  source: "subtelomeric_analysis_report.md sections 5 and 6.1; HPRCv2 plot-similarity-subtelo.R; arm distance matrix and Leiden k15 assignment TSVs",
 )
 
 #pagebreak()

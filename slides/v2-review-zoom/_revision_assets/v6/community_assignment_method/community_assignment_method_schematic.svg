@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="Workflow schematic for assigning PHR communities">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a3a6b"/>
+    </marker>
+    <style>
+      .title { font: 700 30px DejaVu Sans, Arial, sans-serif; fill: #1a3a6b; }
+      .body { font: 400 23px DejaVu Sans, Arial, sans-serif; fill: #222222; }
+      .small { font: 400 20px DejaVu Sans, Arial, sans-serif; fill: #555555; }
+      .step { fill: #f5f8fc; stroke: #9eb5d1; stroke-width: 3; }
+      .check { fill: #ffffff; stroke: #d4820a; stroke-width: 3; }
+      .note { fill: #fff8e8; stroke: #d4820a; stroke-width: 3; }
+      .arrow { stroke: #1a3a6b; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="620" fill="#ffffff"/>
+
+  <g transform="translate(35 55)">
+    <rect class="step" x="0" y="0" rx="12" ry="12" width="240" height="165"/>
+    <text class="title" x="120" y="45" text-anchor="middle">15,668 paths</text>
+    <text class="body" x="120" y="87" text-anchor="middle">HPRCv2 PHR</text>
+    <text class="body" x="120" y="121" text-anchor="middle">haplotype-arm</text>
+    <text class="body" x="120" y="151" text-anchor="middle">sequences</text>
+  </g>
+
+  <g transform="translate(325 55)">
+    <rect class="step" x="0" y="0" rx="12" ry="12" width="240" height="165"/>
+    <text class="title" x="120" y="45" text-anchor="middle">Graph</text>
+    <text class="body" x="120" y="87" text-anchor="middle">one PGGB graph</text>
+    <text class="body" x="120" y="121" text-anchor="middle">pggb -p 95</text>
+    <text class="small" x="120" y="151" text-anchor="middle">not per arm pair</text>
+  </g>
+
+  <g transform="translate(615 55)">
+    <rect class="step" x="0" y="0" rx="12" ry="12" width="240" height="165"/>
+    <text class="title" x="120" y="45" text-anchor="middle">Path Jaccard</text>
+    <text class="body" x="120" y="87" text-anchor="middle">odgi similarity</text>
+    <text class="body" x="120" y="121" text-anchor="middle">--all -P</text>
+    <text class="small" x="120" y="151" text-anchor="middle">graph nodes shared</text>
+  </g>
+
+  <g transform="translate(905 55)">
+    <rect class="step" x="0" y="0" rx="12" ry="12" width="240" height="165"/>
+    <text class="title" x="120" y="45" text-anchor="middle">41 x 41 arms</text>
+    <text class="body" x="120" y="87" text-anchor="middle">distance =</text>
+    <text class="body" x="120" y="121" text-anchor="middle">1 - Jaccard</text>
+    <text class="small" x="120" y="151" text-anchor="middle">mean over path pairs</text>
+  </g>
+
+  <path class="arrow" d="M 280 137 L 318 137"/>
+  <path class="arrow" d="M 570 137 L 608 137"/>
+  <path class="arrow" d="M 860 137 L 898 137"/>
+
+  <path class="arrow" d="M 1025 225 L 1025 290 L 745 290 L 745 332"/>
+  <path class="arrow" d="M 1025 225 L 1025 290 L 1030 290 L 1030 332"/>
+
+  <g transform="translate(575 345)">
+    <rect class="step" x="0" y="0" rx="12" ry="12" width="340" height="145"/>
+    <text class="title" x="170" y="42" text-anchor="middle">Leiden primary</text>
+    <text class="body" x="170" y="82" text-anchor="middle">w_ij = exp(-d_ij / median(d))</text>
+    <text class="small" x="170" y="113" text-anchor="middle">scan resolution 0.1-3.0</text>
+    <text class="small" x="170" y="137" text-anchor="middle">best: 15 communities, sil 0.347</text>
+  </g>
+
+  <g transform="translate(965 345)">
+    <rect class="check" x="0" y="0" rx="12" ry="12" width="205" height="145"/>
+    <text class="title" x="103" y="42" text-anchor="middle">UPGMA</text>
+    <text class="body" x="103" y="82" text-anchor="middle">same matrix</text>
+    <text class="small" x="103" y="113" text-anchor="middle">14 communities</text>
+    <text class="small" x="103" y="137" text-anchor="middle">12/15 agree</text>
+  </g>
+
+  <g transform="translate(35 505)">
+    <rect class="note" x="0" y="0" rx="10" ry="10" width="1130" height="76"/>
+    <text class="title" x="565" y="34" text-anchor="middle">Interpret labels after clustering</text>
+    <text class="body" x="565" y="62" text-anchor="middle">No gene labels, biological names, or 3D data enter the assignment step.</text>
+  </g>
+</svg>
