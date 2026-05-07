@@ -145,6 +145,119 @@
   )
 }
 
+#let workflow-step(num, title, body) = block(
+  width: 100%,
+  fill: rgb("#ffffff"),
+  stroke: 0.7pt + col-hdr-bg.darken(15%),
+  inset: (x: 0.14in, y: 0.095in),
+  radius: 3pt,
+)[
+  #grid(
+    columns: (0.34in, 1fr),
+    column-gutter: 0.10in,
+    align: top,
+    block(
+      fill: col-title,
+      inset: (x: 0.06in, y: 0.035in),
+      radius: 2pt,
+    )[
+      #align(center)[#text(size: 9pt, weight: "bold", fill: rgb("#ffffff"))[#num]]
+    ],
+    [
+      #text(size: 10.5pt, weight: "bold", fill: col-title)[#title]
+      #linebreak()
+      #text(size: 8.9pt, fill: col-text)[#body]
+    ],
+  )
+]
+
+#let jaccard-workflow-slide(num, label, source: "") = {
+  grid(
+    rows: (0.34in, 1fr, 0.13in),
+    row-gutter: 0.02in,
+    align: center,
+    header(num, label),
+    align(center + horizon)[
+      #block(width: 11.7in)[
+        #align(center)[
+          #text(size: 22pt, weight: "bold", fill: col-title)[How we turn PHR paths into the similarity matrix]
+        ]
+        #v(0.14in)
+        #grid(
+          columns: (1.52fr, 0.95fr),
+          column-gutter: 0.18in,
+          align: top,
+          [
+            #grid(
+              rows: (auto, auto, auto, auto, auto),
+              row-gutter: 0.065in,
+              workflow-step(
+                "1",
+                "IMPG PHR interval calls",
+                [Index/query HPRCv2 all-vs-all subtelomeric alignments via IMPG; keep inter-chromosomal sharing inside the terminal window.],
+              ),
+              workflow-step(
+                "2",
+                "Arm/haplotype bundles",
+                [Extract one PHR sequence per sample, haplotype, and chromosome arm; all paths assigned to chr9q form the chr9q bundle.],
+              ),
+              workflow-step(
+                "3",
+                "One PGGB graph",
+                [Build one graph over the full collection of PHR paths, not one graph per arm pair.],
+              ),
+              workflow-step(
+                "4",
+                "ODGI path Jaccard",
+                [`odgi similarity --all -P` reports graph-node Jaccard for every path pair: shared nodes intersection / all traversed nodes union.],
+              ),
+              workflow-step(
+                "5",
+                "Arm-level matrix",
+                [For every arm A x arm B, average Jaccard over all haplotype-path pairs in bundle A and bundle B.],
+              ),
+            )
+          ],
+          [
+            #block(
+              width: 100%,
+              fill: col-card-bg,
+              stroke: 0.8pt + col-hdr-bg.darken(15%),
+              inset: (x: 0.18in, y: 0.15in),
+              radius: 3pt,
+            )[
+              #text(size: 13pt, weight: "bold", fill: col-title)[Bundle average]
+              #v(0.09in)
+              #text(size: 10.4pt, fill: col-text)[Cell(A,B) = mean path-pair Jaccard]
+              #v(0.13in)
+              #text(size: 13pt, weight: "bold", fill: col-title)[Same-arm self-bundle averaging]
+              #v(0.08in)
+              #text(size: 10.4pt, fill: col-text)[Include same-arm A x A comparisons.]
+              #v(0.08in)
+              #text(size: 10.4pt, fill: col-text)[A x A can be < 1: it averages distinct haplotypes/paths from the same arm, not only each path compared to itself.]
+            ]
+            #v(0.16in)
+            #block(
+              width: 100%,
+              fill: col-note-bg,
+              stroke: (left: 4pt + col-note-bar),
+              inset: (x: 0.17in, y: 0.12in),
+              radius: 3pt,
+            )[
+              #text(size: 11.5pt, weight: "bold", fill: col-text)[Then use:]
+              #linebreak()
+              #text(size: 10.4pt, fill: col-text)[distance = 1 - Jaccard]
+              #linebreak()
+              #text(size: 10.4pt, fill: col-text)[arm matrix -> UPGMA tree + Leiden community views]
+            ]
+          ],
+        )
+      ]
+    ],
+    footer(source),
+  )
+}
+
 #text-slide(
   "01",
   "Title - review focus page",
@@ -260,6 +373,14 @@
   ],
   [The heatmap, tree, and MDS block should be read as one sequence-similarity system, not independent assays.],
   source: "narrative_density README; v5/07a_tree_then_community_heatmap and 09_mds_community READMEs",
+)
+
+#pagebreak()
+
+#jaccard-workflow-slide(
+  "07j",
+  "PHR Jaccard workflow",
+  source: "HPRCv2 PHR similarity workflow: IMPG interval calls, PGGB graph over all paths, ODGI path Jaccard, arm-bundle averaging",
 )
 
 #pagebreak()
