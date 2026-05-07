@@ -1,0 +1,9 @@
+path	purpose	source_status
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/README.md	Claim boundary README with source rows/files	Report-backed synthesis
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/gene_family_function_slide_table.tsv	Compact tabular slide asset for canonical gene-family/function claims	Canonical HPRCv2 reports and enrichment TSVs
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/gene_family_function_slide_table.md	Markdown rendering of the gene-family/function table	Canonical HPRCv2 reports and enrichment TSVs
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/go_function_context_table.tsv	Compact table of historical GO/ORA method-context rows	Parked brainstorming tables; labeled noncanonical
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/go_function_context_table.md	Markdown rendering of the GO/ORA method-context table	Parked brainstorming tables; labeled noncanonical
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/slide_text_blocks.md	Three slide-ready text blocks with speaker-note hooks	Report-backed synthesis
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/gene_enrichment_report_backed_summary.svg	Optional compact visual summary panel	Report-backed synthesis
+slides/v2-review-zoom/_revision_assets/v7/gene_enrichment_report_backed/SLIDE_PATCH.md	Deck integration recommendation for downstream fan-in renderer	Report-backed synthesis

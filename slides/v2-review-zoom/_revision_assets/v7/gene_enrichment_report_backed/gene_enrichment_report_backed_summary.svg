@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Report-backed gene enrichment summary with conservative statistics">
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <rect x="0" y="0" width="1600" height="96" fill="#17324d"/>
+  <text x="70" y="61" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#ffffff">Gene enrichment: report-backed biology, conservative statistics</text>
+  <text x="70" y="124" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4b5563">Use recurrent gene-family architecture / copy-aware candidate signal. Do not call this BH-significant GO proof.</text>
+
+  <rect x="70" y="155" width="690" height="185" rx="10" fill="#f5f8fc" stroke="#c8d6e5" stroke-width="2"/>
+  <text x="105" y="196" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#17324d">Canonical HPRCv2 family screen</text>
+  <text x="105" y="236" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2937">116 community-family Fisher rows</text>
+  <text x="105" y="273" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2937">0 BH-significant rows</text>
+  <text x="105" y="310" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2937">Near-miss candidates: C3 OR and C7 MTCO, BH q = 0.07118</text>
+
+  <rect x="810" y="155" width="720" height="185" rx="10" fill="#fff8e8" stroke="#d4820a" stroke-width="2"/>
+  <text x="845" y="196" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#7a4a00">Interpretation guardrail</text>
+  <text x="845" y="236" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2937">Say: report-backed presence patterns and recurrent architecture</text>
+  <text x="845" y="273" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2937">Avoid: BH-significant GO enrichment proves X</text>
+  <text x="845" y="310" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#1f2937">GO tables are context/method contrast unless revalidated</text>
+
+  <text x="70" y="396" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#17324d">Report-backed signals to keep</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="70" y="425" width="470" height="122" rx="8" fill="#edf4fb" stroke="#c8d6e5"/>
+    <text x="95" y="462" font-size="23" font-weight="700" fill="#17324d">OR4F / olfactory receptor</text>
+    <text x="95" y="496" font-size="20" fill="#1f2937">10 OR4F genes across 7 communities</text>
+    <text x="95" y="526" font-size="18" fill="#6b7280">C3 OR candidate; BH q = 0.07118</text>
+
+    <rect x="565" y="425" width="470" height="122" rx="8" fill="#edf4fb" stroke="#c8d6e5"/>
+    <text x="590" y="462" font-size="23" font-weight="700" fill="#17324d">C1 D4Z4 / DUX4L</text>
+    <text x="590" y="496" font-size="20" fill="#1f2937">22 C1-specific DUX4L pseudogenes</text>
+    <text x="590" y="526" font-size="18" fill="#6b7280">chr4_q / chr10_q community signature</text>
+
+    <rect x="1060" y="425" width="470" height="122" rx="8" fill="#edf4fb" stroke="#c8d6e5"/>
+    <text x="1085" y="462" font-size="23" font-weight="700" fill="#17324d">C5 duplicon module</text>
+    <text x="1085" y="496" font-size="20" fill="#1f2937">DDX11L, WASH, FAM138 across 4 arms</text>
+    <text x="1085" y="526" font-size="18" fill="#6b7280">IQSEC3 anchor: 453 samples</text>
+
+    <rect x="70" y="575" width="470" height="122" rx="8" fill="#edf4fb" stroke="#c8d6e5"/>
+    <text x="95" y="612" font-size="23" font-weight="700" fill="#17324d">C15 PAR1 coding outlier</text>
+    <text x="95" y="646" font-size="20" fill="#1f2937">32.1% protein-coding content</text>
+    <text x="95" y="676" font-size="18" fill="#6b7280">SHOX, GTPBP6, P2RY8, PLCXD1, PPP2R3B</text>
+
+    <rect x="565" y="575" width="470" height="122" rx="8" fill="#edf4fb" stroke="#c8d6e5"/>
+    <text x="590" y="612" font-size="23" font-weight="700" fill="#17324d">C7 acrocentric MTCO</text>
+    <text x="590" y="646" font-size="20" fill="#1f2937">9 C7-specific MTCO pseudogene rows</text>
+    <text x="590" y="676" font-size="18" fill="#6b7280">Candidate signal; BH q = 0.07118</text>
+
+    <rect x="1060" y="575" width="470" height="122" rx="8" fill="#edf4fb" stroke="#c8d6e5"/>
+    <text x="1085" y="612" font-size="23" font-weight="700" fill="#17324d">Duplicon backbone</text>
+    <text x="1085" y="646" font-size="20" fill="#1f2937">RPL23A, SEPTIN14, DDX11L, FAM138, WASH</text>
+    <text x="1085" y="676" font-size="18" fill="#6b7280">Mostly pseudogene / lncRNA-rich content</text>
+  </g>
+
+  <rect x="70" y="740" width="1460" height="92" rx="10" fill="#f8fafc" stroke="#c8d6e5"/>
+  <text x="105" y="777" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17324d">Slide hierarchy</text>
+  <text x="105" y="812" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#1f2937">Lead with HPRCv2 report/table rows. Show standard/coding-only GO and exploratory copy-weighted ORA only as clearly labeled method contrast.</text>
+  <text x="70" y="870" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#6b7280">Sources: subtelomeric_analysis_report.md section 9; end-to-end-report/report/03_gene_enrichment.md; HPRCv2 enrichment TSVs; parked GO/ORA brainstorming tables.</text>
+</svg>
