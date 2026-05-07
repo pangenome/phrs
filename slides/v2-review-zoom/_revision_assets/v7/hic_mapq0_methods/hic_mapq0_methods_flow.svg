@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="Three-step flow for MAPQ0 multimapper handling in subtelomeric 3D validation">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a3a6b"/>
+    </marker>
+    <filter id="soft-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="620" fill="#ffffff"/>
+
+  <rect x="44" y="24" width="1112" height="86" rx="6" fill="#f5f8fc" stroke="#b8cae0" stroke-width="2"/>
+  <text x="600" y="57" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#1a3a6b">3D validation required reanalysis</text>
+  <text x="600" y="91" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="700" fill="#222222">The original standard filtering was biased by ignoring MAPQ0 reads.</text>
+
+  <g filter="url(#soft-shadow)">
+    <rect x="48" y="150" width="324" height="286" rx="7" fill="#ffffff" stroke="#9fb7d3" stroke-width="2"/>
+    <rect x="48" y="150" width="324" height="50" rx="7" fill="#dce8f7" stroke="#9fb7d3" stroke-width="0"/>
+    <circle cx="78" cy="175" r="18" fill="#1a3a6b"/>
+    <text x="78" y="181" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">1</text>
+    <text x="105" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#1a3a6b">Standard filter fails</text>
+    <text x="76" y="236" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" fill="#222222">
+      <tspan x="76" dy="0">MAPQ &gt;=20 / removing</tspan>
+      <tspan x="76" dy="29">multimappers deletes</tspan>
+      <tspan x="76" dy="29">most subtelomeric signal.</tspan>
+    </text>
+    <text x="76" y="350" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#555555">
+      <tspan x="76" dy="0">The reads we need live in</tspan>
+      <tspan x="76" dy="24">repetitive PHR DNA.</tspan>
+    </text>
+  </g>
+
+  <path d="M 389 293 L 427 293" stroke="#1a3a6b" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <g filter="url(#soft-shadow)">
+    <rect x="438" y="150" width="324" height="286" rx="7" fill="#ffffff" stroke="#9fb7d3" stroke-width="2"/>
+    <rect x="438" y="150" width="324" height="50" rx="7" fill="#dce8f7" stroke="#9fb7d3" stroke-width="0"/>
+    <circle cx="468" cy="175" r="18" fill="#1a3a6b"/>
+    <text x="468" y="181" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">2</text>
+    <text x="495" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#1a3a6b">Reanalyze at MAPQ=0</text>
+    <text x="466" y="235" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#222222">
+      <tspan x="466" dy="0">Hi-C: MIN_MAPQ=0,</tspan>
+      <tspan x="466" dy="27">RM_MULTI=0.</tspan>
+      <tspan x="466" dy="35">Pore-C/CiFi/Dip-C:</tspan>
+      <tspan x="466" dy="27">no min-MAPQ filter.</tspan>
+    </text>
+    <rect x="462" y="352" width="276" height="64" rx="4" fill="#fff8e8" stroke="#d4820a" stroke-width="1.5"/>
+    <text x="600" y="379" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="700" fill="#222222">One primary/randomly chosen</text>
+    <text x="600" y="402" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" fill="#555555">per read/segment, not all placements</text>
+  </g>
+
+  <path d="M 779 293 L 817 293" stroke="#1a3a6b" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <g filter="url(#soft-shadow)">
+    <rect x="828" y="150" width="324" height="286" rx="7" fill="#ffffff" stroke="#9fb7d3" stroke-width="2"/>
+    <rect x="828" y="150" width="324" height="50" rx="7" fill="#dce8f7" stroke="#9fb7d3" stroke-width="0"/>
+    <circle cx="858" cy="175" r="18" fill="#1a3a6b"/>
+    <text x="858" y="181" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">3</text>
+    <text x="885" y="180" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#1a3a6b">Interpret aggregates</text>
+    <text x="856" y="235" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#222222">
+      <tspan x="856" dy="0">Use community enrichment,</tspan>
+      <tspan x="856" dy="27">Mantel/per-arm-pair tests,</tspan>
+      <tspan x="856" dy="27">and O/E/contact normalization.</tspan>
+    </text>
+    <text x="856" y="342" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#555555">
+      <tspan x="856" dy="0">Validate with flanking</tspan>
+      <tspan x="856" dy="24">unique-sequence controls.</tspan>
+    </text>
+  </g>
+
+  <rect x="70" y="484" width="1060" height="92" rx="6" fill="#fff8e8" stroke="#d4820a" stroke-width="2"/>
+  <rect x="70" y="484" width="10" height="92" fill="#d4820a"/>
+  <text x="100" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="700" fill="#222222">Caveat:</text>
+  <text x="198" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" fill="#222222">MAPQ0 adds symmetric noise; it does not support precise pair-level claims in PHR repeats.</text>
+  <text x="100" y="555" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#555555">The flanking unique-sequence signal persists and is stronger, so multimapping is not driving the aggregate result.</text>
+</svg>
