@@ -1,0 +1,7 @@
+group	arms	arm_count	n	median_kb	mean_kb	p25_kb	p75_kb	p90_kb	p95_kb	max_reported_kb	reported_at_cap_n	reported_at_cap_pct	cap_label
+Other signaled arms	1p, 1q, 2q, 3q, 4p, 5q, 6p, 6q, 7p, 7q, 8p, 9p, 9q, 11p, 12p, 12q, 13q, 15q, 16p, 16q, 17p, 17q, 19p, 19q, 20p, 20q, 21q, 22q	28	12452	100	108.4	25	175	230	270	500	3	0	3 at cap
+C2 10p-18p	10p, 18p	2	889	70	86.2	70	100	105	105	265	0	0	0 at cap
+C1 DUX4/D4Z4	4q, 10q	2	714	145	152.8	120	175	215	245	500	1	0.1	1 at cap
+C14 PAR2	Xq, Yq	2	431	330	331.1	330	330	330	335	500	2	0.5	2 at cap
+C15 PAR1	Xp, Yp	2	419	500	469.1	500	500	500	500	500	364	86.9	364 at cap
+C7 acrocentric p	13p, 14p, 15p, 21p, 22p	5	763	500	494.8	500	500	500	500	500	717	94	717 at cap
