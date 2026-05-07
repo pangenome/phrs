@@ -16,7 +16,7 @@ revision tasks, not as an instruction to keep the current assets.
   (agent-951)`) at 2026-05-06 19:24 UTC.
 - The previous zoom review deck is agent-878, committed as `cb973ab` on
   `wg/agent-878/build-bog-v2-3` and squash-merged as `fd9a250`. Its Typst
-  source used many absolute `.wg-worktrees/agent-878` paths.
+  source used many absolute prior-agent worktree paths.
 - The v2 synthesis layer is agent-809, committed as `fa8d410` on
   `wg/agent-809/bog-v2-slides` and squash-merged as `8e44af8`. It created
   `SLIDES_v2_PLAN.md`, `figure_manifest.md`, and `coherence_check.md`.
@@ -87,9 +87,9 @@ External heads observed on 2026-05-06:
 | Per-slide fanout | `863e756` / `6cf052c` | `bog-v2-slide-14` / agent-774 | `slide_14_gene_biology.R/.md/.pdf/.png` | Only slide-specific commit that also rendered its figure. |
 | Synthesis | `fa8d410` / `8e44af8` | `bog-v2-slides` / agent-809 | v2 plan, manifest, coherence check | Identified v1 deck gaps, off-tree sources, PCA/MDS risk. |
 | v2 render | `beb5036` / `28c2337` | `build-bog-v2-2` / agent-813 | `slides/v2/BoG_2026.pdf`, rendered v1 page images, R-derived callouts | Provides exact source blobs for current 02/03/09, 03b/06b/09b/12b. |
-| zoom render | `cb973ab` / `fd9a250` | `build-bog-v2-3` / agent-878 | `slides/v2-zoom`, 28-page A4 zoom deck and crop PNGs | Creates many focused crop PNGs now reused byte-for-byte by current deck; Typst embeds stale absolute worktree paths. |
+| zoom render | `cb973ab` / `fd9a250` | `build-bog-v2-3` / agent-878 | `slides/v2-zoom`, 28-page A4 zoom deck and crop PNGs | Creates many focused crop PNGs now reused byte-for-byte by current deck; Typst embeds stale absolute prior-agent worktree paths. |
 | annotated review | `f5f9495` / `8413de2`, then `759b673` | `render-bog-annotated`, `fix-bog-review` / agents 941, 944 | `slides/v2-review` review deck and assets on side branch | `759b673` contains "canonical review assets" that match current review-zoom blobs but are not present under `slides/v2-review/_typst/assets` on current `main`. |
-| current zoom | `10bee88` / `4862ec7` | `render-bog-annotated-zoom` / agent-951 | `slides/v2-review-zoom`, 26 pages, local assets | Current deliverable. Localizes assets and removes `.wg-worktrees/agent-878` references from this deck. |
+| current zoom | `10bee88` / `4862ec7` | `render-bog-annotated-zoom` / agent-951 | `slides/v2-review-zoom`, 26 pages, local assets | Current deliverable. Localizes assets and removes prior-agent worktree references from this deck. |
 
 ## Current Asset Lineage Table
 
@@ -130,12 +130,13 @@ marked unknown unless a committed script records the crop.
 ## Current vs Earlier Zoom Deck
 
 `slides/v2-zoom/_typst/zoom_deck.typ` from agent-878 is useful history but
-should not be copied forward directly. It embeds absolute paths such as:
+should not be copied forward directly. It embeds absolute prior-agent paths to
+files such as:
 
-- `/moosefs/erikg/phrs/.wg-worktrees/agent-878/slides/v2/_typst/v1_page_02-02.png`
-- `/moosefs/erikg/phrs/.wg-worktrees/agent-878/slides/v2-zoom/_typst/assets/slide_04_fig1_panel_a.png`
-- `/moosefs/erikg/phrs/.wg-worktrees/agent-878/paper_prep/figures/nj_tree_arms/nj_tree_annotated.png`
-- `/moosefs/erikg/phrs/.wg-worktrees/agent-878/slides/v2/slide_14_gene_biology.png`
+- `slides/v2/_typst/v1_page_02-02.png`
+- `slides/v2-zoom/_typst/assets/slide_04_fig1_panel_a.png`
+- `paper_prep/figures/nj_tree_arms/nj_tree_annotated.png`
+- `slides/v2/slide_14_gene_biology.png`
 
 The current deck fixed that path hygiene problem by copying assets into
 `slides/v2-review-zoom/_typst/assets` and using relative paths. However, the
@@ -205,7 +206,7 @@ Do not assume the current crop is the best slide 04 asset.
 
 | Risk | Evidence | Impact | Recommended mitigation |
 |---|---|---|---|
-| `.wg-worktrees/agent-878` paths in earlier zoom deck | `rg` finds many such paths in `slides/v2-zoom/_typst/zoom_deck.typ`; current deck render log says none under `slides/v2-review-zoom`. | Copying old Typst snippets can silently reintroduce dead paths. | Use current review-zoom relative paths or regenerate local assets; never copy agent-878 absolute paths. |
+| prior-agent worktree paths in earlier zoom deck | `rg` finds many such paths in `slides/v2-zoom/_typst/zoom_deck.typ`; current deck render log says none under `slides/v2-review-zoom`. | Copying old Typst snippets can silently reintroduce dead paths. | Use current review-zoom relative paths or regenerate local assets; never copy agent-878 absolute paths. |
 | Review assets are on side branch, not current `main` path | `git ls-tree -r 759b673 slides/v2-review/_typst/assets` has the canonical review assets; current `find slides/v2-review/_typst` shows no `assets/` directory. | The phrase "canonical review asset" in `zoom_review_deck.typ` is historically true but not reproducible from current `main` alone. | Use `slides/v2-review-zoom/_typst/assets` as current local copies; if a canonical review deck is needed, merge/restore the review asset directory explicitly. |
 | Crop PNGs without scripts | Agent-878 crop blobs match current assets exactly, but no crop script is committed. | Revisions are hard to reproduce and easy to misalign across paired top/bottom panels. | Add a small committed crop/raster script per revised figure or regenerate from source R/PDF. |
 | Off-tree HPRCv2 inputs | Slides 06/08/14 and paper figure scripts cite `/moosefs/guarracino/HPRCv2/...`; local `/moosefs/guarracino/HPRCv2` is not itself a git checkout. | Current PNGs may lag Andrea's pipeline and have weak local history. | Record exact off-tree source path, GitHub repo commit where available, and source-data timestamp/checksum when regenerating. |

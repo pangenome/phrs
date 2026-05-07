@@ -227,7 +227,7 @@ These are title-level changes only. The fan-in task owns any Typst edits.
       path, script, external URL, or commit. This is required because many
       current PNGs are copied/cropped assets with weak reproducibility.
 - [ ] Do not copy any Typst snippets from `slides/v2-zoom/_typst/zoom_deck.typ`
-      unless absolute `.wg-worktrees/agent-878` paths are removed.
+      unless prior-agent absolute worktree paths are removed.
 - [ ] Resolve MDS/PCA wording globally: slide titles, axis labels, footers, and
       speaker notes should say MDS/PCoA unless a real PCA artifact is generated.
 - [ ] Choose exactly one core visual from each repeated cluster:

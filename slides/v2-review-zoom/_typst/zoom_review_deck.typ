@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v2 review revision.
+// BoG 2026 review zoom deck, v3 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v2.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v3.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -35,7 +35,7 @@
   if source != "" {
     align(center)[#text(size: 5.6pt, fill: col-cap)[#source]]
   } else {
-    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v2 focus page]]
+    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v3 focus page]]
   }
 }
 
@@ -231,9 +231,9 @@
 
 #figure-slide(
   "06a",
-  "PHR length hierarchy by chromosome arm",
-  "../_revision_assets/06_length_redesign/candidate_06a_ranked_arm_summary.png",
-  source: "06_length_redesign/make_06_length_redesign.R; arm_length_summary.tsv",
+  "PHR length distributions by named clade, censored at 500 kb",
+  "../_revision_assets/v3/06_violin_censor/candidate_06a_named_clade_violin_censor.png",
+  source: "v3/06_violin_censor/make_06_violin_censor.R; named_clade_violin_summary.tsv; 500 kb analysis cap",
 )
 
 #pagebreak()
@@ -267,8 +267,8 @@
 #figure-slide(
   "07a",
   "Arm-level similarity recovers named clades",
-  "../_revision_assets/07a_heatmap_tree_pq/candidate_heatmap_upgma_tree_left_pq.png",
-  source: "07a_heatmap_tree_pq/make_candidate_heatmap.R; UPGMA order, p/q labels, Leiden k=15 ticks",
+  "../_revision_assets/v3/07a_crisp_aligned/candidate_07a_upgma_crisp_aligned.png",
+  source: "v3/07a_crisp_aligned/make_07a_crisp_aligned.R; order_validation.tsv confirms tree tips equal heatmap rows",
 )
 
 #pagebreak()
@@ -284,9 +284,9 @@
 
 #figure-slide(
   "07c",
-  "Backup: unrooted NJ option removes rooting implication",
-  "../_revision_assets/07b_tree_options/07b_unrooted_nj_option.png",
-  source: "07b_tree_options/make_07b_tree_options.R; unrooted NJ option for root-sensitive review",
+  "Backup: unrooted NJ with acrocentric p-arm audit",
+  "../_revision_assets/v3/07c_acrocentric_presence/07c_unrooted_acrocentric_status.png",
+  source: "v3/07c_acrocentric_presence/make_07c_acrocentric_presence.R; all five acrocentric p arms present in C7",
 )
 
 #pagebreak()
@@ -298,12 +298,12 @@
   [
     MDS / PCoA places sequence-level PHR flanks by Jaccard distance.
 
-    Dispersion is spread around a group centroid in the displayed panel, not an ancestry axis.
+    Population variation is summarized with same-superpopulation pairwise distances in the displayed MDS / PCoA space, not a distance-to-center summary.
 
     The unit is a subtelomeric flank, so arm-community structure dominates the geometry.
   ],
-  [Use MDS / PCoA language consistently unless a true feature-matrix PCA is generated.],
-  source: "08b_superpop_dispersion README; 09_mds_community README",
+  [Use MDS / PCoA language consistently and keep population spread as a secondary within-population variation check.],
+  source: "v3/08b_within_pop_pairwise README; v3/09_all_communities_1to1 README",
 )
 
 #pagebreak()
@@ -319,18 +319,18 @@
 
 #figure-slide(
   "08b",
-  "Population dispersion on the PHR MDS / PCoA",
-  "../_revision_assets/08b_superpop_dispersion/superpop_dispersion_rms_radius.png",
-  source: "08b_superpop_dispersion/make_superpop_dispersion.R; superpop_dispersion_metrics.tsv",
+  "Within-population pairwise variation on the PHR MDS / PCoA",
+  "../_revision_assets/v3/08b_within_pop_pairwise/within_pop_pairwise_2d_distribution.png",
+  source: "v3/08b_within_pop_pairwise/make_within_pop_pairwise.R; within_pop_pairwise_summary.tsv",
 )
 
 #pagebreak()
 
 #figure-slide(
   "09",
-  "MDS / PCoA: named clades are Leiden communities",
-  "../_revision_assets/09_mds_community/candidate_labeled_mds_community.png",
-  source: "09_mds_community/make_labeled_mds_community.R; full_mds.rds and arm-leiden-k15 TSV",
+  "MDS / PCoA: all Leiden communities C1-C15 labeled",
+  "../_revision_assets/v3/09_all_communities_1to1/mds_pcoa_all_communities_1to1.png",
+  source: "v3/09_all_communities_1to1/make_all_communities_1to1.R; validation_summary.tsv confirms all C1-C15 labels",
 )
 
 #pagebreak()
@@ -344,10 +344,10 @@
 
     Ask independent contact maps whether same-community arms contact each other more than different-community arms.
 
-    B/W ratios, Mantel rho, and exclusion tests are robustness checks on the same question.
+    Within-community versus between-community distance ratios, Mantel rho, and exclusion tests are robustness checks on the same question.
   ],
   [The 3D block is validation of the sequence communities, not another way to call them.],
-  source: "hic_methods README and hic_visual_redesign README",
+  source: "hic_methods README; v3/10a_axis_box_fix README; v3/11_wb_labels README",
 )
 
 #pagebreak()
@@ -355,8 +355,8 @@
 #figure-slide(
   "10a",
   "Sequence communities co-localize in 3D",
-  "../_revision_assets/hic_visual_redesign/slide_10a_square_matrix_candidate.png",
-  source: "hic_visual_redesign/make_hic_visual_redesign.R; HG002 Pore-C 50 kb matrix",
+  "../_revision_assets/v3/10a_axis_box_fix/candidate_10a_axis_box_fix.png",
+  source: "v3/10a_axis_box_fix/make_10a_axis_box_fix.R; matrix_order_audit.tsv; community boxes aligned to square matrix",
 )
 
 #pagebreak()
@@ -372,9 +372,9 @@
 
 #figure-slide(
   "11",
-  "Single-cell 3D tests whether the bulk signal is per-cell",
-  "../_revision_assets/hic_visual_redesign/slide_11_single_cell_purpose_candidate.png",
-  source: "hic_visual_redesign/make_hic_visual_redesign.R; Dip-C and sperm per-cell TSVs",
+  "Single-cell 3D: within-community arms are closer than between-community arms",
+  "../_revision_assets/v3/11_wb_labels/slide11_explicit_distance_labels_candidate.png",
+  source: "v3/11_wb_labels/make_slide11_explicit_distance_labels.R; explicit within-community vs between-community distance labels",
 )
 
 #pagebreak()
@@ -384,6 +384,15 @@
   "Mouse zygotene: the bouquet-stage 3D signal",
   "../_revision_assets/hic_visual_redesign/slide_12_mouse_zygotene_trajectory_pairing.png",
   source: "hic_visual_redesign/make_hic_visual_redesign.R; mouse zygotene plus stage trajectory",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "12b",
+  "Human arms: sequence-similar subtelomeres contact more",
+  "../_revision_assets/v3/human_3d_dotplot/human_arm_pair_dotplot_candidate.png",
+  source: "v3/human_3d_dotplot/make_human_3d_dotplot.R; human_3d_dotplot_summary.tsv; arm-pair pointwise Spearman",
 )
 
 #pagebreak()
@@ -418,34 +427,52 @@
     Treat DUX4/D4Z4, OR4F, and TAR1 as cargo or markers carried by the exchange network, not as causes of the network.
   ],
   [Gene cargo is a copy-aware catalog and enrichment context layered onto the PHR communities.],
-  source: "14_gene_background README; 14_gene_enrichment_or4f README",
+  source: "v3/gene_browser_panels README; v3/gene_browser_inventory README; fixed track grammar",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14a",
-  "Gene cargo: DUX4 marks the D4Z4 PHR community",
-  "assets/s14_dux4.png",
-  source: "current review-zoom crop from slides/v2/slide_14_gene_biology.R; crop recipe unknown",
+  "Gene cargo: DUX4/D4Z4 is a paired C1 chr4q/chr10q PHR view",
+  "../_revision_assets/v3/gene_browser_panels/panel_01_dux4_d4z4_c1_chr4_chr10.png",
+  source: "v3/gene_browser_panels/render_gene_browser_panels.R; panel_manifest.tsv; input_manifest.tsv",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14b",
-  "OR4F family copies mark subtelomeric exchange",
-  "../_revision_assets/14_gene_enrichment_or4f/or4f_gene_family_signal.png",
-  source: "14_gene_enrichment_or4f/make_or4f_gene_family_signal.R; HPRCv2 OR4F/community TSVs",
+  "Gene cargo: OR4F-rich C3 chr3q PHR",
+  "../_revision_assets/v3/gene_browser_panels/panel_02_or4f_c3_chr3q.png",
+  source: "v3/gene_browser_panels/render_gene_browser_panels.R; target_loci.tsv; fixed track schema",
 )
 
 #pagebreak()
 
 #figure-slide(
   "14c",
-  "Backup: TAR1 as subtelomeric repeat context",
-  "assets/s14_tar1.png",
-  source: "current review-zoom crop from slides/v2/slide_14_gene_biology.R; crop recipe unknown",
+  "Gene cargo: OR4F pseudogene endpoint in C8 chr15q",
+  "../_revision_assets/v3/gene_browser_panels/panel_03_or4f_decay_c8_chr15q.png",
+  source: "v3/gene_browser_panels/render_gene_browser_panels.R; OR4F pseudogene summary in input_manifest.tsv",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "14d",
+  "Gene cargo: TAR1-rich C2 chr18p PHR",
+  "../_revision_assets/v3/gene_browser_panels/panel_04_tar1_c2_chr18p.png",
+  source: "v3/gene_browser_panels/render_gene_browser_panels.R; TAR1 repeat lane kept separate from gene models",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "14e",
+  "Gene cargo: C7 acrocentric p-arm panel uses one track grammar",
+  "../_revision_assets/v3/gene_browser_panels/panel_05_acrocentric_c7_p_arm_group.png",
+  source: "v3/gene_browser_panels/render_gene_browser_panels.R; C7 PanSN relative offsets from all-vs-all length TSV",
 )
 
 #pagebreak()
@@ -462,5 +489,5 @@
     Mechanism and proof: 3D proximity predicts exchange, and T2T pedigrees show it is ongoing.
   ],
   thesis: [Subtelomeres concertedly evolve through ongoing inter-chromosomal exchange, observable in pedigrees, predicted by 3D contact, and recovered by an implicit pangenome graph across HPRC v2.],
-  source: "closing text updated for v2 review flow",
+  source: "closing text retained for v3 review flow",
 )

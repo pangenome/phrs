@@ -155,5 +155,5 @@ The intended validation checks are:
 - Representative pages from the changed blocks are visually checked:
   `page-05`, `page-06`, `page-09`, `page-12`, `page-17`, `page-20`,
   `page-23`, `page-28`, and `page-30`.
-- No stale `.wg-worktrees/agent-878` absolute paths are present under
+- No stale prior-agent absolute worktree paths are present under
   `slides/v2-review-zoom`.
