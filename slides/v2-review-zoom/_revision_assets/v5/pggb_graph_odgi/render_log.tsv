@@ -1,0 +1,18 @@
+key	value
+status	main_component
+layout_tsv	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.tsv
+source_odgi_graph	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og
+source_odgi_layout_binary	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay
+inspected_existing_odgi_draw_png	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.draw.png (167x1000; too sparse/narrow for slide use)
+inspected_existing_odgi_viz_png	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.viz_multiqc.png (1968x157164; too tall/raw for slide use)
+component	8
+component_nodes	727156
+component_rank_by_layout_node_count	1
+x_range	1000-160483.147278636
+y_range	17870.5508849148-368827.995559721
+orientation	ODGI X/Y coordinates plotted as Y/X to rotate the tall layout into a 16:9 slide frame; no re-layout
+output_png	pggb_graph_2d.png
+output_dimensions	1920x1080
+output_bytes	96027
+slurm_job_id	not_used_no_heavy_ODGI_extraction_or_render_submitted
+render_command	Rscript render_pggb_layout_component8.R --layout-tsv /moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.tsv --component 8 --out pggb_graph_2d.png --render-log render_log.tsv

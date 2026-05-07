@@ -386,6 +386,15 @@
 #pagebreak()
 
 #figure-slide(
+  "07j.1",
+  "PGGB graph main component: ODGI 2D layout",
+  "../_revision_assets/v5/pggb_graph_odgi/pggb_graph_2d.png",
+  source: "v5/pggb_graph_odgi; ODGI layout TSV component 8 main component; 727,156 nodes; rotated 16:9",
+)
+
+#pagebreak()
+
+#figure-slide(
   "07a.1",
   "Tree-ordered arm similarity heatmap",
   "../_revision_assets/v5/07a_tree_then_community_heatmap/07a_tree_ordered_heatmap.png",
