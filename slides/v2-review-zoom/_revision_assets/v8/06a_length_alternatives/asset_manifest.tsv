@@ -1,0 +1,7 @@
+asset	bin_width_kb	role	note
+phr_length_histogram_10kb.png	10	recommended_simple_histogram	Talk-fast overall distribution; fixes v7's 25 kb mega-bin issue.
+phr_length_histogram_10kb.pdf	10	recommended_simple_histogram	PDF companion for the talk-fast overall distribution.
+phr_length_histogram_5kb_sensitivity.png	5	finer_bin_sensitivity	Shows exact 5 kb step sensitivity; busier than the 10 kb candidate.
+phr_length_histogram_5kb_sensitivity.pdf	5	finer_bin_sensitivity	PDF companion for 5 kb sensitivity.
+phr_length_arm_heatstrip_10kb.png	10	recommended_per_end_old_style	All chromosome ends represented as p/q heatstrips with direct chromosome labels.
+phr_length_arm_heatstrip_10kb.pdf	10	recommended_per_end_old_style	PDF companion for the per-end heatstrip.
