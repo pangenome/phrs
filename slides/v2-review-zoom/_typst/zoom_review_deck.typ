@@ -702,7 +702,7 @@
   "Nearest same-superpopulation neighbor in MDS space",
   "../_revision_assets/v9/labels_superpop_stats_polish/nearest_same_superpop_distance_boxplot_bracketed.png",
   [
-    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded. KW is the Kruskal-Wallis global non-parametric test across groups; pairwise Wilcoxon is rank-sum group comparison; BH is Benjamini-Hochberg FDR correction over pairwise tests. Brackets show the five strongest BH-significant contrasts; the full pairwise table is in the v9 asset folder.
+    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded. Boxes show distributions; printed values are means. KW is the Kruskal-Wallis global non-parametric test across groups; pairwise Wilcoxon is rank-sum group comparison; BH is Benjamini-Hochberg FDR correction over pairwise tests. Brackets show the five strongest BH-significant contrasts.
   ],
   source: "v9/labels_superpop_stats_polish/nearest_same_superpop_mds_distances.tsv; bracketed boxplot summary; Wilcoxon BH and Cliff delta TSVs",
 )
@@ -746,7 +746,16 @@
 
 #figure-slide(
   "10m.2",
-  "Hi-C MDS gives a 3D contact-space view",
+  "CHM13 Hi-C contact-space MDS in 3D",
+  "../_revision_assets/v9/slide10m2_better_3d_viz/chm13_phr_contact_mds_3d_view.png",
+  source: "v9/slide10m2_better_3d_viz/chm13_phr_contact_mds_3d_view.png; same D1-D2-D3 contact-space MDS as next slide; colors are sequence communities; not physical 3DG",
+)
+
+#pagebreak()
+
+#figure-slide(
+  "10m.3",
+  "The same 3D MDS is clearer as 2D projections",
   "../_revision_assets/v9/slide10m2_better_3d_viz/best_replacement_chm13_phr_contact_mds.png",
   source: "v9/slide10m2_better_3d_viz; source matrix: chm13_hic.dist_matrix.tsv; regions: chm13_subtelomeric_regions.bed; color: sequence communities; contact-space MDS, not physical 3DG",
 )

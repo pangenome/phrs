@@ -41,13 +41,13 @@ Replace the current slide 08b.1 figure asset with:
   "Nearest same-superpopulation neighbor in MDS space",
   "../_revision_assets/v9/labels_superpop_stats_polish/nearest_same_superpop_distance_boxplot_bracketed.png",
   [
-    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded. KW is the Kruskal-Wallis global non-parametric test across groups; pairwise Wilcoxon is rank-sum group comparison; BH is Benjamini-Hochberg FDR correction over pairwise tests. Brackets show the five strongest BH-significant contrasts; the full pairwise table is in the v9 asset folder.
+    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded. Boxes show distributions; printed values are means. KW is the Kruskal-Wallis global non-parametric test across groups; pairwise Wilcoxon is rank-sum group comparison; BH is Benjamini-Hochberg FDR correction over pairwise tests. Brackets show the five strongest BH-significant contrasts.
   ],
   source: "v9/labels_superpop_stats_polish/nearest_same_superpop_mds_distances.tsv; bracketed boxplot summary; Wilcoxon BH and Cliff delta TSVs",
 )
 ```
 
-The plot caption already defines KW, pairwise Wilcoxon, and BH. Keep the nearest-neighbor wording exactly: nearest other same-superpopulation point in displayed D1-D2 MDS space, self excluded.
+The plot caption already defines KW, pairwise Wilcoxon, and BH. Keep the nearest-neighbor wording exactly: nearest other same-superpopulation point in displayed D1-D2 MDS space, self excluded. The v9.1 tweak removes jittered points, displays only boxplots, prints group means, and fixes the y-axis display to `0`-`1e-3`.
 
 Traceability files for slide 08b.1:
 
