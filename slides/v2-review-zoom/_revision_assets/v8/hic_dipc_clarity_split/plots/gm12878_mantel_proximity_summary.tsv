@@ -1,0 +1,2 @@
+dataset	technology	n_cells	n_shared_arms	n_pairs	n_within_pairs	n_between_pairs	mantel_rho	mantel_p	source_3d_matrix	source_sequence_matrix	source_community_map
+GM12878	Dip-C	16	33	528	35	493	0.296342642970717	0.001999800019998	/moosefs/guarracino/HPRCv2/dipc_t2t/output_q0_XX/community_enrichment_k50/gm12878_arm_3d_distance_matrix.tsv	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm_dist_matrix.tsv	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv
