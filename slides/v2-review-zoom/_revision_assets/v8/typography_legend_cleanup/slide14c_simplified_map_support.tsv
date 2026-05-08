@@ -1,0 +1,43 @@
+community	community_label	signal	support_arms	label
+C1	C1 / 10q 4q	OR	0	.
+C1	C1 / 10q 4q	RPL	2	2 arms
+C1	C1 / 10q 4q	SEPTIN	0	.
+C1	C1 / 10q 4q	DDX11L	0	.
+C1	C1 / 10q 4q	WASH/FAM138	0	.
+C1	C1 / 10q 4q	specific anchor	2	DUX4L / 22 genes / 2 arms
+C3	C3 / 11p 16q 19p / 3q 7p 9q	OR	6	6 arms
+C3	C3 / 11p 16q 19p / 3q 7p 9q	RPL	6	6 arms
+C3	C3 / 11p 16q 19p / 3q 7p 9q	SEPTIN	6	6 arms
+C3	C3 / 11p 16q 19p / 3q 7p 9q	DDX11L	6	6 arms
+C3	C3 / 11p 16q 19p / 3q 7p 9q	WASH/FAM138	6	6 arms
+C3	C3 / 11p 16q 19p / 3q 7p 9q	specific anchor	0	.
+C5	C5* / 12p 20q 6p 9p	OR	1	1 arms
+C5	C5* / 12p 20q 6p 9p	RPL	3	3 arms
+C5	C5* / 12p 20q 6p 9p	SEPTIN	2	2 arms
+C5	C5* / 12p 20q 6p 9p	DDX11L	4	4 arms
+C5	C5* / 12p 20q 6p 9p	WASH/FAM138	4	4 arms
+C5	C5* / 12p 20q 6p 9p	specific anchor	0	.
+C7	C7* / 13p 14p 15p / 21p 22p	OR	0	.
+C7	C7* / 13p 14p 15p / 21p 22p	RPL	4	4 arms
+C7	C7* / 13p 14p 15p / 21p 22p	SEPTIN	4	4 arms
+C7	C7* / 13p 14p 15p / 21p 22p	DDX11L	0	.
+C7	C7* / 13p 14p 15p / 21p 22p	WASH/FAM138	0	.
+C7	C7* / 13p 14p 15p / 21p 22p	specific anchor	5	MTCO / 9 genes / 5 arms
+C11	C11 / 1p 5q 6q 8p	OR	4	4 arms
+C11	C11 / 1p 5q 6q 8p	RPL	4	4 arms
+C11	C11 / 1p 5q 6q 8p	SEPTIN	4	4 arms
+C11	C11 / 1p 5q 6q 8p	DDX11L	4	4 arms
+C11	C11 / 1p 5q 6q 8p	WASH/FAM138	4	4 arms
+C11	C11 / 1p 5q 6q 8p	specific anchor	0	.
+C12	C12 / 20p 2q	OR	2	2 arms
+C12	C12 / 20p 2q	RPL	2	2 arms
+C12	C12 / 20p 2q	SEPTIN	2	2 arms
+C12	C12 / 20p 2q	DDX11L	2	2 arms
+C12	C12 / 20p 2q	WASH/FAM138	2	2 arms
+C12	C12 / 20p 2q	specific anchor	0	.
+C15	C15* / Xp Yp	OR	0	.
+C15	C15* / Xp Yp	RPL	0	.
+C15	C15* / Xp Yp	SEPTIN	0	.
+C15	C15* / Xp Yp	DDX11L	2	2 arms
+C15	C15* / Xp Yp	WASH/FAM138	2	2 arms
+C15	C15* / Xp Yp	specific anchor	2	PAR1 / 5 coding / 2 arms

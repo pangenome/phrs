@@ -1,0 +1,13 @@
+artifact	purpose
+slide12_mouse_zygotene_large_text.png	Slide 12 replacement asset with larger labels and preserved scatter plus stage trajectory.
+slide12_mouse_zygotene_large_text.pdf	Vector/PDF companion for slide 12 replacement asset.
+slide12_stage_mantel_rho.tsv	Source stage Mantel rho values used in the slide 12 trajectory inset.
+slide13b_pedigree_bottom_no_unused_legend.png	Slide 13b materialized crop with the unused bottom legend removed.
+crop_png_top.py	Deterministic PNG top-crop helper used because no pedigree regeneration recipe is available.
+slide13b_remove_unused_legend.typ	Typst replacement snippet for slide 13b using the materialized no-legend crop.
+slide14b_candidate_signals_talk_ready.png	Slide 14b replacement asset with condensed labels, no legend, and doubled text.
+slide14b_candidate_signals_talk_ready.pdf	Vector/PDF companion for slide 14b replacement asset.
+slide14b_ranked_signal_support_source.tsv	Copied source support table from the v5 gene-enrichment figures.
+slide14c_community_family_map_talk_ready.png	Slide 14c replacement asset with condensed map, direct labels, and no color legend.
+slide14c_community_family_map_talk_ready.pdf	Vector/PDF companion for slide 14c replacement asset.
+slide14c_simplified_map_support.tsv	Simplified support table used to render slide 14c.
