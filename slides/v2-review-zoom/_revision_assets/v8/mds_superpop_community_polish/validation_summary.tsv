@@ -1,0 +1,25 @@
+check	value
+coordinate_method	Classical MDS / cmdscale on 1 - graph-path Jaccard distances
+coordinate_source	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.full_mds.rds
+point_count	15668
+available_mds_dimensions	5
+displayed_dimensions	D1,D2
+d1_range	-0.403659,0.521354
+d2_range	-0.457885,0.397137
+d1_percent	15.5471
+d2_percent	10.8012
+slide08b_superpop_plot_inches	12 x 10
+slide08b_superpop_png_pixels	3600 x 3000
+slide08b_superpop_style_reference	slides/v2-review-zoom/_typst/assets/s08a_mds_chrom.png; upstream 12x10 theme_bw MDS grammar, size 2 points, alpha 0.7, right legend
+nearest_distance_metric	For each point, Euclidean distance in displayed D1-D2 MDS space to nearest other point from same continental superpopulation
+nearest_distance_self_excluded	TRUE
+nearest_distance_global_test	Kruskal-Wallis p=3.51e-26
+nearest_distance_pairwise_test	Pairwise Wilcoxon rank-sum, exact=FALSE, continuity correction disabled, BH adjusted
+nearest_distance_effect_size	Median difference and Cliff's delta / rank-biserial from Mann-Whitney U
+slide09_community_plot_inches	12 x 10
+slide09_community_png_pixels	3600 x 3000
+slide09_coord_fixed_ratio	1
+slide09_axis_limit_x	-0.68,0.68
+slide09_axis_limit_y	-0.68,0.68
+slide09_labels_present	C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15
+slide09_pca_used	no

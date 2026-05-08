@@ -1,0 +1,16 @@
+Community	Arms	n_arms	n_points	anchor_x	anchor_y	label_x	label_y	label	label_position_strategy
+C1	4q, 10q	2	714	0.17739576388673917	-0.05801880756698584	0.52	0.17	C1 | 4q 10q	manual edge labels with leader lines; direct labels replace dense community legend
+C2	10p, 18p	2	889	0.030388983283470276	-0.19222432886804577	-0.18	-0.55	C2 | 10p 18p	manual edge labels with leader lines; direct labels replace dense community legend
+C3	3q, 7p, 9q, 11p, 16q, 19p	6	2655	-0.33126259907202216	0.11826420218776079	-0.5	0.27	C3 | 3q 7p 9q | 11p 16q 19p	manual edge labels with leader lines; direct labels replace dense community legend
+C4	7q, 12q	2	895	0.11391514096139775	-0.1892770971544102	0.05	-0.55	C4 | 7q 12q	manual edge labels with leader lines; direct labels replace dense community legend
+C5	6p, 9p, 12p, 20q	4	1728	-0.11787652599585446	-0.415242034873374	-0.42	-0.55	C5 | 6p 9p | 12p 20q	manual edge labels with leader lines; direct labels replace dense community legend
+C6	1q, 13q, 17q, 19q, 21q, 22q	6	2701	0.5029555095803053	0.1877642749533173	0.46	0.5	C6 | 1q 13q 17q | 19q 21q 22q	manual edge labels with leader lines; direct labels replace dense community legend
+C7	13p, 14p, 15p, 21p, 22p	5	763	0.07403058180459969	-0.19516782324339593	0.29	-0.55	C7 | 13p 14p 15p | 21p 22p	manual edge labels with leader lines; direct labels replace dense community legend
+C8	15q	1	449	-0.2658741428284236	-0.08697570193559638	-0.5	-0.09	C8 | 15q	manual edge labels with leader lines; direct labels replace dense community legend
+C9	16p	1	442	0.010239299054670574	-0.25559480508408633	0.52	-0.31	C9 | 16p	manual edge labels with leader lines; direct labels replace dense community legend
+C10	17p	1	448	0.023201139145153402	-0.11216531652138889	0.52	0.06	C10 | 17p	manual edge labels with leader lines; direct labels replace dense community legend
+C11	1p, 5q, 6q, 8p	4	1783	-0.2519026553436538	0.3065188892863952	-0.5	0.47	C11 | 1p 5q | 6q 8p	manual edge labels with leader lines; direct labels replace dense community legend
+C12	2q, 20p	2	903	-0.14279511450030047	0.13271553630014588	-0.5	0.09	C12 | 2q 20p	manual edge labels with leader lines; direct labels replace dense community legend
+C13	4p	1	448	0.09461205960231933	-0.15423985469395193	0.52	-0.44	C13 | 4p	manual edge labels with leader lines; direct labels replace dense community legend
+C14	Xq, Yq	2	431	0.042741806208687234	-0.19817801143529504	0.52	-0.07	C14 | Xq Yq	manual edge labels with leader lines; direct labels replace dense community legend
+C15	Xp, Yp	2	419	0.060880300000977175	-0.16330408822774847	0.52	-0.19	C15 | Xp Yp	manual edge labels with leader lines; direct labels replace dense community legend
