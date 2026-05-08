@@ -1,0 +1,2 @@
+test	metric	statistic	parameter	p_value	p_adj_method
+Kruskal-Wallis rank-sum	nearest same-superpopulation Euclidean distance in displayed D1-D2 MDS space	125.53200441930166	4	3.5128594916049593e-26	not applicable; single global test
