@@ -1,0 +1,20 @@
+metric	value
+source_tsv	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95.id95.len.tsv
+bin_width_kbp	10
+search_window_kbp	500
+q_axis_orientation	q panel display is flipped: left edge is 500 kbp, right edge is 0 kbp
+non_empty_intervals	15,668
+arms_with_called_intervals	41
+total_chromosome_ends_checked	48
+zero_signal_arms	2p, 3p, 5p, 8q, 11q, 14q, 18q
+min_kbp	5
+p25_kbp	40
+median_kbp	105
+mean_kbp	143.8
+p75_kbp	200
+p90_kbp	330
+p95_kbp	500
+max_reported_kbp	500
+reported_at_500_kbp_n	1,087
+reported_at_500_kbp_pct	6.9
+terminal_window_note	analysis measured terminal 500 kbp windows; >500 kbp was not measured
