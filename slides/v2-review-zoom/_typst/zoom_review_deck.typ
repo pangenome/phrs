@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v7 review revision.
+// BoG 2026 review zoom deck, v8 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v7.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v8.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -35,7 +35,7 @@
   if source != "" {
     align(center)[#text(size: 5.6pt, fill: col-cap)[#source]]
   } else {
-    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v7 focus page]]
+    align(center)[#text(size: 5.6pt, fill: col-cap)[review zoom v8 focus page]]
   }
 }
 
@@ -50,6 +50,33 @@
     ],
     footer(source),
   )
+}
+
+#let captioned-figure-slide(num, label, title, path, caption, source: "") = {
+  grid(
+    rows: (0.34in, 0.34in, 1fr, 0.58in, 0.13in),
+    row-gutter: 0.035in,
+    align: center,
+    header(num, label),
+    align(left)[#text(size: 15pt, fill: col-title, weight: "bold")[#title]],
+    box(width: 100%, height: 100%)[
+      #image(path, width: 100%, height: 100%, fit: "contain")
+    ],
+    block(
+      width: 100%,
+      fill: col-note-bg,
+      stroke: (left: 3pt + col-note-bar),
+      inset: (x: 0.12in, y: 0.055in),
+      radius: 2pt,
+    )[#text(size: 8.6pt, fill: col-text)[#caption]],
+    footer(source),
+  )
+}
+
+#let raster-slide(path) = {
+  box(width: 100%, height: 100%)[
+    #image(path, width: 100%, height: 100%, fit: "contain")
+  ]
 }
 
 #let quad-slide(num, label, a, b, c, d, source: "") = {
@@ -507,9 +534,9 @@
 
 #figure-slide(
   "06a",
-  "PHR lengths within the 500 kb discovery window",
-  "../_revision_assets/v7/06a_length_histogram_restore/phr_length_histogram_restore.png",
-  source: "v7/06a_length_histogram_restore/make_06a_length_histogram_restore.R; length_distribution_summary.tsv; right edge is the 500 kb analysis ceiling",
+  "PHR length distribution by chromosome end",
+  "../_revision_assets/v8/06a_length_alternatives/phr_length_arm_heatstrip_10kb.png",
+  source: "v8/06a_length_alternatives/make_06a_length_alternatives.R; arm_length_bins_10kb.tsv; terminal 500 kb ceiling",
 )
 
 #pagebreak()
@@ -612,8 +639,8 @@
 
     The unit is a subtelomeric flank, so arm-community structure dominates the geometry.
   ],
-  [The v7 distance plot is nearest same-superpopulation neighbor only: self is excluded, and it is not centroid or all-pairwise distance.],
-  source: "v7/08b_nearest_same_superpop_mds README; v7/09_community_mds_layout README",
+  [The v8 distance plot is nearest same-superpopulation neighbor only: self is excluded, and it is not centroid or all-pairwise distance.],
+  source: "v8/mds_superpop_community_polish/SLIDE_PATCH.md; nearest_same_superpop_mds_summary.tsv; community_mds_label_positions.tsv",
 )
 
 #pagebreak()
@@ -630,17 +657,21 @@
 #figure-slide(
   "08b",
   "MDS colored by continental superpopulation",
-  "../_revision_assets/v7/08b_nearest_same_superpop_mds/superpopulation_mds_original_style.png",
-  source: "v7/08b_nearest_same_superpop_mds/make_nearest_same_superpop_mds.R; original D1-D2 MDS coordinates; color is superpopulation; 1:1 axes",
+  "../_revision_assets/v8/mds_superpop_community_polish/superpopulation_mds_08a_matched.png",
+  source: "v8/mds_superpop_community_polish/make_mds_superpop_community_polish.R; MDS D1-D2 from hprcv2.1Mb.subtelo.full_mds.rds; 08a-matched 12x10 MDS render style; color is continental superpopulation",
 )
 
 #pagebreak()
 
-#figure-slide(
+#captioned-figure-slide(
   "08b.1",
   "Nearest same-superpopulation neighbor in MDS space",
-  "../_revision_assets/v7/08b_nearest_same_superpop_mds/nearest_same_superpop_distance_distribution.png",
-  source: "v7/08b_nearest_same_superpop_mds/nearest_same_superpop_mds_distances.tsv; nearest other same-superpopulation point in displayed D1-D2 MDS; not centroid/all-pairwise",
+  "Nearest same-superpopulation neighbor in MDS space",
+  "../_revision_assets/v8/mds_superpop_community_polish/nearest_same_superpop_distance_boxplot.png",
+  [
+    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded; pairwise notes use BH-corrected Wilcoxon tests plus median differences and Cliff delta effect sizes.
+  ],
+  source: "v8/mds_superpop_community_polish/nearest_same_superpop_mds_distances.tsv; robust boxplot summary; Wilcoxon BH and Cliff delta TSVs",
 )
 
 #pagebreak()
@@ -648,8 +679,8 @@
 #figure-slide(
   "09",
   "MDS: all Leiden communities C1-C15 labeled",
-  "../_revision_assets/v7/09_community_mds_layout/mds_community_layout.png",
-  source: "v7/09_community_mds_layout/make_community_mds_layout.R; MDS from hprcv2.1Mb.subtelo.full_mds.rds; C1-C15 from graph-path Jaccard Leiden assignments; 1:1 axes; not PCA",
+  "../_revision_assets/v8/mds_superpop_community_polish/community_mds_labeled.png",
+  source: "v8/mds_superpop_community_polish/make_mds_superpop_community_polish.R; MDS from hprcv2.1Mb.subtelo.full_mds.rds; C1-C15 Leiden labels from community_mds_label_positions.tsv; 1:1 axes; not PCA",
 )
 
 #pagebreak()
@@ -680,11 +711,15 @@
 
 #pagebreak()
 
-#figure-slide(
+#captioned-figure-slide(
   "10m.2",
   "Hi-C MDS gives a 3D contact-space view",
-  "../_revision_assets/v7/hic_3d_plots/pngs/chm13_hic_mds_3d_coords.png",
-  source: "v7/hic_3d_plots README; CHM13 Hi-C 3D MDS contact-frequency embedding; not a physical single-cell genome reconstruction",
+  "CHM13 Hi-C MDS is whole-arm contact space",
+  "../_revision_assets/v8/hic_dipc_clarity_split/inputs/chm13_hic_mds_3d_coords.png",
+  [
+    #text(weight: "bold")[Region definition:] whole CHM13 p-arm, centromere, and q-arm intervals from `CHM13_chrom_parts.bed` (72 regions). This is #text(weight: "bold")[not] PHR intervals, #text(weight: "bold")[not] terminal 500 kb, and #text(weight: "bold")[not] 1 Mb PHR flanks/windows. MDS embeds Hi-C contact frequencies; it is contact-space MDS, not a physical single-cell reconstruction.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; Dataset CHM13; Technology Hi-C; source PNG MDS_3d_coords.png; source BED CHM13_chrom_parts.bed",
 )
 
 #pagebreak()
@@ -716,28 +751,80 @@
 
 #pagebreak()
 
-#dipc-validation-panel-slide(
-  "11a",
-  "Dip-C/sperm validation: Mantel and radial panels",
-  source: "v6/dipc_validation/prepare_dipc_validation_assets.sh; existing rendered PDFs converted with Poppler",
+#captioned-figure-slide(
+  "11a.1",
+  "GM12878 Dip-C proximity",
+  "GM12878 Dip-C: sequence similarity predicts 3D proximity",
+  "../_revision_assets/v8/hic_dipc_clarity_split/plots/gm12878_mantel_proximity.png",
+  [
+    W/B means within-community divided by between-community 3D distance; W/B < 1 means within-community arms are closer. Proximity convention: `3D proximity = -mean 3D distance`, so higher y-values are closer and positive rho has the expected direction.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; Dataset GM12878; Technology Dip-C; n=16 cells; source TSVs gm12878_mantel_3d.tsv and arm distance matrices",
 )
 
 #pagebreak()
 
-#figure-slide(
+#captioned-figure-slide(
+  "11a.2",
+  "GM12878 Dip-C radial",
+  "GM12878 Dip-C radial community structure",
+  "../_revision_assets/v8/hic_dipc_clarity_split/inputs/gm12878_radial_community.png",
+  [
+    GM12878 only: per-community normalized radial position plus within-vs-between radial-position similarity. Same-community arms have more similar radial positions than between-community arms.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; Dataset GM12878; Technology Dip-C; n=16 cells; gm12878_radial_community.pdf/TSV",
+)
+
+#pagebreak()
+
+#captioned-figure-slide(
+  "11a.3",
+  "Sperm scHi-C proximity",
+  "Sperm single-cell Hi-C: sequence similarity predicts 3D proximity",
+  "../_revision_assets/v8/hic_dipc_clarity_split/plots/sperm_all20_mantel_proximity.png",
+  [
+    W/B means within-community divided by between-community 3D distance; W/B < 1 means within-community arms are closer. Proximity convention: `3D proximity = -mean 3D distance`, so higher y-values are closer and positive rho has the expected direction.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; Dataset human sperm; Technology single-cell Hi-C/3DG; n=20 cells; sperm_all20_mantel_3d.tsv and arm distance matrices",
+)
+
+#pagebreak()
+
+#captioned-figure-slide(
+  "11a.4",
+  "Sperm scHi-C radial",
+  "Sperm single-cell Hi-C radial community structure",
+  "../_revision_assets/v8/hic_dipc_clarity_split/inputs/sperm_all20_radial_community.png",
+  [
+    Sperm only: per-community normalized radial position plus within-vs-between radial-position similarity across 20 haploid sperm cells. It measures the same radial statistic as the GM12878 radial panel in a distinct cell type.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; Dataset human sperm; Technology single-cell Hi-C/3DG; n=20 cells; sperm_all20_radial_community.pdf/TSV",
+)
+
+#pagebreak()
+
+#captioned-figure-slide(
   "11b",
   "Negative control: non-sharing S_all arms are farther apart",
-  "../_revision_assets/v6/dipc_validation/plots/wb_negative_control.png",
-  source: "v6/dipc_validation/make_dipc_validation_summary_plots.R; GM12878 and sperm per-cell/per-community TSVs; no 3D rerun",
+  "Negative control: non-sharing S_all arms are farther apart",
+  "../_revision_assets/v8/hic_dipc_clarity_split/plots/wb_negative_control_reduced_text.png",
+  [
+    Reduced text scale. W/B is within-community divided by between-community 3D distance; values below 1 mean closer within-community, while S_all values above 1 show the non-sharing negative control is farther apart.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; per-cell and per-community TSV roots for GM12878 Dip-C and sperm single-cell Hi-C",
 )
 
 #pagebreak()
 
-#figure-slide(
+#captioned-figure-slide(
   "11c",
   "Community-free per-cell rho: sequence similarity predicts proximity",
-  "../_revision_assets/v6/dipc_validation/plots/community_free_rho_distribution.png",
-  source: "v6/dipc_validation/make_dipc_validation_summary_plots.R; *_community_free_per_cell.tsv and *_community_free_arm.tsv",
+  "Community-free per-cell rho: sequence similarity predicts proximity",
+  "../_revision_assets/v8/hic_dipc_clarity_split/plots/community_free_rho_distribution_reduced_text.png",
+  [
+    Reduced text scale. Rho is computed as sequence similarity versus 3D proximity (`-distance`), so positive rho means more similar sequences are closer in 3D.
+  ],
+  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; files *_community_free_per_cell.tsv and *_community_free_arm.tsv for GM12878 Dip-C and sperm single-cell Hi-C",
 )
 
 #pagebreak()
@@ -745,8 +832,8 @@
 #figure-slide(
   "12",
   "Mouse zygotene: the bouquet-stage 3D signal",
-  "../_revision_assets/hic_visual_redesign/slide_12_mouse_zygotene_trajectory_pairing.png",
-  source: "hic_visual_redesign/make_hic_visual_redesign.R; mouse zygotene plus stage trajectory",
+  "../_revision_assets/v8/typography_legend_cleanup/slide12_mouse_zygotene_large_text.png",
+  source: "v8/typography_legend_cleanup/make_typography_legend_cleanup.R; mouse Zuo 2021 stage tables; zygotene pair correlation and stage Mantel rho",
 )
 
 #pagebreak()
@@ -772,8 +859,8 @@
 #figure-slide(
   "13b",
   "Backup: detailed pedigree exchange events",
-  "assets/s13_pedigree_bottom.png",
-  source: "current review-zoom bottom crop from s13_pedigree.png; crop recipe unknown",
+  "../_revision_assets/v8/typography_legend_cleanup/slide13b_pedigree_bottom_no_unused_legend.png",
+  source: "v8/typography_legend_cleanup/crop_png_top.py; crop of s13_pedigree_bottom.png with unused bottom legend removed; event labels are direct in-panel annotations",
 )
 
 #pagebreak()
@@ -809,8 +896,8 @@
 #figure-slide(
   "14b",
   "Copy-aware candidate signals ranked by community-arm support",
-  "../_revision_assets/v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png",
-  source: "v5/gene_enrichment_figures/ranked_copy_aware_gene_signals.png; ranked_signal_support.tsv; bars are support counts, not q-values or BH-significant effects",
+  "../_revision_assets/v8/typography_legend_cleanup/slide14b_candidate_signals_talk_ready.png",
+  source: "v8/typography_legend_cleanup/make_typography_legend_cleanup.R; v5 ranked_signal_support.tsv; bars are support counts, not q-values or BH-significant effects",
 )
 
 #pagebreak()
@@ -818,68 +905,30 @@
 #figure-slide(
   "14c",
   "Community/family map separates support from statistical proof",
-  "../_revision_assets/v5/gene_enrichment_figures/community_family_signal_map.png",
-  source: "v5/gene_enrichment_figures/community_family_signal_map.png; community_family_map_support.tsv; v7 caveat: report-backed presence patterns, not definitive enriched classes",
+  "../_revision_assets/v8/typography_legend_cleanup/slide14c_community_family_map_talk_ready.png",
+  source: "v8/typography_legend_cleanup/make_typography_legend_cleanup.R; v5 community_family_map_support.tsv simplified for talk legibility; direct labels replace legend",
 )
 
 #pagebreak()
 
-#figure-slide(
-  "14d",
-  "Backup: DUX4/D4Z4 paired C1 chr4q/chr10q PHR view",
-  "../_revision_assets/v3/gene_browser_panels/panel_01_dux4_d4z4_c1_chr4_chr10.png",
-  source: "v3/gene_browser_panels/render_gene_browser_panels.R; panel_manifest.tsv; input_manifest.tsv",
-)
+#raster-slide("../_revision_assets/v8/chm13_ucsc_examples/selected_example-01.png")
 
 #pagebreak()
 
-#figure-slide(
-  "14e",
-  "Backup: OR4F-rich C3 chr3q PHR",
-  "../_revision_assets/v3/gene_browser_panels/panel_02_or4f_c3_chr3q.png",
-  source: "v3/gene_browser_panels/render_gene_browser_panels.R; target_loci.tsv; fixed track schema",
-)
+#raster-slide("../_revision_assets/v8/chm13_ucsc_examples/selected_example-02.png")
 
 #pagebreak()
 
-#figure-slide(
-  "14f",
-  "Backup: OR4F pseudogene endpoint in C8 chr15q",
-  "../_revision_assets/v3/gene_browser_panels/panel_03_or4f_decay_c8_chr15q.png",
-  source: "v3/gene_browser_panels/render_gene_browser_panels.R; OR4F pseudogene summary in input_manifest.tsv",
-)
+#raster-slide("../_revision_assets/v8/chm13_ucsc_examples/selected_example-03.png")
 
 #pagebreak()
 
-#figure-slide(
-  "14g",
-  "Backup: TAR1-rich C2 chr18p PHR",
-  "../_revision_assets/v3/gene_browser_panels/panel_04_tar1_c2_chr18p.png",
-  source: "v3/gene_browser_panels/render_gene_browser_panels.R; TAR1 repeat lane kept separate from gene models",
-)
+#raster-slide("../_revision_assets/v8/chm13_ucsc_examples/selected_example-04.png")
 
 #pagebreak()
 
-#figure-slide(
-  "14h",
-  "Backup: C7 acrocentric p-arm panel uses one track grammar",
-  "../_revision_assets/v3/gene_browser_panels/panel_05_acrocentric_c7_p_arm_group.png",
-  source: "v3/gene_browser_panels/render_gene_browser_panels.R; C7 PanSN relative offsets from all-vs-all length TSV",
-)
+#raster-slide("../_revision_assets/v8/chm13_ucsc_examples/selected_example-05.png")
 
 #pagebreak()
 
-#text-slide(
-  "15",
-  "Closing - review focus page",
-  "Closing: sequence sharing, 3D proximity, exchange",
-  [
-    Method: implicit pangenome graph over telomere-anchored flanks.
-
-    Empirical result: PAR-scale pseudohomology across most chromosome ends.
-
-    Mechanism and proof: 3D proximity predicts exchange, and T2T pedigrees show it is ongoing.
-  ],
-  thesis: [Subtelomeres concertedly evolve through ongoing inter-chromosomal exchange, observable in pedigrees, predicted by 3D contact, and recovered by an implicit pangenome graph across HPRC v2.],
-  source: "closing text retained for v3 review flow",
-)
+#raster-slide("../_revision_assets/v8/chm13_ucsc_examples/selected_example-06.png")
