@@ -212,12 +212,47 @@ project_3d_oblique <- function(df) {
 }
 
 projection_3d <- project_3d_oblique(points)
-axis_df <- rbind(
-  data.frame(axis = "MDS D1", x = 0, y = 0, xend = 0.42 * 0.92, yend = 0),
-  data.frame(axis = "MDS D2", x = 0, y = 0, xend = 0.42 * 0.38, yend = 0.42 * 0.42),
-  data.frame(axis = "MDS D3", x = 0, y = 0, xend = 0, yend = 0.42 * 0.92)
+
+x_range_3d <- range(projection_3d$px, na.rm = TRUE)
+y_range_3d <- range(projection_3d$py, na.rm = TRUE)
+x_span_3d <- diff(x_range_3d)
+y_span_3d <- diff(y_range_3d)
+axis_len_3d <- min(x_span_3d, y_span_3d) * 0.24
+axis_origin_3d <- data.frame(
+  x = x_range_3d[1] - 0.22 * x_span_3d,
+  y = y_range_3d[1] - 0.06 * y_span_3d
 )
-axis_lab_df <- transform(axis_df, lx = xend * 1.10, ly = yend * 1.10)
+axis_df <- rbind(
+  data.frame(
+    axis = "MDS D1",
+    x = axis_origin_3d$x,
+    y = axis_origin_3d$y,
+    xend = axis_origin_3d$x + axis_len_3d * 0.92,
+    yend = axis_origin_3d$y
+  ),
+  data.frame(
+    axis = "MDS D2",
+    x = axis_origin_3d$x,
+    y = axis_origin_3d$y,
+    xend = axis_origin_3d$x + axis_len_3d * 0.38,
+    yend = axis_origin_3d$y + axis_len_3d * 0.42
+  ),
+  data.frame(
+    axis = "MDS D3",
+    x = axis_origin_3d$x,
+    y = axis_origin_3d$y,
+    xend = axis_origin_3d$x,
+    yend = axis_origin_3d$y + axis_len_3d * 0.92
+  )
+)
+axis_lab_df <- transform(axis_df, lx = x + (xend - x) * 1.16, ly = y + (yend - y) * 1.16)
+
+plot_x_range_3d <- range(c(projection_3d$px, axis_df$x, axis_df$xend, axis_lab_df$lx), na.rm = TRUE)
+plot_y_range_3d <- range(c(projection_3d$py, axis_df$y, axis_df$yend, axis_lab_df$ly), na.rm = TRUE)
+plot_x_pad_3d <- diff(plot_x_range_3d) * 0.08
+plot_y_pad_3d <- diff(plot_y_range_3d) * 0.08
+plot_x_limits_3d <- plot_x_range_3d + c(-plot_x_pad_3d, plot_x_pad_3d)
+plot_y_limits_3d <- plot_y_range_3d + c(-plot_y_pad_3d, plot_y_pad_3d)
 
 plot_3d_view <- ggplot(
   projection_3d,
@@ -239,7 +274,7 @@ plot_3d_view <- ggplot(
     size = 4.0,
     fontface = "bold"
   ) +
-  geom_point(shape = 21, size = 6.4, stroke = 1.05, alpha = 0.97) +
+  geom_point(shape = 21, size = 3.2, stroke = 0.65, alpha = 0.97) +
   geom_text(
     aes(label = arm),
     color = "#1E293B",
@@ -250,7 +285,7 @@ plot_3d_view <- ggplot(
   ) +
   scale_fill_manual(values = community_colors, drop = FALSE) +
   scale_color_manual(values = community_colors, drop = FALSE) +
-  coord_equal(clip = "off") +
+  coord_equal(xlim = plot_x_limits_3d, ylim = plot_y_limits_3d, clip = "off") +
   labs(
     title = "CHM13 PHR Hi-C contact-space MDS: 3D view",
     subtitle = wrap_text(

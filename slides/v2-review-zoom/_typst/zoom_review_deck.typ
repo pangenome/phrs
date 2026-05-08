@@ -888,8 +888,8 @@
 #figure-slide(
   "13a",
   "Pedigree proof: exchange events fall in predicted communities",
-  "assets/s13_pedigree_top.png",
-  source: "current review-zoom top crop from s13_pedigree.png; crop recipe unknown",
+  "../_revision_assets/v8/typography_legend_cleanup/slide13a_pedigree_top_safe.png",
+  source: "v8/typography_legend_cleanup/crop_png_top.py; top crop from the full s13_pedigree.png, ending between chromosome rows",
 )
 
 #pagebreak()
@@ -897,8 +897,8 @@
 #figure-slide(
   "13b",
   "Backup: detailed pedigree exchange events",
-  "../_revision_assets/v8/typography_legend_cleanup/slide13b_pedigree_bottom_no_unused_legend.png",
-  source: "v8/typography_legend_cleanup/crop_png_top.py; crop of s13_pedigree_bottom.png with unused bottom legend removed; event labels are direct in-panel annotations",
+  "../_revision_assets/v8/typography_legend_cleanup/slide13b_pedigree_bottom_safe.png",
+  source: "v8/typography_legend_cleanup/crop_png_top.py; bottom crop from the full s13_pedigree.png, starting at chr12 and excluding the unused legend",
 )
 
 #pagebreak()

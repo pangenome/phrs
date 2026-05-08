@@ -2,8 +2,9 @@ artifact	purpose
 slide12_mouse_zygotene_large_text.png	Slide 12 replacement asset with larger labels and preserved scatter plus stage trajectory.
 slide12_mouse_zygotene_large_text.pdf	Vector/PDF companion for slide 12 replacement asset.
 slide12_stage_mantel_rho.tsv	Source stage Mantel rho values used in the slide 12 trajectory inset.
-slide13b_pedigree_bottom_no_unused_legend.png	Slide 13b materialized crop with the unused bottom legend removed.
-crop_png_top.py	Deterministic PNG top-crop helper used because no pedigree regeneration recipe is available.
+slide13a_pedigree_top_safe.png	Slide 13a materialized crop from the full pedigree PNG, ending between chromosome rows.
+slide13b_pedigree_bottom_safe.png	Slide 13b materialized crop from the full pedigree PNG, starting at chr12 and excluding the unused legend.
+crop_png_top.py	Deterministic PNG vertical crop helper used because no pedigree regeneration recipe is available.
 slide13b_remove_unused_legend.typ	Typst replacement snippet for slide 13b using the materialized no-legend crop.
 slide14b_candidate_signals_talk_ready.png	Slide 14b replacement asset with condensed labels, no legend, and doubled text.
 slide14b_candidate_signals_talk_ready.pdf	Vector/PDF companion for slide 14b replacement asset.
