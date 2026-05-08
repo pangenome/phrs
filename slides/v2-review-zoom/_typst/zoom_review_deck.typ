@@ -1,7 +1,7 @@
-// BoG 2026 review zoom deck, v8 review revision.
+// BoG 2026 review zoom deck, v9 review revision.
 // Layout: 16:9 widescreen, one visual focus per page.
 // Build:
-//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v8.pdf
+//   typst compile --root .. zoom_review_deck.typ ../BoG_2026_review_zoom_v9.pdf
 //   typst compile --root .. --ppi 144 zoom_review_deck.typ page-{0p}.png
 
 #set page(
@@ -334,15 +334,15 @@
 
 #let community-method-stat(value, label) = block(
   width: 100%,
-  fill: rgb("#ffffff"),
-  stroke: 0.75pt + col-hdr-bg.darken(12%),
-  inset: (x: 0.09in, y: 0.065in),
+  fill: col-card-bg,
+  stroke: 0.75pt + col-hdr-bg.darken(15%),
+  inset: (x: 0.08in, y: 0.06in),
   radius: 3pt,
 )[
   #align(center)[
-    #text(size: 17pt, weight: "bold", fill: col-title)[#value]
+    #text(size: 21.2pt, weight: "bold", fill: col-title)[#value]
     #linebreak()
-    #text(size: 7.8pt, fill: col-text)[#label]
+    #text(size: 9.8pt, fill: col-text)[#label]
   ]
 ]
 
@@ -350,12 +350,12 @@
   width: 100%,
   fill: col-card-bg,
   stroke: 0.75pt + col-hdr-bg.darken(15%),
-  inset: (x: 0.13in, y: 0.08in),
+  inset: (x: 0.12in, y: 0.07in),
   radius: 3pt,
 )[
-  #text(size: 10.2pt, weight: "bold", fill: col-title)[#title]
+  #text(size: 12.8pt, weight: "bold", fill: col-title)[#title]
   #linebreak()
-  #text(size: 8.7pt, fill: col-text)[#body]
+  #text(size: 10.9pt, fill: col-text)[#body]
 ]
 
 #let community-assignment-method-slide(num, label, source: "") = {
@@ -367,80 +367,80 @@
     align(center + horizon)[
       #block(width: 11.95in)[
         #align(center)[
-          #text(size: 22pt, weight: "bold", fill: col-title)[How we assigned PHR communities]
+          #text(size: 27.5pt, weight: "bold", fill: col-title)[How we assigned PHR communities]
         ]
-        #v(0.11in)
+        #v(0.08in)
         #grid(
           columns: (1fr, 1fr, 1fr, 1fr),
           column-gutter: 0.08in,
-          community-method-stat("15,668", [HPRCv2 PHR paths with inter-chromosomal signal]),
-          community-method-stat("41 x 41", [arm distance matrix; 7 zero-signal arms excluded]),
-          community-method-stat("15", [output Leiden arm-level communities, C1-C15]),
+          community-method-stat("15,668", [PHR paths with inter-chromosomal signal]),
+          community-method-stat("41 x 41", [arm matrix; 7 zero-signal arms excluded]),
+          community-method-stat("15", [Leiden arm-level communities, C1-C15]),
           community-method-stat("1.16 / 0.347", [resolution / mean silhouette]),
         )
-        #v(0.11in)
+        #v(0.08in)
         #grid(
-          columns: (1.15fr, 1fr),
+          columns: (1.13fr, 1fr),
           column-gutter: 0.16in,
           align: top,
           [
             #block(
               width: 100%,
-              height: 3.28in,
+              height: 3.22in,
               fill: rgb("#ffffff"),
               stroke: 0.75pt + col-hdr-bg.darken(15%),
               inset: (x: 0.05in, y: 0.05in),
               radius: 3pt,
             )[
-              #image("../_revision_assets/v6/community_assignment_method/community_assignment_method_schematic.svg", width: 100%, height: 100%, fit: "contain")
+              #image("../_revision_assets/v9/labels_superpop_stats_polish/community_assignment_method_schematic_v9_readable.svg", width: 100%, height: 100%, fit: "contain")
             ]
-            #v(0.08in)
+            #v(0.07in)
             #block(
               width: 100%,
               fill: col-note-bg,
               stroke: (left: 4pt + col-note-bar),
-              inset: (x: 0.14in, y: 0.09in),
+              inset: (x: 0.13in, y: 0.075in),
               radius: 3pt,
             )[
-              #text(size: 9.2pt, weight: "bold", fill: col-text)[No gene labels or 3D data were used to define communities.]
+              #text(size: 11.5pt, weight: "bold", fill: col-text)[Community definitions use graph similarity only.]
               #linebreak()
-              #text(size: 8.6pt, fill: col-text)[Biological labels such as D4Z4, acrocentric p, PAR1/PAR2, and f7501/OR4F were added after clustering.]
+              #text(size: 10.8pt, fill: col-text)[Biological names and 3D contact evidence are annotations interpreted after clustering.]
             ]
           ],
           [
             #grid(
               rows: (auto, auto, auto),
-              row-gutter: 0.075in,
+              row-gutter: 0.06in,
               community-method-card(
-                "Inputs: graph-path Jaccard only",
-                [Build one PGGB graph (`pggb -p 95`) and compute all-vs-all path Jaccard with `odgi similarity --all -P`.],
+                "Inputs: graph-path Jaccard",
+                [Build one PGGB graph (`pggb -p 95`), then compute path Jaccard with `odgi similarity --all -P`.],
               ),
               community-method-card(
-                "Collapse paths to chromosome arms",
-                [For each arm pair A x B, average all haplotype/path pair distances using `distance = 1 - Jaccard`.],
+                "Collapse paths to arms",
+                [For each arm pair, average haplotype/path pair distances using `distance = 1 - Jaccard`.],
               ),
               community-method-card(
-                "Leiden call, silhouette-selected",
-                [Run Leiden on a fully connected weighted arm graph with `w_ij = exp(-d_ij / median(d))`; scan resolution 0.1-3.0 by 0.01 and choose maximum mean silhouette.],
+                "Silhouette-selected Leiden",
+                [Run Leiden with `w_ij = exp(-d_ij / median(d))`; scan resolution 0.1-3.0 and choose the maximum mean silhouette.],
               ),
             )
-            #v(0.075in)
+            #v(0.06in)
             #block(
               width: 100%,
               fill: rgb("#ffffff"),
               stroke: 0.75pt + col-hdr-bg.darken(12%),
-              inset: (x: 0.13in, y: 0.085in),
+              inset: (x: 0.12in, y: 0.075in),
               radius: 3pt,
             )[
-              #text(size: 10.2pt, weight: "bold", fill: col-title)[Robustness check]
+              #text(size: 12.8pt, weight: "bold", fill: col-title)[Robustness check]
               #linebreak()
-              #text(size: 8.6pt, fill: col-text)[UPGMA average-linkage on the same matrix gives 14 communities, silhouette 0.342, and agrees exactly on 12/15 Leiden communities; differences are f7501-like boundary cases.]
+              #text(size: 10.8pt, fill: col-text)[UPGMA average-linkage on the same matrix gives 14 communities, silhouette 0.342, and exact agreement on 12/15 Leiden communities.]
             ]
           ],
         )
-        #v(0.10in)
+        #v(0.08in)
         #align(center)[
-          #text(size: 8.3pt, fill: col-cap)[This slide is arm-level C1-C15 across 41 detected-signal arms only; the sequence-level 50-community partition is a separate finer-grained analysis.]
+          #text(size: 10.4pt, fill: col-cap)[Arm-level C1-C15 partition across 41 detected-signal arms; the sequence-level 50-community partition is separate.]
         ]
       ]
     ],
@@ -535,8 +535,8 @@
 #figure-slide(
   "06a",
   "PHR length distribution by chromosome end",
-  "../_revision_assets/v8/06a_length_alternatives/phr_length_arm_heatstrip_10kb.png",
-  source: "v8/06a_length_alternatives/make_06a_length_alternatives.R; arm_length_bins_10kb.tsv; terminal 500 kb ceiling",
+  "../_revision_assets/v9/06a_q_axis_kbp/phr_length_arm_heatstrip_10kbp.png",
+  source: "v9/06a_q_axis_kbp/make_06a_q_axis_kbp.R; arm_length_bins_10kbp.tsv; >500 kbp not measured",
 )
 
 #pagebreak()
@@ -575,6 +575,28 @@
 
 #pagebreak()
 
+#captioned-figure-slide(
+  "07j.a",
+  "Chromosome-end bundle",
+  "A chromosome-end bundle is a population collection",
+  "../_revision_assets/v9/broom_jaccard_method/broom_1.png",
+  [All HPRCv2 haplotype PHR paths assigned to one chromosome end are treated as one subtelomere bundle. The unit is the population collection for that end, not a single reference interval.],
+  source: "Erik Garrison broom cartoon copied from repo-root broom_1.png; method wording: subtelomeric_analysis_report.md sections 5 and 6.1",
+)
+
+#pagebreak()
+
+#captioned-figure-slide(
+  "07j.b",
+  "Bundle Jaccard",
+  "Compare two chromosome-end bundles by graph-node overlap",
+  "../_revision_assets/v9/broom_jaccard_method/brooms_compare.png",
+  [For paths drawn from two chromosome-end bundles, Jaccard is intersection / union of the PGGB variation graph nodes they traverse. Averaged path-pair overlaps form the arm-level matrix for heatmaps, Leiden, and MDS; A x A can be below 1 when a bundle has heterogeneous haplotypes/paths.],
+  source: "Erik Garrison broom cartoon copied from repo-root brooms_compare.png; method wording: subtelomeric_analysis_report.md sections 5 and 6.1 and current slide 07j",
+)
+
+#pagebreak()
+
 #figure-slide(
   "07j.1",
   "PGGB graph main component: ODGI 2D layout",
@@ -587,7 +609,7 @@
 #community-assignment-method-slide(
   "07j.2",
   "Community assignment method",
-  source: "subtelomeric_analysis_report.md sections 5 and 6.1; HPRCv2 plot-similarity-subtelo.R; arm distance matrix and Leiden k15 assignment TSVs",
+  source: "v9/labels_superpop_stats_polish/slide07j2_typst_patch.typ; subtelomeric_analysis_report.md sections 5 and 6.1; HPRCv2 plot-similarity-subtelo.R; arm distance matrix and Leiden k15 assignment TSVs",
 )
 
 #pagebreak()
@@ -597,6 +619,17 @@
   "Tree-ordered arm similarity heatmap",
   "../_revision_assets/v5/07a_tree_then_community_heatmap/07a_tree_ordered_heatmap.png",
   source: "v5/07a_tree_then_community_heatmap/make_07a_tree_then_community_heatmap.R; UPGMA leaf order drives side tree, rows, and columns",
+)
+
+#pagebreak()
+
+#captioned-figure-slide(
+  "07a.1b",
+  "Why Leiden for community assignment?",
+  "Leiden adds refinement before aggregation",
+  "../_revision_assets/v9/leiden_figure_slide/leiden_algorithm_fig3_official.png",
+  [Leiden adds a refinement step so communities remain well connected; we use it on the arm-level graph-path Jaccard similarity network.],
+  source: "Adapted from Traag, V. A., Waltman, L. & van Eck, N. J. From Louvain to Leiden: guaranteeing well-connected communities. Scientific Reports 9, 5233 (2019), CC BY 4.0.",
 )
 
 #pagebreak()
@@ -667,11 +700,11 @@
   "08b.1",
   "Nearest same-superpopulation neighbor in MDS space",
   "Nearest same-superpopulation neighbor in MDS space",
-  "../_revision_assets/v8/mds_superpop_community_polish/nearest_same_superpop_distance_boxplot.png",
+  "../_revision_assets/v9/labels_superpop_stats_polish/nearest_same_superpop_distance_boxplot_bracketed.png",
   [
-    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded; pairwise notes use BH-corrected Wilcoxon tests plus median differences and Cliff delta effect sizes.
+    For each subtelomeric MDS point, distance is to the nearest other point from the same continental superpopulation in displayed D1-D2 MDS space. Self is excluded. KW is the Kruskal-Wallis global non-parametric test across groups; pairwise Wilcoxon is rank-sum group comparison; BH is Benjamini-Hochberg FDR correction over pairwise tests. Brackets show the five strongest BH-significant contrasts; the full pairwise table is in the v9 asset folder.
   ],
-  source: "v8/mds_superpop_community_polish/nearest_same_superpop_mds_distances.tsv; robust boxplot summary; Wilcoxon BH and Cliff delta TSVs",
+  source: "v9/labels_superpop_stats_polish/nearest_same_superpop_mds_distances.tsv; bracketed boxplot summary; Wilcoxon BH and Cliff delta TSVs",
 )
 
 #pagebreak()
@@ -711,15 +744,11 @@
 
 #pagebreak()
 
-#captioned-figure-slide(
+#figure-slide(
   "10m.2",
   "Hi-C MDS gives a 3D contact-space view",
-  "CHM13 Hi-C MDS is whole-arm contact space",
-  "../_revision_assets/v8/hic_dipc_clarity_split/inputs/chm13_hic_mds_3d_coords.png",
-  [
-    #text(weight: "bold")[Region definition:] whole CHM13 p-arm, centromere, and q-arm intervals from `CHM13_chrom_parts.bed` (72 regions). This is #text(weight: "bold")[not] PHR intervals, #text(weight: "bold")[not] terminal 500 kb, and #text(weight: "bold")[not] 1 Mb PHR flanks/windows. MDS embeds Hi-C contact frequencies; it is contact-space MDS, not a physical single-cell reconstruction.
-  ],
-  source: "v8/hic_dipc_clarity_split/Source_manifest.tsv; Dataset CHM13; Technology Hi-C; source PNG MDS_3d_coords.png; source BED CHM13_chrom_parts.bed",
+  "../_revision_assets/v9/slide10m2_better_3d_viz/best_replacement_chm13_phr_contact_mds.png",
+  source: "v9/slide10m2_better_3d_viz; source matrix: chm13_hic.dist_matrix.tsv; regions: chm13_subtelomeric_regions.bed; color: sequence communities; contact-space MDS, not physical 3DG",
 )
 
 #pagebreak()
