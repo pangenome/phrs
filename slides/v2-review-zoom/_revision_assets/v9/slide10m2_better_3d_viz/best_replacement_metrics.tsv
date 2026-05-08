@@ -1,0 +1,11 @@
+metric	value
+n_arms	38
+D1_positive_eigen_variance	0.079861
+D2_positive_eigen_variance	0.064457
+D3_positive_eigen_variance	0.058513
+mantel_rho	0.656264
+mantel_p_display	<1e-4
+sequence_community_contact_enrichment_p	3.4577547e-05
+source_distance_matrix	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/chm13_hic.dist_matrix.tsv
+source_sequence_community_assignments	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv
+source_region_bed	/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/chm13_subtelomeric_regions.bed
