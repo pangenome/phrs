@@ -2,7 +2,7 @@
 title: Concerted evolution and unorthodox recombination of human subtelomeres
 target_journal: Nature
 target_format: Article
-abstract_words: 218
+abstract_words: 214
 main_text_words: 3905
 generated: 2026-05-17
 inputs:
@@ -15,7 +15,7 @@ inputs:
 
 ## Abstract
 
-Human subtelomeres are among the most dynamic and structurally complex regions of the genome, yet interchromosomal sequence relationships have resisted systematic analysis owing to assembly incompleteness and per-chromosome alignment frames [@MeffordTrask2002; @Riethman2004; @Linardopoulou2005; @BaileyEichler2006]. Using 465 near-complete haplotype assemblies from 233 individuals of the Human Pangenome Reference Consortium v2 plus CHM13v2.0 (466 haplotype-equivalent units), we build an implicit pangenome graph: the all-vs-all wfmash PAF set, queried by IMPG transitive closure, without chromosomal partitioning [@hprc_hprcv2_2025; @Garrison2024pggb; @pangenome_graphs_impg_GarrisonGuarracino2023]. The graph maps 18,827 telomere-anchored 500 kb flanks to 15,668 pseudohomologous regions (PHRs; median 105 kb) on 41 of 48 chromosome arms, in scale comparable to the canonical PAR2. A neighbour-joining tree of arm-level Jaccard distances recovers PAR1, PAR2, the acrocentric short arms, a 10p/18p clade, a tight {22q, 21q, 19q, 1q, 13q, 17q} q-arm clade and 4q/10q DUX4 with wide copy-number diversity; all six clades map one-to-one to a Leiden partition of 15 arm-level and 50 sequence-level communities. Bulk and single-cell Hi-C, Pore-C, CiFi and Dip-C across six individuals, 20-cell sperm scHi-C and mouse meiotic Hi-C peaking at zygotene (Spearman ρ = 0.715) tie sequence similarity to nuclear-envelope proximity through the meiotic bouquet. A T2T 3-generation pedigree resolves 538 inter-chromosomal patches with 92% within Leiden communities, including 133 gene-conversion-like and 16 crossover-like events. Human subtelomeres are unified by ongoing inter-chromosomal recombination and concerted evolution.
+Human subtelomeres are among the most dynamic and structurally complex regions of the genome, yet interchromosomal sequence relationships have resisted systematic analysis owing to assembly incompleteness and per-chromosome alignment frames. Using 465 near-complete haplotype assemblies from 233 individuals of the Human Pangenome Reference Consortium v2 plus CHM13v2.0 (466 haplotype-equivalent units), we build an implicit pangenome graph: the all-vs-all wfmash PAF set, queried by IMPG transitive closure, without chromosomal partitioning. The graph maps 18,827 telomere-anchored 500 kb flanks to 15,668 pseudohomologous regions (PHRs; median 105 kb) on 41 of 48 chromosome arms, in scale comparable to the canonical PAR2. A neighbour-joining tree of arm-level Jaccard distances recovers PAR1, PAR2, the acrocentric short arms, a 10p/18p clade, a tight {22q, 21q, 19q, 1q, 13q, 17q} q-arm clade and 4q/10q DUX4 with wide copy-number diversity; all six clades map one-to-one to a Leiden partition of 15 arm-level and 50 sequence-level communities. Bulk and single-cell Hi-C, Pore-C, CiFi and Dip-C across six individuals, 20-cell sperm scHi-C and mouse meiotic Hi-C peaking at zygotene (Spearman ρ = 0.715) tie sequence similarity to nuclear-envelope proximity through the meiotic bouquet. A T2T 3-generation pedigree resolves 538 inter-chromosomal patches with 92% within Leiden communities, including 133 gene-conversion-like and 16 crossover-like events. Human subtelomeres are unified by ongoing inter-chromosomal recombination and concerted evolution.
 
 ## Main text
 
