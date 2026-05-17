@@ -166,3 +166,40 @@ The following major concerns from PEER_REVIEW_v1.md are deferred to a future ana
 | D-Bib3 (Cech 2004) | bib addition | 30 min | bib pass |
 
 Headline-numbers most in need of CIs and nulls before the next submission round: pedigree 92%, mouse ρ = 0.715, F_ST 0.10-0.15, Mantel ρ = 0.66.
+
+---
+
+## Narrative-match items deferred (added v5, 2026-05-17)
+
+Items below were flagged in `paper_prep/synthesis/NARRATIVE_MATCH_PLAN.md` (40-finding aggregation of 5 brutal reviews) but not fully applied in NATURE_DRAFT_v5.md. Each is logged here with status and reason. Full per-finding before/after for the 31 APPLIED items is in `paper_prep/synthesis/REVISION_LOG_v5.md`.
+
+### F20 — DUX4 cancer / oncofetal-programme angle in P1 — DEFERRED (no cite)
+
+The narrative-match plan asked for a clause "DUX4 reactivation is also an oncofetal programme in multiple cancers" alongside the FSHD framing. REFERENCES_v5.bib does not contain a DUX4-cancer / DUX4-oncofetal citation; the closest match (`dux4_d4z4_fshd_geng2012`) is FSHD-pathophysiology with a side mention of germline-gene activation but not explicit oncofetal. The v5 task instruction forbids adding new bibkeys ("do not add new bibkeys, only reuse existing ones"). Action: add a DUX4-cancer review citation (candidate: Yao et al. 2014 PNAS "DUX4-induced gene expression is the major molecular signature in FSHD skeletal muscle" or a more direct cancer-context review) to REFERENCES_v6 and re-apply F20 in v6. Effort: 0.5 day bib hygiene + 1-line edit.
+
+### F21 — Hi-C rare-contact-regime justification — DEFERRED (word-budget)
+
+NARRATIVE_REVIEW_qa-coverage Finding 3 flagged Q1's "Hi-C is notoriously bad for measuring interchromosomal contacts" first-half question as unanswered: the paper addresses the MAPQ0/telomeric-contact half (F07 applied) but not the intrinsic rare-contact-regime issue (~2-5% of read pairs, enriched for random ligation artefact). The plan's recommended one-sentence fix would justify observed-over-expected normalisation and cite the 14-dataset multi-individual consistency as evidence against correlated artefact. With main text at 3295/3300 words there is no room for a 25-30 word addition. The point is partially implicit in the existing observed-over-expected language and in the F07 limitation acknowledgement. Action: in v6, when other should-fix items have been compressed further, add one sentence to P9 or Methods §Hi-C explicitly justifying the O/E normalisation for the rare-contact regime. Effort: 15 minutes once budget exists.
+
+### F30 — End P14 on directionality, not on experiments list — DEFERRED (structural)
+
+NARRATIVE_REVIEW_narrative-arc Finding 9 flagged that the talk ended on the chicken-or-egg as the intellectual puzzle, while v5 P14 still ends on the experiments list ("Long-read recombination maps in trios, matched germline LAD data, and full CEPH1463 cross-assembler analysis will close the remaining open links..."). The directionality language (now with F17's chicken-and-egg label) sits mid-paragraph in v5. Re-ordering would require duplicating the chicken-and-egg sentence at the paragraph end or repositioning the limitations list, which interferes with the Nature limitations-section convention. DEFERRED to v6 author judgement on whether to restructure P14 to end on the directionality question.
+
+### F32 — "Simulate the full graph without building it" closing clause — DEFERRED (low value)
+
+The Erdős-Rényi P2 paragraph already concludes "so transitive closure recovers virtually every subtelomere in the dataset (Methods)" which conveys the same substance as the talk's "simulate the full graph without having to build it." The verbatim talk phrasing is rhetorically tighter but adds no information. DEFERRED indefinitely; not a substantive narrative-match gap.
+
+### F34 — Per-meiosis per-Mb crossover rate — DEFERRED (input data missing)
+
+NARRATIVE_REVIEW_qa-coverage Finding 8 noted that the talk's "ongoing and frequent recombination exchange" is unquantified in the paper. Converting the 16 crossover-like patches to a per-meiosis per-Mb rate requires N transmissions per pedigree and total PHR length surveyed per parent-child pair, neither of which is reported in v4 or v5. Computing this rate is straightforward (~1 day) but requires running the pedigree pipeline rate-calibration analysis. Action: add a per-meiosis crossover rate to a follow-up pedigree-rates analysis; report as "X crossovers per meiosis per Mb of PHR sequence, 95% CI [a, b]" in v6 main text. Effort: 1 day analysis + 1-line edit.
+
+---
+
+| Concern (v5 narrative-match) | Class | Effort | Target round |
+|---|---|---|---|
+| F20 — DUX4 cancer angle | bib addition + 1 clause | 0.5 day | v6 bib + edit pass |
+| F21 — Hi-C rare-contact justification | 1-sentence add (word-budget gated) | 15 min | v6 if budget |
+| F30 — End P14 on directionality | structural re-order | 0.5 day | v6 author judgement |
+| F32 — "Simulate full graph" verbatim | low-value polish | 10 min | indefinite defer |
+| F34 — Per-meiosis crossover rate | new analysis | 1 day | next analysis pass |
+
