@@ -203,3 +203,65 @@ NARRATIVE_REVIEW_qa-coverage Finding 8 noted that the talk's "ongoing and freque
 | F32 — "Simulate full graph" verbatim | low-value polish | 10 min | indefinite defer |
 | F34 — Per-meiosis crossover rate | new analysis | 1 day | next analysis pass |
 
+---
+
+## v6-residual (state at draft-v6-integrate close, 2026-05-18)
+
+Items remaining open after `NATURE_DRAFT_v6` integrated the 8 deferred analyses + F20/F21 narrative-match items. F30 and F32 also remain deferred (author judgement / low-value).
+
+### D-M9-residual. Tight q-arm grouping character-level support
+
+**Status (after v6).** D-M9 ran the character-level bootstrap (B = 1,000, PHRs resampled with replacement) using the chromosome-granular per-PHR cross-chromosome involvement table available from the worktree. Four named groupings (PAR1, PAR2, 10p/18p, 4q/10q DUX4) survive at >= 99% NJ support; the acrocentric p-arm grouping drops to 52% NJ / 87% UPGMA; the 6-arm tight q-arm grouping collapses to 0.1% under the surrogate distance.
+
+**What is still open.** The 0.1% q-grouping support is a data-granularity artefact of the surrogate distance (the per-PHR involvement column reports chromosome, not arm, granularity, conflating the q-grouping with chr2_q and the DUX4 member chr10_q). The canonical PGGB per-arm-pair closure should resolve the q-grouping correctly but is not mounted in the worker environment.
+
+**What would close it.** Re-run `scripts/cladistics/char_bootstrap_d_m9.R` with `--per-arm-pair-closure /moosefs/guarracino/HPRCv2/PHR_III/.../impg_closure/per_arm_pair_jaccard.tsv` (path to be confirmed once /moosefs is mounted). Expected runtime: ~3-5 min single-core given the cached closure.
+
+**Effort.** 0.5 day once /moosefs is mounted.
+
+### D-M12 §b. Mantel ρ trajectory under exclusion controls x resolutions
+
+**Status (after v6).** D-M12 §a (Mantel CHM13 / HG002 headline), §c (pedigree Wilson), §d (F_ST block-jackknife per pair), §e (mouse zygotene Fisher z) are CLOSED with the bootstrap / Wilson / Fisher-z CIs in the v6 main text. §b (per-cell bootstrap CI for the 5 exclusion sets x 5 mcool resolutions Mantel ρ table) is DEFERRED.
+
+**Why deferred.** Requires per-sample, per-resolution Hi-C contact matrices under `/moosefs/.../analysis/human/community_based/{res}/`, which are not mountable from the worker.
+
+**What would close it.** Loop `scripts/ci/bootstrap_ci_d_m12.py` (already parameterised on (`ARM_DIST_TSV`, `<sample>_contact_matrix.tsv`)) over (sample, resolution, exclusion-set). For the 30-cell multi-resolution table where only ρ and `n_arms` are published, the Fisher-z formula in the script gives a closed-form CI per cell.
+
+**Effort.** ~1 day once /moosefs is mounted.
+
+### D-PeerQ1-residual. Strict-MAPQ numerical B/W table
+
+**Status (after v6).** The flanking unique-sequence control falsifies multi-mapping inflation across 7 of 7 Hi-C and Pore-C datasets (flanking B/W 1.25-13.5x stronger than PHR B/W). The strict-MAPQ re-binning script (`scripts/hic/mapq_strict_d_peerq1.py`) is committed and ready to run; the numerical strict-MAPQ B/W per (sample, tech, region) table was not produced this round.
+
+**Why deferred.** `.allValidPairs` files are under `/moosefs/guarracino/HPRCv2/PHR_III/3d/` and not mountable.
+
+**What would close it.** Run `scripts/hic/mapq_strict_d_peerq1.py --sample <id> --allValidPairs <path>` for each (sample, tech). Expected numerical outcome: strict-MAPQ flanking B/W matches v5 flanking B/W within Poisson-sampling noise; strict-MAPQ PHR-internal B/W collapses to a noise floor (the surviving reads in the PHR are by definition unique-sequence).
+
+**Effort.** 1-2 days once /moosefs is mounted.
+
+### D-PeerQ2 RNA-soup speculation
+
+**Status.** Reviewer-letter response only; not in main text. No change.
+
+### D-PeerQ2b pan-segmental-duplication Mantel
+
+**Status.** Separate paper. No change.
+
+### F30 End P14 on directionality
+
+**Status.** Deferred to author judgement; v6 retains v5 structure (directionality mid-paragraph, limitations list at paragraph end).
+
+### F32 "Simulate the full graph" closing clause
+
+**Status.** Indefinite defer (low-value polish).
+
+| Concern (v6-residual) | Class | Effort | Target round |
+|---|---|---|---|
+| D-M9-residual (q-grouping at character level) | re-run on per-arm-pair PGGB closure | 0.5 day | when /moosefs is mounted |
+| D-M12 §b (Mantel ρ exclusion x resolution CI grid) | bootstrap CI loop | 1 day | when /moosefs is mounted |
+| D-PeerQ1-residual (strict-MAPQ B/W table) | run committed script on `.allValidPairs` | 1-2 days | when /moosefs is mounted |
+| D-PeerQ2 RNA-soup | revision-letter response | 0.5 day | cover letter |
+| D-PeerQ2b pan-SD Mantel | new analysis | 1-2 weeks | separate paper |
+| F30 P14 directionality ending | structural re-order | 0.5 day | author judgement |
+| F32 "simulate full graph" verbatim | low-value polish | 10 min | indefinite defer |
+
