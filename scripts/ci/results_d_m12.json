@@ -1,0 +1,252 @@
+{
+  "seed": 20260518,
+  "n_boot": 10000,
+  "n_perm": 10000,
+  "pedigree_wilson": {
+    "k": 494,
+    "n": 538,
+    "phat": 0.9182156133828996,
+    "lo": 0.8919870744783548,
+    "hi": 0.9385141591840064,
+    "method": "Wilson-score 95% CI for binomial proportion (Brown, Cai, DasGupta 2001)"
+  },
+  "fst_block_jackknife": {
+    "AFR_AMR": {
+      "mean": 0.10201471823003908,
+      "lo": 0.021892091088156013,
+      "hi": 0.18213734537192214,
+      "n": 10,
+      "se": 0.03541868286585992
+    },
+    "AFR_EAS": {
+      "mean": 0.15248176772452565,
+      "lo": 0.0650671601775729,
+      "hi": 0.2398963752714784,
+      "n": 10,
+      "se": 0.038642146082734634
+    },
+    "AFR_EUR": {
+      "mean": 0.10799741326758469,
+      "lo": -0.023887491549664935,
+      "hi": 0.23988231808483432,
+      "n": 10,
+      "se": 0.05830050492783308
+    },
+    "AFR_SAS": {
+      "mean": 0.10340769374089417,
+      "lo": -0.0010006383720662232,
+      "hi": 0.20781602585385456,
+      "n": 10,
+      "se": 0.046154322887014244
+    },
+    "AMR_EAS": {
+      "mean": 0.007016662571145015,
+      "lo": -0.022147868354716743,
+      "hi": 0.036181193497006776,
+      "n": 10,
+      "se": 0.012892353990907648
+    },
+    "AMR_EUR": {
+      "mean": 0.006703761363367316,
+      "lo": -0.02790128874643056,
+      "hi": 0.041308811473165195,
+      "n": 10,
+      "se": 0.015297367786326881
+    },
+    "AMR_SAS": {
+      "mean": 0.0036814259741258424,
+      "lo": -0.011911426034948384,
+      "hi": 0.01927427798320007,
+      "n": 10,
+      "se": 0.006892912776133752
+    },
+    "EAS_EUR": {
+      "mean": -0.04747124101727855,
+      "lo": -0.14158164473160384,
+      "hi": 0.046639162697046724,
+      "n": 10,
+      "se": 0.041602062518907475
+    },
+    "EAS_SAS": {
+      "mean": 0.005315771653175283,
+      "lo": -0.012299142867936009,
+      "hi": 0.022930686174286577,
+      "n": 10,
+      "se": 0.007786777510773077
+    },
+    "EUR_SAS": {
+      "mean": -0.003116602409161263,
+      "lo": -0.08667857330879887,
+      "hi": 0.08044536849047636,
+      "n": 10,
+      "se": 0.03693906518690971
+    }
+  },
+  "mantel_bootstrap": {
+    "HG002": {
+      "rho": 0.31462307374707843,
+      "ci_lo": 0.13256644516655067,
+      "ci_hi": 0.38897870456034983,
+      "n_arms": 42,
+      "n_boot": 10000,
+      "perm_p": 9.999000099990002e-05,
+      "arms": [
+        "chr10_p",
+        "chr10_q",
+        "chr11_p",
+        "chr12_p",
+        "chr12_q",
+        "chr13_p",
+        "chr13_q",
+        "chr14_p",
+        "chr15_p",
+        "chr15_q",
+        "chr16_p",
+        "chr16_q",
+        "chr17_p",
+        "chr17_q",
+        "chr18_p",
+        "chr18_q",
+        "chr19_p",
+        "chr19_q",
+        "chr1_p",
+        "chr1_q",
+        "chr20_p",
+        "chr20_q",
+        "chr21_p",
+        "chr21_q",
+        "chr22_p",
+        "chr22_q",
+        "chr2_q",
+        "chr3_q",
+        "chr4_p",
+        "chr4_q",
+        "chr5_q",
+        "chr6_p",
+        "chr6_q",
+        "chr7_p",
+        "chr7_q",
+        "chr8_p",
+        "chr9_p",
+        "chr9_q",
+        "chrX_p",
+        "chrX_q",
+        "chrY_p",
+        "chrY_q"
+      ],
+      "arm_dist_matrix": "/home/guarracino/Dropbox/working/Garrison/hprcv2/PHR_III/hic_validation/arm_dist_matrix.tsv",
+      "hic_matrix": "/home/guarracino/Dropbox/working/Garrison/hprcv2/PHR_III/hic_validation/hg002_contact_matrix.tsv"
+    },
+    "CHM13": {
+      "rho": 0.17486825529420869,
+      "ci_lo": -0.11149942361215354,
+      "ci_hi": 0.36679729726259136,
+      "n_arms": 42,
+      "n_boot": 10000,
+      "perm_p": 0.05599440055994401,
+      "arms": [
+        "chr10_p",
+        "chr10_q",
+        "chr11_p",
+        "chr12_p",
+        "chr12_q",
+        "chr13_p",
+        "chr13_q",
+        "chr14_p",
+        "chr15_p",
+        "chr15_q",
+        "chr16_p",
+        "chr16_q",
+        "chr17_p",
+        "chr17_q",
+        "chr18_p",
+        "chr18_q",
+        "chr19_p",
+        "chr19_q",
+        "chr1_p",
+        "chr1_q",
+        "chr20_p",
+        "chr20_q",
+        "chr21_p",
+        "chr21_q",
+        "chr22_p",
+        "chr22_q",
+        "chr2_q",
+        "chr3_q",
+        "chr4_p",
+        "chr4_q",
+        "chr5_q",
+        "chr6_p",
+        "chr6_q",
+        "chr7_p",
+        "chr7_q",
+        "chr8_p",
+        "chr9_p",
+        "chr9_q",
+        "chrX_p",
+        "chrX_q",
+        "chrY_p",
+        "chrY_q"
+      ],
+      "arm_dist_matrix": "/home/guarracino/Dropbox/working/Garrison/hprcv2/PHR_III/hic_validation/arm_dist_matrix.tsv",
+      "hic_matrix": "/home/guarracino/Desktop/Garrison/HPRCv2/PHR_III/hic_validation/res_50kb/chm13_contact_matrix.tsv"
+    }
+  },
+  "mantel_fisher_z": {
+    "CHM13_Hi-C": {
+      "rho": 0.656,
+      "n_arms": 38,
+      "ci_lo": 0.42555729644131457,
+      "ci_hi": 0.8065437908197132
+    },
+    "HG002_Hi-C": {
+      "rho": 0.657,
+      "n_arms": 41,
+      "ci_lo": 0.4378459974845649,
+      "ci_hi": 0.8024555419425536
+    },
+    "HG02559_Hi-C": {
+      "rho": 0.397,
+      "n_arms": 37,
+      "ci_lo": 0.08374872593796151,
+      "ci_hi": 0.6388449529280633
+    },
+    "HG00658_Hi-C": {
+      "rho": 0.276,
+      "n_arms": 37,
+      "ci_lo": -0.05274120707916572,
+      "ci_hi": 0.5507688402652213
+    },
+    "HG02148_Hi-C": {
+      "rho": 0.152,
+      "n_arms": 37,
+      "ci_lo": -0.18093592736205366,
+      "ci_hi": 0.45367999703558515
+    },
+    "NA19036_Hi-C": {
+      "rho": 0.266,
+      "n_arms": 34,
+      "ci_lo": -0.07930521614747092,
+      "ci_hi": 0.5543093089516486
+    },
+    "HG002_Pore-C": {
+      "rho": 0.486,
+      "n_arms": 41,
+      "ci_lo": 0.2096985350021921,
+      "ci_hi": 0.6904231851881965
+    },
+    "HG002_CiFi": {
+      "rho": 0.308,
+      "n_arms": 41,
+      "ci_lo": 0.0003803027651081652,
+      "ci_hi": 0.5623669825110247
+    }
+  },
+  "mouse_spearman_fisher_z": {
+    "rho": 0.715,
+    "n_pairs": 344,
+    "ci_lo": 0.6590880917598494,
+    "ci_hi": 0.763051605539704,
+    "caveat": "non-independent pairs; D-M5 arm-level Mantel CI is preferred"
+  }
+}
