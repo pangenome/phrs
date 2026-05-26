@@ -1,0 +1,378 @@
+{
+  "reps": 10000,
+  "seed": 20260518,
+  "leiden_partition": {
+    "C1": [
+      "chr4q",
+      "chr10q"
+    ],
+    "C2": [
+      "chr10p",
+      "chr18p"
+    ],
+    "C3": [
+      "chr3q",
+      "chr11p",
+      "chr15q",
+      "chr19p"
+    ],
+    "C4": [
+      "chr7q",
+      "chr12q"
+    ],
+    "C5": [
+      "chr6p",
+      "chr9p",
+      "chr12p",
+      "chr20q"
+    ],
+    "C6": [
+      "chr1q",
+      "chr13q",
+      "chr17q",
+      "chr19q",
+      "chr21q",
+      "chr22q"
+    ],
+    "C7": [
+      "chr13p",
+      "chr14p",
+      "chr15p",
+      "chr21p",
+      "chr22p"
+    ],
+    "C8": [
+      "chr16p"
+    ],
+    "C9": [
+      "chr7p",
+      "chr9q",
+      "chr16q"
+    ],
+    "C10": [
+      "chr17p"
+    ],
+    "C11": [
+      "chr1p",
+      "chr5q",
+      "chr6q",
+      "chr8p"
+    ],
+    "C12": [
+      "chr2q",
+      "chr20p"
+    ],
+    "C13": [
+      "chr4p"
+    ],
+    "C14": [
+      "chrXq",
+      "chrYq"
+    ],
+    "C15": [
+      "chrXp",
+      "chrYp"
+    ]
+  },
+  "washu": {
+    "name": "WashU",
+    "n_pairs": 179,
+    "observed_within_frac": 0.9385474860335196,
+    "observed_within_count": 168,
+    "null_mean": 0.7699843575418993,
+    "null_ci_lo": 0.7541899441340782,
+    "null_ci_hi": 0.7877094972067039,
+    "observed_percentile": 100.0,
+    "p_enrichment": 0.0,
+    "p_depletion": 1.0,
+    "per_community": [
+      {
+        "community": "C1",
+        "n_arms": 2,
+        "arms": "chr4q,chr10q",
+        "obs_within": 1,
+        "null_mean": 0.0053,
+        "p_enrich": 0.0053,
+        "q_bh": 0.018300000000000004
+      },
+      {
+        "community": "C2",
+        "n_arms": 2,
+        "arms": "chr10p,chr18p",
+        "obs_within": 1,
+        "null_mean": 0.0061,
+        "p_enrich": 0.0061,
+        "q_bh": 0.018300000000000004
+      },
+      {
+        "community": "C3",
+        "n_arms": 4,
+        "arms": "chr3q,chr11p,chr15q,chr19p",
+        "obs_within": 0,
+        "null_mean": 0.0358,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C4",
+        "n_arms": 2,
+        "arms": "chr7q,chr12q",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C5",
+        "n_arms": 4,
+        "arms": "chr6p,chr9p,chr12p,chr20q",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C6",
+        "n_arms": 6,
+        "arms": "chr1q,chr13q,chr17q,chr19q,chr21q,chr22q",
+        "obs_within": 1,
+        "null_mean": 0.0083,
+        "p_enrich": 0.0083,
+        "q_bh": 0.02075
+      },
+      {
+        "community": "C7",
+        "n_arms": 5,
+        "arms": "chr13p,chr14p,chr15p,chr21p,chr22p",
+        "obs_within": 157,
+        "null_mean": 137.5209,
+        "p_enrich": 0.0,
+        "q_bh": 0.0
+      },
+      {
+        "community": "C8",
+        "n_arms": 1,
+        "arms": "chr16p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C9",
+        "n_arms": 3,
+        "arms": "chr7p,chr9q,chr16q",
+        "obs_within": 1,
+        "null_mean": 0.0879,
+        "p_enrich": 0.0851,
+        "q_bh": 0.18235714285714286
+      },
+      {
+        "community": "C10",
+        "n_arms": 1,
+        "arms": "chr17p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C11",
+        "n_arms": 4,
+        "arms": "chr1p,chr5q,chr6q,chr8p",
+        "obs_within": 5,
+        "null_mean": 0.1407,
+        "p_enrich": 0.0,
+        "q_bh": 0.0
+      },
+      {
+        "community": "C12",
+        "n_arms": 2,
+        "arms": "chr2q,chr20p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C13",
+        "n_arms": 1,
+        "arms": "chr4p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C14",
+        "n_arms": 2,
+        "arms": "chrXq,chrYq",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C15",
+        "n_arms": 2,
+        "arms": "chrXp,chrYp",
+        "obs_within": 2,
+        "null_mean": 0.0222,
+        "p_enrich": 0.0001,
+        "q_bh": 0.0005
+      }
+    ],
+    "data_source": "in-tree report tables (n=179; this is the within-community subset fully tabulated in \u00a714: 133 gene_conv + 16 crossover + 30 acros_like-top30; the remaining 199 within-comm acros_like + 115 sandwich_same_hap + 1 complex + 44 cross-comm patches are NOT in-tree and require /moosefs/ upstream TSV)"
+  },
+  "ceph": {
+    "name": "CEPH1463 cross-assembler",
+    "n_pairs": 11,
+    "observed_within_frac": 1.0,
+    "observed_within_count": 11,
+    "null_mean": 0.3069272727272727,
+    "null_ci_lo": 0.09090909090909091,
+    "null_ci_hi": 0.6363636363636364,
+    "observed_percentile": 99.99,
+    "p_enrichment": 0.0001,
+    "p_depletion": 1.0,
+    "per_community": [
+      {
+        "community": "C1",
+        "n_arms": 2,
+        "arms": "chr4q,chr10q",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C2",
+        "n_arms": 2,
+        "arms": "chr10p,chr18p",
+        "obs_within": 2,
+        "null_mean": 0.3579,
+        "p_enrich": 0.0146,
+        "q_bh": 0.073
+      },
+      {
+        "community": "C3",
+        "n_arms": 4,
+        "arms": "chr3q,chr11p,chr15q,chr19p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C4",
+        "n_arms": 2,
+        "arms": "chr7q,chr12q",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C5",
+        "n_arms": 4,
+        "arms": "chr6p,chr9p,chr12p,chr20q",
+        "obs_within": 4,
+        "null_mean": 1.4667,
+        "p_enrich": 0.0041,
+        "q_bh": 0.030750000000000003
+      },
+      {
+        "community": "C6",
+        "n_arms": 6,
+        "arms": "chr1q,chr13q,chr17q,chr19q,chr21q,chr22q",
+        "obs_within": 4,
+        "null_mean": 1.4617,
+        "p_enrich": 0.0033,
+        "q_bh": 0.030750000000000003
+      },
+      {
+        "community": "C7",
+        "n_arms": 5,
+        "arms": "chr13p,chr14p,chr15p,chr21p,chr22p",
+        "obs_within": 1,
+        "null_mean": 0.0899,
+        "p_enrich": 0.0899,
+        "q_bh": 0.33712499999999995
+      },
+      {
+        "community": "C8",
+        "n_arms": 1,
+        "arms": "chr16p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C9",
+        "n_arms": 3,
+        "arms": "chr7p,chr9q,chr16q",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C10",
+        "n_arms": 1,
+        "arms": "chr17p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C11",
+        "n_arms": 4,
+        "arms": "chr1p,chr5q,chr6q,chr8p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C12",
+        "n_arms": 2,
+        "arms": "chr2q,chr20p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C13",
+        "n_arms": 1,
+        "arms": "chr4p",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C14",
+        "n_arms": 2,
+        "arms": "chrXq,chrYq",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      },
+      {
+        "community": "C15",
+        "n_arms": 2,
+        "arms": "chrXp,chrYp",
+        "obs_within": 0,
+        "null_mean": 0.0,
+        "p_enrich": 1.0,
+        "q_bh": 1.0
+      }
+    ],
+    "data_source": "embedded from end-to-end-report/report/14_pedigree_recombination.md \u00a7'CEPH1463 cross-assembler validated parent features (11 total)'",
+    "candidate_denominator_pre_within_leiden_filter": null
+  }
+}
