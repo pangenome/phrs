@@ -1,20 +1,24 @@
-#!/bin/bash
-# Compile paper.tex to paper.pdf using pdflatex + biber
-# Usage: bash compile.sh
-set -euo pipefail
+#!/usr/bin/env bash
+set -euxo pipefail
 
-cd "$(dirname "$0")"
+PAPER=paper
 
-echo "==> Pass 1: pdflatex"
-pdflatex -interaction=nonstopmode -file-line-error paper.tex
+echo "=== Pass 1: pdflatex ==="
+pdflatex -interaction=nonstopmode "$PAPER"
 
-echo "==> bibtex"
-bibtex paper
+echo "=== bibtex: main bibliography ==="
+bibtex "$PAPER"
 
-echo "==> Pass 2: pdflatex"
-pdflatex -interaction=nonstopmode -file-line-error paper.tex
+echo "=== bibtex: Meth bibliography ==="
+bibtex Meth
 
-echo "==> Pass 3: pdflatex"
-pdflatex -interaction=nonstopmode -file-line-error paper.tex
+echo "=== bibtex: Supp bibliography ==="
+bibtex Supp || true   # Supp may be empty; tolerate failure
 
-echo "==> Done: paper.pdf"
+echo "=== Pass 2: pdflatex ==="
+pdflatex -interaction=nonstopmode "$PAPER"
+
+echo "=== Pass 3: pdflatex ==="
+pdflatex -interaction=nonstopmode "$PAPER"
+
+echo "=== Done: $PAPER.pdf ==="

@@ -1,48 +1,76 @@
-# paper_prep/submission
+# paper_prep/submission — Build Instructions
 
-LaTeX submission package for "Concerted evolution and unorthodox recombination of human subtelomeres".
+## Quick build
 
-## How to build
-
+```bash
+cd paper_prep/submission
+bash compile.sh
 ```
+
+Or via Make:
+
+```bash
 cd paper_prep/submission
 make
 ```
 
-Or equivalently:
+## Output
 
-```
-bash compile.sh
-```
-
-This runs `pdflatex` + `bibtex` + `pdflatex` + `pdflatex` and produces `paper.pdf`.
+`paper.pdf` — compiled Springer Nature jnl-class submission.
 
 ## Dependencies
 
-- `texlive-latex-extra` (or equivalent TeX distribution with `natbib`)
-- `bibtex` (bibliography processor, part of standard TeX distributions)
-- `pdflatex` (from `texlive-latex-base`)
-- The `unsrtnat` BibTeX style (shipped with `natbib`; `kpsewhich unsrtnat.bst` should return a path)
+| Tool | Purpose |
+|------|---------|
+| `pdflatex` | LaTeX engine (TeX Live 2020+ recommended) |
+| `bibtex` | Bibliography processing |
+| `jnl.cls` | Springer Nature consolidated class (bundled) |
+| `mathphys.bst` | Math/physical sciences bibliography style (bundled) |
 
-No Springer Nature class file (`sn-jnl.cls`) is required: the document falls back to the standard `article` class with `natbib` numerical superscript style (`unsrtnat.bst`), which approximates Nature's reference formatting. For final submission, replace `\documentclass[12pt]{article}` with `\documentclass{sn-jnl}` and install the Springer Nature LaTeX template (available at https://www.springernature.com/gp/authors/campaigns/latex-author-support).
+`jnl.cls` and `mathphys.bst` are copied from the PGGB template at
+`/home/guarracino/Downloads/_PGGB__Building_pangenome_graphs/` and are
+bundled here so the build is self-contained.
 
-## Contents
+## Directory layout
 
-| File | Description |
-|---|---|
-| `paper.tex` | Main LaTeX document |
-| `bibliography.bib` | Filtered BibTeX (76 cited entries only) |
-| `figures/fig1.pdf` | Main Figure 1 |
-| `figures/fig2.pdf` | Main Figure 2 |
-| `figures/fig3.pdf` | Main Figure 3 |
-| `figures/fig4.pdf` | Main Figure 4 |
-| `figures/ed1.pdf` | Extended Data Figure 1 |
-| `figures/ed2.pdf` | Extended Data Figure 2 |
-| `figures/ed3.pdf` | Extended Data Figure 3 |
-| `figures/ed4.pdf` | Extended Data Figure 4 |
-| `figures/ed5.pdf` | Extended Data Figure 5 |
-| `figures/ed8.pdf` | Extended Data Figure 8 |
-| `figures/nj_tree.pdf` | Extended Data NJ tree |
-| `Makefile` | Build recipe |
-| `compile.sh` | Shell build script |
-| `BUILD_LOG.md` | Compile log and validation results |
+```
+paper_prep/submission/
+  paper.tex               — single self-contained LaTeX source
+  jnl.cls                 — Springer Nature class (bundled)
+  mathphys.bst            — bibliography style (bundled)
+  bibliography.bib        — 76 cited references (filtered from REFERENCES_v6.bib)
+  Makefile                — make target: `make` builds paper.pdf
+  compile.sh              — pdflatex -> bibtex (main+Meth+Supp) -> pdflatex x 2
+  BUILD_LOG.md            — compile log and validation evidence
+  README.md               — this file
+  fig/
+    MainFigures/          — Figure1.pdf ... Figure4.pdf
+    ExtendedDataFigures/  — ED_Fig1.pdf ... ED_Fig7.pdf
+    SupplementaryFigures/ — (empty; reserved)
+```
+
+## Figure provenance
+
+| File | Source |
+|------|--------|
+| `fig/MainFigures/Figure1.pdf` | `paper_prep/figures/fig1/figure_fig1.pdf` |
+| `fig/MainFigures/Figure2.pdf` | `paper_prep/figures/fig2/figure_fig2.pdf` |
+| `fig/MainFigures/Figure3.pdf` | `paper_prep/figures/fig3/figure_fig3.pdf` |
+| `fig/MainFigures/Figure4.pdf` | `paper_prep/figures/fig4/figure_fig4.pdf` |
+| `fig/ExtendedDataFigures/ED_Fig1.pdf` | `paper_prep/figures/ed1/figure_ed1.pdf` |
+| `fig/ExtendedDataFigures/ED_Fig2.pdf` | `paper_prep/figures/ed2/figure_ed2.pdf` |
+| `fig/ExtendedDataFigures/ED_Fig3.pdf` | `paper_prep/figures/ed3/figure_ed3.pdf` |
+| `fig/ExtendedDataFigures/ED_Fig4.pdf` | `paper_prep/figures/ed4/figure_ed4.pdf` |
+| `fig/ExtendedDataFigures/ED_Fig5.pdf` | `paper_prep/figures/ed5/figure_ed5.pdf` |
+| `fig/ExtendedDataFigures/ED_Fig6.pdf` | `paper_prep/figures/ed8/figure_ed8.pdf` (renumbered) |
+| `fig/ExtendedDataFigures/ED_Fig7.pdf` | `paper_prep/figures/nj_tree_arms/nj_tree_annotated.pdf` |
+
+## Bibliography
+
+`bibliography.bib` contains exactly 76 entries filtered from
+`paper_prep/synthesis/REFERENCES_v6.bib` to match the 76 bibkeys listed in
+`paper_prep/synthesis/RENDERED_REFERENCES_v6.md`.
+
+The main bibliography uses the `mathphys` style (Springer Nature numerical).
+Methods-only references are processed by `multibib` into a separate Methods
+References section using the `unsrt` style.
