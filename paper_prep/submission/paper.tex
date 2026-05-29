@@ -30,33 +30,60 @@
 
 % TODO: complete co-author list and affiliations from project records
 \author*[1]{\fnm{Andrea} \sur{Guarracino}}\email{aguarracino@tgen.org}
-\author*[2]{\fnm{Erik} \sur{Garrison}}\email{egarris5@uthsc.edu}
+\author[2]{\fnm{Angela} \sur{Gyamfi}}
+\author*[3]{\fnm{Erik} \sur{Garrison}}\email{egarris5@uthsc.edu}
 
-\affil[1]{Human Technopole, Viale Rita Levi-Montalcini 1, 20157, Milan, Italy}
-\affil[2]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
+\affil[1]{Bioinnovation and Genome Sciences, The Translational Genomics Research Institute (TGen), Phoenix, AZ 85004, USA}
+\affil[2]{St. Jude Children's Research Hospital, Memphis, TN 38105, USA}
+\affil[3]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
 
 \abstract{
-Human subtelomeres are dynamic, structurally complex regions whose
-inter-chromosomal sequence relationships have resisted analysis: no reference
-assembly was complete and per-chromosome alignment frames hid
-trans-chromosomal sharing. Using 465 near-complete haplotype assemblies from
-233 Human Pangenome Reference Consortium v2 individuals plus CHM13v2.0, we
-build an implicit pangenome graph from all-vs-all wfmash alignments and IMPG
-transitive closure, without chromosomal partitioning. The graph maps 18,827
-telomere-anchored 500 kb flanks to 15,668 pseudohomologous regions (PHRs;
-median 105 kb) on 41 of 48 chromosome arms, together spanning about 3.5 Mb of
-pangenome sequence, a non-trivial fraction of the human genome. A
-neighbour-joining tree of arm-level Jaccard distances recovers six groupings
-(PAR1, PAR2, acrocentric short arms, 10p/18p, a tight q-arm grouping and
-4q/10q DUX4; four at $\geq$99\% character-level bootstrap support) that map to
-a Leiden partition of 15 arm-level and 50 sequence-level communities. Bulk
-Hi-C, Pore-C, CiFi, Dip-C, sperm scHi-C and mouse meiotic Hi-C peaking at
-zygotene correlate sequence similarity with nuclear-envelope proximity.
-Sequence homology mirrors physical proximity in human subtelomeres, and a
-3-generation T2T pedigree identifies 538 inter-chromosomal patches, 494 (92\%)
-within Leiden communities, consistent with the recombination events that
-perpetuate both. This is the first population-scale, genome-wide survey of
-inter-chromosomal subtelomeric exchange. In humans.
+Human subtelomeric regions are among the most dynamic and structurally complex
+parts of our genome, yet their interchromosomal relationships have remained
+difficult to characterize due to the limitations of both assembly completeness
+and alignment methodology. Here we present the most comprehensive survey of
+subtelomeric sequence relationships to date, leveraging 466 near-complete
+haplotype assemblies from the Human Pangenome Reference Consortium (HPRC)
+version 2. To analyze these regions, we introduce the implicit pangenome graph,
+a reference-free alignment approach that performs all-to-all pairwise
+comparisons across haplotypes, sampling approximately 12\% of all possible
+combinations, without imposing chromosomal partitioning or positional bias.
+This yields a truly unbiased view of interchromosomal homology across the
+pangenome, where every haplotype serves as its own point of reference, allowing
+a systematic and universal view of human subtelomeric evolution.
+A genome-wide survey of alignment identity reveals extended regions of
+interchromosomal homology spanning tens to hundreds of kilobases at nearly all
+subtelomeres, comparable in scale to canonical pseudohomologous systems such as
+PAR2 on the sex chromosomes. This dramatically expands the scope of known
+pseudohomologous regions in the human genome to include almost all subtelomeric
+regions. Cladistic analysis based on neighbor-joining trees of subtelomeric
+similarity uncovers both expected relationships (Xp/Yp and Xq/Yq via the
+pseudoautosomal regions, acrocentric short arms) and novel associations,
+including strong 10p--18p homology, a tightly linked clade involving 22q, 21q,
+19q, 1q, 13q, and 17q, and extended DUX4-containing homology between 4q and 10q
+with wide copy number diversity. A large clade of many chromosome arms shares
+homology at moderate similarity, suggesting broad ongoing interchromosomal
+exchange. Principal component and community detection analyses of the
+similarity matrix further resolve subtelomeric clustering across human
+populations. We hypothesized that these patterns are maintained by
+recombination facilitated by the physical proximity of subtelomeres at the
+nuclear envelope, and tested this across orthogonal three-dimensional genome
+maps. Bulk Hi-C, Pore-C, and CiFi, single-cell Dip-C and sperm scHi-C, and
+mouse meiotic Hi-C all show that chromosome arms sharing a sequence-defined
+community make significantly more interchromosomal contact at their
+subtelomeres than arms in different communities, across all eight human contact
+datasets ($p<0.01$), and that sequence similarity predicts nuclear proximity
+(Mantel $\rho$ up to 0.85), a relationship that strengthens rather than weakens
+when acrocentric and sex chromosomes are excluded. This correlation peaks in
+mouse meiosis at the zygotene stage (Mantel $\rho=0.718$), when the telomere
+bouquet clusters chromosome ends against the nuclear envelope. Finally, a
+three-generation telomere-to-telomere pedigree captures the recombination
+directly: of 538 interchromosomal patches transmitted between generations, 494
+(92\%) fall within the same sequence-similarity communities, including ectopic
+gene-conversion tracts at perfect identity and crossover-like breakpoints. Our
+work exposes the extent to which ongoing recombination, organized by the
+three-dimensional architecture of the nucleus, shapes these highly dynamic and
+poorly understood regions of the genome.
 }
 
 \keywords{pangenome, subtelomere, pseudohomologous region, concerted evolution, recombination, Hi-C, meiotic bouquet, HPRC v2}
