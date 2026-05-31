@@ -7,7 +7,7 @@ library(tidyr)
 library(readr)
 
 # Optional: Set BED file path here (set to NULL if no BED file)
-bed_file_path <- 'chm13-annotations.bed'  # Change this to your BED file path
+bed_file_path <- 'data/chm13-annotations.bed'  # Change this to your BED file path
 
 # Function to read and process BED file
 read_bed_regions <- function(bed_path) {
@@ -69,7 +69,7 @@ if (!is.null(bed_regions)) {
 window_size <- '100kb'
 num_haplo <- 466
 num_sample <- 234
-data <- read_tsv(paste0("hprc25272.CHM13.w", window_size, "-xm5-id098-l5k.tsv.gz"))
+data <- read_tsv(paste0("data/hprc25272.CHM13.w", window_size, "-xm5-id098-l5k.tsv.gz"))
 
 # Parse the chroms-num_haplotypes column to extract chromosome information
 parse_chroms_column <- function(chroms_str) {
@@ -522,7 +522,7 @@ dpi=300
 
 # Save the plots
 ggsave(
-  filename = "p_combined_alignments.pdf",
+  filename = "inter-chr-plots/p_combined_alignments.pdf",
   plot = p_combined_alignments,
   width = width,
   height = height,
@@ -531,7 +531,7 @@ ggsave(
   bg = "white"
 )
 ggsave(
-  filename = "p_combined_haplo_samples.pdf",
+  filename = "inter-chr-plots/p_combined_haplo_samples.pdf",
   plot = p_combined_haplo_samples,
   width = width,
   height = height,
@@ -540,7 +540,7 @@ ggsave(
   bg = "white"
 )
 ggsave(
-  filename = "p_num_chromosomes.pdf",
+  filename = "inter-chr-plots/p_num_chromosomes.pdf",
   plot = p_num_chromosomes,
   width = width,
   height = height,
@@ -549,7 +549,7 @@ ggsave(
   bg = "white"
 )
 ggsave(
-  filename = "p_num_chromosomes_wide.pdf",
+  filename = "inter-chr-plots/p_num_chromosomes_wide.pdf",
   plot = p_num_chromosomes_wide,
   width = width,
   height = height,
@@ -558,7 +558,7 @@ ggsave(
   bg = "white"
 )
 ggsave(
-  filename = "p_combined_alignments_wide.pdf",
+  filename = "inter-chr-plots/p_combined_alignments_wide.pdf",
   plot = p_combined_alignments_wide,
   width = width,
   height = height,
@@ -567,7 +567,7 @@ ggsave(
   bg = "white"
 )
 ggsave(
-  filename = "p_combined_haplo_samples_wide.pdf",
+  filename = "inter-chr-plots/p_combined_haplo_samples_wide.pdf",
   plot = p_combined_haplo_samples_wide,
   width = width,
   height = height,
@@ -1851,7 +1851,7 @@ library(cowplot)
 # Save version WITHOUT inset
 print(plots$main)
 ggsave(
-  filename = "p_genome_wide_identity_heatmap_no_inset.pdf",
+  filename = "inter-chr-plots/p_genome_wide_identity_heatmap_no_inset.pdf",
   plot = plots$main,
   width = 9.6,
   height = 7.2,
@@ -1876,7 +1876,7 @@ print(p_genome_wide_identity_heatmap)
 # Save version WITH inset
 # Make the entire plot 40% smaller (16 -> 9.6, 12 -> 7.2)
 ggsave(
-  filename = "p_genome_wide_identity_heatmap.pdf",
+  filename = "inter-chr-plots/p_genome_wide_identity_heatmap.pdf",
   plot = p_genome_wide_identity_heatmap,
   width = 9.6,
   height = 7.2,
@@ -1893,7 +1893,7 @@ for (chr in paste0("chr", c(1:22, "X", "Y", "M"))) {
   if (!is.null(p)) {
     print(p)
     ggsave(
-      filename = paste0("identity_heatmap_", chr, ".pdf"),
+      filename = paste0("identity_heatmaps/identity_heatmap_", chr, ".pdf"),
       plot = p,
       width = 16,
       height = 4,
@@ -1911,7 +1911,7 @@ for (chr in paste0("chr", c(1:22, "X", "Y", "M"))) {
   if (!is.null(p)) {
     print(p)
     ggsave(
-      filename = paste0("identity_heatmap_", chr, ".zoom_0-1.pdf"),
+      filename = paste0("identity_heatmaps/identity_heatmap_", chr, ".zoom_0-1.pdf"),
       plot = p,
       width = 16,
       height = 4,
@@ -1936,7 +1936,7 @@ for (chr in paste0("chr", c(1:22, "X", "Y", "M"))) {
     if (!is.null(p)) {
       print(p)
       ggsave(
-        filename = paste0("identity_heatmap_", chr, ".zoom_last1mb.pdf"),
+        filename = paste0("identity_heatmaps/identity_heatmap_", chr, ".zoom_last1mb.pdf"),
         plot = p,
         width = 16,
         height = 4,

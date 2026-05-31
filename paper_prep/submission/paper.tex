@@ -338,8 +338,8 @@ Group for generating and interpreting these data.
   \caption{\textbf{Sequence similarity predicts three-dimensional proximity.}
     \textbf{(a)} Per arm-pair, three-dimensional contact frequency (log scale)
     vs mean PHR Jaccard similarity at 50 kb, for HG002 Pore-C (pointwise
-    Spearman $\rho = 0.485$, $p = 2.2 \times 10^{-26}$, $n = 803$) and CHM13
-    Hi-C ($\rho = 0.474$, $p = 2.2 \times 10^{-26}$, $n = 688$).
+    Spearman $\rho = 0.485$, $p = 1.6 \times 10^{-48}$, $n = 803$) and CHM13
+    Hi-C ($\rho = 0.674$, $p = 3.0 \times 10^{-92}$, $n = 688$).
     \textbf{(b)} HG002 Pore-C contact matrix ordered by sequence community
     (C1--C15): within-community blocks dominate, $B/W = 0.056$,
     $p = 3.9 \times 10^{-85}$.
@@ -496,7 +496,7 @@ test; Mantel Spearman with 10,000 row+column permutations; observed-over-expecte
 inter-chromosomal normalisation
 \citeMeth{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}.
 The per arm-pair pointwise Spearman correlations of Fig.~\ref{fig:fig4}a (HG002
-Pore-C $\rho = 0.485$, $n = 803$; CHM13 Hi-C $\rho = 0.474$, $n = 688$) and the
+Pore-C $\rho = 0.485$, $n = 803$; CHM13 Hi-C $\rho = 0.674$, $n = 688$) and the
 community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}b ($B/W = 0.056$) are
 computed at 50 kb.
 
@@ -574,8 +574,9 @@ samtools, bedtools and bgzip via conda; hicexplorer 3.7.4; R packages
 
 GitHub \texttt{ekg/phrs}; on-disk roots
 \texttt{/moosefs/guarracino/HPRCv2/PHR\_III/} and \texttt{/moosefs/erikg/phrs/};
-CHM13-coordinate PHR BEDs at repo root (\texttt{chm13.phrs.bed},
-\texttt{chm13.phrs.no\_acro.bed}, \texttt{CHM13-HG002.sub-telo-phrs.bed}).
+CHM13-coordinate PHR BEDs in \texttt{data/} (\texttt{data/chm13.phrs.bed},
+\texttt{data/chm13.phrs.no\_acro.bed},
+\texttt{data/CHM13-HG002.sub-telo-phrs.bed}).
 Re-alignment scripts and command lines for Hi-C/Pore-C/CiFi/Dip-C are at
 \texttt{scripts/hic-realign/}; deposited processed files (default MAPQ
 $\geq 30$) are insufficient to reproduce the inter-arm signal.
