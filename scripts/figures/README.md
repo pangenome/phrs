@@ -17,12 +17,16 @@ Override paths with `DATA_DIR=...` / `OUT_DIR=...` if needed.
 ```bash
 Rscript scripts/figures/make_fig4a_human_scatter.R   # -> fig/MainFigures/Fig4a_human_scatter.{png,pdf}
 Rscript scripts/figures/make_ed1_mouse_zygotene.R    # -> fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.{png,pdf}
+Rscript scripts/figures/make_fig4_allpoints.R        # -> fig/ExtendedDataFigures/ED_Fig2_allpoints.{png,pdf}
 ```
 
 | Figure | Inputs (`data/`) | Verified |
 |--------|------------------|----------|
 | Fig 4a | `hg002_porec_phr_pair_correlation.tsv`, `chm13_phr_pair_correlation.tsv` | HG002 ρ=0.485 (n=803); CHM13 ρ=0.674 (n=688) |
 | ED 1   | `zuo2021_zygotene_phr_pair_correlation.tsv` | mouse zygotene ρ=0.715 (n=344); stage peak zygo 0.718 |
+| ED 2 (all-points) | `human_HG002_porec_50000bp_seqlevel.tsv`, `human_CHM13_hic_50000bp_seqlevel.tsv` | HG002 Pore-C ρ=0.381 (n=2830); CHM13 Hi-C ρ=0.716 (n=652) |
+
+ED 2 plots **one dot per inter-chromosomal PHR sequence pair** (single-sample: each sample's own PHRs vs its own contact; x = `jaccard`, y = `hic_contact_norm`), the assumption-free companion to Fig 4a, which plots **one dot per arm pair** (x = population mean Jaccard over the 233 samples). It is referenced in `paper.tex` as Extended Data Fig. 2.
 
 ## Generator pending (inputs in `data/`, script not written yet)
 

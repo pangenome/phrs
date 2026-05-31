@@ -10,7 +10,7 @@ make            # or: bash compile.sh
 xdg-open paper.pdf
 ```
 
-Produces `paper.pdf` (~34 pages, ~2.1 MB).
+Produces `paper.pdf`.
 
 ## Dependencies
 
@@ -114,7 +114,7 @@ paper_prep/submission/
   paper.tex               — single self-contained LaTeX source
   jnl.cls                 — Springer Nature class (bundled)
   mathphys.bst            — bibliography style (bundled)
-  bibliography.bib        — 76 entries (54 cited in main + 33 in Methods)
+  bibliography.bib        — entries cited in main + in Methods
   Makefile                — `make` builds paper.pdf
   compile.sh              — pdflatex -> bibtex (main + Meth + Supp) -> pdflatex x 2
   BUILD_LOG.md            — compile log (predates the 5-figure restructure; stale)
@@ -162,7 +162,7 @@ on disk but are unreferenced and can be deleted.
 ## Bibliography
 
 `bibliography.bib` contains **76 entries**. After the restructure the paper
-cites **54 keys in the main bibliography** (`\cite{...}`) and **33 in Methods
+cites **keys in the main bibliography** (`\cite{...}`) and **in Methods
 References** (`\citeMeth{...}`, emitted as a separate `multibib` section in
 `unsrt` style); some keys are cited in both. Entries in the `.bib` that are no
 longer cited (e.g. `hao2024snul`, `bouquet_ChenCEP164Cilia2025`, which were only
@@ -175,6 +175,16 @@ and provenance* above. `paper.tex` is now hand-edited directly to match that
 narrative — there is no markdown→LaTeX re-sync step and no workgraph dispatch.
 (The previous `paper_prep/synthesis/NATURE_DRAFT_v6.md` content was reorganised
 into this 5-figure structure and is superseded as the layout authority.)
+
+Writing style follows Guarracino et al. 2023 (*Nature*, recombination between
+heterologous human acrocentric chromosomes; `~/Downloads/papers/RecombAcroChro_*.pdf`):
+short bold results-section headers, a measured "we find / we observe" cadence,
+and a single-paragraph abstract that lands on the cytogenetic-confirmation note.
+To stay consistent with the talk, reviewer-era analyses that no longer have a
+figure (within-community heterogeneity, population/$F_{\mathrm{ST}}$ structure,
+the 14-test 3D forest and its controls, CEPH1463 cross-assembler validation,
+RPE-1) were cut from the body and Methods; recover them from git history if a
+reviewer asks.
 
 ## Troubleshooting
 

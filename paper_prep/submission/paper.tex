@@ -194,6 +194,10 @@ In human, three-dimensional contact likewise increases with PHR similarity in
 both HG002 Pore-C and CHM13 Hi-C (Fig.~\ref{fig:fig4}a), and ordering a Pore-C
 contact matrix by sequence community recovers the community block structure
 directly (Fig.~\ref{fig:fig4}b) \cite{Ulahannan2019}.
+The relationship persists at the finest resolution, per individual PHR pair
+within a single genome and with no community assignment or cross-sample
+averaging (Extended Data Fig.~\ref{fig:ed2}; pointwise Spearman $\rho = 0.38$
+for HG002 Pore-C and $0.72$ for CHM13 Hi-C).
 The same within-community enrichment holds across the other contact maps we
 reanalysed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
 and 20-cell single-sperm scHi-C \cite{Xu2025}.
@@ -500,9 +504,15 @@ test; Mantel Spearman with 10,000 row+column permutations; observed-over-expecte
 inter-chromosomal normalisation
 \citeMeth{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}.
 The per arm-pair pointwise Spearman correlations of Fig.~\ref{fig:fig4}a (HG002
-Pore-C $\rho = 0.485$, $n = 803$; CHM13 Hi-C $\rho = 0.674$, $n = 688$) and the
-community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}b ($B/W = 0.056$) are
-computed at 50 kb.
+Pore-C $\rho = 0.485$, $n = 803$; CHM13 Hi-C $\rho = 0.674$, $n = 688$) use the
+population mean Jaccard (averaged over all PHR sequence-pair comparisons between
+the two arms across the 233 samples); the community-ordered Pore-C matrix of
+Fig.~\ref{fig:fig4}b ($B/W = 0.056$) is at 50 kb.
+The community-free, single-sample companion (Extended Data Fig.~\ref{fig:ed2})
+instead takes each inter-chromosomal PHR sequence pair as a point, correlating
+its pangenome-graph Jaccard with its length-normalised Hi-C/Pore-C contact at
+the pair's exact coordinates within one genome (HG002 Pore-C $\rho = 0.381$,
+$n = 2830$; CHM13 Hi-C $\rho = 0.716$, $n = 652$; \texttt{sequence\_hic\_correlation.py}).
 
 \subsection*{Reproducibility from deposited data}
 
@@ -625,6 +635,30 @@ within-community fraction (observed $p < 10^{-4}$).
     pachy 0.683, diplo 0.577; all $p < 1 \times 10^{-4}$), the only direct
     bouquet-stage 3D measurement in any organism.}
   \label{fig:ed1}
+\end{figure}
+
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig2_allpoints.png}
+  \caption{\textbf{Per-PHR-pair sequence similarity versus three-dimensional
+    contact (single-sample, community-free).}
+    A finer-grained, assumption-free companion to Fig.~\ref{fig:fig4}a: instead
+    of one point per chromosome-arm pair, each point is one inter-chromosomal
+    pair of pseudohomologous regions (PHRs) within a single genome, so both axes
+    derive from the same sample. \emph{x}, Jaccard sequence similarity of the two
+    PHRs from the pangenome graph (0 = no shared sequence, 1 = identical);
+    \emph{y}, their balanced Hi-C/Pore-C contact at the PHRs' exact coordinates,
+    binned at 50~kbp and normalized by interval length so longer PHRs are not
+    counted more (log scale; pairs with zero contact placed at the floor).
+    \textbf{(left)} HG002 Pore-C ($n = 2{,}830$ PHR pairs); \textbf{(right)}
+    CHM13 Hi-C ($n = 652$). Higher PHR similarity is associated with more contact
+    in both (pointwise Spearman $\rho = 0.381$, $p = 1.2 \times 10^{-98}$ and
+    $\rho = 0.716$, $p = 1.2 \times 10^{-103}$; line, linear fit). HG002
+    contributes more pairs than CHM13 because it is diploid (77 PHR sequences
+    across both haplotypes) whereas CHM13 is haploid (37). This community-free
+    test recovers the Fig.~\ref{fig:fig4}a relationship without any community
+    assignment or cross-sample averaging.}
+  \label{fig:ed2}
 \end{figure}
 
 \end{document}
