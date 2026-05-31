@@ -1,8 +1,8 @@
 panel	status	role	path	note
-1a	READY	rendered_figure	p_genome_wide_identity_heatmap.png	Genome-wide stacked identity heatmap (465 haplotypes × 24 chromosomes); 100 kb windows; with chr18 q-arm subtelo inset. PDF analogue: p_genome_wide_identity_heatmap_no_inset.pdf. Producer: plot-impg-coverage.R (repo root). SURVEY_FIG_inv §1.
-1a	READY	rendered_figure_pdf	p_genome_wide_identity_heatmap_no_inset.pdf	Vector PDF version (no inset); 2.5 MB. Available as alt panel-1a source if a strictly vector composite is required.
-1b	READY	rendered_figure	p_genome_wide_numchrom_heatmap.png	Genome-wide n-chromosomes-sharing heatmap with PHR BED overlay. Producer: plot-impg-coverage.R. SURVEY_FIG_inv §1.
-1b	READY	rendered_figure_pdf	p_genome_wide_numchrom_heatmap.pdf	Vector PDF version of panel 1b; 2.1 MB.
+1a	READY	rendered_figure	inter-chr-plots/p_genome_wide_identity_heatmap.png	Genome-wide stacked identity heatmap (465 haplotypes × 24 chromosomes); 100 kb windows; with chr18 q-arm subtelo inset. PDF analogue: inter-chr-plots/p_genome_wide_identity_heatmap_no_inset.pdf. Producer: scripts/plot-impg-coverage.R. SURVEY_FIG_inv §1.
+1a	READY	rendered_figure_pdf	inter-chr-plots/p_genome_wide_identity_heatmap_no_inset.pdf	Vector PDF version (no inset); 2.5 MB. Available as alt panel-1a source if a strictly vector composite is required.
+1b	READY	rendered_figure	inter-chr-plots/p_genome_wide_numchrom_heatmap.png	Genome-wide n-chromosomes-sharing heatmap with PHR BED overlay. Producer: scripts/plot-impg-coverage.R. SURVEY_FIG_inv §1.
+1b	READY	rendered_figure_pdf	inter-chr-plots/p_genome_wide_numchrom_heatmap.pdf	Vector PDF version of panel 1b; 2.1 MB.
 1c	GENERATE	input_tsv_dist_matrix	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm_dist_matrix.tsv	41 × 41 arm-level Jaccard distance matrix; rows/cols labelled chr*_p / chr*_q. Source: SURVEY_01 §1.8, §3.
 1c	GENERATE	input_tsv_leiden	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	Leiden k=15 community assignments per arm (3 cols: ChromArm, Community, Arms).
 1c	GENERATE	input_tsv_upgma	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-upgma-k14.assignments.tsv	UPGMA k=14 community assignments per arm (used to compute the 14/15 Leiden agreement annotation).

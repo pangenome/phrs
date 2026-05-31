@@ -1,0 +1,277 @@
+\begin{thebibliography}{10}
+
+\bibitem{hprc_hprcv2_2025}
+{Human Pangenome Reference Consortium}.
+\newblock {HPRC Data Release 2: high-quality phased genome assemblies from 232
+  diverse individuals}, 2025.
+\newblock Pre-publication data release, manuscript in submission. Announced May
+  12, 2025. 232 individuals (464 haplotypes + CHM13), PacBio HiFi 60$\times$ +
+  ONT ultralong $\geq$30$\times$.
+
+\bibitem{Nurk2022}
+Sergey Nurk, Sergey Koren, Arang Rhie, Mikko Rautiainen, Andrey~V. Bzikadze,
+  Alla Mikheenko, Mitchell~R. Vollger, Nicolas Altemose, Lev Uralsky, Ariel
+  Gershman, Sergey Aganezov, Savannah~J. Hoyt, Mark Diekhans, Glennis~A.
+  Logsdon, Michael Alonge, Stylianos~E. Antonarakis, Matthew Borchers,
+  Gerard~G. Bouffard, Shelise~Y. Brooks, Gina~V. Caldas, Nae-Chyun Chen, Haoyu
+  Cheng, Chen-Shan Chin, William Chow, Leonardo~G. de~Lima, Philip~C. Dishuck,
+  Richard Durbin, Tatyana Dvorkina, Ian~T. Fiddes, Giulio Formenti, Robert~S.
+  Fulton, Arkarachai Fungtammasan, Erik Garrison, Patrick G.~S. Grady, Tina~A.
+  Graves-Lindsay, Ira~M. Hall, Nancy~F. Hansen, George~A. Hartley, Marina
+  Haukness, Kerstin Howe, Michael~W. Hunkapiller, Miten Jain, Chirag Jain,
+  Erich~D. Jarvis, Peter Kerpedjiev, Melanie Kirsche, Mikhail Kolmogorov, Jonas
+  Korlach, Milinn Kremitzki, Heng Li, Valerie~V. Maduro, Tobias Marschall,
+  Ann~M. McCartney, Jennifer McDaniel, Danny~E. Miller, James~C. Mullikin,
+  Eugene~W. Myers, Nathan~D. Olson, Benedict Paten, Paul Peluso, Pavel~A.
+  Pevzner, David Porubsky, Tamara Potapova, Evgeny~I. Rogaev, Jeffrey~A.
+  Rosenfeld, Steven~L. Salzberg, Valerie~A. Schneider, Fritz~J. Sedlazeck,
+  Kishwar Shafin, Catherine~J. Shew, Aleksey Shumate, Yumi Sims, Arian F.~A.
+  Smit, Daniela~C. Soto, Ivan Sovic, Jessica~M. Storer, Aaron Streets, Beth~A.
+  Sullivan, Francoise Thibaud-Nissen, James Torrance, Justin Wagner, Brian~P.
+  Walenz, Aaron Wenger, Jonathan M.~D. Wood, Chen-Shan Xiao, Shilpa~M. Yan,
+  Alice~C. Young, Samantha Zarate, Urvashi Surti, Rajiv~C. McCoy, Megan~Y.
+  Dennis, Ivan~A. Alexandrov, Jennifer~L. Gerton, Rachel~J. O'Neill, Winston
+  Timp, Justin~M. Zook, Michael~C. Schatz, Evan~E. Eichler, Karen~H. Miga, and
+  Adam~M. Phillippy.
+\newblock The complete sequence of a human genome.
+\newblock {\em Science}, 376(6588):44--53, 2022.
+
+\bibitem{logsdon2025hgsvc}
+Glennis~A Logsdon, Peter Ebert, Peter~A Audano, Mark Loftus, David Porubsky,
+  Jana Ebler, Feyza Yilmaz, Pille Hallast, Timofey Prodanov, DongAhn Yoo,
+  et~al.
+\newblock Complex genetic variation in nearly complete human genomes.
+\newblock {\em Nature}, 644:430--441, 2025.
+
+\bibitem{Guarracino2023}
+Andrea Guarracino, Silvia Buonaiuto, Leonardo~G. de~Lima, Tamara Potapova,
+  Arang Rhie, Sergey Koren, Boris Rubinstein, Christian Fischer, {Human
+  Pangenome Reference Consortium}, Jennifer~L. Gerton, Adam~M. Phillippy,
+  Vincenza Colonna, and Erik Garrison.
+\newblock Recombination between heterologous human acrocentric chromosomes.
+\newblock {\em Nature}, 617:335--343, 2023.
+\newblock Pangenome-graph evidence that human acrocentric short arms exchange
+  sequence across non-homologous chromosomes; canonical predecessor of the
+  present subtelomere paper.
+
+\bibitem{pangenome_graphs_impg_GuarracinoHeumos2022}
+Andrea Guarracino, Simon Heumos, Sven Nahnsen, Pjotr Prins, and Erik Garrison.
+\newblock {ODGI}: understanding pangenome graphs.
+\newblock {\em Bioinformatics}, 38(13):3319--3326, 2022.
+\newblock odgi: space-efficient in-memory pangenome graph manipulation toolkit;
+  odgi similarity computes pairwise Jaccard similarity from shared path
+  traversals; path-guided SGD layout; used to produce the 245-million-entry
+  similarity matrix in the current subtelomere project.
+
+\bibitem{pangenome_graphs_impg_Hickey2024}
+Glenn Hickey, Jean Monlong, Jana Ebler, Adam~M. Novak, Jordan~M. Eizenga, Yan
+  Gao, Tobias Marschall, Heng Li, and Benedict Paten.
+\newblock Pangenome graph construction from genome alignments with
+  {Minigraph-Cactus}.
+\newblock {\em Nature Biotechnology}, 42:663--673, 2024.
+\newblock Minigraph-Cactus pipeline: combines Minigraph SV enumeration with
+  Cactus progressive alignment; used for HPRC v1 draft pangenome; hierarchical
+  reference-seeded construction that does not capture interchromosomal
+  subtelomeric homology.
+
+\bibitem{Garrison2018}
+Erik Garrison, Jouni Sir{\'e}n, Adam~M. Novak, Glenn Hickey, Jordan~M. Eizenga,
+  Eric~T. Dawson, William Jones, Shilpa Garg, Charles Markello, Michael~F. Lin,
+  Benedict Paten, and Richard Durbin.
+\newblock Variation graph toolkit improves read mapping by representing genetic
+  variation in the reference.
+\newblock {\em Nature Biotechnology}, 36(9):875--879, 2018.
+\newblock Foundational vg toolkit; introduces variation graphs as a principled
+  alternative to single-reference mapping.
+
+\bibitem{Garrison2024pggb}
+Erik Garrison, Andrea Guarracino, Simon Heumos, Flavia Villani, Zhigui Bao,
+  Lorenzo Tattini, Joerg Hagmann, Sebastian Vorbrugg, Santiago Marco-Sola,
+  Christian Kubica, David~G. Ashbrook, Kaisa Thorell, Rachel~L.
+  Rusholme-Pilcher, Gianni Liti, Emilio Rudbeck, Agnieszka~A. Golicz, Sven
+  Nahnsen, Zuyu Yang, Moses~Njagi Mwaniki, Franklin~L. Nobrega, Yi~Wu, Hao
+  Chen, Joep de~Ligt, Peter~H. Sudmant, Nicole Soranzo, Vincenza Colonna,
+  Robert~W. Williams, and Pjotr Prins.
+\newblock Building pangenome graphs.
+\newblock {\em Nature Methods}, 21:2008--2012, 2024.
+\newblock pggb pipeline; the pangenome graph builder used to make the explicit
+  GFA in this manuscript's pipeline.
+
+\bibitem{andreace2023pangenome}
+Francesco Andreace, Pierre Lechat, Yoann Dufresne, and Rayan Chikhi.
+\newblock Comparing methods for constructing and representing human pangenome
+  graphs.
+\newblock {\em Genome Biology}, 24(1):274, 2023.
+\newblock Independent controlled benchmark of pggb, Minigraph-Cactus,
+  Minigraph, Bifrost, and mdbg on 52 human haplotypes; shows pggb captures
+  SNP-to-SV variation missed by reference-anchored methods; empirical support
+  for reference-free design choice.
+
+\bibitem{heumos2024nfcore}
+Simon Heumos, Michael~L. Heuer, Friederike Hanssen, Lukas Heumos, Andrea
+  Guarracino, Peter Heringer, Philipp Ehmele, Pjotr Prins, Erik Garrison, and
+  Sven Nahnsen.
+\newblock Cluster-efficient pangenome graph construction with
+  nf-core/pangenome.
+\newblock {\em Bioinformatics}, 40(11):btae609, 2024.
+\newblock nf-core/pangenome: Nextflow HPC wrapper for the
+  wfmash$\rightarrow$seqwish$\rightarrow$smoothxg$\rightarrow$gfaffix$\rightarrow$odgi
+  pipeline; constructs 1000-haplotype chromosome-19 pangenome; 2-3x speedup
+  over standalone pggb; validates scalability beyond 466-haplotype current
+  study scale.
+
+\bibitem{hic3d_dixon2012}
+Jesse~R. Dixon, Siddarth Selvaraj, Feng Yue, Audrey Kim, Yan Li, Yin Shen, Ming
+  Hu, Jun~S. Liu, and Bing Ren.
+\newblock Topological domains in mammalian genomes identified by analysis of
+  chromatin interactions.
+\newblock {\em Nature}, 485:376--380, 2012.
+
+\bibitem{hic3d_imakaev2012}
+Maxim Imakaev, Geoffrey Fudenberg, Rachel~Patton McCord, Natalia Naumova, Anton
+  Goloborodko, Bryan~R. Lajoie, Job Dekker, and Leonid~A. Mirny.
+\newblock Iterative correction of {Hi-C} data reveals hallmarks of chromosome
+  organization.
+\newblock {\em Nature Methods}, 9(10):999--1003, 2012.
+
+\bibitem{Ulahannan2019}
+Netha Ulahannan, Matthew Pendleton, Aditya Deshpande, Stefan Schwenk, Jacob~M.
+  Behr, Xiaoguang Dai, Carly Tyer, Priyesh Rughani, Sarah Kudman, Emily Adney,
+  Heng Wang, Marie Kim, Milovan Suvakov, Anna Helland, Jasmine Yang, Nathan
+  Huang, Robert~L. Coletta, Spencer Stober, Carolyn Verzilli, Vamsi Boggula,
+  Nicolas Robine, Robert Lucito, and Marcin Imielinski.
+\newblock Nanopore sequencing of {DNA} concatemers reveals higher-order
+  features of chromatin structure.
+\newblock {\em bioRxiv}, 2019.
+\newblock Pore-C method; long-read concatemer sequencing of chromatin contacts;
+  used in this manuscript on HG002.
+
+\bibitem{hic3d_cifi2025}
+Nathan Cramer et~al.
+\newblock {CiFi}: accurate long-read chromosome conformation capture with
+  low-input requirements.
+\newblock {\em Nature Communications}, 16, 2025.
+
+\bibitem{hic3d_alavattam2019}
+Kris~G. Alavattam, Satyakrishna Maezawa, Akihiko Sakashita, Hironori Khoury,
+  Artem Barski, Natalya Pavlova, and Satoshi~H. Namekawa.
+\newblock Attenuated chromatin compartmentalization in meiosis and its
+  maturation in sperm development.
+\newblock {\em Nature Structural {\&} Molecular Biology}, 26:175--184, 2019.
+
+\bibitem{hic3d_wolff2018}
+Joachim Wolff, Vivek Bhardwaj, Stephan Nothjunge, Gautier Richard, Gina
+  Renschler, Ralf Gilsbach, Thomas Manke, Rolf Backofen, Fidel Ram{\'i}rez, and
+  Bj{\"o}rn~A. Gr{\"u}ning.
+\newblock Galaxy {HiCExplorer}: a web server for reproducible {Hi-C} data
+  analysis, quality control and visualization.
+\newblock {\em Nucleic Acids Research}, 46(W1):W11--W16, 2018.
+
+\bibitem{hic3d_deshpande2022}
+Ajay~S. Deshpande, Netha Ulahannan, Matthew Pendleton, Xiaoguang Dai, Lynn Ly,
+  Julie~M. Behr, Stefan Schwenk, Will Liao, Michael~A. Augello, Caitlin Tyer,
+  Poonam Sridhar, Bhanu Bhardwaj, Kanika Arora, Ashley~M. Darnell, Arnav Gupta,
+  Subhakar Bhatt, Elli Papaemmanuil, Michael~C. Zody, David Robson, and Sissel
+  Juul.
+\newblock Identifying synergistic high-order {3D} chromatin conformations from
+  genome-scale nanopore concatemer sequencing.
+\newblock {\em Nature Biotechnology}, 40:1488--1499, 2022.
+
+\bibitem{Tan2018}
+Longzhi Tan, Dong Xing, Chi-Han Chang, Heng Li, and X.~Sunney Xie.
+\newblock Three-dimensional genome structures of single diploid human cells.
+\newblock {\em Science}, 361(6405):924--928, 2018.
+\newblock Dip-C method; GM12878 + PBMC single-cell 3D structures; coordinates
+  in hg19 (T2T re-projection via impg in present work).
+
+\bibitem{Xu2025}
+Hanbo Xu et~al.
+\newblock Three-dimensional genome organization of human sperm at single-cell
+  resolution.
+\newblock {\em Nature Communications}, 16:3805, 2025.
+\newblock Sperm single-cell 3D genome structures; 20 cells (10 X-bearing + 10
+  Y-bearing) used in the present sperm scHi-C analysis.
+
+\bibitem{hic3d_scnanoHiC2023}
+Longzhi Tan, Da~Xing, Nicholas Daley, and X.~Sunney Xie.
+\newblock {scNanoHi-C}: a single-cell long-read concatemer sequencing method to
+  reveal high-order chromatin structures within individual cells.
+\newblock {\em Nature Methods}, 20:1493--1500, 2023.
+
+\bibitem{hic3d_scnanoHiC2_2025}
+Longzhi Tan et~al.
+\newblock Single-cell long-read {Hi-C}, {scNanoHi-C2}, details {3D} genome
+  reorganization in embryonic-stage germ cells.
+\newblock {\em Nature Structural {\&} Molecular Biology}, 2025.
+
+\bibitem{hic3d_kitamura2025}
+Yuka Kitamura and Satoshi~H. Namekawa.
+\newblock The {3D} genome during germline development and meiosis.
+\newblock {\em Trends in Genetics}, 42(3):255--267, 2025.
+
+\bibitem{Francis2025}
+Brittany~A. Francis et~al.
+\newblock Complete genome assemblies of two mouse subspecies reveal structural
+  diversity of telomeres and centromeres.
+\newblock {\em Nature Genetics}, 57:2852--2862, 2025.
+\newblock First T2T assemblies for C57BL/6J (GCA\_964188535) and CAST/EiJ
+  (GCA\_964188545); B6 +208 Mb, CAST +247 Mb vs GRCm39; conserved L1-LINE + TLC
+  subtelomeric architecture in B6.
+
+\bibitem{Zuo2021}
+Wu~Zuo, Guangyu Chen, Zhongjun Gao, Shuai Li, Yanyan Chen, Chenhua Huang, Juan
+  Chen, Zhenhai Chen, Ming Lei, and Qian Bian.
+\newblock Stage-resolved {Hi-C} analyses reveal meiotic chromosome
+  organizational features influencing homolog alignment.
+\newblock {\em Nature Communications}, 12(1):5827, 2021.
+\newblock Meiotic chromosome end alignment extends ~20\% of chromosome length
+  in mouse spermatocytes; LINC complex / SUN1 force transmission;
+  stage-resolved leptotene / zygotene / pachytene / diplotene Hi-C.
+
+\bibitem{Cechova2025}
+Monika Cechova et~al.
+\newblock Telomere-to-telomere assembly of a multi-generation human pedigree.
+\newblock {\em (in press)}, 2025.
+\newblock WashU 3-generation T2T assemblies (PAN010 grandmother, PAN011
+  grandfather, PAN027 mother, PAN028 granddaughter); primary pedigree evidence
+  for inter-chromosomal exchange community membership (494/538 = 92\%).
+
+\bibitem{Porubsky2025}
+David Porubsky et~al.
+\newblock Gaps and complex structurally variant loci in phased genome
+  assemblies of the {CEPH 1463} four-generation pedigree.
+\newblock {\em Nature}, 643:427--436, 2025.
+\newblock Published version. 28-sample CEPH1463 4-generation hifiasm + verkko
+  phased assemblies; cross-assembler-validated 11 robust inter-chromosomal
+  subtelomeric events; chr10/chr18 (community C2 / Linardopoulou pair) detected
+  independently in NA12877 paternal and NA12878 maternal.
+
+\bibitem{pedigree_Porsborg2025primaterecom}
+Peter~Soerud Porsborg, Anders~Poulsen Charmouh, Vinod~Kumar Singh, Sofia~Boeg
+  Winge, Christina Hvilsom, Carmen Oroperv, Lasse~Thorup Hansen, Juliana~Andrea
+  Berner, Marta Pelizzola, Sandra Laurentino, Nina Neuhaus, Asger Hobolth,
+  Thomas Bataillon, Soren Besenbacher, Kristian Almstrup, and Mikkel~Heide
+  Schierup.
+\newblock Long-read sequencing of primate testis and human sperm allows
+  identification of recombination events in individuals.
+\newblock {\em Nature Communications}, 16(1):10337, 2025.
+\newblock Cross-species (6 primate species + human) long-read meiotic
+  recombination; 2,881 crossovers, 2,314 simple gene conversions, 555 complex
+  events; NCO gene-conversion tracts mean 22--95 bp; CO-associated tracts mean
+  318--688 bp; calibrates gene-conversion-like patch interpretation for
+  pedigree analysis.
+
+\bibitem{pedigree_Joseph2024PRDM9indep}
+Julien Joseph, Djivan Prentout, Alexandre Laverr{\'e}, Th{\'e}o Tricou, and
+  Laurent Duret.
+\newblock High prevalence of {PRDM9}-independent recombination hotspots in
+  placental mammals.
+\newblock {\em Proceedings of the National Academy of Sciences USA},
+  121(23):e2401973121, 2024.
+\newblock gBGC-substitution estimator quantifies PRDM9-independent
+  recombination hotspot activity in 52 boreoeutherian mammals. Humans show a
+  deficit of recombination at PRDM9-independent hotspots relative to other
+  placental mammals. Contextualises the non-PRDM9 NCO class observed in human
+  sperm.
+
+\end{thebibliography}

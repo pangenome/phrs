@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.2.17)  27 MAY 2026 10:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.2.17)  31 MAY 2026 16:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -719,41 +719,75 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \ar@cellbox=\box79
 ))
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 27.
+h' as default language. on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count355
 \l__pdf_internal_box=\box80
 )
-(./paper.aux)
+(./paper.aux
+
+Package natbib Warning: Citation `Nurk2022' multiply defined.
+
+
+Package natbib Warning: Citation `hprc_hprcv2_2025' multiply defined.
+
+
+Package natbib Warning: Citation `Guarracino2023' multiply defined.
+
+
+Package natbib Warning: Citation `Garrison2024pggb' multiply defined.
+
+
+Package natbib Warning: Citation `Francis2025' multiply defined.
+
+
+Package natbib Warning: Citation `Zuo2021' multiply defined.
+
+
+Package natbib Warning: Citation `Ulahannan2019' multiply defined.
+
+
+Package natbib Warning: Citation `hic3d_cifi2025' multiply defined.
+
+
+Package natbib Warning: Citation `Tan2018' multiply defined.
+
+
+Package natbib Warning: Citation `Xu2025' multiply defined.
+
+
+Package natbib Warning: Citation `Cechova2025' multiply defined.
+
+)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 \footinsA=\insert252
 \c@footnoteA=\count356
-LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 27.
+LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 40.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
-(Font)                  U/msa/m/n --> U/msa/m/n on input line 27.
+(Font)                  U/msa/m/n --> U/msa/m/n on input line 40.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
-(Font)                  U/msa/m/n --> U/msa/m/n on input line 27.
+(Font)                  U/msa/m/n --> U/msa/m/n on input line 40.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -813,7 +847,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count363
-Package hyperref Info: Link coloring ON on input line 27.
+Package hyperref Info: Link coloring ON on input line 40.
 
 (./paper.out) (./paper.out)
 \@outlinefile=\write5
@@ -828,87 +862,69 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 27.
+or `english'. on input line 40.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 65.
+(Font)              size <10.95> substituted on input line 59.
 
-LaTeX Font Info:    Calculating math sizes for size <10.53937> on input line 65
+LaTeX Font Info:    Calculating math sizes for size <10.53937> on input line 59
 .
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 65.
+(Font)              size <10.95> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 65.
+(Font)              size <10.95> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 65.
+(Font)              size <10.95> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 65.
+(Font)              size <10.95> substituted on input line 59.
 
-LaTeX Font Info:    Calculating math sizes for size <5.01874> on input line 65.
+LaTeX Font Info:    Calculating math sizes for size <5.01874> on input line 59.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <3.51309> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <2.50937> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <3.51309> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <2.50937> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <3.51309> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <2.50937> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.51309> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <2.50937> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.51309> not available
-(Font)              size <5> substituted on input line 65.
+(Font)              size <5> substituted on input line 59.
 
-LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 65.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.51686> not available
-(Font)              size <5> substituted on input line 65.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.51686> not available
-(Font)              size <5> substituted on input line 65.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.51686> not available
-(Font)              size <5> substituted on input line 65.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <4.51686> not available
-(Font)              size <5> substituted on input line 65.
-
-LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 65
+LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 59
 .
 
 
@@ -927,14 +943,6 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
 [2]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-83.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.03749> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 183.
-
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -953,24 +961,9 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
 [4]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[5]
-Underfull \hbox (badness 1137) in paragraph at lines 321--361
-[]\OT1/cmr/m/n/10 To move from infer-ence to obser-va-tion, to catch inter-chro
-mosomal
- []
-
-
-Underfull \hbox (badness 1454) in paragraph at lines 321--361
-\OT1/cmr/m/n/10 generation pedi-grees. The WashU pedi-gree com-prises four T2T-
-quality
+Underfull \hbox (badness 1946) in paragraph at lines 224--241
+[]\OT1/cmr/m/n/10 Together these obser-va-tions describe a self-reinforcing loo
+p: shared
  []
 
 
@@ -982,7 +975,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[6]
+[5] (./paper.bbl
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[6
+
+]
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1000,7 +1004,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[8] (./paper.bbl
+[8]
+Underfull \hbox (badness 2409) in paragraph at lines 531--555
+\OT1/cmr/m/n/10 ri-son, E.: Recom-bi-na-tion between het-erol-o-gous human acro
+-cen-tric
+ []
+
+
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1009,9 +1019,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[9
+[9]
+Underfull \hbox (badness 1132) in paragraph at lines 700--712
+[]\OT1/cmr/m/n/10 Zickler, D., Kleck-ner, N.: Recom-bi-na-tion, pair-ing, and s
+ynap-sis of
+ []
 
-]
+
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1021,38 +1035,15 @@ Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
 [10]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[11]
-
-! LaTeX Error: Unicode character ≥ (U+2265)
-               not set up for use with LaTeX.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.245   ultralong ≥
-                     30×.
-You may provide a definition with
-\DeclareUnicodeCharacter 
-
-
-Underfull \hbox (badness 2781) in paragraph at lines 263--273
-\OT1/cmr/m/it/10 Bioin-for-mat-ics\OT1/cmr/m/n/10 , 39(1):btac743, 2023.  doi: 
-$10 . 1093 / bioinformatics /
+Underfull \hbox (badness 3919) in paragraph at lines 856--865
+[]\OT1/cmr/m/n/10 Cechova, M., et al.: Telomere-to-telomere assem-bly of a mult
+i-
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 289--301
-[]\OT1/cmr/m/n/10 Erik Gar-ri-son, Andrea Guar-ra-cino, Simon Heumos, Flavia Vi
-l-lani,
+Underfull \hbox (badness 1152) in paragraph at lines 856--865
+\OT1/cmr/m/n/10 generation human pedi-gree. (in press) (2025). WashU 3-generati
+on
  []
 
 
@@ -1064,13 +1055,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[12{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Underfull \hbox (badness 1303) in paragraph at lines 347--354
-\OT1/cmr/m/n/10 Walker, Janet M. Young, Kazu-toyo Osoe-gawa, NISC Com-par-a-tiv
-e
- []
-
-
+[11])
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1079,150 +1064,121 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[13]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[14]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[15]
-Underfull \hbox (badness 2245) in paragraph at lines 508--519
-[]\OT1/cmr/m/n/10 Netha Ula-han-nan, Matthew Pendle-ton, Aditya Desh-pande, Ste
--fan
- []
-
-
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[16]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[17]
-Underfull \hbox (badness 1394) in paragraph at lines 666--676
-[]\OT1/cmr/m/n/10 Glennis A. Logs-don, Alli-son N. Rozan-ski, Fedor Ryabov, Tam
-ara
- []
-
-
-Underfull \hbox (badness 1502) in paragraph at lines 701--712
-[]\OT1/cmr/m/n/10 Glenn Hickey, Jean Mon-long, Jana Ebler, Adam M. Novak, Jor-
- []
-
-
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[18]
-Underfull \hbox (badness 3271) in paragraph at lines 728--737
-[]\OT1/cmr/m/n/10 Francesco Andreace, Pierre Lechat, Yoann Dufresne, and Rayan
- []
-
-
-Underfull \hbox (badness 1642) in paragraph at lines 728--737
-\OT1/cmr/m/n/10 pangenome graphs.  \OT1/cmr/m/it/10 Genome Biol-ogy\OT1/cmr/m/n
-/10 , 24(1):274, 2023.  doi: $10 .
- []
-
-
-Underfull \hbox (badness 1097) in paragraph at lines 772--778
-\OT1/cmr/m/n/10 Nau-mova, Anton Goloborodko, Bryan R. Lajoie, Job Dekker, and
- []
-
-
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[19]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[20]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[21])
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[22]
-<fig/MainFigures/Figure1.pdf, id=342, 831.105pt x 794.97pt>
-File: fig/MainFigures/Figure1.pdf Graphic file (type pdf)
-<use fig/MainFigures/Figure1.pdf>
-Package pdftex.def Info: fig/MainFigures/Figure1.pdf  used on input line 476.
-(pdftex.def)             Requested size: 338.58778pt x 323.86554pt.
-<fig/MainFigures/Figure2.pdf, id=343, 785.31516pt x 674.23929pt>
-File: fig/MainFigures/Figure2.pdf Graphic file (type pdf)
-<use fig/MainFigures/Figure2.pdf>
-Package pdftex.def Info: fig/MainFigures/Figure2.pdf  used on input line 494.
-(pdftex.def)             Requested size: 338.58778pt x 290.68884pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<fig/MainFigures/Figure3.pdf, id=344, 1156.32pt x 867.24pt>
-File: fig/MainFigures/Figure3.pdf Graphic file (type pdf)
-<use fig/MainFigures/Figure3.pdf>
-Package pdftex.def Info: fig/MainFigures/Figure3.pdf  used on input line 509.
-(pdftex.def)             Requested size: 338.58778pt x 253.94127pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<fig/MainFigures/Figure4.pdf, id=345, 1011.78pt x 722.7pt>
-File: fig/MainFigures/Figure4.pdf Graphic file (type pdf)
-<use fig/MainFigures/Figure4.pdf>
-Package pdftex.def Info: fig/MainFigures/Figure4.pdf  used on input line 523.
-(pdftex.def)             Requested size: 338.58778pt x 241.84409pt.
+[12]
+<fig/MainFigures/Fig1a_genomewide.png, id=243, 2055.68pt x 899.36pt>
+File: fig/MainFigures/Fig1a_genomewide.png Graphic file (type png)
+<use fig/MainFigures/Fig1a_genomewide.png>
+Package pdftex.def Info: fig/MainFigures/Fig1a_genomewide.png  used on input li
+ne 272.
+(pdftex.def)             Requested size: 338.58778pt x 148.12726pt.
+<fig/MainFigures/Fig1b_lengths.png, id=245, 2055.68pt x 1156.32pt>
+File: fig/MainFigures/Fig1b_lengths.png Graphic file (type png)
+<use fig/MainFigures/Fig1b_lengths.png>
+Package pdftex.def Info: fig/MainFigures/Fig1b_lengths.png  used on input line 
+273.
+(pdftex.def)             Requested size: 338.58778pt x 190.44933pt.
+<fig/MainFigures/Fig2a_pggb_layout.png, id=246, 1927.2pt x 1084.05pt>
+File: fig/MainFigures/Fig2a_pggb_layout.png Graphic file (type png)
+<use fig/MainFigures/Fig2a_pggb_layout.png>
+Package pdftex.def Info: fig/MainFigures/Fig2a_pggb_layout.png  used on input l
+ine 292.
+(pdftex.def)             Requested size: 338.58778pt x 190.45595pt.
+<fig/MainFigures/Fig2b_tree_jaccard.png, id=247, 2055.68pt x 1156.32pt>
+File: fig/MainFigures/Fig2b_tree_jaccard.png Graphic file (type png)
+<use fig/MainFigures/Fig2b_tree_jaccard.png>
+Package pdftex.def Info: fig/MainFigures/Fig2b_tree_jaccard.png  used on input 
+line 293.
+(pdftex.def)             Requested size: 165.90987pt x 93.3191pt.
+<fig/MainFigures/Fig2c_community_jaccard.png, id=248, 2055.68pt x 1156.32pt>
+File: fig/MainFigures/Fig2c_community_jaccard.png Graphic file (type png)
+<use fig/MainFigures/Fig2c_community_jaccard.png>
+Package pdftex.def Info: fig/MainFigures/Fig2c_community_jaccard.png  used on i
+nput line 294.
+(pdftex.def)             Requested size: 165.90987pt x 93.3191pt.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 3
+08.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
+)
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 535.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 308.
+
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[13
+
+ <./fig/MainFigures/Fig1a_genomewide.png> <./fig/MainFigures/Fig1b_lengths.png>
+]
+<fig/MainFigures/Fig3a_C1_chr4q.png, id=259, 1795.70876pt x 278.03876pt>
+File: fig/MainFigures/Fig3a_C1_chr4q.png Graphic file (type png)
+<use fig/MainFigures/Fig3a_C1_chr4q.png>
+Package pdftex.def Info: fig/MainFigures/Fig3a_C1_chr4q.png  used on input line
+ 314.
+(pdftex.def)             Requested size: 338.58778pt x 52.42487pt.
+<fig/MainFigures/Fig3a_C1_chr10q.png, id=260, 1795.70876pt x 294.09875pt>
+File: fig/MainFigures/Fig3a_C1_chr10q.png Graphic file (type png)
+<use fig/MainFigures/Fig3a_C1_chr10q.png>
+Package pdftex.def Info: fig/MainFigures/Fig3a_C1_chr10q.png  used on input lin
+e 315.
+(pdftex.def)             Requested size: 338.58778pt x 55.45302pt.
+<fig/MainFigures/Fig3b_C2_chr10p.png, id=261, 1795.70876pt x 229.85875pt>
+File: fig/MainFigures/Fig3b_C2_chr10p.png Graphic file (type png)
+<use fig/MainFigures/Fig3b_C2_chr10p.png>
+Package pdftex.def Info: fig/MainFigures/Fig3b_C2_chr10p.png  used on input lin
+e 316.
+(pdftex.def)             Requested size: 338.58778pt x 43.34041pt.
+<fig/MainFigures/Fig3b_C2_chr18p.png, id=262, 1795.70876pt x 406.51875pt>
+File: fig/MainFigures/Fig3b_C2_chr18p.png Graphic file (type png)
+<use fig/MainFigures/Fig3b_C2_chr18p.png>
+Package pdftex.def Info: fig/MainFigures/Fig3b_C2_chr18p.png  used on input lin
+e 317.
+(pdftex.def)             Requested size: 338.58778pt x 76.65007pt.
+<fig/MainFigures/Fig3c_C11_chr5q.png, id=263, 1795.70876pt x 920.43875pt>
+File: fig/MainFigures/Fig3c_C11_chr5q.png Graphic file (type png)
+<use fig/MainFigures/Fig3c_C11_chr5q.png>
+Package pdftex.def Info: fig/MainFigures/Fig3c_C11_chr5q.png  used on input lin
+e 318.
+(pdftex.def)             Requested size: 338.58778pt x 173.55092pt.
+<fig/MainFigures/Fig3c_C11_chr6q.png, id=264, 1795.70876pt x 438.63875pt>
+File: fig/MainFigures/Fig3c_C11_chr6q.png Graphic file (type png)
+<use fig/MainFigures/Fig3c_C11_chr6q.png>
+Package pdftex.def Info: fig/MainFigures/Fig3c_C11_chr6q.png  used on input lin
+e 319.
+(pdftex.def)             Requested size: 338.58778pt x 82.70638pt.
+
+
+LaTeX Warning: Float too large for page by 56.68088pt on input line 332.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<fig/MainFigures/Fig4a_human_scatter.png, id=265, 706.64pt x 313.17pt>
+File: fig/MainFigures/Fig4a_human_scatter.png Graphic file (type png)
+<use fig/MainFigures/Fig4a_human_scatter.png>
+Package pdftex.def Info: fig/MainFigures/Fig4a_human_scatter.png  used on input
+ line 336.
+(pdftex.def)             Requested size: 338.58778pt x 150.05705pt.
+<fig/MainFigures/Fig4b_porec_community.png, id=266, 1806.75pt x 1806.75pt>
+File: fig/MainFigures/Fig4b_porec_community.png Graphic file (type png)
+<use fig/MainFigures/Fig4b_porec_community.png>
+Package pdftex.def Info: fig/MainFigures/Fig4b_porec_community.png  used on inp
+ut line 337.
+(pdftex.def)             Requested size: 203.15472pt x 203.15411pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<fig/MainFigures/Fig5_pedigree_untangle.pdf, id=269, 1011.78pt x 1152.305pt>
+File: fig/MainFigures/Fig5_pedigree_untangle.pdf Graphic file (type pdf)
+<use fig/MainFigures/Fig5_pedigree_untangle.pdf>
+Package pdftex.def Info: fig/MainFigures/Fig5_pedigree_untangle.pdf  used on in
+put line 358.
+(pdftex.def)             Requested size: 338.58778pt x 385.60698pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1235,67 +1191,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[23
-
- <./fig/MainFigures/Figure1.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[24 <./fig/MainFigures/Figure2.pdf>]
-Underfull \hbox (badness 7777) in paragraph at lines 569--574
+[14 <./fig/MainFigures/Fig2a_pggb_layout.png> <./fig/MainFigures/Fig2b_tree_jac
+card.png> <./fig/MainFigures/Fig2c_community_jaccard.png>]
+Underfull \hbox (badness 3158) in paragraph at lines 403--407
 \OT1/cmr/m/n/10 For each hap-lo-type assem-bly we extracted the ter-mi-nal 500 
-kb
+kb of
  []
 
 
-Underfull \hbox (badness 5359) in paragraph at lines 569--574
-\OT1/cmr/m/n/10 of every con-tig clas-si-fied as p- or q-arm telomere-bearing (
-con-tig
+Underfull \hbox (badness 1552) in paragraph at lines 403--407
+\OT1/cmr/m/n/10 every con-tig clas-si-fied as p- or q-arm telomere-bearing (con
+-tig length
  []
 
 
-Underfull \hbox (badness 5878) in paragraph at lines 569--574
-\OT1/cmr/m/n/10 length $\OMS/cmsy/m/n/10 ^^U \OT1/cmr/m/n/10 1$ Mb), pro-duc-in
-g 18,827 flanks across 48 arms. Per-
- []
-
-
-Underfull \hbox (badness 3098) in paragraph at lines 569--574
-\OT1/cmr/m/n/10 arm flank counts in Extended Data Fig. [][]ED1[][]b; pq-classif
-ication at
- []
-
-
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[25 <./fig/MainFigures/Figure3.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[26 <./fig/MainFigures/Figure4.pdf>]
-Underfull \hbox (badness 3219) in paragraph at lines 602--605
+Underfull \hbox (badness 3219) in paragraph at lines 435--440
 \OT1/cmtt/m/n/10 pggb -p 95 -D /scratch\OT1/cmr/m/n/10 ; \OT1/cmtt/m/n/10 odgi 
 similarity --all -P \OT1/cmr/m/n/10 over the 15,668
  []
 
 
-Underfull \hbox (badness 2828) in paragraph at lines 608--610
+Underfull \hbox (badness 2828) in paragraph at lines 443--445
 \OT1/cmr/m/n/10 Mean pair-wise sequence-level Jac-card dis-tance within each ar
 m pair
  []
@@ -1309,33 +1225,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[27]
-LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 649.
+[15]
 
 
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 649.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.43146> not available
-(Font)              size <8> substituted on input line 649.
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 649.
-
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <8.43146> not available
-(Font)              size <8> substituted on input line 649.
-
+[16]
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-663.
-(/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
+554.
+ (/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10.03749> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 663.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 554.
 
 
 
@@ -1345,65 +1251,121 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 743--761
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 558--570
 \OT1/cmtt/m/n/10 odgi untangle nth-best=1 \OT1/cmr/m/n/10 per flank; high-quali
 ty fil-ter
  []
 
 
-Underfull \hbox (badness 7740) in paragraph at lines 743--761
+Underfull \hbox (badness 7740) in paragraph at lines 558--570
 \OT1/cmtt/m/n/10 min[]score $\OMS/cmsy/m/n/10 ^^U \OT1/cmr/m/n/10 0\OML/cmm/m/i
 t/10 :\OT1/cmr/m/n/10 8$ with $500 [] \OMS/cmsy/m/n/10 ^^T [] ^^T \OT1/cmr/m/n/
 10 100 []$; within-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 743--761
+Underfull \hbox (badness 10000) in paragraph at lines 558--570
 \OT1/cmr/m/n/10 Leiden fil-ter as cred-i-bil-ity con-straint; pat-tern clas-si-
 fi-ca-tion via
  []
 
 
-Underfull \hbox (badness 3769) in paragraph at lines 743--761
+Underfull \hbox (badness 3769) in paragraph at lines 558--570
 \OT1/cmr/m/n/10 tract lengths inter-preted along-side long-read pri-mate mei-ot
 ic recom-
  []
 
 
-Underfull \hbox (badness 2922) in paragraph at lines 743--761
+Underfull \hbox (badness 2922) in paragraph at lines 558--570
 \OT1/cmr/m/n/10 bi-na-tion (NCO 22--95 bp, CO-associated 318--688 bp) [[], []].
  The
  []
 
 
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[29]
-Underfull \hbox (badness 1648) in paragraph at lines 764--767
-\OT1/cmr/m/n/10 Independent calls by hifi-asm and verkko; within-community par-
-ent $\OMS/cmsy/m/n/10 ^^B$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 776--783
+Underfull \hbox (badness 10000) in paragraph at lines 579--587
 \OT1/cmr/m/n/10 and \OT1/cmtt/m/n/10 /moosefs/erikg/phrs/\OT1/cmr/m/n/10 ; CHM1
-3-coordinate PHR BEDs
+3-coordinate PHR BEDs in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 776--783
-\OT1/cmr/m/n/10 at repo root (\OT1/cmtt/m/n/10 chm13.phrs.bed\OT1/cmr/m/n/10 , 
-\OT1/cmtt/m/n/10 chm13.phrs.no[]acro.bed\OT1/cmr/m/n/10 ,
+Underfull \hbox (badness 10000) in paragraph at lines 579--587
+\OT1/cmtt/m/n/10 data/ \OT1/cmr/m/n/10 (\OT1/cmtt/m/n/10 data/chm13.phrs.bed\OT
+1/cmr/m/n/10 , \OT1/cmtt/m/n/10 data/chm13.phrs.no[]acro.bed\OT1/cmr/m/n/10 ,
  []
 
-No file Meth.bbl.
+
+Underfull \hbox (badness 1424) in paragraph at lines 579--587
+\OT1/cmtt/m/n/10 data/CHM13-HG002.sub-telo-phrs.bed\OT1/cmr/m/n/10 ). Re-alignm
+ent scripts and com-
+ []
+
+(./Meth.bbl
+pdfTeX warning (ext4): destination with the same identifier (name{cite.hprc_hpr
+cv2_2025}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3 \bibitem{hprc_hprcv2_2025}
+                              
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[18]
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Nurk2022
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.11 \bibitem{Nurk2022}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Guarraci
+no2023}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.46 \bibitem{Guarracino2023}
+                             
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[19]
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Garrison
+2024pggb}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.87 \bibitem{Garrison2024pggb}
+                               
+Underfull \hbox (badness 1320) in paragraph at lines 88--99
+[]\OT1/cmr/m/n/10 Erik Gar-ri-son, Andrea Guar-ra-cino, Simon Heumos, Flavia Vi
+l-lani,
+ []
+
+
+Underfull \hbox (badness 2057) in paragraph at lines 111--122
+\OT1/cmr/m/n/10 Andrea Guar-ra-cino, Peter Heringer, Philipp Ehmele, Pjotr Prin
+s,
+ []
+
+
+Underfull \hbox (badness 3333) in paragraph at lines 111--122
+\OT1/cmr/m/n/10 Erik Gar-ri-son, and Sven Nahnsen.  Cluster-efficient pangenome
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--122
+\OT1/cmr/m/n/10 graph con-struc-tion with nf-core/pangenome.  \OT1/cmr/m/it/10 
+Bioin-for-mat-ics\OT1/cmr/m/n/10 ,
+ []
+
 
 
 
@@ -1413,49 +1375,135 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[30]
-<fig/ExtendedDataFigures/ED_Fig1.pdf, id=693, 867.24pt x 650.43pt>
-File: fig/ExtendedDataFigures/ED_Fig1.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig1.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig1.pdf  used on input lin
-e 810.
-(pdftex.def)             Requested size: 338.58778pt x 253.94456pt.
-<fig/ExtendedDataFigures/ED_Fig2.pdf, id=694, 1011.78pt x 794.97pt>
-File: fig/ExtendedDataFigures/ED_Fig2.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig2.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig2.pdf  used on input lin
-e 836.
-(pdftex.def)             Requested size: 338.58778pt x 266.0285pt.
-<fig/ExtendedDataFigures/ED_Fig3.pdf, id=695, 794.97pt x 614.295pt>
-File: fig/ExtendedDataFigures/ED_Fig3.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig3.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig3.pdf  used on input lin
-e 857.
-(pdftex.def)             Requested size: 338.58778pt x 261.639pt.
-<fig/ExtendedDataFigures/ED_Fig4.pdf, id=696, 939.51pt x 650.43pt>
-File: fig/ExtendedDataFigures/ED_Fig4.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig4.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig4.pdf  used on input lin
-e 879.
-(pdftex.def)             Requested size: 338.58778pt x 234.40274pt.
-<fig/ExtendedDataFigures/ED_Fig5.pdf, id=699, 758.835pt x 650.43pt>
-File: fig/ExtendedDataFigures/ED_Fig5.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig5.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig5.pdf  used on input lin
-e 897.
-(pdftex.def)             Requested size: 338.58778pt x 290.21953pt.
-<fig/ExtendedDataFigures/ED_Fig6.pdf, id=700, 794.97pt x 614.295pt>
-File: fig/ExtendedDataFigures/ED_Fig6.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig6.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig6.pdf  used on input lin
-e 919.
-(pdftex.def)             Requested size: 338.58778pt x 261.639pt.
-<fig/ExtendedDataFigures/ED_Fig7.pdf, id=703, 794.97pt x 650.43pt>
-File: fig/ExtendedDataFigures/ED_Fig7.pdf Graphic file (type pdf)
-<use fig/ExtendedDataFigures/ED_Fig7.pdf>
-Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig7.pdf  used on input lin
-e 944.
-(pdftex.def)             Requested size: 338.58778pt x 277.02954pt.
+[20]
+Underfull \hbox (badness 1097) in paragraph at lines 131--136
+\OT1/cmr/m/n/10 Nau-mova, Anton Goloborodko, Bryan R. Lajoie, Job Dekker, and
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Ulahanna
+n2019}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.137 \bibitem{Ulahannan2019}
+                             
+Underfull \hbox (badness 2245) in paragraph at lines 138--148
+[]\OT1/cmr/m/n/10 Netha Ula-han-nan, Matthew Pendle-ton, Aditya Desh-pande, Ste
+-fan
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{cite.hic3d_ci
+fi2025}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.149 \bibitem{hic3d_cifi2025}
+                              
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[21]
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Tan2018}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.180 \bibitem{Tan2018}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Xu2025})
+ has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.187 \bibitem{Xu2025}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Francis2
+025}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.212 \bibitem{Francis2025}
+                           
+Underfull \hbox (badness 1014) in paragraph at lines 213--220
+\OT1/cmr/m/n/10 (GCA[]964188535) and CAST/EiJ (GCA[]964188545); B6 +208 Mb,
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Zuo2021}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.221 \bibitem{Zuo2021}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{cite.Cechova2
+025}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.231 \bibitem{Cechova2025}
+                           
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[22])
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[23]
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[24 <./fig/MainFigures/Fig3a_C1_chr4q.png> <./fig/MainFigures/Fig3a_C1_chr10q.p
+ng> <./fig/MainFigures/Fig3b_C2_chr10p.png> <./fig/MainFigures/Fig3b_C2_chr18p.
+png> <./fig/MainFigures/Fig3c_C11_chr5q.png> <./fig/MainFigures/Fig3c_C11_chr6q
+.png>]
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[25 <./fig/MainFigures/Fig4a_human_scatter.png (PNG copy)> <./fig/MainFigures/F
+ig4b_porec_community.png>]
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (1.44444pt too high) has occurred while \output is active []
+
+
+[26 <./fig/MainFigures/Fig5_pedigree_untangle.pdf>]
+<fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png, id=413, 722.7pt x 421.575p
+t>
+File: fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png Graphic file (type png
+)
+<use fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png>
+Package pdftex.def Info: fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png  us
+ed on input line 615.
+(pdftex.def)             Requested size: 338.58778pt x 197.50986pt.
+
+
+Package natbib Warning: There were multiply defined citations.
+
 
 
 
@@ -1465,63 +1513,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Overfull \vbox (1.44444pt too high) has occurred while \output is active []
 
 
-[31
+[27
 
- <./fig/ExtendedDataFigures/ED_Fig1.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[32 <./fig/ExtendedDataFigures/ED_Fig2.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[33 <./fig/ExtendedDataFigures/ED_Fig3.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[34 <./fig/ExtendedDataFigures/ED_Fig4.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[35 <./fig/ExtendedDataFigures/ED_Fig5.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[36 <./fig/ExtendedDataFigures/ED_Fig6.pdf>]
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (1.44444pt too high) has occurred while \output is active []
-
-
-[37 <./fig/ExtendedDataFigures/ED_Fig7.pdf>] (./paper.aux)
+ <./fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png (PNG copy)>]
+(./paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1535,38 +1530,36 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: AE5DA0F36F284E2F81AFE85FADAD2DAF;191.
  ) 
 Here is how much of TeX's memory you used:
- 20636 strings out of 475102
- 381861 string characters out of 5764877
- 769559 words of memory out of 5000000
- 43191 multiletter control sequences out of 15000+600000
- 591016 words of font info for 165 fonts, out of 8000000 for 9000
+ 20533 strings out of 475102
+ 380025 string characters out of 5764877
+ 752118 words of memory out of 5000000
+ 43127 multiletter control sequences out of 15000+600000
+ 581885 words of font info for 129 fonts, out of 8000000 for 9000
  69 hyphenation exceptions out of 8191
- 90i,8n,93p,1458b,1326s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy9.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.p
-fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on paper.pdf (37 pages, 1984407 bytes).
+ 90i,8n,93p,2160b,1351s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmtt9.pfb>
+Output written on paper.pdf (27 pages, 2034386 bytes).
 PDF statistics:
- 996 PDF objects out of 1000 (max. 8388607)
- 677 compressed objects within 7 object streams
- 157 named destinations out of 1000 (max. 500000)
- 64 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 530 PDF objects out of 1000 (max. 8388607)
+ 433 compressed objects within 5 object streams
+ 125 named destinations out of 1000 (max. 500000)
+ 84 words of extra memory for PDF output out of 10000 (max. 10000000)
 

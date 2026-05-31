@@ -1,918 +1,991 @@
-\begin{thebibliography}{76}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+%% BioMed_Central_Bib_Style_v1.01
 
-\bibitem[Brown et~al.(1990)Brown, MacKinnon, Villasant{\'e}, Spurr, Buckle, and
-  Dobson]{Brown1990}
-W.~R.~A. Brown, P.~J. MacKinnon, A.~Villasant{\'e}, N.~Spurr, V.~J. Buckle, and
-  M.~J. Dobson.
-\newblock Structure and polymorphism of human telomere-associated {DNA}.
-\newblock \emph{Cell}, 63\penalty0 (1):\penalty0 119--132, 1990.
-\newblock \doi{10.1016/0092-8674(90)90293-N}.
+\begin{thebibliography}{38}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
 
-\bibitem[Wilkie et~al.(1991)Wilkie, Higgs, Rack, Buckle, Spurr,
-  Fischel-Ghodsian, Ceccherini, Brown, and Harris]{Wilkie1991}
-A.~O.~M. Wilkie, D.~R. Higgs, K.~A. Rack, V.~J. Buckle, N.~K. Spurr,
-  N.~Fischel-Ghodsian, I.~Ceccherini, W.~R.~A. Brown, and P.~C. Harris.
-\newblock Stable length polymorphism of up to 260 kb at the tip of the short
-  arm of human chromosome 16.
-\newblock \emph{Cell}, 64\penalty0 (3):\penalty0 595--606, 1991.
-\newblock \doi{10.1016/0092-8674(91)90243-R}.
+%%% 1
+\bibitem{Brown1990}
+\begin{barticle}
+\bauthor{\bsnm{Brown}, \binits{W.R.A.}},
+\bauthor{\bsnm{MacKinnon}, \binits{P.J.}},
+\bauthor{\bsnm{Villasant{\'e}}, \binits{A.}},
+\bauthor{\bsnm{Spurr}, \binits{N.}},
+\bauthor{\bsnm{Buckle}, \binits{V.J.}},
+\bauthor{\bsnm{Dobson}, \binits{M.J.}}:
+\batitle{Structure and polymorphism of human telomere-associated {DNA}}.
+\bjtitle{Cell}
+\bvolume{63}(\bissue{1}),
+\bfpage{119}--\blpage{132}
+(\byear{1990}).
+\doiurl{10.1016/0092-8674(90)90293-N}
+\end{barticle}
+\endbibitem
 
-\bibitem[Trask(1991)]{Trask1991}
-Barbara~J. Trask.
-\newblock Fluorescence in situ hybridization: applications in cytogenetics and
-  gene mapping.
-\newblock \emph{Trends in Genetics}, 7\penalty0 (5):\penalty0 149--154, 1991.
-\newblock \doi{10.1016/0168-9525(91)90103-W}.
+%%% 2
+\bibitem{Wilkie1991}
+\begin{barticle}
+\bauthor{\bsnm{Wilkie}, \binits{A.O.M.}},
+\bauthor{\bsnm{Higgs}, \binits{D.R.}},
+\bauthor{\bsnm{Rack}, \binits{K.A.}},
+\bauthor{\bsnm{Buckle}, \binits{V.J.}},
+\bauthor{\bsnm{Spurr}, \binits{N.K.}},
+\bauthor{\bsnm{Fischel-Ghodsian}, \binits{N.}},
+\bauthor{\bsnm{Ceccherini}, \binits{I.}},
+\bauthor{\bsnm{Brown}, \binits{W.R.A.}},
+\bauthor{\bsnm{Harris}, \binits{P.C.}}:
+\batitle{Stable length polymorphism of up to 260 kb at the tip of the short arm
+  of human chromosome 16}.
+\bjtitle{Cell}
+\bvolume{64}(\bissue{3}),
+\bfpage{595}--\blpage{606}
+(\byear{1991}).
+\doiurl{10.1016/0092-8674(91)90243-R}
+\end{barticle}
+\endbibitem
 
-\bibitem[Rouyer et~al.(1986)Rouyer, Simmler, Johnsson, Vergnaud, Cooke, and
-  Weissenbach]{Rouyer1986}
-F.~Rouyer, M.~C. Simmler, C.~Johnsson, G.~Vergnaud, H.~J. Cooke, and
-  J.~Weissenbach.
-\newblock A gradient of sex linkage in the pseudoautosomal region of the human
-  sex chromosomes.
-\newblock \emph{Nature}, 319\penalty0 (6051):\penalty0 291--295, 1986.
-\newblock \doi{10.1038/319291a0}.
-\newblock PAR1 obligate crossover; the prior named entity that PHRs subsume.
+%%% 3
+\bibitem{Trask1991}
+\begin{barticle}
+\bauthor{\bsnm{Trask}, \binits{B.J.}}:
+\batitle{Fluorescence in situ hybridization: applications in cytogenetics and
+  gene mapping}.
+\bjtitle{Trends in Genetics}
+\bvolume{7}(\bissue{5}),
+\bfpage{149}--\blpage{154}
+(\byear{1991}).
+\doiurl{10.1016/0168-9525(91)90103-W}
+\end{barticle}
+\endbibitem
 
-\bibitem[Bellott et~al.(2024)Bellott, Hughes, Skaletsky, Owen, and
-  Page]{sexchrompars_bellott2024}
-Daniel~W. Bellott, Jennifer~F. Hughes, Helen Skaletsky, Erik~C. Owen, and
-  David~C. Page.
-\newblock Where is the boundary of the human pseudoautosomal region?
-\newblock \emph{American Journal of Human Genetics}, 111\penalty0
-  (11):\penalty0 2530--2541, 2024.
-\newblock \doi{10.1016/j.ajhg.2024.09.005}.
-\newblock Re-examination of genetic and sequence evidence narrowing the
-  canonical PAR1 boundary; rebuts the 2023 assembly-based shift claim.
+%%% 4
+\bibitem{Rouyer1986}
+\begin{barticle}
+\bauthor{\bsnm{Rouyer}, \binits{F.}},
+\bauthor{\bsnm{Simmler}, \binits{M.C.}},
+\bauthor{\bsnm{Johnsson}, \binits{C.}},
+\bauthor{\bsnm{Vergnaud}, \binits{G.}},
+\bauthor{\bsnm{Cooke}, \binits{H.J.}},
+\bauthor{\bsnm{Weissenbach}, \binits{J.}}:
+\batitle{A gradient of sex linkage in the pseudoautosomal region of the human
+  sex chromosomes}.
+\bjtitle{Nature}
+\bvolume{319}(\bissue{6051}),
+\bfpage{291}--\blpage{295}
+(\byear{1986}).
+\doiurl{10.1038/319291a0}.
+\bcomment{PAR1 obligate crossover; the prior named entity that PHRs subsume}
+\end{barticle}
+\endbibitem
 
-\bibitem[Altemose et~al.(2022)Altemose, Logsdon, Bzikadze, Sidhwani, Langley,
-  Caldas, Hoyt, Uralsky, Ryabov, Shew, Sauria, Diekhans, Dechering, Sorensen,
-  Shumate, Munson, Graves-Lindsay, Vollger, Kremitzki, Rosen,
-  et~al.]{acrocentric_Altemose2022}
-Nicolas Altemose, Glennis~A. Logsdon, Andrey~V. Bzikadze, Pratima Sidhwani,
-  Steven~A. Langley, Graciela~V. Caldas, Savannah~J. Hoyt, Lev Uralsky,
-  Fedor~D. Ryabov, Colin J.~N. Shew, Michael E.~G. Sauria, Mark Diekhans,
-  Kornel Dechering, Thomas~C. Sorensen, Alyssa Shumate, Katherine~M. Munson,
-  Tina Graves-Lindsay, Mitchell~R. Vollger, Milinn Kremitzki, Jordan Rosen,
-  et~al.
-\newblock Complete genomic and epigenetic maps of human centromeres.
-\newblock \emph{Science}, 376\penalty0 (6588):\penalty0 eabl4178, 2022.
-\newblock \doi{10.1126/science.abl4178}.
-\newblock Part of T2T-CHM13 companion series; provided comprehensive
+%%% 5
+\bibitem{sexchrompars_bellott2024}
+\begin{barticle}
+\bauthor{\bsnm{Bellott}, \binits{D.W.}},
+\bauthor{\bsnm{Hughes}, \binits{J.F.}},
+\bauthor{\bsnm{Skaletsky}, \binits{H.}},
+\bauthor{\bsnm{Owen}, \binits{E.C.}},
+\bauthor{\bsnm{Page}, \binits{D.C.}}:
+\batitle{Where is the boundary of the human pseudoautosomal region?}
+\bjtitle{American Journal of Human Genetics}
+\bvolume{111}(\bissue{11}),
+\bfpage{2530}--\blpage{2541}
+(\byear{2024}).
+\doiurl{10.1016/j.ajhg.2024.09.005}.
+\bcomment{Re-examination of genetic and sequence evidence narrowing the
+  canonical PAR1 boundary; rebuts the 2023 assembly-based shift claim}
+\end{barticle}
+\endbibitem
+
+%%% 6
+\bibitem{acrocentric_Altemose2022}
+\begin{barticle}
+\bauthor{\bsnm{Altemose}, \binits{N.}},
+\bauthor{\bsnm{Logsdon}, \binits{G.A.}},
+\bauthor{\bsnm{Bzikadze}, \binits{A.V.}},
+\bauthor{\bsnm{Sidhwani}, \binits{P.}},
+\bauthor{\bsnm{Langley}, \binits{S.A.}},
+\bauthor{\bsnm{Caldas}, \binits{G.V.}},
+\bauthor{\bsnm{Hoyt}, \binits{S.J.}},
+\bauthor{\bsnm{Uralsky}, \binits{L.}},
+\bauthor{\bsnm{Ryabov}, \binits{F.D.}},
+\bauthor{\bsnm{Shew}, \binits{C.J.N.}},
+\bauthor{\bsnm{Sauria}, \binits{M.E.G.}},
+\bauthor{\bsnm{Diekhans}, \binits{M.}},
+\bauthor{\bsnm{Dechering}, \binits{K.}},
+\bauthor{\bsnm{Sorensen}, \binits{T.C.}},
+\bauthor{\bsnm{Shumate}, \binits{A.}},
+\bauthor{\bsnm{Munson}, \binits{K.M.}},
+\bauthor{\bsnm{Graves-Lindsay}, \binits{T.}},
+\bauthor{\bsnm{Vollger}, \binits{M.R.}},
+\bauthor{\bsnm{Kremitzki}, \binits{M.}},
+\bauthor{\bsnm{Rosen}, \binits{J.}}, \betal:
+\batitle{Complete genomic and epigenetic maps of human centromeres}.
+\bjtitle{Science}
+\bvolume{376}(\bissue{6588}),
+\bfpage{4178}
+(\byear{2022}).
+\doiurl{10.1126/science.abl4178}.
+\bcomment{Part of T2T-CHM13 companion series; provided comprehensive
   characterization of centromeric and pericentromeric satellite repeats
   including those flanking acrocentric rDNA arrays (HSAT5, SATR1, GSATII,
   ACRO1). Distinct from the short-arm focused Genome Research paper (Altemose
-  2022b).
+  2022b).}
+\end{barticle}
+\endbibitem
 
-\bibitem[Guarracino et~al.(2025)]{acrocentric_Guarracino2025ape}
-Andrea Guarracino et~al.
-\newblock Origin and evolution of acrocentric chromosomes in human and great
-  apes.
-\newblock bioRxiv, 2025.
-\newblock URL
-  \url{https://www.biorxiv.org/content/10.64898/2025.12.22.696095v1}.
-\newblock Cross-species analysis of acrocentric chromosome architecture in
-  chimpanzee and bonobo; confirmed chr14 inversion is human-specific, making
-  SST1-mediated 13;14 and 14;21 Robertsonian fusions human-unique.
+%%% 7
+\bibitem{acrocentric_Guarracino2025ape}
+\begin{botherref}
+\oauthor{\bsnm{Guarracino}, \binits{A.}}, et al.:
+Origin and evolution of acrocentric chromosomes in human and great apes.
+bioRxiv.
+Cross-species analysis of acrocentric chromosome architecture in chimpanzee and
+  bonobo; confirmed chr14 inversion is human-specific, making SST1-mediated
+  13;14 and 14;21 Robertsonian fusions human-unique.
+(2025).
+\doiurl{10.64898/2025.12.22.696095}.
+\url{https://www.biorxiv.org/content/10.64898/2025.12.22.696095v1}
+\end{botherref}
+\endbibitem
 
-\bibitem[Lemmers et~al.(2010)Lemmers, van~der Vliet, van~der Gaag, Zuniga,
-  Frants, de~Knijff, and van~der Maarel]{dux4_d4z4_fshd_lemmers2010worldwide}
-Richard J L~F Lemmers, Patrick~J van~der Vliet, Kristiaan~J van~der Gaag, Sofia
-  Zuniga, Rune~R Frants, Peter de~Knijff, and Silvère~M van~der Maarel.
-\newblock Worldwide population analysis of the 4q and 10q subtelomeres
+%%% 8
+\bibitem{dux4_d4z4_fshd_lemmers2010worldwide}
+\begin{barticle}
+\bauthor{\bsnm{Lemmers}, \binits{R.J.L.F.}},
+\bauthor{\bparticle{van~der} \bsnm{Vliet}, \binits{P.J.}},
+\bauthor{\bparticle{van~der} \bsnm{Gaag}, \binits{K.J.}},
+\bauthor{\bsnm{Zuniga}, \binits{S.}},
+\bauthor{\bsnm{Frants}, \binits{R.R.}},
+\bauthor{\bparticle{de} \bsnm{Knijff}, \binits{P.}},
+\bauthor{\bparticle{van~der} \bsnm{Maarel}, \binits{S.M.}}:
+\batitle{Worldwide population analysis of the 4q and 10q subtelomeres
   identifies only four discrete interchromosomal sequence transfers in human
-  evolution.
-\newblock \emph{American Journal of Human Genetics}, 86\penalty0 (3):\penalty0
-  364--377, 2010.
-\newblock \doi{10.1016/j.ajhg.2010.01.035}.
-\newblock URL \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC2833386/}.
+  evolution}.
+\bjtitle{American Journal of Human Genetics}
+\bvolume{86}(\bissue{3}),
+\bfpage{364}--\blpage{377}
+(\byear{2010}).
+\doiurl{10.1016/j.ajhg.2010.01.035}
+\end{barticle}
+\endbibitem
 
-\bibitem[Salsi et~al.(2026)Salsi, Losi, Pini, Chiara, and
-  Tupler]{Salsi2026fshd}
-Valentina Salsi, Francesca Losi, Sara Pini, Matteo Chiara, and Rossella Tupler.
-\newblock Rethinking genomics of facioscapulohumeral muscular dystrophy in the
-  telomere-to-telomere era: pitfalls in the hidden landscape of {D4Z4} repeats.
-\newblock \emph{European Journal of Human Genetics}, 34\penalty0 (3):\penalty0
-  357--367, 2026.
-\newblock \doi{10.1038/s41431-025-02000-x}.
-
-\bibitem[Chew et~al.(2019)Chew, Campbell, De~Neef, Sutliff, Shadle, Tapscott,
-  and Bradley]{dux4_cancer_Chew2019}
-Guo-Liang Chew, Amy~E Campbell, Emma De~Neef, Nicholas~A Sutliff, Sean~C
-  Shadle, Stephen~J Tapscott, and Robert~K Bradley.
-\newblock {DUX4} suppresses {MHC} class {I} to promote cancer immune evasion
-  and resistance to checkpoint blockade.
-\newblock \emph{Developmental Cell}, 50\penalty0 (5):\penalty0 658--671.e7,
-  July 2019.
-\newblock \doi{10.1016/j.devcel.2019.06.011}.
-\newblock DUX4 re-expressed in diverse solid cancers; suppresses MHC-I via
+%%% 9
+\bibitem{dux4_cancer_Chew2019}
+\begin{barticle}
+\bauthor{\bsnm{Chew}, \binits{G.-L.}},
+\bauthor{\bsnm{Campbell}, \binits{A.E.}},
+\bauthor{\bsnm{De~Neef}, \binits{E.}},
+\bauthor{\bsnm{Sutliff}, \binits{N.A.}},
+\bauthor{\bsnm{Shadle}, \binits{S.C.}},
+\bauthor{\bsnm{Tapscott}, \binits{S.J.}},
+\bauthor{\bsnm{Bradley}, \binits{R.K.}}:
+\batitle{{DUX4} suppresses {MHC} class {I} to promote cancer immune evasion and
+  resistance to checkpoint blockade}.
+\bjtitle{Developmental Cell}
+\bvolume{50}(\bissue{5}),
+\bfpage{658}--\blpage{6717}
+(\byear{2019}).
+\doiurl{10.1016/j.devcel.2019.06.011}.
+\bcomment{DUX4 re-expressed in diverse solid cancers; suppresses MHC-I via
   blockade of IFN-gamma signalling, promoting immune evasion; confirms DUX4
-  reactivation as an oncofetal developmental programme exploited by tumours.
+  reactivation as an oncofetal developmental programme exploited by tumours.}
+\end{barticle}
+\endbibitem
 
-\bibitem[Mefford et~al.(2001)Mefford, Linardopoulou, Coil, van~den Engh, and
-  Trask]{Mefford2001}
-Heather~C. Mefford, Elena Linardopoulou, David Coil, Ger van~den Engh, and
-  Barbara~J. Trask.
-\newblock Comparative sequencing of a multicopy subtelomeric region containing
+%%% 10
+\bibitem{Mefford2001}
+\begin{barticle}
+\bauthor{\bsnm{Mefford}, \binits{H.C.}},
+\bauthor{\bsnm{Linardopoulou}, \binits{E.}},
+\bauthor{\bsnm{Coil}, \binits{D.}},
+\bauthor{\bparticle{van~den} \bsnm{Engh}, \binits{G.}},
+\bauthor{\bsnm{Trask}, \binits{B.J.}}:
+\batitle{Comparative sequencing of a multicopy subtelomeric region containing
   olfactory receptor genes reveals multiple interactions between non-homologous
-  chromosomes.
-\newblock \emph{Human Molecular Genetics}, 10\penalty0 (23):\penalty0
-  2527--2537, 2001.
-\newblock \doi{10.1093/hmg/10.23.2527}.
+  chromosomes}.
+\bjtitle{Human Molecular Genetics}
+\bvolume{10}(\bissue{23}),
+\bfpage{2527}--\blpage{2537}
+(\byear{2001}).
+\doiurl{10.1093/hmg/10.23.2527}
+\end{barticle}
+\endbibitem
 
-\bibitem[Mefford and Trask(2002)]{MeffordTrask2002}
-Heather~C. Mefford and Barbara~J. Trask.
-\newblock The complex structure and dynamic evolution of human subtelomeres.
-\newblock \emph{Nature Reviews Genetics}, 3\penalty0 (2):\penalty0 91--102,
-  2002.
-\newblock \doi{10.1038/nrg727}.
-\newblock Foundational FISH-era review; f7501 cosmid (L78442) distribution
+%%% 11
+\bibitem{MeffordTrask2002}
+\begin{barticle}
+\bauthor{\bsnm{Mefford}, \binits{H.C.}},
+\bauthor{\bsnm{Trask}, \binits{B.J.}}:
+\batitle{The complex structure and dynamic evolution of human subtelomeres}.
+\bjtitle{Nature Reviews Genetics}
+\bvolume{3}(\bissue{2}),
+\bfpage{91}--\blpage{102}
+(\byear{2002}).
+\doiurl{10.1038/nrg727}.
+\bcomment{Foundational FISH-era review; f7501 cosmid (L78442) distribution
   across ~52 individuals; ~20\% chr4q/chr10q translocation prevalence (citing
   van Deutekom 1996); patchwork duplicon model; explicit hedge on phylogenetic
-  signal of subtelomeric block frequencies.
+  signal of subtelomeric block frequencies}
+\end{barticle}
+\endbibitem
 
-\bibitem[Linardopoulou et~al.(2005)Linardopoulou, Williams, Fan, Williams,
-  Bailey, and Trask]{Linardopoulou2005}
-Elena~V. Linardopoulou, Eleanor~M. Williams, Yuxin Fan, Cynthia Williams,
-  Jeffrey~A. Bailey, and Barbara~J. Trask.
-\newblock Human subtelomeres are hot spots of interchromosomal recombination
-  and segmental duplication.
-\newblock \emph{Nature}, 437\penalty0 (7055):\penalty0 94--100, 2005.
-\newblock \doi{10.1038/nature04029}.
-\newblock Paralogy map of 41 blocks across 33 subtelomeres; interchromosomal
+%%% 12
+\bibitem{Linardopoulou2005}
+\begin{barticle}
+\bauthor{\bsnm{Linardopoulou}, \binits{E.V.}},
+\bauthor{\bsnm{Williams}, \binits{E.M.}},
+\bauthor{\bsnm{Fan}, \binits{Y.}},
+\bauthor{\bsnm{Williams}, \binits{C.}},
+\bauthor{\bsnm{Bailey}, \binits{J.A.}},
+\bauthor{\bsnm{Trask}, \binits{B.J.}}:
+\batitle{Human subtelomeres are hot spots of interchromosomal recombination and
+  segmental duplication}.
+\bjtitle{Nature}
+\bvolume{437}(\bissue{7055}),
+\bfpage{94}--\blpage{100}
+(\byear{2005}).
+\doiurl{10.1038/nature04029}.
+\bcomment{Paralogy map of 41 blocks across 33 subtelomeres; interchromosomal
   duplication/transfer rate >60$\times$ point-mutation rate; chr10p
   $\leftrightarrow$ chr18p recurrent transfer pair; "19p alleles differ grossly
-  in subtelomeric content".
+  in subtelomeric content"}
+\end{barticle}
+\endbibitem
 
-\bibitem[Riethman et~al.(2004)Riethman, Ambrosini, Castaneda, Finklestein, Hu,
-  Mudunuri, Paul, and Wei]{Riethman2004}
-Harold Riethman, Anthony Ambrosini, Carlos Castaneda, Joshua Finklestein,
-  Xiao-Lin Hu, Uma Mudunuri, Sheila Paul, and Jeff Wei.
-\newblock Mapping and initial analysis of human subtelomeric sequence
-  assemblies.
-\newblock \emph{Genome Research}, 14\penalty0 (1):\penalty0 18--28, 2004.
-\newblock \doi{10.1101/gr.1245004}.
-\newblock Subtelomeric assembly programme; 80\% of the most distal 100 kb
-  consists of shared duplicated blocks.
+%%% 13
+\bibitem{Riethman2004}
+\begin{barticle}
+\bauthor{\bsnm{Riethman}, \binits{H.}},
+\bauthor{\bsnm{Ambrosini}, \binits{A.}},
+\bauthor{\bsnm{Castaneda}, \binits{C.}},
+\bauthor{\bsnm{Finklestein}, \binits{J.}},
+\bauthor{\bsnm{Hu}, \binits{X.-L.}},
+\bauthor{\bsnm{Mudunuri}, \binits{U.}},
+\bauthor{\bsnm{Paul}, \binits{S.}},
+\bauthor{\bsnm{Wei}, \binits{J.}}:
+\batitle{Mapping and initial analysis of human subtelomeric sequence
+  assemblies}.
+\bjtitle{Genome Research}
+\bvolume{14}(\bissue{1}),
+\bfpage{18}--\blpage{28}
+(\byear{2004}).
+\doiurl{10.1101/gr.1245004}.
+\bcomment{Subtelomeric assembly programme; 80\% of the most distal 100 kb
+  consists of shared duplicated blocks}
+\end{barticle}
+\endbibitem
 
-\bibitem[Ambrosini et~al.(2007)Ambrosini, Paul, Hu, and
-  Riethman]{Ambrosini2007}
-Anthony Ambrosini, Sheila Paul, Sufeng Hu, and Harold Riethman.
-\newblock Human subtelomeric duplicon structure and organization.
-\newblock \emph{Genome Biology}, 8\penalty0 (7):\penalty0 R151, 2007.
-\newblock \doi{10.1186/gb-2007-8-7-r151}.
-\newblock 11 subtelomere-specific duplicon blocks; 6 subterminal families;
+%%% 14
+\bibitem{Ambrosini2007}
+\begin{barticle}
+\bauthor{\bsnm{Ambrosini}, \binits{A.}},
+\bauthor{\bsnm{Paul}, \binits{S.}},
+\bauthor{\bsnm{Hu}, \binits{S.}},
+\bauthor{\bsnm{Riethman}, \binits{H.}}:
+\batitle{Human subtelomeric duplicon structure and organization}.
+\bjtitle{Genome Biology}
+\bvolume{8}(\bissue{7}),
+\bfpage{151}
+(\byear{2007}).
+\doiurl{10.1186/gb-2007-8-7-r151}.
+\bcomment{11 subtelomere-specific duplicon blocks; 6 subterminal families;
   bimodal sequence-identity distribution (peaks at 91\% and 98\%); 6 one-copy
   (TTAGGG)n-adjacent regions; internal (TTAGGG)n islands at duplicon
-  boundaries.
+  boundaries}
+\end{barticle}
+\endbibitem
 
-\bibitem[Nurk et~al.(2022)Nurk, Koren, Rhie, Rautiainen, Bzikadze, Mikheenko,
-  Vollger, Altemose, Uralsky, Gershman, Aganezov, Hoyt, Diekhans, Logsdon,
-  Alonge, Antonarakis, Borchers, Bouffard, Brooks, Caldas, Chen, Cheng, Chin,
-  Chow, de~Lima, Dishuck, Durbin, Dvorkina, Fiddes, Formenti, Fulton,
-  Fungtammasan, Garrison, Grady, Graves-Lindsay, Hall, Hansen, Hartley,
-  Haukness, Howe, Hunkapiller, Jain, Jain, Jarvis, Kerpedjiev, Kirsche,
-  Kolmogorov, Korlach, Kremitzki, Li, Maduro, Marschall, McCartney, McDaniel,
-  Miller, Mullikin, Myers, Olson, Paten, Peluso, Pevzner, Porubsky, Potapova,
-  Rogaev, Rosenfeld, Salzberg, Schneider, Sedlazeck, Shafin, Shew, Shumate,
-  Sims, Smit, Soto, Sovic, Storer, Streets, Sullivan, Thibaud-Nissen, Torrance,
-  Wagner, Walenz, Wenger, Wood, Xiao, Yan, Young, Zarate, Surti, McCoy, Dennis,
-  Alexandrov, Gerton, O'Neill, Timp, Zook, Schatz, Eichler, Miga, and
-  Phillippy]{Nurk2022}
-Sergey Nurk, Sergey Koren, Arang Rhie, Mikko Rautiainen, Andrey~V. Bzikadze,
-  Alla Mikheenko, Mitchell~R. Vollger, Nicolas Altemose, Lev Uralsky, Ariel
-  Gershman, Sergey Aganezov, Savannah~J. Hoyt, Mark Diekhans, Glennis~A.
-  Logsdon, Michael Alonge, Stylianos~E. Antonarakis, Matthew Borchers,
-  Gerard~G. Bouffard, Shelise~Y. Brooks, Gina~V. Caldas, Nae-Chyun Chen, Haoyu
-  Cheng, Chen-Shan Chin, William Chow, Leonardo~G. de~Lima, Philip~C. Dishuck,
-  Richard Durbin, Tatyana Dvorkina, Ian~T. Fiddes, Giulio Formenti, Robert~S.
-  Fulton, Arkarachai Fungtammasan, Erik Garrison, Patrick G.~S. Grady, Tina~A.
-  Graves-Lindsay, Ira~M. Hall, Nancy~F. Hansen, George~A. Hartley, Marina
-  Haukness, Kerstin Howe, Michael~W. Hunkapiller, Miten Jain, Chirag Jain,
-  Erich~D. Jarvis, Peter Kerpedjiev, Melanie Kirsche, Mikhail Kolmogorov, Jonas
-  Korlach, Milinn Kremitzki, Heng Li, Valerie~V. Maduro, Tobias Marschall,
-  Ann~M. McCartney, Jennifer McDaniel, Danny~E. Miller, James~C. Mullikin,
-  Eugene~W. Myers, Nathan~D. Olson, Benedict Paten, Paul Peluso, Pavel~A.
-  Pevzner, David Porubsky, Tamara Potapova, Evgeny~I. Rogaev, Jeffrey~A.
-  Rosenfeld, Steven~L. Salzberg, Valerie~A. Schneider, Fritz~J. Sedlazeck,
-  Kishwar Shafin, Catherine~J. Shew, Aleksey Shumate, Yumi Sims, Arian F.~A.
-  Smit, Daniela~C. Soto, Ivan Sovic, Jessica~M. Storer, Aaron Streets, Beth~A.
-  Sullivan, Francoise Thibaud-Nissen, James Torrance, Justin Wagner, Brian~P.
-  Walenz, Aaron Wenger, Jonathan M.~D. Wood, Chen-Shan Xiao, Shilpa~M. Yan,
-  Alice~C. Young, Samantha Zarate, Urvashi Surti, Rajiv~C. McCoy, Megan~Y.
-  Dennis, Ivan~A. Alexandrov, Jennifer~L. Gerton, Rachel~J. O'Neill, Winston
-  Timp, Justin~M. Zook, Michael~C. Schatz, Evan~E. Eichler, Karen~H. Miga, and
-  Adam~M. Phillippy.
-\newblock The complete sequence of a human genome.
-\newblock \emph{Science}, 376\penalty0 (6588):\penalty0 44--53, 2022.
-\newblock \doi{10.1126/science.abj6987}.
+%%% 15
+\bibitem{Nurk2022}
+\begin{barticle}
+\bauthor{\bsnm{Nurk}, \binits{S.}},
+\bauthor{\bsnm{Koren}, \binits{S.}},
+\bauthor{\bsnm{Rhie}, \binits{A.}},
+\bauthor{\bsnm{Rautiainen}, \binits{M.}},
+\bauthor{\bsnm{Bzikadze}, \binits{A.V.}},
+\bauthor{\bsnm{Mikheenko}, \binits{A.}},
+\bauthor{\bsnm{Vollger}, \binits{M.R.}},
+\bauthor{\bsnm{Altemose}, \binits{N.}},
+\bauthor{\bsnm{Uralsky}, \binits{L.}},
+\bauthor{\bsnm{Gershman}, \binits{A.}},
+\bauthor{\bsnm{Aganezov}, \binits{S.}},
+\bauthor{\bsnm{Hoyt}, \binits{S.J.}},
+\bauthor{\bsnm{Diekhans}, \binits{M.}},
+\bauthor{\bsnm{Logsdon}, \binits{G.A.}},
+\bauthor{\bsnm{Alonge}, \binits{M.}},
+\bauthor{\bsnm{Antonarakis}, \binits{S.E.}},
+\bauthor{\bsnm{Borchers}, \binits{M.}},
+\bauthor{\bsnm{Bouffard}, \binits{G.G.}},
+\bauthor{\bsnm{Brooks}, \binits{S.Y.}},
+\bauthor{\bsnm{Caldas}, \binits{G.V.}},
+\bauthor{\bsnm{Chen}, \binits{N.-C.}},
+\bauthor{\bsnm{Cheng}, \binits{H.}},
+\bauthor{\bsnm{Chin}, \binits{C.-S.}},
+\bauthor{\bsnm{Chow}, \binits{W.}},
+\bauthor{\bparticle{de} \bsnm{Lima}, \binits{L.G.}},
+\bauthor{\bsnm{Dishuck}, \binits{P.C.}},
+\bauthor{\bsnm{Durbin}, \binits{R.}},
+\bauthor{\bsnm{Dvorkina}, \binits{T.}},
+\bauthor{\bsnm{Fiddes}, \binits{I.T.}},
+\bauthor{\bsnm{Formenti}, \binits{G.}},
+\bauthor{\bsnm{Fulton}, \binits{R.S.}},
+\bauthor{\bsnm{Fungtammasan}, \binits{A.}},
+\bauthor{\bsnm{Garrison}, \binits{E.}},
+\bauthor{\bsnm{Grady}, \binits{P.G.S.}},
+\bauthor{\bsnm{Graves-Lindsay}, \binits{T.A.}},
+\bauthor{\bsnm{Hall}, \binits{I.M.}},
+\bauthor{\bsnm{Hansen}, \binits{N.F.}},
+\bauthor{\bsnm{Hartley}, \binits{G.A.}},
+\bauthor{\bsnm{Haukness}, \binits{M.}},
+\bauthor{\bsnm{Howe}, \binits{K.}},
+\bauthor{\bsnm{Hunkapiller}, \binits{M.W.}},
+\bauthor{\bsnm{Jain}, \binits{M.}},
+\bauthor{\bsnm{Jain}, \binits{C.}},
+\bauthor{\bsnm{Jarvis}, \binits{E.D.}},
+\bauthor{\bsnm{Kerpedjiev}, \binits{P.}},
+\bauthor{\bsnm{Kirsche}, \binits{M.}},
+\bauthor{\bsnm{Kolmogorov}, \binits{M.}},
+\bauthor{\bsnm{Korlach}, \binits{J.}},
+\bauthor{\bsnm{Kremitzki}, \binits{M.}},
+\bauthor{\bsnm{Li}, \binits{H.}},
+\bauthor{\bsnm{Maduro}, \binits{V.V.}},
+\bauthor{\bsnm{Marschall}, \binits{T.}},
+\bauthor{\bsnm{McCartney}, \binits{A.M.}},
+\bauthor{\bsnm{McDaniel}, \binits{J.}},
+\bauthor{\bsnm{Miller}, \binits{D.E.}},
+\bauthor{\bsnm{Mullikin}, \binits{J.C.}},
+\bauthor{\bsnm{Myers}, \binits{E.W.}},
+\bauthor{\bsnm{Olson}, \binits{N.D.}},
+\bauthor{\bsnm{Paten}, \binits{B.}},
+\bauthor{\bsnm{Peluso}, \binits{P.}},
+\bauthor{\bsnm{Pevzner}, \binits{P.A.}},
+\bauthor{\bsnm{Porubsky}, \binits{D.}},
+\bauthor{\bsnm{Potapova}, \binits{T.}},
+\bauthor{\bsnm{Rogaev}, \binits{E.I.}},
+\bauthor{\bsnm{Rosenfeld}, \binits{J.A.}},
+\bauthor{\bsnm{Salzberg}, \binits{S.L.}},
+\bauthor{\bsnm{Schneider}, \binits{V.A.}},
+\bauthor{\bsnm{Sedlazeck}, \binits{F.J.}},
+\bauthor{\bsnm{Shafin}, \binits{K.}},
+\bauthor{\bsnm{Shew}, \binits{C.J.}},
+\bauthor{\bsnm{Shumate}, \binits{A.}},
+\bauthor{\bsnm{Sims}, \binits{Y.}},
+\bauthor{\bsnm{Smit}, \binits{A.F.A.}},
+\bauthor{\bsnm{Soto}, \binits{D.C.}},
+\bauthor{\bsnm{Sovic}, \binits{I.}},
+\bauthor{\bsnm{Storer}, \binits{J.M.}},
+\bauthor{\bsnm{Streets}, \binits{A.}},
+\bauthor{\bsnm{Sullivan}, \binits{B.A.}},
+\bauthor{\bsnm{Thibaud-Nissen}, \binits{F.}},
+\bauthor{\bsnm{Torrance}, \binits{J.}},
+\bauthor{\bsnm{Wagner}, \binits{J.}},
+\bauthor{\bsnm{Walenz}, \binits{B.P.}},
+\bauthor{\bsnm{Wenger}, \binits{A.}},
+\bauthor{\bsnm{Wood}, \binits{J.M.D.}},
+\bauthor{\bsnm{Xiao}, \binits{C.-S.}},
+\bauthor{\bsnm{Yan}, \binits{S.M.}},
+\bauthor{\bsnm{Young}, \binits{A.C.}},
+\bauthor{\bsnm{Zarate}, \binits{S.}},
+\bauthor{\bsnm{Surti}, \binits{U.}},
+\bauthor{\bsnm{McCoy}, \binits{R.C.}},
+\bauthor{\bsnm{Dennis}, \binits{M.Y.}},
+\bauthor{\bsnm{Alexandrov}, \binits{I.A.}},
+\bauthor{\bsnm{Gerton}, \binits{J.L.}},
+\bauthor{\bsnm{O'Neill}, \binits{R.J.}},
+\bauthor{\bsnm{Timp}, \binits{W.}},
+\bauthor{\bsnm{Zook}, \binits{J.M.}},
+\bauthor{\bsnm{Schatz}, \binits{M.C.}},
+\bauthor{\bsnm{Eichler}, \binits{E.E.}},
+\bauthor{\bsnm{Miga}, \binits{K.H.}},
+\bauthor{\bsnm{Phillippy}, \binits{A.M.}}:
+\batitle{The complete sequence of a human genome}.
+\bjtitle{Science}
+\bvolume{376}(\bissue{6588}),
+\bfpage{44}--\blpage{53}
+(\byear{2022}).
+\doiurl{10.1126/science.abj6987}
+\end{barticle}
+\endbibitem
 
-\bibitem[Liao et~al.(2023)Liao, Asri, Ebler, Doerr, Haukness, Hickey, Lu,
-  Lucas, Monlong, Abel, Buonaiuto, Chang, Cheng, Chu, Colonna, Eizenga, Feng,
-  Fischer, Fulton, Garg, Garrison, Groza, Guarracino, Harvey, Heumos, Howe,
-  Jain, Lu, Markello, Martin, Mitchell, Munson, Olson, Pesout, Porubsky, Prins,
-  Sibbesen, Siren, Sullivan, Theil, Vollger, Wang, Wenger, Wood, Yang, Zook,
-  Paten, Marschall, Marth, Haussler, Eichler, and {Human Pangenome Reference
-  Consortium}]{Liao2023}
-Wen-Wei Liao, Mobin Asri, Jana Ebler, Daniel Doerr, Marina Haukness, Glenn
-  Hickey, Shuangjia Lu, Jana~K. Lucas, Jean Monlong, Haley~J. Abel, Silvia
-  Buonaiuto, Xian Chang, Haoyu Cheng, Justin Chu, Vincenza Colonna, Jordan~M.
-  Eizenga, Xiaowen Feng, Christian Fischer, Robert~S. Fulton, Shilpa Garg, Erik
-  Garrison, Cristian Groza, Andrea Guarracino, William~T. Harvey, Simon Heumos,
-  Kerstin Howe, Chirag Jain, Tsung-Yu Lu, Charles Markello, Fergal~J. Martin,
-  Matthew~W. Mitchell, Katherine~M. Munson, Nathan~D. Olson, Trevor Pesout,
-  David Porubsky, Pjotr Prins, Jonas~A. Sibbesen, Jouni Siren, Beth~A.
-  Sullivan, Katharina Theil, Mitchell~R. Vollger, Tian Wang, Aaron~M. Wenger,
-  Jonathan M.~D. Wood, Xiaowen Yang, Justin~M. Zook, Benedict Paten, Tobias
-  Marschall, Gabor~T. Marth, David Haussler, Evan~E. Eichler, and {Human
-  Pangenome Reference Consortium}.
-\newblock A draft human pangenome reference.
-\newblock \emph{Nature}, 617:\penalty0 312--324, 2023.
-\newblock \doi{10.1038/s41586-023-05896-x}.
+%%% 16
+\bibitem{hprc_hprcv2_2025}
+\begin{botherref}
+\oauthor{\bsnm{{Human Pangenome Reference Consortium}}}:
+{HPRC Data Release 2: high-quality phased genome assemblies from 232 diverse
+  individuals}.
+Pre-publication data release, manuscript in submission. Announced May 12, 2025.
+  232 individuals (464 haplotypes + CHM13), PacBio HiFi 60$\times$ + ONT
+  ultralong $\geq$30$\times$
+(2025).
+\url{https://humanpangenome.org/hprc-data-release-2/}
+\end{botherref}
+\endbibitem
 
-\bibitem[{Human Pangenome Reference Consortium}(2025)]{hprc_hprcv2_2025}
-{Human Pangenome Reference Consortium}.
-\newblock {HPRC Data Release 2: high-quality phased genome assemblies from 232
-  diverse individuals}, 2025.
-\newblock URL \url{https://humanpangenome.org/hprc-data-release-2/}.
-\newblock Pre-publication data release, manuscript in submission. Announced May
-  12, 2025. 232 individuals (464 haplotypes + CHM13), PacBio HiFi 60× + ONT
-  ultralong ≥30×.
+%%% 17
+\bibitem{Liao2023}
+\begin{barticle}
+\bauthor{\bsnm{Liao}, \binits{W.-W.}},
+\bauthor{\bsnm{Asri}, \binits{M.}},
+\bauthor{\bsnm{Ebler}, \binits{J.}},
+\bauthor{\bsnm{Doerr}, \binits{D.}},
+\bauthor{\bsnm{Haukness}, \binits{M.}},
+\bauthor{\bsnm{Hickey}, \binits{G.}},
+\bauthor{\bsnm{Lu}, \binits{S.}},
+\bauthor{\bsnm{Lucas}, \binits{J.K.}},
+\bauthor{\bsnm{Monlong}, \binits{J.}},
+\bauthor{\bsnm{Abel}, \binits{H.J.}},
+\bauthor{\bsnm{Buonaiuto}, \binits{S.}},
+\bauthor{\bsnm{Chang}, \binits{X.}},
+\bauthor{\bsnm{Cheng}, \binits{H.}},
+\bauthor{\bsnm{Chu}, \binits{J.}},
+\bauthor{\bsnm{Colonna}, \binits{V.}},
+\bauthor{\bsnm{Eizenga}, \binits{J.M.}},
+\bauthor{\bsnm{Feng}, \binits{X.}},
+\bauthor{\bsnm{Fischer}, \binits{C.}},
+\bauthor{\bsnm{Fulton}, \binits{R.S.}},
+\bauthor{\bsnm{Garg}, \binits{S.}},
+\bauthor{\bsnm{Garrison}, \binits{E.}},
+\bauthor{\bsnm{Groza}, \binits{C.}},
+\bauthor{\bsnm{Guarracino}, \binits{A.}},
+\bauthor{\bsnm{Harvey}, \binits{W.T.}},
+\bauthor{\bsnm{Heumos}, \binits{S.}},
+\bauthor{\bsnm{Howe}, \binits{K.}},
+\bauthor{\bsnm{Jain}, \binits{C.}},
+\bauthor{\bsnm{Lu}, \binits{T.-Y.}},
+\bauthor{\bsnm{Markello}, \binits{C.}},
+\bauthor{\bsnm{Martin}, \binits{F.J.}},
+\bauthor{\bsnm{Mitchell}, \binits{M.W.}},
+\bauthor{\bsnm{Munson}, \binits{K.M.}},
+\bauthor{\bsnm{Olson}, \binits{N.D.}},
+\bauthor{\bsnm{Pesout}, \binits{T.}},
+\bauthor{\bsnm{Porubsky}, \binits{D.}},
+\bauthor{\bsnm{Prins}, \binits{P.}},
+\bauthor{\bsnm{Sibbesen}, \binits{J.A.}},
+\bauthor{\bsnm{Siren}, \binits{J.}},
+\bauthor{\bsnm{Sullivan}, \binits{B.A.}},
+\bauthor{\bsnm{Theil}, \binits{K.}},
+\bauthor{\bsnm{Vollger}, \binits{M.R.}},
+\bauthor{\bsnm{Wang}, \binits{T.}},
+\bauthor{\bsnm{Wenger}, \binits{A.M.}},
+\bauthor{\bsnm{Wood}, \binits{J.M.D.}},
+\bauthor{\bsnm{Yang}, \binits{X.}},
+\bauthor{\bsnm{Zook}, \binits{J.M.}},
+\bauthor{\bsnm{Paten}, \binits{B.}},
+\bauthor{\bsnm{Marschall}, \binits{T.}},
+\bauthor{\bsnm{Marth}, \binits{G.T.}},
+\bauthor{\bsnm{Haussler}, \binits{D.}},
+\bauthor{\bsnm{Eichler}, \binits{E.E.}},
+\bauthor{\bsnm{{Human Pangenome Reference Consortium}}}:
+\batitle{A draft human pangenome reference}.
+\bjtitle{Nature}
+\bvolume{617},
+\bfpage{312}--\blpage{324}
+(\byear{2023}).
+\doiurl{10.1038/s41586-023-05896-x}
+\end{barticle}
+\endbibitem
 
-\bibitem[Guarracino et~al.(2023{\natexlab{a}})Guarracino, Buonaiuto, de~Lima,
-  Potapova, Rhie, Koren, Rubinstein, Fischer, {Human Pangenome Reference
-  Consortium}, Gerton, Phillippy, Colonna, and Garrison]{Guarracino2023}
-Andrea Guarracino, Silvia Buonaiuto, Leonardo~G. de~Lima, Tamara Potapova,
-  Arang Rhie, Sergey Koren, Boris Rubinstein, Christian Fischer, {Human
-  Pangenome Reference Consortium}, Jennifer~L. Gerton, Adam~M. Phillippy,
-  Vincenza Colonna, and Erik Garrison.
-\newblock Recombination between heterologous human acrocentric chromosomes.
-\newblock \emph{Nature}, 617:\penalty0 335--343, 2023{\natexlab{a}}.
-\newblock \doi{10.1038/s41586-023-05976-y}.
-\newblock Pangenome-graph evidence that human acrocentric short arms exchange
+%%% 18
+\bibitem{Guarracino2023}
+\begin{barticle}
+\bauthor{\bsnm{Guarracino}, \binits{A.}},
+\bauthor{\bsnm{Buonaiuto}, \binits{S.}},
+\bauthor{\bparticle{de} \bsnm{Lima}, \binits{L.G.}},
+\bauthor{\bsnm{Potapova}, \binits{T.}},
+\bauthor{\bsnm{Rhie}, \binits{A.}},
+\bauthor{\bsnm{Koren}, \binits{S.}},
+\bauthor{\bsnm{Rubinstein}, \binits{B.}},
+\bauthor{\bsnm{Fischer}, \binits{C.}},
+\bauthor{\bsnm{{Human Pangenome Reference Consortium}}},
+\bauthor{\bsnm{Gerton}, \binits{J.L.}},
+\bauthor{\bsnm{Phillippy}, \binits{A.M.}},
+\bauthor{\bsnm{Colonna}, \binits{V.}},
+\bauthor{\bsnm{Garrison}, \binits{E.}}:
+\batitle{Recombination between heterologous human acrocentric chromosomes}.
+\bjtitle{Nature}
+\bvolume{617},
+\bfpage{335}--\blpage{343}
+(\byear{2023}).
+\doiurl{10.1038/s41586-023-05976-y}.
+\bcomment{Pangenome-graph evidence that human acrocentric short arms exchange
   sequence across non-homologous chromosomes; canonical predecessor of the
-  present subtelomere paper.
+  present subtelomere paper}
+\end{barticle}
+\endbibitem
 
-\bibitem[Garrison and
-  Guarracino(2023)]{pangenome_graphs_impg_GarrisonGuarracino2023}
-Erik Garrison and Andrea Guarracino.
-\newblock Unbiased pangenome graphs.
-\newblock \emph{Bioinformatics}, 39\penalty0 (1):\penalty0 btac743, 2023.
-\newblock \doi{10.1093/bioinformatics/btac743}.
-\newblock URL
-  \url{https://academic.oup.com/bioinformatics/article/39/1/btac743/6854971}.
-\newblock seqwish: lossless conversion of pairwise PAF alignments to variation
+%%% 19
+\bibitem{Garrison2024pggb}
+\begin{barticle}
+\bauthor{\bsnm{Garrison}, \binits{E.}},
+\bauthor{\bsnm{Guarracino}, \binits{A.}},
+\bauthor{\bsnm{Heumos}, \binits{S.}},
+\bauthor{\bsnm{Villani}, \binits{F.}},
+\bauthor{\bsnm{Bao}, \binits{Z.}},
+\bauthor{\bsnm{Tattini}, \binits{L.}},
+\bauthor{\bsnm{Hagmann}, \binits{J.}},
+\bauthor{\bsnm{Vorbrugg}, \binits{S.}},
+\bauthor{\bsnm{Marco-Sola}, \binits{S.}},
+\bauthor{\bsnm{Kubica}, \binits{C.}},
+\bauthor{\bsnm{Ashbrook}, \binits{D.G.}},
+\bauthor{\bsnm{Thorell}, \binits{K.}},
+\bauthor{\bsnm{Rusholme-Pilcher}, \binits{R.L.}},
+\bauthor{\bsnm{Liti}, \binits{G.}},
+\bauthor{\bsnm{Rudbeck}, \binits{E.}},
+\bauthor{\bsnm{Golicz}, \binits{A.A.}},
+\bauthor{\bsnm{Nahnsen}, \binits{S.}},
+\bauthor{\bsnm{Yang}, \binits{Z.}},
+\bauthor{\bsnm{Mwaniki}, \binits{M.N.}},
+\bauthor{\bsnm{Nobrega}, \binits{F.L.}},
+\bauthor{\bsnm{Wu}, \binits{Y.}},
+\bauthor{\bsnm{Chen}, \binits{H.}},
+\bauthor{\bparticle{de} \bsnm{Ligt}, \binits{J.}},
+\bauthor{\bsnm{Sudmant}, \binits{P.H.}},
+\bauthor{\bsnm{Soranzo}, \binits{N.}},
+\bauthor{\bsnm{Colonna}, \binits{V.}},
+\bauthor{\bsnm{Williams}, \binits{R.W.}},
+\bauthor{\bsnm{Prins}, \binits{P.}}:
+\batitle{Building pangenome graphs}.
+\bjtitle{Nature Methods}
+\bvolume{21},
+\bfpage{2008}--\blpage{2012}
+(\byear{2024}).
+\doiurl{10.1038/s41592-024-02430-3}.
+\bcomment{pggb pipeline; the pangenome graph builder used to make the explicit
+  GFA in this manuscript's pipeline}
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem{pangenome_graphs_impg_GarrisonGuarracino2023}
+\begin{barticle}
+\bauthor{\bsnm{Garrison}, \binits{E.}},
+\bauthor{\bsnm{Guarracino}, \binits{A.}}:
+\batitle{Unbiased pangenome graphs}.
+\bjtitle{Bioinformatics}
+\bvolume{39}(\bissue{1}),
+\bfpage{743}
+(\byear{2023}).
+\doiurl{10.1093/bioinformatics/btac743}.
+\bcomment{seqwish: lossless conversion of pairwise PAF alignments to variation
   graph; transitive closure of alignment equivalences via interval tree;
   external memory, lock-free parallel; eliminates reference bias;
-  graph-induction step in pggb.
+  graph-induction step in pggb.}
+\end{barticle}
+\endbibitem
 
-\bibitem[Guarracino et~al.(2023{\natexlab{b}})Guarracino, Kille, and
-  Garrison]{pangenome_graphs_impg_IMPG2023}
-Andrea Guarracino, Bryce Kille, and Erik Garrison.
-\newblock {IMPG}: implicit pangenome graph, 2023{\natexlab{b}}.
-\newblock URL \url{https://github.com/pangenome/impg}.
-\newblock Treats all-vs-all PAF pairwise alignments as an implicit pangenome
-  graph; range projection via cache-oblivious interval trees; transitive
-  closure via -x flag; key computational substrate for PHR extraction in the
-  current subtelomere study. Available via Bioconda.
+%%% 21
+\bibitem{pangenome_graphs_impg_IMPG2023}
+\begin{botherref}
+\oauthor{\bsnm{Guarracino}, \binits{A.}},
+\oauthor{\bsnm{Kille}, \binits{B.}},
+\oauthor{\bsnm{Garrison}, \binits{E.}}:
+{IMPG}: implicit pangenome graph.
+Treats all-vs-all PAF pairwise alignments as an implicit pangenome graph; range
+  projection via cache-oblivious interval trees; transitive closure via -x
+  flag; key computational substrate for PHR extraction in the current
+  subtelomere study. Available via Bioconda.
+(2023).
+\url{https://github.com/pangenome/impg}
+\end{botherref}
+\endbibitem
 
-\bibitem[Garrison et~al.(2024)Garrison, Guarracino, Heumos, Villani, Bao,
-  Tattini, Hagmann, Vorbrugg, Marco-Sola, Kubica, Ashbrook, Thorell,
-  Rusholme-Pilcher, Liti, Rudbeck, Golicz, Nahnsen, Yang, Mwaniki, Nobrega, Wu,
-  Chen, de~Ligt, Sudmant, Soranzo, Colonna, Williams, and
-  Prins]{Garrison2024pggb}
-Erik Garrison, Andrea Guarracino, Simon Heumos, Flavia Villani, Zhigui Bao,
-  Lorenzo Tattini, Joerg Hagmann, Sebastian Vorbrugg, Santiago Marco-Sola,
-  Christian Kubica, David~G. Ashbrook, Kaisa Thorell, Rachel~L.
-  Rusholme-Pilcher, Gianni Liti, Emilio Rudbeck, Agnieszka~A. Golicz, Sven
-  Nahnsen, Zuyu Yang, Moses~Njagi Mwaniki, Franklin~L. Nobrega, Yi~Wu, Hao
-  Chen, Joep de~Ligt, Peter~H. Sudmant, Nicole Soranzo, Vincenza Colonna,
-  Robert~W. Williams, and Pjotr Prins.
-\newblock Building pangenome graphs.
-\newblock \emph{Nature Methods}, 21:\penalty0 2008--2012, 2024.
-\newblock \doi{10.1038/s41592-024-02430-3}.
-\newblock pggb pipeline; the pangenome graph builder used to make the explicit
-  GFA in this manuscript's pipeline.
-
-\bibitem[Acquaviva et~al.(2020)Acquaviva, Boekhout, Karasu, Brick, Pratto, Li,
-  van Overbeek, Kauppi, Camerini-Otero, Jasin, and
-  Keeney]{sexchrompars_acquaviva2020}
-Laurent Acquaviva, Michiel Boekhout, Mehmet~E. Karasu, Kevin Brick, Florencia
-  Pratto, Tao Li, Megan van Overbeek, Liisa Kauppi, R.~Daniel Camerini-Otero,
-  Maria Jasin, and Scott Keeney.
-\newblock Ensuring meiotic {DNA} break formation in the mouse pseudoautosomal
-  region.
-\newblock \emph{Nature}, 582:\penalty0 426--431, 2020.
-\newblock \doi{10.1038/s41586-020-2327-4}.
-\newblock Mouse PAR axis-elongation / ANKRD31 / MEI4 mechanism forcing DSBs
+%%% 22
+\bibitem{sexchrompars_acquaviva2020}
+\begin{barticle}
+\bauthor{\bsnm{Acquaviva}, \binits{L.}},
+\bauthor{\bsnm{Boekhout}, \binits{M.}},
+\bauthor{\bsnm{Karasu}, \binits{M.E.}},
+\bauthor{\bsnm{Brick}, \binits{K.}},
+\bauthor{\bsnm{Pratto}, \binits{F.}},
+\bauthor{\bsnm{Li}, \binits{T.}},
+\bauthor{\bparticle{van} \bsnm{Overbeek}, \binits{M.}},
+\bauthor{\bsnm{Kauppi}, \binits{L.}},
+\bauthor{\bsnm{Camerini-Otero}, \binits{R.D.}},
+\bauthor{\bsnm{Jasin}, \binits{M.}},
+\bauthor{\bsnm{Keeney}, \binits{S.}}:
+\batitle{Ensuring meiotic {DNA} break formation in the mouse pseudoautosomal
+  region}.
+\bjtitle{Nature}
+\bvolume{582},
+\bfpage{426}--\blpage{431}
+(\byear{2020}).
+\doiurl{10.1038/s41586-020-2327-4}.
+\bcomment{Mouse PAR axis-elongation / ANKRD31 / MEI4 mechanism forcing DSBs
   into the obligate X-Y pairing segment; mechanistic anchor for C7 on how a
-  tiny pseudoautosomal interval is competent for crossover.
+  tiny pseudoautosomal interval is competent for crossover}
+\end{barticle}
+\endbibitem
 
-\bibitem[Cabianca et~al.(2012)Cabianca, Casa, Bodega, Xynos, Ginelli, Tanaka,
-  and Gabellini]{Cabianca2012}
-Daphne~S. Cabianca, Valentina Casa, Beatrice Bodega, Alexandros Xynos, Enrico
-  Ginelli, Yujiro Tanaka, and Davide Gabellini.
-\newblock A long {ncRNA} links copy number variation to a polycomb/trithorax
-  epigenetic switch in {FSHD} muscular dystrophy.
-\newblock \emph{Cell}, 149\penalty0 (4):\penalty0 819--831, 2012.
-\newblock \doi{10.1016/j.cell.2012.03.035}.
+%%% 23
+\bibitem{Cabianca2012}
+\begin{barticle}
+\bauthor{\bsnm{Cabianca}, \binits{D.S.}},
+\bauthor{\bsnm{Casa}, \binits{V.}},
+\bauthor{\bsnm{Bodega}, \binits{B.}},
+\bauthor{\bsnm{Xynos}, \binits{A.}},
+\bauthor{\bsnm{Ginelli}, \binits{E.}},
+\bauthor{\bsnm{Tanaka}, \binits{Y.}},
+\bauthor{\bsnm{Gabellini}, \binits{D.}}:
+\batitle{A long {ncRNA} links copy number variation to a polycomb/trithorax
+  epigenetic switch in {FSHD} muscular dystrophy}.
+\bjtitle{Cell}
+\bvolume{149}(\bissue{4}),
+\bfpage{819}--\blpage{831}
+(\byear{2012}).
+\doiurl{10.1016/j.cell.2012.03.035}
+\end{barticle}
+\endbibitem
 
-\bibitem[Skaletsky et~al.(2003)Skaletsky, Kuroda-Kawaguchi, Minx, Cordum,
-  Hillier, Brown, Repping, Pyntikova, Ali, Bieri, Chinwalla, Delehaunty,
-  Delehaunty, Du, Fewell, Fulton, Fulton, Graves, Hou, Latrielle, Leonard,
-  Mardis, Maupin, McPherson, Miner, Nash, Nguyen, Ozersky, Pepin, Rock,
-  Rohlfing, Scott, Schultz, Strong, Tin-Wollam, Yang, Waterston, Wilson, Rozen,
-  and Page]{Skaletsky2003}
-Helen Skaletsky, Tomoko Kuroda-Kawaguchi, Patrick~J. Minx, Holland~S. Cordum,
-  LaDeana Hillier, Laura~G. Brown, Sjoerd Repping, Tatyana Pyntikova, Johar
-  Ali, Tamberlyn Bieri, Asif Chinwalla, Andrew Delehaunty, Kim Delehaunty, Hui
-  Du, Ginger Fewell, Lucinda Fulton, Robert Fulton, Tina Graves, Shun-Fang Hou,
-  Philip Latrielle, Shawn Leonard, Elaine Mardis, Rachel Maupin, John
-  McPherson, Tracie Miner, William Nash, Christopher Nguyen, Philip Ozersky,
-  Kymberlie Pepin, Susan Rock, Tracy Rohlfing, Kelsi Scott, Brian Schultz,
-  Cindy Strong, Aye-Mon Tin-Wollam, Shiaw-Pyng Yang, Robert~H. Waterston,
-  Richard~K. Wilson, Steve Rozen, and David~C. Page.
-\newblock The male-specific region of the human {Y} chromosome is a mosaic of
-  discrete sequence classes.
-\newblock \emph{Nature}, 423\penalty0 (6942):\penalty0 825--837, 2003.
-\newblock \doi{10.1038/nature01722}.
-
-\bibitem[Rudd et~al.(2009)Rudd, Endicott, Friedman, Walker, Young, Osoegawa,
-  {NISC Comparative Sequencing Program}, de~Jong, Green, and Trask]{Rudd2009}
-M.~Katharine Rudd, Raelynn~M. Endicott, Cynthia Friedman, Megan Walker,
-  Janet~M. Young, Kazutoyo Osoegawa, {NISC Comparative Sequencing Program},
-  Pieter~J. de~Jong, Eric~D. Green, and Barbara~J. Trask.
-\newblock Comparative sequence analysis of primate subtelomeres originating
-  from a chromosome fission event.
-\newblock \emph{Genome Research}, 19\penalty0 (1):\penalty0 33--41, 2009.
-\newblock \doi{10.1101/gr.083170.108}.
-
-\bibitem[Stong et~al.(2014)Stong, Deng, Gupta, Hu, Paul, Weiner, Eichler,
-  Graves, Fronick, Courtney, Wilson, Lieberman, Davuluri, and
-  Riethman]{Stong2014}
-Nicholas Stong, Zhong Deng, Ravi Gupta, Sufeng Hu, Sheila Paul, Aaron~K.
-  Weiner, Evan~E. Eichler, Tina Graves, Catrina~C. Fronick, Lucinda Courtney,
-  Richard~K. Wilson, Paul~M. Lieberman, Ramana~V. Davuluri, and Harold
-  Riethman.
-\newblock Subtelomeric ctcf and cohesin binding site organization using
-  improved subtelomere assemblies and a novel annotation pipeline.
-\newblock \emph{Genome Research}, 24\penalty0 (6):\penalty0 1039--1050, 2014.
-\newblock \doi{10.1101/gr.166983.113}.
-\newblock Haplotype-resolved subtelomeric assemblies; 19p polymorphism
-  documented at sequence resolution; CTCF/cohesin motif organisation at
-  subtelomeres.
-
-\bibitem[Flint et~al.(1997)Flint, Bates, Clark, Dorman, Willingham, Roe,
-  Micklem, Higgs, and Louis]{Flint1997}
-J.~Flint, G.~P. Bates, K.~Clark, A.~Dorman, D.~Willingham, B.~A. Roe,
-  G.~Micklem, D.~R. Higgs, and E.~J. Louis.
-\newblock Sequence comparison of human and yeast telomeres identifies
-  structurally distinct subtelomeric domains.
-\newblock \emph{Human Molecular Genetics}, 6\penalty0 (8):\penalty0 1305--1313,
-  1997.
-\newblock \doi{10.1093/hmg/6.8.1305}.
-\newblock Two-domain subtelomeric model: distal (shared with many ends) vs
-  proximal (shared with few), separated by degenerate (TTAGGG)n; characterised
-  at chr4p, chr16p, chr22q.
-
-\bibitem[Nergadze et~al.(2004)Nergadze, Rocchi, Azzalin, Mondello, and
-  Giulotto]{subtelstruct_NergadzeITS2007}
-Solomon~G Nergadze, Mariano Rocchi, Claus~M Azzalin, Chiara Mondello, and Elena
-  Giulotto.
-\newblock Insertions of telomeric repeats at intrachromosomal break sites
-  during primate evolution.
-\newblock \emph{Genome Research}, 14\penalty0 (9):\penalty0 1704--1710, 2004.
-\newblock \doi{10.1101/gr.2796804}.
-\newblock URL \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC515315/}.
-
-\bibitem[Santagostino et~al.(2025)Santagostino, Sola, Cappelletti, Piras,
-  Gennari, Biundo, Nergadze, and Giulotto]{santagostino2025terra}
-Marco Santagostino, Lorenzo Sola, Eleonora Cappelletti, Francesca~M Piras,
-  Nicol{\`{o}} Gennari, Marialaura Biundo, Solomon~G Nergadze, and Elena
-  Giulotto.
-\newblock {TERRA} transcripts and promoters from telomeric and interstitial
-  sites.
-\newblock \emph{RNA}, 32\penalty0 (1):\penalty0 97--112, 2025.
-\newblock \doi{10.1261/rna.080790.125}.
-\newblock T2T-CHM13v2.0 mapping; TERRA promoters at 39 of 46 human
-  subtelomeres; 106 intrachromosomal TERRA-like promoters at/near ITS loci; 205
-  ITS loci transcribed in >=1 cell line; subtelomeric and ITS TERRA promoters
-  share a common ancestral segmental duplication family.
-
-\bibitem[Hudson et~al.(1992)Hudson, Slatkin, and
-  Maddison]{subtel_popgen_hudson1992}
-Richard~R. Hudson, Montgomery Slatkin, and Wayne~P. Maddison.
-\newblock Estimation of levels of gene flow from {DNA} sequence data.
-\newblock \emph{Genetics}, 132\penalty0 (2):\penalty0 583--589, 1992.
-\newblock \doi{10.1093/genetics/132.2.583}.
-\newblock URL \url{https://pubmed.ncbi.nlm.nih.gov/1427045/}.
-\newblock Introduced the Fst estimator based on nucleotide diversity ratios
-  (Dxy - pi) / Dxy, sample-size independent under the coalescent; this is the
-  estimator used in Andrea's chapter 04 subtelomeric population structure
-  analysis.
-
-\bibitem[Bhatia et~al.(2013)Bhatia, Patterson, Sankararaman, and
-  Price]{subtel_popgen_bhatia2013}
-Gaurav Bhatia, Nick Patterson, Sriram Sankararaman, and Alkes~L. Price.
-\newblock Estimating and interpreting {FST}: The impact of rare variants.
-\newblock \emph{Genome Research}, 23\penalty0 (9):\penalty0 1514--1521, 2013.
-\newblock \doi{10.1101/gr.154831.113}.
-\newblock URL \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC3759727/}.
-\newblock Systematic analysis of Fst estimation across variant frequency
-  spectra; shows Hudson estimator is preferred for sample-size independence;
-  relevant to subtelomeric cross-arm haplotypes that range from rare to common
-  across superpopulations.
-
-\bibitem[Kota and Bhatt(2020)]{bouquet_KotaSUN1MAJIN2020}
-Srinivasan~K. Kota and Dhruv~L. Bhatt.
-\newblock Tethering of telomeres to the nuclear envelope is mediated by
-  {SUN1}--{MAJIN} and possibly promoted by {SPDYA}--{CDK2} during meiosis.
-\newblock \emph{Frontiers in Cell and Developmental Biology}, 8:\penalty0 845,
-  2020.
-\newblock \doi{10.3389/fcell.2020.00845}.
-\newblock Review synthesizing evidence for direct SUN1-MAJIN interaction as a
+%%% 24
+\bibitem{bouquet_KotaSUN1MAJIN2020}
+\begin{barticle}
+\bauthor{\bsnm{Kota}, \binits{S.K.}},
+\bauthor{\bsnm{Bhatt}, \binits{D.L.}}:
+\batitle{Tethering of telomeres to the nuclear envelope is mediated by
+  {SUN1}--{MAJIN} and possibly promoted by {SPDYA}--{CDK2} during meiosis}.
+\bjtitle{Frontiers in Cell and Developmental Biology}
+\bvolume{8},
+\bfpage{845}
+(\byear{2020}).
+\doiurl{10.3389/fcell.2020.00845}.
+\bcomment{Review synthesizing evidence for direct SUN1-MAJIN interaction as a
   secondary tethering mechanism alongside the full SUN1-KASH5 LINC complex;
-  integrates CDK2/SPDYA context.
+  integrates CDK2/SPDYA context}
+\end{barticle}
+\endbibitem
 
-\bibitem[Zickler and Kleckner(2015)]{ZicklerKleckner2015}
-Denise Zickler and Nancy Kleckner.
-\newblock Recombination, pairing, and synapsis of homologs during meiosis.
-\newblock \emph{Cold Spring Harbor Perspectives in Biology}, 7\penalty0
-  (6):\penalty0 a016626, 2015.
-\newblock \doi{10.1101/cshperspect.a016626}.
-\newblock Canonical meiotic-bouquet review; LINC complex / SUN-KASH machinery;
-  chromosome end clustering and homology search.
+%%% 25
+\bibitem{ZicklerKleckner2015}
+\begin{barticle}
+\bauthor{\bsnm{Zickler}, \binits{D.}},
+\bauthor{\bsnm{Kleckner}, \binits{N.}}:
+\batitle{Recombination, pairing, and synapsis of homologs during meiosis}.
+\bjtitle{Cold Spring Harbor Perspectives in Biology}
+\bvolume{7}(\bissue{6}),
+\bfpage{016626}
+(\byear{2015}).
+\doiurl{10.1101/cshperspect.a016626}.
+\bcomment{Canonical meiotic-bouquet review; LINC complex / SUN-KASH machinery;
+  chromosome end clustering and homology search}
+\end{barticle}
+\endbibitem
 
-\bibitem[Cech(2004)]{cech2004chromosomeend}
-Thomas~R. Cech.
-\newblock Beginning to understand the end of the chromosome.
-\newblock \emph{Cell}, 116\penalty0 (2):\penalty0 273--279, 2004.
-\newblock \doi{10.1016/s0092-8674(04)00038-8}.
+%%% 26
+\bibitem{cech2004chromosomeend}
+\begin{barticle}
+\bauthor{\bsnm{Cech}, \binits{T.R.}}:
+\batitle{Beginning to understand the end of the chromosome}.
+\bjtitle{Cell}
+\bvolume{116}(\bissue{2}),
+\bfpage{273}--\blpage{279}
+(\byear{2004}).
+\doiurl{10.1016/s0092-8674(04)00038-8}
+\end{barticle}
+\endbibitem
 
-\bibitem[Francis et~al.(2025)]{Francis2025}
-Brittany~A. Francis et~al.
-\newblock Complete genome assemblies of two mouse subspecies reveal structural
-  diversity of telomeres and centromeres.
-\newblock \emph{Nature Genetics}, 57:\penalty0 2852--2862, 2025.
-\newblock \doi{10.1038/s41588-025-02358-1}.
-\newblock First T2T assemblies for C57BL/6J (GCA\_964188535) and CAST/EiJ
+%%% 27
+\bibitem{Francis2025}
+\begin{barticle}
+\bauthor{\bsnm{Francis}, \binits{B.A.}}, \betal:
+\batitle{Complete genome assemblies of two mouse subspecies reveal structural
+  diversity of telomeres and centromeres}.
+\bjtitle{Nature Genetics}
+\bvolume{57},
+\bfpage{2852}--\blpage{2862}
+(\byear{2025}).
+\doiurl{10.1038/s41588-025-02358-1}.
+\bcomment{First T2T assemblies for C57BL/6J (GCA\_964188535) and CAST/EiJ
   (GCA\_964188545); B6 +208 Mb, CAST +247 Mb vs GRCm39; conserved L1-LINE + TLC
-  subtelomeric architecture in B6.
+  subtelomeric architecture in B6}
+\end{barticle}
+\endbibitem
 
-\bibitem[Zuo et~al.(2021)Zuo, Chen, Gao, Li, Chen, Huang, Chen, Chen, Lei, and
-  Bian]{Zuo2021}
-Wu~Zuo, Guangyu Chen, Zhongjun Gao, Shuai Li, Yanyan Chen, Chenhua Huang, Juan
-  Chen, Zhenhai Chen, Ming Lei, and Qian Bian.
-\newblock Stage-resolved {Hi-C} analyses reveal meiotic chromosome
-  organizational features influencing homolog alignment.
-\newblock \emph{Nature Communications}, 12\penalty0 (1):\penalty0 5827, 2021.
-\newblock \doi{10.1038/s41467-021-26033-0}.
-\newblock Meiotic chromosome end alignment extends ~20\% of chromosome length
+%%% 28
+\bibitem{Zuo2021}
+\begin{barticle}
+\bauthor{\bsnm{Zuo}, \binits{W.}},
+\bauthor{\bsnm{Chen}, \binits{G.}},
+\bauthor{\bsnm{Gao}, \binits{Z.}},
+\bauthor{\bsnm{Li}, \binits{S.}},
+\bauthor{\bsnm{Chen}, \binits{Y.}},
+\bauthor{\bsnm{Huang}, \binits{C.}},
+\bauthor{\bsnm{Chen}, \binits{J.}},
+\bauthor{\bsnm{Chen}, \binits{Z.}},
+\bauthor{\bsnm{Lei}, \binits{M.}},
+\bauthor{\bsnm{Bian}, \binits{Q.}}:
+\batitle{Stage-resolved {Hi-C} analyses reveal meiotic chromosome
+  organizational features influencing homolog alignment}.
+\bjtitle{Nature Communications}
+\bvolume{12}(\bissue{1}),
+\bfpage{5827}
+(\byear{2021}).
+\doiurl{10.1038/s41467-021-26033-0}.
+\bcomment{Meiotic chromosome end alignment extends ~20\% of chromosome length
   in mouse spermatocytes; LINC complex / SUN1 force transmission;
-  stage-resolved leptotene / zygotene / pachytene / diplotene Hi-C.
+  stage-resolved leptotene / zygotene / pachytene / diplotene Hi-C}
+\end{barticle}
+\endbibitem
 
-\bibitem[Cramer et~al.(2025)]{hic3d_cifi2025}
-Nathan Cramer et~al.
-\newblock {CiFi}: accurate long-read chromosome conformation capture with
-  low-input requirements.
-\newblock \emph{Nature Communications}, 16, 2025.
-\newblock \doi{10.1038/s41467-025-66918-y}.
-\newblock URL \url{https://www.nature.com/articles/s41467-025-66918-y}.
+%%% 29
+\bibitem{Ulahannan2019}
+\begin{barticle}
+\bauthor{\bsnm{Ulahannan}, \binits{N.}},
+\bauthor{\bsnm{Pendleton}, \binits{M.}},
+\bauthor{\bsnm{Deshpande}, \binits{A.}},
+\bauthor{\bsnm{Schwenk}, \binits{S.}},
+\bauthor{\bsnm{Behr}, \binits{J.M.}},
+\bauthor{\bsnm{Dai}, \binits{X.}},
+\bauthor{\bsnm{Tyer}, \binits{C.}},
+\bauthor{\bsnm{Rughani}, \binits{P.}},
+\bauthor{\bsnm{Kudman}, \binits{S.}},
+\bauthor{\bsnm{Adney}, \binits{E.}},
+\bauthor{\bsnm{Wang}, \binits{H.}},
+\bauthor{\bsnm{Kim}, \binits{M.}},
+\bauthor{\bsnm{Suvakov}, \binits{M.}},
+\bauthor{\bsnm{Helland}, \binits{A.}},
+\bauthor{\bsnm{Yang}, \binits{J.}},
+\bauthor{\bsnm{Huang}, \binits{N.}},
+\bauthor{\bsnm{Coletta}, \binits{R.L.}},
+\bauthor{\bsnm{Stober}, \binits{S.}},
+\bauthor{\bsnm{Verzilli}, \binits{C.}},
+\bauthor{\bsnm{Boggula}, \binits{V.}},
+\bauthor{\bsnm{Robine}, \binits{N.}},
+\bauthor{\bsnm{Lucito}, \binits{R.}},
+\bauthor{\bsnm{Imielinski}, \binits{M.}}:
+\batitle{Nanopore sequencing of {DNA} concatemers reveals higher-order features
+  of chromatin structure}.
+\bjtitle{bioRxiv}
+(\byear{2019}).
+\doiurl{10.1101/833590}.
+\bcomment{Pore-C method; long-read concatemer sequencing of chromatin contacts;
+  used in this manuscript on HG002}
+\end{barticle}
+\endbibitem
 
-\bibitem[Tan et~al.(2018)Tan, Xing, Chang, Li, and Xie]{Tan2018}
-Longzhi Tan, Dong Xing, Chi-Han Chang, Heng Li, and X.~Sunney Xie.
-\newblock Three-dimensional genome structures of single diploid human cells.
-\newblock \emph{Science}, 361\penalty0 (6405):\penalty0 924--928, 2018.
-\newblock \doi{10.1126/science.aat5641}.
-\newblock Dip-C method; GM12878 + PBMC single-cell 3D structures; coordinates
-  in hg19 (T2T re-projection via impg in present work).
+%%% 30
+\bibitem{hic3d_cifi2025}
+\begin{botherref}
+\oauthor{\bsnm{Cramer}, \binits{N.}}, et al.:
+{CiFi}: accurate long-read chromosome conformation capture with low-input
+  requirements.
+Nature Communications
+\textbf{16}
+(2025).
+\doiurl{10.1038/s41467-025-66918-y}
+\end{botherref}
+\endbibitem
 
-\bibitem[Xu et~al.(2025)]{Xu2025}
-Hanbo Xu et~al.
-\newblock Three-dimensional genome organization of human sperm at single-cell
-  resolution.
-\newblock \emph{Nature Communications}, 16:\penalty0 3805, 2025.
-\newblock \doi{10.1038/s41467-025-58889-x}.
-\newblock Sperm single-cell 3D genome structures; 20 cells (10 X-bearing + 10
-  Y-bearing) used in the present sperm scHi-C analysis.
+%%% 31
+\bibitem{Tan2018}
+\begin{barticle}
+\bauthor{\bsnm{Tan}, \binits{L.}},
+\bauthor{\bsnm{Xing}, \binits{D.}},
+\bauthor{\bsnm{Chang}, \binits{C.-H.}},
+\bauthor{\bsnm{Li}, \binits{H.}},
+\bauthor{\bsnm{Xie}, \binits{X.S.}}:
+\batitle{Three-dimensional genome structures of single diploid human cells}.
+\bjtitle{Science}
+\bvolume{361}(\bissue{6405}),
+\bfpage{924}--\blpage{928}
+(\byear{2018}).
+\doiurl{10.1126/science.aat5641}.
+\bcomment{Dip-C method; GM12878 + PBMC single-cell 3D structures; coordinates
+  in hg19 (T2T re-projection via impg in present work)}
+\end{barticle}
+\endbibitem
 
-\bibitem[Ulahannan et~al.(2019)Ulahannan, Pendleton, Deshpande, Schwenk, Behr,
-  Dai, Tyer, Rughani, Kudman, Adney, Wang, Kim, Suvakov, Helland, Yang, Huang,
-  Coletta, Stober, Verzilli, Boggula, Robine, Lucito, and
-  Imielinski]{Ulahannan2019}
-Netha Ulahannan, Matthew Pendleton, Aditya Deshpande, Stefan Schwenk, Jacob~M.
-  Behr, Xiaoguang Dai, Carly Tyer, Priyesh Rughani, Sarah Kudman, Emily Adney,
-  Heng Wang, Marie Kim, Milovan Suvakov, Anna Helland, Jasmine Yang, Nathan
-  Huang, Robert~L. Coletta, Spencer Stober, Carolyn Verzilli, Vamsi Boggula,
-  Nicolas Robine, Robert Lucito, and Marcin Imielinski.
-\newblock Nanopore sequencing of {DNA} concatemers reveals higher-order
-  features of chromatin structure.
-\newblock \emph{bioRxiv}, 2019.
-\newblock \doi{10.1101/833590}.
-\newblock Pore-C method; long-read concatemer sequencing of chromatin contacts;
-  used in this manuscript on HG002.
+%%% 32
+\bibitem{Xu2025}
+\begin{barticle}
+\bauthor{\bsnm{Xu}, \binits{H.}}, \betal:
+\batitle{Three-dimensional genome organization of human sperm at single-cell
+  resolution}.
+\bjtitle{Nature Communications}
+\bvolume{16},
+\bfpage{3805}
+(\byear{2025}).
+\doiurl{10.1038/s41467-025-58889-x}.
+\bcomment{Sperm single-cell 3D genome structures; 20 cells (10 X-bearing + 10
+  Y-bearing) used in the present sperm scHi-C analysis}
+\end{barticle}
+\endbibitem
 
-\bibitem[Ataei et~al.(2025)Ataei, Zhang, Monis, Giemza, Mittal, Yang,
-  Shimomura, McStay, Wilson, and Ramalho-Santos]{ataei2025line1dj}
-Lamisa Ataei, Juan Zhang, Simon Monis, Krystyna Giemza, Kirti Mittal, Joshua
-  Yang, Mayu Shimomura, Brian McStay, Michael~D Wilson, and Miguel
-  Ramalho-Santos.
-\newblock {LINE1} elements at distal junctions of {rDNA} repeats regulate
-  nucleolar organization in human embryonic stem cells.
-\newblock \emph{Genes \& Development}, 39\penalty0 (3--4):\penalty0 280--298,
-  2025.
-\newblock \doi{10.1101/gad.351979.124}.
-\newblock Primate-specific full-length LINE1 conserved at all five acrocentric
-  distal junctions; CRISPR deletion/interference disrupts nucleolar
-  positioning, transcriptional output, and self-renewal. First molecular
-  mechanism for DJ nucleolar anchoring.
+%%% 33
+\bibitem{Cechova2025}
+\begin{botherref}
+\oauthor{\bsnm{Cechova}, \binits{M.}}, et al.:
+Telomere-to-telomere assembly of a multi-generation human pedigree.
+(in press)
+(2025).
+WashU 3-generation T2T assemblies (PAN010 grandmother, PAN011 grandfather,
+  PAN027 mother, PAN028 granddaughter); primary pedigree evidence for
+  inter-chromosomal exchange community membership (494/538 = 92\%)
+\end{botherref}
+\endbibitem
 
-\bibitem[Cechova et~al.(2025)]{Cechova2025}
-Monika Cechova et~al.
-\newblock Telomere-to-telomere assembly of a multi-generation human pedigree.
-\newblock \emph{(in press)}, 2025.
-\newblock WashU 3-generation T2T assemblies (PAN010 grandmother, PAN011
-  grandfather, PAN027 mother, PAN028 granddaughter); primary pedigree evidence
-  for inter-chromosomal exchange community membership (494/538 = 92\%).
+%%% 34
+\bibitem{Halldorsson2019}
+\begin{barticle}
+\bauthor{\bsnm{Halld{\'o}rsson}, \binits{B.V.}},
+\bauthor{\bsnm{Palsson}, \binits{G.}},
+\bauthor{\bsnm{Stefansson}, \binits{O.A.}},
+\bauthor{\bsnm{Jonsson}, \binits{H.}},
+\bauthor{\bsnm{Hardarson}, \binits{M.T.}},
+\bauthor{\bsnm{Eggertsson}, \binits{H.P.}},
+\bauthor{\bsnm{Gunnarsson}, \binits{B.}},
+\bauthor{\bsnm{Oddsson}, \binits{A.}},
+\bauthor{\bsnm{Halldorsson}, \binits{G.H.}},
+\bauthor{\bsnm{Zink}, \binits{F.}},
+\bauthor{\bsnm{Gudjonsson}, \binits{S.A.}},
+\bauthor{\bsnm{Frigge}, \binits{M.L.}},
+\bauthor{\bsnm{Thorleifsson}, \binits{G.}},
+\bauthor{\bsnm{Sigurdsson}, \binits{A.}},
+\bauthor{\bsnm{Stacey}, \binits{S.N.}},
+\bauthor{\bsnm{Sulem}, \binits{P.}},
+\bauthor{\bsnm{Masson}, \binits{G.}},
+\bauthor{\bsnm{Helgason}, \binits{A.}},
+\bauthor{\bsnm{Gudbjartsson}, \binits{D.F.}},
+\bauthor{\bsnm{Thorsteinsdottir}, \binits{U.}},
+\bauthor{\bsnm{Stefansson}, \binits{K.}}:
+\batitle{Characterizing mutagenic effects of recombination through a
+  sequence-level genetic map}.
+\bjtitle{Science}
+\bvolume{363}(\bissue{6425}),
+\bfpage{1043}
+(\byear{2019}).
+\doiurl{10.1126/science.aau1043}
+\end{barticle}
+\endbibitem
 
-\bibitem[Eichler(2001)]{concerted_evolution_nahr_Eichler2001}
-Evan~E. Eichler.
-\newblock Segmental duplications: an expanding role in genomic instability and
-  disease.
-\newblock \emph{Nature Reviews Genetics}, 2\penalty0 (11):\penalty0 791--800,
-  2001.
-\newblock \doi{10.1038/35093500}.
-\newblock URL \url{https://www.nature.com/articles/35093500}.
+%%% 35
+\bibitem{palsson2025recomb}
+\begin{barticle}
+\bauthor{\bsnm{P{\'a}lsson}, \binits{S.}},
+\bauthor{\bsnm{Helgason}, \binits{A.}},
+\bauthor{\bsnm{Gudbjartsson}, \binits{D.F.}},
+\bauthor{\bsnm{Magnusson}, \binits{O.T.}},
+\bauthor{\bsnm{Eggertsson}, \binits{H.P.}},
+\bauthor{\bsnm{Halldorsson}, \binits{B.V.}},
+\bauthor{\bsnm{Stefansson}, \binits{K.}}:
+\batitle{Complete human recombination maps}.
+\bjtitle{Nature}
+\bvolume{639},
+\bfpage{700}--\blpage{707}
+(\byear{2025}).
+\doiurl{10.1038/s41586-024-08450-5}
+\end{barticle}
+\endbibitem
 
-\bibitem[Schweiger et~al.(2024)Schweiger, Lee, and
-  Durbin]{pedigree_Schweiger2024spermNCO}
-Regev Schweiger, Sangjin Lee, and Richard Durbin.
-\newblock Insights into non-crossover recombination from long-read sperm
-  sequencing.
-\newblock bioRxiv preprint, 2024.
-\newblock Single-molecule long-read sperm; two NCO processes (PRDM9-associated
-  short tract; non-PRDM9 long-tract ~2\%).
+%%% 36
+\bibitem{Dover1982}
+\begin{barticle}
+\bauthor{\bsnm{Dover}, \binits{G.A.}}:
+\batitle{Molecular drive: a cohesive mode of species evolution}.
+\bjtitle{Nature}
+\bvolume{299}(\bissue{5879}),
+\bfpage{111}--\blpage{117}
+(\byear{1982}).
+\doiurl{10.1038/299111a0}.
+\bcomment{Coins "concerted evolution" / molecular drive; foundational theory
+  for the homogenisation of repetitive sequence families}
+\end{barticle}
+\endbibitem
 
-\bibitem[Halld{\'o}rsson et~al.(2019)Halld{\'o}rsson, Palsson, Stefansson,
-  Jonsson, Hardarson, Eggertsson, Gunnarsson, Oddsson, Halldorsson, Zink,
-  Gudjonsson, Frigge, Thorleifsson, Sigurdsson, Stacey, Sulem, Masson,
-  Helgason, Gudbjartsson, Thorsteinsdottir, and Stefansson]{Halldorsson2019}
-Bjarni~V. Halld{\'o}rsson, Gunnar Palsson, Olafur~A. Stefansson, Hakon Jonsson,
-  Marteinn~T. Hardarson, Hannes~P. Eggertsson, Bjarni Gunnarsson, Asmundur
-  Oddsson, Gisli~H. Halldorsson, Florian Zink, Sigurjon~A. Gudjonsson,
-  Michael~L. Frigge, Gudmar Thorleifsson, Asgeir Sigurdsson, Simon~N. Stacey,
-  Patrick Sulem, Gisli Masson, Agnar Helgason, Daniel~F. Gudbjartsson, Unnur
-  Thorsteinsdottir, and Kari Stefansson.
-\newblock Characterizing mutagenic effects of recombination through a
-  sequence-level genetic map.
-\newblock \emph{Science}, 363\penalty0 (6425):\penalty0 eaau1043, 2019.
-\newblock \doi{10.1126/science.aau1043}.
+%%% 37
+\bibitem{concerted_evolution_nahr_Hastings2009}
+\begin{barticle}
+\bauthor{\bsnm{Hastings}, \binits{P.J.}},
+\bauthor{\bsnm{Ira}, \binits{G.}},
+\bauthor{\bsnm{Lupski}, \binits{J.R.}}:
+\batitle{A microhomology-mediated break-induced replication model for the
+  origin of human copy number variation}.
+\bjtitle{PLoS Genetics}
+\bvolume{5}(\bissue{1}),
+\bfpage{1000327}
+(\byear{2009}).
+\doiurl{10.1371/journal.pgen.1000327}
+\end{barticle}
+\endbibitem
 
-\bibitem[Porubsky et~al.(2025{\natexlab{a}})]{Porubsky2025}
-David Porubsky et~al.
-\newblock Gaps and complex structurally variant loci in phased genome
-  assemblies of the {CEPH 1463} four-generation pedigree.
-\newblock \emph{Nature}, 643:\penalty0 427--436, 2025{\natexlab{a}}.
-\newblock \doi{10.1038/s41586-025-08922-2}.
-\newblock Published version. 28-sample CEPH1463 4-generation hifiasm + verkko
-  phased assemblies; cross-assembler-validated 11 robust inter-chromosomal
-  subtelomeric events; chr10/chr18 (community C2 / Linardopoulou pair) detected
-  independently in NA12877 paternal and NA12878 maternal.
-
-\bibitem[Lee(2026)]{subtelstruct_Lee2026SEPTIN14}
-Min-Gyu Lee.
-\newblock Boundary-associated propagation of a processed pseudogene dissects
-  pre-existing limitations of genome annotation in the {T2T} era.
-\newblock \emph{Mobile DNA}, 17\penalty0 (1), 2026.
-\newblock \doi{10.1186/s13100-026-00394-z}.
-\newblock T2T-CHM13 study showing SEPTIN14P processed pseudogene copies
-  accumulate within segmental-duplication blocks near pericentromeric and
-  subtelomeric regions; SD-mediated dispersal across great apes via secondary
-  structural propagation; purifying selection on the SEPTIN14 coding sequence
-  and 3' exon.
-
-\bibitem[Dover(1982)]{Dover1982}
-Gabriel~A. Dover.
-\newblock Molecular drive: a cohesive mode of species evolution.
-\newblock \emph{Nature}, 299\penalty0 (5879):\penalty0 111--117, 1982.
-\newblock \doi{10.1038/299111a0}.
-\newblock Coins "concerted evolution" / molecular drive; foundational theory
-  for the homogenisation of repetitive sequence families.
-
-\bibitem[Charlesworth et~al.(1994)Charlesworth, Sniegowski, and
-  Stephan]{concerted_evolution_nahr_Charlesworth1994}
-Brian Charlesworth, Paul Sniegowski, and Wolfgang Stephan.
-\newblock The evolutionary dynamics of repetitive {DNA} in eukaryotes.
-\newblock \emph{Nature}, 371\penalty0 (6494):\penalty0 215--220, 1994.
-\newblock \doi{10.1038/371215a0}.
-\newblock URL \url{https://www.nature.com/articles/371215a0}.
-
-\bibitem[Hastings et~al.(2009)Hastings, Ira, and
-  Lupski]{concerted_evolution_nahr_Hastings2009}
-P.~J. Hastings, Grzegorz Ira, and James~R. Lupski.
-\newblock A microhomology-mediated break-induced replication model for the
-  origin of human copy number variation.
-\newblock \emph{PLoS Genetics}, 5\penalty0 (1):\penalty0 e1000327, 2009.
-\newblock \doi{10.1371/journal.pgen.1000327}.
-\newblock URL
-  \url{https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000327}.
-
-\bibitem[Vollger et~al.(2023)Vollger, Dishuck, Harvey, DeWitt, Guitart,
-  Goldberg, Rozanski, et~al.]{concerted_evolution_nahr_Vollger2023}
-Mitchell~R. Vollger, Philip~C. Dishuck, William~T. Harvey, William~S. DeWitt,
-  Xavier Guitart, Michael~E. Goldberg, Allison~N. Rozanski, et~al.
-\newblock Increased mutation and gene conversion within human segmental
-  duplications.
-\newblock \emph{Nature}, 617\penalty0 (7960):\penalty0 325--334, 2023.
-\newblock \doi{10.1038/s41586-023-05895-y}.
-\newblock URL \url{https://www.nature.com/articles/s41586-023-05895-y}.
-
-\bibitem[Tan et~al.(2023)Tan, Xing, Daley, and Xie]{hic3d_scnanoHiC2023}
-Longzhi Tan, Da~Xing, Nicholas Daley, and X.~Sunney Xie.
-\newblock {scNanoHi-C}: a single-cell long-read concatemer sequencing method to
-  reveal high-order chromatin structures within individual cells.
-\newblock \emph{Nature Methods}, 20:\penalty0 1493--1500, 2023.
-\newblock \doi{10.1038/s41592-023-01978-w}.
-
-\bibitem[Lalli et~al.(2025)Lalli, Bortvin, McCoy, and Werling]{Lalli2025}
-Joshua~L. Lalli, Andrey~N. Bortvin, Rajiv~C. McCoy, and Donna~M. Werling.
-\newblock A {T2T-CHM13} recombination map and globally diverse haplotype
-  reference panel improves phasing and imputation.
-\newblock \emph{bioRxiv}, 2025.
-\newblock \doi{10.1101/2025.02.24.639687}.
-\newblock T2T-CHM13 recombination map (preprint); subtelomeric recombination
-  rate per arm intersected with cross-arm affinity in present work (full-39
-  $\rho$ = $-$0.43, p = 0.006; N = 32 after 7 short-read-confounded arms
-  excluded: $\rho$ = 0.00, p = 0.98).
-
-\bibitem[P{\'a}lsson et~al.(2025)P{\'a}lsson, Helgason, Gudbjartsson,
-  Magnusson, Eggertsson, Halldorsson, and Stefansson]{palsson2025recomb}
-Sigurj{\'o}n P{\'a}lsson, Agnar Helgason, Daniel~F Gudbjartsson, Olafur~T
-  Magnusson, Hannes~P Eggertsson, Bjarni~V Halldorsson, and Kari Stefansson.
-\newblock Complete human recombination maps.
-\newblock \emph{Nature}, 639:\penalty0 700--707, 2025.
-\newblock \doi{10.1038/s41586-024-08450-5}.
-
-\bibitem[Logsdon et~al.(2024)Logsdon, Rozanski, Ryabov, Potapova, Shepelev,
-  Catacchio, Porubsky, Mao, Yoo, Rautiainen, Koren, Nurk, Alexandrov,
-  Mikheenko, Bzikadze, Sulovari, Vollger, Hoekzema, Lewis, Hsieh, Harvey,
-  Dishuck, Munson, Pang, Rhie, Schneider, Carbone, Phillippy, and
-  Eichler]{Logsdon2024}
-Glennis~A. Logsdon, Allison~N. Rozanski, Fedor Ryabov, Tamara Potapova,
-  Valery~A. Shepelev, Claudia~R. Catacchio, David Porubsky, Yafei Mao, DongAhn
-  Yoo, Mikko Rautiainen, Sergey Koren, Sergey Nurk, Ivan~A. Alexandrov, Alla
-  Mikheenko, Andrey~V. Bzikadze, Arvis Sulovari, Mitchell~R. Vollger, Kendra
-  Hoekzema, Alexandra~P. Lewis, PingHsun Hsieh, William~T. Harvey, Philip~C.
-  Dishuck, Katherine~M. Munson, Allison W.~C. Pang, Arang Rhie, Valerie~A.
-  Schneider, Lucia Carbone, Adam~M. Phillippy, and Evan~E. Eichler.
-\newblock The variation and evolution of complete human centromeres.
-\newblock \emph{Nature}, 629\penalty0 (8010):\penalty0 136--145, 2024.
-\newblock \doi{10.1038/s41586-024-07278-3}.
-
-\bibitem[Logsdon et~al.(2025)Logsdon, Ebert, Audano, Loftus, Porubsky, Ebler,
-  Yilmaz, Hallast, Prodanov, Yoo, et~al.]{logsdon2025hgsvc}
-Glennis~A Logsdon, Peter Ebert, Peter~A Audano, Mark Loftus, David Porubsky,
-  Jana Ebler, Feyza Yilmaz, Pille Hallast, Timofey Prodanov, DongAhn Yoo,
-  et~al.
-\newblock Complex genetic variation in nearly complete human genomes.
-\newblock \emph{Nature}, 644:\penalty0 430--441, 2025.
-\newblock \doi{10.1038/s41586-025-09140-6}.
-
-\bibitem[Guarracino et~al.(2022)Guarracino, Heumos, Nahnsen, Prins, and
-  Garrison]{pangenome_graphs_impg_GuarracinoHeumos2022}
-Andrea Guarracino, Simon Heumos, Sven Nahnsen, Pjotr Prins, and Erik Garrison.
-\newblock {ODGI}: understanding pangenome graphs.
-\newblock \emph{Bioinformatics}, 38\penalty0 (13):\penalty0 3319--3326, 2022.
-\newblock \doi{10.1093/bioinformatics/btac308}.
-\newblock URL
-  \url{https://academic.oup.com/bioinformatics/article/38/13/3319/6585331}.
-\newblock odgi: space-efficient in-memory pangenome graph manipulation toolkit;
-  odgi similarity computes pairwise Jaccard similarity from shared path
-  traversals; path-guided SGD layout; used to produce the 245-million-entry
-  similarity matrix in the current subtelomere project.
-
-\bibitem[Hickey et~al.(2024)Hickey, Monlong, Ebler, Novak, Eizenga, Gao,
-  Marschall, Li, and Paten]{pangenome_graphs_impg_Hickey2024}
-Glenn Hickey, Jean Monlong, Jana Ebler, Adam~M. Novak, Jordan~M. Eizenga, Yan
-  Gao, Tobias Marschall, Heng Li, and Benedict Paten.
-\newblock Pangenome graph construction from genome alignments with
-  {Minigraph-Cactus}.
-\newblock \emph{Nature Biotechnology}, 42:\penalty0 663--673, 2024.
-\newblock \doi{10.1038/s41587-023-01793-w}.
-\newblock URL \url{https://www.nature.com/articles/s41587-023-01793-w}.
-\newblock Minigraph-Cactus pipeline: combines Minigraph SV enumeration with
-  Cactus progressive alignment; used for HPRC v1 draft pangenome; hierarchical
-  reference-seeded construction that does not capture interchromosomal
-  subtelomeric homology.
-
-\bibitem[Garrison et~al.(2018)Garrison, Sir{\'e}n, Novak, Hickey, Eizenga,
-  Dawson, Jones, Garg, Markello, Lin, Paten, and Durbin]{Garrison2018}
-Erik Garrison, Jouni Sir{\'e}n, Adam~M. Novak, Glenn Hickey, Jordan~M. Eizenga,
-  Eric~T. Dawson, William Jones, Shilpa Garg, Charles Markello, Michael~F. Lin,
-  Benedict Paten, and Richard Durbin.
-\newblock Variation graph toolkit improves read mapping by representing genetic
-  variation in the reference.
-\newblock \emph{Nature Biotechnology}, 36\penalty0 (9):\penalty0 875--879,
-  2018.
-\newblock \doi{10.1038/nbt.4227}.
-\newblock Foundational vg toolkit; introduces variation graphs as a principled
-  alternative to single-reference mapping.
-
-\bibitem[Andreace et~al.(2023)Andreace, Lechat, Dufresne, and
-  Chikhi]{andreace2023pangenome}
-Francesco Andreace, Pierre Lechat, Yoann Dufresne, and Rayan Chikhi.
-\newblock Comparing methods for constructing and representing human pangenome
-  graphs.
-\newblock \emph{Genome Biology}, 24\penalty0 (1):\penalty0 274, 2023.
-\newblock \doi{10.1186/s13059-023-03098-2}.
-\newblock Independent controlled benchmark of pggb, Minigraph-Cactus,
-  Minigraph, Bifrost, and mdbg on 52 human haplotypes; shows pggb captures
-  SNP-to-SV variation missed by reference-anchored methods; empirical support
-  for reference-free design choice.
-
-\bibitem[Heumos et~al.(2024)Heumos, Heuer, Hanssen, Heumos, Guarracino,
-  Heringer, Ehmele, Prins, Garrison, and Nahnsen]{heumos2024nfcore}
-Simon Heumos, Michael~L. Heuer, Friederike Hanssen, Lukas Heumos, Andrea
-  Guarracino, Peter Heringer, Philipp Ehmele, Pjotr Prins, Erik Garrison, and
-  Sven Nahnsen.
-\newblock Cluster-efficient pangenome graph construction with
-  nf-core/pangenome.
-\newblock \emph{Bioinformatics}, 40\penalty0 (11):\penalty0 btae609, 2024.
-\newblock \doi{10.1093/bioinformatics/btae609}.
-\newblock nf-core/pangenome: Nextflow HPC wrapper for the
-  wfmash→seqwish→smoothxg→gfaffix→odgi pipeline; constructs
-  1000-haplotype chromosome-19 pangenome; 2-3x speedup over standalone pggb;
-  validates scalability beyond 466-haplotype current study scale.
-
-\bibitem[Weir and Cockerham(1984)]{subtel_popgen_weir1984}
-Bruce~S. Weir and C.~Clark Cockerham.
-\newblock Estimating {F}-statistics for the analysis of population structure.
-\newblock \emph{Evolution}, 38\penalty0 (6):\penalty0 1358--1370, 1984.
-\newblock \doi{10.1111/j.1558-5646.1984.tb05657.x}.
-\newblock Standard unbiased Fst estimator correcting for finite sample size;
-  provides the statistical framework for comparing subtelomeric allele
-  frequencies across populations.
-
-\bibitem[Dixon et~al.(2012)Dixon, Selvaraj, Yue, Kim, Li, Shen, Hu, Liu, and
-  Ren]{hic3d_dixon2012}
-Jesse~R. Dixon, Siddarth Selvaraj, Feng Yue, Audrey Kim, Yan Li, Yin Shen, Ming
-  Hu, Jun~S. Liu, and Bing Ren.
-\newblock Topological domains in mammalian genomes identified by analysis of
-  chromatin interactions.
-\newblock \emph{Nature}, 485:\penalty0 376--380, 2012.
-\newblock \doi{10.1038/nature11082}.
-
-\bibitem[Imakaev et~al.(2012)Imakaev, Fudenberg, McCord, Naumova, Goloborodko,
-  Lajoie, Dekker, and Mirny]{hic3d_imakaev2012}
-Maxim Imakaev, Geoffrey Fudenberg, Rachel~Patton McCord, Natalia Naumova, Anton
-  Goloborodko, Bryan~R. Lajoie, Job Dekker, and Leonid~A. Mirny.
-\newblock Iterative correction of {Hi-C} data reveals hallmarks of chromosome
-  organization.
-\newblock \emph{Nature Methods}, 9\penalty0 (10):\penalty0 999--1003, 2012.
-\newblock \doi{10.1038/nmeth.2148}.
-
-\bibitem[Alavattam et~al.(2019)Alavattam, Maezawa, Sakashita, Khoury, Barski,
-  Pavlova, and Namekawa]{hic3d_alavattam2019}
-Kris~G. Alavattam, Satyakrishna Maezawa, Akihiko Sakashita, Hironori Khoury,
-  Artem Barski, Natalya Pavlova, and Satoshi~H. Namekawa.
-\newblock Attenuated chromatin compartmentalization in meiosis and its
-  maturation in sperm development.
-\newblock \emph{Nature Structural {\&} Molecular Biology}, 26:\penalty0
-  175--184, 2019.
-\newblock \doi{10.1038/s41594-019-0189-y}.
-
-\bibitem[Wolff et~al.(2018)Wolff, Bhardwaj, Nothjunge, Richard, Renschler,
-  Gilsbach, Manke, Backofen, Ram{\'i}rez, and Gr{\"u}ning]{hic3d_wolff2018}
-Joachim Wolff, Vivek Bhardwaj, Stephan Nothjunge, Gautier Richard, Gina
-  Renschler, Ralf Gilsbach, Thomas Manke, Rolf Backofen, Fidel Ram{\'i}rez, and
-  Bj{\"o}rn~A. Gr{\"u}ning.
-\newblock Galaxy {HiCExplorer}: a web server for reproducible {Hi-C} data
-  analysis, quality control and visualization.
-\newblock \emph{Nucleic Acids Research}, 46\penalty0 (W1):\penalty0 W11--W16,
-  2018.
-\newblock \doi{10.1093/nar/gky504}.
-
-\bibitem[Deshpande et~al.(2022)Deshpande, Ulahannan, Pendleton, Dai, Ly, Behr,
-  Schwenk, Liao, Augello, Tyer, Sridhar, Bhardwaj, Arora, Darnell, Gupta,
-  Bhatt, Papaemmanuil, Zody, Robson, and Juul]{hic3d_deshpande2022}
-Ajay~S. Deshpande, Netha Ulahannan, Matthew Pendleton, Xiaoguang Dai, Lynn Ly,
-  Julie~M. Behr, Stefan Schwenk, Will Liao, Michael~A. Augello, Caitlin Tyer,
-  Poonam Sridhar, Bhanu Bhardwaj, Kanika Arora, Ashley~M. Darnell, Arnav Gupta,
-  Subhakar Bhatt, Elli Papaemmanuil, Michael~C. Zody, David Robson, and Sissel
-  Juul.
-\newblock Identifying synergistic high-order {3D} chromatin conformations from
-  genome-scale nanopore concatemer sequencing.
-\newblock \emph{Nature Biotechnology}, 40:\penalty0 1488--1499, 2022.
-\newblock \doi{10.1038/s41587-022-01289-z}.
-
-\bibitem[Tan et~al.(2025)]{hic3d_scnanoHiC2_2025}
-Longzhi Tan et~al.
-\newblock Single-cell long-read {Hi-C}, {scNanoHi-C2}, details {3D} genome
-  reorganization in embryonic-stage germ cells.
-\newblock \emph{Nature Structural {\&} Molecular Biology}, 2025.
-\newblock \doi{10.1038/s41594-025-01604-7}.
-\newblock URL \url{https://www.nature.com/articles/s41594-025-01604-7}.
-
-\bibitem[Kitamura and Namekawa(2025)]{hic3d_kitamura2025}
-Yuka Kitamura and Satoshi~H. Namekawa.
-\newblock The {3D} genome during germline development and meiosis.
-\newblock \emph{Trends in Genetics}, 42\penalty0 (3):\penalty0 255--267, 2025.
-\newblock \doi{10.1016/j.tig.2025.11.004}.
-
-\bibitem[Porsborg et~al.(2025)Porsborg, Charmouh, Singh, Winge, Hvilsom,
-  Oroperv, Hansen, Berner, Pelizzola, Laurentino, Neuhaus, Hobolth, Bataillon,
-  Besenbacher, Almstrup, and Schierup]{pedigree_Porsborg2025primaterecom}
-Peter~Soerud Porsborg, Anders~Poulsen Charmouh, Vinod~Kumar Singh, Sofia~Boeg
-  Winge, Christina Hvilsom, Carmen Oroperv, Lasse~Thorup Hansen, Juliana~Andrea
-  Berner, Marta Pelizzola, Sandra Laurentino, Nina Neuhaus, Asger Hobolth,
-  Thomas Bataillon, Soren Besenbacher, Kristian Almstrup, and Mikkel~Heide
-  Schierup.
-\newblock Long-read sequencing of primate testis and human sperm allows
-  identification of recombination events in individuals.
-\newblock \emph{Nature Communications}, 16\penalty0 (1):\penalty0 10337, 2025.
-\newblock \doi{10.1038/s41467-025-65248-3}.
-\newblock Cross-species (6 primate species + human) long-read meiotic
-  recombination; 2,881 crossovers, 2,314 simple gene conversions, 555 complex
-  events; NCO gene-conversion tracts mean 22--95 bp; CO-associated tracts mean
-  318--688 bp; calibrates gene-conversion-like patch interpretation for
-  pedigree analysis.
-
-\bibitem[Joseph et~al.(2024)Joseph, Prentout, Laverr{\'e}, Tricou, and
-  Duret]{pedigree_Joseph2024PRDM9indep}
-Julien Joseph, Djivan Prentout, Alexandre Laverr{\'e}, Th{\'e}o Tricou, and
-  Laurent Duret.
-\newblock High prevalence of {PRDM9}-independent recombination hotspots in
-  placental mammals.
-\newblock \emph{Proceedings of the National Academy of Sciences USA},
-  121\penalty0 (23):\penalty0 e2401973121, 2024.
-\newblock \doi{10.1073/pnas.2401973121}.
-\newblock gBGC-substitution estimator quantifies PRDM9-independent
-  recombination hotspot activity in 52 boreoeutherian mammals. Humans show a
-  deficit of recombination at PRDM9-independent hotspots relative to other
-  placental mammals. Contextualises the non-PRDM9 NCO class observed in human
-  sperm.
-
-\bibitem[Porubsky et~al.(2025{\natexlab{b}})]{acrocentric_Porubsky2025denovo}
-David Porubsky et~al.
-\newblock Human acrocentric chromosome short arm de novo mutation and
-  recombination.
-\newblock bioRxiv, 2025{\natexlab{b}}.
-\newblock URL
-  \url{https://www.biorxiv.org/content/10.64898/2025.12.16.694519v1}.
-\newblock Phased 156 acrocentric short arms from a four-generation pedigree;
-  measured de novo mutation rate (10-fold elevated over euchromatin), unusual
-  mutational spectrum (elevated C>G, C>A), and one ectopic chr13-chr21
-  recombination event; directly distinct from Porubsky2025 (CEPH1463
-  subtelomeric exchange paper).
-
-\bibitem[Sasani et~al.(2026)Sasani, Goldberg, Avvaru, Nicholas, Neklason,
-  Dolzhenko, Mokveld, Munson, Hoekzema, Ayllon, Kaufman, Porubsky, Valdmanis,
-  Eichler, Quinlan, and Dashnow]{sasani2026kfam}
-Thomas~A Sasani, Michael~E Goldberg, Akshay~K Avvaru, Thomas~J Nicholas,
-  Deborah~W Neklason, Egor Dolzhenko, Tom Mokveld, Katherine~M Munson, Kendra
-  Hoekzema, Marcelo Ayllon, Eli~J Kaufman, David Porubsky, Paul~N Valdmanis,
-  Evan~E Eichler, Aaron~R Quinlan, and Harriet Dashnow.
-\newblock A family portrait of the genomic factors shaping tandem repeat
-  mutagenesis.
-\newblock bioRxiv preprint, 2026.
-\newblock PREPRINT. Same CEPH1463/K1463 four-generation pedigree as the PHR
-  study; HiFi long-read sequencing of 8M tandem-repeat loci across 20 children;
-  1,270 TR expansions/contractions; 43 hyper-mutable loci. Contextualises PHR
-  exchange events within broader repeat mutagenesis.
-
-\bibitem[Hao et~al.(2024)Hao, Liu, Daulatabad, Gaffari, Song, Srivastava,
-  Bhaskar, Moitra, Mangan, Tseng, Gilmore, Frier, Chen, Wang, Huang,
-  Chamberlain, Jin, Korlach, McStay, Sinha, Janga, Prasanth, and
-  Prasanth]{hao2024snul}
-Qinyu Hao, Minxue Liu, Swapna~Vidhur Daulatabad, Saba Gaffari, You~Jin Song,
-  Rajneesh Srivastava, Shivang Bhaskar, Anurupa Moitra, Hazel Mangan, Elizabeth
-  Tseng, Rachel~B Gilmore, Susan~M Frier, Xin Chen, Chengliang Wang, Sui Huang,
-  Stormy Chamberlain, Hong Jin, Jonas Korlach, Brian McStay, Saurabh Sinha,
-  Sarath~Chandra Janga, Supriya~G Prasanth, and Kannanganattu~V Prasanth.
-\newblock Monoallelically expressed noncoding {RNA}s form nucleolar territories
-  on {NOR}-containing chromosomes and regulate {rRNA} expression.
-\newblock \emph{eLife}, 13, 2024.
-\newblock \doi{10.7554/eLife.80684}.
-\newblock SNUL (Single Nucleolus-Localized RNA) ncRNAs form constrained
-  sub-nucleolar territories on individual NOR-containing chromosomes;
-  monoallelically expressed; mechanistic nuance to NOR co-localisation.
-
-\bibitem[Chen et~al.(2025)Chen, Gong, Mak, Li, and
-  Takemaru]{bouquet_ChenCEP164Cilia2025}
-Jun~Jie Chen, Xiangyu Gong, Michael Mak, Feng-Qian Li, and Ken-Ichi Takemaru.
-\newblock Loss of cilia drives centriole clustering and elimination during
-  mammalian spermatogenesis.
-\newblock \emph{bioRxiv}, 2025.
-\newblock \doi{10.64898/2025.12.04.692363}.
-\newblock Preprint (Stony Brook). Male germ-cell-specific CEP164 KO eliminates
-  zygotene primary cilia and sperm flagella; meiotic chromosome pairing and DSB
-  repair proceed normally. Male infertility driven by flagellogenesis defect,
-  not absence of zygotene cilia. Functional test of the
-  bouquet--zygotene-cilium connection.
+%%% 38
+\bibitem{Logsdon2024}
+\begin{barticle}
+\bauthor{\bsnm{Logsdon}, \binits{G.A.}},
+\bauthor{\bsnm{Rozanski}, \binits{A.N.}},
+\bauthor{\bsnm{Ryabov}, \binits{F.}},
+\bauthor{\bsnm{Potapova}, \binits{T.}},
+\bauthor{\bsnm{Shepelev}, \binits{V.A.}},
+\bauthor{\bsnm{Catacchio}, \binits{C.R.}},
+\bauthor{\bsnm{Porubsky}, \binits{D.}},
+\bauthor{\bsnm{Mao}, \binits{Y.}},
+\bauthor{\bsnm{Yoo}, \binits{D.}},
+\bauthor{\bsnm{Rautiainen}, \binits{M.}},
+\bauthor{\bsnm{Koren}, \binits{S.}},
+\bauthor{\bsnm{Nurk}, \binits{S.}},
+\bauthor{\bsnm{Alexandrov}, \binits{I.A.}},
+\bauthor{\bsnm{Mikheenko}, \binits{A.}},
+\bauthor{\bsnm{Bzikadze}, \binits{A.V.}},
+\bauthor{\bsnm{Sulovari}, \binits{A.}},
+\bauthor{\bsnm{Vollger}, \binits{M.R.}},
+\bauthor{\bsnm{Hoekzema}, \binits{K.}},
+\bauthor{\bsnm{Lewis}, \binits{A.P.}},
+\bauthor{\bsnm{Hsieh}, \binits{P.}},
+\bauthor{\bsnm{Harvey}, \binits{W.T.}},
+\bauthor{\bsnm{Dishuck}, \binits{P.C.}},
+\bauthor{\bsnm{Munson}, \binits{K.M.}},
+\bauthor{\bsnm{Pang}, \binits{A.W.C.}},
+\bauthor{\bsnm{Rhie}, \binits{A.}},
+\bauthor{\bsnm{Schneider}, \binits{V.A.}},
+\bauthor{\bsnm{Carbone}, \binits{L.}},
+\bauthor{\bsnm{Phillippy}, \binits{A.M.}},
+\bauthor{\bsnm{Eichler}, \binits{E.E.}}:
+\batitle{The variation and evolution of complete human centromeres}.
+\bjtitle{Nature}
+\bvolume{629}(\bissue{8010}),
+\bfpage{136}--\blpage{145}
+(\byear{2024}).
+\doiurl{10.1038/s41586-024-07278-3}
+\end{barticle}
+\endbibitem
 
 \end{thebibliography}

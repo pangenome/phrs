@@ -336,10 +336,14 @@ Group for generating and interpreting these data.
   \includegraphics[width=\linewidth]{fig/MainFigures/Fig4a_human_scatter.png}\\[4pt]
   \includegraphics[width=0.6\linewidth]{fig/MainFigures/Fig4b_porec_community.png}
   \caption{\textbf{Sequence similarity predicts three-dimensional proximity.}
-    \textbf{(a)} Per arm-pair, three-dimensional contact frequency (log scale)
-    vs mean PHR Jaccard similarity at 50 kb, for HG002 Pore-C (pointwise
-    Spearman $\rho = 0.485$, $p = 1.6 \times 10^{-48}$, $n = 803$) and CHM13
-    Hi-C ($\rho = 0.674$, $p = 3.0 \times 10^{-92}$, $n = 688$).
+    \textbf{(a)} Sequence-similar subtelomeres make more three-dimensional
+    contact. Each dot is one inter-chromosomal chromosome-arm pair; \emph{x},
+    mean subtelomeric sequence similarity (PHR Jaccard); \emph{y}, 3D contact
+    frequency at 50 kbp (log scale, with zero-contact pairs placed at the axis
+    floor). Contact rises with similarity in both HG002 Pore-C (pointwise
+    Spearman $\rho = 0.485$, $n = 803$, $p = 1.6 \times 10^{-48}$) and CHM13
+    Hi-C ($\rho = 0.674$, $n = 688$, $p = 3.0 \times 10^{-92}$); line, linear
+    fit.
     \textbf{(b)} HG002 Pore-C contact matrix ordered by sequence community
     (C1--C15): within-community blocks dominate, $B/W = 0.056$,
     $p = 3.9 \times 10^{-85}$.
@@ -351,7 +355,7 @@ Group for generating and interpreting these data.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.png}
+  \includegraphics[width=\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.pdf}
   \caption{\textbf{Pedigree-resolved subtelomeric exchange.}
     Inter-chromosomal recombination caught in the act in the WashU
     three-generation T2T pedigree. The PAN027 maternal haplotype (hap1,
