@@ -1,0 +1,1829 @@
+1
+00:27:59,850 --> 00:28:01,590
+Our next speaker is Eric Garrison.
+
+2
+00:28:01,770 --> 00:28:04,850
+He's going to be speaking on
+concerted evolution and unorthodox
+
+3
+00:28:04,850 --> 00:28:07,310
+recombination of human sub-telomeres.
+
+4
+00:28:08,180 --> 00:28:08,880
+Thanks.
+
+5
+00:28:09,980 --> 00:28:12,800
+Yeah, thanks for the opportunity
+to present this work.
+
+6
+00:28:12,960 --> 00:28:16,560
+This is mostly the work of
+Andrea Guarracino and myself.
+
+7
+00:28:16,740 --> 00:28:19,360
+We've been joined recently
+by a graduate student at St.
+
+8
+00:28:19,400 --> 00:28:21,060
+Jude, Angela Gamafi.
+
+9
+00:28:21,460 --> 00:28:25,520
+And the background to this is
+the Human Pangenome Project.
+
+10
+00:28:25,520 --> 00:28:30,340
+So the second version of this, Human
+Pangenome, HPRC version 2, HPRC
+
+11
+00:28:30,340 --> 00:28:35,080
+2, is comprised of a bunch of
+nearly complete assemblies.
+
+12
+00:28:35,180 --> 00:28:39,020
+And you can see that in this NX
+plot that basically shows us what
+
+13
+00:28:39,020 --> 00:28:43,020
+fraction of the assembly you cover
+by contigs of a certain size.
+
+14
+00:28:43,420 --> 00:28:47,060
+And so this is, you know, most of
+our chromosome ones are almost
+
+15
+00:28:47,060 --> 00:28:47,780
+completely assembled.
+
+16
+00:28:47,980 --> 00:28:50,720
+And you can kind of see as you
+go that many of the genomes are
+
+17
+00:28:50,720 --> 00:28:52,760
+actually tracking the references here.
+
+18
+00:28:52,760 --> 00:28:57,760
+And so they're very, very high-quality substrate to think about the
+
+19
+00:28:57,760 --> 00:29:00,100
+evolution of complete
+chromosomes in humans.
+
+20
+00:29:01,820 --> 00:29:04,000
+And back story that's important.
+
+21
+00:29:04,260 --> 00:29:07,040
+They've been coming up a lot at this
+conference for the first time in
+
+22
+00:29:07,040 --> 00:29:07,840
+biology of genomes.
+
+23
+00:29:07,940 --> 00:29:10,960
+We have lots of discussion of
+variation graphs and genome graphs.
+
+24
+00:29:11,260 --> 00:29:15,840
+I want to point out that these graph
+models here where you have genomes
+
+25
+00:29:15,840 --> 00:29:19,640
+walking through nodes, which represent
+sequence, these are effectively
+
+26
+00:29:19,640 --> 00:29:22,780
+equivalent to alignments
+between the genomes.
+
+27
+00:29:22,820 --> 00:29:23,520
+And they're the same.
+
+28
+00:29:23,520 --> 00:29:24,680
+It's just a different
+way of thinking of them.
+
+29
+00:29:25,060 --> 00:29:27,680
+Actually, in this talk, we'll be
+looking a lot more at this particular
+
+30
+00:29:27,680 --> 00:29:31,380
+representation because it's more
+scalable, more flexible, and it lets us
+
+31
+00:29:31,380 --> 00:29:33,540
+go after these questions
+for the first time.
+
+32
+00:29:34,930 --> 00:29:38,390
+In the first version of the Human
+Pangenome project, also this has been
+
+33
+00:29:38,390 --> 00:29:42,250
+discussed a number of times, but we built
+
+34
+00:29:43,110 --> 00:29:45,310
+these chromosomes independently.
+
+35
+00:29:46,070 --> 00:29:49,150
+And so we would take some collection
+of contigs we think go to a
+
+36
+00:29:49,150 --> 00:29:52,450
+certain chromosome, put them together
+in the pangenome graph builder or a
+
+37
+00:29:52,450 --> 00:29:56,010
+mini graph cactus, and we would
+build a graph out of them.
+
+38
+00:29:56,110 --> 00:29:57,530
+So we get these isolated components.
+
+39
+00:29:57,970 --> 00:30:01,970
+But what we discovered by experimentation
+was that if we put together
+
+40
+00:30:01,970 --> 00:30:05,530
+acrocentric chromosomes, we would
+observe that they form a single
+
+41
+00:30:05,530 --> 00:30:06,230
+component.
+
+42
+00:30:06,230 --> 00:30:09,390
+And actually, the tightest part
+of this component where they come
+
+43
+00:30:09,390 --> 00:30:12,770
+together, this is the pseudo homologous
+region on the short arms of the
+
+44
+00:30:12,770 --> 00:30:14,110
+acrocentrics that's been discussed.
+
+45
+00:30:14,410 --> 00:30:19,250
+And that is the cause of recurrent
+Robertsonian translocations in
+
+46
+00:30:19,250 --> 00:30:19,950
+humans.
+
+47
+00:30:19,950 --> 00:30:21,170
+So we needed to see this.
+
+48
+00:30:21,170 --> 00:30:24,530
+But technical reasons led
+us to break them apart.
+
+49
+00:30:24,790 --> 00:30:27,890
+And so what we wanted to do in the
+second iteration of the Pangenome
+
+50
+00:30:27,890 --> 00:30:30,310
+project was to put all of
+these genomes together.
+
+51
+00:30:31,320 --> 00:30:35,880
+And to do that, we couldn't build
+a single graph reliably because of
+
+52
+00:30:35,880 --> 00:30:39,000
+computational constraints,
+reliability of just the process.
+
+53
+00:30:39,300 --> 00:30:42,820
+And so we turned to a concept
+called the implicit data structure.
+
+54
+00:30:43,100 --> 00:30:47,280
+So here, the foundation of all this
+is an implicit interval tree that
+
+55
+00:30:47,280 --> 00:30:50,480
+lets us query from a target range,
+
+56
+00:30:52,040 --> 00:30:55,880
+or any genome range, find ranges
+of other things that overlap it.
+
+57
+00:30:56,120 --> 00:30:58,340
+And so we would typically
+write that in a tree.
+
+58
+00:30:58,740 --> 00:31:01,060
+But this is very big and
+heavy, and you don't have to.
+
+59
+00:31:01,140 --> 00:31:06,000
+You can simulate the tree just by
+sorting the intervals and doing binary
+
+60
+00:31:06,000 --> 00:31:06,700
+search over them.
+
+61
+00:31:06,880 --> 00:31:09,920
+And so this implicit model is actually
+the foundation of how we go and
+
+62
+00:31:09,920 --> 00:31:13,180
+look through the alignments
+to then look at the graph.
+
+63
+00:31:13,400 --> 00:31:18,080
+And so we effectively simulate a
+graph by building this many-way
+
+64
+00:31:18,080 --> 00:31:18,780
+alignment.
+
+65
+00:31:18,780 --> 00:31:22,540
+We use a tool called WFMASH,
+which is a variant of MASHMAP that
+
+66
+00:31:22,540 --> 00:31:24,360
+actually gets base-level
+alignments out of it.
+
+67
+00:31:24,700 --> 00:31:29,440
+And then we just compress and
+index all of the path files, the
+
+68
+00:31:29,440 --> 00:31:32,280
+pairwise alignment files that come
+out, effectively making a kind of
+
+69
+00:31:32,280 --> 00:31:33,720
+interval forest over all of them.
+
+70
+00:31:33,800 --> 00:31:37,440
+And let's answer the question at
+every part of any genome in the entire
+
+71
+00:31:37,440 --> 00:31:39,660
+set, what other genomes align there?
+
+72
+00:31:39,760 --> 00:31:42,780
+And we can do, effectively,
+liftover across the whole set.
+
+73
+00:31:42,980 --> 00:31:46,120
+And if we want, we can render an
+actual graph out of it if needed.
+
+74
+00:31:48,280 --> 00:31:51,760
+So you get this by doing
+an all-to-all alignment.
+
+75
+00:31:51,760 --> 00:31:53,860
+And that's a pretty gnarly thing.
+
+76
+00:31:53,980 --> 00:31:58,700
+So if you really did it exhaustively
+on these genomes, it's 465 or
+
+77
+00:31:58,700 --> 00:32:00,460
+466 if you count GRCh38,
+
+78
+00:32:01,260 --> 00:32:05,020
+you have a two septillion
+cell matrix, right?
+
+79
+00:32:05,100 --> 00:32:07,260
+And that is clearly intractable.
+
+80
+00:32:07,540 --> 00:32:11,060
+And in order to avoid the quadratic
+pollution that this would imply,
+
+81
+00:32:11,360 --> 00:32:16,350
+this is, by the way, bane of Memphis
+XAI, which is burning a bunch of
+
+82
+00:32:16,350 --> 00:32:20,090
+methane to make quadratic
+deep learning models work,
+
+83
+00:32:20,870 --> 00:32:22,950
+you can exploit a number of things.
+
+84
+00:32:23,090 --> 00:32:26,210
+So one is that the whole genome
+alignment, it's very sparse.
+
+85
+00:32:26,330 --> 00:32:29,270
+So you don't actually have to do
+complete alignment of every cell.
+
+86
+00:32:29,490 --> 00:32:32,050
+You already know how to do that
+because you can use miniMAP2.
+
+87
+00:32:32,530 --> 00:32:36,030
+But panmixia means that most of the
+possible pairwise alignments are
+
+88
+00:32:36,030 --> 00:32:38,750
+redundant because most of the genomes
+are kind of similar to each other.
+
+89
+00:32:39,030 --> 00:32:40,670
+That means we don't have to do all pairs.
+
+90
+00:32:40,850 --> 00:32:42,870
+We can do some subset of them.
+
+91
+00:32:43,810 --> 00:32:48,430
+And so the idea is that we look
+at everything transitively.
+
+92
+00:32:48,430 --> 00:32:52,170
+This shows a random graph where
+we have the components colored in
+
+93
+00:32:52,170 --> 00:32:54,870
+different colors and we have the
+fraction of the edges that we combine
+
+94
+00:32:54,870 --> 00:32:57,930
+between the 500 nodes
+here shown as this P.
+
+95
+00:32:58,130 --> 00:33:00,630
+So one-tenth of one percent,
+we have a lot of components.
+
+96
+00:33:00,910 --> 00:33:03,690
+If we were to look from any genome
+to every other one, we wouldn't
+
+97
+00:33:03,690 --> 00:33:04,390
+make connections.
+
+98
+00:33:04,630 --> 00:33:09,470
+But as we increase this, we
+achieve a single component very
+
+99
+00:33:09,470 --> 00:33:11,970
+reliably at just a fraction
+of the total alignment set.
+
+100
+00:33:12,150 --> 00:33:13,010
+And so that's what we did.
+
+101
+00:33:13,850 --> 00:33:18,770
+So we aligned about 11 and a half
+percent of all the haplotype pairs
+
+102
+00:33:18,770 --> 00:33:19,470
+to each other.
+
+103
+00:33:19,830 --> 00:33:21,790
+It's hundreds of thousands of alignments.
+
+104
+00:33:22,290 --> 00:33:25,170
+Well, not hundreds of thousands of
+alignments, but I think about 25,000.
+
+105
+00:33:25,590 --> 00:33:28,190
+This is hundreds of times the
+critical threshold to make a single
+
+106
+00:33:28,190 --> 00:33:28,890
+component.
+
+107
+00:33:28,890 --> 00:33:32,610
+And so we're basically guaranteed
+to kind of simulate the full graph
+
+108
+00:33:32,610 --> 00:33:33,570
+without having to build it.
+
+109
+00:33:34,470 --> 00:33:39,230
+And as a QC of this, we can query
+across a reference and just ask, do
+
+110
+00:33:39,230 --> 00:33:40,730
+we see all the other genomes here?
+
+111
+00:33:40,890 --> 00:33:45,530
+And in this panmictic population,
+where all the chromosomes are basically
+
+112
+00:33:45,530 --> 00:33:48,890
+homologous to each other, you
+effectively hope that in every megabase
+
+113
+00:33:48,890 --> 00:33:52,350
+pair of every chromosome, you
+see all the other genomes.
+
+114
+00:33:52,410 --> 00:33:53,870
+And that's true.
+
+115
+00:33:54,010 --> 00:33:58,850
+The notable exceptions being ribosomal
+DNA, some centromere regions,
+
+116
+00:33:59,070 --> 00:34:01,670
+and the sex chromosomes, where
+you expect different copying.
+
+117
+00:34:02,420 --> 00:34:03,280
+So that's good.
+
+118
+00:34:03,740 --> 00:34:04,520
+Suggest it worked.
+
+119
+00:34:04,740 --> 00:34:09,440
+And then we wanted to understand
+what else we can see.
+
+120
+00:34:09,600 --> 00:34:12,980
+We wanted to build this single graph
+so we could see, is there anything
+
+121
+00:34:12,980 --> 00:34:15,000
+else like the acrocentrics?
+
+122
+00:34:15,000 --> 00:34:19,560
+And this is a heat map that shows us
+at every position, it's every 100
+
+123
+00:34:19,560 --> 00:34:24,480
+KB window in CHM13, how many other
+chromosomes do we see in these
+
+124
+00:34:24,480 --> 00:34:25,180
+alignments?
+
+125
+00:34:25,180 --> 00:34:29,180
+Not just CHM13 itself, but we've
+been able to label all of the HPRC
+
+126
+00:34:29,180 --> 00:34:31,860
+assemblies and we can see
+which ones we see in that set.
+
+127
+00:34:32,020 --> 00:34:36,220
+And you'll notice that the acrocentrics
+very clearly show up, so we'll
+
+128
+00:34:36,220 --> 00:34:37,760
+be able to have a positive control there.
+
+129
+00:34:38,240 --> 00:34:41,120
+You'll also see the pseudo-autosomal
+region, although I believe it's
+
+130
+00:34:41,120 --> 00:34:43,920
+masked on the version of Y that
+we're using, so it might be a little
+
+131
+00:34:43,920 --> 00:34:44,620
+confusing.
+
+132
+00:34:44,620 --> 00:34:47,860
+But the thing that's important for
+this talk is that at the end of
+
+133
+00:34:47,860 --> 00:34:50,760
+almost all chromosomes,
+you'll see this peak.
+
+134
+00:34:51,300 --> 00:34:55,120
+And if you zoom in on a few, you
+see that it's not just a generic
+
+135
+00:34:55,120 --> 00:34:55,820
+thing.
+
+136
+00:34:55,820 --> 00:34:58,520
+And by the way, we're masking
+and ignoring telomeres here.
+
+137
+00:34:58,680 --> 00:35:02,500
+So we're looking just at the
+unique sequence of the chromosome.
+
+138
+00:35:03,020 --> 00:35:06,000
+It's actually not so unique in many
+cases, shared between different
+
+139
+00:35:06,000 --> 00:35:06,700
+chromosomes.
+
+140
+00:35:06,800 --> 00:35:09,020
+This is the acrocentric arms, right?
+
+141
+00:35:09,160 --> 00:35:11,520
+This is chromosome 1, chromosome 4.
+
+142
+00:35:11,800 --> 00:35:14,500
+So there's a particular kind of
+pattern that's unique to every one of
+
+143
+00:35:14,500 --> 00:35:16,900
+the chromosome ends, a
+set of relationships.
+
+144
+00:35:17,220 --> 00:35:19,580
+And so then the next step
+is to try to understand
+
+145
+00:35:20,840 --> 00:35:22,000
+first the scale of that,
+
+146
+00:35:22,640 --> 00:35:25,060
+and then how are the
+relationships working out.
+
+147
+00:35:25,240 --> 00:35:29,630
+So this is an attempt to
+understand how big these
+
+148
+00:35:29,630 --> 00:35:31,870
+putative pseudo-homologous regions are.
+
+149
+00:35:32,030 --> 00:35:34,710
+These are regions that look like they're
+recombining between different non-
+
+150
+00:35:34,710 --> 00:35:35,450
+homologous chromosomes.
+
+151
+00:35:35,950 --> 00:35:40,950
+We do this by going to the bundle,
+collection of every set of HPRC
+
+152
+00:35:40,950 --> 00:35:45,130
+assemblies and every chromosome, and
+we walk in from the telomere until
+
+153
+00:35:45,130 --> 00:35:48,710
+we stop seeing other chromosomes
+in the implicit graph.
+
+154
+00:35:49,150 --> 00:35:53,730
+And at that point, we're on
+just the chromosome origin, and
+
+155
+00:35:53,730 --> 00:35:57,130
+effectively we're marking on
+this plot where that happens.
+
+156
+00:35:57,350 --> 00:36:02,310
+And so you see that on XY acrocentric
+short arms, we go over the
+
+157
+00:36:02,310 --> 00:36:04,530
+500 kb that we were
+considering in this study.
+
+158
+00:36:05,030 --> 00:36:08,990
+Par 2 is in the 300 kb
+range, so we confirm that.
+
+159
+00:36:09,510 --> 00:36:13,730
+But you'll notice that you have a
+distribution of lengths in the tens
+
+160
+00:36:13,730 --> 00:36:18,410
+to hundreds of kb kilobase pairs across
+almost all the chromosomes, with
+
+161
+00:36:18,410 --> 00:36:19,110
+a few exceptions.
+
+162
+00:36:19,330 --> 00:36:21,850
+One, two, three, four, five,
+yeah, seven exceptions.
+
+163
+00:36:22,350 --> 00:36:25,150
+We note they don't seem to be
+mixing like the other ones.
+
+164
+00:36:25,870 --> 00:36:30,350
+And so, of course, we're going to
+build a graph to see this, and yeah,
+
+165
+00:36:31,100 --> 00:36:34,100
+so then we orbited this hairball
+for a minute and decided we couldn't
+
+166
+00:36:34,100 --> 00:36:37,520
+understand anything that was
+going on in here directly.
+
+167
+00:36:37,640 --> 00:36:41,040
+This is not as clear as the combination
+of acrocentrics that we saw,
+
+168
+00:36:41,560 --> 00:36:44,600
+but it does make one
+component, which is nice.
+
+169
+00:36:45,240 --> 00:36:49,300
+And to understand what's going on
+inside of it, we're going to untangle
+
+170
+00:36:49,300 --> 00:36:50,460
+it in some sense.
+
+171
+00:36:50,580 --> 00:36:54,300
+We're going to take bundles of
+the contigs from each one of the
+
+172
+00:36:54,300 --> 00:36:56,640
+chromosomes and then
+compare them to each other.
+
+173
+00:36:56,840 --> 00:37:01,340
+And so we have this bundle, for
+example, from chromosome 8q, and we can
+
+174
+00:37:01,340 --> 00:37:04,620
+compare it to chromosome 10q
+within the space of this graph
+
+175
+00:37:05,220 --> 00:37:09,760
+by effectively thinking about the
+overlap of those two bundles, like how
+
+176
+00:37:09,760 --> 00:37:13,680
+much of the overlap we use a Jaccard
+metric, which is asking how many
+
+177
+00:37:13,680 --> 00:37:17,380
+base pairs on the intersection of
+those two versus the union of them.
+
+178
+00:37:18,060 --> 00:37:20,640
+So that gives us this way of
+looking at the interchromosomal
+
+179
+00:37:20,640 --> 00:37:22,320
+relationships that's actually pangenomic.
+
+180
+00:37:22,420 --> 00:37:24,060
+It's considering the whole set of genomes.
+
+181
+00:37:26,110 --> 00:37:30,590
+Yielding, and that yields this heat
+map, actually, which is, we have
+
+182
+00:37:30,590 --> 00:37:33,710
+this kind of phylogenetic relationship,
+which we're, this is just for
+
+183
+00:37:33,710 --> 00:37:34,410
+grouping.
+
+184
+00:37:34,410 --> 00:37:37,350
+We don't really know or think
+directly that there is a phylogenetic
+
+185
+00:37:37,350 --> 00:37:39,510
+relationship between
+the subtelomeric ends.
+
+186
+00:37:40,270 --> 00:37:43,250
+But you see that there is a very,
+very distinct cladal structure.
+
+187
+00:37:43,450 --> 00:37:45,130
+It's not just one big blob.
+
+188
+00:37:45,390 --> 00:37:48,110
+There are groups of
+things that fit together.
+
+189
+00:37:48,590 --> 00:37:50,270
+There are these sets.
+
+190
+00:37:50,390 --> 00:37:52,930
+This is the acrocentrics again, and so on.
+
+191
+00:37:53,070 --> 00:37:57,570
+And to give a little more definition
+to this, we decided to use a
+
+192
+00:37:57,570 --> 00:38:00,890
+community assignment algorithm
+that works on top of a graph.
+
+193
+00:38:01,070 --> 00:38:04,250
+In this case, the graph is actually
+defined by the similarity metric
+
+194
+00:38:04,250 --> 00:38:04,950
+itself.
+
+195
+00:38:04,950 --> 00:38:08,150
+So there's weighted edges that say,
+how similar are my two chromosome,
+
+196
+00:38:08,410 --> 00:38:10,570
+two subtelomeric PHRs to each other?
+
+197
+00:38:10,570 --> 00:38:14,970
+And the goal is to maximize the in-group similarity while minimizing the
+
+198
+00:38:14,970 --> 00:38:15,710
+out-of-group similarity.
+
+199
+00:38:16,130 --> 00:38:20,550
+And in doing this, we then result in
+a set of 15 different communities
+
+200
+00:38:21,210 --> 00:38:23,750
+that describe the space here.
+
+201
+00:38:23,890 --> 00:38:27,010
+And you can see that there are still
+inter-community relationships in
+
+202
+00:38:27,010 --> 00:38:30,810
+many cases, but we are kind of maximizing
+the amount of inter-community
+
+203
+00:38:30,810 --> 00:38:31,510
+relationship.
+
+204
+00:38:32,570 --> 00:38:33,610
+What are some of these?
+
+205
+00:38:33,950 --> 00:38:38,090
+Just a little taste, because there's
+41 of them, so it's very hard to
+
+206
+00:38:38,090 --> 00:38:38,790
+look at all of them.
+
+207
+00:38:39,030 --> 00:38:42,070
+On 4q and 10q, there are these
+really large repeats of Dux4.
+
+208
+00:38:42,270 --> 00:38:47,180
+This is known as a relationship
+with cancer and oncological
+
+209
+00:38:47,180 --> 00:38:47,880
+development.
+
+210
+00:38:48,240 --> 00:38:50,140
+And you can see these repeats here.
+
+211
+00:38:51,940 --> 00:38:56,840
+There's these tubulin genes
+that are at the end of 10p
+
+212
+00:38:56,840 --> 00:38:57,580
+and 18p.
+
+213
+00:38:58,610 --> 00:39:01,230
+See this repeat structure there,
+but only one on the other.
+
+214
+00:39:02,330 --> 00:39:05,870
+And there's a lot of olfactory
+receptor genes, actually, and a lot of
+
+215
+00:39:05,870 --> 00:39:07,410
+pseudogenes as well in these regions.
+
+216
+00:39:07,630 --> 00:39:11,230
+And I'd like to talk a little bit
+more about the gene enrichment, but
+
+217
+00:39:11,230 --> 00:39:12,790
+I think that work is
+actually still ongoing.
+
+218
+00:39:13,090 --> 00:39:17,650
+What you see is that there does appear
+to be an enrichment for cellular
+
+219
+00:39:17,650 --> 00:39:21,830
+sensory kind of things and
+olfactory receptor genes.
+
+220
+00:39:23,540 --> 00:39:25,280
+So what's going on?
+
+221
+00:39:25,440 --> 00:39:28,780
+Why is this phenomenon very ubiquitous?
+
+222
+00:39:28,860 --> 00:39:29,900
+It must be maintained somehow.
+
+223
+00:39:30,800 --> 00:39:32,260
+I think it's important to consider
+
+224
+00:39:32,920 --> 00:39:36,840
+what's happening during meiosis and
+when recombination actually occurs.
+
+225
+00:39:37,160 --> 00:39:41,820
+So you have this bouquet stage
+in zygotene, when all the
+
+226
+00:39:41,820 --> 00:39:45,040
+telomeres are clustered or close
+together on the nuclear envelope.
+
+227
+00:39:45,300 --> 00:39:47,900
+The telomeres are actually on
+this manifold during meiosis.
+
+228
+00:39:48,620 --> 00:39:51,140
+And this is in maize, so it's not human.
+
+229
+00:39:51,220 --> 00:39:53,100
+These are the telomeres,
+centromeres, and DNA.
+
+230
+00:39:53,760 --> 00:39:55,940
+This is another view of
+it, the zygotene here.
+
+231
+00:39:56,200 --> 00:40:00,420
+The telomeres are labeled in red, a
+little hard to see, because I guess
+
+232
+00:40:00,420 --> 00:40:01,360
+they're overlapping the green.
+
+233
+00:40:01,680 --> 00:40:04,220
+This is the cohesin structure
+that's being labeled.
+
+234
+00:40:04,600 --> 00:40:09,100
+And then this bouquet, it dissolves
+a bit in pachytene, but you still
+
+235
+00:40:09,100 --> 00:40:13,300
+have this anchoring on the nuclear
+envelope during recombination.
+
+236
+00:40:13,500 --> 00:40:18,480
+So you have the opportunity for
+recombination here, because you're
+
+237
+00:40:18,480 --> 00:40:23,180
+proximal, you're forced to be on
+this manifold, and the sequences are
+
+238
+00:40:23,180 --> 00:40:23,940
+homologous.
+
+239
+00:40:24,080 --> 00:40:27,440
+And because you're physically in a
+similar place, there's the opportunity
+
+240
+00:40:27,440 --> 00:40:30,120
+for common function to be
+maintained and developed.
+
+241
+00:40:32,020 --> 00:40:35,420
+And so then we thought we'd make this
+a little more quantitative in the
+
+242
+00:40:35,420 --> 00:40:39,180
+sense of actual 3D organization of
+the cell, and so we went to Hi-C
+
+243
+00:40:39,180 --> 00:40:39,880
+data.
+
+244
+00:40:39,920 --> 00:40:41,620
+This is kind of crazy.
+
+245
+00:40:41,620 --> 00:40:44,700
+It's like a repetition of the whole
+project just on mouse in order to
+
+246
+00:40:44,700 --> 00:40:45,400
+see this.
+
+247
+00:40:45,400 --> 00:40:49,140
+So we built the PHRs from scratch,
+and then we're looking at
+
+248
+00:40:49,140 --> 00:40:51,060
+the Jaccard similarity.
+
+249
+00:40:51,460 --> 00:40:55,700
+So it's a metric of sequence similarity
+versus physical distance implied
+
+250
+00:40:55,700 --> 00:40:58,420
+by the contact rate.
+
+251
+00:40:58,620 --> 00:41:01,040
+And you can see that there is
+this quite strong correlation.
+
+252
+00:41:01,260 --> 00:41:06,160
+Once you get above zero similarity,
+when you start to share,
+
+253
+00:41:06,300 --> 00:41:08,100
+then you see this kind of trend.
+
+254
+00:41:08,200 --> 00:41:11,900
+And also that this is amplified
+in the bouquet stage.
+
+255
+00:41:12,100 --> 00:41:13,500
+So it makes perfect sense.
+
+256
+00:41:14,300 --> 00:41:15,140
+So it's in mouse.
+
+257
+00:41:15,240 --> 00:41:16,800
+But then we also did it
+in human, of course.
+
+258
+00:41:17,260 --> 00:41:21,860
+So here we have effectively
+observing the same thing.
+
+259
+00:41:21,940 --> 00:41:22,640
+This is with Pore-C.
+
+260
+00:41:22,720 --> 00:41:27,400
+So it's kind of multi-fragment
+Hi-C and maps very well to these
+
+261
+00:41:27,400 --> 00:41:28,100
+regions.
+
+262
+00:41:28,380 --> 00:41:31,440
+And we also have the same thing
+in regular Hi-C on CHM13.
+
+263
+00:41:34,450 --> 00:41:36,990
+And this does also match
+our community assignment.
+
+264
+00:41:37,250 --> 00:41:40,770
+So we see some structure that matches
+the communities we've assigned.
+
+265
+00:41:41,010 --> 00:41:44,710
+And you can, I think, appreciate
+that inside of these communities you
+
+266
+00:41:44,710 --> 00:41:48,710
+have a slightly stronger rate
+of contact than outside of it.
+
+267
+00:41:50,000 --> 00:41:54,940
+And so finally, just to close,
+we did attempt to see if
+
+268
+00:41:54,940 --> 00:41:55,920
+we could catch this in the act.
+
+269
+00:41:56,060 --> 00:41:59,400
+And by looking at a multi-generational pedigree from WashU,
+
+270
+00:42:00,650 --> 00:42:04,830
+this plot is showing us
+effectively untangling.
+
+271
+00:42:04,970 --> 00:42:09,830
+So we built a graph of
+a child and actually
+
+272
+00:42:09,830 --> 00:42:11,050
+their mother's haplotypes.
+
+273
+00:42:11,830 --> 00:42:16,510
+And in the maternal haplotype,
+we're asking, which one of
+
+274
+00:42:16,510 --> 00:42:19,770
+the mother's haplotypes are we seeing?
+
+275
+00:42:19,870 --> 00:42:21,870
+So we're effectively trying
+to measure recombination.
+
+276
+00:42:22,410 --> 00:42:25,430
+And so you have haplotype 1
+and haplotype 2 of the mother.
+
+277
+00:42:25,610 --> 00:42:30,250
+And this is showing how would I
+reconstruct the haplotypes of the child
+
+278
+00:42:30,250 --> 00:42:31,510
+relative to those of the mother.
+
+279
+00:42:31,630 --> 00:42:32,710
+That's effectively what's going on.
+
+280
+00:42:32,870 --> 00:42:34,870
+So many of them, there's no recombinant.
+
+281
+00:42:34,970 --> 00:42:35,970
+You just have a single chunk.
+
+282
+00:42:36,310 --> 00:42:39,790
+But we see some kind of tantalizing
+signals, like, for example, here,
+
+283
+00:42:39,970 --> 00:42:41,290
+which I'll zoom in on,
+
+284
+00:42:42,010 --> 00:42:46,410
+that where you have what looks like
+ongoing gene conversion between
+
+285
+00:42:46,410 --> 00:42:48,830
+9p and 3p.
+
+286
+00:42:49,370 --> 00:42:52,570
+And this matches also the
+community patterns we see.
+
+287
+00:42:52,770 --> 00:42:56,730
+So we think this is some
+positive evidence for this.
+
+288
+00:42:56,890 --> 00:42:59,990
+But I wouldn't say it's conclusive,
+because unfortunately, when you look
+
+289
+00:42:59,990 --> 00:43:02,390
+at much worse quality assemblies,
+you see a lot more of this.
+
+290
+00:43:03,670 --> 00:43:08,310
+So it is compatible, but maybe
+not definitive proof of an actual
+
+291
+00:43:08,310 --> 00:43:09,030
+recombination event.
+
+292
+00:43:09,250 --> 00:43:12,390
+But it would make a lot of sense,
+I think, that you have many gene
+
+293
+00:43:12,390 --> 00:43:15,410
+conversion events in regions that
+are physically close to each other
+
+294
+00:43:15,410 --> 00:43:17,010
+during recombination.
+
+295
+00:43:18,040 --> 00:43:22,790
+And so in conclusion, there
+are pseudo-homologous
+
+296
+00:43:22,790 --> 00:43:26,730
+sub-telomeric regions that are the
+near ubiquitous feature of human sub-
+
+297
+00:43:26,730 --> 00:43:27,430
+telomeres.
+
+298
+00:43:28,410 --> 00:43:31,910
+For lack of time, I didn't talk about
+the backstory behind this, but we
+
+299
+00:43:31,910 --> 00:43:34,810
+have a lot of evidence over the years,
+starting in the early 2000s and
+
+300
+00:43:34,810 --> 00:43:37,770
+with cytogenetics, that this is a thing.
+
+301
+00:43:37,790 --> 00:43:42,290
+But this is the first opportunity we
+had to systematically observe it at
+
+302
+00:43:42,290 --> 00:43:43,550
+a population scale.
+
+303
+00:43:43,750 --> 00:43:44,450
+In humans.
+
+304
+00:43:44,450 --> 00:43:49,190
+And they cover around 3.5 megabase
+pairs, excluding the acrocentrics
+
+305
+00:43:49,190 --> 00:43:50,890
+and the PARs on X and Y.
+
+306
+00:43:51,050 --> 00:43:54,410
+And so this is not an insignificant
+part of the human genome.
+
+307
+00:43:55,390 --> 00:43:59,350
+We see that sequence homology mirrors
+physical proximity in a nuclear
+
+308
+00:43:59,350 --> 00:44:01,770
+organization, which I think
+is really fascinating.
+
+309
+00:44:01,990 --> 00:44:04,410
+And I wonder why, actually.
+
+310
+00:44:04,550 --> 00:44:07,090
+It's a chicken or egg question.
+
+311
+00:44:07,210 --> 00:44:10,790
+Is it that the sequence homology
+is actually driving the physical
+
+312
+00:44:10,790 --> 00:44:14,810
+proximity, or is it the homology
+just a result of the fact that the
+
+313
+00:44:14,810 --> 00:44:16,690
+proximity is there?
+
+314
+00:44:17,690 --> 00:44:21,990
+And as you just saw, a completely
+assembled human pedigree suggests that
+
+315
+00:44:21,990 --> 00:44:25,230
+there may be ongoing and frequent
+recombination exchange in these regions.
+
+316
+00:44:26,250 --> 00:44:29,050
+So with that, I'd like to
+thank my collaborators on this.
+
+317
+00:44:29,170 --> 00:44:30,630
+I mentioned Andrea and Angela.
+
+318
+00:44:31,010 --> 00:44:34,910
+Heather Mefford, who's Angela's advisor,
+actually has a wonderful review
+
+319
+00:44:34,910 --> 00:44:37,930
+on this from 2002, and we
+replicated her results.
+
+320
+00:44:38,170 --> 00:44:40,030
+Although she just took a tiny slice
+
+321
+00:44:41,610 --> 00:44:42,310
+of the homology she had available.
+
+322
+00:44:42,430 --> 00:44:43,850
+I also want to thank Rob Williams,
+
+323
+00:44:44,950 --> 00:44:49,390
+Piotr Prins, and Vincenza Colonna at
+UTHSC, and the Pangenomes Working
+
+324
+00:44:49,390 --> 00:44:51,810
+Group for generating and
+understanding this data.
+
+325
+00:44:52,130 --> 00:44:52,830
+Thanks.
+
+326
+00:44:59,710 --> 00:45:01,450
+Okay, time for questions.
+
+327
+00:45:10,370 --> 00:45:11,130
+Thanks, Eric.
+
+328
+00:45:11,230 --> 00:45:11,990
+That was a really good talk.
+
+329
+00:45:12,590 --> 00:45:14,450
+I'm curious about your Hi-C analysis.
+
+330
+00:45:14,850 --> 00:45:19,690
+Hi-C is notoriously bad for
+measuring interchromosomal
+
+331
+00:45:19,690 --> 00:45:20,390
+contacts.
+
+332
+00:45:21,230 --> 00:45:26,090
+And also, you know, really
+bad at finding telomeric
+
+333
+00:45:26,090 --> 00:45:26,790
+contacts.
+
+334
+00:45:27,290 --> 00:45:31,750
+So I'm wondering how you are trying,
+you know, how you're able to get
+
+335
+00:45:31,750 --> 00:45:32,450
+that signal.
+
+336
+00:45:32,470 --> 00:45:34,650
+So I admitted this.
+
+337
+00:45:34,770 --> 00:45:38,970
+We had to completely reanalyze all
+these data sets because usually
+
+338
+00:45:38,970 --> 00:45:41,690
+they were excluding
+mapping quality zero reads.
+
+339
+00:45:41,930 --> 00:45:44,570
+So we've done something that we
+probably should try to correct for, but
+
+340
+00:45:44,570 --> 00:45:48,970
+we randomly assign the reads to
+
+341
+00:45:48,970 --> 00:45:50,110
+a location.
+
+342
+00:45:50,250 --> 00:45:53,250
+If they map exactly the same between
+different locations, we randomly
+
+343
+00:45:53,250 --> 00:45:54,010
+assign them to one.
+
+344
+00:45:56,390 --> 00:45:57,750
+So that's the most principled
+way of dealing with this.
+
+345
+00:45:57,850 --> 00:46:01,330
+The fact we can see it in Pore-C I
+think should be reassuring because
+
+346
+00:46:01,330 --> 00:46:04,370
+you have many more fragments
+together that help you to see it.
+
+347
+00:46:04,490 --> 00:46:05,910
+But that's a fact.
+
+348
+00:46:06,050 --> 00:46:09,570
+We couldn't see any of the signal
+when we took the deposited data sets.
+
+349
+00:46:09,610 --> 00:46:11,870
+We had to realign them
+in order to do this.
+
+350
+00:46:14,270 --> 00:46:15,510
+That was really awesome.
+
+351
+00:46:16,390 --> 00:46:20,410
+I have a question, if you can wax a
+little poetic maybe, about whether
+
+352
+00:46:20,410 --> 00:46:25,390
+there's, whether you think possibly
+that the sequence homology
+
+353
+00:46:25,390 --> 00:46:30,270
+actually maintains non-random
+distribution of the chromosomes in
+
+354
+00:46:30,270 --> 00:46:34,490
+the zygotene, or if it's simply
+the non-random positioning in the
+
+355
+00:46:34,490 --> 00:46:37,610
+zygotene that elevates the rate of
+
+356
+00:46:38,870 --> 00:46:39,570
+homology.
+
+357
+00:46:39,770 --> 00:46:41,290
+The chicken or egg question again.
+
+358
+00:46:42,660 --> 00:46:44,000
+It's not just zygotene.
+
+359
+00:46:44,320 --> 00:46:48,340
+We appear to see this consistently
+at other stages of the cell cycle.
+
+360
+00:46:48,520 --> 00:46:52,580
+In mouse we had zygotene
+meiotic Hi-C, in human no.
+
+361
+00:46:53,150 --> 00:46:57,690
+I wonder if transcription generates RNA
+
+362
+00:46:58,110 --> 00:47:02,850
+and an RNA can invade DNA and
+that that generates a kind of,
+
+363
+00:47:02,850 --> 00:47:03,690
+I
+
+364
+00:47:04,460 --> 00:47:08,460
+guess a soup might be the right
+word, but not exactly soup that
+
+365
+00:47:08,460 --> 00:47:11,440
+encourages the physical
+proximity of these regions.
+
+366
+00:47:12,120 --> 00:47:16,100
+That might have some biological utility
+because then things that have the
+
+367
+00:47:16,100 --> 00:47:19,920
+same function end up in the
+same kind of part of the cell.
+
+368
+00:47:20,060 --> 00:47:22,480
+But that may be a story for another day.
+
+369
+00:47:23,120 --> 00:47:25,780
+If you look at this across all
+segmental duplications, not just the sub-
+
+370
+00:47:25,780 --> 00:47:29,720
+telomeres and in response to Flores'
+point, be a little more careful
+
+371
+00:47:29,720 --> 00:47:31,660
+about the control of the Hi-C data.
+
+372
+00:47:32,680 --> 00:47:34,440
+I have a question over here.
+
+373
+00:47:36,160 --> 00:47:37,340
+Let's take one more quick one.
+
+374
+00:47:37,360 --> 00:47:38,060
+I'm over here.
+
+375
+00:47:39,060 --> 00:47:43,060
+You showed some homology between
+the P and the P and the Q and the Q.
+
+376
+00:47:43,260 --> 00:47:46,800
+Do you have any examples of homology
+between a P arm and a Q arm?
+
+377
+00:47:48,480 --> 00:47:49,800
+Yeah, I do actually.
+
+378
+00:47:53,720 --> 00:47:54,420
+That's what I picked.
+
+379
+00:47:54,420 --> 00:47:55,460
+But I think we can find a few
+
+380
+00:47:56,120 --> 00:47:57,220
+instances quickly here.
+
+381
+00:47:57,640 --> 00:48:00,000
+What kind of implication do you
+think that has because they're like
+
+382
+00:48:00,000 --> 00:48:01,800
+opposite orientations then?
+
+383
+00:48:02,040 --> 00:48:04,540
+I don't think that this cell really knows.
+
+384
+00:48:05,040 --> 00:48:08,300
+Frankly, the acrocentrics, yeah,
+because they're kind of embedded in the
+
+385
+00:48:08,300 --> 00:48:09,000
+nucleolus.
+
+386
+00:48:09,060 --> 00:48:13,840
+For example, this is a
+cluster you have P and Q
+
+387
+00:48:13,840 --> 00:48:14,840
+inside of it.
+
+388
+00:48:15,740 --> 00:48:20,040
+It is true, and we probably should
+make a test to see if the Qs tend
+
+389
+00:48:20,040 --> 00:48:22,060
+to be closer to Qs and P's
+tend to be closer to P's.
+
+390
+00:48:23,720 --> 00:48:25,940
+I think it's bound to something
+actually because you tend to see the
+
+391
+00:48:25,940 --> 00:48:29,260
+stronger relationships between the
+same arm, the shorter or longer one.
+
+392
+00:48:29,380 --> 00:48:33,060
+To me, it's a bit of a mystery
+how that would be organized.
+
+393
+00:48:34,460 --> 00:48:35,160
+Okay, great.
+
+394
+00:48:35,220 --> 00:48:35,920
+Let's thank Eric.
+
+395
+00:48:35,940 --> 00:48:36,640
+Thank you.
+
