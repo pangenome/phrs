@@ -10,7 +10,7 @@ make            # or: bash compile.sh
 xdg-open paper.pdf
 ```
 
-Produces `paper.pdf` (~37 pages, ~2 MB).
+Produces `paper.pdf` (~34 pages, ~2.1 MB).
 
 ## Dependencies
 
@@ -70,6 +70,17 @@ pdflatex paper      # pass 2: resolve citations
 pdflatex paper      # pass 3: resolve cross-references
 ```
 
+`compile.sh` uses `set -euo pipefail`, so the build **aborts on the first
+error**. A consequence worth knowing: if pass 1 dies, bibtex and passes 2–3
+never run, so the build looks like it has hundreds of "undefined reference"
+errors when the real problem is a single fatal error earlier (see
+Troubleshooting → Unicode). Always judge ref/citation resolution from the
+**final** pass, i.e. `paper.log`, not from the multi-pass `compile.sh` stdout:
+
+```bash
+grep -c 'undefined' paper.log     # expect 0
+```
+
 ### Option 2 — direct script
 
 ```bash
@@ -103,46 +114,84 @@ paper_prep/submission/
   paper.tex               — single self-contained LaTeX source
   jnl.cls                 — Springer Nature class (bundled)
   mathphys.bst            — bibliography style (bundled)
-  bibliography.bib        — 76 cited references (filtered from REFERENCES_v6.bib)
+  bibliography.bib        — 76 entries (54 cited in main + 33 in Methods)
   Makefile                — `make` builds paper.pdf
   compile.sh              — pdflatex -> bibtex (main + Meth + Supp) -> pdflatex x 2
-  BUILD_LOG.md            — compile log + 10-check validation evidence
+  BUILD_LOG.md            — compile log (predates the 5-figure restructure; stale)
   README.md               — this file
   fig/
-    MainFigures/          — Figure1.pdf ... Figure4.pdf
-    ExtendedDataFigures/  — ED_Fig1.pdf ... ED_Fig7.pdf
+    MainFigures/          — Fig1*.png … Fig5*.png (slide-derived, multi-panel)
+    ExtendedDataFigures/  — ED_Fig1_mouse_zygotene.png (the only ED figure used);
+                            ED_Fig1.pdf … ED_Fig7.pdf are leftover and unused
 ```
 
-## Figure provenance
+## Figure structure and provenance
 
-| Submission file                          | Source                                                |
-|------------------------------------------|-------------------------------------------------------|
-| `fig/MainFigures/Figure1.pdf`            | `paper_prep/figures/fig1/figure_fig1.pdf`             |
-| `fig/MainFigures/Figure2.pdf`            | `paper_prep/figures/fig2/figure_fig2.pdf`             |
-| `fig/MainFigures/Figure3.pdf`            | `paper_prep/figures/fig3/figure_fig3.pdf`             |
-| `fig/MainFigures/Figure4.pdf`            | `paper_prep/figures/fig4/figure_fig4.pdf`             |
-| `fig/ExtendedDataFigures/ED_Fig1.pdf`    | `paper_prep/figures/ed1/figure_ed1.pdf`               |
-| `fig/ExtendedDataFigures/ED_Fig2.pdf`    | `paper_prep/figures/ed2/figure_ed2.pdf`               |
-| `fig/ExtendedDataFigures/ED_Fig3.pdf`    | `paper_prep/figures/ed3/figure_ed3.pdf`               |
-| `fig/ExtendedDataFigures/ED_Fig4.pdf`    | `paper_prep/figures/ed4/figure_ed4.pdf`               |
-| `fig/ExtendedDataFigures/ED_Fig5.pdf`    | `paper_prep/figures/ed5/figure_ed5.pdf`               |
-| `fig/ExtendedDataFigures/ED_Fig6.pdf`    | `paper_prep/figures/ed8/figure_ed8.pdf` (renumbered)  |
-| `fig/ExtendedDataFigures/ED_Fig7.pdf`    | `paper_prep/figures/nj_tree_arms/nj_tree_annotated.pdf` |
+The manuscript narrative follows the BoG 2026 talk. The **source of truth** for
+the figures and the story is the talk deck and its transcript:
+
+- `paper_prep/paper figures for Concerted evolution and unorthodox recombination of human subtelomeres.pptx`
+- `paper_prep/Session7-PopulationGenomics.en.srt`
+
+Five main figures plus one Extended Data figure, each built directly from
+specific deck slides:
+
+| Figure | Panels (files in `fig/`)                                                            | Deck slides |
+|--------|-------------------------------------------------------------------------------------|-------------|
+| **Fig 1** | `Fig1a_genomewide.png`, `Fig1b_lengths.png`                                      | 3, 4        |
+| **Fig 2** | `Fig2a_pggb_layout.png` (top), `Fig2b_tree_jaccard.png` + `Fig2c_community_jaccard.png` (below) | 6, 10, 12 |
+| **Fig 3** | `Fig3a_C1_chr4q.png`+`Fig3a_C1_chr10q.png`; `Fig3b_C2_chr10p.png`+`Fig3b_C2_chr18p.png`; `Fig3c_C11_chr5q.png`+`Fig3c_C11_chr6q.png` | 14, 15, 16 |
+| **Fig 4** | `Fig4a_human_scatter.png`, `Fig4b_porec_community.png`                            | 21, 22      |
+| **Fig 5** | `Fig5_pedigree_untangle.png`                                                      | 24          |
+| **ED 1**  | `ExtendedDataFigures/ED_Fig1_mouse_zygotene.png`                                  | 20          |
+
+> **ASSET STATUS — placeholders.** All figure files above are PNGs extracted
+> from the deck slides (some still carry the speaker-note annotations baked into
+> the slide). They make the PDF compile and review correctly, but
+> **publication-quality vector versions must be regenerated** from the per-figure
+> scripts under `paper_prep/figures/` (`fig1`…`fig4`, etc.).
+
+The earlier reviewer-driven analyses (within-community heterogeneity,
+population/$F_{\mathrm{ST}}$ structure, the full 3D forest plot and controls,
+CEPH1463 cross-assembler validation, RPE-1, gene enrichment) are **retained as
+text** in the body and Methods but no longer have figures. Only `fig:fig1`–
+`fig:fig5` and `fig:ed1` (mouse) exist — do **not** re-introduce `\ref{fig:ed2}`
+and friends. The original `ExtendedDataFigures/ED_Fig1.pdf`…`ED_Fig7.pdf` remain
+on disk but are unreferenced and can be deleted.
 
 ## Bibliography
 
-`bibliography.bib` contains exactly **76 entries**, filtered from `paper_prep/synthesis/REFERENCES_v6.bib` (374 entries total) to match the 76 cited bibkeys listed in `paper_prep/synthesis/RENDERED_REFERENCES_v6.md`.
+`bibliography.bib` contains **76 entries**. After the restructure the paper
+cites **54 keys in the main bibliography** (`\cite{...}`) and **33 in Methods
+References** (`\citeMeth{...}`, emitted as a separate `multibib` section in
+`unsrt` style); some keys are cited in both. Entries in the `.bib` that are no
+longer cited (e.g. `hao2024snul`, `bouquet_ChenCEP164Cilia2025`, which were only
+in dropped Extended Data captions) are harmlessly ignored by bibtex.
 
-- Main bibliography: `mathphys` style (Springer Nature numerical superscripts).
-- Methods References: emitted by `multibib` into a separate section, `unsrt` style. Methods-only citations use `\citeMeth{...}` (16 keys); main-text citations use `\cite{...}` (60 keys).
+## Source of truth and editing
 
-## Source of truth
-
-Content is a faithful transcription of `paper_prep/synthesis/NATURE_DRAFT_v6.md` (200-word abstract + 3299-word main + 1591-word Methods). Figure captions are taken from the NATURE_DRAFT_v6.md `## Figure list` section.
-
-To re-sync content after editing the markdown source, dispatch a workgraph task pointing at the updated `NATURE_DRAFT_v6.md`; do **not** hand-edit `paper.tex` unless the change is purely typographic.
+The narrative is driven by the deck + transcript listed under *Figure structure
+and provenance* above. `paper.tex` is now hand-edited directly to match that
+narrative — there is no markdown→LaTeX re-sync step and no workgraph dispatch.
+(The previous `paper_prep/synthesis/NATURE_DRAFT_v6.md` content was reorganised
+into this 5-figure structure and is superseded as the layout authority.)
 
 ## Troubleshooting
+
+### `! LaTeX Error: Unicode character ... not set up for use with LaTeX.`
+
+A literal non-ASCII character (commonly `≥`, `×`, `→`) reached `pdflatex`. The
+usual source is a `note`/title field in `bibliography.bib` — `mathphys.bst`
+prints `note` fields, so any raw Unicode there breaks the build. Replace with a
+LaTeX macro: `$\geq$`, `$\times$`, `$\rightarrow$`. Find offenders with:
+
+```bash
+grep -nP '[^\x00-\x7F]' bibliography.bib
+```
+
+Because of `set -e`, this fatal error in pass 1 makes every later cross-ref look
+undefined; fix the Unicode and rebuild before chasing "undefined reference"
+warnings.
 
 ### `! LaTeX Error: File 'jnl.cls' not found.`
 
@@ -150,7 +199,12 @@ Verify you are running `make` / `compile.sh` from inside `paper_prep/submission/
 
 ### `Citation 'foo' on page N undefined`
 
-A bibkey is referenced in `paper.tex` but missing from `bibliography.bib`. Cross-check against `paper_prep/synthesis/RENDERED_REFERENCES_v6.md`. The 76 cited keys are listed there.
+A bibkey is referenced in `paper.tex` but missing from `bibliography.bib`. Add the entry, or fix the typo'd key.
+
+### `Reference 'fig:edN' undefined`
+
+Only `fig:ed1` (the mouse figure) exists; `fig:ed2`…`fig:ed11` were removed when
+the Extended Data was reduced to a single figure. Do not reference them.
 
 ### `Package multibib Error`
 
@@ -166,13 +220,18 @@ Known interaction between `jnl.cls`, `multibib`, and `natbib`. The source uses `
 
 ## Author block status
 
-The current `\author*[...]` block lists Andrea Guarracino (TGen) and Erik Garrison (UTHSC) as co-corresponding authors. A `% TODO: complete co-author list and affiliations` comment marks where the full author and affiliation list should be filled in before submission.
+The `\author*[...]` block lists three authors: **Andrea Guarracino** (TGen,
+co-corresponding), **Angela Gyamfi** (St. Jude), and **Erik Garrison** (UTHSC,
+co-corresponding) — matching the BoG talk credits.
 
-The `\subsection*{Acknowledgments}`, `\subsection*{Author Contributions Statement}`, and `\subsection*{Competing Interests Statement}` blocks are TODO stubs.
+- `\subsection*{Acknowledgments}` — **filled** (Heather Mefford; Rob Williams,
+  Pjotr Prins, Vincenza Colonna; HPRC Pangenomes Working Group).
+- `\subsection*{Author Contributions}` and `\subsection*{Competing Interests}`
+  remain TODO stubs (not fabricated; confirm CRediT roles with the authors).
 
 ## Journal-portfolio switching
 
-`jnl.cls` ships several Springer Nature reference styles. To switch (e.g., for a non-Nature SN journal), change line 8 of `paper.tex`:
+`jnl.cls` ships several Springer Nature reference styles. To switch (e.g., for a non-Nature SN journal), change the `\documentclass` line of `paper.tex`:
 
 ```latex
 \documentclass[pdflatex,mathphys]{jnl}       % current (Math & Phys Sci)
@@ -183,9 +242,3 @@ The `\subsection*{Acknowledgments}`, `\subsection*{Author Contributions Statemen
 % \documentclass[pdflatex,aps]{jnl}             % American Physical Society
 % \documentclass[pdflatex,basic]{jnl}           % Basic SN / Chemistry
 ```
-
-See the PGGB template (`/home/guarracino/Downloads/_PGGB__Building_pangenome_graphs/main.tex` lines 18–34) for the full menu.
-
-## Validation evidence
-
-`BUILD_LOG.md` records 10 validation checks: exit-0 compile, no undefined refs, jnl documentclass, jnl.cls and mathphys.bst bundled, 76 bib entries, all 76 bibkeys cited, 11 figure PDFs present, Methods References section emitted, and detex word count check. Open it after every rebuild that changes structure.
