@@ -50,43 +50,60 @@
 \affil[3]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
 
 \abstract{
-Human subtelomeric regions are among the most dynamic and structurally complex parts of our genome, yet their interchromosomal relationships have remained difficult to characterize because of the limitations of both assembly completeness and alignment methodology. Here we present the most comprehensive survey of subtelomeric sequence relationships to date, leveraging 466 near-complete haplotype assemblies from the second release of the Human Pangenome Reference Consortium. To analyze these regions without chromosomal partitioning or positional bias, we introduce the implicit pangenome graph, a reference-free all-to-all alignment that samples approximately 12\% of haplotype pairs and is queried through its transitive closure without ever being built, so that every haplotype serves as its own reference. This reveals extended interchromosomal homology, spanning tens to hundreds of kilobases, at nearly all subtelomeres, comparable in scale to canonical pseudohomologous systems such as PAR2 and expanding the known pseudohomologous regions of the human genome to almost all chromosome ends (3.5 Mb outside the acrocentrics and pseudoautosomal regions). These regions partition into communities that recover every established case of inter-chromosomal subtelomere homology, including the pseudoautosomal pairs, the acrocentric short arms, 10p/18p and the 4q/10q DUX4 system, and reveal new associations such as a tightly linked clade of 22q, 21q, 19q, 1q, 13q and 17q. In both human and mouse, arms that share a community make more three-dimensional contact than arms in different communities. In mouse, where germline-stage Hi-C is available, this contact is strongest at the meiotic bouquet, when telomeres cluster at the nuclear envelope. Finally, in a human telomere-to-telomere pedigree we directly observe inter-chromosomal exchange occurring within these communities. Pseudohomologous subtelomeric regions are thus a near-ubiquitous feature of human chromosomes, maintained by ongoing recombination organized by the three-dimensional architecture of meiosis, and observed here at population scale in complete genomes for the first time.
+Human subtelomeres are among the most dynamic regions of the genome, yet their relationships across chromosomes have been hard to chart, limited by incomplete assemblies and by alignment that partitions sequence chromosome by chromosome. Using 466 near-complete haplotype assemblies from the second Human Pangenome Reference Consortium release, we map these relationships without such partitioning, through an implicit pangenome graph: a reference-free, all-to-all alignment that samples about 12\% of haplotype pairs and is queried directly, without ever building the graph. We find extended interchromosomal homology at nearly all subtelomeres, spanning tens to hundreds of kilobases, comparable in scale to the pseudoautosomal region PAR2 and totalling 3.5 Mb outside the acrocentrics and sex chromosomes. These pseudohomologous regions partition into communities that recover every known case of subtelomeric homology (the pseudoautosomal pairs, the acrocentric short arms, 10p/18p and the 4q/10q DUX4 system) and uncover new ones, including a tightly linked clade of six q-arms. Across human and mouse three-dimensional genome maps, arms sharing a community contact one another more often; in mouse, where germline-stage data exist, this peaks at the meiotic bouquet. In a telomere-to-telomere human pedigree we directly observe inter-chromosomal exchange within these communities. Subtelomeric pseudohomologous regions are thus a near-ubiquitous feature of human chromosomes, maintained by ongoing recombination organized by the three-dimensional architecture of meiosis, and resolved here at population scale in complete genomes for the first time.
 }
 
 \keywords{pangenome, subtelomere, pseudohomologous region, concerted evolution, recombination, Hi-C, meiotic bouquet, HPRC v2}
 
 \maketitle
 
-The chromosome ends of the human genome were among the first regions in which
-sequence exchange between non-homologous chromosomes was recognized
-\cite{Brown1990,Wilkie1991,Trask1991}.
-The pseudoautosomal regions PAR1 and PAR2 sustain obligate meiotic crossover
-between the sex chromosomes \cite{Rouyer1986,sexchrompars_bellott2024}; the
-ribosomal-DNA-bearing short arms of the acrocentric chromosomes 13, 14, 15, 21
-and 22 share blocks of near-identical sequence that recombine in the
-pre-meiotic nucleolus and underlie recurrent Robertsonian translocations
-\cite{acrocentric_Altemose2022,acrocentric_Guarracino2025ape}; and the D4Z4
-macrosatellite shared by 4q35 and 10q26 underlies facioscapulohumeral dystrophy
-\cite{dux4_d4z4_fshd_lemmers2010worldwide} and is reactivated in diverse cancers
-\cite{dux4_cancer_Chew2019}.
-Cytogenetic mapping with fluorescence in situ hybridization and BAC walking
-placed multi-chromosomal duplicons across roughly half of the 48 chromosome
-arms \cite{Mefford2001,MeffordTrask2002,Linardopoulou2005,Riethman2004,Ambrosini2007},
-establishing the reality of subtelomeric sequence sharing but surveying only a
-fraction of it: no reference assembly was complete to the telomeres
-\cite{Nurk2022}, and per-chromosome alignment frames hid sharing between
-chromosomes.
+Human subtelomeres are among the most rearrangement-prone and fast-evolving
+regions of the human genome. Cytogenetic and clone-based studies established that each chromosome end is a
+mosaic of duplicated segments also found at the ends of several other,
+non-homologous chromosomes, arranged in two domains: proximal,
+chromosome-specific sequence and a distal zone of repeats shared across many
+ends \cite{MeffordTrask2002,Flint1997,Linardopoulou2005}.
+Duplication of these blocks gave rise to subtelomere-specific gene families
+(olfactory receptors, tubulins and the D4Z4/DUX4 macrosatellite) and left their
+copy number and sequence variable within and between human populations
+\cite{MeffordTrask2002}.
+These ends also exchange sequence ectopically, by translocation and gene
+conversion \cite{Brown1990,Wilkie1991,Trask1991}, and that exchange has
+continued into recent human evolution, with a large fraction of subtelomeric
+sequence having arisen from duplications specific to the human lineage
+\cite{Linardopoulou2005}.
 
-The second release of the Human Pangenome Reference Consortium (HPRC v2)
-provides near-complete, haplotype-resolved assemblies for 233 individuals from
-five superpopulations \cite{hprc_hprcv2_2025}, removing both limitations.
-Earlier pangenome builds assembled each chromosome independently for technical
-reasons, which masked trans-chromosomal sharing within the graph itself
-\cite{Liao2023}.
-Here we study subtelomeric architecture without chromosomal partitioning, and
-ask how extensive inter-chromosomal sharing is, whether it predicts
-three-dimensional proximity in the nucleus, and whether the recombination that
-would generate it can be observed directly in pedigrees.
+This ectopic exchange has well-known consequences at particular chromosome ends.
+The pseudoautosomal regions PAR1 and PAR2 carry the obligate sex-chromosome
+crossover \cite{Rouyer1986,sexchrompars_bellott2024}; the ribosomal-DNA-bearing
+acrocentric short arms recombine in the nucleolus and underlie recurrent
+Robertsonian translocations
+\cite{acrocentric_Altemose2022,acrocentric_Guarracino2025ape}; the D4Z4
+macrosatellite of 4q35 and 10q26 causes facioscapulohumeral dystrophy and is
+reactivated in diverse cancers
+\cite{dux4_d4z4_fshd_lemmers2010worldwide,dux4_cancer_Chew2019}; and unbalanced
+subtelomeric rearrangements are a recurrent cause of intellectual disability
+\cite{MeffordTrask2002}.
+Yet this picture rested on fragmentary evidence: fluorescence in situ
+hybridization, BAC and half-YAC clones, and monochromosomal hybrids in a handful
+of genomes \cite{Mefford2001,Riethman2004,Ambrosini2007}, because no reference
+assembly reached the telomeres \cite{Nurk2022} and chromosome-by-chromosome
+alignment hid sharing between chromosomes \cite{Liao2023}.
+How extensive subtelomeric sharing is across all arms, and whether the
+recombination that builds it is still ongoing, therefore remained unmeasured
+genome-wide.
+
+Two advances now make a complete, population-scale view possible: the
+telomere-to-telomere CHM13 assembly resolved one human genome end to end
+\cite{Nurk2022}, and the second release of the Human Pangenome Reference
+Consortium (HPRC v2) provides near-complete, haplotype-resolved assemblies for
+233 individuals from five superpopulations \cite{hprc_hprcv2_2025}.
+We revisit subtelomeric architecture without chromosomal partitioning, and ask
+three questions the cytogenetic era could pose but not resolve: how extensive is
+inter-chromosomal subtelomeric sharing across all 48 chromosome arms; does
+sequence similarity predict three-dimensional proximity in the nucleus; and can
+the recombination that generates and maintains it be observed directly within
+pedigrees.
 
 \subsection*{Implicit pangenome graphs of subtelomeres}
 
