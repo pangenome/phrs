@@ -53,11 +53,11 @@ plot_one <- function(it) {
        lwd = 0.25, cex = 0.55, xaxs = "i", xlim = c(0, 1), xaxt = "n", yaxt = "n",
        xlab = "", ylab = "",
        main = it$src$dataset,
-       cex.main = 1.32, cex.lab = 1.36, cex.axis = 1.12)
+       cex.main = 1.56, cex.lab = 1.56, cex.axis = 1.36)
   grid(col = "#e6e6e6", lwd = 0.7)
-  axis(1, at = c(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.0), cex.axis = 1.12)
+  axis(1, at = c(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.0), cex.axis = 1.36)
   yd <- seq(ceiling(par("usr")[3]), floor(par("usr")[4]))
-  axis(2, at = 10^yd, las = 1, cex.axis = 1.12,
+  axis(2, at = 10^yd, las = 1, cex.axis = 1.36,
        labels = vapply(yd, function(d)
                        if (d >= 0) formatC(10^d, format = "d")
                        else if (d >= -3) formatC(10^d, format = "f", digits = -d)
@@ -67,28 +67,28 @@ plot_one <- function(it) {
     xs <- seq(min(x), max(x), length.out = 100)
     lines(xs, 10 ^ predict(fit, data.frame(x = xs)), col = "#111111", lwd = 1.35)
   }
-  legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.02,
+  legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.22,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
                     sprintf("pointwise Spearman rho = %s", fmt_rho(it$rho)),
                     sprintf("p = %s", fmt_p(it$p))))
   legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
-         cex = 0.74, text.col = "black", text.font = 3, inset = c(-0.05, 0.0))
+         cex = 0.84, text.col = "black", text.font = 3, inset = c(-0.05, -0.015))
 }
 
 draw <- function() {
-  par(mfrow = c(1, 2), oma = c(2.2, 2.6, 0.2, 0.2),
-      mar = c(2.3, 3.6, 1.8, 0.9), mgp = c(2.4, 0.7, 0), family = "sans")
+  par(mfrow = c(1, 2), oma = c(2.6, 2.0, 0.2, 0.2),
+      mar = c(2.7, 4.0, 2.1, 0.7), mgp = c(2.4, 0.7, 0), family = "sans")
   invisible(lapply(items, plot_one))
   mtext("PHR sequence-pair Jaccard similarity", side = 1, outer = TRUE,
-        line = 0.8, cex = 1.45)
-  mtext("3D contact frequency", side = 2, outer = TRUE, line = 0.9, cex = 1.45)
+        line = 0.8, cex = 1.68)
+  mtext("3D contact frequency", side = 2, outer = TRUE, line = 0.6, cex = 1.68)
 }
 
 png(file.path(out_dir, "ED_Fig2_allpoints.png"),
-    width = 1760, height = 780, res = 180, type = "cairo"); draw(); dev.off()
+    width = 1840, height = 880, res = 180, type = "cairo"); draw(); dev.off()
 pdf(file.path(out_dir, "ED_Fig2_allpoints.pdf"),
-    width = 9.78, height = 4.33); draw(); dev.off()
+    width = 10.22, height = 4.89); draw(); dev.off()
 
 for (it in items)
   cat(sprintf("%-20s n=%d  rho=%s  p=%s\n",

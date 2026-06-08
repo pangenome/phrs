@@ -46,12 +46,12 @@ draw <- function() {
        xlab = "Mean PHR Jaccard similarity per arm pair",
        ylab = "Zygotene Hi-C contact (log scale)",
        main = "Mouse: sequence-similar subtelomeres contact more",
-       cex.main = 0.98, cex.lab = 0.92, cex.axis = 0.80)
+       cex.main = 1.10, cex.lab = 1.18, cex.axis = 1.05)
   grid(col = "#e6e6e6", lwd = 0.7)
   fit <- lm(log10(pmax(y, floor_y)) ~ d$mean_jaccard)
   xs <- seq(min(d$mean_jaccard), max(d$mean_jaccard), length.out = 100)
   lines(xs, 10 ^ (coef(fit)[1] + coef(fit)[2] * xs), col = "#111111", lwd = 1.35)
-  legend("topleft", bty = "n", cex = 0.74, text.col = "#222222",
+  legend("topleft", bty = "n", cex = 0.95, text.col = "#222222",
          legend = c(sprintf("n = %s pairs", format(n, big.mark = ",")),
                     sprintf("Spearman rho = %s", fmt_rho(rho)),
                     sprintf("p = %s", fmt_p(ct$p.value))))
@@ -59,19 +59,20 @@ draw <- function() {
   # right: stage trajectory
   plot(seq_len(nrow(stages)), stages$rho, type = "b", pch = 21,
        bg = ifelse(stages$stage == "zygo", "#d62728", "#1f77b4"),
-       col = "#111111", lwd = 1.2, cex = 1.6, xaxt = "n", ylim = c(0.55, 0.75),
+       col = "#111111", lwd = 1.2, cex = 1.6, xaxt = "n", ylim = c(0.55, 0.78),
        xlab = "Meiotic prophase stage", ylab = "Mantel rho (sequence vs Hi-C)",
-       main = "Stage trajectory (bouquet peak)", cex.main = 0.98, cex.lab = 0.92)
-  axis(1, at = seq_len(nrow(stages)), labels = levels(stages$stage))
-  text(seq_len(nrow(stages)), stages$rho + 0.013,
-       sprintf("%.3f", stages$rho), cex = 0.72)
-  text(2, 0.732, "bouquet", col = "#d62728", font = 2, cex = 0.8)
+       main = "Stage trajectory (bouquet peak)", cex.main = 1.10, cex.lab = 1.18,
+       cex.axis = 1.05)
+  axis(1, at = seq_len(nrow(stages)), labels = levels(stages$stage), cex.axis = 1.05)
+  text(seq_len(nrow(stages)), stages$rho + 0.017,
+       sprintf("%.3f", stages$rho), cex = 0.90)
+  text(2, 0.760, "bouquet", col = "#d62728", font = 2, cex = 0.95)
 }
 
 png(file.path(out_dir, "ED_Fig1_mouse_zygotene.png"),
-    width = 1800, height = 1050, res = 180, type = "cairo"); draw(); dev.off()
+    width = 1950, height = 1050, res = 180, type = "cairo"); draw(); dev.off()
 pdf(file.path(out_dir, "ED_Fig1_mouse_zygotene.pdf"),
-    width = 10, height = 5.83); draw(); dev.off()
+    width = 10.83, height = 5.83); draw(); dev.off()
 
 cat(sprintf("mouse zygotene  n=%d  rho=%s  p=%s\n", n, fmt_rho(rho), fmt_p(ct$p.value)))
 cat("wrote ", file.path(out_dir, "ED_Fig1_mouse_zygotene.{png,pdf}"), "\n", sep = "")
