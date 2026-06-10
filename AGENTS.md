@@ -1,72 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-<!-- workgraph-managed -->
-# Workgraph
-
-Use workgraph for task management.
-
-**At the start of each session, run `wg quickstart` in your terminal to orient yourself.**
-Use `wg service start` to dispatch work — do not manually claim tasks.
-
-## For All Agents (Including the Orchestrating Agent)
-
-CRITICAL: Do NOT use built-in TaskCreate/TaskUpdate/TaskList/TaskGet tools.
-These are a separate system that does NOT interact with workgraph.
-Always use `wg` CLI commands for all task management.
-
-CRITICAL: Do NOT use the built-in **Task tool** (subagents). NEVER spawn Explore, Plan,
-general-purpose, or any other subagent type. The Task tool creates processes outside
-workgraph, which defeats the entire system. If you need research, exploration, or planning
-done — create a `wg add` task and let the coordinator dispatch it.
-
-ALL tasks — including research, exploration, and planning — should be workgraph tasks.
-
-### Orchestrating agent role
-
-The orchestrating agent (the one the user interacts with directly) does ONLY:
-- **Conversation** with the user
-- **Inspection** via `wg show`, `wg viz`, `wg list`, `wg status`, and reading files
-- **Task creation** via `wg add` with descriptions, dependencies, and context
-- **Monitoring** via `wg agents`, `wg service status`, `wg watch`
-
-It NEVER writes code, implements features, or does research itself.
-Everything gets dispatched through `wg add` and `wg service start`.
-
-## Useful workgraph commands
-
-- **`wg publish --wcc <task-id>`** — Publish every task in the weakly-connected component of TASK in one call (treats deps as undirected, unpauses the whole fan-out + synthesizer subgraph in topological order). **Use this for diamond-pattern dispatches**: don't loop `wg publish` over N draft tasks — each call writes to graph.jsonl and on moosefs the locking adds ~5s per call. One `--wcc` invocation publishes the entire connected component instantly. Seed task can be any paused node in the component.
-- **`wg kill <agent-id>` + `wg abandon <task-id>`** — Stop a running task that's pursuing the wrong shape/strategy. Kill the agent process first (releases the worktree lock), then abandon the task with a `--reason`.
-- **Untracked files: invisible at relative paths in worktrees, but readable via absolute paths.** Agent worktrees (`.wg-worktrees/agent-NNN/`) are fresh git checkouts — anything not in `git ls-files` does not exist at the worktree-relative path. BUT agents have `Read`/`Bash` access to the filesystem, so an absolute path like `/moosefs/erikg/phrs/slides/foo.pdf` resolves to the main checkout copy and they can read it that way. Practical implications:
-  - Slide / figure / data tasks that consume the file via absolute path: **work** (often correctly) even if untracked.
-  - Tasks that need the file to be *embedded* in their worktree's commit (rendering pipelines that include figures, integrator/synthesizer tasks that do `ls path/to/file`, anything that copies into the worktree): **fail or flag missing**.
-  - Symptom of this failure mode: `figure_manifest.md`-style outputs marking inputs as "MISSING — not in worktree" while the file exists for you in the main checkout.
-  - Fix: `git add` and commit critical inputs before dispatching downstream rendering / integration tasks. If you `Write` a file intending it to anchor downstream tasks, commit it in the same turn. Common culprits: PDFs, screenshots, slide decks, anchor docs (e.g. `ABSTRACT.md`), large data files.
-- **`wg publish` returns the IDs of created tasks** in the form `(<id>)` at the end of the line — `sed -n 's/.*(\([a-z0-9-]*\))$/\1/p'` extracts cleanly. Use this to chain `--after` deps when scripting fan-outs.
-
-<!-- WG-managed -->
-# WG (project-specific guide)
-
-This file is the **layer-2** project guide for agents working in this
-WG project. It is NOT the universal chat-agent / worker-agent
-contract — that is bundled inside the `wg` binary and emitted by:
-
-```
-wg agent-guide
-```
-
-Run `wg agent-guide` at session start (or read its output from a previous
-session) to get the universal role contract: chat agent vs dispatcher vs worker
-distinction, `## Validation` requirement, smoke-gate, cycle handling, git
-hygiene, worktree isolation, "no built-in Task tool" rules, etc.
-
-This file only covers things specific to this project. Add project-specific
-build commands, test commands, architecture notes, and service recipes here.
-
-**At the start of each session, run `wg quickstart` in your terminal to orient yourself.**
-Use `wg service start` to dispatch work — do not manually claim tasks.
-
 ## Project: subtelomeric PHR analysis
 
 Research repo, not a software product. Inter-chromosomal subtelomeric sequence
@@ -75,9 +8,7 @@ arms, 15 arm-level / 50 sequence-level communities), plus 3D-genome validation
 (Hi-C, Pore-C, CiFi, Dip-C, sperm sc, RPE-1, mouse meiosis). Outputs are a
 14-section analysis report, paper figures, and slide decks.
 
-GitHub: `https://github.com/ekg/phrs`. The same checkout exists at
-`/moosefs/erikg/phrs/` and is the canonical mirror used by workgraph
-(`/moosefs/erikg/phrs/.wg/`).
+GitHub: `https://github.com/ekg/phrs`.
 
 ## Where data lives
 
@@ -89,9 +20,11 @@ paths:
 - `/moosefs/erikg/phrs/` — mirror of this repo.
 
 A worktree without moosefs access cannot rebuild figures or run figure scripts.
-Pre-rendered upstream artifacts that figures vendor are committed at the repo
-root (e.g. `p_genome_wide_identity_heatmap.pdf`, `chm13.phrs.bed`,
-`identity_heatmap_chr*.pdf`).
+Pre-rendered upstream artifacts that figures vendor are committed in dedicated
+folders: input data (BEDs, GFF3, `*.tsv.gz`, PHR gene lists) in `data/`;
+genome-wide and inter-chromosomal coverage plots (`p_genome_wide_*`,
+`p_combined_*`, `p_num_chromosomes*`) in `inter-chr-plots/`; per-chromosome
+identity heatmaps (`identity_heatmap_chr*.pdf`) in `identity_heatmaps/`.
 
 ## Layout
 
@@ -106,6 +39,10 @@ root (e.g. `p_genome_wide_identity_heatmap.pdf`, `chm13.phrs.bed`,
   `caption.md`.
 - `paper_prep/synthesis/` — paper-level artifacts (`ABSTRACT_BoG.md`,
   `ABSTRACT_nature.md`, `REFERENCES_v3.bib`, `CROSSWALK.md`).
+- `paper_prep/submission/` — the active LaTeX manuscript (Springer Nature
+  `jnl.cls`): `paper.tex` (single file, no `\input`), `bibliography.bib`,
+  bundled `jnl.cls`+`mathphys.bst`, `fig/{MainFigures,ExtendedDataFigures}/`.
+  See "Paper submission (LaTeX)" below.
 - `paper_prep/lit_review/topic_NN_*.{md,bib}` — 14 per-topic literature
   reviews; `SYNTHESIS_v2.typ` renders the unified review.
 - `paper_prep/surveys/SURVEY_NN_*.md` — section-by-section evidence
@@ -116,8 +53,15 @@ root (e.g. `p_genome_wide_identity_heatmap.pdf`, `chm13.phrs.bed`,
 - `slides/v2-review-zoom/` — active deck (BoG 2026). Other `slides/`
   subdirs are earlier rounds (`v2`, `v2-zoom`, `v2-review`) or background
   decks (`chm13-phr-ucsc-browser/`, `meiosis-prophase-background/`).
-- `plot-impg-coverage.R` — standalone R script (run upstream) that emits the
-  repo-root genome-wide heatmap PNGs/PDFs.
+- `scripts/plot-impg-coverage.R` — standalone R script (run from repo root)
+  that reads `data/` inputs (`chm13-annotations.bed`, `hprc25272.CHM13.*.tsv.gz`)
+  and emits the coverage plots into `inter-chr-plots/` and the per-chromosome
+  identity heatmaps into `identity_heatmaps/`.
+- `scripts/{ci,cladistics,hic,mouse,pedigree,popgen}/` — standalone
+  reviewer-response statistics (bootstrap CIs, FST jackknife, Mantel tests,
+  Monte-Carlo nulls, crossover rates). Filenames carry reviewer-comment tags
+  (`*_d_m12`, `*_d_peerq3`, `*_f34`); paired `.py`/`.R` reimplementations and
+  `.tsv`/`.json` results sit beside the scripts.
 - `scripts/merge_archive_into_graph.py` — wg utility (not analysis code).
 
 ## Slide decks (Typst)
@@ -138,6 +82,59 @@ artifact: own `REVISION_NOTES_V<N>.md` (v2 is the unsuffixed
 experiments under `_revision_assets/v<N>/<slide-id>/` (`README.md`,
 `SLIDE_PATCH.md` handoff, `make_*.R` source, candidate PDF/PNG). Bump to
 `v<N+1>` for a new revision round; do not edit a frozen `v<N>` in place.
+
+## Paper submission (LaTeX)
+
+Build the manuscript from `paper_prep/submission/` (self-contained; needs only
+`pdflatex` + `bibtex`, no moosefs):
+
+```
+cd paper_prep/submission
+make            # or: bash compile.sh
+```
+
+`compile.sh` runs `pdflatex -> bibtex (main) -> bibtex Meth -> bibtex Supp ->
+pdflatex -> pdflatex` and must exit 0; it produces `paper.pdf`. Three separate
+bibliographies via `multibib`/`newcites` (main, `Meth`, `Supp`) — each needs
+its own `bibtex` pass, hence the `.aux`/`.bbl` for `Meth` and `Supp`. `Supp`
+may be empty (compile.sh tolerates that bibtex failure). Keep `paper.tex` a
+single file — the Springer Nature template forbids `\input{...}`. `make clean`
+removes all build artifacts. `BUILD_LOG.md` records the last validated compile.
+If a build dies on `Unicode character ... not set up for use with LaTeX`, the
+literal Unicode is almost always in a `bibliography.bib` `note`/title field
+(the bst prints notes); replace it with a LaTeX macro (`$\geq$`, `$\times$`,
+`$\rightarrow$`). `set -e` in `compile.sh` then aborts before bibtex/passes
+2-3, so cross-refs come back undefined until the real error is fixed; verify
+the FINAL pass via `paper.log` (`grep -c 'undefined' paper.log`), not the
+multi-pass `compile.sh` stdout.
+
+The manuscript narrative follows the BoG-2026 talk: deck `paper_prep/paper
+figures for Concerted evolution ... .pptx` + transcript
+`paper_prep/Session7-PopulationGenomics.en.srt` are the source of truth for the
+story (extract slide images with python-pptx; recurse `GROUP` shapes or you
+miss grouped figures, e.g. slide 10 and the mouse panel on slide 20). Five main
+figures map to deck slides, each panel stacked or side-by-side per author
+direction: Fig1 genome-wide homology + PHR lengths (slides 3,4); Fig2 PGGB
+hairball on top, tree-ordered + community-ordered Jaccard heatmaps side-by-side
+below (6,10,12); Fig3 browser views, each pair stacked — C1 4q/10q DUX4
+(14), C2 10p/18p TUBB8B (15), C11 5q/6q OR4F (16); Fig4 sequence-vs-3D scatter +
+Pore-C community heatmap (21,22); Fig5 WashU pedigree untangle (24/26).
+Extended Data is a SINGLE figure: ED1 = mouse meiotic Hi-C (slide 20),
+`fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png`. Only `fig:ed1` (mouse) and
+`fig:fig1..fig5` exist — do not re-add `\ref{fig:ed2..}`.
+Writing follows Guarracino et al. 2023 (the Nature acrocentric-recombination
+paper, `~/Downloads/papers/RecombAcroChro_*.pdf`): short bold results-section
+headers (`\subsection*{...}` inside the body), a measured "we find / we
+observe" cadence, single-paragraph abstract. To keep the draft consistent with
+the talk, reviewer-era analyses without a figure (within-community
+heterogeneity, popgen/FST, the 14-test 3D forest + controls, CEPH1463, RPE-1,
+gene enrichment) were CUT from the body AND the corresponding Methods
+subsections; recover from git history if a reviewer asks.
+ASSET STATUS: `fig/MainFigures/Fig*.png` (and the ED1 mouse png) are
+slide-derived placeholders, some with speaker-note annotations baked in;
+publication-quality vector versions must be regenerated from
+`paper_prep/figures/`. The original `fig/ExtendedDataFigures/ED_Fig1-7.pdf` are
+no longer referenced by `paper.tex`.
 
 ## Figures (R / Python)
 
@@ -165,11 +162,12 @@ are external inputs.
   scripts normalise before joining.
 - Communities: arm-level Leiden k=15 (cross-checked by UPGMA k=14);
   sequence-level Leiden k=50.
-- PHR (pseudohomologous region): telomere-anchored 500 kb flank from a contig
+- PHR (pseudo-homolog region; formerly "pseudohomologous region"): telomere-anchored 500 kb flank from a contig
   >= 1 Mb that aligned at >= 95% identity to another arm. 15,668 PHRs across
   18,827 flanks.
-- CHM13-coordinate PHR BEDs at repo root: `chm13.phrs.bed`,
-  `chm13.phrs.no_acro.bed`, `CHM13-HG002.sub-telo-phrs.bed`.
+- CHM13-coordinate PHR BEDs in `data/`: `data/chm13.phrs.bed`,
+  `data/chm13.phrs.no_acro.bed`, `data/CHM13-HG002.sub-telo-phrs.bed` (all
+  repo-root input data now lives under `data/`).
 
 ## Commit convention
 

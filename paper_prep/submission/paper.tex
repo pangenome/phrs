@@ -50,10 +50,10 @@
 \affil[3]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
 
 \abstract{
-Human subtelomeres are among the most dynamic regions of the genome, yet their relationships across chromosomes have been hard to chart, limited by incomplete assemblies and by alignment that partitions sequence chromosome by chromosome. Using 466 near-complete haplotype assemblies from the second Human Pangenome Reference Consortium release, we map these relationships without such partitioning, through an implicit pangenome graph: a reference-free, all-to-all alignment that samples about 12\% of haplotype pairs and is queried directly, without ever building the graph. We find extended interchromosomal homology at nearly all subtelomeres, spanning tens to hundreds of kilobases, comparable in scale to the pseudoautosomal region PAR2 and totalling 3.5 Mb outside the acrocentrics and sex chromosomes. These pseudohomologous regions partition into communities that recover every known case of subtelomeric homology (the pseudoautosomal pairs, the acrocentric short arms, 10p/18p and the 4q/10q DUX4 system) and uncover new ones, including a tightly linked clade of six q-arms. Across human and mouse three-dimensional genome maps, arms sharing a community contact one another more often; in mouse, where germline-stage data exist, this peaks at the meiotic bouquet. In a telomere-to-telomere human pedigree we directly observe inter-chromosomal exchange within these communities. Subtelomeric pseudohomologous regions are thus a near-ubiquitous feature of human chromosomes, maintained by ongoing recombination organized by the three-dimensional architecture of meiosis, and resolved here at population scale in complete genomes for the first time.
+Human subtelomeres are among the most dynamic regions of the genome, yet their relationships across chromosomes have been hard to chart, limited by incomplete assemblies and by alignment that partitions sequence chromosome by chromosome. Using 466 near-complete haplotype assemblies from the second Human Pangenome Reference Consortium release, we map these relationships without such partitioning, through an implicit pangenome graph: a reference-free, all-to-all alignment that samples about 12\% of haplotype pairs and is queried directly, without ever building the graph. We find extended interchromosomal homology at nearly all subtelomeres, spanning tens to hundreds of kilobases, comparable in scale to the pseudoautosomal region PAR2 and totalling 3.5 Mb outside the acrocentrics and sex chromosomes. These pseudo-homolog regions partition into communities that recover every known case of subtelomeric homology (the pseudoautosomal pairs, the acrocentric short arms, 10p/18p and the 4q/10q DUX4 system) and uncover new ones, including a tightly linked clade of six q-arms. Across human and mouse three-dimensional genome maps, arms sharing a community contact one another more often; in mouse, where germline-stage data exist, this peaks at the meiotic bouquet. In a telomere-to-telomere human pedigree we directly observe inter-chromosomal exchange within these communities. Subtelomeric pseudo-homolog regions are thus a near-ubiquitous feature of human chromosomes, maintained by ongoing recombination organized by the three-dimensional architecture of meiosis, and resolved here at population scale in complete genomes for the first time.
 }
 
-\keywords{pangenome, subtelomere, pseudohomologous region, concerted evolution, recombination, Hi-C, meiotic bouquet, HPRC v2}
+\keywords{pangenome, subtelomere, pseudo-homolog region, concerted evolution, recombination, Hi-C, meiotic bouquet, HPRC v2}
 
 \maketitle
 
@@ -126,7 +126,7 @@ component, so transitive closure recovers essentially every subtelomere.
 As a quality control, querying any reference window recovers nearly all other
 haplotypes across the genome, with the expected exceptions of ribosomal DNA, the
 centromeres and the sex chromosomes.
-We define a pseudohomologous region (PHR) as a flank window whose transitive
+We define a pseudo-homolog region (PHR) as a flank window whose transitive
 closure reaches at least five segments on at least two other chromosomes at
 $\geq 95\%$ identity.
 This yields 15,668 PHRs on 41 of the 48 arms; the remaining 7 arms (chr2\_p,
@@ -192,7 +192,7 @@ of the same orientation (only 17 of 75 pair a p-arm with a q-arm).
 
 \subsection*{Three-dimensional proximity at the meiotic bouquet}
 
-Why should pseudohomologous regions persist at 41 of the 48 arms?
+Why should pseudo-homolog regions persist at 41 of the 48 arms?
 During meiotic prophase the telomeres are tethered to the nuclear envelope and
 clustered into the bouquet of zygotene
 \cite{bouquet_KotaSUN1MAJIN2020,ZicklerKleckner2015,cech2004chromosomeend}, which
@@ -661,7 +661,7 @@ within-community fraction (observed $p < 10^{-4}$).
     contact (single-sample, community-free).}
     A finer-grained, assumption-free companion to Fig.~\ref{fig:fig4}a: instead
     of one point per chromosome-arm pair, each point is one inter-chromosomal
-    pair of pseudohomologous regions (PHRs) within a single genome, so both axes
+    pair of pseudo-homolog regions (PHRs) within a single genome, so both axes
     derive from the same sample. \emph{x}, Jaccard sequence similarity of the two
     PHRs from the pangenome graph (0 = no shared sequence, 1 = identical);
     \emph{y}, their balanced Hi-C/Pore-C contact at the PHRs' exact coordinates,
