@@ -1,5 +1,5 @@
 metric	value
-source_tsv	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95.id95.len.tsv
+source_tsv	data/all-vs-all.1Mb.p95.id95.len.tsv
 bin_width_kbp	10
 search_window_kbp	500
 q_axis_orientation	q panel display is flipped: left edge is 500 kbp, right edge is 0 kbp
