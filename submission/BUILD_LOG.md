@@ -1,13 +1,13 @@
 # BUILD_LOG.md
 
-Compile and validation log for `paper_prep/submission/paper.tex`.
+Compile and validation log for `submission/paper.tex`.
 
 Date: 2026-05-27
 
 ## Compile command
 
 ```
-cd paper_prep/submission
+cd submission
 bash compile.sh
 ```
 
@@ -22,7 +22,7 @@ Exit code: **0** (all 3 pdflatex passes + all bibtex passes)
 ### 1. compile.sh exits 0
 
 ```
-cd paper_prep/submission && bash compile.sh
+cd submission && bash compile.sh
 echo $?   # -> 0
 ```
 
@@ -58,7 +58,7 @@ Output: `\documentclass[pdflatex,mathphys]{jnl}`
 ### 5. jnl.cls and mathphys.bst bundled in submission/
 
 ```
-ls -la paper_prep/submission/jnl.cls paper_prep/submission/mathphys.bst
+ls -la submission/jnl.cls submission/mathphys.bst
 ```
 Output:
 ```
@@ -129,7 +129,7 @@ Output: `1`
 ### 10. Detex word count within +-10% of 5090
 
 ```
-cd paper_prep/submission && detex paper.tex | wc -w
+cd submission && detex paper.tex | wc -w
 ```
 Output: `5858`
 

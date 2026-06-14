@@ -1,18 +1,24 @@
 #!/usr/bin/env Rscript
-# Extended Data Fig. 2 (all-points companion to Fig 4a) -- one dot per inter-chromosomal PHR sequence pair
+# Main Figure 4a -- one dot per inter-chromosomal PHR sequence pair
 # (single-sample: each sample's own PHRs vs that sample's contact), 50 kbp.
 # x = PHR-pair Jaccard similarity; y = length-normalized 3D contact (log).
-# Base R only. Run from the repo root:
-#   Rscript scripts/figures/make_fig4_allpoints.R
+# Base R only. Paths resolve from the script's location, so run from anywhere:
+#   Rscript submission/scripts/figures/make_fig4a_human_scatter.R
 # Inputs  (override dir with DATA_DIR=...):
 #   data/human_HG002_porec_50000bp_seqlevel.tsv
 #   data/human_CHM13_hic_50000bp_seqlevel.tsv
 #   columns: ... chr_a arm_a chr_b arm_b ... jaccard hic_contact_raw hic_contact_norm hic_bins
 # Outputs (override dir with OUT_DIR=...):
-#   paper_prep/submission/fig/ExtendedDataFigures/ED_Fig2_allpoints.{png,pdf}
+#   submission/fig/MainFigures/Fig4a_human_scatter.{png,pdf}
 
-data_dir <- Sys.getenv("DATA_DIR", "data")
-out_dir  <- Sys.getenv("OUT_DIR",  "paper_prep/submission/fig/ExtendedDataFigures")
+# Resolve the repo root from this script's own location
+# (submission/scripts/figures/), so it runs from any working directory.
+.cmd_args  <- commandArgs(trailingOnly = FALSE)
+.this_file <- sub("^--file=", "", .cmd_args[grep("^--file=", .cmd_args)])
+script_dir <- if (length(.this_file)) normalizePath(dirname(.this_file)) else getwd()
+repo_root  <- normalizePath(file.path(script_dir, "..", "..", ".."))
+data_dir <- Sys.getenv("DATA_DIR", file.path(repo_root, "data"))
+out_dir  <- Sys.getenv("OUT_DIR",  file.path(repo_root, "submission/fig/MainFigures"))
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 fmt_rho <- function(x) formatC(x, format = "f", digits = 3)
@@ -85,12 +91,12 @@ draw <- function() {
   mtext("3D contact frequency", side = 2, outer = TRUE, line = 0.6, cex = 1.68)
 }
 
-png(file.path(out_dir, "ED_Fig2_allpoints.png"),
+png(file.path(out_dir, "Fig4a_human_scatter.png"),
     width = 1840, height = 880, res = 180, type = "cairo"); draw(); dev.off()
-pdf(file.path(out_dir, "ED_Fig2_allpoints.pdf"),
+pdf(file.path(out_dir, "Fig4a_human_scatter.pdf"),
     width = 10.22, height = 4.89); draw(); dev.off()
 
 for (it in items)
   cat(sprintf("%-20s n=%d  rho=%s  p=%s\n",
               it$src$dataset, it$n, fmt_rho(it$rho), fmt_p(it$p)))
-cat("wrote ", file.path(out_dir, "ED_Fig2_allpoints.{png,pdf}"), "\n", sep = "")
+cat("wrote ", file.path(out_dir, "Fig4a_human_scatter.{png,pdf}"), "\n", sep = "")
