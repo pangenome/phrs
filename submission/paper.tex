@@ -138,14 +138,14 @@ inter-chromosomal homology.
 \subsection*{Genome-wide subtelomeric homology}
 
 A genome-wide survey reveals telomere-anchored, high-identity blocks at nearly
-every chromosome end (Fig.~\ref{fig:fig1}a), each window coloured by the number
+every chromosome end (Fig.~\ref{fig:fig1}A), each window coloured by the number
 of other chromosomes it aligns to elsewhere in the pangenome.
 The acrocentric short arms and the pseudoautosomal regions appear as expected
 positive controls, but the same signal recurs at almost every other chromosome
 end.
 Walking inward from each telomere until inter-chromosomal homology disappears,
 the PHRs span tens to hundreds of kilobases (median 105 kb, mean 144 kb;
-Fig.~\ref{fig:fig1}b), the upper bound set by the 500 kb flank window rather
+Fig.~\ref{fig:fig1}B), the upper bound set by the 500 kb flank window rather
 than by biology.
 Excluding the acrocentric short arms and the pseudoautosomal regions, these PHRs
 total 3.51 Mb of subtelomeric sequence, comparable in scale to PAR2 (the median
@@ -180,13 +180,13 @@ Examined at the sequence level, each community carries a characteristic duplicon
 (Fig.~\ref{fig:fig3}).
 Community C1 (4q/10q) is the D4Z4/DUX4 system, with homologous DUX4L
 macrosatellite arrays and FRG1/FRG2 paralogues on both ends and copy number
-ranging from 0 to 22 across haplotypes (Fig.~\ref{fig:fig3}a)
+ranging from 0 to 22 across haplotypes (Fig.~\ref{fig:fig3}A)
 \cite{dux4_d4z4_fshd_lemmers2010worldwide,Cabianca2012}.
 Community C2 (10p/18p) is anchored by the TUBB8B tubulin array, present in tandem
-copies on 10p and as a single copy on 18p (Fig.~\ref{fig:fig3}b)
+copies on 10p and as a single copy on 18p (Fig.~\ref{fig:fig3}B)
 \cite{Linardopoulou2005}.
 Community C11 (5q/6q) is built on the OR4F olfactory-receptor family and its
-pseudogenes (Fig.~\ref{fig:fig3}c).
+pseudogenes (Fig.~\ref{fig:fig3}C).
 More broadly, subtelomeric gene content is dominated by pseudogenes and
 non-coding RNAs, with olfactory-receptor genes and subtelomeric pseudogene
 duplicons, rather than community-specific protein-coding genes, defining the
@@ -207,18 +207,18 @@ three-dimensional contact, most strongly at the bouquet stage
 The cleanest test is in mouse, where germline-stage Hi-C exists: re-running the
 whole pipeline on B6 and CAST T2T assemblies \cite{Francis2025}, contact between
 chromosome ends rises with their PHR similarity and peaks at zygotene
-(per-PHR-pair Spearman $\rho = 0.614$; Fig.~\ref{fig:fig4}c) \cite{Zuo2021}, to our
+(per-PHR-pair Spearman $\rho = 0.614$; Fig.~\ref{fig:fig4}C) \cite{Zuo2021}, to our
 knowledge the only direct bouquet-stage measurement of this relationship in any
 organism.
 In human, three-dimensional contact likewise increases with PHR similarity,
 measured at the finest resolution, per individual PHR pair within a single
 genome and with no community assignment or cross-sample averaging: HG002 Pore-C
-(Fig.~\ref{fig:fig4}a; pointwise Spearman $\rho = 0.38$) and replicating across a
+(Fig.~\ref{fig:fig4}A; pointwise Spearman $\rho = 0.38$) and replicating across a
 second genome and two further assays (CHM13 Hi-C $\rho = 0.72$, HG002 Hi-C
 $\rho = 0.66$, HG002 CiFi $\rho = 0.19$; all $p < 10^{-20}$; Extended Data
 Fig.~\ref{fig:ed1}). Ordering a Pore-C
 contact matrix by sequence community recovers the community block structure
-directly (Fig.~\ref{fig:fig4}b) \cite{Ulahannan2019}.
+directly (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
 The same within-community enrichment holds across the other contact maps we
 reanalysed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
 and 20-cell single-sperm scHi-C \cite{Xu2025}.
@@ -297,14 +297,14 @@ Group for generating and interpreting these data.
   \includegraphics[width=\linewidth]{fig/MainFigures/Fig1a_genomewide.pdf}\\[4pt]
   \includegraphics[width=\linewidth]{fig/MainFigures/Fig1b_lengths.pdf}
   \caption{\textbf{Genome-wide subtelomeric homology and PHR extent.}
-    \textbf{(a)} Interchromosomal homology across 465 HPRC v2 haplotypes plus
+    \textbf{(A)} Interchromosomal homology across 465 HPRC v2 haplotypes plus
     CHM13. Each chromosome is shown in 100 kb windows coloured by the number of
     distinct partner chromosomes a window aligns to elsewhere in the pangenome
     (0 to 11+), with a region track (centromere, PAR, PHR, terminal repeat);
     insets give per-partner counts at representative loci. Telomere-anchored
     high-identity blocks mark the inter-chromosomal exchange landscape, and the
     acrocentrics and PARs appear as positive controls.
-    \textbf{(b)} PHR length distribution by chromosome end, p-arms and q-arms
+    \textbf{(B)} PHR length distribution by chromosome end, p-arms and q-arms
     separately, as within-end share per 10 kb bin across the terminal 500 kb
     (q-arms flipped to read telomere$\to$centromere). Non-acrocentric, non-PAR
     PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
@@ -347,26 +347,28 @@ Group for generating and interpreting these data.
     Sequence-level views (CHM13 coordinates, with PHR-BED, GC\%, segmental
     duplications and gene models) of three communities, so the duplicon content
     is legible without a genome browser.
-    \textbf{(a)} Community C1 (4q/10q), the D4Z4/DUX4 system: homologous DUX4L
+    \textbf{(A)} Community C1 (4q/10q), the D4Z4/DUX4 system: homologous DUX4L
     macrosatellite arrays and FRG1/FRG2 paralog families on the 4q35 (top) and
     10q26 (bottom) ends, copy number 0--22 across haplotypes.
-    \textbf{(b)} Community C2 (10p/18p), anchored by the TUBB8B tubulin gene
+    \textbf{(B)} Community C2 (10p/18p), anchored by the TUBB8B tubulin gene
     array (tandem on 10p, top; single-copy on 18p, bottom).
-    \textbf{(c)} Community C11 (5q/6q; 5q top, 6q bottom), built on the OR4F
+    \textbf{(C)} Community C11 (5q/6q; 5q top, 6q bottom), built on the OR4F
     olfactory-receptor family and its pseudogenes.}
   \label{fig:fig3}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-  \begin{overpic}[width=0.46\linewidth,percent]{fig/MainFigures/Fig4a_human_scatter.pdf}%
-    \put(0,93){\textbf{\large\sffamily A}}\end{overpic}\hfill
-  \begin{overpic}[width=0.52\linewidth,percent]{fig/MainFigures/Fig4b_porec_community.pdf}%
-    \put(0,95){\textbf{\large\sffamily B}}\end{overpic}\\[6pt]
-  \begin{overpic}[width=\linewidth,percent]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}%
-    \put(0,94){\textbf{\large\sffamily C}}\end{overpic}
+  % overpic 'percent' uses image WIDTH as 100 units for both axes, so the y of
+  % the top edge = 100*(height/width): Fig4a~92.8, Fig4b~103.9, Fig4c(wide)~53.8.
+  \begin{overpic}[width=0.50\linewidth]{fig/MainFigures/Fig4a_human_scatter.pdf}%
+    \put(1,90){\textbf{\large\sffamily A}}\end{overpic}\hfill
+  \begin{overpic}[width=0.447\linewidth]{fig/MainFigures/Fig4b_porec_community.pdf}%
+    \put(1,100){\textbf{\large\sffamily B}}\end{overpic}\\[6pt]
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}%
+    \put(1,50){\textbf{\large\sffamily C}}\end{overpic}
   \caption{\textbf{Sequence similarity predicts three-dimensional proximity.}
-    \textbf{(a)} Sequence-similar subtelomeres make more three-dimensional
+    \textbf{(A)} Sequence-similar subtelomeres make more three-dimensional
     contact (HG002 Pore-C). Each dot is one inter-chromosomal pair of
     pseudo-homolog regions (PHRs) within a single genome, so both axes derive
     from the same sample; \emph{x}, Jaccard sequence similarity of the two PHRs
@@ -378,16 +380,16 @@ Group for generating and interpreting these data.
     $\rho = 0.381$, $n = 2830$, $p = 1.2 \times 10^{-98}$; line, linear fit).
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
-    \textbf{(b)} HG002 Pore-C contact matrix (arm-level, observed-over-expected
+    \textbf{(B)} HG002 Pore-C contact matrix (arm-level, observed-over-expected
     inter-chromosomal normalisation --- a different scheme from the per-bin-pair
     normalisation of the scatters) ordered by sequence community (C1--C15):
     within-community blocks dominate, $B/W = 0.056$, $p = 3.9 \times 10^{-85}$.
-    \textbf{(c)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
+    \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
     T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp,
     1 Mb flank). Left, one dot per inter-chromosomal mouse PHR sequence pair:
-    zygotene contact (per-bin-pair length-normalised as in (a), log) rises with
+    zygotene contact (per-bin-pair length-normalised as in (A), log) rises with
     PHR Jaccard similarity (pointwise Spearman $\rho = 0.614$, $n = 1{,}135$,
-    $p = 1.2 \times 10^{-118}$), the same no-averaging test as panel (a). Right,
+    $p = 1.2 \times 10^{-118}$), the same no-averaging test as panel (A). Right,
     the same per-PHR-pair Spearman computed for each meiotic prophase stage peaks
     at the zygotene bouquet (lepto 0.419, zygo 0.614, pachy 0.576, diplo 0.245;
     all $p < 1 \times 10^{-16}$, $n = 1{,}135$ per stage), the only direct
@@ -544,12 +546,12 @@ inter-chromosomal normalisation
 The pointwise Spearman correlations take each inter-chromosomal PHR sequence
 pair as a point, correlating its pangenome-graph Jaccard with its
 length-normalised Hi-C/Pore-C contact at the pair's exact coordinates within one
-genome: HG002 Pore-C in Fig.~\ref{fig:fig4}a ($\rho = 0.381$, $n = 2830$) and,
+genome: HG002 Pore-C in Fig.~\ref{fig:fig4}A ($\rho = 0.381$, $n = 2830$) and,
 as replicates in Extended Data Fig.~\ref{fig:ed1}, CHM13 Hi-C ($\rho = 0.716$,
 $n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2544$) and HG002 CiFi
 ($\rho = 0.191$, $n = 2757$; the sparsest assay, hence the weakest signal); all
 at 50 kbp via \texttt{sequence\_hic\_correlation.py}. The community-ordered Pore-C matrix of
-Fig.~\ref{fig:fig4}b ($B/W = 0.056$) is at 50 kb.
+Fig.~\ref{fig:fig4}B ($B/W = 0.056$) is at 50 kb.
 
 \subsection*{Reproducibility from deposited data}
 
@@ -593,7 +595,7 @@ B6 and CAST T2T assemblies \citeMeth{Francis2025}; telomere-anchored flanks;
 contact vs PHR Jaccard similarity at 20 kb (1 Mb flank), one value per meiotic
 prophase stage: $\rho = 0.419/0.614/0.576/0.245$ at lepto/zygo/pachy/diplo
 (peak at the zygotene bouquet; all $p < 1 \times 10^{-16}$; $n = 1{,}135$ pairs
-per stage; Fig.~\ref{fig:fig4}c). This per-pair zygotene peak is
+per stage; Fig.~\ref{fig:fig4}C). This per-pair zygotene peak is
 resolution-dependent (clearest at 10--20 kb); an arm-level Mantel on the
 $27 \times 27$ Jaccard-distance matrix vs Zuo et al.\ (2021) arm-aggregated Hi-C
 (10,000 row+column permutations, $n_{\mathrm{arms}} = 27$) likewise peaks at
@@ -663,14 +665,14 @@ within-community fraction (observed $p < 10^{-4}$).
   \centering
   \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig1_human_contacts.pdf}
   \caption{\textbf{The sequence-to-3D relationship replicates across genomes and
-    contact assays.} Three companions to Fig.~\ref{fig:fig4}a, by the same
+    contact assays.} Three companions to Fig.~\ref{fig:fig4}A, by the same
     all-points method (each dot is one inter-chromosomal PHR sequence pair within
     a single genome; \emph{x}, pangenome-graph Jaccard similarity; \emph{y}, mean
-    3D contact per 50 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}a;
+    3D contact per 50 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
     log scale, zero-contact pairs at the axis floor; line, linear fit).
     Contact rises with similarity in every panel:
     CHM13 Hi-C (a second genome; pointwise Spearman $\rho = 0.716$, $n = 652$,
-    $p = 1.2 \times 10^{-103}$), HG002 Hi-C (same genome as Fig.~\ref{fig:fig4}a,
+    $p = 1.2 \times 10^{-103}$), HG002 Hi-C (same genome as Fig.~\ref{fig:fig4}A,
     different assay; $\rho = 0.662$, $n = 2544$, $p < 10^{-300}$), and HG002 CiFi
     ($\rho = 0.191$, $n = 2757$, $p = 3.7 \times 10^{-24}$; CiFi is the sparsest
     assay, $\sim$90\% of pairs zero-contact, hence the weakest but still highly
