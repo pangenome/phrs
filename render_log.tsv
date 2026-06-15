@@ -1,0 +1,28 @@
+key	value
+render_task	review-zoom-v6-pggb-graph-black
+derived_from_task	review-zoom-v5-pggb-gfalook-2d-render
+render_mode	rerender_existing_odgi_layout_tsv_component_with_dark_neutral_palette
+status	main_component
+layout_tsv	/home/guarracino/git/phrs/data/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.tsv
+source_odgi_graph	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og
+source_odgi_layout_binary	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay
+prior_slide_asset	slides/v2-review-zoom/_revision_assets/v5/pggb_graph_odgi/pggb_graph_2d.png
+inspected_existing_odgi_draw_png	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.draw.png (167x1000; too sparse/narrow for slide use)
+inspected_existing_odgi_viz_png	/moosefs/guarracino/HPRCv2/PHR_III/pggb/hprcv2.1Mb.telo_trimmed.p95.id95/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.viz_multiqc.png (1968x157164; too tall/raw for slide use)
+component	8
+component_nodes	727156
+component_rank_by_layout_node_count	1
+x_range	1000-160483.147278636
+y_range	17870.5508849148-368827.995559721
+orientation	ODGI X/Y coordinates plotted as Y/X to rotate the tall layout into a 16:9 slide frame; no re-layout
+palette	dark neutral graph marks on a light background for projection readability; no blue graph strokes
+background_color	white
+point_color	#111111
+point_alpha	0.3
+point_cex	0.12
+border_color	#b8c0cc
+output_png	slides/v2-review-zoom/_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png
+output_dimensions	1920x1080
+output_bytes	85038
+slurm_job_id	not_used_no_heavy_ODGI_extraction_or_render_submitted
+render_command	'Rscript' 'slides/v2-review-zoom/_revision_assets/v6/pggb_graph_black/render_pggb_layout_component8_black.R' '--layout-tsv' 'data/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.tsv' '--out' 'slides/v2-review-zoom/_revision_assets/v6/pggb_graph_black/pggb_graph_2d_black.png'

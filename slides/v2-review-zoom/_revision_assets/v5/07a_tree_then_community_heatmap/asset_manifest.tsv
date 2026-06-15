@@ -1,5 +1,5 @@
 asset	path	format	expected_dimensions	file_exists	bytes
 07a_tree_ordered_heatmap.pdf	slides/v2-review-zoom/_revision_assets/v5/07a_tree_then_community_heatmap/07a_tree_ordered_heatmap.pdf	pdf	13.333 x 7.5 in PDF	TRUE	18909
-07a_tree_ordered_heatmap.png	slides/v2-review-zoom/_revision_assets/v5/07a_tree_then_community_heatmap/07a_tree_ordered_heatmap.png	png	4800 x 2700 px PNG	TRUE	292821
+07a_tree_ordered_heatmap.png	slides/v2-review-zoom/_revision_assets/v5/07a_tree_then_community_heatmap/07a_tree_ordered_heatmap.png	png	4800 x 2700 px PNG	TRUE	344651
 07a_community_ordered_heatmap.pdf	slides/v2-review-zoom/_revision_assets/v5/07a_tree_then_community_heatmap/07a_community_ordered_heatmap.pdf	pdf	13.333 x 7.5 in PDF	TRUE	18900
-07a_community_ordered_heatmap.png	slides/v2-review-zoom/_revision_assets/v5/07a_tree_then_community_heatmap/07a_community_ordered_heatmap.png	png	4800 x 2700 px PNG	TRUE	319926
+07a_community_ordered_heatmap.png	slides/v2-review-zoom/_revision_assets/v5/07a_tree_then_community_heatmap/07a_community_ordered_heatmap.png	png	4800 x 2700 px PNG	TRUE	381396

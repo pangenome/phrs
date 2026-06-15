@@ -1,0 +1,42 @@
+ChromArm	Community	Arms
+chr10_p	C2	10p, 18p
+chr10_q	C1	4q, 10q
+chr11_p	C3	3q, 7p, 9q, 11p, 16q, 19p
+chr12_p	C5	6p, 9p, 12p, 20q
+chr12_q	C4	7q, 12q
+chr13_p	C7	13p, 14p, 15p, 21p, 22p
+chr13_q	C6	1q, 13q, 17q, 19q, 21q, 22q
+chr14_p	C7	13p, 14p, 15p, 21p, 22p
+chr15_p	C7	13p, 14p, 15p, 21p, 22p
+chr15_q	C8	15q
+chr16_p	C9	16p
+chr16_q	C3	3q, 7p, 9q, 11p, 16q, 19p
+chr17_p	C10	17p
+chr17_q	C6	1q, 13q, 17q, 19q, 21q, 22q
+chr18_p	C2	10p, 18p
+chr19_p	C3	3q, 7p, 9q, 11p, 16q, 19p
+chr19_q	C6	1q, 13q, 17q, 19q, 21q, 22q
+chr1_p	C11	1p, 5q, 6q, 8p
+chr1_q	C6	1q, 13q, 17q, 19q, 21q, 22q
+chr20_p	C12	2q, 20p
+chr20_q	C5	6p, 9p, 12p, 20q
+chr21_p	C7	13p, 14p, 15p, 21p, 22p
+chr21_q	C6	1q, 13q, 17q, 19q, 21q, 22q
+chr22_p	C7	13p, 14p, 15p, 21p, 22p
+chr22_q	C6	1q, 13q, 17q, 19q, 21q, 22q
+chr2_q	C12	2q, 20p
+chr3_q	C3	3q, 7p, 9q, 11p, 16q, 19p
+chr4_p	C13	4p
+chr4_q	C1	4q, 10q
+chr5_q	C11	1p, 5q, 6q, 8p
+chr6_p	C5	6p, 9p, 12p, 20q
+chr6_q	C11	1p, 5q, 6q, 8p
+chr7_p	C3	3q, 7p, 9q, 11p, 16q, 19p
+chr7_q	C4	7q, 12q
+chr8_p	C11	1p, 5q, 6q, 8p
+chr9_p	C5	6p, 9p, 12p, 20q
+chr9_q	C3	3q, 7p, 9q, 11p, 16q, 19p
+chrX_p	C15	Xp, Yp
+chrX_q	C14	Xq, Yq
+chrY_p	C15	Xp, Yp
+chrY_q	C14	Xq, Yq

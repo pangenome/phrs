@@ -44,10 +44,10 @@ repo_root  <- normalizePath(file.path(dirname(script_path), "..", "..", ".."),
                             mustWork = FALSE)
 ext_root   <- "/moosefs/guarracino/HPRCv2/PHR_III"
 
-f1a_pdf    <- file.path(repo_root, "p_genome_wide_identity_heatmap_no_inset.pdf")
-f1b_pdf    <- file.path(repo_root, "p_genome_wide_numchrom_heatmap.pdf")
-f1a_png    <- file.path(repo_root, "p_genome_wide_identity_heatmap.png")
-f1b_png    <- file.path(repo_root, "p_genome_wide_numchrom_heatmap.png")
+f1a_pdf    <- file.path(repo_root, "inter-chr-plots", "p_genome_wide_identity_heatmap_no_inset.pdf")
+f1b_pdf    <- file.path(repo_root, "inter-chr-plots", "p_genome_wide_numchrom_heatmap.pdf")
+f1a_png    <- file.path(repo_root, "inter-chr-plots", "p_genome_wide_identity_heatmap.png")
+f1b_png    <- file.path(repo_root, "inter-chr-plots", "p_genome_wide_numchrom_heatmap.png")
 
 arm_dist   <- file.path(ext_root, "similarity",
                         "hprcv2.1Mb.subtelo.arm_dist_matrix.tsv")

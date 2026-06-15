@@ -19,9 +19,9 @@ Task: `review-zoom-v4-slide10a-xaxis-orientation-fix`.
 - v3 audit: `slides/v2-review-zoom/_revision_assets/v3/10a_axis_box_fix/matrix_order_audit.tsv`.
 - Original manuscript Fig. 3 generator: `paper_prep/figures/fig3/figure_fig3.R:32-80`; panel A uses base `image(..., t(vals_norm)[, n:1])`.
 - v2 redesign generator: `slides/v2-review-zoom/_revision_assets/hic_visual_redesign/make_hic_visual_redesign.R:28-93`; it also used the base-image transform shape with `rasterImage()`.
-- Contact matrix: `/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_contact_matrix.tsv`.
-- Sequence community table for boxes: `/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden.communities.tsv`.
-- Source B/W and p-value TSV: `/moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/50000bp/hg002_porec_global_test.tsv`.
+- Contact matrix: `/home/guarracino/git/phrs/data/hg002_porec_contact_matrix.tsv`.
+- Sequence community table for boxes: `/home/guarracino/git/phrs/data/hprcv2.1Mb.subtelo.arm-leiden.communities.tsv`.
+- Source B/W and p-value TSV: `/home/guarracino/git/phrs/data/hg002_porec_global_test.tsv`.
 
 ## Orientation Finding
 
