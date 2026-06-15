@@ -6,7 +6,9 @@ Self-contained LaTeX submission for *Concerted evolution and unorthodox recombin
 
 ```bash
 cd submission
+make help       # list available targets
 make            # or: bash compile.sh
+make debug      # force rebuild with tool/input checks and log diagnostics
 xdg-open paper.pdf
 ```
 
@@ -79,6 +81,14 @@ Troubleshooting → Unicode). Always judge ref/citation resolution from the
 
 ```bash
 grep -c 'undefined' paper.log     # expect 0
+```
+
+Useful targets:
+
+```bash
+make help       # show targets
+make debug      # check pdflatex/bibtex, force a rebuild, print diagnostics
+make rebuild    # clean generated LaTeX outputs, then build
 ```
 
 ### Option 2 — direct script

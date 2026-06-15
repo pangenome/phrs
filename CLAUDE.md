@@ -39,7 +39,7 @@ identity heatmaps (`identity_heatmap_chr*.pdf`) in `identity_heatmaps/`.
   `caption.md`.
 - `paper_prep/synthesis/` — paper-level artifacts (`ABSTRACT_BoG.md`,
   `ABSTRACT_nature.md`, `REFERENCES_v3.bib`, `CROSSWALK.md`).
-- `paper_prep/submission/` — the active LaTeX manuscript (Springer Nature
+- `submission/` — the active LaTeX manuscript (Springer Nature
   `jnl.cls`): `paper.tex` (single file, no `\input`), `bibliography.bib`,
   bundled `jnl.cls`+`mathphys.bst`, `fig/{MainFigures,ExtendedDataFigures}/`.
   See "Paper submission (LaTeX)" below.
@@ -85,11 +85,11 @@ experiments under `_revision_assets/v<N>/<slide-id>/` (`README.md`,
 
 ## Paper submission (LaTeX)
 
-Build the manuscript from `paper_prep/submission/` (self-contained; needs only
+Build the manuscript from `submission/` (self-contained; needs only
 `pdflatex` + `bibtex`, no moosefs):
 
 ```
-cd paper_prep/submission
+cd submission
 make            # or: bash compile.sh
 ```
 
