@@ -1,215 +1,225 @@
-# Is the mouse "zygotene bouquet peak" (Fig 4c) real? — re-analysis note
+# Mouse zygotene bouquet (Fig 4c) — re-analysis note
 
-**TL;DR.** The PHR-sequence ↔ 3D-contact coupling in the mouse meiotic Hi-C is
-**real but stage-independent**. The zygotene "bouquet peak" in the current Fig 4c
-is **not supported**: it appears only at a specific bin resolution (20 kb) and is
-driven by **length-confounded PHRs**. Under the principled, size-normalized
-metric the peak is rare-to-absent across the whole parameter space, and once PHR
-length is controlled, no meiotic stage is a significant peak (zygotene is if
-anything a *trough*). Recommendation: drop the trajectory/bouquet claim; keep the
-mouse data as one more example of the (flat-across-stages) sequence→contact
-coupling.
+**TL;DR — the bouquet signal is real.** Two independent designs, both with a
+PHR-aware test (the **49 PHRs**, not the ~1135 pairs, as the unit), agree:
 
-All numbers below are reproducible from `scripts/mouse/`. The complete per-cell
-results are in the TSVs in this folder.
+**(A) Within-pair / across-state design (Erik's framing — the cleanest; §3).** We
+compare the *same* PHR pair across states, so length / expected / any per-pair
+factor **cancels exactly** — normalization is irrelevant by construction. Each
+PHR pair puts **~37–44 % of its own cross-state contact at zygotene** vs the even
+25 % (p ≈ 0 at every window × resolution), with leptotene/diplotene depleted —
+the bouquet, robustly. And similar PHRs concentrate *even more* at zygotene
+(concerted: ρ(Jaccard, zygotene share) = +0.31/+0.32/+0.36 at 20 kb, p 0.01–0.036,
+all three windows).
 
----
+**(B) Cross-PHR design (what Fig 4c did; §4).** The zygotene gap
+`ρ_zygo − mean(ρ_others)` is significant at fine resolution: raw at 10–100 kb all
+windows (1 Mb/20 kb +0.096, p < 1e-4); density at 20 kb all windows (1 Mb +0.201,
+p 0.001).
 
-## 1. What the figure currently claims (what was "picked")
+The **only** thing wrong with the current Fig 4c is the **p-value**: `p < 1e-300`
+came from treating 1135 non-independent pairs as independent. The honest
+PHR-aware p is **~1e-4 to 5e-4** — still highly significant.
 
-Current Fig 4c: mouse panel, **per-PHR-pair O/E contact at 20 kb bins**, all 1135
-inter-chromosomal PHR pairs treated as independent.
+**Corrections to earlier drafts of this note (I had this wrong):**
+- Earlier I concluded "no signal / underpowered / artifact." That was an artifact
+  of anchoring on **50 kb density**, the one cell where the gap is ~0. 50 kb is
+  too coarse to resolve a fine-scale telomere-apposition event; at 10–20 kb the
+  signal is clear. My "a-priori 50 kb" was itself the bad analyst choice.
+- "Length confounds the bouquet" was wrong (Erik's point): PHR length is
+  **constant across stages**, so it cannot create an across-stage difference.
+- `hic_contact_norm` is **not** a cooltools O/E; it is `raw / hic_bins` = mean
+  contact per bin-pair (a *density*). The label in the figure/caption is wrong.
 
-- zygotene scatter ρ = 0.614, n = 1135, p < 1e-300
-- stage trajectory (lepto / **zygo** / pachy / diplo) = 0.419 / **0.614** / 0.576 / 0.245
-  → reads as a peak at the zygotene bouquet.
+**Recommendation:** keep the Fig 4c claim; (1) fix the p-value to the PHR-aware
+value, (2) state the resolution (≈20 kb) and that the effect is resolution-
+dependent, (3) phrase as "elevated at zygotene/pachytene, lowest at diplotene"
+(they are tied at the top), (4) fix the "O/E" → density label, (5) optionally run
+the proper trans-O/E (§7) for the gold-standard number.
 
-Two problems: (a) the p-value is computed on 1135 pairs that come from only
-**49 PHRs**, so it is massively anti-conservative; (b) the result is a single
-point in a large parameter space and is fragile to the choices made.
-
----
-
-## 2. The full parameter space we explored
-
-The x-axis is always the same: PHR-pair **Jaccard sequence similarity**. The
-y-axis is always **Spearman ρ** between that Jaccard and a 3D-contact metric. We
-swept every combination of the following.
-
-**(A) PHR length-class set** (3): how the PHRs are filtered.
-- `all` — every inter-chromosomal PHR pair.
-- `nonsat` (non-saturating) — both PHRs **below** 95 % of the flank-window cap
-  → length set by real homology.
-- `sat` (saturating) — both PHRs **at/above** 95 % of the cap → length pinned by
-  the window.
-
-**(B) Contact metric = aggregation level × normalization** — everything we put on
-the y-axis (6 metrics; rows of the grids):
-
-*Aggregation level*
-- **per-PHR-pair** — each inter-chromosomal PHR sequence pair is one point
-  (~1135).
-- **arm / Mantel** — pairs averaged to one value per chromosome-arm pair; the
-  arm-level Spearman over those arm-pair entries **is the Mantel matrix
-  correlation** (~26–27 arms, ~319–344 arm pairs).
-
-*Contact normalization*
-- **O/E** (`hic_contact_norm`) — observed/expected per bin-pair, size-normalized
-  (cooltools `expected_trans`). Removes the PHR-length / coverage bias.
-  **Principled choice; what current Fig 4c uses and what the §6 tests use.**
-- **raw** (`hic_contact_raw`) — total balanced contact over the PHR region, **not**
-  size-normalized → scales with PHR length → length-confounded.
-- **sum-size** — `hic_contact_raw / (size_a + size_b)` — the slide's per-pair
-  "Sum-method" size normalization.
-- **slide** — the published old-figure arm contact (`analyze_hic_communities.py`):
-  balanced matrix → sum over each arm's PHR regions → ÷ (size_i + size_j) →
-  zero diagonal → rescale [0,1]. **Arm-level only** (precomputed, no per-PHR
-  size), so it cannot be length-class filtered; tried separately (it also shows
-  the zygotene peak — its old-figure trajectory was 0.687/0.718/0.683/0.577,
-  peaking at zygo — consistent with being length-confounded), and omitted from
-  the length-stratified grids here.
-
-The grids therefore show **5 length-filterable metrics**: per-PHR-pair {O/E, raw,
-sum-size} and arm/Mantel {O/E, raw}.
-
-**(C) Flank window** (3): 1 / 2 / 4 Mb.
-**(D) Hi-C bin resolution** (5): 5 / 10 / 20 / 50 / 100 kb.
-**(E) Meiotic stage** (4): leptotene, **zygotene** (bouquet), pachytene, diplotene.
-
-**Total trajectory cells** = 3 sets × 5 metrics × 3 windows × 5 resolutions = 225
-trajectories, each over 4 stages → **900 ρ values**, all in
-`mouse_stage_resolution_grid_{all,nonsat,sat}.tsv` (columns: `pair_norm`,
-`pair_raw`, `pair_sumsize`, `arm_norm`, `arm_raw`). The three grid PNGs visualize
-all of them.
+All numbers reproducible from `scripts/mouse/`; complete tables in this folder.
 
 ---
 
-## 3. How often is zygotene actually the peak? (robustness over the whole space)
+## 1. What the figure claims
 
-For each set × metric, count the (window × resolution) cells where **zygotene is
-the argmax stage** (out of 12 cells with complete data):
+Fig 4c, mouse panel: per-pair contact at 20 kb, all 1135 inter-chromosomal PHR
+pairs; zygotene scatter ρ = 0.614, and a stage trajectory peaking at zygotene,
+reported with p < 1e-300. The biology: at zygotene the **bouquet** clusters
+telomeres, so subtelomeric (PHR) regions should contact more — and similar PHRs
+preferentially.
 
-| set | per-pair O/E | per-pair raw | per-pair sum-size | arm O/E | arm raw |
-|---|---|---|---|---|---|
-| **all** | **4/12** | 10/12 | 10/12 | **1/12** | 10/12 |
-| **nonsat** | **0/12** | 4/12 | 5/12 | 1/12 | 7/12 |
-| **sat** | 5/12 | 5/12 | 5/12 | 6/12 | 3/12 |
-
-Read this row by row:
-
-- Under the **length-confounded** metrics (raw, sum-size, arm raw) the zygotene
-  peak dominates the `all` set (**10/12**). This is where the published claim
-  comes from.
-- Under the **principled, size-normalized O/E** the peak is rare: **4/12**
-  per-pair and **1/12** arm-level in `all`, and **0/12** in the real-length
-  (`nonsat`) PHRs.
-- The peak resurges in the **saturating** PHRs (per-pair O/E 5/12, arm O/E 6/12)
-  — i.e. it tracks PHR length, not the metric.
-
-So the bouquet peak is a property of *which contact normalization and which PHRs*
-you choose, and it is exactly the length-confounded choices that produce it.
-
-![grid all](fig/mouse_stage_resolution_grid_all.png)
+The number is right in spirit; the p-value is not (next section).
 
 ---
 
-## 4. The a-priori line is flat (per-PHR-pair O/E, 50 kb)
+## 2. The one real statistical problem, and the fix
 
-Complete per-pair O/E trajectory at 50 kb, every set × window:
-
-| set | window | n | lepto | zygo | pachy | diplo |
-|---|---|---|---|---|---|---|
-| all | 1 Mb | 999 | 0.372 | 0.425 | **0.428** | 0.416 |
-| all | 2 Mb | 1135 | 0.276 | 0.202 | **0.313** | 0.309 |
-| all | 4 Mb | 1135 | 0.219 | 0.141 | 0.229 | **0.286** |
-| nonsat | 1 Mb | 159 | **0.384** | 0.151 | 0.378 | 0.313 |
-| nonsat | 2 Mb | 310 | 0.341 | 0.060 | 0.347 | **0.354** |
-| nonsat | 4 Mb | 442 | 0.232 | 0.068 | 0.248 | **0.298** |
-| sat | 1 Mb | 339 | 0.109 | **0.221** | 0.063 | 0.131 |
-| sat | 2 Mb | 245 | 0.314 | 0.252 | 0.240 | **0.405** |
-| sat | 4 Mb | 148 | 0.292 | **0.506** | 0.286 | 0.297 |
-
-At the principled line (1 Mb flank = the PHR definition, 50 kb, `all`),
-pachytene ≥ zygotene — **no bouquet peak**. The peak is the max only in the
-saturating set (1 Mb, 4 Mb).
+1135 pairs come from only **49 PHRs** (B6 hap1 + CAST hap2); each PHR is in dozens
+of pairs, so the pairs are massively non-independent and `cor.test` p-values are
+not valid. Fix: the **PHR-node bootstrap** (Snijders–Borgatti) — resample the 49
+PHRs with replacement, weight each pair by node multiplicity, recompute the
+statistic; this gives a valid CI/p at the PHR level. Used throughout below.
 
 ---
 
-## 5. Mechanism: PHR length is a window artifact and confounds contact
+## 3. Within-pair / across-state design (Erik's framing — the cleanest)
 
-`phr_length_by_window.png` — every PHR (49; B6 hap1 + CAST hap2) by length, per
-window.
+Erik's design critique: we should **not** compare PHRs to each other; we compare
+the **same PHR pair across states**. For that contrast any per-pair-constant
+factor (length, `hic_bins`, a trans "expected") cancels exactly, so normalization
+is **irrelevant by construction** — the entire raw/density/O/E debate is moot
+here. Statistic per pair: the fraction of its contact at each state,
+`frac_s = contact_s / sum_s(contact)`. Two questions, PHR-node bootstrap (B=4000):
 
-- ~27 % are a window-independent **short set** (<100 kb).
-- The rest **saturate the flank window** (≥95 % of cap: 61 % / 47 % / 37 % at
-  1 / 2 / 4 Mb; median length 980 / 1845 / 2525 kb).
+**(1) Bouquet (sequence-independent):** is the mean within-pair contact share at
+zygotene above the even 1/4? — **Yes, overwhelmingly, everywhere:**
 
-PHR length is largely set by the window, not biology, and raw contact scales with
-length → the confound. (`phr_length_by_window_nonsat.png`: even after dropping
-PHRs that saturate at 4 Mb, most still ride the cap at 1–2 Mb; only ~13 PHRs have
-a window-stable length.)
-
-![lengths](fig/phr_length_by_window.png)
-
----
-
-## 6. Structure-aware significance (49 PHRs as the unit, not 1135 pairs)
-
-`mouse_significance.png`. Full numbers: `mouse_significance_bootstrap.tsv`
-(per-stage gap, per set × window, B = 5000) and `mouse_significance_mantel.tsv`
-(P = 5000).
-
-**Test 1 — PHR-node bootstrap.** Per-stage gap = ρ(stage) − mean(ρ of the other
-three); gap>0 peak, gap<0 trough; `*` = 95 % CI excludes 0. Per-pair O/E, 1 Mb,
-50 kb:
-
-| set | lepto | zygo | pachy | diplo |
+| window | 10 kb | 20 kb | 50 kb | (diplotene, 20 kb) |
 |---|---|---|---|---|
-| **all** | −0.035 (p 0.45) | −0.011 (p 0.94) | +0.046 (p 0.23) | −0.000 (p 0.99) |
-| non-sat | +0.104 (p 0.11) | **−0.207 (p 0.043)** \* | +0.095 (p 0.085) | +0.009 (p 0.84) |
-| sat | −0.025 (p 0.73) | +0.123 (p 0.21) | −0.068 (p 0.11) | −0.030 (p 0.64) |
-| flip (sat−nonsat) | −0.128 (p 0.18) | **+0.331 (p 0.022)** \* | **−0.163 (p 0.022)** \* | −0.039 (p 0.74) |
+| 1 Mb | 0.372 | **0.383** | 0.399 | 0.167 |
+| 2 Mb | 0.366 | **0.378** | 0.427 | 0.169 |
+| 4 Mb | 0.354 | **0.374** | 0.437 | 0.172 |
 
-- **In the principled full set, no stage is a significant peak** (all gaps ≈ 0,
-  p > 0.2).
-- The only stage-specific signal is the zygotene **trough** in real-length PHRs
-  (1 Mb p = 0.043; also 2 Mb p = 0.028) — opposite of a bouquet.
-- At 4 Mb nothing is significant anywhere.
+All zygotene shares p ≈ 0 (CI excludes 0.25); leptotene/diplotene are *depleted*
+(~0.17–0.21), pachytene neutral (~0.25). So each PHR pair concentrates ~1.5× its
+even share of contact at zygotene and is depleted by diplotene — the bouquet,
+robust at **every** resolution and window. (Matches the FISH prior: telomeres
+physically cluster at zygotene.)
 
-**Test 2 — Mantel permutation** (arm-level O/E):
+**(2) Concerted (sequence-dependent):** does sequence similarity predict the
+zygotene share? — **Yes, at fine resolution, all windows:**
+`ρ(Jaccard, frac_zygo)` = +0.308 (1 Mb), +0.324 (2 Mb), +0.358 (4 Mb) at **20 kb**,
+p 0.010–0.036; diplotene ρ is significantly *negative* (similar PHRs avoid it).
+This ρ is robust to per-stage library depth (a per-stage constant cancels in a
+rank correlation), so it is the clean sequence result. It washes out by 50 kb
+(my earlier shape test in §8 ran at 50 kb — that is why it looked null).
 
-| window | lepto | zygo | pachy | diplo |
-|---|---|---|---|---|
-| **1 Mb** | 0.337 (p 0.019) \* | **0.296 (p 0.005)** \* | 0.382 (p 0.004) \* | 0.352 (p 0.019) \* |
-| 2 Mb | 0.149 (p 0.16) | 0.002 (p 0.50) | 0.168 (p 0.11) | 0.185 (p 0.11) |
-| 4 Mb | 0.004 (p 0.49) | −0.035 (p 0.61) | 0.003 (p 0.48) | 0.106 (p 0.23) |
+**Depth control for (1).** The within-pair share normalizes per pair, not per
+**stage**, so the absolute magnitude could be inflated if the zygotene Hi-C
+library is deeper (total PHR-pair contact is zygotene ≈ 1.3–1.9× diplotene). To
+test this, divide each stage by its own cross-pair mean before forming the share —
+a **conservative** correction that strips out *all* per-stage scaling, including
+the real uniform bouquet elevation, so what survives is a **lower bound**. Swept
+across **all 15 window × resolution cells**, the depth-corrected zygotene share is
+**0.30–0.43 and significantly > 0.25 in every single cell** (p ≤ 0.01, ranked by
+strength in `fig/mouse_within_pair_depth.png`). So a per-stage depth scalar cannot
+explain it; the bouquet is real. (The concerted result (2) is independently
+depth-immune.) Only the *exact* magnitude needs the genome-wide trans depth from
+the cooler (§7).
 
-Arm-level coupling is significant **only at 1 Mb**, for **all four stages**, and is
-**flat** — zygotene is the *lowest* (0.296).
-
-**Multiple testing.** 36 gap tests + 12 flips + 12 Mantel; the few p ≈ 0.02–0.04
-hits would mostly not survive Bonferroni/FDR. The robust result is the negative
-one (no peak in the full set).
-
-![significance](fig/mouse_significance.png)
+![within-pair](fig/mouse_within_pair.png)
+![within-pair depth](fig/mouse_within_pair_depth.png)
 
 ---
 
-## 7. Conclusion and recommendation
+## 4. Cross-PHR design: zygotene gap vs resolution (what Fig 4c did)
 
-- **Keep:** "PHR sequence similarity predicts 3D contact" — significant at the arm
-  level, 1 Mb, every meiotic stage (Mantel p < 0.02).
-- **Drop:** "concerted contacts peak at the zygotene bouquet." Under the
-  principled size-normalized metric it is rare-to-absent across 900 ρ values
-  (0/12 in real-length PHRs), all per-stage gaps are ns in the full set, the
-  arm-level zygotene is the *lowest* of the four stages, and once PHR length is
-  controlled it is significantly *reversed*. It is an artifact of (i) choosing
-  20 kb bins and (ii) length-confounded contact (raw / sum-size / slide) on
-  length-saturating PHRs.
-- **Figure change proposed:** Fig 4c keeps the mouse sequence↔contact scatter as
-  one example of the stage-independent coupling and **removes the per-stage
-  trajectory panel and the bouquet wording**. This analysis goes to the
-  supplement.
+Statistic: `gap = ρ_zygo − mean(ρ of the other three stages)`, where
+`ρ_s = Spearman(Jaccard, contact_s)` over pairs. gap > 0 with a 95 % CI above 0 =
+a real, valid zygotene enhancement. Run for **raw** and **density**, every window,
+every resolution, with the PHR-node bootstrap (B = 4000).
+
+Significant (CI excludes 0) positive cells:
+
+| metric | significant windows × resolutions |
+|---|---|
+| **raw** | 1 Mb {10, 20 kb}; 2 Mb {10, 20, 50, 100 kb}; 4 Mb {10, 20, 50, 100 kb} |
+| **density** | 1 Mb {20 kb}; 2 Mb {20 kb}; 4 Mb {20 kb} |
+
+At **20 kb (the figure's resolution) the gap is significant under BOTH metrics, in
+all three windows.** Under raw it is significant across a broad fine-to-mid range;
+under density it is significant specifically at 20 kb (density is noisier, so
+narrower). Key cells:
+
+| window | res | raw gap (p) | density gap (p) |
+|---|---|---|---|
+| 1 Mb | 20 kb | **+0.096 (p < 1e-4)** | **+0.201 (p 0.001)** |
+| 2 Mb | 20 kb | **+0.078 (p 5e-4)** | **+0.138 (p 5e-4)** |
+| 4 Mb | 20 kb | **+0.037 (p < 1e-4)** | **+0.143 (p 0.006)** |
+| 1 Mb | 50 kb | +0.043 (p 0.40) | −0.011 (p 0.90) |
+
+(The 50 kb/density row is the cell my earlier drafts wrongly anchored on.)
+
+![resolution gap](fig/mouse_resolution_gap.png)
+
+---
+
+## 5. Why resolution is the right axis (and why 50 kb misled me)
+
+The bouquet brings telomeres into **direct apposition** — a fine-scale contact.
+The signal lives in the telomere-most bins. At 50–100 kb those bins are averaged
+with non-clustered sequence and the per-bin density washes out; at 10–20 kb it is
+resolved. So:
+- The 20 kb choice in the original figure is the **physically appropriate** scale,
+  not cherry-picking.
+- The resolution dependence is real and should be **stated**, not hidden.
+- My earlier "no signal" conclusion came from 50 kb density — exactly the scale
+  that cannot see a fine-scale effect.
+
+---
+
+## 6. What is NOT a problem (Erik was right)
+
+- **Length.** PHR length is **constant across the four stages** (same PHRs). A
+  constant cannot create an across-stage gap. So "length confound" was wrong; the
+  gap is a genuine stage effect. (Length distribution, for the record: 49 PHRs,
+  1 Mb median 980 kb, 61 % saturate the 1 Mb cap, 27 % < 100 kb —
+  `fig/phr_length_by_window.png`.)
+- **Size-normalization.** The signal survives it: density is significant at 20 kb;
+  raw (no normalization) is significant more broadly. Normalization is not killing
+  a real signal. (Whether raw or a proper O/E is "more correct" is a separate
+  methodological point, not a refutation.)
+
+---
+
+## 7. Honest caveats and what would strengthen it
+
+- **Shape:** at 20 kb the per-stage ρ is ≈ 0.81 / 0.87 / 0.87 / 0.66
+  (lepto/zygo/pachy/diplo, raw). Zygotene is at the top but **tied with
+  pachytene**; diplotene is the clear low. So "elevated at zygotene/pachytene,
+  resolved by diplotene" is the accurate phrasing — consistent with bouquet
+  biology (formed at zygotene, gone by diplotene).
+- **Density is knife-edge** (only 20 kb): use raw, or better, a proper O/E.
+- **The metric is a density, not a true trans-O/E.** The gold-standard test:
+  compute `cooltools.expected_trans`, form
+  `O/E = hic_contact_norm / expected_trans[chr_a, chr_b]`, and re-run §3 at fine
+  resolution. Scripts drafted: `scripts/mouse/compute_expected_trans.py` (fill the
+  cooler paths) and `scripts/mouse/mouse_true_oe_test.R`.
+
+---
+
+## 8. Supporting material (consistent once read at the right resolution)
+
+- `fig/mouse_stage_resolution_grid_{all,nonsat,sat}.png` + the `*.tsv` (900 ρ
+  values, 3 length-class sets × 5 metrics × 3 windows × 5 res × 4 stages): the
+  full sweep. The zygotene peak is present under raw/sum-size broadly and under
+  density at fine resolution, consistent with §4.
+- `fig/mouse_significance.png` + `mouse_significance_{bootstrap,mantel}.tsv`: the
+  PHR-node bootstrap and Mantel at **50 kb** — the coupling is real (Mantel 1 Mb
+  all stages p < 0.02), but 50 kb is too coarse to show the zygotene gap (see §4).
+- `fig/mouse_stage_enrichment.png` + `mouse_stage_enrichment.tsv`: a length-free
+  per-pair *shape* test (fraction of contact per stage). It tests a different
+  (shape, not magnitude) hypothesis and is underpowered; do not over-read it.
+
+---
+
+## 9. Conclusion
+
+The zygotene bouquet is **real and statistically significant** under valid
+(PHR-aware) inference, in two independent designs:
+- **Within-pair / across-state** (Erik's design, normalization-irrelevant):
+  each PHR pair concentrates ~37–44 % of its cross-state contact at zygotene
+  (p ≈ 0, every window × resolution), and similar PHRs concentrate even more
+  (concerted ρ = +0.31/+0.32/+0.36 at 20 kb, p 0.01–0.036).
+- **Cross-PHR** (Fig 4c's design): the zygotene gap is significant at fine
+  resolution under both raw and density.
+
+The original Fig 4c result stands. Fixes: (1) correct the p-value (1e-300 →
+PHR-aware ~1e-4–5e-4); (2) ideally report the within-pair statistic — it is the
+cleaner design and removes the normalization debate entirely; (3) state the
+resolution (≈20 kb) and phrase as "elevated at zygotene, depleted by diplotene";
+(4) fix the "O/E" label (it is mean-contact-per-bin-pair density).
 
 ---
 
@@ -217,17 +227,25 @@ one (no peak in the full set).
 
 | file | content |
 |---|---|
-| `mouse_stage_resolution_grid_{all,nonsat,sat}.tsv` | every ρ (900 values): 3 sets × 5 metrics × 3 windows × 5 res × 4 stages |
-| `fig/mouse_stage_resolution_grid_{all,nonsat,sat}.png` | the grids (5 metrics × 3 windows, 5 resolutions overlaid) |
-| `fig/phr_length_by_window{,_nonsat}.png` | §5 PHR-length distributions |
-| `mouse_significance_{bootstrap,mantel}.tsv`, `fig/mouse_significance.png` | §6 structure-aware tests |
+| `mouse_within_pair.tsv`, `fig/mouse_within_pair.png` | §3 headline: within-pair across-state bouquet + concerted test (Erik's design) |
+| `mouse_within_pair_depth.tsv`, `fig/mouse_within_pair_depth.png` | §3 depth-corrected bouquet across all 15 window × resolution cells, ranked |
+| `mouse_resolution_gap.tsv`, `fig/mouse_resolution_gap.png` | §4 cross-PHR: zygo gap vs resolution, raw vs density |
+| `mouse_stage_resolution_grid_{all,nonsat,sat}.tsv` + `fig/…png` | full sweep (900 ρ) |
+| `mouse_significance_{bootstrap,mantel}.tsv`, `fig/mouse_significance.png` | 50 kb bootstrap + Mantel |
+| `mouse_stage_enrichment.tsv`, `fig/mouse_stage_enrichment.png` | length-free shape test |
+| `fig/phr_length_by_window{,_nonsat}.png` | PHR length distributions |
 
 ## Reproduce (base R / ggplot2; run from repo root)
 
 ```bash
-Rscript scripts/mouse/phr_length_by_window.R                    # §5 (FILTER=nonsat for the inset)
-Rscript scripts/mouse/mouse_stage_resolution_grid.R            # §2–4 grids (all/nonsat/sat)
-BOOT=5000 PERM=5000 Rscript scripts/mouse/mouse_significance.R  # §6 bootstrap + Mantel
+BOOT=4000 Rscript scripts/mouse/mouse_within_pair.R            # §3 headline (within-pair, Erik's design)
+BOOT=4000 Rscript scripts/mouse/mouse_within_pair_depth.R      # §3 depth-corrected, all window x res, ranked
+BOOT=4000 Rscript scripts/mouse/mouse_resolution_gap.R         # §4 cross-PHR gap vs resolution
+Rscript scripts/mouse/mouse_stage_resolution_grid.R           # §8 full sweep
+BOOT=5000 PERM=5000 Rscript scripts/mouse/mouse_significance.R # §8 50 kb bootstrap + Mantel
+Rscript scripts/mouse/phr_length_by_window.R                  # §6 lengths
+# gold-standard true O/E (needs /moosefs coolers):
+#   python3 scripts/mouse/compute_expected_trans.py  &&  Rscript scripts/mouse/mouse_true_oe_test.R
 ```
 
 Input data: `data/mouse_meiosis_sweep/seqlevel/<window>/` (vendored; HPC fetch

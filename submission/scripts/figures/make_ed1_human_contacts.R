@@ -1,18 +1,20 @@
 #!/usr/bin/env Rscript
-# Extended Data Fig. 1 -- CHM13 Hi-C: one dot per inter-chromosomal PHR sequence
-# pair (single-sample: CHM13's own PHRs vs its own contact), 50 kbp.
-# x = PHR-pair Jaccard similarity; y = length-normalized 3D contact (log).
-# Companion to Fig 4a (HG002 Pore-C); same all-points method, no averaging.
+# Extended Data Fig. 1 -- replication of the Fig 4a sequence<->3D coupling across
+# additional human contact assays and a second genome, all at 50 kbp, all-points
+# (one dot per inter-chromosomal PHR sequence pair; single-sample, no averaging):
+#   panel 1  CHM13 Hi-C        (second genome, Hi-C)
+#   panel 2  HG002 Hi-C        (same genome as Fig 4a Pore-C, different assay)
+#   panel 3  HG002 CiFi        (third assay; sparse, hence weaker)
+# x = PHR-pair Jaccard similarity; y = mean contact per bin-pair (density, log).
 # Base R only. Paths resolve from the script's location, so run from anywhere:
-#   Rscript submission/scripts/figures/make_ed1_chm13_hic.R
+#   Rscript submission/scripts/figures/make_ed1_human_contacts.R
 # Input  (override dir with DATA_DIR=...):
 #   data/human_CHM13_hic_50000bp_seqlevel.tsv
-#   columns: ... chr_a arm_a chr_b arm_b ... jaccard hic_contact_raw hic_contact_norm hic_bins
+#   data/human_HG002_hic_50000bp_seqlevel.tsv
+#   data/human_HG002_cifi_50000bp_seqlevel.tsv
 # Outputs (override dir with OUT_DIR=...):
-#   submission/fig/ExtendedDataFigures/ED_Fig1_chm13_hic.{png,pdf}
+#   submission/fig/ExtendedDataFigures/ED_Fig1_human_contacts.{png,pdf}
 
-# Resolve the repo root from this script's own location
-# (submission/scripts/figures/), so it runs from any working directory.
 .cmd_args  <- commandArgs(trailingOnly = FALSE)
 .this_file <- sub("^--file=", "", .cmd_args[grep("^--file=", .cmd_args)])
 script_dir <- if (length(.this_file)) normalizePath(dirname(.this_file)) else getwd()
@@ -26,9 +28,12 @@ fmt_p   <- function(p) if (is.na(p) || p == 0) "<1e-300" else
                        formatC(p, format = "e", digits = 1)
 
 sources <- list(
-  list(dataset = "CHM13 Hi-C 50 kbp",
-       path = file.path(data_dir, "human_CHM13_hic_50000bp_seqlevel.tsv"),
-       color = "#b64b2a")
+  list(dataset = "CHM13 Hi-C", path = file.path(data_dir, "human_CHM13_hic_50000bp_seqlevel.tsv"),
+       color = "#b64b2a"),
+  list(dataset = "HG002 Hi-C", path = file.path(data_dir, "human_HG002_hic_50000bp_seqlevel.tsv"),
+       color = "#2a6fb6"),
+  list(dataset = "HG002 CiFi", path = file.path(data_dir, "human_HG002_cifi_50000bp_seqlevel.tsv"),
+       color = "#7a4fb6")
 )
 
 load_seq_pair <- function(path) {
@@ -42,8 +47,7 @@ items <- lapply(sources, function(src) {
   d  <- load_seq_pair(src$path)
   ct <- suppressWarnings(cor.test(d$jaccard, d$hic_contact_norm,
                                   method = "spearman", exact = FALSE))
-  list(src = src, d = d, n = nrow(d),
-       rho = unname(ct$estimate), p = ct$p.value)
+  list(src = src, d = d, n = nrow(d), rho = unname(ct$estimate), p = ct$p.value)
 })
 
 plot_one <- function(it) {
@@ -54,13 +58,12 @@ plot_one <- function(it) {
        bg = adjustcolor(it$src$color, alpha.f = 0.22),
        col = adjustcolor("#1f1f1f", alpha.f = 0.12),
        lwd = 0.25, cex = 0.55, xaxs = "i", xlim = c(0, 1), xaxt = "n", yaxt = "n",
-       xlab = "", ylab = "",
-       main = "",
+       xlab = "", ylab = "", main = it$src$dataset, cex.main = 1.7,
        cex.lab = 1.56, cex.axis = 1.45)
   grid(col = "#e6e6e6", lwd = 0.7)
-  axis(1, at = c(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.0), cex.axis = 1.45)
+  axis(1, at = c(0, 0.2, 0.4, 0.6, 0.8, 1.0), cex.axis = 1.45)
   yd <- seq(ceiling(par("usr")[3]), floor(par("usr")[4]))
-  axis(2, at = 10^yd, las = 1, cex.axis = 1.45,
+  axis(2, at = 10^yd, las = 1, cex.axis = 1.3,
        labels = vapply(yd, function(d)
                        if (d >= 0) formatC(10^d, format = "d")
                        else if (d >= -3) formatC(10^d, format = "f", digits = -d)
@@ -70,30 +73,28 @@ plot_one <- function(it) {
     xs <- seq(min(x), max(x), length.out = 100)
     lines(xs, 10 ^ predict(fit, data.frame(x = xs)), col = "#111111", lwd = 1.35)
   }
-  legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.3,
+  legend("bottomright", inset = c(0.01, 0.05), bty = "n", cex = 1.25,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
-                    sprintf("pointwise Spearman rho = %s", fmt_rho(it$rho)),
+                    sprintf("Spearman rho = %s", fmt_rho(it$rho)),
                     sprintf("p = %s", fmt_p(it$p))))
-  legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
-         cex = 0.95, text.col = "black", text.font = 3, inset = c(-0.05, -0.015))
 }
 
 draw <- function() {
-  par(mfrow = c(1, 1), oma = c(2.6, 2.0, 0.2, 0.2),
-      mar = c(2.7, 4.0, 0.8, 0.7), mgp = c(2.4, 0.7, 0), family = "sans")
+  par(mfrow = c(1, 3), oma = c(3.0, 3.0, 0.4, 0.4),
+      mar = c(2.7, 3.4, 2.2, 0.7), mgp = c(2.4, 0.7, 0), family = "sans")
   invisible(lapply(items, plot_one))
   mtext("PHR sequence-pair Jaccard similarity", side = 1, outer = TRUE,
-        line = 0.8, cex = 1.7)
-  mtext("3D contact frequency", side = 2, outer = TRUE, line = 0.6, cex = 1.7)
+        line = 1.0, cex = 1.5)
+  mtext("3D contact frequency", side = 2, outer = TRUE, line = 1.0, cex = 1.5)
 }
 
-png(file.path(out_dir, "ED_Fig1_chm13_hic.png"),
-    width = 1120, height = 1040, res = 200, type = "cairo"); draw(); dev.off()
-pdf(file.path(out_dir, "ED_Fig1_chm13_hic.pdf"),
-    width = 5.6, height = 5.2); draw(); dev.off()
+png(file.path(out_dir, "ED_Fig1_human_contacts.png"),
+    width = 2400, height = 900, res = 200, type = "cairo"); draw(); dev.off()
+pdf(file.path(out_dir, "ED_Fig1_human_contacts.pdf"),
+    width = 12.0, height = 4.5); draw(); dev.off()
 
 for (it in items)
-  cat(sprintf("%-20s n=%d  rho=%s  p=%s\n",
+  cat(sprintf("%-12s n=%d  rho=%s  p=%s\n",
               it$src$dataset, it$n, fmt_rho(it$rho), fmt_p(it$p)))
-cat("wrote ", file.path(out_dir, "ED_Fig1_chm13_hic.{png,pdf}"), "\n", sep = "")
+cat("wrote ", file.path(out_dir, "ED_Fig1_human_contacts.{png,pdf}"), "\n", sep = "")
