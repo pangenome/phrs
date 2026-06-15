@@ -10,6 +10,7 @@
 \usepackage{caption}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{overpic}
 \captionsetup{justification=justified, font=small}
 
 % Removing the resetlabels option ensures that the numbering continues from the
@@ -358,9 +359,12 @@ Group for generating and interpreting these data.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.46\linewidth]{fig/MainFigures/Fig4a_human_scatter.pdf}\hfill
-  \includegraphics[width=0.52\linewidth]{fig/MainFigures/Fig4b_porec_community.pdf}\\[6pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}
+  \begin{overpic}[width=0.46\linewidth,percent]{fig/MainFigures/Fig4a_human_scatter.pdf}%
+    \put(0,93){\textbf{\large\sffamily A}}\end{overpic}\hfill
+  \begin{overpic}[width=0.52\linewidth,percent]{fig/MainFigures/Fig4b_porec_community.pdf}%
+    \put(0,95){\textbf{\large\sffamily B}}\end{overpic}\\[6pt]
+  \begin{overpic}[width=\linewidth,percent]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}%
+    \put(0,94){\textbf{\large\sffamily C}}\end{overpic}
   \caption{\textbf{Sequence similarity predicts three-dimensional proximity.}
     \textbf{(a)} Sequence-similar subtelomeres make more three-dimensional
     contact (HG002 Pore-C). Each dot is one inter-chromosomal pair of
