@@ -438,7 +438,7 @@ render_plot <- function(path, device = c("png", "pdf")) {
   bandw <- n * 0.022
   gap   <- n * 0.006
   loff  <- n * 0.010
-  clab  <- 0.95
+  clab  <- 1.15
   mid_x <- (blocks$column_start_index + blocks$column_end_index) / 2
   mid_y <- n - (blocks$row_start_index + blocks$row_end_index) / 2 + 1
   for (i in seq_len(nrow(blocks))) {
@@ -465,9 +465,9 @@ render_plot <- function(path, device = c("png", "pdf")) {
     yy <- 0.20 + (e - zlim[1]) / diff(zlim) * 0.68
     segments(0.22, yy, 0.27, yy, col = "#555555", lwd = 0.8)
     lab <- if (e == 0) expression(1) else bquote(10^.(e))
-    text(0.31, yy, lab, adj = c(0, 0.5), cex = 1.05)
+    text(0.31, yy, lab, adj = c(0, 0.5), cex = 1.25)
   }
-  text(0.86, 0.54, "Pore-C contact (log scale)", srt = 90, cex = 1.2)
+  text(0.86, 0.54, "Pore-C contact (log scale)", srt = 90, cex = 1.4)
 }
 
 png_path <- file.path(fig_out_dir, "Fig4b_porec_community.png")

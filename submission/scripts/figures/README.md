@@ -6,7 +6,7 @@ base R, no moosefs). Run from the repo root unless noted, then rebuild:
 
 ## What is computed vs copied
 
-**8 figures are COMPUTED from `data/`** (a script plots them from numbers).
+**9 figures are COMPUTED from `data/`** (a script plots them from numbers).
 **7 image files are VENDORED — copied, NOT computed here** (Fig3's 6 browser
 panels + Fig5): they are screenshots / pre-rendered PDFs whose generators need
 the live UCSC browser or off-repo moosefs data, so only the rendered images
@@ -18,9 +18,10 @@ live in the repo.
 | Fig1b | computed | deck `v9/06a_q_axis_kbp/make_06a_q_axis_kbp.R` |
 | Fig2a | computed | deck `v6/pggb_graph_black/render_pggb_layout_component8_black.R` |
 | Fig2b+2c | computed | `make_fig2bc_jaccard_heatmaps.R` (here) — one combined `Fig2bc_jaccard` file, both panels + one shared legend |
-| Fig4a | computed | `make_fig4a_human_scatter.R` (here) — all-points, one dot per PHR sequence pair |
+| Fig4a | computed | `make_fig4a_human_scatter.R` (here) — HG002 Pore-C all-points (single panel); full 2-panel HG002+CHM13 kept in `_backup/make_fig4a_human_scatter_full.R` |
 | Fig4b | computed | `make_fig4b_porec_community.R` (here) — Pore-C matrix + community colour bands/labels |
-| Fig4c | computed | `make_fig4c_mouse_zygotene.R` (here) — mouse meiotic bouquet (was ED1) |
+| Fig4c | computed | `make_fig4c_mouse_zygotene.R` (here) — mouse all-points 20 kb: zygotene scatter + per-stage per-pair Spearman trajectory (peaks at bouquet); was ED1 |
+| ED1 | computed | `make_ed1_chm13_hic.R` (here) — CHM13 Hi-C all-points replicate of Fig4a |
 | **Fig3a/b/c (6 PNG)** | **VENDORED (not computed)** | UCSC hs1 browser screenshots in `slides/chm13-phr-ucsc-browser/_assets/ucsc/panels/` |
 | **Fig5 (PDF)** | **VENDORED (not computed)** | `end-to-end-report/pedigree-plots/washu/...untangle.pdf` |
 
@@ -32,15 +33,17 @@ Fig3 panels are `.png`.
 
 ```bash
 Rscript submission/scripts/figures/make_fig2bc_jaccard_heatmaps.R  # Fig2bc combined tree- + community-ordered Jaccard heatmaps
-Rscript submission/scripts/figures/make_fig4a_human_scatter.R      # Fig4a  HG002 rho=0.381 n=2830; CHM13 rho=0.716 n=652
+Rscript submission/scripts/figures/make_fig4a_human_scatter.R      # Fig4a  HG002 Pore-C all-points rho=0.381 n=2830 (single panel)
+Rscript submission/scripts/figures/make_ed1_chm13_hic.R           # ED1    CHM13 Hi-C all-points rho=0.716 n=652 (replicate of 4a)
 Rscript submission/scripts/figures/make_fig4b_porec_community.R    # Fig4b  Pore-C contact matrix ordered by sequence community
-Rscript submission/scripts/figures/make_fig4c_mouse_zygotene.R     # Fig4c  mouse zygotene all-points rho=0.425 n=1135 + Mantel bouquet peak
+Rscript submission/scripts/figures/make_fig4c_mouse_zygotene.R     # Fig4c  mouse 20kb per-pair: zygo rho=0.614 n=1135; trajectory lepto/zygo/pachy/diplo 0.419/0.614/0.576/0.245 (needs the 4 mouse_*_phr_20000bp_seqlevel.tsv)
 ```
 
 These resolve `data/` and `submission/fig/` from their own path (override with
-`DATA_DIR=` / `OUT_DIR=`). Fig4a is one dot per inter-chromosomal PHR sequence
-pair, single-sample (each sample's own PHRs vs its own length-normalised contact);
-there is no separate Extended Data all-points panel.
+`DATA_DIR=` / `OUT_DIR=`). Fig4a (HG002 Pore-C) and ED1 (CHM13 Hi-C) are each one
+dot per inter-chromosomal PHR sequence pair, single-sample (a sample's own PHRs
+vs its own length-normalised contact). The full 2-panel HG002+CHM13 version of
+the old Fig4a is preserved in `_backup/make_fig4a_human_scatter_full.R`.
 
 ## Computed — deck generators (run, then copy the output in)
 
