@@ -35,7 +35,7 @@ lament.** The transcript's organizing affect is "we can finally see this":
 
 - cue 301–303, ~00:43:37 — "this is the first opportunity we had to
   systematically observe it at a population scale. In humans."
-- cue 31, ~00:31:31 — the implicit-graph representation "lets us go after these
+- cue 31, ~00:29:31 — the implicit-graph representation "lets us go after these
   questions for the first time."
 
 The committed sentence instead lands on "have been difficult to characterize."
@@ -138,7 +138,7 @@ The distortion has three parts:
    The opener pre-explains the exact limitation sentence 2 immediately dissolves,
    so sentence 1's clause reads as throat-clearing. (Worse, the paper's
    Introduction *also* opens "Human subtelomeres are among the most
-   rearrangement-prone and fast-evolving regions" at `paper.tex:62`, so the
+   rearrangement-prone and fast-evolving regions" at `paper.tex:60`, so the
    abstract opener and the intro opener execute nearly the same "Human
    subtelomeres are/carry [property]" move — the abstract's first sentence
    duplicates the intro instead of earning its place.)
@@ -285,3 +285,16 @@ Drop-in check against the existing sentence 2: "… shared with the ends of othe
 non-homologous chromosomes. Here we survey subtelomeric sequence sharing across
 466 near-complete assemblies (465 HPRC v2 haplotypes together with CHM13) …" —
 reads continuously, with no repeated idea.
+
+Accuracy note: the measured extent is interchromosomal homology on 41 of 48 arms
+(~85%), not literally every end; sentence 3 delivers that figure ("on 41 of 48
+chromosome arms"). The opener's "each human chromosome … looks
+chromosome-specific" states the universal prior assumption, and "much of its
+sequence is shared" is the surprise the abstract then quantifies — the same
+"almost all chromosomes" generalization Erik uses in the talk (cue 133,
+~00:34:47). This is standard abstract framing (general claim up front, precise
+number in the result sentence) and is not an overclaim, but if a reviewer reads
+"each" as asserting strict universality, the cleanest hedge is candidate #4
+("Nearly every human subtelomere shares sequence with the ends of other
+chromosomes …"), which is explicit about near-ubiquity at the cost of
+pre-spending the abstract's closing "near-ubiquitous feature" line.
