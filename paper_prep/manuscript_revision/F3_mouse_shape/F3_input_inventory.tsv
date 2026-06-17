@@ -1,0 +1,9 @@
+analysis	stage	path	exists	bytes	line_count
+sequence_level_exact_phr	leptotene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/seqlevel/1Mb/mouse_leptotene_phr_50000bp_seqlevel.tsv	True	185658	1089
+arm_pair_collapsed	leptotene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/zuo/1Mb/50000bp/zuo2021_leptotene_phr_pair_correlation.tsv	True	16573	345
+sequence_level_exact_phr	zygotene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/seqlevel/1Mb/mouse_zygotene_phr_50000bp_seqlevel.tsv	True	197493	1136
+arm_pair_collapsed	zygotene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/zuo/1Mb/50000bp/zuo2021_zygotene_phr_pair_correlation.tsv	True	16671	345
+sequence_level_exact_phr	pachytene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/seqlevel/1Mb/mouse_pachytene_phr_50000bp_seqlevel.tsv	True	194938	1136
+arm_pair_collapsed	pachytene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/zuo/1Mb/50000bp/zuo2021_pachytene_phr_pair_correlation.tsv	True	16550	345
+sequence_level_exact_phr	diplotene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/seqlevel/1Mb/mouse_diplotene_phr_50000bp_seqlevel.tsv	True	169266	1000
+arm_pair_collapsed	diplotene	/moosefs/erikg/phrs/.wg-worktrees/agent-2463/data/mouse_meiosis_sweep/zuo/1Mb/50000bp/zuo2021_diplotene_phr_pair_correlation.tsv	True	15763	345
