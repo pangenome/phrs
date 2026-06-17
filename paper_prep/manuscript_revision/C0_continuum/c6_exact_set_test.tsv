@@ -1,0 +1,2 @@
+set_size	n_all_arm_sets	observed_mean	null_mean	null_sd	null_median	null_q95	exact_p_greater	percentile	wilcox_p_vs_offdiag_excluding_C6_within	wilcox_p_vs_between_communities
+6	4496388	0.500253066247311	0.0685096905965541	0.0391696016911941	0.0620875809631002	0.141356105667533	4.44801372834957e-07	1	2.78567925231183e-10	3.65241367351623e-11
