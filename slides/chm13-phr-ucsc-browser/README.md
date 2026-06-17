@@ -5,8 +5,11 @@ Standalone UCSC Genome Browser slide suite for CHM13/hs1 PHR review.
 Rendered outputs:
 
 - `CHM13_PHR_UCSC_browser_suite.pdf`
+- `CHM13_PHR_UCSC_browser_suite_by_community.pdf`
 - `chm13_phr_ucsc_browser_suite.typ`
+- `chm13_phr_ucsc_browser_suite_by_community.typ`
 - `manifest.tsv`
+- `manifest_by_community.tsv`
 - `audit_37_vs_41.tsv`
 - `_assets/ucsc/panels/*.png`
 - `_assets/ucsc/html/*.html`
@@ -15,6 +18,11 @@ Rendered outputs:
 The deck contains 38 slides total: 1 explicitly labeled title/audit slide plus
 37 main UCSC browser-image slides, one for each interval in `chm13.phrs.bed`.
 
+The by-community deck contains 21 pages total: 1 title/audit page plus 20 pages
+of full-width browser panels sorted by HPRCv2 Leiden community assignment. It
+reuses the cached screenshots, adds visible clickable UCSC URLs for every panel,
+and stacks panels only when they fit at the same full-width image scale.
+
 ## Rendering
 
 Run from the repository root:
@@ -22,6 +30,14 @@ Run from the repository root:
 ```bash
 PATH=/home/erikg/micromamba/bin:/home/erikg/.local/bin:$PATH \
   python3 slides/chm13-phr-ucsc-browser/_scripts/render_ucsc_browser_suite.py --force
+```
+
+To regenerate only the community-sorted digest from the cached screenshots:
+
+```bash
+python3 slides/chm13-phr-ucsc-browser/_scripts/render_ucsc_browser_suite_by_community.py
+cd slides/chm13-phr-ucsc-browser
+typst compile chm13_phr_ucsc_browser_suite_by_community.typ CHM13_PHR_UCSC_browser_suite_by_community.pdf
 ```
 
 The script uses:

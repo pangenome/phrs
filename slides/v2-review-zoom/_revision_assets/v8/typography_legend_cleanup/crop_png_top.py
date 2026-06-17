@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crop an 8-bit non-interlaced PNG to its top N rows.
+"""Crop an 8-bit non-interlaced PNG to a vertical row range.
 
 This tiny utility is included because the slide 13b pedigree source has no
 local regeneration recipe and the environment does not provide ImageMagick.
@@ -89,7 +89,7 @@ def chunk(ctype: bytes, data: bytes) -> bytes:
     return struct.pack(">I", len(data)) + ctype + data + struct.pack(">I", crc)
 
 
-def crop_top(input_path: Path, output_path: Path, height: int) -> None:
+def crop_region(input_path: Path, output_path: Path, y_offset: int, height: int) -> None:
     blob = input_path.read_bytes()
     ihdr = None
     idat_parts = []
@@ -108,12 +108,15 @@ def crop_top(input_path: Path, output_path: Path, height: int) -> None:
         raise ValueError(
             "unsupported PNG format; expected 8-bit non-interlaced RGB/RGBA"
         )
-    if not 1 <= height <= old_height:
-        raise ValueError(f"height must be between 1 and {old_height}")
+    if y_offset < 0:
+        raise ValueError("y-offset must be non-negative")
+    if not 1 <= height <= old_height - y_offset:
+        raise ValueError(f"height must be between 1 and {old_height - y_offset}")
     channels = 3 if color_type == 2 else 4
     rows = unfilter_scanlines(zlib.decompress(b"".join(idat_parts)),
                               width, old_height, channels)
-    cropped = b"".join(b"\x00" + row for row in rows[:height])
+    cropped_rows = rows[y_offset:(y_offset + height)]
+    cropped = b"".join(b"\x00" + row for row in cropped_rows)
     new_ihdr = struct.pack(
         ">IIBBBBB", width, height, bit_depth, color_type, comp, filt, interlace
     )
@@ -131,8 +134,9 @@ def main() -> None:
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--height", type=int, required=True)
+    parser.add_argument("--y-offset", type=int, default=0)
     args = parser.parse_args()
-    crop_top(args.input, args.output, args.height)
+    crop_region(args.input, args.output, args.y_offset, args.height)
 
 
 if __name__ == "__main__":

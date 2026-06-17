@@ -7,14 +7,18 @@ Typst deck directly.
 
 ## Recommendation
 
-Replace the current v8 slide `10m.2` image with:
+For v9.1, show the same CHM13 PHR contact-space MDS in two steps:
 
+- `chm13_phr_contact_mds_3d_view.png`
+- `chm13_phr_contact_mds_3d_view.pdf`
 - `best_replacement_chm13_phr_contact_mds.png`
 - `best_replacement_chm13_phr_contact_mds.pdf`
 
-This is the clearest local replacement I found. It is still a contact-space MDS
-summary, not a physical genome reconstruction, but it is a better slide answer
-than the current whole-arm/centromere/q-arm 3D scatter:
+The first image is a single oblique 3D view colored with the same sequence-community
+palette as the projection slide. The second image shows the same D1/D2/D3 MDS as
+two clearer 2D projections. Both are contact-space MDS summaries, not physical
+genome reconstructions, but they are a better slide answer than the older
+whole-arm/centromere/q-arm 3D scatter:
 
 - It is CHM13, matching the current slide target.
 - It uses the PHR/subtelomeric arm-region Hi-C contact-distance matrix from the

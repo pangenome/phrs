@@ -198,6 +198,141 @@ write.table(
   row.names = FALSE
 )
 
+project_3d_oblique <- function(df) {
+  # Oblique 3D projection for a slide-friendly view of the same D1/D2/D3 MDS.
+  data.frame(
+    arm = df$arm,
+    px = 0.92 * df$D1 + 0.38 * df$D2,
+    py = 0.92 * df$D3 + 0.42 * df$D2,
+    community = df$community,
+    community_arms = df$community_arms,
+    display_community = df$display_community,
+    stringsAsFactors = FALSE
+  )
+}
+
+projection_3d <- project_3d_oblique(points)
+
+x_range_3d <- range(projection_3d$px, na.rm = TRUE)
+y_range_3d <- range(projection_3d$py, na.rm = TRUE)
+x_span_3d <- diff(x_range_3d)
+y_span_3d <- diff(y_range_3d)
+axis_len_3d <- min(x_span_3d, y_span_3d) * 0.24
+axis_origin_3d <- data.frame(
+  x = x_range_3d[1] - 0.22 * x_span_3d,
+  y = y_range_3d[1] - 0.06 * y_span_3d
+)
+axis_df <- rbind(
+  data.frame(
+    axis = "MDS D1",
+    x = axis_origin_3d$x,
+    y = axis_origin_3d$y,
+    xend = axis_origin_3d$x + axis_len_3d * 0.92,
+    yend = axis_origin_3d$y
+  ),
+  data.frame(
+    axis = "MDS D2",
+    x = axis_origin_3d$x,
+    y = axis_origin_3d$y,
+    xend = axis_origin_3d$x + axis_len_3d * 0.38,
+    yend = axis_origin_3d$y + axis_len_3d * 0.42
+  ),
+  data.frame(
+    axis = "MDS D3",
+    x = axis_origin_3d$x,
+    y = axis_origin_3d$y,
+    xend = axis_origin_3d$x,
+    yend = axis_origin_3d$y + axis_len_3d * 0.92
+  )
+)
+axis_lab_df <- transform(axis_df, lx = x + (xend - x) * 1.16, ly = y + (yend - y) * 1.16)
+
+plot_x_range_3d <- range(c(projection_3d$px, axis_df$x, axis_df$xend, axis_lab_df$lx), na.rm = TRUE)
+plot_y_range_3d <- range(c(projection_3d$py, axis_df$y, axis_df$yend, axis_lab_df$ly), na.rm = TRUE)
+plot_x_pad_3d <- diff(plot_x_range_3d) * 0.08
+plot_y_pad_3d <- diff(plot_y_range_3d) * 0.08
+plot_x_limits_3d <- plot_x_range_3d + c(-plot_x_pad_3d, plot_x_pad_3d)
+plot_y_limits_3d <- plot_y_range_3d + c(-plot_y_pad_3d, plot_y_pad_3d)
+
+plot_3d_view <- ggplot(
+  projection_3d,
+  aes(x = px, y = py, fill = display_community, color = display_community)
+) +
+  geom_segment(
+    data = axis_df,
+    aes(x = x, y = y, xend = xend, yend = yend),
+    inherit.aes = FALSE,
+    arrow = arrow(length = unit(0.10, "in"), type = "closed"),
+    color = "#93A1B2",
+    linewidth = 0.72
+  ) +
+  geom_text(
+    data = axis_lab_df,
+    aes(x = lx, y = ly, label = axis),
+    inherit.aes = FALSE,
+    color = "#475569",
+    size = 4.0,
+    fontface = "bold"
+  ) +
+  geom_point(shape = 21, size = 3.2, stroke = 0.65, alpha = 0.97) +
+  geom_text(
+    aes(label = arm),
+    color = "#1E293B",
+    size = 4.05,
+    fontface = "bold",
+    vjust = -1.0,
+    check_overlap = TRUE
+  ) +
+  scale_fill_manual(values = community_colors, drop = FALSE) +
+  scale_color_manual(values = community_colors, drop = FALSE) +
+  coord_equal(xlim = plot_x_limits_3d, ylim = plot_y_limits_3d, clip = "off") +
+  labs(
+    title = "CHM13 PHR Hi-C contact-space MDS: 3D view",
+    subtitle = wrap_text(
+      paste(
+        "The same D1-D2-D3 contact-space MDS as the projection slide, rendered in a",
+        "single oblique 3D view. Colors match the sequence communities used throughout."
+      ),
+      width = 104
+    ),
+    x = NULL,
+    y = NULL,
+    fill = "Sequence community",
+    color = "Sequence community",
+    caption = wrap_text(
+      paste(
+        "Bulk Hi-C contact-space MDS over CHM13 PHR/subtelomeric arm regions at 50 kb.",
+        "This is a visual embedding of contact profiles, not a physical single-cell genome reconstruction."
+      ),
+      width = 124
+    )
+  ) +
+  theme_void(base_family = "DejaVu Sans", base_size = 15) +
+  theme(
+    plot.title = element_text(face = "bold", size = 24, color = "#183A68", margin = margin(b = 5)),
+    plot.subtitle = element_text(size = 12.8, color = "#333333", margin = margin(b = 10), lineheight = 1.05),
+    legend.position = "bottom",
+    legend.title = element_text(face = "bold", size = 11),
+    legend.text = element_text(size = 10.2),
+    legend.key.width = unit(0.28, "in"),
+    legend.key.height = unit(0.16, "in"),
+    plot.caption = element_text(size = 9.2, color = "#2D2D2D", hjust = 0, lineheight = 1.06, margin = margin(t = 7)),
+    plot.margin = margin(24, 42, 20, 42)
+  ) +
+  guides(
+    fill = guide_legend(nrow = 2, byrow = TRUE, override.aes = list(size = 4.8)),
+    color = guide_legend(nrow = 2, byrow = TRUE, override.aes = list(size = 4.8))
+  )
+
+png_3d_path <- file.path(out_dir, "chm13_phr_contact_mds_3d_view.png")
+pdf_3d_path <- file.path(out_dir, "chm13_phr_contact_mds_3d_view.pdf")
+
+agg_png(png_3d_path, width = 1920, height = 1080, units = "px", res = 144, background = "white")
+print(plot_3d_view)
+dev.off()
+
+ggsave(pdf_3d_path, plot_3d_view, width = 13.333, height = 7.5, units = "in", device = cairo_pdf)
+
 metrics <- data.frame(
   metric = c(
     "n_arms",

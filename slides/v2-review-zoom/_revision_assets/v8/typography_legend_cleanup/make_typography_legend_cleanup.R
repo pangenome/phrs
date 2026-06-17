@@ -100,6 +100,8 @@ extract_mantel <- function(path) {
 }
 
 render_slide12 <- function() {
+  font_scale <- 1.5
+  point_scale <- 1.5
   pair_path <- file.path(paths$mouse_dir, "zuo2021_zygotene_phr_pair_correlation.tsv")
   if (!file.exists(pair_path)) {
     stop("Missing mouse zygotene pair table: ", pair_path, call. = FALSE)
@@ -143,7 +145,9 @@ render_slide12 <- function() {
          xlab = "Mean PHR Jaccard similarity",
          ylab = "Hi-C contact in zygotene (log scale)",
          main = "Zygotene pairs: sequence-similar subtelomeres contact more",
-         cex.main = 1.35, cex.lab = 1.22, cex.axis = 1.08)
+         cex = point_scale,
+         cex.main = 1.35 * font_scale, cex.lab = 1.22 * font_scale,
+         cex.axis = 1.08 * font_scale)
     fit <- stats::lm(log10(hic_contact) ~ mean_jaccard, data = d)
     xs <- seq(min(d$mean_jaccard), max(d$mean_jaccard), length.out = 100)
     lines(xs, 10 ^ stats::predict(fit, newdata = data.frame(mean_jaccard = xs)),
@@ -151,31 +155,31 @@ render_slide12 <- function() {
     legend("topleft",
            legend = sprintf("Spearman rho = %.3f\np = %.1e\nn = %d pairs",
                             rho, pval, nrow(d)),
-           bty = "n", cex = 1.05, text.col = "#1f2933")
+           bty = "n", cex = 1.05 * font_scale, text.col = "#1f2933")
 
     par(mar = c(1.0, 1.0, 3.8, 1.2), family = "sans")
     plot(NA, xlim = c(0, 1), ylim = c(0, 1), axes = FALSE, ann = FALSE)
-    title("Talk-speed framing", cex.main = 1.30, font.main = 2, col.main = "#111827")
+    title("Talk-speed framing", cex.main = 1.30 * font_scale, font.main = 2, col.main = "#111827")
     text(0.03, 0.82,
          "Show the zygotene scatter\nbecause this is the bouquet\nstage: telomeres cluster at\nthe nuclear envelope.",
-         adj = c(0, 1), cex = 1.05, col = "#1f2933")
+         adj = c(0, 1), cex = 1.05 * font_scale, col = "#1f2933")
     draw_callout("One sentence on slide:\nZygotene is the bouquet stage,\nwhere telomere clustering makes\n3D proximity most informative.",
-                 0.04, 0.08, 0.96, 0.43, cex = 0.94)
+                 0.04, 0.08, 0.96, 0.43, cex = 0.94 * font_scale)
 
     par(mar = c(5.4, 4.6, 3.2, 1.2), family = "sans")
     plot(seq_along(stages$stage), stages$rho, type = "b", pch = 21,
          bg = ifelse(stages$stage == "zygotene", "#d62728", "#2b7bbb"),
-         col = "#1f2933", lwd = 2.0, cex = 1.9,
+         col = "#1f2933", lwd = 2.0, cex = 1.9 * point_scale,
          xaxt = "n", xlim = c(0.85, 4.25), ylim = c(0.54, 0.75),
          xlab = "meiotic prophase stage",
          ylab = "Mantel rho",
-         main = "Stage trajectory", cex.main = 1.20,
-         cex.lab = 1.08, cex.axis = 0.98)
+         main = "Stage trajectory", cex.main = 1.20 * font_scale,
+         cex.lab = 1.08 * font_scale, cex.axis = 0.98 * font_scale)
     axis(1, at = seq_along(stages$stage),
-         labels = stages$short_stage, cex.axis = 1.00)
+         labels = stages$short_stage, cex.axis = 1.00 * font_scale)
     text(seq_along(stages$stage), stages$rho + 0.012,
-         sprintf("%.3f", stages$rho), cex = 0.95, col = "#111827")
-    text(2, 0.742, "bouquet", cex = 1.02, font = 2, col = "#d62728")
+         sprintf("%.3f", stages$rho), cex = 0.95 * font_scale, col = "#111827")
+    text(2, 0.742, "bouquet", cex = 1.02 * font_scale, font = 2, col = "#d62728")
   }
 
   render_one(file.path(out_dir, "slide12_mouse_zygotene_large_text.png"), "png")
@@ -375,22 +379,34 @@ render_slide14_assets <- function() {
   save_gg(community_plot(simplified), "slide14c_community_family_map_talk_ready")
 }
 
-render_slide13b <- function() {
+render_slide13_assets <- function() {
   crop_script <- file.path(out_dir, "crop_png_top.py")
-  source_png <- file.path(repo_root, "slides/v2-review-zoom/_typst/assets/s13_pedigree_bottom.png")
-  output_png <- file.path(out_dir, "slide13b_pedigree_bottom_no_unused_legend.png")
+  source_png <- file.path(repo_root, "slides/v2-review-zoom/_typst/assets/s13_pedigree.png")
+  output_top_png <- file.path(out_dir, "slide13a_pedigree_top_safe.png")
+  output_bottom_png <- file.path(out_dir, "slide13b_pedigree_bottom_safe.png")
   if (!file.exists(crop_script)) {
     stop("Missing deterministic PNG crop helper: ", crop_script, call. = FALSE)
   }
   if (!file.exists(source_png)) {
-    stop("Missing slide 13b source PNG: ", source_png, call. = FALSE)
+    stop("Missing slide 13 source PNG: ", source_png, call. = FALSE)
   }
-  status <- system2(
+
+  top_status <- system2(
     "python3",
-    args = c(crop_script, source_png, output_png, "--height", "1495")
+    args = c(crop_script, source_png, output_top_png,
+             "--height", "1134", "--y-offset", "0")
   )
-  if (!identical(status, 0L)) {
-    stop("slide 13b crop helper failed with exit status ", status, call. = FALSE)
+  if (!identical(top_status, 0L)) {
+    stop("slide 13a crop helper failed with exit status ", top_status, call. = FALSE)
+  }
+
+  bottom_status <- system2(
+    "python3",
+    args = c(crop_script, source_png, output_bottom_png,
+             "--height", "1158", "--y-offset", "1135")
+  )
+  if (!identical(bottom_status, 0L)) {
+    stop("slide 13b crop helper failed with exit status ", bottom_status, call. = FALSE)
   }
 }
 
@@ -400,7 +416,8 @@ render_manifest <- function() {
       "slide12_mouse_zygotene_large_text.png",
       "slide12_mouse_zygotene_large_text.pdf",
       "slide12_stage_mantel_rho.tsv",
-      "slide13b_pedigree_bottom_no_unused_legend.png",
+      "slide13a_pedigree_top_safe.png",
+      "slide13b_pedigree_bottom_safe.png",
       "crop_png_top.py",
       "slide13b_remove_unused_legend.typ",
       "slide14b_candidate_signals_talk_ready.png",
@@ -414,8 +431,9 @@ render_manifest <- function() {
       "Slide 12 replacement asset with larger labels and preserved scatter plus stage trajectory.",
       "Vector/PDF companion for slide 12 replacement asset.",
       "Source stage Mantel rho values used in the slide 12 trajectory inset.",
-      "Slide 13b materialized crop with the unused bottom legend removed.",
-      "Deterministic PNG top-crop helper used because no pedigree regeneration recipe is available.",
+      "Slide 13a materialized crop from the full pedigree PNG, ending between chromosome rows.",
+      "Slide 13b materialized crop from the full pedigree PNG, starting at chr12 and excluding the unused legend.",
+      "Deterministic PNG vertical crop helper used because no pedigree regeneration recipe is available.",
       "Typst replacement snippet for slide 13b using the materialized no-legend crop.",
       "Slide 14b replacement asset with condensed labels, no legend, and doubled text.",
       "Vector/PDF companion for slide 14b replacement asset.",
@@ -430,7 +448,7 @@ render_manifest <- function() {
 }
 
 render_slide12()
-render_slide13b()
+render_slide13_assets()
 render_slide14_assets()
 render_manifest()
 

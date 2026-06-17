@@ -373,11 +373,11 @@ global_tests <- tibble(
 
 bracket_levels <- tibble::tribble(
   ~group1, ~group2, ~bracket_y,
-  "AFR", "EAS", 0.14,
-  "EAS", "SAS", 0.19,
-  "AFR", "AMR", 0.25,
-  "EAS", "EUR", 0.25,
-  "AMR", "SAS", 0.34
+  "AFR", "EAS", 5.5e-4,
+  "EAS", "SAS", 6.5e-4,
+  "AFR", "AMR", 7.5e-4,
+  "EAS", "EUR", 8.5e-4,
+  "AMR", "SAS", 9.5e-4
 )
 
 bracket_table <- significance_table %>%
@@ -388,9 +388,9 @@ bracket_table <- significance_table %>%
     x1 = match(group1, superpop_order),
     x2 = match(group2, superpop_order),
     x_mid = (x1 + x2) / 2,
-    bracket_y = if_else(is.na(bracket_y), 0.14 + (row_number() - 1) * 0.055, bracket_y),
-    bracket_tick_y = bracket_y * 0.86,
-    label_y = bracket_y * 1.12,
+    bracket_y = if_else(is.na(bracket_y), 5.5e-4 + (row_number() - 1) * 1.0e-4, bracket_y),
+    bracket_tick_y = bracket_y - 2.8e-5,
+    label_y = bracket_y + 1.8e-5,
     bracket_label = paste0(significance_stars, "  BH p=", p_adj_bh_talk)
   )
 
@@ -424,12 +424,12 @@ summary_2d_plot <- summary_table %>%
   mutate(
     Superpopulation = factor(Superpopulation, levels = superpop_order),
     superpop_index = as.numeric(Superpopulation),
-    median_label = paste0("median ", format_sci(median_nearest_distance, 2))
+    mean_label = paste0("mean\n", format_sci(mean_nearest_distance, 2))
   )
 
 stats_label <- paste0(
   "KW global p=", format_p_talk(kw$p.value),
-  "; brackets show the five strongest BH-significant pairwise Wilcoxon contrasts."
+  "; brackets show BH-corrected pairwise Wilcoxon p-values."
 )
 
 set.seed(8081)
@@ -441,40 +441,17 @@ distance_plot <- ggplot(
     aes(group = Superpopulation, fill = Superpopulation),
     width = 0.54,
     outlier.shape = NA,
-    alpha = 0.62,
+    alpha = 0.70,
     linewidth = 0.42,
     color = "grey20"
   ) +
-  geom_jitter(
-    aes(color = Superpopulation),
-    width = 0.16,
-    height = 0,
-    alpha = 0.13,
-    size = 0.42,
-    stroke = 0
-  ) +
-  geom_point(
+  geom_text(
     data = summary_2d_plot,
-    aes(x = superpop_index, y = median_nearest_distance, color = Superpopulation),
+    aes(x = superpop_index, y = 4.72e-4, label = mean_label, color = Superpopulation),
     inherit.aes = FALSE,
-    shape = 23,
-    fill = "white",
-    size = 3.05,
-    stroke = 0.78
-  ) +
-  annotate(
-    "label",
-    x = 3,
-    y = 0.455,
-    label = stats_label,
-    hjust = 0.5,
-    vjust = 1,
-    size = 3.75,
-    color = "grey10",
-    fill = "#FFFDF7",
-    alpha = 0.98,
-    label.size = 0.18,
-    label.padding = grid::unit(0.15, "lines")
+    size = 3.35,
+    fontface = "bold",
+    lineheight = 0.9
   ) +
   geom_segment(
     data = bracket_table,
@@ -520,19 +497,22 @@ distance_plot <- ggplot(
     expand = c(0, 0)
   ) +
   scale_y_continuous(
-    trans = pseudo_log_trans(sigma = 1e-4),
-    breaks = c(0, 1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 3e-1),
-    labels = c("0", "1e-5", "1e-4", "1e-3", "1e-2", "1e-1", "3e-1"),
-    expand = expansion(mult = c(0.015, 0.035))
+    breaks = c(0, 2.5e-4, 5e-4, 7.5e-4, 1e-3),
+    labels = c("0", "2.5e-4", "5e-4", "7.5e-4", "1e-3"),
+    expand = expansion(mult = c(0.015, 0.02))
   ) +
-  coord_cartesian(ylim = c(0, 0.47), clip = "off") +
+  coord_cartesian(ylim = c(0, 1e-3), clip = "off") +
   labs(
     title = "Nearest same-superpopulation neighbor in displayed MDS space",
-    subtitle = "Each point contributes one Euclidean D1-D2 distance to the nearest other point from the same continental superpopulation.",
+    subtitle = paste(
+      "Each point contributes one Euclidean D1-D2 distance to its nearest same-superpopulation neighbor.",
+      stats_label
+    ),
     x = NULL,
     y = "Nearest same-superpopulation MDS distance",
     caption = paste(
       "Metric: nearest other point from the same continental superpopulation in displayed D1-D2 MDS space; self excluded.",
+      "Boxes show group distributions; printed values are means. Y-axis is displayed from 0 to 1e-3 for readability; long-tail values remain in the tests and source table.",
       "KW = Kruskal-Wallis global non-parametric test across groups. Pairwise Wilcoxon = rank-sum group comparisons.",
       "BH = Benjamini-Hochberg FDR correction over pairwise tests. Brackets show five strongest BH-significant contrasts; full table is in nearest_same_superpop_pairwise_wilcoxon.tsv.",
       sep = "\n"

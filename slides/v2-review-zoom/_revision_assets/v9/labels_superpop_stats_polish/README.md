@@ -6,7 +6,7 @@ Task: `review-zoom-v9-labels-superpop-stats-polish`.
 
 - `community_assignment_method_schematic_v9_readable.svg`: slide 07j.2 schematic with larger embedded labels and assignment-input wording.
 - `slide07j2_typst_patch.typ`: drop-in Typst guidance for the slide 07j.2 macro; text sizes are about 25% larger than the current deck macro.
-- `nearest_same_superpop_distance_boxplot_bracketed.png` / `.pdf`: slide 08b.1 boxplot with explicit bracket lines, stars, and BH-adjusted p-values.
+- `nearest_same_superpop_distance_boxplot_bracketed.png` / `.pdf`: slide 08b.1 boxplot-only view with explicit bracket lines, stars, BH-adjusted p-values, and printed group means.
 - `nearest_same_superpop_mds_distances.tsv`: raw per-point nearest same-superpopulation D1-D2 MDS distance table.
 - `nearest_same_superpop_mds_summary.tsv`: robust per-superpopulation summaries.
 - `nearest_same_superpop_pairwise_wilcoxon.tsv`: full pairwise Wilcoxon rank-sum table with BH correction, p-value display strings, stars, and an on-slide flag.
@@ -30,6 +30,10 @@ The slide 08b.1 metric is exactly the nearest same-superpopulation neighbor dist
 This is not a centroid distance, not a within-superpopulation all-pairwise distribution, and not an average against all in-group points.
 
 ## Main 2D Summary
+
+The displayed plot is intentionally limited to `0`-`1e-3` on the y-axis so the
+boxplots are readable. Long-tail values remain in the source table and in the
+statistical tests.
 
 | Superpop | MDS points | Samples | Median nearest distance | Mean nearest distance | Q1-Q3 | Q95 | Max |
 |---|---:|---:|---:|---:|---:|---:|---:|
