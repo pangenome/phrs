@@ -201,32 +201,40 @@ clustered into the bouquet of zygotene
 \cite{bouquet_KotaSUN1MAJIN2020,ZicklerKleckner2015,cech2004chromosomeend}, which
 would bring sequence-similar chromosome ends into physical proximity and provide
 the opportunity for ectopic recombination.
-The model predicts that arms sharing a sequence community should make more
-three-dimensional contact, most strongly at the bouquet stage
+The model predicts that arms sharing a sequence community should show more
+three-dimensional contact, with the strongest relationship expected at the
+bouquet stage
 (Fig.~\ref{fig:fig4}).
-The cleanest test is in mouse, where germline-stage Hi-C exists: re-running the
-whole pipeline on B6 and CAST T2T assemblies \cite{Francis2025}, contact between
-chromosome ends rises with their PHR similarity and peaks at zygotene
-(per-PHR-pair Spearman $\rho = 0.614$; Fig.~\ref{fig:fig4}C) \cite{Zuo2021}, to our
-knowledge the only direct bouquet-stage measurement of this relationship in any
-organism.
-In human, three-dimensional contact likewise increases with PHR similarity,
-measured at the finest resolution, per individual PHR pair within a single
-genome and with no community assignment or cross-sample averaging: HG002 Pore-C
-(Fig.~\ref{fig:fig4}A; pointwise Spearman $\rho = 0.38$) and replicating across a
-second genome and two further assays (CHM13 Hi-C $\rho = 0.72$, HG002 Hi-C
-$\rho = 0.66$, HG002 CiFi $\rho = 0.19$; all $p < 10^{-20}$; Extended Data
-Fig.~\ref{fig:ed1}). Ordering a Pore-C
-contact matrix by sequence community recovers the community block structure
-directly (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
+Mouse provides the stage-resolved test: the same B6 and CAST T2T assemblies, the
+same PHR sequence identities and the same read-placement procedure are used at
+each meiotic stage \cite{Francis2025,Zuo2021}.
+A signal introduced solely by read placement should therefore be stage-invariant.
+Instead, contact between sequence-similar PHRs rises from leptotene into
+zygotene and then falls (per-PHR-pair Spearman $\rho = 0.419$, $0.614$, $0.576$
+and $0.245$; Fig.~\ref{fig:fig4}C), matching the stage at which telomeres
+cluster in the bouquet.
+In human contact-map data, contact also increases with PHR similarity.
+We measure this at the finest resolution, per individual PHR pair within a
+single genome and with no community assignment or cross-sample averaging, in
+HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise Spearman $\rho = 0.38$), with the
+same relationship in a second genome and two further assays (CHM13 Hi-C
+$\rho = 0.72$, HG002 Hi-C $\rho = 0.66$, HG002 CiFi $\rho = 0.19$; all
+$p < 10^{-20}$; Extended Data Fig.~\ref{fig:ed1}).
+Because some non-homologous human PHR tracts are sequence-identical, no
+mapping-quality threshold can assign every read in those tracts to its true
+chromosome end.
+We therefore read the human maps as concordant evidence that sequence-similar
+subtelomeres contact one another more often, while the stage-resolved mouse data
+provide the timing test against a constant mapping confound.
+Ordering a Pore-C contact matrix by sequence community shows the same community
+block structure (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
 The same within-community enrichment holds across the other contact maps we
 reanalysed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
 and 20-cell single-sperm scHi-C \cite{Xu2025}.
 Because subtelomeric PHRs are paralogous, this signal is absent from deposited
 Hi-C processed at default mapping quality; we re-aligned each dataset from raw
 reads while retaining multi-mapping reads, and a unique-sequence control just
-centromere-ward of each PHR confirms that the within-community contact is not a
-multi-mapping artefact.
+centromere-ward of each PHR argues against a simple multi-mapping artefact.
 
 \subsection*{Recombination in a complete pedigree}
 
@@ -367,9 +375,9 @@ Group for generating and interpreting these data.
     \put(1,100){\textbf{\large\sffamily B}}\end{overpic}\\[6pt]
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}%
     \put(1,50){\textbf{\large\sffamily C}}\end{overpic}
-  \caption{\textbf{Sequence similarity predicts three-dimensional proximity.}
-    \textbf{(A)} Sequence-similar subtelomeres make more three-dimensional
-    contact (HG002 Pore-C). Each dot is one inter-chromosomal pair of
+  \caption{\textbf{Sequence similarity tracks three-dimensional proximity.}
+    \textbf{(A)} Sequence-similar subtelomeres contact one another more often in
+    three dimensions (HG002 Pore-C). Each dot is one inter-chromosomal pair of
     pseudo-homolog regions (PHRs) within a single genome, so both axes derive
     from the same sample; \emph{x}, Jaccard sequence similarity of the two PHRs
     from the pangenome graph; \emph{y}, their length-normalised 3D contact at
@@ -389,7 +397,8 @@ Group for generating and interpreting these data.
     1 Mb flank). Left, one dot per inter-chromosomal mouse PHR sequence pair:
     zygotene contact (per-bin-pair length-normalised as in (A), log) rises with
     PHR Jaccard similarity (pointwise Spearman $\rho = 0.614$, $n = 1{,}135$,
-    $p = 1.2 \times 10^{-118}$), the same no-averaging test as panel (A). Right,
+    $p = 1.2 \times 10^{-118}$), the analogous per-pair, no-averaging test as
+    panel (A). Right,
     the same per-PHR-pair Spearman computed for each meiotic prophase stage peaks
     at the zygotene bouquet (lepto 0.419, zygo 0.614, pachy 0.576, diplo 0.245;
     all $p < 1 \times 10^{-16}$, $n = 1{,}135$ per stage), the only direct
@@ -524,8 +533,9 @@ maternal and paternal contigs as separate arms.
 MAPQ filters disabled to retain multi-mappers, with one random alignment per
 read.
 This random-placement approach is an acknowledged limitation rather than a
-validated method: the flanking unique-sequence control refutes the multi-mapping artefact in PHR-internal regions
-but does not bound a possible bias from uniform MAPQ0 distribution across
+validated method: the flanking unique-sequence control argues against broad
+multi-mapping-driven inflation but does not bound a possible bias from uniform
+MAPQ0 distribution across
 paralogous arms within the same community.
 Lower-bound estimates of within-community contact are therefore the 9-fold-stronger
 flanking values (PHR $B/W = 0.027$ vs flanking $B/W = 0.0031$ in HG002), and
@@ -533,7 +543,8 @@ PHR-window B/W ratios should be read as the inflated upper bound on the
 artefact-controlled signal rather than the true 3D-contact estimate.
 The flanking unique-sequence control operationalises the MAPQ-strict comparison:
 across 7 of 7 Hi-C and Pore-C datasets, flanking B/W is 1.25--13.5$\times$
-stronger than PHR B/W, falsifying multi-mapping-driven inflation.
+stronger than PHR B/W, arguing against multi-mapping-driven inflation as the sole
+explanation.
 A strict-MAPQ re-binning from upstream \texttt{.allValidPairs} (both mates
 MAPQ $\geq 30$; \texttt{scripts/hic/mapq\_strict\_d\_peerq1.py}) reproduces the
 flanking B/W within Poisson noise while PHR-internal contact collapses to a
