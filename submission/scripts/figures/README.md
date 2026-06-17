@@ -21,7 +21,7 @@ live in the repo.
 | Fig4a | computed | `make_fig4a_human_scatter.R` (here) — HG002 Pore-C all-points (single panel); full 2-panel HG002+CHM13 kept in `_backup/make_fig4a_human_scatter_full.R` |
 | Fig4b | computed | `make_fig4b_porec_community.R` (here) — Pore-C matrix + community colour bands/labels |
 | Fig4c | computed | `make_fig4c_mouse_zygotene.R` (here) — mouse all-points 20 kb: zygotene scatter + per-stage per-pair Spearman trajectory (peaks at bouquet); was ED1 |
-| ED1 | computed | `make_ed1_chm13_hic.R` (here) — CHM13 Hi-C all-points replicate of Fig4a |
+| ED1 | computed | `make_ed1_human_contacts.R` (here) — 3-panel all-points replicate of Fig4a across genomes/assays (CHM13 Hi-C, HG002 Hi-C, HG002 CiFi), 50 kbp |
 | **Fig3a/b/c (6 PNG)** | **VENDORED (not computed)** | UCSC hs1 browser screenshots in `slides/chm13-phr-ucsc-browser/_assets/ucsc/panels/` |
 | **Fig5 (PDF)** | **VENDORED (not computed)** | `end-to-end-report/pedigree-plots/washu/...untangle.pdf` |
 
@@ -34,7 +34,7 @@ Fig3 panels are `.png`.
 ```bash
 Rscript submission/scripts/figures/make_fig2bc_jaccard_heatmaps.R  # Fig2bc combined tree- + community-ordered Jaccard heatmaps
 Rscript submission/scripts/figures/make_fig4a_human_scatter.R      # Fig4a  HG002 Pore-C all-points rho=0.381 n=2830 (single panel)
-Rscript submission/scripts/figures/make_ed1_chm13_hic.R           # ED1    CHM13 Hi-C all-points rho=0.716 n=652 (replicate of 4a)
+Rscript submission/scripts/figures/make_ed1_human_contacts.R     # ED1    3-panel replicate: CHM13 Hi-C 0.716/652, HG002 Hi-C 0.662/2544, HG002 CiFi 0.191/2757 (50 kbp)
 Rscript submission/scripts/figures/make_fig4b_porec_community.R    # Fig4b  Pore-C contact matrix ordered by sequence community
 Rscript submission/scripts/figures/make_fig4c_mouse_zygotene.R     # Fig4c  mouse 20kb per-pair: zygo rho=0.614 n=1135; trajectory lepto/zygo/pachy/diplo 0.419/0.614/0.576/0.245 (needs the 4 mouse_*_phr_20000bp_seqlevel.tsv)
 ```

@@ -1,24 +1,29 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-PAPER=paper
+: "${PAPER:=paper}"
+: "${LATEX:=pdflatex}"
+: "${BIBTEX:=bibtex}"
+: "${LATEX_FLAGS:=-interaction=nonstopmode -halt-on-error}"
 
-echo "=== Pass 1: pdflatex ==="
-pdflatex -interaction=nonstopmode "$PAPER"
+rm -f "$PAPER.bbl" "$PAPER.blg" Meth.bbl Meth.blg Supp.bbl Supp.blg
+
+echo "=== Pass 1: $LATEX ==="
+"$LATEX" $LATEX_FLAGS "$PAPER"
 
 echo "=== bibtex: main bibliography ==="
-bibtex "$PAPER"
+"$BIBTEX" "$PAPER"
 
 echo "=== bibtex: Meth bibliography ==="
-bibtex Meth
+"$BIBTEX" Meth
 
 echo "=== bibtex: Supp bibliography ==="
-bibtex Supp || true   # Supp may be empty; tolerate failure
+"$BIBTEX" Supp || true   # Supp may be empty; tolerate failure
 
-echo "=== Pass 2: pdflatex ==="
-pdflatex -interaction=nonstopmode "$PAPER"
+echo "=== Pass 2: $LATEX ==="
+"$LATEX" $LATEX_FLAGS "$PAPER"
 
-echo "=== Pass 3: pdflatex ==="
-pdflatex -interaction=nonstopmode "$PAPER"
+echo "=== Pass 3: $LATEX ==="
+"$LATEX" $LATEX_FLAGS "$PAPER"
 
 echo "=== Done: $PAPER.pdf ==="

@@ -392,9 +392,9 @@ write.table(audit, file = file.path(out_dir, "matrix_order_audit.tsv"),
 render_plot <- function(path, device = c("png", "pdf")) {
   device <- match.arg(device)
   if (device == "png") {
-    png(path, width = 2000, height = 1720, res = 200, type = "cairo")
+    png(path, width = 2000, height = 2080, res = 200, type = "cairo")
   } else {
-    pdf(path, width = 10, height = 8.6, onefile = TRUE, useDingbats = FALSE)
+    pdf(path, width = 10, height = 10.4, onefile = TRUE, useDingbats = FALSE)
   }
 
   vals <- display_contact
@@ -413,8 +413,8 @@ render_plot <- function(path, device = c("png", "pdf")) {
   op <- par(no.readonly = TRUE)
   on.exit({ par(op); dev.off() }, add = TRUE)
 
-  layout(matrix(c(1, 2), 1, 2), widths = c(0.82, 0.18))
-  par(mar = c(0.4, 3.0, 3.0, 0.4), pty = "s", family = "sans")
+  layout(matrix(c(1, 2), 2, 1), heights = c(0.87, 0.13))
+  par(mar = c(0.4, 3.0, 4.6, 0.4), pty = "s", family = "sans")
   plot(NA, xlim = c(0.5, n + 0.5), ylim = c(0.5, n + 0.5),
        xaxs = "i", yaxs = "i", axes = FALSE, ann = FALSE)
   rasterImage(as.raster(color_matrix), 0.5, 0.5, n + 0.5, n + 0.5,
@@ -453,21 +453,21 @@ render_plot <- function(path, device = c("png", "pdf")) {
          adj = c(1, 0.5), cex = clab, font = 2, col = "#333333", xpd = NA)
   }
 
-  ## colour-bar legend
-  par(mar = c(0.4, 0.2, 3.0, 0.4), pty = "m")
+  ## colour-bar legend (horizontal, below the heatmap)
+  par(mar = c(0.2, 3.0, 0.2, 0.4), pty = "m")
   plot(NA, xlim = c(0, 1), ylim = c(0, 1), axes = FALSE, ann = FALSE)
-  y <- seq(0.20, 0.88, length.out = length(pal) + 1)
-  for (i in seq_along(pal)) rect(0.05, y[i], 0.22, y[i + 1], col = pal[i], border = NA)
-  rect(0.05, 0.20, 0.22, 0.88, border = "#555555", lwd = 0.8)
+  x <- seq(0.32, 0.68, length.out = length(pal) + 1)
+  for (i in seq_along(pal)) rect(x[i], 0.46, x[i + 1], 0.74, col = pal[i], border = NA)
+  rect(0.32, 0.46, 0.68, 0.74, border = "#555555", lwd = 0.8)
   decs <- 0:floor(zlim[1])
   decs <- decs[decs >= zlim[1] & decs <= zlim[2]]
   for (e in decs) {
-    yy <- 0.20 + (e - zlim[1]) / diff(zlim) * 0.68
-    segments(0.22, yy, 0.27, yy, col = "#555555", lwd = 0.8)
+    xx <- 0.32 + (e - zlim[1]) / diff(zlim) * 0.36
+    segments(xx, 0.46, xx, 0.40, col = "#555555", lwd = 0.8)
     lab <- if (e == 0) expression(1) else bquote(10^.(e))
-    text(0.31, yy, lab, adj = c(0, 0.5), cex = 1.25)
+    text(xx, 0.30, lab, adj = c(0.5, 1), cex = 1.25)
   }
-  text(0.86, 0.54, "Pore-C contact (log scale)", srt = 90, cex = 1.4)
+  text(0.50, 0.94, "Pore-C contact (log scale)", adj = c(0.5, 1), cex = 1.4)
 }
 
 png_path <- file.path(fig_out_dir, "Fig4b_porec_community.png")
