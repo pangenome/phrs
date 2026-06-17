@@ -1,0 +1,3 @@
+role	path	size_bytes
+sequence distance RDS	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.dist_matrix.rds	969036139
+sequence Leiden k50 assignments	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	1410827

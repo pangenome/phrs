@@ -1,0 +1,13 @@
+=== C0b sequence-level continuum job ===
+Started: 2026-06-17T15:34:25Z
+Node: octopus02
+SLURM_JOB_ID: 1703691
+CPUs: 4
+Memory request: 80G
+Input RDS:
+-rw-r--r-- 1 guarracino guarracino 925M Mar 28 03:45 /moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.dist_matrix.rds
+Assignment table:
+-rw-r--r-- 1 guarracino guarracino 1.4M Mar 28 16:58 /moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv
+            used   (Mb) gc trigger   (Mb)  max used   (Mb)
+Ncells    366147   19.6     664334   35.5    593456   31.7
+Vcells 246280598 1879.0  357009491 2723.8 246282604 1879.0

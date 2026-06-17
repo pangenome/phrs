@@ -1,0 +1,24 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+2026-06-17 15:38:42 | Inputs
+2026-06-17 15:38:42 | dist_rds=/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.dist_matrix.rds
+2026-06-17 15:38:42 | assignments=/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv
+2026-06-17 15:38:42 | outdir=paper_prep/manuscript_revision/C0_continuum
+2026-06-17 15:38:43 | Reading distance matrix RDS
+2026-06-17 15:38:52 | Matrix sequences=15668; upper-triangle pairs=122735278
+2026-06-17 15:38:52 | Scanning upper triangle
+2026-06-17 15:39:01 | Processed row 1000 / 15667
+2026-06-17 15:39:09 | Processed row 2000 / 15667
+2026-06-17 15:39:17 | Processed row 3000 / 15667
+2026-06-17 15:39:24 | Processed row 4000 / 15667
+2026-06-17 15:39:30 | Processed row 5000 / 15667
+2026-06-17 15:39:37 | Processed row 6000 / 15667
+2026-06-17 15:39:43 | Processed row 7000 / 15667
+2026-06-17 15:39:48 | Processed row 8000 / 15667
+2026-06-17 15:39:53 | Processed row 9000 / 15667
+2026-06-17 15:39:58 | Processed row 10000 / 15667
+2026-06-17 15:40:02 | Processed row 11000 / 15667
+2026-06-17 15:40:06 | Processed row 12000 / 15667
+2026-06-17 15:40:09 | Processed row 13000 / 15667
+2026-06-17 15:40:13 | Processed row 14000 / 15667
+2026-06-17 15:40:15 | Processed row 15000 / 15667
+2026-06-17 15:40:17 | Completed

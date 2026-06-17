@@ -1,0 +1,22 @@
+=== C0b sequence-level continuum job ===
+Started: 2026-06-17T15:38:42Z
+Node: octopus02
+SLURM_JOB_ID: 1703692
+CPUs: 4
+Memory request: 80G
+Input RDS:
+-rw-r--r-- 1 guarracino guarracino 925M Mar 28 03:45 /moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.dist_matrix.rds
+Assignment table:
+-rw-r--r-- 1 guarracino guarracino 1.4M Mar 28 16:58 /moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv
+            used   (Mb) gc trigger   (Mb)  max used   (Mb)
+Ncells    366147   19.6     664334   35.5    593457   31.7
+Vcells 246280598 1879.0  357009491 2723.8 246282604 1879.0
+Outputs:
+14184	paper_prep/manuscript_revision/C0_continuum/results/sequence_similarity_distribution.tsv
+3183	paper_prep/manuscript_revision/C0_continuum/results/c6_neighborhood_density.tsv
+1514	paper_prep/manuscript_revision/C0_continuum/results/high_similarity_summary.tsv
+954	paper_prep/manuscript_revision/C0_continuum/results/sequence_similarity_peaks.tsv
+407	paper_prep/manuscript_revision/C0_continuum/results/run_metadata.tsv
+270	paper_prep/manuscript_revision/C0_continuum/results/input_file_inventory.tsv
+-rw-r--r-- 1 erikg erikg 3.0K Jun 17 15:40 paper_prep/manuscript_revision/C0_continuum/C0b_sequence_level_report.md
+Completed: 2026-06-17T15:40:17Z

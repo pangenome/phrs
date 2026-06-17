@@ -1,0 +1,9 @@
+field	value
+run_time_utc	2026-06-17T15:40:17Z
+n_sequences	15668
+n_upper_triangle_pairs	122735278
+bin_width	0.005
+c6_arm_definition	chr1_q, chr13_q, chr17_q, chr19_q, chr21_q, chr22_q
+c6_definable	TRUE
+distance_rds	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.dist_matrix.rds
+assignments_tsv	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv

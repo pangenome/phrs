@@ -1,0 +1,24 @@
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+2026-06-17 15:34:26 | Inputs
+2026-06-17 15:34:26 | dist_rds=/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.dist_matrix.rds
+2026-06-17 15:34:26 | assignments=/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv
+2026-06-17 15:34:26 | outdir=paper_prep/manuscript_revision/C0_continuum
+2026-06-17 15:34:26 | Reading distance matrix RDS
+2026-06-17 15:34:40 | Matrix sequences=15668; upper-triangle pairs=122735278
+2026-06-17 15:34:40 | Scanning upper triangle
+2026-06-17 15:34:49 | Processed row 1000 / 15667
+2026-06-17 15:34:57 | Processed row 2000 / 15667
+2026-06-17 15:35:05 | Processed row 3000 / 15667
+2026-06-17 15:35:12 | Processed row 4000 / 15667
+2026-06-17 15:35:19 | Processed row 5000 / 15667
+2026-06-17 15:35:25 | Processed row 6000 / 15667
+2026-06-17 15:35:31 | Processed row 7000 / 15667
+2026-06-17 15:35:37 | Processed row 8000 / 15667
+2026-06-17 15:35:42 | Processed row 9000 / 15667
+2026-06-17 15:35:47 | Processed row 10000 / 15667
+2026-06-17 15:35:51 | Processed row 11000 / 15667
+2026-06-17 15:35:55 | Processed row 12000 / 15667
+2026-06-17 15:35:59 | Processed row 13000 / 15667
+2026-06-17 15:36:02 | Processed row 14000 / 15667
+2026-06-17 15:36:04 | Processed row 15000 / 15667
+slurmstepd: error: *** JOB 1703691 ON octopus02 CANCELLED AT 2026-06-17T15:37:37 ***
