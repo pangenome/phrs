@@ -2,6 +2,30 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Current build attempt
+
+Date: 2026-06-17
+
+Command:
+
+```
+cd submission
+make clean && make
+```
+
+Result: exit code 2 before manuscript content was processed. The local TeX
+installation is missing `geometry.sty`:
+
+```
+! LaTeX Error: File `geometry.sty' not found.
+```
+
+This is an environment/toolchain blocker, not a manuscript diagnostic. The
+manuscript now uses one bibliography (`paper.bbl`) rather than separate
+`Meth.*` and `Supp.*` multibib outputs.
+
+## Last successful build before current revision
+
 Date: 2026-05-27
 
 ## Compile command
