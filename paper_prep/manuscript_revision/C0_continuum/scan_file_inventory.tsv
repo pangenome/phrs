@@ -1,0 +1,9 @@
+label	path	exists	size_bytes	n_lines
+arm_leiden_scan	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden.leiden_scan.tsv	True	12092	292
+seq_leiden_scan	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden.leiden_scan.tsv	True	6568	181
+seq_upgma_scan	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-upgma.k-scan.tsv	True	681	31
+arm_leiden_assignments	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	True	1150	42
+arm_upgma_assignments	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-upgma-k14.assignments.tsv	True	1260	42
+seq_leiden_assignments	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-leiden-k50.assignments.tsv	True	1410827	15669
+seq_leiden_summary	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq_leiden_community_summary.tsv	True	2338	51
+seq_upgma_summary	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.seq-upgma-k150.summary.tsv	True	5520	151

@@ -1,0 +1,2 @@
+selection_rule	resolution	n_communities	modularity	silhouette	source_path
+max_mean_silhouette	1.1600000000000001	15	0.007138870932518948	0.34733740233177857	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden.leiden_scan.tsv
