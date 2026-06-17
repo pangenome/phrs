@@ -2,6 +2,26 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Current build attempt after guarded manuscript patch
+
+Date: 2026-06-17
+
+Command:
+
+```
+cd submission
+bash compile.sh
+```
+
+Result: exit code 1 during the first `pdflatex` pass, before manuscript content
+was processed. The local TeX installation is still missing `geometry.sty`:
+
+```
+! LaTeX Error: File `geometry.sty' not found.
+```
+
+This remains an environment/toolchain blocker, not a manuscript diagnostic.
+
 ## Current build attempt
 
 Date: 2026-06-17

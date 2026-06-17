@@ -46,7 +46,7 @@
 \affil[3]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
 
 \abstract{
-Human chromosome ends are often treated as chromosome-specific, yet much of their subtelomeric sequence is shared with the ends of other, non-homologous chromosomes. Here we measure this sharing across 465 near-complete assemblies (464 HPRC v2 haplotypes from 232 individuals, together with CHM13) using an implicit pangenome graph that samples approximately 12\% of haplotype-pair comparisons and queries transitive relationships without chromosomal or positional priors. We find extended interchromosomal homology on 41 of 48 chromosome arms, spanning tens to hundreds of kilobases and totaling 3.51 Mb outside acrocentric short arms and pseudoautosomal regions. These pseudo-homolog regions define 15 sequence-similarity communities that recover Xp/Yp, Xq/Yq, acrocentric, 10p--18p and 4q--10q DUX4 systems, and identify a linked q-arm group involving 22q, 21q, 19q, 1q, 13q and 17q. Human Pore-C and Hi-C show that sequence-similar subtelomeres contact one another more often in three dimensions, while mouse meiotic Hi-C shows that this relationship peaks at zygotene, when telomeres cluster in the bouquet. A telomere-to-telomere human pedigree provides evidence consistent with recent exchange preferentially within these sequence communities. Together, these data identify pseudo-homologous subtelomeres as a near-ubiquitous feature of human chromosome ends and support a model in which nuclear architecture and recombination opportunity contribute to their concerted evolution.
+Human chromosome ends are often treated as chromosome-specific, yet much of their subtelomeric sequence is shared with the ends of other, non-homologous chromosomes. Here we measure this sharing across 465 near-complete assemblies (464 HPRC v2 haplotypes from 232 individuals, together with CHM13) using an implicit pangenome graph that samples approximately 12\% of haplotype-pair comparisons and queries transitive relationships without chromosomal or positional priors. We find extended interchromosomal homology on 41 of 48 chromosome arms, spanning tens to hundreds of kilobases and totaling 3.51 Mb outside acrocentric short arms and pseudoautosomal regions. These pseudo-homolog regions form 15 arm-level sequence-similarity communities, with known systems and an enriched q-arm neighborhood appearing as localized high-similarity peaks on a broader subtelomeric similarity continuum. Human and mouse contact maps support increased three-dimensional proximity among sequence-similar subtelomeres during interphase and meiotic prophase I. A telomere-to-telomere human pedigree provides evidence consistent with recent exchange preferentially within these sequence communities. Together, these data identify pseudo-homologous subtelomeres as a near-ubiquitous feature of human chromosome ends and support a model in which nuclear architecture and recombination opportunity contribute to their concerted evolution.
 }
 
 \keywords{pangenome, subtelomere, pseudo-homolog region, concerted evolution, recombination, Hi-C, meiotic bouquet, HPRC v2}
@@ -153,20 +153,22 @@ component (Fig.~\ref{fig:fig2}A) that is too tangled to interpret node by node.
 We therefore measured pangenome similarity between chromosome ends as the
 Jaccard overlap of the graph nodes they traverse, and reduced the result to an
 arm-level similarity matrix.
-The matrix is not a uniform gradient but resolves into discrete blocks
-(Fig.~\ref{fig:fig2}B, left), and a community-detection algorithm partitions the
-41 signal-bearing arms into 15 arm-level communities (Fig.~\ref{fig:fig2}B,
+The matrix is structured rather than uniform: it contains locally dense blocks
+embedded in a broader continuum of lower inter-community similarity
+(Fig.~\ref{fig:fig2}B, left).
+Leiden community detection on this fixed arm-level matrix partitions the 41
+signal-bearing arms into 15 arm-level communities (Fig.~\ref{fig:fig2}B,
 right).
 The communities recover every previously described case of inter-chromosomal
 subtelomere homology: the two pseudoautosomal pairs Xp/Yp and Xq/Yq
 \cite{sexchrompars_acquaviva2020}, the five acrocentric short arms
 \cite{acrocentric_Altemose2022}, the 10p/18p pair first reported by Linardopoulou
 and colleagues \cite{Linardopoulou2005}, and the 4q/10q D4Z4 pair
-\cite{dux4_d4z4_fshd_lemmers2010worldwide}; they also reveal a previously
-uncharacterized q-arm grouping of 22q, 21q, 19q, 1q, 13q and 17q.
-The partition is robust to method, with hierarchical clustering agreeing on 12
-of the 15 communities, and we use the ordering only as a grouping device rather
-than as a phylogenetic claim.
+\cite{dux4_d4z4_fshd_lemmers2010worldwide}.
+The same matrix highlights an enriched q-arm neighborhood, illustrated by 22q,
+21q, 19q, 1q, 13q and 17q, within the broader continuum.
+Average-linkage UPGMA provides a secondary display and method comparison on the
+same matrix, but we do not interpret the ordering as an evolutionary tree.
 
 \subsection*{Architecture of representative communities}
 
@@ -187,66 +189,58 @@ duplicons, rather than community-specific protein-coding genes, defining the
 communities \cite{Ambrosini2007}; within-community arm pairs are overwhelmingly
 of the same orientation (only 17 of 75 pair a p-arm with a q-arm).
 
-\subsection*{Three-dimensional proximity at the meiotic bouquet}
+\subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
 
 Why should pseudo-homolog regions persist at 41 of the 48 arms?
-During meiotic prophase the telomeres are tethered to the nuclear envelope and
-clustered into the bouquet of zygotene
-\cite{bouquet_KotaSUN1MAJIN2020,ZicklerKleckner2015,cech2004chromosomeend}, which
-would bring sequence-similar chromosome ends into physical proximity and provide
-the opportunity for ectopic recombination.
-The model predicts that arms sharing a sequence community should show more
-three-dimensional contact, with the strongest relationship expected at the
-bouquet stage
-(Fig.~\ref{fig:fig4}).
-Mouse provides the stage-resolved test: the same B6 and CAST T2T assemblies, the
-same PHR sequence identities and the same read-placement procedure are used at
-each meiotic stage \cite{Francis2025,Zuo2021}.
-A signal introduced solely by read placement should therefore be stage-invariant.
-Instead, contact between sequence-similar PHRs rises from leptotene into
-zygotene and then falls (per-PHR-pair Spearman $\rho = 0.419$, $0.614$, $0.576$
-and $0.245$; Fig.~\ref{fig:fig4}C), matching the stage at which telomeres
-cluster in the bouquet.
-In human contact-map data, contact also increases with PHR similarity.
-We measure this at the finest resolution, per individual PHR pair within a
-single genome and with no community assignment or cross-sample averaging, in
-HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise Spearman $\rho = 0.38$), with the
-same relationship in a second genome and two further assays (CHM13 Hi-C
-$\rho = 0.72$, HG002 Hi-C $\rho = 0.66$, HG002 CiFi $\rho = 0.19$; all
-$p < 10^{-20}$; Extended Data Fig.~\ref{fig:ed1}).
-Because some non-homologous human PHR tracts are sequence-identical, no
-mapping-quality threshold can assign every read in those tracts to its true
-chromosome end.
-We therefore read the human maps as concordant evidence that sequence-similar
-subtelomeres contact one another more often, while the stage-resolved mouse data
-provide the timing test against a constant mapping confound.
+In human contact-map data, aggregate contact at PHR coordinates increased with
+PHR sequence similarity.
+We measured this per inter-chromosomal PHR pair within a single genome and
+without community labels in HG002 Pore-C (Fig.~\ref{fig:fig4}A; descriptive
+pointwise Spearman $\rho = 0.381$, $n = 2{,}830$), with the same direction in
+CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
+Because highly similar non-homologous PHR tracts cannot be assigned uniquely by
+a mapping-quality threshold, we interpret PHR-window contacts as aggregate
+coordinate-level measurements.
+Adjacent centromere-ward flanking regions, which are more uniquely mappable,
+show the same positive direction in key datasets, arguing against broad
+inflation from retaining multi-mappers.
 Ordering a Pore-C contact matrix by sequence community shows the same community
-block structure (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
+block structure after observed/expected inter-chromosomal normalization
+(Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
 The same within-community enrichment holds across the other contact maps we
 reanalysed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
 and 20-cell single-sperm scHi-C \cite{Xu2025}.
-Because subtelomeric PHRs are paralogous, this signal is absent from deposited
-Hi-C processed at default mapping quality; we re-aligned each dataset from raw
-reads while retaining multi-mapping reads, and a unique-sequence control just
-centromere-ward of each PHR argues against a simple multi-mapping artefact.
+Mouse meiotic Hi-C provides a stage-resolved prophase-I comparison: the same B6
+and CAST T2T assemblies, PHR sequence identities and read-placement procedure
+are used at leptotene, zygotene, pachytene and diplotene
+\cite{Francis2025,Zuo2021}.
+Subtelomeric sequence similarity is positively correlated with contact across
+all four stages, with the largest arm-pair-collapsed point estimate at
+zygotene, but direct clustered contrasts do not resolve a zygotene-specific
+peak.
+We therefore read the mouse data as evidence for a broad prophase-I
+sequence-to-contact association rather than a stage-specific maximum.
 
-\subsection*{Recombination in a complete pedigree}
+\subsection*{Pedigree-resolved patches support recent subtelomeric exchange}
 
-To look for the recombination itself, we applied the pipeline to a
-telomere-to-telomere pedigree \cite{Cechova2025}, untangling each child
-haplotype against the two haplotypes of the transmitting parent to reconstruct
-where one parental haplotype gives way to the other (Fig.~\ref{fig:fig5}).
-Most arms are inherited as a single block, but a minority carry inter-chromosomal
-patches, and 494 of 538 high-quality patches (92\%) fall between arms of the
-same sequence community, well above a marginal-aware permutation null (mean
-77.0\%, $p < 10^{-4}$).
-These include apparent gene-conversion tracts between non-homologous arms of the
-same community, for example between 9p and 3p, as well as crossover-like
-reciprocal exchanges.
-The evidence is positive but not definitive: the same signal increases in
-lower-quality assemblies, so a fraction of the patches is assembly artefact
-rather than germline exchange, and confirming individual events will require
-long-read recombination maps \cite{Halldorsson2019,palsson2025recomb}.
+To look for recent exchange directly, we applied \texttt{odgi untangle} to the
+WashU three-generation T2T pedigree \cite{Cechova2025}, comparing each
+inherited child haplotype with the two haplotypes of the transmitting parent
+(Fig.~\ref{fig:fig5}).
+Patch calls were made without using the HPRCv2 community labels.
+Across three assayed child-haplotype transmissions, 494 of 538 high-quality
+inter-chromosomal patch calls (92\%) subsequently mapped between arms assigned
+to the same sequence-similarity community, above a marginal-aware permutation
+null (mean 77.0\%, $p < 10^{-4}$).
+These patch calls include candidate gene-conversion-like tracts between
+non-homologous arms of the same community, for example between 9p and 3p, and
+crossover-like state switches, but they remain assembly-derived candidates
+rather than a per-event recombination truth set.
+Fragmented CEPH1463 assemblies show that untangle can produce many
+inter-chromosomal patch calls outside the population-defined communities, so we
+use those assemblies only as a cross-assembler validation set; confirming
+individual WashU events will require orthogonal long-read recombination maps
+\cite{Halldorsson2019,palsson2025recomb}.
 
 Together these observations describe a self-reinforcing loop: shared sequence
 tracks three-dimensional proximity; proximity at the meiotic bouquet creates the
@@ -254,7 +248,8 @@ opportunity for ectopic recombination between non-homologous chromosomes; and
 that recombination generates new shared sequence that enters the population and
 reinforces proximity at the next meiosis.
 The 3.5 Mb of subtelomeric sequence described here therefore behaves as a
-population-scale extension of the cytogenetically defined clades that anchor it,
+population-scale extension of the cytogenetically defined subtelomeric systems
+that anchor it,
 maintained by ongoing non-allelic homologous recombination
 \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
 Which way the central link runs remains open, whether shared sequence drives
@@ -325,14 +320,14 @@ Group for generating and interpreting these data.
     single component, so subtelomeres are linked across non-homologous
     chromosomes rather than partitioned by chromosome.
     \textbf{(B)} Arm-level Jaccard similarity heatmap ($41 \times 41$), shown
-    twice. \emph{Left}, ordered by the UPGMA tree (the ``phylogeny'' of
-    subtelomeric PHRs; p-arms red, q-arms blue), which resolves the matrix into
-    discrete blocks of co-similar arms rather than a uniform gradient.
+    twice. \emph{Left}, ordered by an average-linkage UPGMA dendrogram used as a
+    display order for similar subtelomeric PHR profiles (p-arms red, q-arms
+    blue), showing locally dense blocks on a broader similarity continuum.
     \emph{Right}, the same matrix ordered by the 15-community Leiden arm-level
-    partition, with community colour bands. The blocks recover every known case of
-    inter-chromosomal subtelomere homology: PAR1, PAR2, the acrocentric p-arms,
-    10p/18p, the 4q/10q DUX4 pair, and a tight \{22q, 21q, 19q, 1q, 13q, 17q\}
-    q-arm grouping.}
+    partition, with community colour bands. The blocks recover the known systems
+    shown here: PAR1, PAR2, the acrocentric p-arms, 10p/18p and the 4q/10q DUX4
+    pair, and show an enriched q-arm neighborhood exemplified by 22q, 21q, 19q,
+    1q, 13q and 17q.}
   \label{fig:fig2}
 \end{figure}
 
@@ -369,51 +364,50 @@ Group for generating and interpreting these data.
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}%
     \put(1,50){\textbf{\large\sffamily C}}\end{overpic}
   \caption{\textbf{Sequence similarity tracks three-dimensional proximity.}
-    \textbf{(A)} Sequence-similar subtelomeres contact one another more often in
-    three dimensions (HG002 Pore-C). Each dot is one inter-chromosomal pair of
+    \textbf{(A)} Aggregate contact at PHR coordinates increases with sequence
+    similarity in HG002 Pore-C. Each dot is one inter-chromosomal pair of
     pseudo-homolog regions (PHRs) within a single genome, so both axes derive
     from the same sample; \emph{x}, Jaccard sequence similarity of the two PHRs
     from the pangenome graph; \emph{y}, their length-normalised 3D contact at
     the PHRs' exact coordinates --- contact summed over the 50 kbp bin-pairs the
     two PHRs span, divided by that bin-pair count, so longer PHRs are not counted
     more (log scale, zero-contact pairs at the axis floor). Contact rises with
-    similarity (pointwise Spearman
-    $\rho = 0.381$, $n = 2830$, $p = 1.2 \times 10^{-98}$; line, linear fit).
+    similarity (descriptive pointwise Spearman
+    $\rho = 0.381$, $n = 2{,}830$; line, linear fit).
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
-    \textbf{(B)} HG002 Pore-C contact matrix (arm-level, observed-over-expected
-    inter-chromosomal normalisation --- a different scheme from the per-bin-pair
-    normalisation of the scatters) ordered by sequence community (C1--C15):
-    within-community blocks dominate, $B/W = 0.056$, $p = 3.9 \times 10^{-85}$.
+    \textbf{(B)} HG002 Pore-C contact matrix ordered by sequence community after
+    observed/expected inter-chromosomal normalisation; within-community blocks
+    dominate ($B/W = 0.056$). Matrix-level inference used row+column
+    Mantel/permutation tests in Methods.
     \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
     T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp,
     1 Mb flank). Left, one dot per inter-chromosomal mouse PHR sequence pair:
     zygotene contact (per-bin-pair length-normalised as in (A), log) rises with
-    PHR Jaccard similarity (pointwise Spearman $\rho = 0.614$, $n = 1{,}135$,
-    $p = 1.2 \times 10^{-118}$), the analogous per-pair, no-averaging test as
-    panel (A). Right,
-    the same per-PHR-pair Spearman computed for each meiotic prophase stage peaks
-    at the zygotene bouquet (lepto 0.419, zygo 0.614, pachy 0.576, diplo 0.245;
-    all $p < 1 \times 10^{-16}$, $n = 1{,}135$ per stage), the only direct
-    bouquet-stage 3D measurement in any organism.}
+    PHR Jaccard similarity. Right,
+    mouse meiotic Hi-C supports a broad prophase-I sequence-to-contact
+    association; the arm-pair-collapsed point estimate is largest at zygotene,
+    but clustered zygotene-versus-flanking-stage contrasts do not establish a
+    statistically resolved zygotene-specific peak.}
   \label{fig:fig4}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.pdf}
-  \caption{\textbf{Pedigree-resolved subtelomeric exchange.}
-    Inter-chromosomal recombination caught in the act in the WashU
+  \caption{\textbf{Pedigree-resolved candidate subtelomeric exchange.}
+    Candidate inter-chromosomal subtelomeric patches in the WashU
     three-generation T2T pedigree. The PAN027 maternal haplotype (hap1,
     inherited from the mother PAN010) is untangled against PAN010's two
     haplotypes with \texttt{odgi untangle}, per chromosome arm (p-arms left,
-    q-arms right; purple bars mark inter-chromosomal patches). Of 538
-    high-quality patches, 494 (92\%; Wilson 95\% CI 89.2--93.9\%) fall within a
-    sequence-similarity (Leiden) community, above a marginal-aware Monte Carlo
-    null (mean 77.0\%, 95\% CI 75.4--78.8\%; $p < 10^{-4}$), including
-    crossover-like reciprocal exchanges and perfect-identity gene-conversion
-    tracts. Cross-assembler validation (CEPH1463) and the RPE-1 t(X;10)
-    positive control are described in the main text.}
+    q-arms right; purple bars mark high-quality inter-chromosomal patch calls).
+    Community labels were assigned after patch calling. Of 538 patch calls across
+    three child-haplotype transmissions, 494 (92\%; Wilson 95\% CI 89.2--93.9\%)
+    joined arms in the same independently inferred sequence-similarity community,
+    above a marginal-aware Monte Carlo null (mean 77.0\%, 95\% CI 75.4--78.8\%;
+    $p < 10^{-4}$), including crossover-like reciprocal exchanges and
+    gene-conversion-like tracts. Cross-assembler validation (CEPH1463) is
+    described in the main text.}
   \label{fig:fig5}
 \end{figure}
 
@@ -490,70 +484,75 @@ Mean pairwise sequence-level Jaccard distance within each arm pair
 
 \subsection*{Community detection (Leiden)}
 
-Arm-level: edge weight $w_{ij} = \exp(-d_{ij} / \text{median}(d))$; resolution
-scanned 0.1--3.0 at 0.01 step; selected resolution 1.16 (mean silhouette
-0.347), yielding 15 arm-level communities.
-Sequence-level: k-NN graph with $k_{\mathrm{NN}} \in \{10, 25, 50, 75, 100, 125\}$ and
-resolution 0.1--3.0; selected $k_{\mathrm{NN}} = 75$, resolution 0.8
-(modularity 0.97, mean silhouette 0.602), yielding 50 sequence-level
-communities.
+Arm-level communities were inferred from the 41-arm Jaccard distance matrix
+after converting distances to graph weights $w_{ij} = \exp(-d_{ij} /
+\text{median}(d))$ and scanning Leiden resolution from 0.1 to 3.0.
+The selected arm-level operating point was the maximum-silhouette 15-community
+partition at resolution 1.16; the same community count was obtained across
+resolutions 1.13--1.18.
+Sequence-level communities were inferred from a k-nearest-neighbor graph on the
+cached 15,668-sequence distance matrix.
+The reported 50-community sequence partition uses the constrained operating
+point $k_{\mathrm{NN}} = 75$, resolution 0.8; the unconstrained modularity
+maximum in the scan gives a finer 148-community partition.
+These scans evaluate resolution dependence on fixed similarity matrices and are
+not a formal sample-resampling stability analysis.
 
 \subsection*{UPGMA dendrogram}
 
-\texttt{hclust(..., method = "average")}; tree cut into 14 clusters
-(mean silhouette 0.342); agreement with Leiden 12 of 15.
+For display and algorithmic comparison, we also ordered the arm-level matrix by
+average-linkage hierarchical clustering using \texttt{hclust(..., method =
+"average")}.
+Cutting the same arm-level distance matrix into 14 UPGMA clusters gave mean
+silhouette 0.342 and exact agreement with 12 of the 15 Leiden communities.
+We use this dendrogram as a heatmap ordering and method comparison, not as a
+phylogenetic model.
 
 \subsection*{Neighbour-joining tree and character-level bootstrap}
 
-\texttt{ape::nj()} on the $41 \times 41$ arm-level Jaccard distance matrix;
-rooted at the MRCA of the acrocentric grouping.
-Support was estimated by a 1,000-replicate character-level bootstrap: each
-replicate resampled PHR flanks with replacement, rebuilt the arm-level distance
-matrix from per-PHR cross-chromosome involvement, and recomputed NJ and UPGMA
-trees. The implementation is included in the public analysis-code repository.
-Per-grouping support: PAR1/PAR2/10p18p 100\%, 4q/10q DUX4 99.4\% NJ,
-acrocentric p-arms 52\% NJ / 87\% UPGMA; the 6-arm tight q-arm grouping is
-0.1\% because the per-PHR involvement column is chromosome-granular (conflating
-the q-grouping with chr2\_q and chr10\_q); resolving it at the character level
-requires the per-arm-pair PGGB closure and is deferred.
-NJ used as an ordering device, not a phylogenetic claim.
+We also audited an exploratory neighbour-joining and PHR-resampling analysis
+used in earlier drafts.
+That analysis resamples rows of a collapsed per-PHR cross-chromosome involvement
+table, rebuilds an arm-level surrogate distance matrix, and recomputes NJ and
+UPGMA trees.
+It does not resample the full 15,668-sequence Jaccard matrix and is therefore
+not used as evidence for the Leiden communities or for a hard q-arm partition.
+Under this chromosome-granular surrogate, the illustrative six-arm
+q-neighborhood has low support, so we treat the q-arm pattern as an enriched
+neighborhood in the similarity matrix rather than as a bootstrap-supported
+grouping.
 
 \subsection*{Hi-C, Pore-C and CiFi pipeline}
 
 mcool inputs at 5, 10, 20, 50 and 100 kb; per-haplotype mode preserves
 maternal and paternal contigs as separate arms.
-MAPQ filters disabled to retain multi-mappers, with one random alignment per
-read.
-This random-placement approach is an acknowledged limitation rather than a
-validated method: the flanking unique-sequence control argues against broad
-multi-mapping-driven inflation but does not bound a possible bias from uniform
-MAPQ0 distribution across
-paralogous arms within the same community.
-Lower-bound estimates of within-community contact are therefore the 9-fold-stronger
-flanking values (PHR $B/W = 0.027$ vs flanking $B/W = 0.0031$ in HG002), and
-PHR-window B/W ratios should be read as the inflated upper bound on the
-artefact-controlled signal rather than the true 3D-contact estimate.
-The flanking unique-sequence control operationalises the MAPQ-strict comparison:
-across 7 of 7 Hi-C and Pore-C datasets, flanking B/W is 1.25--13.5$\times$
-stronger than PHR B/W, arguing against multi-mapping-driven inflation as the sole
-explanation.
-A strict-MAPQ re-binning from upstream valid-pair files (both mates MAPQ
-$\geq 30$) reproduced the flanking B/W within Poisson noise while PHR-internal
-contact collapsed to a noise floor; observed-over-expected normalisation handles the rare
-inter-chromosomal regime without random-ligation inflation.
-W/B ratio computed by bootstrap on 10,000 permutations; Mann-Whitney global
-test; Mantel Spearman with 10,000 row+column permutations; observed-over-expected
-inter-chromosomal normalisation
-\cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}.
+Hi-C, Pore-C, CiFi, Dip-C and sperm scHi-C were reprocessed with multi-mappers
+retained because default MAPQ-filtered deposited maps remove the paralogous
+subtelomeric signal-bearing sequence.
+Under this policy, each multi-mapped molecule contributes one primary placement
+rather than all possible placements.
+PHR-internal contacts are therefore aggregate coordinate-level measurements and
+not read-level truth sets.
+The adjacent flanking unique-sequence analyses provide the principal control
+against broad MAPQ0-driven inflation.
+Pointwise Spearman correlations are reported as descriptive effect sizes
+because PHR-pair observations share chromosome arms, PHRs, matrix rows/columns
+and read-placement histories.
+Matrix-level inference used row+column Mantel/permutation tests; finite
+permutation floors are reported when no permutation exceeds the observed
+statistic.
+Observed/expected inter-chromosomal normalisation was used for community-ordered
+contact matrices \cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}.
 The pointwise Spearman correlations take each inter-chromosomal PHR sequence
 pair as a point, correlating its pangenome-graph Jaccard with its
 length-normalised Hi-C/Pore-C contact at the pair's exact coordinates within one
-genome: HG002 Pore-C in Fig.~\ref{fig:fig4}A ($\rho = 0.381$, $n = 2830$) and,
+genome: HG002 Pore-C in Fig.~\ref{fig:fig4}A ($\rho = 0.381$, $n = 2{,}830$) and,
 as replicates in Extended Data Fig.~\ref{fig:ed1}, CHM13 Hi-C ($\rho = 0.716$,
-$n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2544$) and HG002 CiFi
-($\rho = 0.191$, $n = 2757$; the sparsest assay, hence the weakest signal); all
-at 50 kbp via \texttt{sequence\_hic\_correlation.py}. The community-ordered Pore-C matrix of
-Fig.~\ref{fig:fig4}B ($B/W = 0.056$) is at 50 kb.
+$n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2{,}544$) and HG002 CiFi
+($\rho = 0.191$, $n = 2{,}757$; the sparsest assay, hence the weakest signal);
+all at 50 kbp via \texttt{sequence\_hic\_correlation.py}.
+The community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}B ($B/W = 0.056$) is
+at 50 kb.
 
 \subsection*{Reproducibility from deposited data}
 
@@ -596,23 +595,33 @@ B6 and CAST T2T assemblies \cite{Francis2025}; telomere-anchored flanks;
 1/2/4 Mb window sweep (30/49 mouse PHRs saturate the 1 Mb window);
 2-community arm-level partition; per-PHR-pair Spearman of length-normalised
 contact vs PHR Jaccard similarity at 20 kb (1 Mb flank), one value per meiotic
-prophase stage: $\rho = 0.419/0.614/0.576/0.245$ at lepto/zygo/pachy/diplo
-(peak at the zygotene bouquet; all $p < 1 \times 10^{-16}$; $n = 1{,}135$ pairs
-per stage; Fig.~\ref{fig:fig4}C). This per-pair zygotene peak is
-resolution-dependent (clearest at 10--20 kb); an arm-level Mantel on the
-$27 \times 27$ Jaccard-distance matrix vs Zuo et al.\ (2021) arm-aggregated Hi-C
-(10,000 row+column permutations, $n_{\mathrm{arms}} = 27$) likewise peaks at
-zygotene (0.687/0.718/0.683/0.577 at lepto/zygo/pachy/diplo; all
-$p < 1 \times 10^{-4}$).
+prophase stage.
+Subtelomeric sequence similarity was positively correlated with
+inter-chromosomal contact across leptotene, zygotene, pachytene and diplotene.
+At 1 Mb and 50 kb resolution, exact PHR-pair correlations were similar across
+stages (Spearman $\rho = 0.37$--0.43), while arm-pair-collapsed correlations
+were higher ($\rho = 0.57$--0.71) with the largest point estimate at zygotene.
+Direct clustered contrasts did not resolve a zygotene-specific peak, so we
+treat the mouse data as evidence for a broad prophase-I sequence-to-contact
+association rather than a stage-specific maximum.
 \texttt{vegan::mantel} cross-check within $\pm 0.02$ \cite{Zuo2021}; the Python
 and R implementations are included in the public analysis-code repository.
 
 \subsection*{Pedigree odgi-untangle}
 
-\texttt{odgi untangle nth-best=1} per flank; high-quality filter
-\texttt{min\_score} $\geq 0.8$ with $500\ \mathrm{bp} \leq \mathrm{size} \leq 100\ \mathrm{kb}$;
-within-Leiden filter as credibility constraint; pattern classification via
-patch geometry and parent/child haplotype consistency
+Pedigree patches were called from \texttt{odgi untangle nth-best=1} output by
+merging contiguous child-flank intervals assigned to the same transmitting
+parent chromosome and haplotype.
+The high-quality WashU denominator comprised all inter-chromosomal patches with
+\texttt{min\_score} $\geq 0.8$ and
+$500\ \mathrm{bp} \leq \mathrm{size} \leq 100\ \mathrm{kb}$.
+Leiden labels from the independently inferred HPRCv2 arm-level community graph
+were assigned only after patch calling.
+The primary statistic was the fraction of high-quality WashU patches whose query
+and donor arms shared a Leiden community, tested against a permutation null
+preserving per-arm patch-count marginals.
+Within-community status was used to select mechanistic examples and, for
+CEPH1463, as part of a conservative cross-assembler validation criterion
 \cite{Cechova2025,Porubsky2025}. The classification implementation is included
 in the public analysis-code repository.
 Patch tract lengths interpreted alongside long-read primate meiotic
@@ -645,17 +654,17 @@ $\geq 30$ filters are insufficient to reproduce the inter-arm signal.
 \subsection*{Limitations}
 
 (i) Bulk Hi-C is somatic LCL, not germline meiotic; (ii) no genome-wide LAD or
-Lamin B1 ChIP-seq in matched germline cell types; (iii) the short-read cM/Mb
-anti-correlation reported by Lalli 2025 collapses once seven low-callability
-arms are excluded; (iv) the 12\% wfmash sampling rate is justified by Erd\H{o}s
+Lamin B1 ChIP-seq in matched germline cell types; (iii) a PHR-level comparison
+of Lalli 2025 T2T-CHM13 short-read cM/Mb estimates with our cross-arm affinity
+metric shows an apparent anti-correlation only before filtering and collapses
+after seven low-callability acrocentric/PAR arms are excluded; (iv) the 12\%
+wfmash sampling rate is justified by Erd\H{o}s
 and R\'{e}nyi connectivity but rests on the chosen 95\% identity threshold; (v)
 flank size truncation at 500 kb may underestimate PHR length; (vi) Hi-C N is
 small (six individuals) and confidence intervals are correspondingly wide.
-Confidence intervals on all headline correlations are now reported in-text
-alongside each point estimate (Mantel $\rho$ CHM13/HG002, mouse zygotene
-Mantel $\rho$, pedigree 92\% Wilson CI, $F_{\mathrm{ST}}$ block-jackknife CI),
-together with the Monte Carlo permutation null for the pedigree
-within-community fraction (observed $p < 10^{-4}$).
+Confidence intervals on all headline correlations are reported where supported
+by the completed analyses, together with the Monte Carlo permutation null for
+the pedigree within-community fraction (observed $p < 10^{-4}$).
 
 \bibliography{bibliography}
 
@@ -675,13 +684,13 @@ within-community fraction (observed $p < 10^{-4}$).
     a single genome; \emph{x}, pangenome-graph Jaccard similarity; \emph{y}, mean
     3D contact per 50 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
     log scale, zero-contact pairs at the axis floor; line, linear fit).
-    Contact rises with similarity in every panel:
-    CHM13 Hi-C (a second genome; pointwise Spearman $\rho = 0.716$, $n = 652$,
-    $p = 1.2 \times 10^{-103}$), HG002 Hi-C (same genome as Fig.~\ref{fig:fig4}A,
-    different assay; $\rho = 0.662$, $n = 2544$, $p < 10^{-300}$), and HG002 CiFi
-    ($\rho = 0.191$, $n = 2757$, $p = 3.7 \times 10^{-24}$; CiFi is the sparsest
-    assay, $\sim$90\% of pairs zero-contact, hence the weakest but still highly
-    significant signal).}
+    Contact rises with similarity in every panel, reported as descriptive
+    pointwise Spearman effect sizes:
+    CHM13 Hi-C (a second genome; $\rho = 0.716$, $n = 652$), HG002 Hi-C (same
+    genome as Fig.~\ref{fig:fig4}A, different assay; $\rho = 0.662$,
+    $n = 2{,}544$), and HG002 CiFi ($\rho = 0.191$, $n = 2{,}757$; CiFi is the
+    sparsest assay, $\sim$90\% of pairs zero-contact, hence the weakest
+    directionally concordant signal).}
   \label{fig:ed1}
 \end{figure}
 
