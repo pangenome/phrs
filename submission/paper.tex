@@ -46,10 +46,25 @@
 \affil[3]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
 
 \abstract{
-Human chromosome ends are often treated as chromosome-specific, yet much of their subtelomeric sequence is shared with the ends of other, non-homologous chromosomes. Here we measure this sharing across 465 near-complete assemblies (464 HPRC v2 haplotypes from 232 individuals, together with CHM13) using an implicit pangenome graph that samples approximately 12\% of haplotype-pair comparisons and queries transitive relationships without chromosomal or positional priors. We find extended interchromosomal homology on 41 of 48 chromosome arms, spanning tens to hundreds of kilobases and totaling 3.51 Mb outside acrocentric short arms and pseudoautosomal regions. These pseudo-homolog regions form 15 arm-level sequence-similarity communities, with known systems and an enriched q-arm neighborhood appearing as localized high-similarity peaks on a broader subtelomeric similarity continuum. Human and mouse contact maps support increased three-dimensional proximity among sequence-similar subtelomeres during interphase and meiotic prophase I. A telomere-to-telomere human pedigree provides evidence consistent with recent exchange preferentially within these sequence communities. Together, these data identify pseudo-homologous subtelomeres as a near-ubiquitous feature of human chromosome ends and support a model in which nuclear architecture and recombination opportunity contribute to their concerted evolution.
+\textbf{Human subtelomeres have long been known to contain duplicated sequence
+shared among non-homologous chromosome ends and to undergo ectopic exchange
+\cite{MeffordTrask2002,Flint1997,Linardopoulou2005,Brown1990,Wilkie1991,Trask1991}.
+However, incomplete reference assemblies and chromosome-partitioned analyses
+have prevented a population-scale view of the extent and organization of this
+system \cite{Nurk2022,Liao2023,hprc_hprcv2_2025}. Here we show, using 465
+near-complete human assemblies and chromosome-unrestricted pangenome analysis,
+that high-identity pseudo-homologous regions occur on 41 of 48 chromosome arms.
+They form structured sequence communities in which established exchange systems
+appear as local peaks within a broader continuum. Human and mouse
+chromosome-contact maps show preferential proximity between sequence-similar
+ends, and in human data this relationship persists in adjacent flanks lacking
+the homology used to define the pairs. A three-generation pedigree assembled end
+to end contains candidate exchange patches enriched within the same communities.
+These results generalize known subtelomeric exchange systems into a
+near-ubiquitous population-scale architecture and establish recurrent ectopic
+exchange as a genome-wide force in the concerted evolution of human chromosome
+ends.}
 }
-
-\keywords{pangenome, subtelomere, pseudo-homolog region, concerted evolution, recombination, Hi-C, meiotic bouquet, HPRC v2}
 
 \maketitle
 
@@ -74,32 +89,38 @@ The pseudoautosomal regions PAR1 and PAR2 carry the obligate sex-chromosome
 crossover \cite{Rouyer1986,sexchrompars_bellott2024}; the ribosomal-DNA-bearing
 acrocentric short arms recombine in the nucleolus and underlie recurrent
 Robertsonian translocations
-\cite{acrocentric_Altemose2022,acrocentric_Guarracino2025ape}; the D4Z4
+\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}; the D4Z4
 macrosatellite of 4q35 and 10q26 causes facioscapulohumeral dystrophy and is
 reactivated in diverse cancers
 \cite{dux4_d4z4_fshd_lemmers2010worldwide,dux4_cancer_Chew2019}; and unbalanced
 subtelomeric rearrangements are a recurrent cause of intellectual disability
 \cite{MeffordTrask2002}.
-Yet this picture rested on fragmentary evidence: fluorescence in situ
+Yet this picture rested on locus-specific and reference-limited evidence:
+fluorescence in situ
 hybridization, BAC and half-YAC clones, and monochromosomal hybrids in a handful
 of genomes \cite{Mefford2001,Riethman2004,Ambrosini2007}, because no reference
 assembly reached the telomeres \cite{Nurk2022} and chromosome-by-chromosome
 alignment hid sharing between chromosomes \cite{Liao2023}.
-How extensive subtelomeric sharing is across all arms, and whether recent
-exchange leaves pedigree-resolved evidence, therefore remained unmeasured
-genome-wide.
+The unresolved question was therefore not whether inter-chromosomal
+subtelomeric exchange occurs, but its population-scale extent, variation and
+organization across complete chromosome ends.
 
 Two advances now make a complete, population-scale view possible: the
 telomere-to-telomere CHM13 assembly resolved one human genome end to end
 \cite{Nurk2022}, and the second release of the Human Pangenome Reference
 Consortium (HPRC v2) provides near-complete, haplotype-resolved assemblies for
 232 individuals from five superpopulations \cite{hprc_hprcv2_2025}.
+At the same time, pangenome analysis of heterologous acrocentric chromosomes
+and complete assemblies of human Robertsonian chromosomes showed that the
+best-known subtelomeric exchange system could be resolved sequence by sequence
+\cite{Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}; here we ask
+whether that acrocentric result is one case of a genome-wide architecture.
 We revisit subtelomeric architecture without chromosomal partitioning, and ask
 three questions the cytogenetic era could pose but not resolve: how extensive is
-inter-chromosomal subtelomeric sharing across all 48 chromosome arms; does
-sequence similarity predict three-dimensional proximity in the nucleus; and does
-recent exchange leave pedigree-resolved patch patterns within the same
-communities.
+inter-chromosomal subtelomeric sharing across all 48 chromosome arms; how is it
+organized into sequence communities; and does sequence similarity predict
+three-dimensional proximity in the nucleus and compatible pedigree-resolved
+patch patterns within the same communities.
 
 \subsection*{Implicit pangenome graphs of subtelomeres}
 
@@ -220,9 +241,9 @@ and CAST T2T assemblies, PHR sequence identities and read-placement procedure
 are used at leptotene, zygotene, pachytene and diplotene
 \cite{Francis2025,Zuo2021}.
 Subtelomeric sequence similarity is positively correlated with contact across
-all four stages, with the largest arm-pair-collapsed point estimate at
-zygotene, but direct clustered contrasts do not resolve a zygotene-specific
-peak.
+all four stages, with the same per-PHR-pair pointwise statistic shown across
+stages in Fig.~\ref{fig:fig4}C; direct clustered contrasts do not resolve a
+zygotene-specific peak.
 We therefore read the mouse data as evidence for a broad prophase-I
 sequence-to-contact association rather than a stage-specific maximum.
 
@@ -256,7 +277,7 @@ reinforces proximity at the next meiosis.
 The 3.5 Mb of subtelomeric sequence described here therefore behaves as a
 population-scale extension of the cytogenetically defined subtelomeric systems
 that anchor it,
-maintained by ongoing non-allelic homologous recombination
+shaped by recurrent ectopic exchange and recombination opportunity
 \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
 Which way the central link runs remains open, whether shared sequence drives
 co-localisation or enforced proximity generates shared sequence, and our human
@@ -393,7 +414,8 @@ Group for generating and interpreting these data.
     contacts over 1 Mb flanks). Left, one dot per inter-chromosomal mouse PHR
     sequence pair: zygotene contact (per-bin-pair length-normalised as in (A),
     log) rises with PHR Jaccard similarity. Right, the same per-PHR-pair
-    descriptive correlation across leptotene, zygotene, pachytene and diplotene.
+    descriptive Spearman statistic across leptotene, zygotene, pachytene and
+    diplotene.
     Mouse meiotic Hi-C supports a broad prophase-I sequence-to-contact
     association; clustered zygotene-versus-flanking-stage contrasts do not
     establish a statistically resolved zygotene-specific peak.}
