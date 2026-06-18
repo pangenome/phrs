@@ -24,8 +24,6 @@ out_dir  <- Sys.getenv("OUT_DIR",  file.path(repo_root, "submission/fig/MainFigu
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 fmt_rho <- function(x) formatC(x, format = "f", digits = 3)
-fmt_p   <- function(p) if (is.na(p) || p == 0) "<1e-300" else
-                       formatC(p, format = "e", digits = 1)
 
 sources <- list(
   list(dataset = "HG002 Pore-C 50 kbp",
@@ -75,8 +73,8 @@ plot_one <- function(it) {
   legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.3,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
-                    sprintf("pointwise Spearman rho = %s", fmt_rho(it$rho)),
-                    sprintf("p = %s", fmt_p(it$p))))
+                    sprintf("descriptive pointwise Spearman rho = %s",
+                            fmt_rho(it$rho))))
   legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
          cex = 0.95, text.col = "black", text.font = 3, inset = c(-0.05, -0.015))
 }
@@ -96,6 +94,6 @@ pdf(file.path(out_dir, "Fig4a_human_scatter.pdf"),
     width = 5.6, height = 5.2); draw(); dev.off()
 
 for (it in items)
-  cat(sprintf("%-20s n=%d  rho=%s  p=%s\n",
-              it$src$dataset, it$n, fmt_rho(it$rho), fmt_p(it$p)))
+  cat(sprintf("%-20s n=%d  descriptive pointwise rho=%s\n",
+              it$src$dataset, it$n, fmt_rho(it$rho)))
 cat("wrote ", file.path(out_dir, "Fig4a_human_scatter.{png,pdf}"), "\n", sep = "")

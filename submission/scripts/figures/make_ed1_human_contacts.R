@@ -24,8 +24,6 @@ out_dir  <- Sys.getenv("OUT_DIR",  file.path(repo_root, "submission/fig/Extended
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 fmt_rho <- function(x) formatC(x, format = "f", digits = 3)
-fmt_p   <- function(p) if (is.na(p) || p == 0) "<1e-300" else
-                       formatC(p, format = "e", digits = 1)
 
 sources <- list(
   list(dataset = "CHM13 Hi-C", path = file.path(data_dir, "human_CHM13_hic_50000bp_seqlevel.tsv"),
@@ -76,8 +74,8 @@ plot_one <- function(it) {
   legend("bottomright", inset = c(0.01, 0.05), bty = "n", cex = 1.25,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
-                    sprintf("Spearman rho = %s", fmt_rho(it$rho)),
-                    sprintf("p = %s", fmt_p(it$p))))
+                    sprintf("descriptive pointwise rho = %s",
+                            fmt_rho(it$rho))))
 }
 
 draw <- function() {
@@ -95,6 +93,6 @@ pdf(file.path(out_dir, "ED_Fig1_human_contacts.pdf"),
     width = 12.0, height = 4.5); draw(); dev.off()
 
 for (it in items)
-  cat(sprintf("%-12s n=%d  rho=%s  p=%s\n",
-              it$src$dataset, it$n, fmt_rho(it$rho), fmt_p(it$p)))
+  cat(sprintf("%-12s n=%d  descriptive pointwise rho=%s\n",
+              it$src$dataset, it$n, fmt_rho(it$rho)))
 cat("wrote ", file.path(out_dir, "ED_Fig1_human_contacts.{png,pdf}"), "\n", sep = "")

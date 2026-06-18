@@ -85,8 +85,8 @@ hybridization, BAC and half-YAC clones, and monochromosomal hybrids in a handful
 of genomes \cite{Mefford2001,Riethman2004,Ambrosini2007}, because no reference
 assembly reached the telomeres \cite{Nurk2022} and chromosome-by-chromosome
 alignment hid sharing between chromosomes \cite{Liao2023}.
-How extensive subtelomeric sharing is across all arms, and whether the
-recombination that builds it is still ongoing, therefore remained unmeasured
+How extensive subtelomeric sharing is across all arms, and whether recent
+exchange leaves pedigree-resolved evidence, therefore remained unmeasured
 genome-wide.
 
 Two advances now make a complete, population-scale view possible: the
@@ -97,9 +97,9 @@ Consortium (HPRC v2) provides near-complete, haplotype-resolved assemblies for
 We revisit subtelomeric architecture without chromosomal partitioning, and ask
 three questions the cytogenetic era could pose but not resolve: how extensive is
 inter-chromosomal subtelomeric sharing across all 48 chromosome arms; does
-sequence similarity predict three-dimensional proximity in the nucleus; and can
-the recombination that generates and maintains it be observed directly within
-pedigrees.
+sequence similarity predict three-dimensional proximity in the nucleus; and does
+recent exchange leave pedigree-resolved patch patterns within the same
+communities.
 
 \subsection*{Implicit pangenome graphs of subtelomeres}
 
@@ -201,12 +201,17 @@ CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
 Because highly similar non-homologous PHR tracts cannot be assigned uniquely by
 a mapping-quality threshold, we interpret PHR-window contacts as aggregate
 coordinate-level measurements.
-Adjacent centromere-ward flanking regions, which are more uniquely mappable,
-show the same positive direction in key datasets, arguing against broad
-inflation from retaining multi-mappers.
+The adjacent 100 kb centromere-ward non-PHR flanks provide the key mapping
+control: in HG002 Hi-C they show stronger within-community enrichment than the
+PHR windows themselves ($B/W = 0.002$ versus $0.027$, a 13-fold difference),
+although the flanks do not contain the homologous sequence used to define PHR
+pairs.
 Ordering a Pore-C contact matrix by sequence community shows the same community
 block structure after observed/expected inter-chromosomal normalization
 (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
+Here and below $B/W$ denotes mean between-community contact divided by mean
+within-community contact, so lower values indicate stronger within-community
+proximity.
 The same within-community enrichment holds across the other contact maps we
 reanalysed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
 and 20-cell single-sperm scHi-C \cite{Xu2025}.
@@ -221,10 +226,11 @@ peak.
 We therefore read the mouse data as evidence for a broad prophase-I
 sequence-to-contact association rather than a stage-specific maximum.
 
-\subsection*{Pedigree-resolved patches support recent subtelomeric exchange}
+\subsection*{Pedigree-resolved patches are compatible with recent exchange}
 
-To look for recent exchange directly, we applied \texttt{odgi untangle} to the
-WashU three-generation T2T pedigree \cite{Cechova2025}, comparing each
+To ask whether recent exchange leaves compatible pedigree-resolved patches, we
+applied \texttt{odgi untangle} to the WashU three-generation T2T pedigree
+\cite{Cechova2025}, comparing each
 inherited child haplotype with the two haplotypes of the transmitting parent
 (Fig.~\ref{fig:fig5}).
 Patch calls were made without using the HPRCv2 community labels.
@@ -258,7 +264,7 @@ three-dimensional data are somatic rather than germline, with the meiotic-stage
 measurement supplied only by mouse.
 Resolving both will require germline-stage contact maps and long-read
 recombination maps in trios \cite{palsson2025recomb,Logsdon2024}; even so, the
-pattern is already a population-scale confirmation, in complete genomes, of
+pattern is already a population-scale complete-genome counterpart to
 relationships first inferred from cytogenetics decades ago.
 
 \subsection*{Acknowledgments}
@@ -377,25 +383,28 @@ Group for generating and interpreting these data.
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
     \textbf{(B)} HG002 Pore-C contact matrix ordered by sequence community after
-    observed/expected inter-chromosomal normalisation; within-community blocks
-    dominate ($B/W = 0.056$). Matrix-level inference used row+column
-    Mantel/permutation tests in Methods.
+    observed/expected inter-chromosomal normalisation; within-community contacts
+    are enriched ($B/W = 0.056$, between/within). The adjacent 100 kb
+    centromere-ward non-PHR flanks show an even lower ratio in HG002 Hi-C
+    ($B/W = 0.002$ versus $0.027$ in PHR windows).
+    Matrix-level inference used row+column Mantel/permutation tests in Methods.
     \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
-    T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp,
-    1 Mb flank). Left, one dot per inter-chromosomal mouse PHR sequence pair:
-    zygotene contact (per-bin-pair length-normalised as in (A), log) rises with
-    PHR Jaccard similarity. Right,
-    mouse meiotic Hi-C supports a broad prophase-I sequence-to-contact
-    association; the arm-pair-collapsed point estimate is largest at zygotene,
-    but clustered zygotene-versus-flanking-stage contrasts do not establish a
-    statistically resolved zygotene-specific peak.}
+    T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp
+    contacts over 1 Mb flanks). Left, one dot per inter-chromosomal mouse PHR
+    sequence pair: zygotene contact (per-bin-pair length-normalised as in (A),
+    log) rises with PHR Jaccard similarity. Right, the same per-PHR-pair
+    descriptive correlation across leptotene, zygotene, pachytene and diplotene.
+    Mouse meiotic Hi-C supports a broad prophase-I sequence-to-contact
+    association; clustered zygotene-versus-flanking-stage contrasts do not
+    establish a statistically resolved zygotene-specific peak.}
   \label{fig:fig4}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.pdf}
-  \caption{\textbf{Pedigree-resolved candidate subtelomeric exchange.}
+  \makebox[\linewidth][c]{%
+    \includegraphics[width=1.08\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.pdf}}
+  \caption{\textbf{Pedigree-resolved candidate subtelomeric patches.}
     Candidate inter-chromosomal subtelomeric patches in the WashU
     three-generation T2T pedigree. The PAN027 maternal haplotype (hap1,
     inherited from the mother PAN010) is untangled against PAN010's two
@@ -405,9 +414,9 @@ Group for generating and interpreting these data.
     three child-haplotype transmissions, 494 (92\%; Wilson 95\% CI 89.2--93.9\%)
     joined arms in the same independently inferred sequence-similarity community,
     above a marginal-aware Monte Carlo null (mean 77.0\%, 95\% CI 75.4--78.8\%;
-    $p < 10^{-4}$), including crossover-like reciprocal exchanges and
-    gene-conversion-like tracts. Cross-assembler validation (CEPH1463) is
-    described in the main text.}
+    $p < 10^{-4}$). These candidate patches are compatible with crossover-like
+    reciprocal exchanges and gene-conversion-like tracts; cross-assembler
+    validation (CEPH1463) is described in the main text.}
   \label{fig:fig5}
 \end{figure}
 
@@ -533,8 +542,9 @@ Under this policy, each multi-mapped molecule contributes one primary placement
 rather than all possible placements.
 PHR-internal contacts are therefore aggregate coordinate-level measurements and
 not read-level truth sets.
-The adjacent flanking unique-sequence analyses provide the principal control
-against broad MAPQ0-driven inflation.
+The adjacent 100 kb centromere-ward non-PHR flank analyses provide the principal
+control against broad MAPQ0-driven inflation; in HG002 Hi-C, the flanks show
+$B/W = 0.002$ compared with $0.027$ in PHR windows.
 Pointwise Spearman correlations are reported as descriptive effect sizes
 because PHR-pair observations share chromosome arms, PHRs, matrix rows/columns
 and read-placement histories.
@@ -551,8 +561,8 @@ as replicates in Extended Data Fig.~\ref{fig:ed1}, CHM13 Hi-C ($\rho = 0.716$,
 $n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2{,}544$) and HG002 CiFi
 ($\rho = 0.191$, $n = 2{,}757$; the sparsest assay, hence the weakest signal);
 all at 50 kbp via \texttt{sequence\_hic\_correlation.py}.
-The community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}B ($B/W = 0.056$) is
-at 50 kb.
+The community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}B ($B/W = 0.056$,
+between/within contact) is at 50 kb.
 
 \subsection*{Reproducibility from deposited data}
 
@@ -585,7 +595,7 @@ T2T-CHM13v2.0; sperm scHi-C in 20 cells
 \cite{Xu2025,hic3d_scnanoHiC2023,hic3d_scnanoHiC2_2025,hic3d_kitamura2025}.
 PBMC Dip-C negative control: 18 cells from the public Dip-C dataset
 \cite{Tan2018}, with PHR coordinates projected from CHM13 to hg19 via impg,
-yielding $W/B = 0.983$ and $p = 0.305$.
+yielding a within/between distance ratio of 0.983 and $p = 0.305$.
 $S_{\mathrm{all}}$ negative control: pooled 7 zero-signal arms.
 
 \subsection*{Mouse pipeline}

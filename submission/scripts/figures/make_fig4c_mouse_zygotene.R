@@ -3,8 +3,8 @@
 # Left: zygotene scatter, one dot per inter-chromosomal mouse PHR sequence pair
 #       (length-normalised Hi-C contact vs PHR Jaccard; no averaging, as Fig 4a).
 # Right: per-stage pointwise Spearman trajectory --- the SAME per-PHR-pair
-#       statistic computed here from the four stage files --- peaking at the
-#       zygotene bouquet. (No arm-level aggregation anywhere in this panel.)
+#       statistic computed here from the four stage files. This panel shows
+#       broad prophase-I support, not a resolved zygotene-specific maximum.
 # Base R only. Paths resolve from the script's location, so run from anywhere:
 #   Rscript submission/scripts/figures/make_fig4c_mouse_zygotene.R
 # Input  (override dir with DATA_DIR=...):
@@ -24,8 +24,6 @@ out_dir  <- Sys.getenv("OUT_DIR",  file.path(repo_root, "submission/fig/MainFigu
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 fmt_rho <- function(x) formatC(x, format = "f", digits = 3)
-fmt_p   <- function(p) if (is.na(p) || p == 0) "<1e-300" else
-                       formatC(p, format = "e", digits = 1)
 
 RES <- "20000bp"   # per-PHR-pair contacts at 20 kbp (1 Mb flank)
 stage_keys <- c(lepto = "leptotene", zygo = "zygotene",
@@ -74,15 +72,15 @@ draw <- function() {
   legend("bottomright", inset = c(0.02, 0.04), bty = "n", cex = 1.4,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(n, big.mark = ",")),
-                    sprintf("pointwise Spearman rho = %s", fmt_rho(rho)),
-                    sprintf("p = %s", fmt_p(ct$p.value))))
+                    sprintf("descriptive pointwise Spearman rho = %s",
+                            fmt_rho(rho))))
   legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
          cex = 1.1, text.col = "black", text.font = 3, inset = c(-0.04, -0.01))
 
   # right: per-stage trajectory (same per-PHR-pair Spearman statistic; no title)
   yl <- range(stages$rho)
   plot(seq_len(nrow(stages)), stages$rho, type = "b", pch = 21,
-       bg = ifelse(stages$stage == "zygo", "#d62728", "#1f77b4"),
+       bg = "#1f77b4",
        col = "#111111", lwd = 1.4, cex = 2.1, xaxt = "n",
        ylim = c(yl[1] - 0.06, yl[2] + 0.07),
        xlab = "Meiotic prophase stage", ylab = "Per-pair Spearman rho",
@@ -90,8 +88,6 @@ draw <- function() {
   axis(1, at = seq_len(nrow(stages)), labels = levels(stages$stage), cex.axis = 1.4)
   text(seq_len(nrow(stages)), stages$rho + 0.030,
        sprintf("%.3f", stages$rho), cex = 1.2, xpd = NA)
-  text(2, max(stages$rho) + 0.055, "bouquet", col = "#d62728", font = 2,
-       cex = 1.3, xpd = NA)
 }
 
 png(file.path(out_dir, "Fig4c_mouse_zygotene.png"),
@@ -99,5 +95,5 @@ png(file.path(out_dir, "Fig4c_mouse_zygotene.png"),
 pdf(file.path(out_dir, "Fig4c_mouse_zygotene.pdf"),
     width = 10.83, height = 5.83); draw(); dev.off()
 
-cat(sprintf("mouse zygotene  n=%d  rho=%s  p=%s\n", n, fmt_rho(rho), fmt_p(ct$p.value)))
+cat(sprintf("mouse zygotene  n=%d  descriptive pointwise rho=%s\n", n, fmt_rho(rho)))
 cat("wrote ", file.path(out_dir, "Fig4c_mouse_zygotene.{png,pdf}"), "\n", sep = "")
