@@ -263,6 +263,12 @@ These patch calls include candidate gene-conversion-like tracts between
 non-homologous arms of the same community, for example between 9p and 3p, and
 crossover-like state switches, but they remain assembly-derived candidates
 rather than a per-event recombination truth set.
+The high-confidence patch table has a median tract length of 1,517 bp
+(IQR 1,136--2,981 bp), whereas a lower-merge best-hit rerun resolved 37,400
+inter-chromosomal merged intervals, including 11,600 (31.0\%) in the cited
+22--95 bp short-conversion range and 927 (2.5\%) in the 318--688 bp
+crossover-associated range; these proportions show compatibility with both
+tract scales but do not assign event-level mechanism.
 Fragmented CEPH1463 assemblies show that untangle can produce many
 inter-chromosomal patch calls outside the population-defined communities, so we
 use those assemblies only as a cross-assembler validation set; confirming
@@ -276,13 +282,14 @@ that recombination generates new shared sequence that enters the population and
 reinforces proximity at the next meiosis.
 The 3.5 Mb of subtelomeric sequence described here therefore behaves as a
 population-scale extension of the cytogenetically defined subtelomeric systems
-that anchor it,
-shaped by recurrent ectopic exchange and recombination opportunity
+that anchor it, shaped and maintained by recurrent ectopic exchange
 \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
-Which way the central link runs remains open, whether shared sequence drives
-co-localisation or enforced proximity generates shared sequence, and our human
-three-dimensional data are somatic rather than germline, with the meiotic-stage
-measurement supplied only by mouse.
+Which way the sequence--proximity link runs remains open, whether shared
+sequence drives co-localisation or enforced proximity generates shared sequence;
+the mechanism split among conversion, crossover-associated repair and larger
+exchange patterns also remains unresolved.
+Our human three-dimensional data are somatic rather than germline, with the
+meiotic-stage measurement supplied only by mouse.
 Resolving both will require germline-stage contact maps and long-read
 recombination maps in trios \cite{palsson2025recomb,Logsdon2024}; even so, the
 pattern is already a population-scale complete-genome counterpart to
@@ -652,13 +659,18 @@ were assigned only after patch calling.
 The primary statistic was the fraction of high-quality WashU patches whose query
 and donor arms shared a Leiden community, tested against a permutation null
 preserving per-arm patch-count marginals.
-Within-community status was used to select mechanistic examples and, for
-CEPH1463, as part of a conservative cross-assembler validation criterion
-\cite{Cechova2025,Porubsky2025}. The classification implementation is included
-in the public analysis-code repository.
-Patch tract lengths interpreted alongside long-read primate meiotic
-recombination (NCO 22--95 bp, CO-associated 318--688 bp)
+Within-community status was used to select candidate patch-pattern examples
+and, for CEPH1463, as part of a conservative cross-assembler validation
+criterion \cite{Cechova2025,Porubsky2025}. The classification implementation is
+included in the public analysis-code repository.
+Patch tract lengths were interpreted alongside long-read primate meiotic
+recombination tract ranges (NCO 22--95 bp, CO-associated 318--688 bp)
 \cite{pedigree_Porsborg2025primaterecom,pedigree_Joseph2024PRDM9indep}.
+A lower-merge resolution check reran the same WashU targets with
+\texttt{odgi untangle -e 50000 -m 0 -j 0 -n 1}, merged adjacent best-hit
+intervals assigned to the same donor chromosome arm and haplotype, and
+summarised inter-chromosomal merged intervals with \texttt{min\_score}
+$\geq 0.8$ and length $\leq 100$ kb.
 The within-Leiden fraction was tested against a permutation null preserving
 per-arm patch-count marginals ($B = 10000$; per-community BH correction);
 Wilson 95\% CI on 494/538 is 89.2--93.9\%. The permutation implementation is
