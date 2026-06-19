@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import csv
 import html
+import re
 import textwrap
 from dataclasses import dataclass
 from pathlib import Path
@@ -25,6 +26,9 @@ from typing import Iterable
 HERE = Path(__file__).resolve().parent
 DEFAULT_PATCHES = Path(
     "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/untangle/recombination/patches.tsv"
+)
+DEFAULT_SEGMENTS = (
+    HERE.parent / "fig5_sweepga_1to1_redraw" / "conservative_segments.tsv"
 )
 
 FIG_BASE = "fig5_par1_phr_candidate_panels"
@@ -41,6 +45,7 @@ PANELS = [
         "title": "A  PAR1 positive control: paternal chrX p maps to chrY p",
         "short_title": "PAR1 positive control",
         "label": "PAN027 paternal (hap2) vs PAN011 (father)",
+        "pair": "PAN027_vs_PAN011",
         "query": "PAN027#2#chrX.paternal:12265-512264_chrX_parm",
         "primary_arms": {"chrYp"},
         "secondary_arms": set(),
@@ -48,13 +53,14 @@ PANELS = [
         "interpretation": "Known male PAR1 X/Y recombination sanity check; not autosomal PHR evidence.",
         "phr_status": "PAR1 positive-control",
         "xlim": (0, FULL_SPAN),
-        "callout": "Main chrYp block: 0-143,431 bp; mean/min score 0.9998/0.9933; C15/C15.",
+        "callout": "Main chrYp block at chrX:12,265-155,863; strict nb=1 1:1 path; C15/C15.",
     },
     {
         "panel": "B",
         "title": "B  PAN027 autosomal candidate: chr9 q terminal patch mostly chr3 q",
         "short_title": "PAN027 chr9q candidate",
         "label": "PAN027 paternal (hap2) vs PAN011 (father)",
+        "pair": "PAN027_vs_PAN011",
         "query": "PAN027#2#chr9.paternal:135704825-136204824_chr9_qarm",
         "primary_arms": {"chr3q"},
         "secondary_arms": {"chr15q", "chr16q"},
@@ -62,13 +68,14 @@ PANELS = [
         "interpretation": "Candidate terminal PHR exchange patch; not a clean full crossover.",
         "phr_status": "autosomal PHR candidate",
         "xlim": (280_000, FULL_SPAN),
-        "callout": "Terminal switch after 446.9 kb is mostly chr3q; chr15q is cross-community secondary; chr20q tail is low-confidence.",
+        "callout": "Strict primary path switches near chr9:136,151,769; terminal tract is mostly chr3q with small side fragments.",
     },
     {
         "panel": "C",
         "title": "C  Independent PAN028 support: chr3 q terminal patch maps to chr9 q",
         "short_title": "PAN028 chr3q candidate",
         "label": "PAN028 maternal (hap1) vs PAN027 (mother)",
+        "pair": "PAN028_vs_PAN027",
         "query": "PAN028#1#chr3.haplotype1:199233840-199733839_chr3_qarm",
         "primary_arms": {"chr9q"},
         "secondary_arms": {"chr7p", "chr16q", "chr20q"},
@@ -76,7 +83,7 @@ PANELS = [
         "interpretation": "Independent candidate compatible with chr3q/chr9q C3 exchange.",
         "phr_status": "autosomal PHR candidate",
         "xlim": (220_000, FULL_SPAN),
-        "callout": "Strong chr9q blocks: 390,073-407,837 and 409,115-470,323 bp; C3/C3.",
+        "callout": "Strict primary path has candidate side fragments across chr3:199,496,793-199,733,150; permissive chr9q patch calls are annotation only.",
     },
 ]
 
@@ -93,6 +100,32 @@ COLORS = {
     "axis": "#4a4a4a",
     "text": "#1f1f1f",
 }
+
+
+@dataclass(frozen=True)
+class SourceInterval:
+    sample: str
+    hap: str
+    chrom: str
+    hap_label: str
+    start: int
+    end: int
+    arm_name: str
+
+    @property
+    def chrom_short(self) -> str:
+        return self.chrom
+
+    @property
+    def window(self) -> str:
+        return f"{self.chrom_short}:{self.start:,}-{self.end:,}"
+
+    def project(self, local_start: int, local_end: int) -> tuple[int, int]:
+        return self.start + local_start, self.start + local_end
+
+    def interval_label(self, local_start: int, local_end: int) -> str:
+        start, end = self.project(local_start, local_end)
+        return f"{self.chrom_short}:{start:,}-{end:,}"
 
 
 @dataclass(frozen=True)
@@ -125,6 +158,102 @@ class Patch:
     @property
     def interval(self) -> str:
         return f"{self.patch_start}-{self.patch_end}"
+
+
+@dataclass(frozen=True)
+class Segment:
+    pair: str
+    transmission: str
+    query_name: str
+    query_arm: str
+    query_start: int
+    query_end: int
+    query_length: int
+    target_name: str
+    target_hap: str
+    target_arm: str
+    strand: str
+    identity: str
+    jaccard: str
+    nb: str
+    interchromosomal: bool
+    annotation: Patch | None = None
+
+    @property
+    def patch_start(self) -> int:
+        return self.query_start
+
+    @property
+    def patch_end(self) -> int:
+        return self.query_end
+
+    @property
+    def patch_size(self) -> int:
+        return self.query_end - self.query_start
+
+    @property
+    def is_interchr(self) -> bool:
+        return self.interchromosomal
+
+    @property
+    def ref_chrarm(self) -> str:
+        return self.target_arm
+
+    @property
+    def ref_hap(self) -> str:
+        return self.target_hap.split("#")[-1]
+
+    @property
+    def interval(self) -> str:
+        return f"{self.query_start}-{self.query_end}"
+
+    @property
+    def mean_score(self) -> str:
+        return self.annotation.mean_score if self.annotation else self.jaccard
+
+    @property
+    def min_score(self) -> str:
+        return self.annotation.min_score if self.annotation else self.jaccard
+
+    @property
+    def max_score(self) -> str:
+        return self.annotation.max_score if self.annotation else self.jaccard
+
+    @property
+    def n_segments(self) -> str:
+        return self.annotation.n_segments if self.annotation else "1"
+
+    @property
+    def pattern(self) -> str:
+        return self.annotation.pattern if self.annotation else "strict_1to1_primary_path"
+
+    @property
+    def query_community(self) -> str:
+        return self.annotation.query_community if self.annotation else "not_available"
+
+    @property
+    def ref_community(self) -> str:
+        return self.annotation.ref_community if self.annotation else "not_available"
+
+    @property
+    def community_status(self) -> str:
+        return self.annotation.community_status if self.annotation else "not_available"
+
+    @property
+    def overlaps_phr(self) -> str:
+        return self.annotation.overlaps_phr if self.annotation else "not_available"
+
+    @property
+    def has_phr(self) -> str:
+        return self.annotation.has_phr if self.annotation else "not_available"
+
+    @property
+    def phr_start(self) -> str:
+        return self.annotation.phr_start if self.annotation else "None"
+
+    @property
+    def phr_end(self) -> str:
+        return self.annotation.phr_end if self.annotation else "None"
 
 
 class Canvas:
@@ -244,8 +373,29 @@ def pdf_color(hex_color: str) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--patches", type=Path, default=DEFAULT_PATCHES)
+    parser.add_argument("--segments", type=Path, default=DEFAULT_SEGMENTS)
     parser.add_argument("--out-dir", type=Path, default=HERE)
     return parser.parse_args()
+
+
+QUERY_RE = re.compile(
+    r"^(?P<sample>[^#]+)#(?P<hap>[^#]+)#(?P<chrom>[^.:_]+)\.(?P<hap_label>[^:]+):(?P<start>\d+)-(?P<end>\d+)_(?P<arm>.+)$"
+)
+
+
+def parse_source_interval(name: str) -> SourceInterval:
+    match = QUERY_RE.match(name)
+    if not match:
+        raise ValueError(f"cannot parse source interval from name: {name}")
+    return SourceInterval(
+        sample=match.group("sample"),
+        hap=match.group("hap"),
+        chrom=match.group("chrom"),
+        hap_label=match.group("hap_label"),
+        start=int(match.group("start")),
+        end=int(match.group("end")),
+        arm_name=match.group("arm"),
+    )
 
 
 def read_patches(path: Path) -> list[Patch]:
@@ -286,28 +436,80 @@ def read_patches(path: Path) -> list[Patch]:
     return rows
 
 
-def panel_rows(patches: list[Patch], panel: dict) -> list[Patch]:
-    rows = [p for p in patches if p.label == panel["label"] and p.query == panel["query"]]
+def patch_index(patches: list[Patch]) -> dict[tuple[str, str, int, int, str, str], Patch]:
+    return {
+        (p.query, p.patch_start, p.patch_end, p.ref_chrarm, p.ref_hap): p
+        for p in patches
+    }
+
+
+def read_segments(path: Path, patches: list[Patch]) -> list[Segment]:
+    if not path.exists():
+        raise FileNotFoundError(f"conservative segment table not found: {path}")
+    idx = patch_index(patches)
+    rows: list[Segment] = []
+    with path.open() as fh:
+        reader = csv.DictReader(fh, delimiter="\t")
+        for row in reader:
+            if row["nb"] != "1":
+                continue
+            target_hap_num = row["target_hap"].split("#")[-1]
+            # patches.tsv uses the human-readable transmission label rather than
+            # pair id, so match on query/interval/donor when available.
+            ann = idx.get(
+                (
+                    row["query_name"],
+                    int(row["query_start"]),
+                    int(row["query_end"]),
+                    row["target_arm"],
+                    target_hap_num,
+                )
+            )
+            rows.append(
+                Segment(
+                    pair=row["pair"],
+                    transmission=row["transmission"],
+                    query_name=row["query_name"],
+                    query_arm=row["query_arm"],
+                    query_start=int(row["query_start"]),
+                    query_end=int(row["query_end"]),
+                    query_length=int(row["query_length"]),
+                    target_name=row["target_name"],
+                    target_hap=row["target_hap"],
+                    target_arm=row["target_arm"],
+                    strand=row["strand"],
+                    identity=row["identity"],
+                    jaccard=row["jaccard"],
+                    nb=row["nb"],
+                    interchromosomal=row["interchromosomal"] == "1",
+                    annotation=ann,
+                )
+            )
+    return rows
+
+
+def panel_rows(segments: list[Segment], panel: dict) -> list[Segment]:
+    rows = [p for p in segments if p.pair == panel["pair"] and p.query_name == panel["query"]]
     if not rows:
         raise RuntimeError(f"no patch rows for panel {panel['panel']}: {panel['query']}")
     return sorted(rows, key=lambda p: p.patch_start)
 
 
-def event_class(patch: Patch, panel: dict) -> str:
+def event_class(patch: Segment, panel: dict) -> str:
     if not patch.is_interchr:
         return "same-chromosome background"
     if patch.ref_chrarm in panel["low_conf_arms"] or patch.patch_size < 1_000 or float(patch.min_score) < 0.90:
         return "low-confidence"
     if panel["phr_status"].startswith("PAR1"):
         return "positive-control"
-    if patch.ref_chrarm in panel["primary_arms"] and patch.community_status == "within_community":
+    if patch.ref_chrarm in panel["primary_arms"] and patch.community_status in {"within_community", "not_available"}:
         return "autosomal-candidate"
     if patch.community_status != "within_community" or patch.ref_chrarm in panel["secondary_arms"]:
         return "secondary fragment"
     return "autosomal-candidate"
 
 
-def patch_style(patch: Patch, panel: dict) -> tuple[str, str]:
+def patch_style(patch: Segment, panel: dict) -> tuple[str, str]:
     cls = event_class(patch, panel)
     if cls == "same-chromosome background":
         fill = COLORS["same_chr_alt_hap"] if patch.ref_hap != "2" else COLORS["background"]
@@ -322,7 +524,7 @@ def patch_style(patch: Patch, panel: dict) -> tuple[str, str]:
     return COLORS["low_conf"], "#8e877d"
 
 
-def selected_for_summary(patch: Patch, panel: dict) -> bool:
+def selected_for_summary(patch: Segment, panel: dict) -> bool:
     if patch.is_interchr:
         return True
     if panel["panel"] == "A":
@@ -330,27 +532,36 @@ def selected_for_summary(patch: Patch, panel: dict) -> bool:
     return False
 
 
-def write_summary(patches: list[Patch], out_path: Path) -> list[dict[str, str]]:
+def write_summary(segments: list[Segment], out_path: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for panel in PANELS:
-        for patch in panel_rows(patches, panel):
+        query_src = parse_source_interval(panel["query"])
+        for patch in panel_rows(segments, panel):
             if not selected_for_summary(patch, panel):
                 continue
+            target_src = parse_source_interval(patch.target_name)
             rows.append(
                 {
                     "panel": panel["panel"],
                     "panel_title": panel["short_title"],
-                    "transmission": patch.label,
-                    "query": patch.query,
-                    "query_arm": f"{patch.query_chr}_{patch.query_arm}",
+                    "transmission": patch.transmission,
+                    "query": patch.query_name,
+                    "coordinate_convention": "0-based half-open native assembly coordinates parsed from source sequence names",
+                    "query_arm": patch.query_arm,
+                    "local_interval_bp": patch.interval,
+                    "display_query_interval_native_0based": query_src.interval_label(patch.query_start, patch.query_end),
+                    "display_query_start_native_0based": str(query_src.project(patch.query_start, patch.query_end)[0]),
+                    "display_query_end_native_0based": str(query_src.project(patch.query_start, patch.query_end)[1]),
                     "donor_arm": patch.ref_chrarm,
-                    "donor_hap": f"h{patch.ref_hap}",
-                    "interval_bp": patch.interval,
+                    "donor_hap": patch.target_hap,
+                    "donor_source_window_native_0based": target_src.window,
+                    "donor_segment_interval_native_0based": "not_recovered_from_conservative_segment_table",
                     "length_bp": str(patch.patch_size),
-                    "mean_score": patch.mean_score,
-                    "min_score": patch.min_score,
-                    "max_score": patch.max_score,
+                    "identity_or_mean_score": patch.identity,
+                    "jaccard_or_min_score": patch.jaccard,
+                    "max_score_from_patch_annotation": patch.max_score,
                     "n_segments": patch.n_segments,
+                    "drawing_source": "conservative_segments.tsv nb=1 sweepGA 1:1 no-scaffold primary path",
                     "pattern": patch.pattern,
                     "query_community": patch.query_community,
                     "ref_community": patch.ref_community,
@@ -379,7 +590,7 @@ def wrap_text(c: Canvas, x: float, y: float, text: str, width: int, size: float,
         c.text(x, y + i * line_height, line, size=size, fill=fill)
 
 
-def draw_axis(c: Canvas, y: float, xmin: int, xmax: int) -> None:
+def draw_axis(c: Canvas, y: float, xmin: int, xmax: int, source: SourceInterval) -> None:
     c.line(LEFT, y + 98, LEFT + PANEL_W, y + 98, COLORS["axis"], 0.7)
     tick_start = (xmin // 50_000) * 50_000
     for tick in range(tick_start, xmax + 1, 50_000):
@@ -387,13 +598,16 @@ def draw_axis(c: Canvas, y: float, xmin: int, xmax: int) -> None:
             continue
         x = xmap(tick, xmin, xmax)
         c.line(x, y + 94, x, y + 101, COLORS["axis"], 0.6)
-        c.text(x, y + 113, f"{tick // 1000} kb", 8, "#555555", anchor="middle")
+        c.text(x, y + 113, f"{source.start + tick:,}", 7.2, "#555555", anchor="middle")
+    c.text(LEFT + PANEL_W, y + 126, f"{source.chrom_short} native bp (0-based half-open)", 7.2, "#555555", anchor="end")
 
 
-def draw_panel(c: Canvas, rows: list[Patch], panel: dict, y: float) -> None:
+def draw_panel(c: Canvas, rows: list[Segment], panel: dict, y: float) -> None:
     xmin, xmax = panel["xlim"]
+    source = parse_source_interval(panel["query"])
     c.text(LEFT, y, panel["title"], 11, COLORS["text"], weight="bold")
     c.text(LEFT, y + 18, panel["label"], 8.2, "#555555")
+    c.text(LEFT, y + 30, f"Displayed query window: {source.interval_label(xmin, xmax)}", 7.4, "#555555")
     wrap_text(c, LEFT + 545, y + 18, panel["callout"], 72, 7.7, "#555555", 9)
 
     phr_starts = [int(r.phr_start) for r in rows if r.phr_start != "None"]
@@ -429,12 +643,12 @@ def draw_panel(c: Canvas, rows: list[Patch], panel: dict, y: float) -> None:
             if cls == "low-confidence":
                 label += " low"
             elif patch.community_status != "within_community":
-                label += " secondary"
+                label += " side"
             c.line(cx, py, cx, ty + 4, edge, 0.5)
             c.text(cx, ty, label, 7, edge, anchor="middle")
 
     wrap_text(c, LEFT, y + 126, panel["interpretation"], 105, 7.8, "#555555", 9)
-    draw_axis(c, y, xmin, xmax)
+    draw_axis(c, y, xmin, xmax, source)
 
 
 def grouped_summary_line(rows: Iterable[dict[str, str]], event_class_name: str) -> str:
@@ -442,7 +656,7 @@ def grouped_summary_line(rows: Iterable[dict[str, str]], event_class_name: str) 
     if not entries:
         return ""
     parts = [
-        f"{r['donor_arm']} {r['interval_bp']} (min {r['min_score']}, {r['community_status']})"
+        f"{r['donor_arm']} {r['display_query_interval_native_0based']} ({r['community_status']})"
         for r in entries
     ]
     return "; ".join(parts)
@@ -453,7 +667,7 @@ def draw_overview(c: Canvas, y: float, summary_rows: list[dict[str, str]]) -> No
     c.text(LEFT, y + 18, "Deliberately selected review set; not a genome-wide rediscovery run.", 8.2, "#555555")
     col_x = [LEFT, LEFT + 54, LEFT + 205, LEFT + 590, LEFT + 840]
     col_w = [48, 145, 375, 240, 190]
-    headers = ["panel", "role", "primary evidence", "secondary", "low-confidence"]
+    headers = ["panel", "role", "primary evidence", "side fragments", "low-confidence"]
     row_h = 40
     table_y = y + 36
     for i, header in enumerate(headers):
@@ -480,7 +694,7 @@ def draw_overview(c: Canvas, y: float, summary_rows: list[dict[str, str]]) -> No
         ("same-chromosome background", COLORS["background"]),
         ("PAR1 chrY donor", COLORS["primary_chrYp"]),
         ("chr3/chr9 candidate donor", COLORS["primary_chr3q_chr9q"]),
-        ("secondary/cross-community", COLORS["cross_community"]),
+        ("side/cross-community", COLORS["cross_community"]),
         ("low-confidence tail", COLORS["low_conf"]),
     ]
     lx = LEFT
@@ -491,7 +705,7 @@ def draw_overview(c: Canvas, y: float, summary_rows: list[dict[str, str]]) -> No
         lx += 188
 
 
-def render(canvas: Canvas, selected: dict[str, list[Patch]], summary_rows: list[dict[str, str]]) -> None:
+def render(canvas: Canvas, selected: dict[str, list[Segment]], summary_rows: list[dict[str, str]]) -> None:
     canvas.text(
         16,
         26,
@@ -503,7 +717,7 @@ def render(canvas: Canvas, selected: dict[str, list[Patch]], summary_rows: list[
     canvas.text(
         16,
         44,
-        "Existing WashU odgi-untangle patch calls; same-chromosome background is subdued and non-homologous donor arms are semantically highlighted.",
+        "Strict nb=1 sweepGA 1:1 no-scaffold primary path; axes are native assembly coordinates parsed from source names.",
         8,
         "#666666",
     )
@@ -513,7 +727,16 @@ def render(canvas: Canvas, selected: dict[str, list[Patch]], summary_rows: list[
     draw_overview(canvas, 532, summary_rows)
 
 
-def write_readme(out_dir: Path, patch_path: Path) -> None:
+def display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(Path.cwd().resolve()))
+    except ValueError:
+        return str(path)
+
+
+def write_readme(out_dir: Path, patch_path: Path, segment_path: Path) -> None:
+    patch_display = display_path(patch_path)
+    segment_display = display_path(segment_path)
     readme = f"""# Fig5 PAR1/PHR Candidate Panels
 
 This directory contains an experimental candidate asset pack for reviewing a
@@ -530,20 +753,47 @@ or any bibliography file.
 
 ## Provenance
 
-Primary input:
+Drawing input:
 
-`{patch_path}`
+`{segment_display}`
+
+The plotted rectangles come from `conservative_segments.tsv`, the strict
+`nb=1` sweepGA 1:1 no-scaffold primary-path table produced by the companion
+redraw task. This correction does not plot nth-best, multimap, permissive
+secondary, or non-primary PAF rows.
+
+Annotation/provenance input:
+
+`{patch_display}`
 
 This table is the existing WashU `odgi untangle` recombination patch output.
-The script filters three pre-selected, review-facing examples from that table:
+The script uses it only to recover community labels, score summaries, PHR/PAR
+status, and interpretive labels when a conservative segment has the same query,
+interval, donor arm, and donor haplotype.
+
+The script filters three pre-selected, review-facing examples:
 
 - PAN027 paternal hap2 vs PAN011 father, chrX p PAR1 positive control.
 - PAN027 paternal hap2 vs PAN011 father, chr9 q terminal autosomal PHR candidate.
 - PAN028 maternal hap1 vs PAN027 mother, chr3 q independent autosomal PHR candidate.
 
-Existing sweepGA/native outputs were inspected during task execution, but this
-compact figure is drawn from the recombination patch table so the segment
-intervals, scores, and community status match the curated patch calls.
+## Coordinate Convention
+
+Axes, callouts, and `panel_event_summary.tsv` use 0-based half-open native
+assembly coordinates parsed from source names such as
+`PAN027#2#chr9.paternal:135704825-136204824_chr9_qarm`. A local segment
+`[a,b)` is displayed as `chr:(start+a)-(start+b)`. For example, local
+`[446944,472441)` in the PAN027 paternal chr9q source window is displayed as
+`chr9:136,151,769-136,177,266`.
+
+No CHM13 projection or liftover table is used here. The source names are native
+sample assembly windows, so the figure deliberately labels the coordinates as
+native assembly coordinates, not CHM13 coordinates.
+
+Donor/source target names are also native assembly windows. The conservative
+summary table does not carry exact target-side segment start/end fields, so
+`panel_event_summary.tsv` records each donor source window but marks exact donor
+segment intervals as not recovered in this lightweight presentation correction.
 
 ## Regeneration
 
@@ -557,7 +807,8 @@ Optional explicit input/output:
 
 ```bash
 python3 paper_prep/_brainstorming/fig5_par1_phr_candidate_panels/plot_fig5_par1_phr_candidate_panels.py \\
-  --patches {patch_path} \\
+  --segments {segment_display} \\
+  --patches {patch_display} \\
   --out-dir paper_prep/_brainstorming/fig5_par1_phr_candidate_panels
 ```
 
@@ -569,9 +820,10 @@ from the autosomal PHR interpretation.
 Panels B and C are candidate event-level examples compatible with chr3q/chr9q
 C3 PHR exchange. They are not presented as clean full crossovers. In Panel B,
 the terminal tract is mostly chr3q, while the chr15q segment is marked as a
-secondary cross-community fragment and the tiny chr20q tail is treated as
-low-confidence. In Panel C, the strongest support is the pair of chr9q h2
-intervals near 390-470 kb; chr16q and chr20q fragments are secondary context.
+smaller side fragment within the single selected 1:1 path, and the tiny chr20q
+tail is treated as low-confidence. In Panel C, strict primary-path drawing
+shows chr7p, chr16q, and chr20q side fragments in the selected chr3q window;
+previous permissive chr9q patch calls are not drawn as alternate alignments.
 
 The optional acrocentric/known-system panel was intentionally omitted here:
 the finite four-panel asset keeps PAR1 plus the two autosomal chr3q/chr9q
@@ -587,8 +839,9 @@ def main() -> None:
     args = parse_args()
     args.out_dir.mkdir(parents=True, exist_ok=True)
     patches = read_patches(args.patches)
-    selected = {panel["panel"]: panel_rows(patches, panel) for panel in PANELS}
-    summary_rows = write_summary(patches, args.out_dir / "panel_event_summary.tsv")
+    segments = read_segments(args.segments, patches)
+    selected = {panel["panel"]: panel_rows(segments, panel) for panel in PANELS}
+    summary_rows = write_summary(segments, args.out_dir / "panel_event_summary.tsv")
 
     svg = SvgCanvas(WIDTH, HEIGHT)
     render(svg, selected, summary_rows)
@@ -598,7 +851,7 @@ def main() -> None:
     render(pdf, selected, summary_rows)
     pdf.write(args.out_dir / f"{FIG_BASE}.pdf")
 
-    write_readme(args.out_dir, args.patches)
+    write_readme(args.out_dir, args.patches, args.segments)
     print(f"wrote {args.out_dir / (FIG_BASE + '.svg')}")
     print(f"wrote {args.out_dir / (FIG_BASE + '.pdf')}")
     print(f"wrote {args.out_dir / 'panel_event_summary.tsv'}")
