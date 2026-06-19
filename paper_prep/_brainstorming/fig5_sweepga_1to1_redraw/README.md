@@ -26,10 +26,16 @@ It also differs from native first-best alone because sweepGA applies an addition
 
 ## Files
 
-- `fig5_sweepga_1to1_redraw.svg` and `fig5_sweepga_1to1_redraw.pdf`: compact author-facing redraw.
+- `fig5_sweepga_1to1_redraw.svg` and `fig5_sweepga_1to1_redraw.pdf`: compact author-facing redraw with teal PHR-span overlays.
+- `fig5_sweepga_1to1_submitted_style_<PAIR>.svg` and `.pdf`: sweepGA-filtered data rendered in the same p-arm/q-arm, h1/h2-track format as the raw `odgi untangle` figure.
 - `summary_counts.tsv`: row counts, `nb` values, inter-chromosomal row counts, source paths, and exact command/filter per stage.
 - `conservative_segments.tsv`: compact plotted segment table after coalescing adjacent same-target rows.
+- `phr_intervals.tsv`: PHR spans plotted on the child/query 500 kb tracks.
 - `validation_report.tsv`: coordinate, `nb`, query-length, and SVG/PDF rectangle-bound checks from the last regeneration.
+
+## PHR overlay
+
+PHR spans are read from `/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv`. Coordinates are already in the 0-500 kb flank coordinate system used by the child/query tracks. Rows with `.` region coordinates are treated as no plotted PHR span.
 
 ## Coordinate correction
 

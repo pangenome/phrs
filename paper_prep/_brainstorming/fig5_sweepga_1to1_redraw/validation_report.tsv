@@ -4,5 +4,9 @@ invalid_coordinate_rows	0	PASS
 query_lengths	500000	PASS
 raw_paf_query_lengths_audit	41248	PASS
 nb_values	1	PASS
+query_names_with_phr_rows	116	PASS
+plotted_phr_intervals	116	PASS
+invalid_phr_intervals	0	PASS
 drawn_rectangles	1449	PASS
 off_panel_rectangles	0	PASS
+submitted_style_rectangles	1449	PASS

@@ -1,0 +1,1060 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1387" height="1056" viewBox="0 0 1387 1056">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font-weight:700}.small{font-size:9px;fill:#777}.arm{font-size:14px;font-weight:700}.chr{font-size:9px;font-weight:700}.lane{font-size:9px;font-weight:700}.tick{font-size:8px;fill:#666}.label{font-size:8px;font-weight:700}.track{fill:#ffffff;stroke:#222;stroke-width:.8}.nophr{fill:#f7dddd;opacity:.55}.grid{stroke:#e4e4e4;stroke-width:.55}.seg{stroke:#222;stroke-width:.22}.phr{fill:#7e1fa2;opacity:.92}
+</style>
+<text class="title" x="693.5" y="23" text-anchor="middle">PAN027 paternal hap2 &lt;- PAN011 father - conservative sweepGA 1:1, submitted-style view</text>
+<text class="small" x="693.5" y="42" text-anchor="middle">h1/h2 = parent haplotypes | gray = same chromosome | color = non-homologous chromosome | purple = PHR</text>
+<text class="arm" x="377.0" y="63" text-anchor="middle">p-arm</text>
+<rect x="55" y="82" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="98.0" text-anchor="end">chr1</text>
+<rect class="track" x="97" y="78" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="78" x2="97.00" y2="112"/>
+<line class="grid" x1="209.00" y1="78" x2="209.00" y2="112"/>
+<line class="grid" x1="321.00" y1="78" x2="321.00" y2="112"/>
+<line class="grid" x1="433.00" y1="78" x2="433.00" y2="112"/>
+<line class="grid" x1="545.00" y1="78" x2="545.00" y2="112"/>
+<line class="grid" x1="657.00" y1="78" x2="657.00" y2="112"/>
+<text class="lane" x="89" y="90.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="93.5" x2="657" y2="93.5"/>
+<text class="lane" x="89" y="103.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="106.5" x2="657" y2="106.5"/>
+<rect class="phr" x="97.00" y="106.00" width="330.40" height="4.00"><title>PHR PAN027#2#chr1.paternal:7355-507354_chr1_parm 0-295000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="97.00" y="95.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr1p 0-500000 -> PAN011#2:chr1p; same chromosome; id=100</title></rect>
+<rect x="55" y="122" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="138.0" text-anchor="end">chr2</text>
+<rect class="track" x="97" y="118" width="560" height="34"/>
+<rect class="nophr" x="97" y="118" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="118" x2="97.00" y2="152"/>
+<line class="grid" x1="209.00" y1="118" x2="209.00" y2="152"/>
+<line class="grid" x1="321.00" y1="118" x2="321.00" y2="152"/>
+<line class="grid" x1="433.00" y1="118" x2="433.00" y2="152"/>
+<line class="grid" x1="545.00" y1="118" x2="545.00" y2="152"/>
+<line class="grid" x1="657.00" y1="118" x2="657.00" y2="152"/>
+<text class="lane" x="89" y="130.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="133.5" x2="657" y2="133.5"/>
+<text class="lane" x="89" y="143.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="146.5" x2="657" y2="146.5"/>
+<rect class="seg" x="97.00" y="122.00" width="247.09" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2p 0-220614 -> PAN011#1:chr2p; same chromosome; id=100</title></rect>
+<rect class="seg" x="344.09" y="135.00" width="8.41" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2p 220614-228127 -> PAN011#2:chr2p; same chromosome; id=100</title></rect>
+<rect class="seg" x="352.50" y="122.00" width="181.12" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2p 228127-389840 -> PAN011#1:chr2p; same chromosome; id=100</title></rect>
+<rect class="seg" x="533.62" y="135.00" width="1.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2p 389840-390855 -> PAN011#2:chr2p; same chromosome; id=100</title></rect>
+<rect class="seg" x="534.76" y="122.00" width="122.23" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2p 390855-499985 -> PAN011#1:chr2p; same chromosome; id=100</title></rect>
+<rect x="55" y="162" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="178.0" text-anchor="end">chr3</text>
+<rect class="track" x="97" y="158" width="560" height="34"/>
+<rect class="nophr" x="97" y="158" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="158" x2="97.00" y2="192"/>
+<line class="grid" x1="209.00" y1="158" x2="209.00" y2="192"/>
+<line class="grid" x1="321.00" y1="158" x2="321.00" y2="192"/>
+<line class="grid" x1="433.00" y1="158" x2="433.00" y2="192"/>
+<line class="grid" x1="545.00" y1="158" x2="545.00" y2="192"/>
+<line class="grid" x1="657.00" y1="158" x2="657.00" y2="192"/>
+<text class="lane" x="89" y="170.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="173.5" x2="657" y2="173.5"/>
+<text class="lane" x="89" y="183.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="186.5" x2="657" y2="186.5"/>
+<rect class="seg" x="97.00" y="162.00" width="559.99" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3p 0-499992 -> PAN011#1:chr3p; same chromosome; id=100</title></rect>
+<rect x="55" y="202" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="218.0" text-anchor="end">chr4</text>
+<rect class="track" x="97" y="198" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="198" x2="97.00" y2="232"/>
+<line class="grid" x1="209.00" y1="198" x2="209.00" y2="232"/>
+<line class="grid" x1="321.00" y1="198" x2="321.00" y2="232"/>
+<line class="grid" x1="433.00" y1="198" x2="433.00" y2="232"/>
+<line class="grid" x1="545.00" y1="198" x2="545.00" y2="232"/>
+<line class="grid" x1="657.00" y1="198" x2="657.00" y2="232"/>
+<text class="lane" x="89" y="210.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="213.5" x2="657" y2="213.5"/>
+<text class="lane" x="89" y="223.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="226.5" x2="657" y2="226.5"/>
+<rect class="phr" x="97.00" y="226.00" width="67.20" height="4.00"><title>PHR PAN027#2#chr4.paternal:7599-507598_chr4_parm 0-60000; arms chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
+<rect class="seg" x="97.00" y="202.00" width="42.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4p 0-37648 -> PAN011#1:chr4p; same chromosome; id=100</title></rect>
+<rect class="seg" x="139.17" y="215.00" width="1.66" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4p 37648-39127 -> PAN011#2:chr4p; same chromosome; id=100</title></rect>
+<rect class="seg" x="140.82" y="202.00" width="516.18" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4p 39127-500000 -> PAN011#1:chr4p; same chromosome; id=100</title></rect>
+<rect x="55" y="242" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="258.0" text-anchor="end">chr5</text>
+<rect class="track" x="97" y="238" width="560" height="34"/>
+<rect class="nophr" x="97" y="238" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="238" x2="97.00" y2="272"/>
+<line class="grid" x1="209.00" y1="238" x2="209.00" y2="272"/>
+<line class="grid" x1="321.00" y1="238" x2="321.00" y2="272"/>
+<line class="grid" x1="433.00" y1="238" x2="433.00" y2="272"/>
+<line class="grid" x1="545.00" y1="238" x2="545.00" y2="272"/>
+<line class="grid" x1="657.00" y1="238" x2="657.00" y2="272"/>
+<text class="lane" x="89" y="250.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="253.5" x2="657" y2="253.5"/>
+<text class="lane" x="89" y="263.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="266.5" x2="657" y2="266.5"/>
+<rect class="seg" x="97.00" y="242.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr5p 0-500000 -> PAN011#1:chr5p; same chromosome; id=100</title></rect>
+<rect x="55" y="282" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="298.0" text-anchor="end">chr6</text>
+<rect class="track" x="97" y="278" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="278" x2="97.00" y2="312"/>
+<line class="grid" x1="209.00" y1="278" x2="209.00" y2="312"/>
+<line class="grid" x1="321.00" y1="278" x2="321.00" y2="312"/>
+<line class="grid" x1="433.00" y1="278" x2="433.00" y2="312"/>
+<line class="grid" x1="545.00" y1="278" x2="545.00" y2="312"/>
+<line class="grid" x1="657.00" y1="278" x2="657.00" y2="312"/>
+<text class="lane" x="89" y="290.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="293.5" x2="657" y2="293.5"/>
+<text class="lane" x="89" y="303.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="306.5" x2="657" y2="306.5"/>
+<rect class="phr" x="97.00" y="306.00" width="179.20" height="4.00"><title>PHR PAN027#2#chr6.paternal:5024-505023_chr6_parm 0-160000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="97.00" y="295.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6p 0-500000 -> PAN011#2:chr6p; same chromosome; id=100</title></rect>
+<rect x="55" y="322" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="338.0" text-anchor="end">chr7</text>
+<rect class="track" x="97" y="318" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="318" x2="97.00" y2="352"/>
+<line class="grid" x1="209.00" y1="318" x2="209.00" y2="352"/>
+<line class="grid" x1="321.00" y1="318" x2="321.00" y2="352"/>
+<line class="grid" x1="433.00" y1="318" x2="433.00" y2="352"/>
+<line class="grid" x1="545.00" y1="318" x2="545.00" y2="352"/>
+<line class="grid" x1="657.00" y1="318" x2="657.00" y2="352"/>
+<text class="lane" x="89" y="330.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="333.5" x2="657" y2="333.5"/>
+<text class="lane" x="89" y="343.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="346.5" x2="657" y2="346.5"/>
+<rect class="phr" x="97.00" y="346.00" width="196.00" height="4.00"><title>PHR PAN027#2#chr7.paternal:13315-513314_chr7_parm 0-175000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="97.00" y="322.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr7p 0-500000 -> PAN011#1:chr7p; same chromosome; id=100</title></rect>
+<rect x="55" y="362" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="378.0" text-anchor="end">chr8</text>
+<rect class="track" x="97" y="358" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="358" x2="97.00" y2="392"/>
+<line class="grid" x1="209.00" y1="358" x2="209.00" y2="392"/>
+<line class="grid" x1="321.00" y1="358" x2="321.00" y2="392"/>
+<line class="grid" x1="433.00" y1="358" x2="433.00" y2="392"/>
+<line class="grid" x1="545.00" y1="358" x2="545.00" y2="392"/>
+<line class="grid" x1="657.00" y1="358" x2="657.00" y2="392"/>
+<text class="lane" x="89" y="370.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="373.5" x2="657" y2="373.5"/>
+<text class="lane" x="89" y="383.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="386.5" x2="657" y2="386.5"/>
+<rect class="phr" x="97.00" y="386.00" width="207.20" height="4.00"><title>PHR PAN027#2#chr8.paternal:9323-509322_chr8_parm 0-185000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="97.00" y="362.00" width="93.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr8p 0-83159 -> PAN011#1:chr8p; same chromosome; id=100</title></rect>
+<rect class="seg" x="190.14" y="375.00" width="4.53" height="10.50" fill="#d95f02" opacity="0.96"><title>chr8p 83159-87205 -> PAN011#2:chr11p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="194.67" y="362.00" width="462.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr8p 87205-500000 -> PAN011#1:chr8p; same chromosome; id=100</title></rect>
+<rect x="55" y="402" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="418.0" text-anchor="end">chr9</text>
+<rect class="track" x="97" y="398" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="398" x2="97.00" y2="432"/>
+<line class="grid" x1="209.00" y1="398" x2="209.00" y2="432"/>
+<line class="grid" x1="321.00" y1="398" x2="321.00" y2="432"/>
+<line class="grid" x1="433.00" y1="398" x2="433.00" y2="432"/>
+<line class="grid" x1="545.00" y1="398" x2="545.00" y2="432"/>
+<line class="grid" x1="657.00" y1="398" x2="657.00" y2="432"/>
+<text class="lane" x="89" y="410.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="413.5" x2="657" y2="413.5"/>
+<text class="lane" x="89" y="423.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="426.5" x2="657" y2="426.5"/>
+<rect class="phr" x="97.00" y="426.00" width="44.80" height="4.00"><title>PHR PAN027#2#chr9.paternal:7076-507075_chr9_parm 0-40000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="97.00" y="402.00" width="436.49" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr9p 0-389720 -> PAN011#1:chr9p; same chromosome; id=100</title></rect>
+<rect class="seg" x="533.49" y="415.00" width="2.37" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr9p 389720-391835 -> PAN011#2:chr9p; same chromosome; id=100</title></rect>
+<rect class="seg" x="535.86" y="402.00" width="121.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr9p 391835-500000 -> PAN011#1:chr9p; same chromosome; id=100</title></rect>
+<rect x="55" y="442" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="458.0" text-anchor="end">chr10</text>
+<rect class="track" x="97" y="438" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="438" x2="97.00" y2="472"/>
+<line class="grid" x1="209.00" y1="438" x2="209.00" y2="472"/>
+<line class="grid" x1="321.00" y1="438" x2="321.00" y2="472"/>
+<line class="grid" x1="433.00" y1="438" x2="433.00" y2="472"/>
+<line class="grid" x1="545.00" y1="438" x2="545.00" y2="472"/>
+<line class="grid" x1="657.00" y1="438" x2="657.00" y2="472"/>
+<text class="lane" x="89" y="450.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="453.5" x2="657" y2="453.5"/>
+<text class="lane" x="89" y="463.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="466.5" x2="657" y2="466.5"/>
+<rect class="phr" x="97.00" y="466.00" width="78.40" height="4.00"><title>PHR PAN027#2#chr10.paternal:9755-509754_chr10_parm 0-70000; arms chr3q,chr9q,chr10p,chr16p,chr16q,chr18p</title></rect>
+<rect class="seg" x="97.00" y="442.00" width="43.81" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 0-39114 -> PAN011#1:chr10p; same chromosome; id=100</title></rect>
+<rect class="seg" x="140.81" y="455.00" width="1.46" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 39114-40422 -> PAN011#2:chr10p; same chromosome; id=100</title></rect>
+<rect class="seg" x="142.27" y="442.00" width="451.23" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 40422-443306 -> PAN011#1:chr10p; same chromosome; id=100</title></rect>
+<rect class="seg" x="593.50" y="455.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 443306-445217 -> PAN011#2:chr10p; same chromosome; id=100</title></rect>
+<rect class="seg" x="595.64" y="442.00" width="26.57" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 445217-468940 -> PAN011#1:chr10p; same chromosome; id=100</title></rect>
+<rect class="seg" x="623.34" y="455.00" width="33.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 469943-499587 -> PAN011#2:chr10p; same chromosome; id=100</title></rect>
+<rect class="seg" x="656.54" y="442.00" width="0.46" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10p 499587-500000 -> PAN011#1:chr10p; same chromosome; id=89</title></rect>
+<rect x="55" y="482" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="498.0" text-anchor="end">chr11</text>
+<rect class="track" x="97" y="478" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="478" x2="97.00" y2="512"/>
+<line class="grid" x1="209.00" y1="478" x2="209.00" y2="512"/>
+<line class="grid" x1="321.00" y1="478" x2="321.00" y2="512"/>
+<line class="grid" x1="433.00" y1="478" x2="433.00" y2="512"/>
+<line class="grid" x1="545.00" y1="478" x2="545.00" y2="512"/>
+<line class="grid" x1="657.00" y1="478" x2="657.00" y2="512"/>
+<text class="lane" x="89" y="490.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="493.5" x2="657" y2="493.5"/>
+<text class="lane" x="89" y="503.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="506.5" x2="657" y2="506.5"/>
+<rect class="phr" x="97.00" y="506.00" width="252.00" height="4.00"><title>PHR PAN027#2#chr11.paternal:6382-506381_chr11_parm 0-225000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="97.00" y="482.00" width="26.61" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11p 0-23762 -> PAN011#1:chr11p; same chromosome; id=100</title></rect>
+<rect class="seg" x="123.61" y="495.00" width="4.39" height="10.50" fill="#d95f02" opacity="0.96"><title>chr11p 23762-27678 -> PAN011#2:chr9p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="128.00" y="482.00" width="424.94" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11p 27678-407093 -> PAN011#1:chr11p; same chromosome; id=100</title></rect>
+<rect class="seg" x="554.07" y="482.00" width="39.99" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11p 408094-443795 -> PAN011#1:chr11p; same chromosome; id=100</title></rect>
+<rect class="seg" x="595.20" y="482.00" width="61.76" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11p 444818-499959 -> PAN011#1:chr11p; same chromosome; id=100</title></rect>
+<rect x="55" y="522" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="538.0" text-anchor="end">chr12</text>
+<rect class="track" x="97" y="518" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="518" x2="97.00" y2="552"/>
+<line class="grid" x1="209.00" y1="518" x2="209.00" y2="552"/>
+<line class="grid" x1="321.00" y1="518" x2="321.00" y2="552"/>
+<line class="grid" x1="433.00" y1="518" x2="433.00" y2="552"/>
+<line class="grid" x1="545.00" y1="518" x2="545.00" y2="552"/>
+<line class="grid" x1="657.00" y1="518" x2="657.00" y2="552"/>
+<text class="lane" x="89" y="530.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="533.5" x2="657" y2="533.5"/>
+<text class="lane" x="89" y="543.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="546.5" x2="657" y2="546.5"/>
+<rect class="phr" x="97.00" y="546.00" width="78.40" height="4.00"><title>PHR PAN027#2#chr12.paternal:5616-505615_chr12_parm 0-70000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="97.00" y="522.00" width="559.99" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr12p 0-499994 -> PAN011#1:chr12p; same chromosome; id=100</title></rect>
+<rect x="55" y="562" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="578.0" text-anchor="end">chr13</text>
+<rect class="track" x="97" y="558" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="558" x2="97.00" y2="592"/>
+<line class="grid" x1="209.00" y1="558" x2="209.00" y2="592"/>
+<line class="grid" x1="321.00" y1="558" x2="321.00" y2="592"/>
+<line class="grid" x1="433.00" y1="558" x2="433.00" y2="592"/>
+<line class="grid" x1="545.00" y1="558" x2="545.00" y2="592"/>
+<line class="grid" x1="657.00" y1="558" x2="657.00" y2="592"/>
+<text class="lane" x="89" y="570.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="573.5" x2="657" y2="573.5"/>
+<text class="lane" x="89" y="583.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="586.5" x2="657" y2="586.5"/>
+<rect class="phr" x="97.00" y="586.00" width="560.00" height="4.00"><title>PHR PAN027#2#chr13.paternal:13308-513307_chr13_parm 0-500000; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
+<rect class="seg" x="97.00" y="575.00" width="18.76" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 0-16747 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="115.76" y="575.00" width="1.31" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 16747-17919 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="117.07" y="575.00" width="72.01" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 17919-82215 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="189.08" y="562.00" width="2.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 82215-84295 -> PAN011#1:chr13p; same chromosome; id=97.39</title></rect>
+<rect class="seg" x="191.41" y="575.00" width="16.24" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 84295-98797 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="207.65" y="575.00" width="2.75" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 98797-101248 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="210.40" y="575.00" width="2.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 101248-103407 -> PAN011#2:chr13p; same chromosome; id=99.48</title></rect>
+<rect class="seg" x="216.04" y="575.00" width="5.70" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 106289-111379 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="221.74" y="575.00" width="1.35" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 111379-112585 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="223.10" y="575.00" width="7.06" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 112585-118887 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="231.55" y="575.00" width="2.42" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 120132-122291 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="233.97" y="575.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 122291-123975 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="237.20" y="575.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 125181-126430 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="238.60" y="575.00" width="1.13" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 126430-127443 -> PAN011#2:chr15p; inter-chromosomal; id=99.9</title></rect>
+<rect class="seg" x="241.02" y="562.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 128589-130277 -> PAN011#1:chr13p; same chromosome; id=99.29</title></rect>
+<rect class="seg" x="242.91" y="575.00" width="1.35" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 130277-131483 -> PAN011#2:chr15p; inter-chromosomal; id=99.67</title></rect>
+<rect class="seg" x="245.66" y="562.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 132728-133739 -> PAN011#1:chr13p; same chromosome; id=99.21</title></rect>
+<rect class="seg" x="246.79" y="575.00" width="3.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 133739-136729 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="250.14" y="575.00" width="1.35" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 136729-137935 -> PAN011#2:chr15p; inter-chromosomal; id=99.75</title></rect>
+<rect class="seg" x="252.88" y="575.00" width="9.47" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 139180-147635 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="271.30" y="575.00" width="2.75" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 155623-158074 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="274.04" y="562.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 158074-159087 -> PAN011#1:chr13p; same chromosome; id=97.91</title></rect>
+<rect class="seg" x="275.18" y="575.00" width="11.58" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 159087-169422 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="286.75" y="575.00" width="1.39" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 169422-170667 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="288.15" y="575.00" width="2.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 170667-172826 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="295.20" y="575.00" width="11.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 176966-187099 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="307.90" y="575.00" width="2.52" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 188305-190557 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="311.62" y="575.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 191626-193536 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="315.11" y="575.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 194742-196998 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="318.84" y="575.00" width="2.15" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 198067-199984 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="322.33" y="575.00" width="3.81" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 201190-204593 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="326.14" y="575.00" width="1.89" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 204593-206284 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="328.04" y="575.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 206284-207490 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="330.78" y="575.00" width="1.13" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 208735-209748 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="331.92" y="575.00" width="3.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 209748-212574 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="335.08" y="562.00" width="1.35" height="10.50" fill="#ff8a66" opacity="0.96"><title>chr13p 212574-213780 -> PAN011#1:chr21p; inter-chromosomal; id=99.67</title></rect>
+<rect class="seg" x="337.83" y="575.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 215025-216038 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="338.96" y="575.00" width="1.28" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 216038-217184 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="340.25" y="575.00" width="5.77" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 217184-222335 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="349.19" y="575.00" width="2.74" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 225172-227617 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="353.07" y="575.00" width="3.16" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 228630-231455 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="360.11" y="575.00" width="3.18" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 234919-237760 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="364.64" y="575.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 238966-240205 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="368.45" y="575.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 242364-244055 -> PAN011#2:chr13p; same chromosome; id=99.94</title></rect>
+<rect class="seg" x="382.54" y="575.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 254948-256639 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="385.79" y="575.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 257845-260103 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="401.29" y="575.00" width="12.71" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 271684-283028 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="415.38" y="575.00" width="21.15" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 284267-303151 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="437.66" y="575.00" width="1.28" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 304164-305310 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="440.84" y="575.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 307002-308208 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="444.72" y="575.00" width="4.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 310460-314504 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="449.24" y="562.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 314504-315743 -> PAN011#1:chr13p; same chromosome; id=97.47</title></rect>
+<rect class="seg" x="450.63" y="575.00" width="5.67" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 315743-320808 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="457.69" y="575.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 322047-323060 -> PAN011#2:chr13p; same chromosome; id=99.7</title></rect>
+<rect class="seg" x="460.11" y="575.00" width="1.90" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 324206-325898 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="463.36" y="575.00" width="8.44" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 327104-334639 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="474.21" y="575.00" width="7.06" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 336798-343098 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="483.16" y="575.00" width="2.74" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 344790-347235 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="487.04" y="575.00" width="1.28" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 348248-349394 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="488.32" y="575.00" width="3.25" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 349394-352300 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="495.38" y="575.00" width="4.63" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 355698-359835 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="502.43" y="575.00" width="3.25" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 361994-364892 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="505.68" y="575.00" width="2.52" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 364892-367144 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="508.20" y="575.00" width="4.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 367144-371188 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="519.78" y="575.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 377484-378723 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="544.74" y="575.00" width="1.90" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 399770-401462 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="546.64" y="575.00" width="1.35" height="10.50" fill="#3f4bad" opacity="0.96"><title>chr13p 401462-402668 -> PAN011#2:chr15p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="551.79" y="575.00" width="4.63" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 406066-410197 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="558.84" y="575.00" width="1.90" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 412356-414052 -> PAN011#2:chr13p; same chromosome; id=99.76</title></rect>
+<rect class="seg" x="565.89" y="575.00" width="1.88" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 418656-420332 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect class="seg" x="569.12" y="575.00" width="87.88" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13p 421538-500000 -> PAN011#2:chr13p; same chromosome; id=100</title></rect>
+<rect x="55" y="602" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="618.0" text-anchor="end">chr14</text>
+<rect class="track" x="97" y="598" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="598" x2="97.00" y2="632"/>
+<line class="grid" x1="209.00" y1="598" x2="209.00" y2="632"/>
+<line class="grid" x1="321.00" y1="598" x2="321.00" y2="632"/>
+<line class="grid" x1="433.00" y1="598" x2="433.00" y2="632"/>
+<line class="grid" x1="545.00" y1="598" x2="545.00" y2="632"/>
+<line class="grid" x1="657.00" y1="598" x2="657.00" y2="632"/>
+<text class="lane" x="89" y="610.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="613.5" x2="657" y2="613.5"/>
+<text class="lane" x="89" y="623.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="626.5" x2="657" y2="626.5"/>
+<rect class="phr" x="97.00" y="626.00" width="560.00" height="4.00"><title>PHR PAN027#2#chr14.paternal:8756-508755_chr14_parm 0-500000; arms chr3q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
+<rect class="seg" x="97.00" y="602.00" width="10.98" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 0-9804 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="118.85" y="602.00" width="5.77" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 19511-24664 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="125.91" y="602.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 25810-27495 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="140.02" y="602.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 38408-40093 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="148.96" y="602.00" width="7.22" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 46392-52842 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="157.53" y="602.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 54048-55297 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="160.06" y="602.00" width="3.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 56308-59296 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="163.41" y="615.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 59296-60502 -> PAN011#2:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="164.76" y="602.00" width="7.22" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 60502-66948 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="180.44" y="602.00" width="2.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 74496-76576 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="184.90" y="602.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 78483-79689 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="188.78" y="602.00" width="3.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 81949-84937 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="193.48" y="602.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 86143-87392 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="196.01" y="602.00" width="3.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 88403-91379 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="204.51" y="602.00" width="4.64" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 95993-100137 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="211.57" y="602.00" width="8.95" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 102296-110287 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="221.87" y="602.00" width="8.62" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 111493-119186 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="231.62" y="602.00" width="3.34" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 120200-123185 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="240.04" y="602.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 127718-129631 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="243.54" y="602.00" width="15.24" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 130837-144442 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="260.06" y="602.00" width="2.69" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 145588-147986 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="264.03" y="602.00" width="1.57" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 149132-150536 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="266.77" y="602.00" width="2.94" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 151579-154206 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="270.84" y="602.00" width="1.28" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 155214-156360 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="273.68" y="602.00" width="43.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 157750-196494 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="318.20" y="602.00" width="3.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 197497-200522 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="323.40" y="602.00" width="22.84" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 202142-222538 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="348.24" y="602.00" width="6.91" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 224320-230490 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="356.27" y="602.00" width="81.26" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 231493-304045 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect class="seg" x="439.24" y="602.00" width="217.76" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14p 305569-500000 -> PAN011#1:chr14p; same chromosome; id=100</title></rect>
+<rect x="55" y="642" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="658.0" text-anchor="end">chr15</text>
+<rect class="track" x="97" y="638" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="638" x2="97.00" y2="672"/>
+<line class="grid" x1="209.00" y1="638" x2="209.00" y2="672"/>
+<line class="grid" x1="321.00" y1="638" x2="321.00" y2="672"/>
+<line class="grid" x1="433.00" y1="638" x2="433.00" y2="672"/>
+<line class="grid" x1="545.00" y1="638" x2="545.00" y2="672"/>
+<line class="grid" x1="657.00" y1="638" x2="657.00" y2="672"/>
+<text class="lane" x="89" y="650.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="653.5" x2="657" y2="653.5"/>
+<text class="lane" x="89" y="663.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="666.5" x2="657" y2="666.5"/>
+<rect class="phr" x="97.00" y="666.00" width="560.00" height="4.00"><title>PHR PAN027#2#chr15.paternal:7719-507718_chr15_parm 0-500000; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
+<rect class="seg" x="97.00" y="655.00" width="21.76" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 0-19428 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="120.07" y="655.00" width="64.97" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 20600-78610 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="186.18" y="655.00" width="1.28" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 79623-80769 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="189.37" y="655.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 82469-83671 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="192.11" y="655.00" width="7.21" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 84916-91353 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="203.78" y="655.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 95335-96541 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="208.85" y="655.00" width="3.49" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 99870-102990 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="216.08" y="655.00" width="3.49" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 106319-109431 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="220.96" y="655.00" width="4.46" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 110680-114662 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="229.30" y="655.00" width="1.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 118128-119197 -> PAN011#2:chr15p; same chromosome; id=95.89</title></rect>
+<rect class="seg" x="233.98" y="655.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 122305-123554 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="236.52" y="655.00" width="5.91" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 124567-129844 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="243.56" y="655.00" width="3.16" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 130857-133682 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="248.07" y="655.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 134888-137150 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="251.89" y="655.00" width="16.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 138296-152700 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="270.77" y="655.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 155155-156168 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="273.19" y="655.00" width="1.88" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 157314-158990 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="278.95" y="655.00" width="3.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 162458-165292 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="311.84" y="655.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 191818-193067 -> PAN011#2:chr15p; same chromosome; id=98.79</title></rect>
+<rect class="seg" x="329.76" y="655.00" width="8.92" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 207818-215786 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="340.03" y="655.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 216992-218241 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="345.73" y="655.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 222080-223286 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="350.89" y="655.00" width="1.90" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 226690-228386 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="355.54" y="655.00" width="2.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 230837-232996 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="357.96" y="642.00" width="1.89" height="10.50" fill="#a88f86" opacity="0.96"><title>chr15p 232996-234683 -> PAN011#1:chr22p; inter-chromosomal; id=98.42</title></rect>
+<rect class="seg" x="361.20" y="655.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 235889-237134 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="363.72" y="655.00" width="11.74" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 238147-248630 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="376.86" y="655.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 249875-250886 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="379.19" y="655.00" width="2.15" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 251955-253872 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="382.69" y="655.00" width="5.87" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 255078-260320 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="389.91" y="655.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 261526-262771 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="392.44" y="655.00" width="1.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 263782-264851 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="395.78" y="655.00" width="7.06" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 266768-273073 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="404.19" y="655.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 274279-276537 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="408.00" y="655.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 277683-279374 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="411.25" y="655.00" width="7.21" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 280580-287020 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="422.27" y="655.00" width="1.87" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 290424-292095 -> PAN011#2:chr15p; same chromosome; id=98.8</title></rect>
+<rect class="seg" x="425.50" y="655.00" width="16.62" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 293301-308143 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="446.65" y="655.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 312187-313432 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="450.46" y="655.00" width="5.76" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 315591-320737 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="460.75" y="655.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 324781-326026 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="463.28" y="655.00" width="3.18" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 327039-329877 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="467.81" y="655.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 331083-332322 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="478.67" y="655.00" width="1.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 340773-342461 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="487.61" y="655.00" width="2.75" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 348756-351207 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="491.49" y="655.00" width="3.18" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 352220-355058 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="496.02" y="655.00" width="7.05" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 356264-362559 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect class="seg" x="506.87" y="655.00" width="150.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15p 365957-500000 -> PAN011#2:chr15p; same chromosome; id=100</title></rect>
+<rect x="55" y="682" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="698.0" text-anchor="end">chr16</text>
+<rect class="track" x="97" y="678" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="678" x2="97.00" y2="712"/>
+<line class="grid" x1="209.00" y1="678" x2="209.00" y2="712"/>
+<line class="grid" x1="321.00" y1="678" x2="321.00" y2="712"/>
+<line class="grid" x1="433.00" y1="678" x2="433.00" y2="712"/>
+<line class="grid" x1="545.00" y1="678" x2="545.00" y2="712"/>
+<line class="grid" x1="657.00" y1="678" x2="657.00" y2="712"/>
+<text class="lane" x="89" y="690.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="693.5" x2="657" y2="693.5"/>
+<text class="lane" x="89" y="703.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="706.5" x2="657" y2="706.5"/>
+<rect class="phr" x="97.00" y="706.00" width="28.00" height="4.00"><title>PHR PAN027#2#chr16.paternal:6547-506546_chr16_parm 0-25000; arms chr1p,chr2q,chr3q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="97.00" y="695.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr16p 0-500000 -> PAN011#2:chr16p; same chromosome; id=100</title></rect>
+<rect x="55" y="722" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="738.0" text-anchor="end">chr17</text>
+<rect class="track" x="97" y="718" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="718" x2="97.00" y2="752"/>
+<line class="grid" x1="209.00" y1="718" x2="209.00" y2="752"/>
+<line class="grid" x1="321.00" y1="718" x2="321.00" y2="752"/>
+<line class="grid" x1="433.00" y1="718" x2="433.00" y2="752"/>
+<line class="grid" x1="545.00" y1="718" x2="545.00" y2="752"/>
+<line class="grid" x1="657.00" y1="718" x2="657.00" y2="752"/>
+<text class="lane" x="89" y="730.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="733.5" x2="657" y2="733.5"/>
+<text class="lane" x="89" y="743.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="746.5" x2="657" y2="746.5"/>
+<rect class="phr" x="97.00" y="746.00" width="50.40" height="4.00"><title>PHR PAN027#2#chr17.paternal:7080-507079_chr17_parm 0-45000; arms chr3q,chr7p,chr11p,chr16q,chr17p</title></rect>
+<rect class="seg" x="97.00" y="722.00" width="115.47" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr17p 0-103101 -> PAN011#1:chr17p; same chromosome; id=100</title></rect>
+<rect class="seg" x="212.47" y="735.00" width="1.22" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr17p 103101-104190 -> PAN011#2:chr17p; same chromosome; id=100</title></rect>
+<rect class="seg" x="213.69" y="722.00" width="443.31" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr17p 104190-500000 -> PAN011#1:chr17p; same chromosome; id=100</title></rect>
+<rect x="55" y="762" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="778.0" text-anchor="end">chr18</text>
+<rect class="track" x="97" y="758" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="758" x2="97.00" y2="792"/>
+<line class="grid" x1="209.00" y1="758" x2="209.00" y2="792"/>
+<line class="grid" x1="321.00" y1="758" x2="321.00" y2="792"/>
+<line class="grid" x1="433.00" y1="758" x2="433.00" y2="792"/>
+<line class="grid" x1="545.00" y1="758" x2="545.00" y2="792"/>
+<line class="grid" x1="657.00" y1="758" x2="657.00" y2="792"/>
+<text class="lane" x="89" y="770.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="773.5" x2="657" y2="773.5"/>
+<text class="lane" x="89" y="783.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="786.5" x2="657" y2="786.5"/>
+<rect class="phr" x="97.00" y="786.00" width="112.00" height="4.00"><title>PHR PAN027#2#chr18.paternal:5975-505974_chr18_parm 0-100000; arms chr3q,chr4q,chr9q,chr10p,chr10q,chr16p,chr16q,chr18p</title></rect>
+<rect class="seg" x="97.00" y="762.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr18p 0-500000 -> PAN011#1:chr18p; same chromosome; id=100</title></rect>
+<rect x="55" y="802" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="818.0" text-anchor="end">chr19</text>
+<rect class="track" x="97" y="798" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="798" x2="97.00" y2="832"/>
+<line class="grid" x1="209.00" y1="798" x2="209.00" y2="832"/>
+<line class="grid" x1="321.00" y1="798" x2="321.00" y2="832"/>
+<line class="grid" x1="433.00" y1="798" x2="433.00" y2="832"/>
+<line class="grid" x1="545.00" y1="798" x2="545.00" y2="832"/>
+<line class="grid" x1="657.00" y1="798" x2="657.00" y2="832"/>
+<text class="lane" x="89" y="810.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="813.5" x2="657" y2="813.5"/>
+<text class="lane" x="89" y="823.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="826.5" x2="657" y2="826.5"/>
+<rect class="phr" x="97.00" y="826.00" width="207.20" height="4.00"><title>PHR PAN027#2#chr19.paternal:6393-506392_chr19_parm 0-185000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="97.00" y="802.00" width="26.76" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19p 0-23890 -> PAN011#1:chr19p; same chromosome; id=100</title></rect>
+<rect class="seg" x="123.76" y="815.00" width="4.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19p 23890-27806 -> PAN011#2:chr19p; same chromosome; id=100</title></rect>
+<rect class="seg" x="128.14" y="802.00" width="52.79" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19p 27806-74936 -> PAN011#1:chr19p; same chromosome; id=100</title></rect>
+<rect class="seg" x="180.93" y="815.00" width="2.28" height="10.50" fill="#d95f02" opacity="0.96"><title>chr19p 74936-76974 -> PAN011#2:chr7p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="183.21" y="802.00" width="28.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19p 76974-102352 -> PAN011#1:chr19p; same chromosome; id=100</title></rect>
+<rect class="seg" x="211.63" y="815.00" width="1.67" height="10.50" fill="#d95f02" opacity="0.96"><title>chr19p 102352-103840 -> PAN011#2:chr7p; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="213.30" y="802.00" width="443.70" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19p 103840-500000 -> PAN011#1:chr19p; same chromosome; id=100</title></rect>
+<rect x="55" y="842" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="858.0" text-anchor="end">chr20</text>
+<rect class="track" x="97" y="838" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="838" x2="97.00" y2="872"/>
+<line class="grid" x1="209.00" y1="838" x2="209.00" y2="872"/>
+<line class="grid" x1="321.00" y1="838" x2="321.00" y2="872"/>
+<line class="grid" x1="433.00" y1="838" x2="433.00" y2="872"/>
+<line class="grid" x1="545.00" y1="838" x2="545.00" y2="872"/>
+<line class="grid" x1="657.00" y1="838" x2="657.00" y2="872"/>
+<text class="lane" x="89" y="850.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="853.5" x2="657" y2="853.5"/>
+<text class="lane" x="89" y="863.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="866.5" x2="657" y2="866.5"/>
+<rect class="phr" x="97.00" y="866.00" width="151.20" height="4.00"><title>PHR PAN027#2#chr20.paternal:10044-510043_chr20_parm 0-135000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="97.00" y="842.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr20p 0-500000 -> PAN011#1:chr20p; same chromosome; id=100</title></rect>
+<rect x="55" y="882" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="898.0" text-anchor="end">chr21</text>
+<rect class="track" x="97" y="878" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="878" x2="97.00" y2="912"/>
+<line class="grid" x1="209.00" y1="878" x2="209.00" y2="912"/>
+<line class="grid" x1="321.00" y1="878" x2="321.00" y2="912"/>
+<line class="grid" x1="433.00" y1="878" x2="433.00" y2="912"/>
+<line class="grid" x1="545.00" y1="878" x2="545.00" y2="912"/>
+<line class="grid" x1="657.00" y1="878" x2="657.00" y2="912"/>
+<text class="lane" x="89" y="890.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="893.5" x2="657" y2="893.5"/>
+<text class="lane" x="89" y="903.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="906.5" x2="657" y2="906.5"/>
+<rect class="phr" x="97.00" y="906.00" width="560.00" height="4.00"><title>PHR PAN027#2#chr21.paternal:11152-511151_chr21_parm 0-500000; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
+<rect class="seg" x="97.00" y="882.00" width="90.45" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 0-80760 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="188.65" y="882.00" width="6.02" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 81829-87201 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="195.86" y="882.00" width="3.49" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 88270-91382 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="200.75" y="882.00" width="1.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 92631-93645 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="203.08" y="882.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 94714-96624 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="209.10" y="882.00" width="1.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 100090-101159 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="215.18" y="882.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 105520-106531 -> PAN011#1:chr21p; same chromosome; id=99.9</title></rect>
+<rect class="seg" x="217.51" y="882.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 107600-109514 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="221.01" y="882.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 110720-111965 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="231.93" y="882.00" width="2.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 120474-122380 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="236.82" y="882.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 124835-125846 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="239.14" y="882.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 126915-128825 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="246.36" y="882.00" width="2.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 133360-135274 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="249.86" y="882.00" width="7.22" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 136480-142924 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="258.47" y="882.00" width="4.46" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 144173-148159 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="265.69" y="882.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 150614-151625 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="268.02" y="882.00" width="2.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 152694-154600 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="271.50" y="882.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 155806-157055 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="275.23" y="882.00" width="2.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 159135-161041 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="280.12" y="882.00" width="2.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 163496-165576 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="287.33" y="882.00" width="2.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 169937-172020 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="291.80" y="882.00" width="7.05" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 173926-180220 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="300.20" y="882.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 181426-182675 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="304.01" y="882.00" width="1.88" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 184834-186514 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="308.65" y="882.00" width="2.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 188969-191128 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="329.79" y="882.00" width="1.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 207851-208865 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="332.13" y="882.00" width="4.88" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 209934-214295 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="338.14" y="882.00" width="3.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 215308-218134 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="344.06" y="882.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 220589-221600 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="349.87" y="882.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 225781-228041 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="353.60" y="882.00" width="6.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 229110-234468 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="360.89" y="882.00" width="18.69" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 235614-252304 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="380.72" y="882.00" width="3.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 253317-256144 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="389.04" y="882.00" width="19.31" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 260748-277992 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="409.96" y="882.00" width="10.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 279429-288536 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect class="seg" x="421.28" y="882.00" width="235.72" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21p 289537-500000 -> PAN011#1:chr21p; same chromosome; id=100</title></rect>
+<rect x="55" y="922" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="938.0" text-anchor="end">chr22</text>
+<rect class="track" x="97" y="918" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="918" x2="97.00" y2="952"/>
+<line class="grid" x1="209.00" y1="918" x2="209.00" y2="952"/>
+<line class="grid" x1="321.00" y1="918" x2="321.00" y2="952"/>
+<line class="grid" x1="433.00" y1="918" x2="433.00" y2="952"/>
+<line class="grid" x1="545.00" y1="918" x2="545.00" y2="952"/>
+<line class="grid" x1="657.00" y1="918" x2="657.00" y2="952"/>
+<text class="lane" x="89" y="930.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="933.5" x2="657" y2="933.5"/>
+<text class="lane" x="89" y="943.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="946.5" x2="657" y2="946.5"/>
+<rect class="phr" x="97.00" y="946.00" width="554.40" height="4.00"><title>PHR PAN027#2#chr22.paternal:475-500474_chr22_parm 0-495000; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
+<rect class="seg" x="97.00" y="935.00" width="80.46" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 0-71840 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="178.85" y="935.00" width="8.16" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 73079-80365 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="191.51" y="935.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 84386-85629 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="198.54" y="935.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 90663-91906 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="202.35" y="935.00" width="3.22" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 94065-96944 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="208.10" y="935.00" width="5.90" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 99196-104460 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="215.13" y="935.00" width="4.50" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 105473-109494 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="225.31" y="935.00" width="1.35" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 114565-115771 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="230.47" y="935.00" width="1.87" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 119169-120842 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="240.72" y="935.00" width="1.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 128325-129564 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="258.59" y="935.00" width="1.87" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 144277-145950 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="264.34" y="935.00" width="1.28" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 149408-150554 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect class="seg" x="268.84" y="935.00" width="388.16" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22p 153433-500000 -> PAN011#2:chr22p; same chromosome; id=100</title></rect>
+<rect x="55" y="962" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="85" y="978.0" text-anchor="end">chrX</text>
+<rect class="track" x="97" y="958" width="560" height="34"/>
+<line class="grid" x1="97.00" y1="958" x2="97.00" y2="992"/>
+<line class="grid" x1="209.00" y1="958" x2="209.00" y2="992"/>
+<line class="grid" x1="321.00" y1="958" x2="321.00" y2="992"/>
+<line class="grid" x1="433.00" y1="958" x2="433.00" y2="992"/>
+<line class="grid" x1="545.00" y1="958" x2="545.00" y2="992"/>
+<line class="grid" x1="657.00" y1="958" x2="657.00" y2="992"/>
+<text class="lane" x="89" y="970.0" text-anchor="end">h1</text>
+<line class="grid" x1="97" y1="973.5" x2="657" y2="973.5"/>
+<text class="lane" x="89" y="983.0" text-anchor="end">h2</text>
+<line class="grid" x1="97" y1="986.5" x2="657" y2="986.5"/>
+<rect class="phr" x="97.00" y="986.00" width="134.40" height="4.00"><title>PHR PAN027#2#chrX.paternal:12265-512264_chrX_parm 0-120000; arms chrXp,chrYp</title></rect>
+<rect class="seg" x="97.00" y="975.00" width="160.83" height="10.50" fill="#d95f02" opacity="0.96"><title>chrXp 0-143598 -> PAN011#2:chrYp; inter-chromosomal; id=100</title></rect>
+<rect x="168.41" y="966.00" width="15" height="10" fill="#ffffcc" stroke="#444" stroke-width=".4"/>
+<text class="label" x="170.41" y="974.00">Yp</text>
+<rect class="seg" x="257.83" y="962.00" width="51.52" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chrXp 143598-189599 -> PAN011#1:chrXp; same chromosome; id=100</title></rect>
+<rect class="seg" x="309.35" y="975.00" width="5.88" height="10.50" fill="#d95f02" opacity="0.96"><title>chrXp 189599-194850 -> PAN011#2:chrYp; inter-chromosomal; id=100</title></rect>
+<rect x="303.29" y="966.00" width="15" height="10" fill="#ffffcc" stroke="#444" stroke-width=".4"/>
+<text class="label" x="305.29" y="974.00">Yp</text>
+<rect class="seg" x="315.23" y="962.00" width="150.97" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chrXp 194850-329647 -> PAN011#1:chrXp; same chromosome; id=100</title></rect>
+<rect class="seg" x="466.20" y="975.00" width="2.27" height="10.50" fill="#d95f02" opacity="0.96"><title>chrXp 329647-331671 -> PAN011#2:chrYp; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="468.47" y="962.00" width="188.16" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chrXp 331671-499675 -> PAN011#1:chrXp; same chromosome; id=100</title></rect>
+<text class="tick" x="97.00" y="1009" text-anchor="middle">0</text>
+<text class="tick" x="209.00" y="1009" text-anchor="middle">100</text>
+<text class="tick" x="321.00" y="1009" text-anchor="middle">200</text>
+<text class="tick" x="433.00" y="1009" text-anchor="middle">300</text>
+<text class="tick" x="545.00" y="1009" text-anchor="middle">400</text>
+<text class="tick" x="657.00" y="1009" text-anchor="middle">500</text>
+<text class="tick" x="377.00" y="1023" text-anchor="middle">Position (kb)</text>
+<text class="arm" x="1067.0" y="63" text-anchor="middle">q-arm</text>
+<rect x="745" y="82" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="98.0" text-anchor="end">chr1</text>
+<rect class="track" x="787" y="78" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="78" x2="787.00" y2="112"/>
+<line class="grid" x1="899.00" y1="78" x2="899.00" y2="112"/>
+<line class="grid" x1="1011.00" y1="78" x2="1011.00" y2="112"/>
+<line class="grid" x1="1123.00" y1="78" x2="1123.00" y2="112"/>
+<line class="grid" x1="1235.00" y1="78" x2="1235.00" y2="112"/>
+<line class="grid" x1="1347.00" y1="78" x2="1347.00" y2="112"/>
+<text class="lane" x="779" y="90.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="93.5" x2="1347" y2="93.5"/>
+<text class="lane" x="779" y="103.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="106.5" x2="1347" y2="106.5"/>
+<rect class="phr" x="1324.60" y="106.00" width="22.40" height="4.00"><title>PHR PAN027#2#chr1.paternal:247262629-247762628_chr1_qarm 480000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="82.00" width="117.26" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr1q 0-104697 -> PAN011#1:chr1q; same chromosome; id=100</title></rect>
+<rect class="seg" x="904.26" y="95.00" width="1.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr1q 104697-105766 -> PAN011#2:chr1q; same chromosome; id=100</title></rect>
+<rect class="seg" x="905.46" y="82.00" width="62.21" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr1q 105766-161312 -> PAN011#1:chr1q; same chromosome; id=100</title></rect>
+<rect class="seg" x="967.67" y="95.00" width="1.27" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr1q 161312-162448 -> PAN011#2:chr1q; same chromosome; id=100</title></rect>
+<rect class="seg" x="968.94" y="82.00" width="378.06" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr1q 162448-500000 -> PAN011#1:chr1q; same chromosome; id=100</title></rect>
+<rect x="745" y="122" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="138.0" text-anchor="end">chr2</text>
+<rect class="track" x="787" y="118" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="118" x2="787.00" y2="152"/>
+<line class="grid" x1="899.00" y1="118" x2="899.00" y2="152"/>
+<line class="grid" x1="1011.00" y1="118" x2="1011.00" y2="152"/>
+<line class="grid" x1="1123.00" y1="118" x2="1123.00" y2="152"/>
+<line class="grid" x1="1235.00" y1="118" x2="1235.00" y2="152"/>
+<line class="grid" x1="1347.00" y1="118" x2="1347.00" y2="152"/>
+<text class="lane" x="779" y="130.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="133.5" x2="1347" y2="133.5"/>
+<text class="lane" x="779" y="143.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="146.5" x2="1347" y2="146.5"/>
+<rect class="phr" x="1212.60" y="146.00" width="134.40" height="4.00"><title>PHR PAN027#2#chr2.paternal:243838763-244338762_chr2_qarm 380000-500000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="122.00" width="143.27" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 0-127920 -> PAN011#1:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="930.27" y="135.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 127920-128926 -> PAN011#2:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="931.40" y="122.00" width="29.89" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 128926-155612 -> PAN011#1:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="961.29" y="135.00" width="2.31" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 155612-157677 -> PAN011#2:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="963.60" y="122.00" width="54.54" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 157677-206375 -> PAN011#1:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1018.14" y="135.00" width="9.83" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 206375-215156 -> PAN011#2:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1027.97" y="122.00" width="119.30" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 215156-321670 -> PAN011#1:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1147.27" y="135.00" width="1.12" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 321670-322671 -> PAN011#2:chr2q; same chromosome; id=93.13</title></rect>
+<rect class="seg" x="1148.39" y="122.00" width="1.12" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 322671-323675 -> PAN011#1:chr2q; same chromosome; id=92.56</title></rect>
+<rect class="seg" x="1151.77" y="122.00" width="166.93" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 325691-474735 -> PAN011#1:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1318.70" y="135.00" width="1.36" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 474735-475950 -> PAN011#2:chr2q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1320.06" y="122.00" width="26.94" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr2q 475950-500000 -> PAN011#1:chr2q; same chromosome; id=100</title></rect>
+<rect x="745" y="162" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="178.0" text-anchor="end">chr3</text>
+<rect class="track" x="787" y="158" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="158" x2="787.00" y2="192"/>
+<line class="grid" x1="899.00" y1="158" x2="899.00" y2="192"/>
+<line class="grid" x1="1011.00" y1="158" x2="1011.00" y2="192"/>
+<line class="grid" x1="1123.00" y1="158" x2="1123.00" y2="192"/>
+<line class="grid" x1="1235.00" y1="158" x2="1235.00" y2="192"/>
+<line class="grid" x1="1347.00" y1="158" x2="1347.00" y2="192"/>
+<text class="lane" x="779" y="170.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="173.5" x2="1347" y2="173.5"/>
+<text class="lane" x="779" y="183.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="186.5" x2="1347" y2="186.5"/>
+<rect class="phr" x="1067.00" y="186.00" width="280.00" height="4.00"><title>PHR PAN027#2#chr3.paternal:202048279-202548278_chr3_qarm 250000-500000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="787.00" y="162.00" width="48.09" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 0-42936 -> PAN011#1:chr3q; same chromosome; id=100</title></rect>
+<rect class="seg" x="835.09" y="175.00" width="1.15" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 42936-43964 -> PAN011#2:chr3q; same chromosome; id=100</title></rect>
+<rect class="seg" x="836.24" y="162.00" width="334.23" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 43964-342383 -> PAN011#1:chr3q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1170.47" y="175.00" width="3.31" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 342383-345337 -> PAN011#2:chr3q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1177.60" y="162.00" width="82.81" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 348751-422686 -> PAN011#1:chr3q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1261.78" y="162.00" width="53.93" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 423908-472057 -> PAN011#1:chr3q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1319.70" y="162.00" width="27.30" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr3q 475624-500000 -> PAN011#1:chr3q; same chromosome; id=100</title></rect>
+<rect x="745" y="202" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="218.0" text-anchor="end">chr4</text>
+<rect class="track" x="787" y="198" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="198" x2="787.00" y2="232"/>
+<line class="grid" x1="899.00" y1="198" x2="899.00" y2="232"/>
+<line class="grid" x1="1011.00" y1="198" x2="1011.00" y2="232"/>
+<line class="grid" x1="1123.00" y1="198" x2="1123.00" y2="232"/>
+<line class="grid" x1="1235.00" y1="198" x2="1235.00" y2="232"/>
+<line class="grid" x1="1347.00" y1="198" x2="1347.00" y2="232"/>
+<text class="lane" x="779" y="210.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="213.5" x2="1347" y2="213.5"/>
+<text class="lane" x="779" y="223.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="226.5" x2="1347" y2="226.5"/>
+<rect class="phr" x="1145.40" y="226.00" width="201.60" height="4.00"><title>PHR PAN027#2#chr4.paternal:189940453-190440452_chr4_qarm 320000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="215.00" width="196.20" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 0-175183 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="983.20" y="202.00" width="3.37" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 175183-178193 -> PAN011#1:chr4q; same chromosome; id=98.04</title></rect>
+<rect class="seg" x="986.58" y="215.00" width="219.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 178193-374106 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1208.53" y="215.00" width="7.39" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 376366-382966 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1218.47" y="215.00" width="2.32" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 385239-387308 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1223.32" y="215.00" width="3.69" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 389568-392866 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1228.18" y="215.00" width="1.38" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 393907-395137 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1230.70" y="215.00" width="2.55" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 396165-398438 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1234.40" y="215.00" width="3.70" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 399466-402767 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1242.96" y="202.00" width="1.38" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 407109-408339 -> PAN011#1:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1250.35" y="202.00" width="1.38" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 413706-414938 -> PAN011#1:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1251.73" y="215.00" width="1.15" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 414938-415966 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1254.05" y="215.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 417007-419266 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1257.74" y="215.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 420307-422567 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1261.44" y="215.00" width="2.53" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 423608-425868 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1266.52" y="215.00" width="2.32" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 428141-430210 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1273.91" y="215.00" width="1.15" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 434743-435771 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1282.46" y="215.00" width="1.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 442373-443414 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1285.00" y="215.00" width="1.15" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 444646-445674 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1289.85" y="215.00" width="1.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 448975-450016 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1304.64" y="215.00" width="1.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 462179-463220 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1314.58" y="215.00" width="32.42" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr4q 471054-500000 -> PAN011#2:chr4q; same chromosome; id=100</title></rect>
+<rect x="745" y="242" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="258.0" text-anchor="end">chr5</text>
+<rect class="track" x="787" y="238" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="238" x2="787.00" y2="272"/>
+<line class="grid" x1="899.00" y1="238" x2="899.00" y2="272"/>
+<line class="grid" x1="1011.00" y1="238" x2="1011.00" y2="272"/>
+<line class="grid" x1="1123.00" y1="238" x2="1123.00" y2="272"/>
+<line class="grid" x1="1235.00" y1="238" x2="1235.00" y2="272"/>
+<line class="grid" x1="1347.00" y1="238" x2="1347.00" y2="272"/>
+<text class="lane" x="779" y="250.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="253.5" x2="1347" y2="253.5"/>
+<text class="lane" x="779" y="263.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="266.5" x2="1347" y2="266.5"/>
+<rect class="phr" x="1139.80" y="266.00" width="207.20" height="4.00"><title>PHR PAN027#2#chr5.paternal:181639593-182139592_chr5_qarm 315000-500000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="787.00" y="255.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr5q 0-500000 -> PAN011#2:chr5q; same chromosome; id=100</title></rect>
+<rect x="745" y="282" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="298.0" text-anchor="end">chr6</text>
+<rect class="track" x="787" y="278" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="278" x2="787.00" y2="312"/>
+<line class="grid" x1="899.00" y1="278" x2="899.00" y2="312"/>
+<line class="grid" x1="1011.00" y1="278" x2="1011.00" y2="312"/>
+<line class="grid" x1="1123.00" y1="278" x2="1123.00" y2="312"/>
+<line class="grid" x1="1235.00" y1="278" x2="1235.00" y2="312"/>
+<line class="grid" x1="1347.00" y1="278" x2="1347.00" y2="312"/>
+<text class="lane" x="779" y="290.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="293.5" x2="1347" y2="293.5"/>
+<text class="lane" x="779" y="303.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="306.5" x2="1347" y2="306.5"/>
+<rect class="phr" x="1184.60" y="306.00" width="162.40" height="4.00"><title>PHR PAN027#2#chr6.paternal:171506474-172006473_chr6_qarm 355000-500000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="282.00" width="22.63" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 0-20204 -> PAN011#1:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="809.63" y="295.00" width="12.22" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 20204-31113 -> PAN011#2:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="821.85" y="282.00" width="13.98" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 31113-43592 -> PAN011#1:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="835.82" y="295.00" width="24.33" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 43592-65313 -> PAN011#2:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="860.15" y="282.00" width="73.55" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 65313-130981 -> PAN011#1:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="933.70" y="295.00" width="1.12" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 130981-131983 -> PAN011#2:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="934.82" y="282.00" width="1.12" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 131983-132984 -> PAN011#1:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="935.94" y="295.00" width="2.25" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 132984-134989 -> PAN011#2:chr6q; same chromosome; id=100</title></rect>
+<rect class="seg" x="938.19" y="282.00" width="408.81" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr6q 134989-500000 -> PAN011#1:chr6q; same chromosome; id=100</title></rect>
+<rect x="745" y="322" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="338.0" text-anchor="end">chr7</text>
+<rect class="track" x="787" y="318" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="318" x2="787.00" y2="352"/>
+<line class="grid" x1="899.00" y1="318" x2="899.00" y2="352"/>
+<line class="grid" x1="1011.00" y1="318" x2="1011.00" y2="352"/>
+<line class="grid" x1="1123.00" y1="318" x2="1123.00" y2="352"/>
+<line class="grid" x1="1235.00" y1="318" x2="1235.00" y2="352"/>
+<line class="grid" x1="1347.00" y1="318" x2="1347.00" y2="352"/>
+<text class="lane" x="779" y="330.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="333.5" x2="1347" y2="333.5"/>
+<text class="lane" x="779" y="343.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="346.5" x2="1347" y2="346.5"/>
+<rect class="phr" x="1296.60" y="346.00" width="50.40" height="4.00"><title>PHR PAN027#2#chr7.paternal:160723269-161223268_chr7_qarm 455000-500000; arms chr7q,chr12q</title></rect>
+<rect class="seg" x="787.00" y="335.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr7q 0-500000 -> PAN011#2:chr7q; same chromosome; id=100</title></rect>
+<rect x="745" y="362" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="378.0" text-anchor="end">chr8</text>
+<rect class="track" x="787" y="358" width="560" height="34"/>
+<rect class="nophr" x="787" y="358" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="358" x2="787.00" y2="392"/>
+<line class="grid" x1="899.00" y1="358" x2="899.00" y2="392"/>
+<line class="grid" x1="1011.00" y1="358" x2="1011.00" y2="392"/>
+<line class="grid" x1="1123.00" y1="358" x2="1123.00" y2="392"/>
+<line class="grid" x1="1235.00" y1="358" x2="1235.00" y2="392"/>
+<line class="grid" x1="1347.00" y1="358" x2="1347.00" y2="392"/>
+<text class="lane" x="779" y="370.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="373.5" x2="1347" y2="373.5"/>
+<text class="lane" x="779" y="383.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="386.5" x2="1347" y2="386.5"/>
+<rect class="seg" x="787.00" y="362.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr8q 0-500000 -> PAN011#1:chr8q; same chromosome; id=100</title></rect>
+<rect x="745" y="402" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="418.0" text-anchor="end">chr9</text>
+<rect class="track" x="787" y="398" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="398" x2="787.00" y2="432"/>
+<line class="grid" x1="899.00" y1="398" x2="899.00" y2="432"/>
+<line class="grid" x1="1011.00" y1="398" x2="1011.00" y2="432"/>
+<line class="grid" x1="1123.00" y1="398" x2="1123.00" y2="432"/>
+<line class="grid" x1="1235.00" y1="398" x2="1235.00" y2="432"/>
+<line class="grid" x1="1347.00" y1="398" x2="1347.00" y2="432"/>
+<text class="lane" x="779" y="410.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="413.5" x2="1347" y2="413.5"/>
+<text class="lane" x="779" y="423.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="426.5" x2="1347" y2="426.5"/>
+<rect class="phr" x="1005.40" y="426.00" width="341.60" height="4.00"><title>PHR PAN027#2#chr9.paternal:135704825-136204824_chr9_qarm 195000-500000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="787.00" y="402.00" width="54.77" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr9q 0-48900 -> PAN011#1:chr9q; same chromosome; id=99.97</title></rect>
+<rect class="seg" x="841.77" y="415.00" width="312.50" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr9q 48900-327917 -> PAN011#2:chr9q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1154.27" y="415.00" width="1.35" height="10.50" fill="#d95f02" opacity="0.96"><title>chr9q 327917-329124 -> PAN011#2:chr16q; inter-chromosomal; id=100</title></rect>
+<rect class="seg" x="1155.62" y="415.00" width="131.96" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr9q 329124-446944 -> PAN011#2:chr9q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1287.58" y="415.00" width="28.56" height="10.50" fill="#d95f02" opacity="0.96"><title>chr9q 446944-472441 -> PAN011#2:chr3q; inter-chromosomal; id=99.93</title></rect>
+<rect x="1292.86" y="406.00" width="15" height="10" fill="#ffffcc" stroke="#444" stroke-width=".4"/>
+<text class="label" x="1294.86" y="414.00">3q</text>
+<rect class="seg" x="1316.13" y="402.00" width="4.28" height="10.50" fill="#d95f02" opacity="0.96"><title>chr9q 472441-476266 -> PAN011#1:chr3q; inter-chromosomal; id=96.42</title></rect>
+<rect class="seg" x="1320.42" y="415.00" width="16.71" height="10.50" fill="#d95f02" opacity="0.96"><title>chr9q 476266-491186 -> PAN011#2:chr3q; inter-chromosomal; id=98.82</title></rect>
+<rect x="1319.77" y="406.00" width="15" height="10" fill="#ffffcc" stroke="#444" stroke-width=".4"/>
+<text class="label" x="1321.77" y="414.00">3q</text>
+<rect class="seg" x="1337.13" y="402.00" width="8.15" height="10.50" fill="#c8d431" opacity="0.96"><title>chr9q 491186-498459 -> PAN011#1:chr15q; inter-chromosomal; id=99.88</title></rect>
+<rect x="1326.00" y="393.00" width="20" height="10" fill="#ffffcc" stroke="#444" stroke-width=".4"/>
+<text class="label" x="1328.00" y="401.00">15q</text>
+<rect class="seg" x="1345.27" y="415.00" width="1.17" height="10.50" fill="#d95f02" opacity="0.96"><title>chr9q 498459-499507 -> PAN011#2:chr3q; inter-chromosomal; id=98.99</title></rect>
+<rect class="seg" x="1346.45" y="402.00" width="0.55" height="10.50" fill="#d95f02" opacity="0.96"><title>chr9q 499507-500000 -> PAN011#1:chr20q; inter-chromosomal; id=92.03</title></rect>
+<rect x="745" y="442" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="458.0" text-anchor="end">chr10</text>
+<rect class="track" x="787" y="438" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="438" x2="787.00" y2="472"/>
+<line class="grid" x1="899.00" y1="438" x2="899.00" y2="472"/>
+<line class="grid" x1="1011.00" y1="438" x2="1011.00" y2="472"/>
+<line class="grid" x1="1123.00" y1="438" x2="1123.00" y2="472"/>
+<line class="grid" x1="1235.00" y1="438" x2="1235.00" y2="472"/>
+<line class="grid" x1="1347.00" y1="438" x2="1347.00" y2="472"/>
+<text class="lane" x="779" y="450.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="453.5" x2="1347" y2="453.5"/>
+<text class="lane" x="779" y="463.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="466.5" x2="1347" y2="466.5"/>
+<rect class="phr" x="1313.40" y="466.00" width="33.60" height="4.00"><title>PHR PAN027#2#chr10.paternal:134004663-134504662_chr10_qarm 470000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="455.00" width="456.24" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 0-407358 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1245.78" y="455.00" width="2.55" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 409627-411908 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1249.49" y="455.00" width="1.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 412934-413975 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1269.18" y="455.00" width="1.38" height="10.50" fill="#d95f02" opacity="0.96"><title>chr10q 430519-431751 -> PAN011#2:chr4q; inter-chromosomal; id=99.67</title></rect>
+<rect class="seg" x="1276.58" y="455.00" width="1.40" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 437128-438374 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1282.84" y="455.00" width="1.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 442710-443751 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1293.96" y="455.00" width="1.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 452643-453684 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1295.13" y="455.00" width="1.38" height="10.50" fill="#d95f02" opacity="0.96"><title>chr10q 453684-454916 -> PAN011#2:chr4q; inter-chromosomal; id=99.67</title></rect>
+<rect class="seg" x="1311.33" y="455.00" width="32.10" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr10q 468156-496816 -> PAN011#2:chr10q; same chromosome; id=100</title></rect>
+<rect x="745" y="482" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="498.0" text-anchor="end">chr11</text>
+<rect class="track" x="787" y="478" width="560" height="34"/>
+<rect class="nophr" x="787" y="478" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="478" x2="787.00" y2="512"/>
+<line class="grid" x1="899.00" y1="478" x2="899.00" y2="512"/>
+<line class="grid" x1="1011.00" y1="478" x2="1011.00" y2="512"/>
+<line class="grid" x1="1123.00" y1="478" x2="1123.00" y2="512"/>
+<line class="grid" x1="1235.00" y1="478" x2="1235.00" y2="512"/>
+<line class="grid" x1="1347.00" y1="478" x2="1347.00" y2="512"/>
+<text class="lane" x="779" y="490.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="493.5" x2="1347" y2="493.5"/>
+<text class="lane" x="779" y="503.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="506.5" x2="1347" y2="506.5"/>
+<rect class="seg" x="787.00" y="482.00" width="298.36" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11q 0-266395 -> PAN011#1:chr11q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1085.36" y="495.00" width="9.60" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11q 266395-274964 -> PAN011#2:chr11q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1094.96" y="482.00" width="252.04" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr11q 274964-500000 -> PAN011#1:chr11q; same chromosome; id=100</title></rect>
+<rect x="745" y="522" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="538.0" text-anchor="end">chr12</text>
+<rect class="track" x="787" y="518" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="518" x2="787.00" y2="552"/>
+<line class="grid" x1="899.00" y1="518" x2="899.00" y2="552"/>
+<line class="grid" x1="1011.00" y1="518" x2="1011.00" y2="552"/>
+<line class="grid" x1="1123.00" y1="518" x2="1123.00" y2="552"/>
+<line class="grid" x1="1235.00" y1="518" x2="1235.00" y2="552"/>
+<line class="grid" x1="1347.00" y1="518" x2="1347.00" y2="552"/>
+<text class="lane" x="779" y="530.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="533.5" x2="1347" y2="533.5"/>
+<text class="lane" x="779" y="543.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="546.5" x2="1347" y2="546.5"/>
+<rect class="phr" x="1330.20" y="546.00" width="16.80" height="4.00"><title>PHR PAN027#2#chr12.paternal:132984822-133484821_chr12_qarm 485000-500000; arms chr7q,chr12q</title></rect>
+<rect class="seg" x="787.00" y="535.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr12q 0-500000 -> PAN011#2:chr12q; same chromosome; id=100</title></rect>
+<rect x="745" y="562" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="578.0" text-anchor="end">chr13</text>
+<rect class="track" x="787" y="558" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="558" x2="787.00" y2="592"/>
+<line class="grid" x1="899.00" y1="558" x2="899.00" y2="592"/>
+<line class="grid" x1="1011.00" y1="558" x2="1011.00" y2="592"/>
+<line class="grid" x1="1123.00" y1="558" x2="1123.00" y2="592"/>
+<line class="grid" x1="1235.00" y1="558" x2="1235.00" y2="592"/>
+<line class="grid" x1="1347.00" y1="558" x2="1347.00" y2="592"/>
+<text class="lane" x="779" y="570.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="573.5" x2="1347" y2="573.5"/>
+<text class="lane" x="779" y="583.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="586.5" x2="1347" y2="586.5"/>
+<rect class="phr" x="1335.80" y="586.00" width="11.20" height="4.00"><title>PHR PAN027#2#chr13.paternal:106233122-106733121_chr13_qarm 490000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="562.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr13q 0-500000 -> PAN011#1:chr13q; same chromosome; id=100</title></rect>
+<rect x="745" y="602" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="618.0" text-anchor="end">chr14</text>
+<rect class="track" x="787" y="598" width="560" height="34"/>
+<rect class="nophr" x="787" y="598" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="598" x2="787.00" y2="632"/>
+<line class="grid" x1="899.00" y1="598" x2="899.00" y2="632"/>
+<line class="grid" x1="1011.00" y1="598" x2="1011.00" y2="632"/>
+<line class="grid" x1="1123.00" y1="598" x2="1123.00" y2="632"/>
+<line class="grid" x1="1235.00" y1="598" x2="1235.00" y2="632"/>
+<line class="grid" x1="1347.00" y1="598" x2="1347.00" y2="632"/>
+<text class="lane" x="779" y="610.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="613.5" x2="1347" y2="613.5"/>
+<text class="lane" x="779" y="623.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="626.5" x2="1347" y2="626.5"/>
+<rect class="seg" x="787.00" y="602.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr14q 0-500000 -> PAN011#1:chr14q; same chromosome; id=100</title></rect>
+<rect x="745" y="642" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="658.0" text-anchor="end">chr15</text>
+<rect class="track" x="787" y="638" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="638" x2="787.00" y2="672"/>
+<line class="grid" x1="899.00" y1="638" x2="899.00" y2="672"/>
+<line class="grid" x1="1011.00" y1="638" x2="1011.00" y2="672"/>
+<line class="grid" x1="1123.00" y1="638" x2="1123.00" y2="672"/>
+<line class="grid" x1="1235.00" y1="638" x2="1235.00" y2="672"/>
+<line class="grid" x1="1347.00" y1="638" x2="1347.00" y2="672"/>
+<text class="lane" x="779" y="650.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="653.5" x2="1347" y2="653.5"/>
+<text class="lane" x="779" y="663.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="666.5" x2="1347" y2="666.5"/>
+<rect class="phr" x="1212.60" y="666.00" width="134.40" height="4.00"><title>PHR PAN027#2#chr15.paternal:98308884-98808883_chr15_qarm 380000-500000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="787.00" y="642.00" width="36.72" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 0-32783 -> PAN011#1:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="823.72" y="655.00" width="10.24" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 32783-41929 -> PAN011#2:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="833.96" y="642.00" width="260.49" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 41929-274505 -> PAN011#1:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1094.45" y="655.00" width="1.18" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 274505-275563 -> PAN011#2:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1095.63" y="642.00" width="2.30" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 275563-277617 -> PAN011#1:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1097.93" y="655.00" width="2.26" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 277617-279634 -> PAN011#2:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1100.19" y="642.00" width="237.14" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 279634-491370 -> PAN011#1:chr15q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1345.48" y="642.00" width="1.52" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr15q 498643-500000 -> PAN011#1:chr15q; same chromosome; id=100</title></rect>
+<rect x="745" y="682" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="698.0" text-anchor="end">chr16</text>
+<rect class="track" x="787" y="678" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="678" x2="787.00" y2="712"/>
+<line class="grid" x1="899.00" y1="678" x2="899.00" y2="712"/>
+<line class="grid" x1="1011.00" y1="678" x2="1011.00" y2="712"/>
+<line class="grid" x1="1123.00" y1="678" x2="1123.00" y2="712"/>
+<line class="grid" x1="1235.00" y1="678" x2="1235.00" y2="712"/>
+<line class="grid" x1="1347.00" y1="678" x2="1347.00" y2="712"/>
+<text class="lane" x="779" y="690.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="693.5" x2="1347" y2="693.5"/>
+<text class="lane" x="779" y="703.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="706.5" x2="1347" y2="706.5"/>
+<rect class="phr" x="1173.40" y="706.00" width="173.60" height="4.00"><title>PHR PAN027#2#chr16.paternal:89997300-90497299_chr16_qarm 345000-500000; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10p,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="695.00" width="453.48" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr16q 0-404895 -> PAN011#2:chr16q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1241.83" y="695.00" width="105.17" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr16q 406102-500000 -> PAN011#2:chr16q; same chromosome; id=100</title></rect>
+<rect x="745" y="722" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="738.0" text-anchor="end">chr17</text>
+<rect class="track" x="787" y="718" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="718" x2="787.00" y2="752"/>
+<line class="grid" x1="899.00" y1="718" x2="899.00" y2="752"/>
+<line class="grid" x1="1011.00" y1="718" x2="1011.00" y2="752"/>
+<line class="grid" x1="1123.00" y1="718" x2="1123.00" y2="752"/>
+<line class="grid" x1="1235.00" y1="718" x2="1235.00" y2="752"/>
+<line class="grid" x1="1347.00" y1="718" x2="1347.00" y2="752"/>
+<text class="lane" x="779" y="730.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="733.5" x2="1347" y2="733.5"/>
+<text class="lane" x="779" y="743.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="746.5" x2="1347" y2="746.5"/>
+<rect class="phr" x="1296.60" y="746.00" width="50.40" height="4.00"><title>PHR PAN027#2#chr17.paternal:83214113-83714112_chr17_qarm 455000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="722.00" width="540.70" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr17q 0-482768 -> PAN011#1:chr17q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1327.70" y="735.00" width="17.24" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr17q 482768-498164 -> PAN011#2:chr17q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1344.94" y="722.00" width="2.06" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr17q 498164-500000 -> PAN011#1:chr17q; same chromosome; id=100</title></rect>
+<rect x="745" y="762" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="778.0" text-anchor="end">chr18</text>
+<rect class="track" x="787" y="758" width="560" height="34"/>
+<rect class="nophr" x="787" y="758" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="758" x2="787.00" y2="792"/>
+<line class="grid" x1="899.00" y1="758" x2="899.00" y2="792"/>
+<line class="grid" x1="1011.00" y1="758" x2="1011.00" y2="792"/>
+<line class="grid" x1="1123.00" y1="758" x2="1123.00" y2="792"/>
+<line class="grid" x1="1235.00" y1="758" x2="1235.00" y2="792"/>
+<line class="grid" x1="1347.00" y1="758" x2="1347.00" y2="792"/>
+<text class="lane" x="779" y="770.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="773.5" x2="1347" y2="773.5"/>
+<text class="lane" x="779" y="783.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="786.5" x2="1347" y2="786.5"/>
+<rect class="seg" x="787.00" y="762.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr18q 0-500000 -> PAN011#1:chr18q; same chromosome; id=100</title></rect>
+<rect x="745" y="802" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="818.0" text-anchor="end">chr19</text>
+<rect class="track" x="787" y="798" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="798" x2="787.00" y2="832"/>
+<line class="grid" x1="899.00" y1="798" x2="899.00" y2="832"/>
+<line class="grid" x1="1011.00" y1="798" x2="1011.00" y2="832"/>
+<line class="grid" x1="1123.00" y1="798" x2="1123.00" y2="832"/>
+<line class="grid" x1="1235.00" y1="798" x2="1235.00" y2="832"/>
+<line class="grid" x1="1347.00" y1="798" x2="1347.00" y2="832"/>
+<text class="lane" x="779" y="810.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="813.5" x2="1347" y2="813.5"/>
+<text class="lane" x="779" y="823.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="826.5" x2="1347" y2="826.5"/>
+<rect class="phr" x="1324.60" y="826.00" width="22.40" height="4.00"><title>PHR PAN027#2#chr19.paternal:63014847-63514846_chr19_qarm 480000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="802.00" width="484.62" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 0-432692 -> PAN011#1:chr19q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1271.62" y="815.00" width="1.13" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 432692-433702 -> PAN011#2:chr19q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1272.75" y="802.00" width="60.34" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 433702-487579 -> PAN011#1:chr19q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1333.09" y="815.00" width="2.46" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 487579-489778 -> PAN011#2:chr19q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1335.55" y="802.00" width="3.38" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 489778-492799 -> PAN011#1:chr19q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1338.93" y="815.00" width="7.50" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 492799-499491 -> PAN011#2:chr19q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1346.43" y="802.00" width="0.57" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr19q 499491-500000 -> PAN011#1:chr19q; same chromosome; id=100</title></rect>
+<rect x="745" y="842" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="858.0" text-anchor="end">chr20</text>
+<rect class="track" x="787" y="838" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="838" x2="787.00" y2="872"/>
+<line class="grid" x1="899.00" y1="838" x2="899.00" y2="872"/>
+<line class="grid" x1="1011.00" y1="838" x2="1011.00" y2="872"/>
+<line class="grid" x1="1123.00" y1="838" x2="1123.00" y2="872"/>
+<line class="grid" x1="1235.00" y1="838" x2="1235.00" y2="872"/>
+<line class="grid" x1="1347.00" y1="838" x2="1347.00" y2="872"/>
+<text class="lane" x="779" y="850.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="853.5" x2="1347" y2="853.5"/>
+<text class="lane" x="779" y="863.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="866.5" x2="1347" y2="866.5"/>
+<rect class="phr" x="1229.40" y="866.00" width="117.60" height="4.00"><title>PHR PAN027#2#chr20.paternal:66011116-66511115_chr20_qarm 395000-500000; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="787.00" y="842.00" width="265.50" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr20q 0-237051 -> PAN011#1:chr20q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1052.50" y="855.00" width="1.12" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr20q 237051-238055 -> PAN011#2:chr20q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1053.62" y="842.00" width="292.83" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr20q 238055-499514 -> PAN011#1:chr20q; same chromosome; id=100</title></rect>
+<rect x="745" y="882" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="898.0" text-anchor="end">chr21</text>
+<rect class="track" x="787" y="878" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="878" x2="787.00" y2="912"/>
+<line class="grid" x1="899.00" y1="878" x2="899.00" y2="912"/>
+<line class="grid" x1="1011.00" y1="878" x2="1011.00" y2="912"/>
+<line class="grid" x1="1123.00" y1="878" x2="1123.00" y2="912"/>
+<line class="grid" x1="1235.00" y1="878" x2="1235.00" y2="912"/>
+<line class="grid" x1="1347.00" y1="878" x2="1347.00" y2="912"/>
+<text class="lane" x="779" y="890.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="893.5" x2="1347" y2="893.5"/>
+<text class="lane" x="779" y="903.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="906.5" x2="1347" y2="906.5"/>
+<rect class="phr" x="1324.60" y="906.00" width="22.40" height="4.00"><title>PHR PAN027#2#chr21.paternal:43399012-43899011_chr21_qarm 480000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="895.00" width="3.38" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21q 0-3019 -> PAN011#2:chr21q; same chromosome; id=99.9</title></rect>
+<rect class="seg" x="790.38" y="882.00" width="542.59" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21q 3019-487472 -> PAN011#1:chr21q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1332.97" y="895.00" width="3.36" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21q 487472-490468 -> PAN011#2:chr21q; same chromosome; id=100</title></rect>
+<rect class="seg" x="1336.32" y="882.00" width="8.07" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr21q 490468-497675 -> PAN011#1:chr21q; same chromosome; id=100</title></rect>
+<rect x="745" y="922" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="938.0" text-anchor="end">chr22</text>
+<rect class="track" x="787" y="918" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="918" x2="787.00" y2="952"/>
+<line class="grid" x1="899.00" y1="918" x2="899.00" y2="952"/>
+<line class="grid" x1="1011.00" y1="918" x2="1011.00" y2="952"/>
+<line class="grid" x1="1123.00" y1="918" x2="1123.00" y2="952"/>
+<line class="grid" x1="1235.00" y1="918" x2="1235.00" y2="952"/>
+<line class="grid" x1="1347.00" y1="918" x2="1347.00" y2="952"/>
+<text class="lane" x="779" y="930.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="933.5" x2="1347" y2="933.5"/>
+<text class="lane" x="779" y="943.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="946.5" x2="1347" y2="946.5"/>
+<rect class="phr" x="1324.60" y="946.00" width="22.40" height="4.00"><title>PHR PAN027#2#chr22.paternal:47875131-48375130_chr22_qarm 480000-500000; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
+<rect class="seg" x="787.00" y="922.00" width="8.57" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22q 0-7654 -> PAN011#1:chr22q; same chromosome; id=99.85</title></rect>
+<rect class="seg" x="795.57" y="935.00" width="551.43" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chr22q 7654-500000 -> PAN011#2:chr22q; same chromosome; id=100</title></rect>
+<rect x="745" y="962" width="35" height="26" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>
+<text class="chr" x="775" y="978.0" text-anchor="end">chrX</text>
+<rect class="track" x="787" y="958" width="560" height="34"/>
+<line class="grid" x1="787.00" y1="958" x2="787.00" y2="992"/>
+<line class="grid" x1="899.00" y1="958" x2="899.00" y2="992"/>
+<line class="grid" x1="1011.00" y1="958" x2="1011.00" y2="992"/>
+<line class="grid" x1="1123.00" y1="958" x2="1123.00" y2="992"/>
+<line class="grid" x1="1235.00" y1="958" x2="1235.00" y2="992"/>
+<line class="grid" x1="1347.00" y1="958" x2="1347.00" y2="992"/>
+<text class="lane" x="779" y="970.0" text-anchor="end">h1</text>
+<line class="grid" x1="787" y1="973.5" x2="1347" y2="973.5"/>
+<text class="lane" x="779" y="983.0" text-anchor="end">h2</text>
+<line class="grid" x1="787" y1="986.5" x2="1347" y2="986.5"/>
+<rect class="phr" x="977.40" y="986.00" width="369.60" height="4.00"><title>PHR PAN027#2#chrX.paternal:153585261-154085260_chrX_qarm 170000-500000; arms chr1p,chr2q,chr3q,chr6p,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
+<rect class="seg" x="787.00" y="962.00" width="560.00" height="10.50" fill="#bfbfbf" opacity="0.95"><title>chrXq 0-500000 -> PAN011#1:chrXq; same chromosome; id=100</title></rect>
+<text class="tick" x="787.00" y="1009" text-anchor="middle">0</text>
+<text class="tick" x="899.00" y="1009" text-anchor="middle">100</text>
+<text class="tick" x="1011.00" y="1009" text-anchor="middle">200</text>
+<text class="tick" x="1123.00" y="1009" text-anchor="middle">300</text>
+<text class="tick" x="1235.00" y="1009" text-anchor="middle">400</text>
+<text class="tick" x="1347.00" y="1009" text-anchor="middle">500</text>
+<text class="tick" x="1067.00" y="1023" text-anchor="middle">Position (kb)</text>
+<rect x="110" y="1027" width="52" height="10" fill="#e73535" stroke="#222" stroke-width=".45"/>
+<text class="label" x="136" y="1024" text-anchor="middle">10p</text>
+<rect x="188" y="1027" width="52" height="10" fill="#f05a28" stroke="#222" stroke-width=".45"/>
+<text class="label" x="214" y="1024" text-anchor="middle">13p</text>
+<rect x="266" y="1027" width="52" height="10" fill="#3f4bad" stroke="#222" stroke-width=".45"/>
+<text class="label" x="292" y="1024" text-anchor="middle">15p</text>
+<rect x="344" y="1027" width="52" height="10" fill="#c8d431" stroke="#222" stroke-width=".45"/>
+<text class="label" x="370" y="1024" text-anchor="middle">15q</text>
+<rect x="422" y="1027" width="52" height="10" fill="#2e91d6" stroke="#222" stroke-width=".45"/>
+<text class="label" x="448" y="1024" text-anchor="middle">19p</text>
+<rect x="500" y="1027" width="52" height="10" fill="#ff8a66" stroke="#222" stroke-width=".45"/>
+<text class="label" x="526" y="1024" text-anchor="middle">21p</text>
+<rect x="578" y="1027" width="52" height="10" fill="#a88f86" stroke="#222" stroke-width=".45"/>
+<text class="label" x="604" y="1024" text-anchor="middle">22p</text>
+<rect x="656" y="1027" width="52" height="10" fill="#008a78" stroke="#222" stroke-width=".45"/>
+<text class="label" x="682" y="1024" text-anchor="middle">9q</text>
+<rect x="734" y="1027" width="52" height="10" fill="#bfbfbf" stroke="#222" stroke-width=".45"/>
+<text class="label" x="760" y="1024" text-anchor="middle">same chr</text>
+<rect x="812" y="1027" width="52" height="10" fill="#7e1fa2" stroke="#222" stroke-width=".45"/>
+<text class="label" x="838" y="1024" text-anchor="middle">PHR</text>
+</svg>

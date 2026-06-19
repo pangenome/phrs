@@ -3,7 +3,7 @@
 text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font-weight:700}.small{font-size:9px}.label{font-size:8px}.panel{fill:#fbfbfb;stroke:#d7d7d7;stroke-width:.8}.axis{stroke:#a8a8a8;stroke-width:.45}.hit{stroke:#333;stroke-width:.1}.inter{stroke:#5a2ca0;stroke-width:.7}.trackbg{fill:#f2f2f2;stroke:#e1e1e1;stroke-width:.25}
 </style>
 <text class="title" x="64" y="24">Fig. 5-style inspection redraw: conservative native PAF nb:i:1 -&gt; sweepGA 1:1, no scaffold</text>
-<text class="small" x="64" y="43">Rows are child/query chromosome ends; p-arm tracks are left and q-arm tracks right. Query scale is the 500 kb flank span parsed from path names, not odgi PAF column 2.</text>
+<text class="small" x="64" y="43">Rows are child/query chromosome ends; p-arm tracks are left and q-arm tracks right. Teal bars mark PHR spans from the WashU all-vs-all p95/id95 table.</text>
 <rect class="panel" x="57" y="47" width="410" height="268" rx="2"/>
 <text class="small" x="64" y="61">PAN027 maternal hap1 &lt;- PAN010 mother</text>
 <text class="label" x="64" y="73">p-arm 0</text>
@@ -12,73 +12,111 @@ text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font
 <text class="label" x="432" y="73">500 kb</text>
 <text class="label" x="53" y="84" text-anchor="end">1</text>
 <rect class="trackbg" x="64" y="79" width="190" height="7"/>
+<rect x="64.00" y="79.25" width="112.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr1.maternal:11374-511373_chr1_parm 0-295000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="270" y="79" width="190" height="7"/>
+<rect x="454.30" y="79.25" width="5.70" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr1.maternal:246517480-247017479_chr1_qarm 485000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="93" text-anchor="end">2</text>
 <rect class="trackbg" x="64" y="88" width="190" height="7"/>
 <rect class="trackbg" x="270" y="88" width="190" height="7"/>
+<rect x="414.40" y="88.25" width="45.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr2.maternal:242001098-242501097_chr2_qarm 380000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="102" text-anchor="end">3</text>
 <rect class="trackbg" x="64" y="97" width="190" height="7"/>
 <rect class="trackbg" x="270" y="97" width="190" height="7"/>
+<rect x="365.00" y="97.25" width="95.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr3.maternal:200905557-201405556_chr3_qarm 250000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="111" text-anchor="end">4</text>
 <rect class="trackbg" x="64" y="106" width="190" height="7"/>
+<rect x="64.00" y="106.25" width="22.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr4.maternal:6777-506776_chr4_parm 0-60000; chromosomes chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="270" y="106" width="190" height="7"/>
+<rect x="427.70" y="106.25" width="32.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr4.maternal:191881281-192381280_chr4_qarm 415000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="120" text-anchor="end">5</text>
 <rect class="trackbg" x="64" y="115" width="190" height="7"/>
 <rect class="trackbg" x="270" y="115" width="190" height="7"/>
+<rect x="385.90" y="115.25" width="74.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr5.maternal:183333449-183833448_chr5_qarm 305000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="129" text-anchor="end">6</text>
 <rect class="trackbg" x="64" y="124" width="190" height="7"/>
+<rect x="64.00" y="124.25" width="60.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr6.maternal:6947-506946_chr6_parm 0-160000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="270" y="124" width="190" height="7"/>
+<rect x="403.00" y="124.25" width="57.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr6.maternal:171365480-171865479_chr6_qarm 350000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="138" text-anchor="end">7</text>
 <rect class="trackbg" x="64" y="133" width="190" height="7"/>
+<rect x="64.00" y="133.25" width="66.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr7.maternal:8960-508959_chr7_parm 0-175000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="270" y="133" width="190" height="7"/>
+<rect x="444.80" y="133.25" width="15.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr7.maternal:159657678-160157677_chr7_qarm 460000-500000; chromosomes chr7,chr12; arms chr7q,chr12q</title></rect>
 <text class="label" x="53" y="147" text-anchor="end">8</text>
 <rect class="trackbg" x="64" y="142" width="190" height="7"/>
+<rect x="64.00" y="142.25" width="66.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr8.maternal:6750-506749_chr8_parm 0-175000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="270" y="142" width="190" height="7"/>
 <text class="label" x="53" y="156" text-anchor="end">9</text>
 <rect class="trackbg" x="64" y="151" width="190" height="7"/>
+<rect x="64.00" y="151.25" width="15.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr9.maternal:7315-507314_chr9_parm 0-40000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="270" y="151" width="190" height="7"/>
+<rect x="342.20" y="151.25" width="117.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr9.maternal:128564684-129064683_chr9_qarm 190000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10p,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="165" text-anchor="end">10</text>
 <rect class="trackbg" x="64" y="160" width="190" height="7"/>
+<rect x="64.00" y="160.25" width="26.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr10.maternal:9348-509347_chr10_parm 0-70000; chromosomes chr3,chr9,chr10,chr16,chr18; arms chr3q,chr9q,chr10p,chr16p,chr16q,chr18p</title></rect>
 <rect class="trackbg" x="270" y="160" width="190" height="7"/>
+<rect x="418.20" y="160.25" width="41.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr10.maternal:133869212-134369211_chr10_qarm 390000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="174" text-anchor="end">11</text>
 <rect class="trackbg" x="64" y="169" width="190" height="7"/>
+<rect x="64.00" y="169.25" width="68.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr11.maternal:8352-508351_chr11_parm 0-180000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="270" y="169" width="190" height="7"/>
 <text class="label" x="53" y="183" text-anchor="end">12</text>
 <rect class="trackbg" x="64" y="178" width="190" height="7"/>
+<rect x="64.00" y="178.25" width="26.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr12.maternal:6907-506906_chr12_parm 0-70000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="270" y="178" width="190" height="7"/>
+<rect x="450.50" y="178.25" width="9.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr12.maternal:134349107-134849106_chr12_qarm 475000-500000; chromosomes chr7,chr12; arms chr7q,chr12q</title></rect>
 <text class="label" x="53" y="192" text-anchor="end">13</text>
 <rect class="trackbg" x="64" y="187" width="190" height="7"/>
+<rect x="64.00" y="187.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr13.maternal:20449-520448_chr13_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="270" y="187" width="190" height="7"/>
+<rect x="456.20" y="187.25" width="3.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr13.maternal:108927643-109427642_chr13_qarm 490000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="201" text-anchor="end">14</text>
 <rect class="trackbg" x="64" y="196" width="190" height="7"/>
+<rect x="64.00" y="196.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr14.maternal:8164-508163_chr14_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="270" y="196" width="190" height="7"/>
 <text class="label" x="53" y="210" text-anchor="end">15</text>
 <rect class="trackbg" x="64" y="205" width="190" height="7"/>
+<rect x="64.00" y="205.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr15.maternal:8539-508538_chr15_parm 0-500000; chromosomes chr3,chr4,chrX,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="270" y="205" width="190" height="7"/>
+<rect x="414.40" y="205.25" width="45.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr15.maternal:97522747-98022746_chr15_qarm 380000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="219" text-anchor="end">16</text>
 <rect class="trackbg" x="64" y="214" width="190" height="7"/>
+<rect x="64.00" y="214.25" width="110.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr16.maternal:6061-506060_chr16_parm 0-290000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="270" y="214" width="190" height="7"/>
+<rect x="380.20" y="214.25" width="79.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr16.maternal:91085525-91585524_chr16_qarm 290000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="228" text-anchor="end">17</text>
 <rect class="trackbg" x="64" y="223" width="190" height="7"/>
+<rect x="64.00" y="223.25" width="19.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr17.maternal:6124-506123_chr17_parm 0-50000; chromosomes chr3,chr7,chr11,chr16,chr17; arms chr3q,chr7p,chr11p,chr16q,chr17p</title></rect>
 <rect class="trackbg" x="270" y="223" width="190" height="7"/>
+<rect x="441.00" y="223.25" width="19.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr17.maternal:83707668-84207667_chr17_qarm 450000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="237" text-anchor="end">18</text>
 <rect class="trackbg" x="64" y="232" width="190" height="7"/>
+<rect x="64.00" y="232.25" width="39.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr18.maternal:8300-508299_chr18_parm 0-105000; chromosomes chr3,chr4,chr9,chr10,chr16,chr18; arms chr3q,chr4q,chr9q,chr10p,chr10q,chr16p,chr16q,chr18p</title></rect>
 <rect class="trackbg" x="270" y="232" width="190" height="7"/>
 <text class="label" x="53" y="246" text-anchor="end">19</text>
 <rect class="trackbg" x="64" y="241" width="190" height="7"/>
+<rect x="64.00" y="241.25" width="70.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr19.maternal:8123-508122_chr19_parm 0-185000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="270" y="241" width="190" height="7"/>
+<rect x="450.50" y="241.25" width="9.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr19.maternal:62236944-62736943_chr19_qarm 475000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="255" text-anchor="end">20</text>
 <rect class="trackbg" x="64" y="250" width="190" height="7"/>
+<rect x="64.00" y="250.25" width="38.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr20.maternal:5260-505259_chr20_parm 0-100000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="270" y="250" width="190" height="7"/>
+<rect x="420.10" y="250.25" width="39.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr20.maternal:65722899-66222898_chr20_qarm 395000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="264" text-anchor="end">21</text>
 <rect class="trackbg" x="64" y="259" width="190" height="7"/>
+<rect x="64.00" y="259.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr21.maternal:9036-509035_chr21_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="270" y="259" width="190" height="7"/>
+<rect x="452.40" y="259.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr21.maternal:42884241-43384240_chr21_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="53" y="273" text-anchor="end">22</text>
 <rect class="trackbg" x="64" y="268" width="190" height="7"/>
+<rect x="64.00" y="268.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chr22.maternal:20449-520448_chr22_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="270" y="268" width="190" height="7"/>
 <text class="label" x="53" y="282" text-anchor="end">X</text>
 <rect class="trackbg" x="64" y="277" width="190" height="7"/>
+<rect x="64.00" y="277.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chrX.maternal:6852-506851_chrX_parm 0-500000; chromosomes chrX,chrY; arms chrXp,chrYp</title></rect>
 <rect class="trackbg" x="270" y="277" width="190" height="7"/>
+<rect x="334.60" y="277.25" width="125.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#1#chrX.maternal:153203966-153703965_chrX_qarm 170000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="53" y="291" text-anchor="end">Y</text>
 <rect class="trackbg" x="64" y="286" width="190" height="7"/>
 <rect class="trackbg" x="270" y="286" width="190" height="7"/>
@@ -459,73 +497,112 @@ text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font
 <text class="label" x="866" y="73">500 kb</text>
 <text class="label" x="487" y="84" text-anchor="end">1</text>
 <rect class="trackbg" x="498" y="79" width="190" height="7"/>
+<rect x="498.00" y="79.25" width="112.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr1.paternal:7355-507354_chr1_parm 0-295000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="704" y="79" width="190" height="7"/>
+<rect x="886.40" y="79.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr1.paternal:247262629-247762628_chr1_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="93" text-anchor="end">2</text>
 <rect class="trackbg" x="498" y="88" width="190" height="7"/>
 <rect class="trackbg" x="704" y="88" width="190" height="7"/>
+<rect x="848.40" y="88.25" width="45.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr2.paternal:243838763-244338762_chr2_qarm 380000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="102" text-anchor="end">3</text>
 <rect class="trackbg" x="498" y="97" width="190" height="7"/>
 <rect class="trackbg" x="704" y="97" width="190" height="7"/>
+<rect x="799.00" y="97.25" width="95.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr3.paternal:202048279-202548278_chr3_qarm 250000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="487" y="111" text-anchor="end">4</text>
 <rect class="trackbg" x="498" y="106" width="190" height="7"/>
+<rect x="498.00" y="106.25" width="22.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr4.paternal:7599-507598_chr4_parm 0-60000; chromosomes chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="704" y="106" width="190" height="7"/>
+<rect x="825.60" y="106.25" width="68.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr4.paternal:189940453-190440452_chr4_qarm 320000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="120" text-anchor="end">5</text>
 <rect class="trackbg" x="498" y="115" width="190" height="7"/>
 <rect class="trackbg" x="704" y="115" width="190" height="7"/>
+<rect x="823.70" y="115.25" width="70.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr5.paternal:181639593-182139592_chr5_qarm 315000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="487" y="129" text-anchor="end">6</text>
 <rect class="trackbg" x="498" y="124" width="190" height="7"/>
+<rect x="498.00" y="124.25" width="60.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr6.paternal:5024-505023_chr6_parm 0-160000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="704" y="124" width="190" height="7"/>
+<rect x="838.90" y="124.25" width="55.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr6.paternal:171506474-172006473_chr6_qarm 355000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="138" text-anchor="end">7</text>
 <rect class="trackbg" x="498" y="133" width="190" height="7"/>
+<rect x="498.00" y="133.25" width="66.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr7.paternal:13315-513314_chr7_parm 0-175000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="704" y="133" width="190" height="7"/>
+<rect x="876.90" y="133.25" width="17.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr7.paternal:160723269-161223268_chr7_qarm 455000-500000; chromosomes chr7,chr12; arms chr7q,chr12q</title></rect>
 <text class="label" x="487" y="147" text-anchor="end">8</text>
 <rect class="trackbg" x="498" y="142" width="190" height="7"/>
+<rect x="498.00" y="142.25" width="70.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr8.paternal:9323-509322_chr8_parm 0-185000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="704" y="142" width="190" height="7"/>
 <text class="label" x="487" y="156" text-anchor="end">9</text>
 <rect class="trackbg" x="498" y="151" width="190" height="7"/>
+<rect x="498.00" y="151.25" width="15.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr9.paternal:7076-507075_chr9_parm 0-40000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="704" y="151" width="190" height="7"/>
+<rect x="778.10" y="151.25" width="115.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr9.paternal:135704825-136204824_chr9_qarm 195000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="487" y="165" text-anchor="end">10</text>
 <rect class="trackbg" x="498" y="160" width="190" height="7"/>
+<rect x="498.00" y="160.25" width="26.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr10.paternal:9755-509754_chr10_parm 0-70000; chromosomes chr3,chr9,chr10,chr16,chr18; arms chr3q,chr9q,chr10p,chr16p,chr16q,chr18p</title></rect>
 <rect class="trackbg" x="704" y="160" width="190" height="7"/>
+<rect x="882.60" y="160.25" width="11.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr10.paternal:134004663-134504662_chr10_qarm 470000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="174" text-anchor="end">11</text>
 <rect class="trackbg" x="498" y="169" width="190" height="7"/>
+<rect x="498.00" y="169.25" width="85.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr11.paternal:6382-506381_chr11_parm 0-225000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="704" y="169" width="190" height="7"/>
 <text class="label" x="487" y="183" text-anchor="end">12</text>
 <rect class="trackbg" x="498" y="178" width="190" height="7"/>
+<rect x="498.00" y="178.25" width="26.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr12.paternal:5616-505615_chr12_parm 0-70000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="704" y="178" width="190" height="7"/>
+<rect x="888.30" y="178.25" width="5.70" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr12.paternal:132984822-133484821_chr12_qarm 485000-500000; chromosomes chr7,chr12; arms chr7q,chr12q</title></rect>
 <text class="label" x="487" y="192" text-anchor="end">13</text>
 <rect class="trackbg" x="498" y="187" width="190" height="7"/>
+<rect x="498.00" y="187.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr13.paternal:13308-513307_chr13_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="704" y="187" width="190" height="7"/>
+<rect x="890.20" y="187.25" width="3.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr13.paternal:106233122-106733121_chr13_qarm 490000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="201" text-anchor="end">14</text>
 <rect class="trackbg" x="498" y="196" width="190" height="7"/>
+<rect x="498.00" y="196.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr14.paternal:8756-508755_chr14_parm 0-500000; chromosomes chr3,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="704" y="196" width="190" height="7"/>
 <text class="label" x="487" y="210" text-anchor="end">15</text>
 <rect class="trackbg" x="498" y="205" width="190" height="7"/>
+<rect x="498.00" y="205.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr15.paternal:7719-507718_chr15_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="704" y="205" width="190" height="7"/>
+<rect x="848.40" y="205.25" width="45.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr15.paternal:98308884-98808883_chr15_qarm 380000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="487" y="219" text-anchor="end">16</text>
 <rect class="trackbg" x="498" y="214" width="190" height="7"/>
+<rect x="498.00" y="214.25" width="9.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr16.paternal:6547-506546_chr16_parm 0-25000; chromosomes chr1,chr2,chr3,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="704" y="214" width="190" height="7"/>
+<rect x="835.10" y="214.25" width="58.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr16.paternal:89997300-90497299_chr16_qarm 345000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10p,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="228" text-anchor="end">17</text>
 <rect class="trackbg" x="498" y="223" width="190" height="7"/>
+<rect x="498.00" y="223.25" width="17.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr17.paternal:7080-507079_chr17_parm 0-45000; chromosomes chr3,chr7,chr11,chr16,chr17; arms chr3q,chr7p,chr11p,chr16q,chr17p</title></rect>
 <rect class="trackbg" x="704" y="223" width="190" height="7"/>
+<rect x="876.90" y="223.25" width="17.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr17.paternal:83214113-83714112_chr17_qarm 455000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="237" text-anchor="end">18</text>
 <rect class="trackbg" x="498" y="232" width="190" height="7"/>
+<rect x="498.00" y="232.25" width="38.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr18.paternal:5975-505974_chr18_parm 0-100000; chromosomes chr3,chr4,chr9,chr10,chr16,chr18; arms chr3q,chr4q,chr9q,chr10p,chr10q,chr16p,chr16q,chr18p</title></rect>
 <rect class="trackbg" x="704" y="232" width="190" height="7"/>
 <text class="label" x="487" y="246" text-anchor="end">19</text>
 <rect class="trackbg" x="498" y="241" width="190" height="7"/>
+<rect x="498.00" y="241.25" width="70.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr19.paternal:6393-506392_chr19_parm 0-185000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="704" y="241" width="190" height="7"/>
+<rect x="886.40" y="241.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr19.paternal:63014847-63514846_chr19_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="255" text-anchor="end">20</text>
 <rect class="trackbg" x="498" y="250" width="190" height="7"/>
+<rect x="498.00" y="250.25" width="51.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr20.paternal:10044-510043_chr20_parm 0-135000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="704" y="250" width="190" height="7"/>
+<rect x="854.10" y="250.25" width="39.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr20.paternal:66011116-66511115_chr20_qarm 395000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="487" y="264" text-anchor="end">21</text>
 <rect class="trackbg" x="498" y="259" width="190" height="7"/>
+<rect x="498.00" y="259.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr21.paternal:11152-511151_chr21_parm 0-500000; chromosomes chr3,chr4,chrX,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="704" y="259" width="190" height="7"/>
+<rect x="886.40" y="259.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr21.paternal:43399012-43899011_chr21_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="273" text-anchor="end">22</text>
 <rect class="trackbg" x="498" y="268" width="190" height="7"/>
+<rect x="498.00" y="268.25" width="188.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr22.paternal:475-500474_chr22_parm 0-495000; chromosomes chr3,chr4,chrX,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="704" y="268" width="190" height="7"/>
+<rect x="886.40" y="268.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chr22.paternal:47875131-48375130_chr22_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="487" y="282" text-anchor="end">X</text>
 <rect class="trackbg" x="498" y="277" width="190" height="7"/>
+<rect x="498.00" y="277.25" width="45.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chrX.paternal:12265-512264_chrX_parm 0-120000; chromosomes chrX,chrY; arms chrXp,chrYp</title></rect>
 <rect class="trackbg" x="704" y="277" width="190" height="7"/>
+<rect x="768.60" y="277.25" width="125.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN027#2#chrX.paternal:153585261-154085260_chrX_qarm 170000-500000; chromosomes chr1,chr2,chr3,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr6p,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="487" y="291" text-anchor="end">Y</text>
 <rect class="trackbg" x="498" y="286" width="190" height="7"/>
 <rect class="trackbg" x="704" y="286" width="190" height="7"/>
@@ -904,73 +981,112 @@ text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font
 <text class="label" x="1300" y="73">500 kb</text>
 <text class="label" x="921" y="84" text-anchor="end">1</text>
 <rect class="trackbg" x="932" y="79" width="190" height="7"/>
+<rect x="932.00" y="79.25" width="114.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr1.haplotype1:11206-511205_chr1_parm 0-300000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="1138" y="79" width="190" height="7"/>
+<rect x="1322.30" y="79.25" width="5.70" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr1.haplotype1:250527221-251027220_chr1_qarm 485000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="93" text-anchor="end">2</text>
 <rect class="trackbg" x="932" y="88" width="190" height="7"/>
 <rect class="trackbg" x="1138" y="88" width="190" height="7"/>
+<rect x="1282.40" y="88.25" width="45.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr2.haplotype1:243867353-244367352_chr2_qarm 380000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="102" text-anchor="end">3</text>
 <rect class="trackbg" x="932" y="97" width="190" height="7"/>
 <rect class="trackbg" x="1138" y="97" width="190" height="7"/>
+<rect x="1227.30" y="97.25" width="100.70" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr3.haplotype1:199233840-199733839_chr3_qarm 235000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="921" y="111" text-anchor="end">4</text>
 <rect class="trackbg" x="932" y="106" width="190" height="7"/>
+<rect x="932.00" y="106.25" width="22.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr4.haplotype1:7519-507518_chr4_parm 0-60000; chromosomes chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="1138" y="106" width="190" height="7"/>
+<rect x="1316.60" y="106.25" width="11.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr4.haplotype1:192785530-193285529_chr4_qarm 470000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="120" text-anchor="end">5</text>
 <rect class="trackbg" x="932" y="115" width="190" height="7"/>
 <rect class="trackbg" x="1138" y="115" width="190" height="7"/>
+<rect x="1253.90" y="115.25" width="74.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr5.haplotype1:182609881-183109880_chr5_qarm 305000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="921" y="129" text-anchor="end">6</text>
 <rect class="trackbg" x="932" y="124" width="190" height="7"/>
+<rect x="932.00" y="124.25" width="60.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr6.haplotype1:7138-507137_chr6_parm 0-160000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="1138" y="124" width="190" height="7"/>
+<rect x="1271.00" y="124.25" width="57.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr6.haplotype1:171375196-171875195_chr6_qarm 350000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="138" text-anchor="end">7</text>
 <rect class="trackbg" x="932" y="133" width="190" height="7"/>
+<rect x="932.00" y="133.25" width="68.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr7.haplotype1:8883-508882_chr7_parm 0-180000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="1138" y="133" width="190" height="7"/>
+<rect x="1326.10" y="133.25" width="1.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr7.haplotype1:160528574-161028573_chr7_qarm 495000-500000; chromosomes chr2,chr4,chr5,chr7,chr9,chr10,chr16,chr17,chr19,chr20; arms chr2q,chr4q,chr5q,chr7p,chr7q,chr9q,chr10q,chr16q,chr17q,chr19q,chr20p</title></rect>
 <text class="label" x="921" y="147" text-anchor="end">8</text>
 <rect class="trackbg" x="932" y="142" width="190" height="7"/>
+<rect x="932.00" y="142.25" width="70.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr8.haplotype1:7184-507183_chr8_parm 0-185000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="1138" y="142" width="190" height="7"/>
 <text class="label" x="921" y="156" text-anchor="end">9</text>
 <rect class="trackbg" x="932" y="151" width="190" height="7"/>
+<rect x="932.00" y="151.25" width="15.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr9.haplotype1:5529-505528_chr9_parm 0-40000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="1138" y="151" width="190" height="7"/>
+<rect x="1212.10" y="151.25" width="115.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr9.haplotype1:134380985-134880984_chr9_qarm 195000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="921" y="165" text-anchor="end">10</text>
 <rect class="trackbg" x="932" y="160" width="190" height="7"/>
+<rect x="932.00" y="160.25" width="26.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr10.haplotype1:7165-507164_chr10_parm 0-70000; chromosomes chr3,chr9,chr10,chr16,chr18; arms chr3q,chr9q,chr10p,chr16p,chr16q,chr18p</title></rect>
 <rect class="trackbg" x="1138" y="160" width="190" height="7"/>
+<rect x="1293.80" y="160.25" width="34.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr10.haplotype1:133851247-134351246_chr10_qarm 410000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="174" text-anchor="end">11</text>
 <rect class="trackbg" x="932" y="169" width="190" height="7"/>
+<rect x="932.00" y="169.25" width="68.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr11.haplotype1:5130-505129_chr11_parm 0-180000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="1138" y="169" width="190" height="7"/>
 <text class="label" x="921" y="183" text-anchor="end">12</text>
 <rect class="trackbg" x="932" y="178" width="190" height="7"/>
+<rect x="932.00" y="178.25" width="26.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr12.haplotype1:8322-508321_chr12_parm 0-70000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="1138" y="178" width="190" height="7"/>
+<rect x="1318.50" y="178.25" width="9.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr12.haplotype1:133041907-133541906_chr12_qarm 475000-500000; chromosomes chr7,chr12; arms chr7q,chr12q</title></rect>
 <text class="label" x="921" y="192" text-anchor="end">13</text>
 <rect class="trackbg" x="932" y="187" width="190" height="7"/>
+<rect x="932.00" y="187.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr13.haplotype1:17216-517215_chr13_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="1138" y="187" width="190" height="7"/>
+<rect x="1324.20" y="187.25" width="3.80" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr13.haplotype1:109505590-110005589_chr13_qarm 490000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="201" text-anchor="end">14</text>
 <rect class="trackbg" x="932" y="196" width="190" height="7"/>
+<rect x="932.00" y="196.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr14.haplotype1:14953-514952_chr14_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="1138" y="196" width="190" height="7"/>
 <text class="label" x="921" y="210" text-anchor="end">15</text>
 <rect class="trackbg" x="932" y="205" width="190" height="7"/>
+<rect x="932.00" y="205.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr15.haplotype1:13057-513056_chr15_parm 0-500000; chromosomes chr3,chr4,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="1138" y="205" width="190" height="7"/>
+<rect x="1280.50" y="205.25" width="47.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr15.haplotype1:92623498-93123497_chr15_qarm 375000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chr11,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr11p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="921" y="219" text-anchor="end">16</text>
 <rect class="trackbg" x="932" y="214" width="190" height="7"/>
+<rect x="932.00" y="214.25" width="110.20" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr16.haplotype1:6112-506111_chr16_parm 0-290000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr18,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10p,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr18p,chr19p,chr20p,chr20q</title></rect>
 <rect class="trackbg" x="1138" y="214" width="190" height="7"/>
+<rect x="1269.10" y="214.25" width="58.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr16.haplotype1:90129727-90629726_chr16_qarm 345000-500000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10p,chr10q,chr11p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr18p,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="228" text-anchor="end">17</text>
 <rect class="trackbg" x="932" y="223" width="190" height="7"/>
+<rect x="932.00" y="223.25" width="17.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr17.haplotype1:7941-507940_chr17_parm 0-45000; chromosomes chr3,chr7,chr11,chr16,chr17; arms chr3q,chr7p,chr11p,chr16q,chr17p</title></rect>
 <rect class="trackbg" x="1138" y="223" width="190" height="7"/>
+<rect x="1310.90" y="223.25" width="17.10" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr17.haplotype1:83700572-84200571_chr17_qarm 455000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="237" text-anchor="end">18</text>
 <rect class="trackbg" x="932" y="232" width="190" height="7"/>
+<rect x="932.00" y="232.25" width="38.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr18.haplotype1:4984-504983_chr18_parm 0-100000; chromosomes chr3,chr4,chr9,chr10,chr16,chr18; arms chr3q,chr4q,chr9q,chr10p,chr10q,chr16p,chr16q,chr18p</title></rect>
 <rect class="trackbg" x="1138" y="232" width="190" height="7"/>
 <text class="label" x="921" y="246" text-anchor="end">19</text>
 <rect class="trackbg" x="932" y="241" width="190" height="7"/>
+<rect x="932.00" y="241.25" width="70.30" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr19.haplotype1:7354-507353_chr19_parm 0-185000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="1138" y="241" width="190" height="7"/>
+<rect x="1318.50" y="241.25" width="9.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr19.haplotype1:62777277-63277276_chr19_qarm 475000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr7q,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="255" text-anchor="end">20</text>
 <rect class="trackbg" x="932" y="250" width="190" height="7"/>
+<rect x="932.00" y="250.25" width="38.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr20.haplotype1:5026-505025_chr20_parm 0-100000; chromosomes chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr3q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr10q,chr11p,chr12p,chr13q,chr14p,chr15q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <rect class="trackbg" x="1138" y="250" width="190" height="7"/>
+<rect x="1288.10" y="250.25" width="39.90" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr20.haplotype1:65707281-66207280_chr20_qarm 395000-500000; chromosomes chr1,chr2,chr3,chr5,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr17,chr19,chr20; arms chr1p,chr2q,chr3q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr17p,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="921" y="264" text-anchor="end">21</text>
 <rect class="trackbg" x="932" y="259" width="190" height="7"/>
+<rect x="932.00" y="259.25" width="106.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr21.haplotype1:13185-513184_chr21_parm 0-280000; chromosomes chr3,chr4,chrX,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="1138" y="259" width="190" height="7"/>
+<rect x="1320.40" y="259.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr21.haplotype1:44936888-45436887_chr21_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="273" text-anchor="end">22</text>
 <rect class="trackbg" x="932" y="268" width="190" height="7"/>
+<rect x="932.00" y="268.25" width="161.50" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr22.haplotype1:18334-518333_chr22_parm 0-425000; chromosomes chr3,chr4,chrX,chr10,chr13,chr14,chr15,chr21,chr22; arms chr3q,chr4p,chr4q,chrXq,chr10q,chr13p,chr14p,chr15p,chr21p,chr22p</title></rect>
 <rect class="trackbg" x="1138" y="268" width="190" height="7"/>
+<rect x="1320.40" y="268.25" width="7.60" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chr22.haplotype1:48983704-49483703_chr22_qarm 480000-500000; chromosomes chr1,chr2,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr13,chr14,chr16,chr17,chr19,chr20,chr21,chr22; arms chr1p,chr1q,chr2q,chr4q,chr5q,chr6p,chr6q,chr7p,chr8p,chr9p,chr9q,chr10q,chr11p,chr13q,chr14p,chr16p,chr16q,chr17p,chr17q,chr19p,chr19q,chr20p,chr20q,chr21q,chr22q</title></rect>
 <text class="label" x="921" y="282" text-anchor="end">X</text>
 <rect class="trackbg" x="932" y="277" width="190" height="7"/>
+<rect x="932.00" y="277.25" width="190.00" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chrX.haplotype1:9405-509404_chrX_parm 0-500000; chromosomes chrX,chrY; arms chrXp,chrYp</title></rect>
 <rect class="trackbg" x="1138" y="277" width="190" height="7"/>
+<rect x="1202.60" y="277.25" width="125.40" height="1.55" fill="#287f8f" opacity=".82"><title>PHR span PAN028#1#chrX.haplotype1:153577550-154077549_chrX_qarm 170000-500000; chromosomes chr1,chr2,chr3,chr6,chr7,chr8,chr9,chrX,chrY,chr11,chr12,chr15,chr16,chr19,chr20; arms chr1p,chr2q,chr3q,chr6p,chr7p,chr8p,chr9p,chr9q,chrXq,chrYq,chr11p,chr12p,chr15q,chr16p,chr16q,chr19p,chr20p,chr20q</title></rect>
 <text class="label" x="921" y="291" text-anchor="end">Y</text>
 <rect class="trackbg" x="932" y="286" width="190" height="7"/>
 <rect class="trackbg" x="1138" y="286" width="190" height="7"/>
@@ -1746,5 +1862,7 @@ text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font
 <text class="small" x="253" y="331">same chromosome, off-arm</text>
 <rect x="400" y="324" width="16" height="8" fill="#b3345b" stroke="#6f1d46" stroke-width=".5"/>
 <text class="small" x="421" y="331">inter-chromosomal candidate</text>
+<rect x="568" y="324" width="16" height="8" fill="#287f8f" stroke="#287f8f" stroke-width=".5"/>
+<text class="small" x="589" y="331">PHR span</text>
 <text class="small" x="64" y="367">Inspection output only. This redraw does not replace submission/fig/MainFigures/Fig5_pedigree_untangle.pdf or edit the manuscript.</text>
 </svg>

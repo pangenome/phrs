@@ -32,6 +32,7 @@ NATIVE_DIR = Path("/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_slurm"
 EXTERNAL_DIR = Path("/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_sweepga_1to1_noscaffold")
 OUT_DIR = REPO_ROOT / "paper_prep" / "_brainstorming" / "fig5_sweepga_1to1_redraw"
 SWEEPGA = Path("/moosefs/erikg/sweepga/target/release/sweepga")
+PHR_INTERVALS = Path("/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv")
 
 PAIR_INFO = {
     "PAN027_vs_PAN010": {
@@ -61,8 +62,19 @@ ARM_ORDER = [f"chr{i}{arm}" for i in range(1, 23) for arm in ("p", "q")] + [
     "chrYq",
 ]
 CHROM_ORDER = [f"chr{i}" for i in range(1, 23)] + ["chrX", "chrY"]
+PLOT_CHROMS = [f"chr{i}" for i in range(1, 23)] + ["chrX"]
 PATH_RE = re.compile(r"^(PAN\d+)#([12])#.*:(\d+)-(\d+)_(chr(?:[0-9]+|X|Y))_([pq])arm$")
 TAG_RE = re.compile(r"^([A-Za-z][A-Za-z0-9]):[A-Za-z]:(.*)$")
+INTERCHR_PALETTE = {
+    "chr10p": "#e73535",
+    "chr13p": "#f05a28",
+    "chr15p": "#3f4bad",
+    "chr15q": "#c8d431",
+    "chr19p": "#2e91d6",
+    "chr21p": "#ff8a66",
+    "chr22p": "#a88f86",
+    "chr9q": "#008a78",
+}
 
 
 @dataclass(frozen=True)
@@ -92,6 +104,15 @@ class Segment:
     @property
     def interchromosomal(self) -> bool:
         return chrom_of(self.qarm) != chrom_of(self.target_arm)
+
+
+@dataclass(frozen=True)
+class PhrInterval:
+    qname: str
+    start: int
+    end: int
+    chrs_involved: str
+    arms_involved: str
 
 
 class PdfWriter:
@@ -169,6 +190,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--external-dir", type=Path, default=EXTERNAL_DIR)
     parser.add_argument("--out-dir", type=Path, default=OUT_DIR)
     parser.add_argument("--sweepga", type=Path, default=SWEEPGA)
+    parser.add_argument("--phr-intervals", type=Path, default=PHR_INTERVALS)
     parser.add_argument("--force", action="store_true", help="Regenerate external sweepGA PAF outputs even if present")
     parser.add_argument("--skip-sweepga", action="store_true", help="Use existing external PAF outputs only")
     return parser.parse_args()
@@ -268,6 +290,38 @@ def read_paf(path: Path, pair: str, require_nb1: bool = False) -> List[Segment]:
                 )
             )
     return rows
+
+
+def load_phr_intervals(path: Path, query_names: set[str]) -> Dict[str, List[PhrInterval]]:
+    if not path.exists():
+        raise FileNotFoundError(path)
+    intervals: Dict[str, List[PhrInterval]] = {name: [] for name in query_names}
+    with path.open() as fh:
+        reader = csv.DictReader(fh, delimiter="\t")
+        required = {"seq", "region_start", "region_end", "chrs_involved", "arms_involved"}
+        missing = required.difference(reader.fieldnames or [])
+        if missing:
+            raise RuntimeError(f"PHR interval table missing columns: {', '.join(sorted(missing))}")
+        for row in reader:
+            qname = row["seq"]
+            if qname not in query_names:
+                continue
+            if row["region_start"] == "." or row["region_end"] == ".":
+                continue
+            start = int(row["region_start"])
+            end = int(row["region_end"])
+            if end <= start:
+                continue
+            intervals[qname].append(
+                PhrInterval(
+                    qname=qname,
+                    start=max(0, start),
+                    end=min(500000, end),
+                    chrs_involved=row["chrs_involved"],
+                    arms_involved=row["arms_involved"],
+                )
+            )
+    return intervals
 
 
 def native_paf_path(native_dir: Path, pair: str) -> Path:
@@ -448,6 +502,19 @@ def mapping_style(row: Segment) -> Tuple[str, str, float, str]:
     return "#b3345b", "#6f1d46", 0.93, "inter-chromosomal candidate mapping"
 
 
+def submitted_style(row: Segment) -> Tuple[str, str, float, str]:
+    if chrom_of(row.target_arm) == chrom_of(row.qarm):
+        return "#bfbfbf", "#333333", 0.95, "same chromosome"
+    fill = INTERCHR_PALETTE.get(row.target_arm, "#d95f02")
+    return fill, "#222222", 0.96, "inter-chromosomal"
+
+
+def target_lane(row: Segment) -> int:
+    if row.target_hap.endswith("#2"):
+        return 1
+    return 0
+
+
 def pdf_color(hex_color: str) -> str:
     hex_color = hex_color.lstrip("#")
     r = int(hex_color[0:2], 16) / 255
@@ -518,13 +585,18 @@ def validate_drawn_rectangles(rectangles: Sequence[DrawnRect], tolerance: float 
         raise RuntimeError(f"off-panel rectangle geometry: {len(off_panel)} rectangles; {examples}")
 
 
-def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) -> List[DrawnRect]:
+def render(
+    outputs: Dict[str, List[Segment]],
+    phr_intervals: Dict[str, List[PhrInterval]],
+    svg_path: Path,
+    pdf_path: Path,
+) -> List[DrawnRect]:
     left, top, track_w, row_h, pair_gap, arm_gap = panel_geometry()
     panel_w = track_w * 2 + arm_gap
     height = top + len(CHROM_ORDER) * row_h + 100
     width = left + len(PAIR_INFO) * panel_w + (len(PAIR_INFO) - 1) * pair_gap + 44
     title = "Fig. 5-style inspection redraw: conservative native PAF nb:i:1 -> sweepGA 1:1, no scaffold"
-    subtitle = "Rows are child/query chromosome ends; p-arm tracks are left and q-arm tracks right. Query scale is the 500 kb flank span parsed from path names, not odgi PAF column 2."
+    subtitle = "Rows are child/query chromosome ends; p-arm tracks are left and q-arm tracks right. Teal bars mark PHR spans from the WashU all-vs-all p95/id95 table."
     rectangles: List[DrawnRect] = []
 
     svg: List[str] = [
@@ -559,6 +631,20 @@ def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) ->
                 tx = x0 + side * (track_w + arm_gap)
                 svg.append(f'<rect class="trackbg" x="{tx}" y="{y + 1}" width="{track_w}" height="{row_h - 2}"/>')
                 pdf.rect(tx, y + 1, track_w, row_h - 2, fill="#f2f2f2", stroke="#e1e1e1", sw=0.2)
+                qname = qname_for_track(outputs[pair], chrom, arm_suffix)
+                if qname:
+                    for phr in phr_intervals.get(qname, []):
+                        start = max(0, min(phr.start, 500000))
+                        end = max(0, min(phr.end, 500000))
+                        if end <= start:
+                            continue
+                        px = tx + (start / 500000) * track_w
+                        pw = ((end - start) / 500000) * track_w
+                        svg.append(
+                            f'<rect x="{px:.2f}" y="{y + 1.25:.2f}" width="{pw:.2f}" height="1.55" fill="#287f8f" opacity=".82">'
+                            f'<title>PHR span {html.escape(qname)} {start}-{end}; chromosomes {html.escape(phr.chrs_involved)}; arms {html.escape(phr.arms_involved)}</title></rect>'
+                        )
+                        pdf.rect(px, y + 1.25, pw, 1.55, fill="#287f8f")
         for row in outputs[pair]:
             chrom = chrom_of(row.qarm)
             if chrom not in CHROM_ORDER:
@@ -588,6 +674,7 @@ def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) ->
         ("#cfcfcf", "#9a9a9a", "same-arm/background"),
         ("#b9b1a6", "#8d8378", "same chromosome, off-arm"),
         ("#b3345b", "#6f1d46", "inter-chromosomal candidate"),
+        ("#287f8f", "#287f8f", "PHR span"),
     ]
     lx = left
     for fill, stroke, label in legend_items:
@@ -605,6 +692,173 @@ def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) ->
     return rectangles
 
 
+def qname_for_track(rows: Sequence[Segment], chrom: str, arm_suffix: str) -> str | None:
+    qarm = f"{chrom}{arm_suffix}"
+    for row in rows:
+        if row.qarm == qarm:
+            return row.qname
+    return None
+
+
+def submitted_style_render_pair(
+    pair: str,
+    rows: Sequence[Segment],
+    phr_intervals: Dict[str, List[PhrInterval]],
+    svg_path: Path,
+    pdf_path: Path,
+) -> List[DrawnRect]:
+    left = 55
+    top = 78
+    track_w = 560
+    track_h = 34
+    row_gap = 6
+    col_gap = 88
+    label_w = 42
+    lane_h = 10.5
+    lane_gap = 2.5
+    phr_h = 4.0
+    col_w = label_w + track_w
+    width = left + 2 * col_w + col_gap + 40
+    height = top + len(PLOT_CHROMS) * (track_h + row_gap) + 58
+    rectangles: List[DrawnRect] = []
+    by_arm = {(row.qarm, row.qname) for row in rows}
+    rows_by_arm: Dict[str, List[Segment]] = {}
+    for row in rows:
+        rows_by_arm.setdefault(row.qarm, []).append(row)
+    title = f"{PAIR_INFO[pair]['label']} - conservative sweepGA 1:1, submitted-style view"
+    subtitle = "h1/h2 = parent haplotypes | gray = same chromosome | color = non-homologous chromosome | purple = PHR"
+
+    svg: List[str] = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        "<style>",
+        "text{font-family:Arial,Helvetica,sans-serif;fill:#222}.title{font-size:16px;font-weight:700}.small{font-size:9px;fill:#777}.arm{font-size:14px;font-weight:700}.chr{font-size:9px;font-weight:700}.lane{font-size:9px;font-weight:700}.tick{font-size:8px;fill:#666}.label{font-size:8px;font-weight:700}.track{fill:#ffffff;stroke:#222;stroke-width:.8}.nophr{fill:#f7dddd;opacity:.55}.grid{stroke:#e4e4e4;stroke-width:.55}.seg{stroke:#222;stroke-width:.22}.phr{fill:#7e1fa2;opacity:.92}",
+        "</style>",
+        f'<text class="title" x="{width / 2:.1f}" y="23" text-anchor="middle">{html.escape(title)}</text>',
+        f'<text class="small" x="{width / 2:.1f}" y="42" text-anchor="middle">{html.escape(subtitle)}</text>',
+    ]
+    pdf = PdfWriter(width, height)
+    pdf.text(width / 2 - len(title) * 2.2, 23, title, 12)
+    pdf.text(width / 2 - len(subtitle) * 1.7, 42, subtitle, 7)
+
+    for col, arm_suffix in enumerate(("p", "q")):
+        col_x = left + col * (col_w + col_gap)
+        tx0 = col_x + label_w
+        svg.append(f'<text class="arm" x="{tx0 + track_w / 2:.1f}" y="{top - 15}" text-anchor="middle">{arm_suffix}-arm</text>')
+        pdf.text(tx0 + track_w / 2 - 16, top - 15, f"{arm_suffix}-arm", 10)
+        for chrom_idx, chrom in enumerate(PLOT_CHROMS):
+            y = top + chrom_idx * (track_h + row_gap)
+            qarm = f"{chrom}{arm_suffix}"
+            qname = qname_for_track(rows, chrom, arm_suffix)
+            has_phr = bool(qname and phr_intervals.get(qname))
+            svg.append(f'<rect x="{col_x}" y="{y + 4}" width="{label_w - 7}" height="{track_h - 8}" fill="#e6e6e6" stroke="#777" stroke-width=".7"/>')
+            svg.append(f'<text class="chr" x="{col_x + label_w - 12}" y="{y + track_h / 2 + 3}" text-anchor="end">{html.escape(chrom)}</text>')
+            pdf.rect(col_x, y + 4, label_w - 7, track_h - 8, fill="#e6e6e6", stroke="#777777", sw=0.5)
+            pdf.text(col_x + 5, y + track_h / 2 + 3, chrom, 6)
+            svg.append(f'<rect class="track" x="{tx0}" y="{y}" width="{track_w}" height="{track_h}"/>')
+            pdf.rect(tx0, y, track_w, track_h, fill="#ffffff", stroke="#222222", sw=0.55)
+            if not has_phr:
+                svg.append(f'<rect class="nophr" x="{tx0}" y="{y}" width="{track_w}" height="{track_h}"/>')
+                pdf.rect(tx0, y, track_w, track_h, fill="#f7dddd")
+            for tick in range(0, 501, 100):
+                x = tx0 + (tick / 500) * track_w
+                svg.append(f'<line class="grid" x1="{x:.2f}" y1="{y}" x2="{x:.2f}" y2="{y + track_h}"/>')
+                pdf.line(x, y, x, y + track_h, stroke="#e4e4e4", sw=0.2)
+            for lane, label in enumerate(("h1", "h2")):
+                ly = y + 4 + lane * (lane_h + lane_gap)
+                svg.append(f'<text class="lane" x="{tx0 - 8}" y="{ly + 8}" text-anchor="end">{label}</text>')
+                svg.append(f'<line class="grid" x1="{tx0}" y1="{ly + lane_h + 1}" x2="{tx0 + track_w}" y2="{ly + lane_h + 1}"/>')
+                pdf.text(tx0 - 16, ly + 8, label, 6)
+                pdf.line(tx0, ly + lane_h + 1, tx0 + track_w, ly + lane_h + 1, stroke="#e9e9e9", sw=0.2)
+            for phr in phr_intervals.get(qname or "", []):
+                start = max(0, min(phr.start, 500000))
+                end = max(0, min(phr.end, 500000))
+                if end <= start:
+                    continue
+                px = tx0 + (start / 500000) * track_w
+                pw = ((end - start) / 500000) * track_w
+                py = y + track_h - phr_h - 2
+                svg.append(
+                    f'<rect class="phr" x="{px:.2f}" y="{py:.2f}" width="{pw:.2f}" height="{phr_h:.2f}">'
+                    f'<title>PHR {html.escape(qname or qarm)} {start}-{end}; arms {html.escape(phr.arms_involved)}</title></rect>'
+                )
+                pdf.rect(px, py, pw, phr_h, fill="#7e1fa2")
+
+            for row in rows_by_arm.get(qarm, []):
+                lane = target_lane(row)
+                ly = y + 4 + lane * (lane_h + lane_gap)
+                x, w = clip_to_track(row, tx0, track_w)
+                if w <= 0:
+                    continue
+                fill, stroke, opacity, category = submitted_style(row)
+                rectangles.append(DrawnRect(pair, row.qarm, x, w, tx0, tx0 + track_w))
+                svg.append(
+                    f'<rect class="seg" x="{x:.2f}" y="{ly:.2f}" width="{w:.2f}" height="{lane_h:.2f}" fill="{fill}" opacity="{opacity}">'
+                    f'<title>{html.escape(row.qarm)} {row.qstart}-{row.qend} -> {html.escape(row.target_hap)}:{html.escape(row.target_arm)}; {category}; id={row.identity:.4g}</title></rect>'
+                )
+                pdf.rect(x, ly, w, lane_h, fill=fill, stroke=stroke, sw=0.15)
+                if row.interchromosomal and (row.length >= 4500 or row.target_arm == "chr15q"):
+                    label = row.target_arm[3:]
+                    lx = min(max(x + w / 2 - 8, tx0), tx0 + track_w - 20)
+                    ly_label = ly - 1
+                    svg.append(f'<rect x="{lx - 1:.2f}" y="{ly_label - 8:.2f}" width="{len(label) * 5 + 5}" height="10" fill="#ffffcc" stroke="#444" stroke-width=".4"/>')
+                    svg.append(f'<text class="label" x="{lx + 1:.2f}" y="{ly_label:.2f}">{html.escape(label)}</text>')
+                    pdf.rect(lx - 1, ly_label - 8, len(label) * 5 + 5, 10, fill="#ffffcc", stroke="#444444", sw=0.2)
+                    pdf.text(lx + 1, ly_label, label, 6)
+
+        axis_y = top + len(PLOT_CHROMS) * (track_h + row_gap) - row_gap + 17
+        for tick in range(0, 501, 100):
+            x = tx0 + (tick / 500) * track_w
+            svg.append(f'<text class="tick" x="{x:.2f}" y="{axis_y}" text-anchor="middle">{tick}</text>')
+            pdf.text(x - 5, axis_y, str(tick), 6)
+        svg.append(f'<text class="tick" x="{tx0 + track_w / 2:.2f}" y="{axis_y + 14}" text-anchor="middle">Position (kb)</text>')
+        pdf.text(tx0 + track_w / 2 - 25, axis_y + 14, "Position (kb)", 7)
+
+    legend_y = height - 20
+    lx = left + 55
+    legend = [
+        ("chr10p", INTERCHR_PALETTE["chr10p"]),
+        ("chr13p", INTERCHR_PALETTE["chr13p"]),
+        ("chr15p", INTERCHR_PALETTE["chr15p"]),
+        ("chr15q", INTERCHR_PALETTE["chr15q"]),
+        ("chr19p", INTERCHR_PALETTE["chr19p"]),
+        ("chr21p", INTERCHR_PALETTE["chr21p"]),
+        ("chr22p", INTERCHR_PALETTE["chr22p"]),
+        ("chr9q", INTERCHR_PALETTE["chr9q"]),
+        ("same chr", "#bfbfbf"),
+        ("PHR", "#7e1fa2"),
+    ]
+    for label, color in legend:
+        svg.append(f'<rect x="{lx}" y="{legend_y - 9}" width="52" height="10" fill="{color}" stroke="#222" stroke-width=".45"/>')
+        svg.append(f'<text class="label" x="{lx + 26}" y="{legend_y - 12}" text-anchor="middle">{html.escape(label[3:] if label.startswith("chr") else label)}</text>')
+        pdf.rect(lx, legend_y - 9, 52, 10, fill=color, stroke="#222222", sw=0.2)
+        pdf.text(lx + 16, legend_y - 12, label[3:] if label.startswith("chr") else label, 6)
+        lx += 78
+    svg.append("</svg>")
+    validate_drawn_rectangles(rectangles)
+    svg_path.write_text("\n".join(svg) + "\n")
+    pdf.write(pdf_path)
+    return rectangles
+
+
+def render_submitted_style_outputs(
+    outputs: Dict[str, List[Segment]],
+    phr_intervals: Dict[str, List[PhrInterval]],
+    out_dir: Path,
+) -> List[DrawnRect]:
+    rectangles: List[DrawnRect] = []
+    for pair, rows in outputs.items():
+        rectangles.extend(
+            submitted_style_render_pair(
+                pair,
+                rows,
+                phr_intervals,
+                out_dir / f"fig5_sweepga_1to1_submitted_style_{pair}.svg",
+                out_dir / f"fig5_sweepga_1to1_submitted_style_{pair}.pdf",
+            )
+        )
+    return rectangles
+
+
 def write_tsv(path: Path, rows: Sequence[dict], fields: Sequence[str]) -> None:
     with path.open("w", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n")
@@ -613,7 +867,7 @@ def write_tsv(path: Path, rows: Sequence[dict], fields: Sequence[str]) -> None:
             writer.writerow(row)
 
 
-def write_readme(out_dir: Path, summary_rows: Sequence[dict]) -> None:
+def write_readme(out_dir: Path, summary_rows: Sequence[dict], phr_interval_path: Path) -> None:
     counts = {(r["pair"], r["stage"]): r for r in summary_rows}
     lines = [
         "# Fig5 sweepGA 1:1 inspection redraw",
@@ -652,13 +906,19 @@ def write_readme(out_dir: Path, summary_rows: Sequence[dict]) -> None:
             "",
             "## Files",
             "",
-            "- `fig5_sweepga_1to1_redraw.svg` and `fig5_sweepga_1to1_redraw.pdf`: compact author-facing redraw.",
+            "- `fig5_sweepga_1to1_redraw.svg` and `fig5_sweepga_1to1_redraw.pdf`: compact author-facing redraw with teal PHR-span overlays.",
+            "- `fig5_sweepga_1to1_submitted_style_<PAIR>.svg` and `.pdf`: sweepGA-filtered data rendered in the same p-arm/q-arm, h1/h2-track format as the raw `odgi untangle` figure.",
             "- `summary_counts.tsv`: row counts, `nb` values, inter-chromosomal row counts, source paths, and exact command/filter per stage.",
             "- `conservative_segments.tsv`: compact plotted segment table after coalescing adjacent same-target rows.",
-            "- `validation_report.tsv`: coordinate, `nb`, query-length, and SVG/PDF rectangle-bound checks from the last regeneration.",
-            "",
-            "## Coordinate correction",
-            "",
+            "- `phr_intervals.tsv`: PHR spans plotted on the child/query 500 kb tracks.",
+        "- `validation_report.tsv`: coordinate, `nb`, query-length, and SVG/PDF rectangle-bound checks from the last regeneration.",
+        "",
+        "## PHR overlay",
+        "",
+        f"PHR spans are read from `{phr_interval_path}`. Coordinates are already in the 0-500 kb flank coordinate system used by the child/query tracks. Rows with `.` region coordinates are treated as no plotted PHR span.",
+        "",
+        "## Coordinate correction",
+        "",
             "The superseded first redraw incorrectly used PAF column 2 (`fields[1]`) as the full plotting denominator. In these odgi PAFs that field can be 41,248 even when `qstart`/`qend` span hundreds of kilobases, which created invalid coalesced rows and off-panel SVG rectangles.",
             "",
             "The corrected redraw derives `query_length` from the child/query path name interval, for example `PAN027#1#chr3.maternal:9503-509502_chr3_parm` gives 500,000 bp. The raw PAF column 2 value is retained only as `paf_query_length` for audit. Rows with invalid child/query coordinates are dropped before coalescing, and rendering validates that all rectangles stay within their p/q-arm track bounds.",
@@ -673,9 +933,21 @@ def write_readme(out_dir: Path, summary_rows: Sequence[dict]) -> None:
     (out_dir / "README.md").write_text("\n".join(lines) + "\n")
 
 
-def validation_report(outputs: Dict[str, List[Segment]], rectangles: Sequence[DrawnRect]) -> List[dict]:
+def validation_report(
+    outputs: Dict[str, List[Segment]],
+    rectangles: Sequence[DrawnRect],
+    phr_intervals: Dict[str, List[PhrInterval]],
+    submitted_style_rectangles: Sequence[DrawnRect],
+) -> List[dict]:
     rows = [row for pair_rows in outputs.values() for row in pair_rows]
+    query_names = {row.qname for row in rows}
     invalid_coordinates = sum(1 for row in rows if row.qstart < 0 or row.qend <= row.qstart or row.qend > row.qlen)
+    invalid_phrs = sum(
+        1
+        for intervals in phr_intervals.values()
+        for interval in intervals
+        if interval.start < 0 or interval.end <= interval.start or interval.end > 500000
+    )
     off_panel = sum(
         1
         for rect in rectangles
@@ -690,8 +962,12 @@ def validation_report(outputs: Dict[str, List[Segment]], rectangles: Sequence[Dr
         {"check": "query_lengths", "value": query_lengths, "status": "PASS" if query_lengths == "500000" else "FAIL"},
         {"check": "raw_paf_query_lengths_audit", "value": paf_query_lengths, "status": "PASS"},
         {"check": "nb_values", "value": nb_values, "status": "PASS" if nb_values == "1" else "FAIL"},
+        {"check": "query_names_with_phr_rows", "value": str(sum(1 for name in query_names if phr_intervals.get(name))), "status": "PASS"},
+        {"check": "plotted_phr_intervals", "value": str(sum(len(v) for v in phr_intervals.values())), "status": "PASS"},
+        {"check": "invalid_phr_intervals", "value": str(invalid_phrs), "status": "PASS" if invalid_phrs == 0 else "FAIL"},
         {"check": "drawn_rectangles", "value": str(len(rectangles)), "status": "PASS"},
         {"check": "off_panel_rectangles", "value": str(off_panel), "status": "PASS" if off_panel == 0 else "FAIL"},
+        {"check": "submitted_style_rectangles", "value": str(len(submitted_style_rectangles)), "status": "PASS"},
     ]
 
 
@@ -702,6 +978,7 @@ def main() -> None:
 
     outputs: Dict[str, List[Segment]] = {}
     compact_rows: List[dict] = []
+    query_names: set[str] = set()
     for pair, path in conservative_paths.items():
         rows = read_paf(path, pair, require_nb1=True)
         if any(r.nb != 1 for r in rows):
@@ -709,6 +986,7 @@ def main() -> None:
         compact = coalesce(rows)
         outputs[pair] = compact
         for row in compact:
+            query_names.add(row.qname)
             compact_rows.append(
                 {
                     "pair": pair,
@@ -727,6 +1005,22 @@ def main() -> None:
                     "jaccard": f"{row.jc:.6g}",
                     "nb": row.nb,
                     "interchromosomal": int(row.interchromosomal),
+                }
+            )
+    phr_intervals = load_phr_intervals(args.phr_intervals, query_names)
+    phr_rows = []
+    for qname, intervals in sorted(phr_intervals.items()):
+        info = path_info(qname)
+        qarm = info[2] if info else ""
+        for interval in intervals:
+            phr_rows.append(
+                {
+                    "query_name": qname,
+                    "query_arm": qarm,
+                    "phr_start": interval.start,
+                    "phr_end": interval.end,
+                    "chrs_involved": interval.chrs_involved,
+                    "arms_involved": interval.arms_involved,
                 }
             )
     write_tsv(
@@ -756,15 +1050,27 @@ def main() -> None:
             "interchromosomal",
         ],
     )
+    write_tsv(
+        args.out_dir / "phr_intervals.tsv",
+        phr_rows,
+        ["query_name", "query_arm", "phr_start", "phr_end", "chrs_involved", "arms_involved"],
+    )
     validate_segments(outputs)
     rectangles = render(
         outputs,
+        phr_intervals,
         args.out_dir / "fig5_sweepga_1to1_redraw.svg",
         args.out_dir / "fig5_sweepga_1to1_redraw.pdf",
     )
     validate_drawn_rectangles(rectangles)
-    write_tsv(args.out_dir / "validation_report.tsv", validation_report(outputs, rectangles), ["check", "value", "status"])
-    write_readme(args.out_dir, summary_rows)
+    submitted_style_rectangles = render_submitted_style_outputs(outputs, phr_intervals, args.out_dir)
+    validate_drawn_rectangles(submitted_style_rectangles)
+    write_tsv(
+        args.out_dir / "validation_report.tsv",
+        validation_report(outputs, rectangles, phr_intervals, submitted_style_rectangles),
+        ["check", "value", "status"],
+    )
+    write_readme(args.out_dir, summary_rows, args.phr_intervals)
 
 
 if __name__ == "__main__":
