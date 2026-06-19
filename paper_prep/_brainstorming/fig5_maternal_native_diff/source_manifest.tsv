@@ -1,0 +1,9 @@
+view	role	path	rows_loaded
+old_bed_n1	current/source first-best filtered to PAN027#1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/untangle/PAN027_vs_PAN010.e50000.m1000.bed.gz	3426
+native_bedpe_n1	native odgi BEDPE nth.best=1	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_slurm/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.bedpe.gz	3295
+native_bedpe_n4	native odgi BEDPE nth.best<=4	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_slurm/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.bedpe.gz	9810
+native_paf_n1	native odgi PAF nb=1	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_slurm/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.paf.gz	3295
+native_paf_n4	native odgi PAF nb<=4	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_slurm/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.paf.gz	9810
+sweepga_paf_1_many	sweepGA-filtered native PAF 1:many	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_sweepga_test/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.uncompressed.1_many.paf	5526
+sweepga_paf_2_many	sweepGA-filtered native PAF 2:many	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_sweepga_test/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.uncompressed.2_many.paf	8026
+sweepga_paf_4_many	sweepGA-filtered native PAF 4:many	/moosefs/erikg/phrs/pedigree_native_untangle_agent2556_sweepga_test/PAN027_vs_PAN010.e50000.m1000.j0.8.n4.uncompressed.4_many.paf	9810
