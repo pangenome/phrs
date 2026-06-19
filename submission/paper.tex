@@ -46,7 +46,7 @@
 \affil[3]{Department of Genetics, Genomics and Informatics, University of Tennessee Health Science Center, 71 S Manassas St, Memphis, 38163, Tennessee, USA}
 
 \abstract{
-\textbf{Human subtelomeres have long been known to contain duplicated sequence
+Human subtelomeres have long been known to contain duplicated sequence
 shared among non-homologous chromosome ends and to undergo ectopic exchange
 \cite{MeffordTrask2002,Flint1997,Linardopoulou2005,Brown1990,Wilkie1991,Trask1991}.
 However, incomplete reference assemblies and chromosome-partitioned analyses
@@ -63,7 +63,7 @@ to end contains candidate exchange patches enriched within the same communities.
 These results generalize known subtelomeric exchange systems into a
 near-ubiquitous population-scale architecture and establish recurrent ectopic
 exchange as a genome-wide force in the concerted evolution of human chromosome
-ends.}
+ends.
 }
 
 \maketitle
@@ -85,13 +85,15 @@ sequence having arisen from duplications specific to the human lineage
 \cite{Linardopoulou2005}.
 
 This ectopic exchange has well-known consequences at particular chromosome ends.
-The pseudoautosomal regions PAR1 and PAR2 carry the obligate sex-chromosome
-crossover \cite{Rouyer1986,sexchrompars_bellott2024}; the ribosomal-DNA-bearing
+The pseudoautosomal regions PAR1 and PAR2 are shared by the sex chromosomes,
+and PAR1 carries the obligate male sex-chromosome crossover
+\cite{Rouyer1986,sexchrompars_bellott2024}; the ribosomal-DNA-bearing
 acrocentric short arms recombine in the nucleolus and underlie recurrent
 Robertsonian translocations
-\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}; the D4Z4
-macrosatellite of 4q35 and 10q26 causes facioscapulohumeral dystrophy and is
-reactivated in diverse cancers
+\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}; the disease-permissive
+4q35 D4Z4 configuration is homologous to the 10q26 array but is the
+disease-associated locus in facioscapulohumeral dystrophy and is reactivated in
+diverse cancers
 \cite{dux4_d4z4_fshd_lemmers2010worldwide,dux4_cancer_Chew2019}; and unbalanced
 subtelomeric rearrangements are a recurrent cause of intellectual disability
 \cite{MeffordTrask2002}.
@@ -136,8 +138,8 @@ resulting alignments as an implicit pangenome graph and query it through their
 transitive closure, without ever building the graph
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
 Exhaustive all-against-all comparison is intractable, of order $10^{24}$
-base-pair comparisons, but in a panmictic population most pairwise alignments
-are redundant and a sample suffices: wfmash evaluates 11.6\% of flank pairs,
+base-pair comparisons, but pairwise flank alignments are highly redundant at
+this sample size and a sample suffices: wfmash evaluates 11.6\% of flank pairs,
 roughly $230\times$ the Erd\H{o}s and R\'{e}nyi threshold for a single connected
 component, so transitive closure recovers essentially every subtelomere.
 As a quality control, querying any reference window recovers nearly all other
@@ -164,7 +166,7 @@ Fig.~\ref{fig:fig1}B), the upper bound set by the 500 kb flank window rather
 than by biology.
 Excluding the acrocentric short arms and the pseudoautosomal regions, these PHRs
 total 3.51 Mb of subtelomeric sequence, comparable in scale to PAR2 (the median
-PHR is 31\% of PAR2's length) and a non-trivial fraction of the genome
+PHR is 31\% of PAR2's length) and a substantial amount of subtelomeric sequence
 \cite{sexchrompars_bellott2024}.
 
 \subsection*{Communities of subtelomeric PHRs}
@@ -224,7 +226,7 @@ a mapping-quality threshold, we interpret PHR-window contacts as aggregate
 coordinate-level measurements.
 The adjacent 100 kb centromere-ward non-PHR flanks provide the key mapping
 control: in HG002 Hi-C they show stronger within-community enrichment than the
-PHR windows themselves ($B/W = 0.002$ versus $0.027$, a 13-fold difference),
+PHR windows themselves ($B/W = 0.002$ versus $0.027$, a 13-fold lower B/W ratio),
 although the flanks do not contain the homologous sequence used to define PHR
 pairs.
 Ordering a Pore-C contact matrix by sequence community shows the same community
@@ -263,12 +265,9 @@ These patch calls include candidate gene-conversion-like tracts between
 non-homologous arms of the same community, for example between 9p and 3p, and
 crossover-like state switches, but they remain assembly-derived candidates
 rather than a per-event recombination truth set.
-The high-confidence patch table has a median tract length of 1,517 bp
-(IQR 1,136--2,981 bp), whereas a lower-merge best-hit rerun resolved 37,400
-inter-chromosomal merged intervals, including 11,600 (31.0\%) in the cited
-22--95 bp short-conversion range and 927 (2.5\%) in the 318--688 bp
-crossover-associated range; these proportions show compatibility with both
-tract scales but do not assign event-level mechanism.
+A lower-merge rerun recovered intervals spanning published conversion- and
+crossover-associated tract scales, although tract length alone does not assign
+event-level mechanism.
 Fragmented CEPH1463 assemblies show that untangle can produce many
 inter-chromosomal patch calls outside the population-defined communities, so we
 use those assemblies only as a cross-assembler validation set; confirming
@@ -302,23 +301,7 @@ homology and for discussion, and Rob Williams, Pjotr Prins and Vincenza Colonna
 (University of Tennessee Health Science Center) and the HPRC Pangenomes Working
 Group for generating and interpreting these data.
 
-\subsection*{Author Contributions}
-
-% TODO: confirm CRediT roles with all authors. Talk attribution (BoG 2026):
-% the work is primarily that of A.G. (Guarracino) and E.G., joined by A.Gy.
-% (Gyamfi).
-
-\subsection*{Competing Interests}
-
-% TODO: fill in
-
 \clearpage
-
-\clearpage
-
-\subsection*{Tables}
-
-% TODO: tables if needed
 
 \subsection*{Figure Legends}
 
@@ -486,7 +469,7 @@ pq-classification at \texttt{pq-classification/contig\_classifications.tsv}.
 
 \texttt{wfmash v0.23.0-41-gb5f0ff1c -p 95 -t 48 --quiet}; each flank serves
 as target in turn \cite{Guarracino2023}.
-In a panmictic population most pairwise alignments are redundant; transitive
+Pairwise flank alignments are highly redundant at this sample size; transitive
 closure of the sampled fraction recovers effectively the same sequence graph as
 exhaustive all-vs-all alignment.
 
