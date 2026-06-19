@@ -1,0 +1,10 @@
+source_format	setting	n_tracts	native_m0_tracts_for_same_n	native_m1000_tracts_for_same_n	native_m1000_merged_vs_m0_n	native_m1000_split_vs_m0_n	counterpart_setting	prior_posthoc_m1000_default_n	prior_posthoc_m1000_bridge1kb_n	unique_donor_haplotype_n	unique_donor_arm_multi_haplotype_n	same_community_ambiguous_n	cross_community_ambiguous_n	unresolved_no_call_n	ambiguous_tract_n	min_bp	q25_bp	median_bp	q75_bp	max_bp	conversion_22_95_n	conversion_22_95_prop	crossover_318_688_n	crossover_318_688_prop	near_crossover_159_1376_n	near_crossover_159_1376_prop
+bedpe	bedpe_m1000_n1	666	NA	666	NA	NA	bedpe_m0_n1	373	141	512	2	152	0	0	154	493	1136	1447	2583	387276	0	0.000000	1	0.001502	296	0.444444
+bedpe	bedpe_m1000_n2	1365	NA	1365	NA	NA	bedpe_m0_n2	373	141	307	23	930	105	0	1058	493	1136	1453	4021	500000	0	0.000000	1	0.000733	545	0.399267
+bedpe	bedpe_m1000_n4	1979	NA	1979	NA	NA	bedpe_m0_n4	373	141	240	13	1477	249	0	1739	1	1136	1455	4043	500000	0	0.000000	1	0.000505	797	0.402729
+paf	paf_m1000_n1	669	NA	669	NA	NA	paf_m0_n1	373	141	517	2	150	0	0	152	1	1136	1447	2571	350901	0	0.000000	1	0.001495	291	0.434978
+paf	paf_m1000_n2	1384	NA	1384	NA	NA	paf_m0_n2	373	141	298	21	956	109	0	1086	1	1116.75	1448	3026.5	500000	0	0.000000	0	0.000000	561	0.405347
+paf	paf_m1000_n4	1994	NA	1994	NA	NA	paf_m0_n4	373	141	230	11	1493	260	0	1764	1	1117	1447	3024.25	500000	0	0.000000	0	0.000000	841	0.421765
+sweepga_paf	PAN028_vs_PAN027_m1000_n4_num_mappings_1_many	4827	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+sweepga_paf	PAN028_vs_PAN027_m1000_n4_num_mappings_2_many	6998	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+sweepga_paf	PAN028_vs_PAN027_m1000_n4_num_mappings_4_many	8742	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
