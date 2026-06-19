@@ -61,7 +61,7 @@ ARM_ORDER = [f"chr{i}{arm}" for i in range(1, 23) for arm in ("p", "q")] + [
     "chrYq",
 ]
 CHROM_ORDER = [f"chr{i}" for i in range(1, 23)] + ["chrX", "chrY"]
-PATH_RE = re.compile(r"^(PAN\d+)#([12])#.*_(chr(?:[0-9]+|X|Y))_([pq])arm$")
+PATH_RE = re.compile(r"^(PAN\d+)#([12])#.*:(\d+)-(\d+)_(chr(?:[0-9]+|X|Y))_([pq])arm$")
 TAG_RE = re.compile(r"^([A-Za-z][A-Za-z0-9]):[A-Za-z]:(.*)$")
 
 
@@ -71,6 +71,7 @@ class Segment:
     qname: str
     qarm: str
     qlen: int
+    paf_qlen: int
     qstart: int
     qend: int
     strand: str
@@ -177,12 +178,15 @@ def open_text(path: Path):
     return gzip.open(path, "rt") if path.suffix == ".gz" else path.open()
 
 
-def path_info(name: str) -> Tuple[str, str, str] | None:
+def path_info(name: str) -> Tuple[str, str, str, int] | None:
     match = PATH_RE.match(name)
     if not match:
         return None
-    sample, hap, chrom, arm = match.groups()
-    return sample, hap, f"{chrom}{arm}"
+    sample, hap, start, end, chrom, arm = match.groups()
+    span = int(end) - int(start) + 1
+    if span <= 0:
+        return None
+    return sample, hap, f"{chrom}{arm}", span
 
 
 def chrom_of(chrarm: str) -> str:
@@ -230,22 +234,27 @@ def read_paf(path: Path, pair: str, require_nb1: bool = False) -> List[Segment]:
             tinfo = path_info(fields[5])
             if not qinfo or not tinfo:
                 continue
-            qsample, qhap, qarm = qinfo
-            tsample, thap, tarm = tinfo
+            qsample, qhap, qarm, query_span = qinfo
+            tsample, thap, tarm, _target_span = tinfo
             if qsample != info["query_sample"] or qhap != info["query_hap"] or tsample != info["target_sample"]:
                 continue
             tags = parse_tags(fields[12:])
             nb = int(tags.get("nb", "1"))
             if require_nb1 and nb != 1:
                 continue
+            qstart = int(fields[2])
+            qend = int(fields[3])
+            if qstart < 0 or qend <= qstart or qend > query_span:
+                continue
             rows.append(
                 Segment(
                     pair=pair,
                     qname=fields[0],
                     qarm=qarm,
-                    qlen=int(fields[1]),
-                    qstart=max(0, int(fields[2])),
-                    qend=min(int(fields[1]), int(fields[3])),
+                    qlen=query_span,
+                    paf_qlen=int(fields[1]),
+                    qstart=qstart,
+                    qend=qend,
                     strand=fields[4],
                     tname=fields[5],
                     target_hap=f"{tsample}#{thap}",
@@ -412,6 +421,7 @@ def coalesce(rows: Iterable[Segment]) -> List[Segment]:
                 prev.qname,
                 prev.qarm,
                 prev.qlen,
+                prev.paf_qlen,
                 prev.qstart,
                 max(prev.qend, row.qend),
                 prev.strand,
@@ -430,30 +440,12 @@ def coalesce(rows: Iterable[Segment]) -> List[Segment]:
     return merged
 
 
-def target_color(target_arm: str) -> str:
-    c, side = arm_sort_key(target_arm)
-    hue = (c * 47 + side * 21) % 360
-    return hsl_to_hex(hue, 0.58 if side == 0 else 0.66, 0.42 if side == 0 else 0.52)
-
-
-def hsl_to_hex(h: float, s: float, l: float) -> str:
-    c = (1 - abs(2 * l - 1)) * s
-    hp = h / 60
-    x = c * (1 - abs(hp % 2 - 1))
-    if hp < 1:
-        r, g, b = c, x, 0
-    elif hp < 2:
-        r, g, b = x, c, 0
-    elif hp < 3:
-        r, g, b = 0, c, x
-    elif hp < 4:
-        r, g, b = 0, x, c
-    elif hp < 5:
-        r, g, b = x, 0, c
-    else:
-        r, g, b = c, 0, x
-    m = l - c / 2
-    return "#{:02x}{:02x}{:02x}".format(round((r + m) * 255), round((g + m) * 255), round((b + m) * 255))
+def mapping_style(row: Segment) -> Tuple[str, str, float, str]:
+    if row.target_arm == row.qarm:
+        return "#cfcfcf", "#9a9a9a", 0.62, "same-arm inherited/background mapping"
+    if chrom_of(row.target_arm) == chrom_of(row.qarm):
+        return "#b9b1a6", "#8d8378", 0.72, "same-chromosome off-arm mapping"
+    return "#b3345b", "#6f1d46", 0.93, "inter-chromosomal candidate mapping"
 
 
 def pdf_color(hex_color: str) -> str:
@@ -474,13 +466,66 @@ def panel_geometry() -> Tuple[int, int, int, int, int, int]:
     return left, top, track_w, row_h, pair_gap, arm_gap
 
 
-def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) -> None:
+@dataclass(frozen=True)
+class DrawnRect:
+    pair: str
+    qarm: str
+    x: float
+    width: float
+    panel_start: float
+    panel_end: float
+
+
+def clip_to_track(row: Segment, tx: float, track_w: float) -> Tuple[float, float]:
+    start = max(0, min(row.qstart, row.qlen))
+    end = max(0, min(row.qend, row.qlen))
+    if end <= start:
+        return tx, 0.0
+    x = tx + (start / row.qlen) * track_w
+    w = ((end - start) / row.qlen) * track_w
+    panel_end = tx + track_w
+    if x < tx:
+        w -= tx - x
+        x = tx
+    if x + w > panel_end:
+        w = panel_end - x
+    return x, max(0.0, w)
+
+
+def validate_segments(outputs: Dict[str, List[Segment]]) -> None:
+    bad = [
+        row
+        for rows in outputs.values()
+        for row in rows
+        if row.qstart < 0 or row.qend <= row.qstart or row.qend > row.qlen
+    ]
+    if bad:
+        examples = ", ".join(f"{r.pair}:{r.qarm}:{r.qstart}-{r.qend}/{r.qlen}" for r in bad[:5])
+        raise RuntimeError(f"invalid conservative segment coordinates after coalescing: {len(bad)} rows; {examples}")
+
+
+def validate_drawn_rectangles(rectangles: Sequence[DrawnRect], tolerance: float = 1e-6) -> None:
+    off_panel = [
+        r
+        for r in rectangles
+        if r.width < -tolerance or r.x < r.panel_start - tolerance or r.x + r.width > r.panel_end + tolerance
+    ]
+    if off_panel:
+        examples = ", ".join(
+            f"{r.pair}:{r.qarm}:x={r.x:.3f},w={r.width:.3f},panel={r.panel_start:.3f}-{r.panel_end:.3f}"
+            for r in off_panel[:5]
+        )
+        raise RuntimeError(f"off-panel rectangle geometry: {len(off_panel)} rectangles; {examples}")
+
+
+def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) -> List[DrawnRect]:
     left, top, track_w, row_h, pair_gap, arm_gap = panel_geometry()
     panel_w = track_w * 2 + arm_gap
     height = top + len(CHROM_ORDER) * row_h + 100
     width = left + len(PAIR_INFO) * panel_w + (len(PAIR_INFO) - 1) * pair_gap + 44
     title = "Fig. 5-style inspection redraw: conservative native PAF nb:i:1 -> sweepGA 1:1, no scaffold"
-    subtitle = "Rows are child/query chromosome ends; p-arm tracks are left and q-arm tracks right within each pedigree pair. Fill color encodes target/parent arm; purple outline marks inter-chromosomal mappings."
+    subtitle = "Rows are child/query chromosome ends; p-arm tracks are left and q-arm tracks right. Query scale is the 500 kb flank span parsed from path names, not odgi PAF column 2."
+    rectangles: List[DrawnRect] = []
 
     svg: List[str] = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
@@ -521,34 +566,43 @@ def render(outputs: Dict[str, List[Segment]], svg_path: Path, pdf_path: Path) ->
             side = 0 if row.qarm.endswith("p") else 1
             tx = x0 + side * (track_w + arm_gap)
             y = top + CHROM_ORDER.index(chrom) * row_h + 1.8
-            qdenom = max(row.qlen, row.qend, 1)
-            x = tx + (row.qstart / qdenom) * track_w
-            w = max(0.45, (row.length / qdenom) * track_w)
-            fill = target_color(row.target_arm)
-            stroke = "#5a2ca0" if row.interchromosomal else "#333333"
+            x, w = clip_to_track(row, tx, track_w)
+            if w <= 0:
+                continue
+            fill, stroke, opacity, category = mapping_style(row)
             klass = "hit inter" if row.interchromosomal else "hit"
-            opacity = "0.92" if row.interchromosomal else "0.42"
+            rectangles.append(DrawnRect(pair, row.qarm, x, w, tx, tx + track_w))
             svg.append(
                 f'<rect class="{klass}" x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{row_h - 3.6:.2f}" fill="{fill}" opacity="{opacity}">'
-                f'<title>{html.escape(pair)} {html.escape(row.qarm)} {row.qstart}-{row.qend} -> {html.escape(row.target_hap)}:{html.escape(row.target_arm)} id={row.identity:.4g} nb={row.nb}</title></rect>'
+                f'<title>{html.escape(pair)} {html.escape(row.qarm)} {row.qstart}-{row.qend} / {row.qlen} -> {html.escape(row.target_hap)}:{html.escape(row.target_arm)}; {category}; id={row.identity:.4g} nb={row.nb}</title></rect>'
             )
             pdf.rect(x, y, w, row_h - 3.6, fill=fill, stroke=stroke, sw=0.45 if row.interchromosomal else 0.12)
+            if row.interchromosomal and row.length >= 4500 and w >= 2.0:
+                label = row.target_arm
+                label_x = min(x + w + 1.5, tx + track_w - 18)
+                svg.append(f'<text class="label" x="{label_x:.2f}" y="{y + row_h - 4.1:.2f}" fill="#5b1538">{html.escape(label)}</text>')
+                pdf.text(label_x, y + row_h - 4.1, label, 5.5, fill="#5b1538")
 
     legend_y = height - 62
-    svg.append(f'<text class="small" x="{left}" y="{legend_y}">Target-arm color examples</text>')
-    pdf.text(left, legend_y, "Target-arm color examples", 7)
-    lx = left + 126
-    for arm in ["chr3p", "chr4q", "chr10p", "chr13p", "chr14p", "chr15p", "chr21p", "chr22p", "chrXq"]:
-        svg.append(f'<rect x="{lx}" y="{legend_y - 8}" width="12" height="8" fill="{target_color(arm)}"/>')
-        svg.append(f'<text class="label" x="{lx + 15}" y="{legend_y - 1}">{arm}</text>')
-        pdf.rect(lx, legend_y - 8, 12, 8, fill=target_color(arm))
-        pdf.text(lx + 15, legend_y - 1, arm, 6)
-        lx += 52
+    legend_items = [
+        ("#cfcfcf", "#9a9a9a", "same-arm/background"),
+        ("#b9b1a6", "#8d8378", "same chromosome, off-arm"),
+        ("#b3345b", "#6f1d46", "inter-chromosomal candidate"),
+    ]
+    lx = left
+    for fill, stroke, label in legend_items:
+        svg.append(f'<rect x="{lx}" y="{legend_y - 8}" width="16" height="8" fill="{fill}" stroke="{stroke}" stroke-width=".5"/>')
+        svg.append(f'<text class="small" x="{lx + 21}" y="{legend_y - 1}">{html.escape(label)}</text>')
+        pdf.rect(lx, legend_y - 8, 16, 8, fill=fill, stroke=stroke, sw=0.35)
+        pdf.text(lx + 21, legend_y - 1, label, 7)
+        lx += 168
     svg.append(f'<text class="small" x="{left}" y="{height - 27}">Inspection output only. This redraw does not replace submission/fig/MainFigures/Fig5_pedigree_untangle.pdf or edit the manuscript.</text>')
     pdf.text(left, height - 27, "Inspection output only. This redraw does not replace the manuscript figure.", 7)
     svg.append("</svg>")
+    validate_drawn_rectangles(rectangles)
     svg_path.write_text("\n".join(svg) + "\n")
     pdf.write(pdf_path)
+    return rectangles
 
 
 def write_tsv(path: Path, rows: Sequence[dict], fields: Sequence[str]) -> None:
@@ -601,6 +655,13 @@ def write_readme(out_dir: Path, summary_rows: Sequence[dict]) -> None:
             "- `fig5_sweepga_1to1_redraw.svg` and `fig5_sweepga_1to1_redraw.pdf`: compact author-facing redraw.",
             "- `summary_counts.tsv`: row counts, `nb` values, inter-chromosomal row counts, source paths, and exact command/filter per stage.",
             "- `conservative_segments.tsv`: compact plotted segment table after coalescing adjacent same-target rows.",
+            "- `validation_report.tsv`: coordinate, `nb`, query-length, and SVG/PDF rectangle-bound checks from the last regeneration.",
+            "",
+            "## Coordinate correction",
+            "",
+            "The superseded first redraw incorrectly used PAF column 2 (`fields[1]`) as the full plotting denominator. In these odgi PAFs that field can be 41,248 even when `qstart`/`qend` span hundreds of kilobases, which created invalid coalesced rows and off-panel SVG rectangles.",
+            "",
+            "The corrected redraw derives `query_length` from the child/query path name interval, for example `PAN027#1#chr3.maternal:9503-509502_chr3_parm` gives 500,000 bp. The raw PAF column 2 value is retained only as `paf_query_length` for audit. Rows with invalid child/query coordinates are dropped before coalescing, and rendering validates that all rectangles stay within their p/q-arm track bounds.",
             "",
             "Regenerate from the repository root with:",
             "",
@@ -610,6 +671,28 @@ def write_readme(out_dir: Path, summary_rows: Sequence[dict]) -> None:
         ]
     )
     (out_dir / "README.md").write_text("\n".join(lines) + "\n")
+
+
+def validation_report(outputs: Dict[str, List[Segment]], rectangles: Sequence[DrawnRect]) -> List[dict]:
+    rows = [row for pair_rows in outputs.values() for row in pair_rows]
+    invalid_coordinates = sum(1 for row in rows if row.qstart < 0 or row.qend <= row.qstart or row.qend > row.qlen)
+    off_panel = sum(
+        1
+        for rect in rectangles
+        if rect.width < -1e-6 or rect.x < rect.panel_start - 1e-6 or rect.x + rect.width > rect.panel_end + 1e-6
+    )
+    query_lengths = ",".join(str(v) for v in sorted({row.qlen for row in rows}))
+    paf_query_lengths = ",".join(str(v) for v in sorted({row.paf_qlen for row in rows}))
+    nb_values = ",".join(str(v) for v in sorted({row.nb for row in rows}))
+    return [
+        {"check": "plotted_segments", "value": str(len(rows)), "status": "PASS"},
+        {"check": "invalid_coordinate_rows", "value": str(invalid_coordinates), "status": "PASS" if invalid_coordinates == 0 else "FAIL"},
+        {"check": "query_lengths", "value": query_lengths, "status": "PASS" if query_lengths == "500000" else "FAIL"},
+        {"check": "raw_paf_query_lengths_audit", "value": paf_query_lengths, "status": "PASS"},
+        {"check": "nb_values", "value": nb_values, "status": "PASS" if nb_values == "1" else "FAIL"},
+        {"check": "drawn_rectangles", "value": str(len(rectangles)), "status": "PASS"},
+        {"check": "off_panel_rectangles", "value": str(off_panel), "status": "PASS" if off_panel == 0 else "FAIL"},
+    ]
 
 
 def main() -> None:
@@ -635,6 +718,7 @@ def main() -> None:
                     "query_start": row.qstart,
                     "query_end": row.qend,
                     "query_length": row.qlen,
+                    "paf_query_length": row.paf_qlen,
                     "target_name": row.tname,
                     "target_hap": row.target_hap,
                     "target_arm": row.target_arm,
@@ -661,6 +745,7 @@ def main() -> None:
             "query_start",
             "query_end",
             "query_length",
+            "paf_query_length",
             "target_name",
             "target_hap",
             "target_arm",
@@ -671,11 +756,14 @@ def main() -> None:
             "interchromosomal",
         ],
     )
-    render(
+    validate_segments(outputs)
+    rectangles = render(
         outputs,
         args.out_dir / "fig5_sweepga_1to1_redraw.svg",
         args.out_dir / "fig5_sweepga_1to1_redraw.pdf",
     )
+    validate_drawn_rectangles(rectangles)
+    write_tsv(args.out_dir / "validation_report.tsv", validation_report(outputs, rectangles), ["check", "value", "status"])
     write_readme(args.out_dir, summary_rows)
 
 

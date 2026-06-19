@@ -1,0 +1,8 @@
+check	value	status
+plotted_segments	1449	PASS
+invalid_coordinate_rows	0	PASS
+query_lengths	500000	PASS
+raw_paf_query_lengths_audit	41248	PASS
+nb_values	1	PASS
+drawn_rectangles	1449	PASS
+off_panel_rectangles	0	PASS
