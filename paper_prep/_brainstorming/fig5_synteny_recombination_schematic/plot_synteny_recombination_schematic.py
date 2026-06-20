@@ -40,6 +40,7 @@ LANE_GAP = 11
 TRACK_GAP = 56
 EVENT_GAP = 54
 TOP = 86
+FULL_EVENT_H = 404
 
 QUERY_KEY = "child"
 
@@ -477,6 +478,20 @@ def manifest_source_windows(event: dict[str, str], arms: set[str]) -> str:
     return " | ".join(pieces)
 
 
+def compact_child_label(event: dict[str, str]) -> str:
+    source = event["child_query_source"].split(" [", 1)[0]
+    path_name = source.split(":", 1)[0]
+    parts = path_name.split("#")
+    if len(parts) >= 3:
+        sample = parts[0]
+        hap = f"hap{parts[1]}"
+        chrom_label = parts[2].split(".", 1)
+        hap_desc = chrom_label[1] if len(chrom_label) > 1 else ""
+        suffix = f" ({hap_desc})" if hap_desc else ""
+        return f"{sample} {hap} {event['query_arm']}{suffix}"
+    return source
+
+
 def single_window_label(value: str) -> Interval | None:
     """Return one interval only when the label represents a single native window."""
     if " | " in value or not value:
@@ -485,6 +500,12 @@ def single_window_label(value: str) -> Interval | None:
         return parse_interval(value)
     except ValueError:
         return None
+
+
+def sublabel_lines(sublabel: str) -> list[str]:
+    if "," not in sublabel:
+        return [sublabel]
+    return [piece.strip() for piece in sublabel.split(",") if piece.strip()]
 
 
 def draw_terminal_window_track(
@@ -496,7 +517,8 @@ def draw_terminal_window_track(
     kind: str,
 ) -> None:
     svg.text(42, y - 10, label, 13, "700")
-    svg.text(42, y + 7, sublabel, 10, "400", MUTED)
+    for i, line in enumerate(sublabel_lines(sublabel)):
+        svg.text(42, y + 7 + i * 12, line, 9 if i else 10, "400", MUTED)
     svg.rect(TRACK_X0, y, TRACK_W, TRACK_H, TRACK_FILL, TRACK_STROKE, 1.1, rx=TRACK_H / 2)
     window = single_window_label(sublabel)
     if window is not None:
@@ -554,7 +576,6 @@ def full_source_plan(event: dict[str, str], segs: list[Segment]) -> dict[str, ob
         bottom_title = "source: chr3q primary PHR donor"
         bottom_kind = "candidate donor source"
 
-    child_label = event["child_query_source"].split(" [", 1)[0]
     return {
         "top_roles": top_roles,
         "bottom_roles": bottom_roles,
@@ -563,7 +584,7 @@ def full_source_plan(event: dict[str, str], segs: list[Segment]) -> dict[str, ob
         "top_title": top_title,
         "bottom_title": bottom_title,
         "bottom_kind": bottom_kind,
-        "child_label": child_label,
+        "child_label": compact_child_label(event),
         "top_windows": manifest_source_windows(event, {top_arm}),
         "bottom_windows": manifest_source_windows(event, {bottom_arm}),
         "child_window": event["query_native_window_0based_half_open"],
@@ -584,22 +605,22 @@ def draw_full_event(
     plan = full_source_plan(event, segs)
     mapper = local_window_mapper(500_000)
 
-    top_y = y0 + 116
+    top_y = y0 + 146
     child_y = top_y + 74
     bottom_y = child_y + 74
 
     svg.text(42, y0 + 26, f"{event['event_order']}. {title}", 20, "700")
     svg.text(42, y0 + 49, event["transmission"], 13, "400", MUTED)
-    svg.text(42, y0 + 68, role_totals(segs), 12, "400", MUTED)
+    svg.text(42, y0 + 68, role_totals(segs), 11, "400", MUTED)
     svg.text(
         TRACK_X0,
-        y0 + 50,
-        "Full schematic uses plain unbanded native 0-500 kb assembly-window tracks; not CHM13-projected or whole-chromosome scale.",
-        12,
+        y0 + 78,
+        "Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.",
+        11,
         "700",
         MUTED,
     )
-    draw_local_axis(svg, y0 + 74)
+    draw_local_axis(svg, y0 + 104)
 
     draw_terminal_window_track(
         svg,
@@ -698,7 +719,7 @@ def draw_full_event(
         "700",
         TEXT,
     )
-    return y0 + 380
+    return y0 + FULL_EVENT_H
 
 
 def draw_event(
@@ -867,7 +888,7 @@ def render(mode: str, output: Path) -> None:
     events, segments = load_data()
     # Estimate page height from the actual number of lanes.
     if mode == "full":
-        height = math.ceil(TOP + len(events) * 380 + 34)
+        height = math.ceil(TOP + len(events) * FULL_EVENT_H + 34)
     else:
         y = TOP
         for event in events:
