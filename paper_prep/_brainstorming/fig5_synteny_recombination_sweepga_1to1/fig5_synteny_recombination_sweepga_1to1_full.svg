@@ -1,0 +1,370 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1332" viewBox="0 0 1680 1332">
+<rect width="100%" height="100%" fill="white"/>
+<style>
+          .small { font-size: 11px; fill: #5f686f; font-family: Arial, Helvetica, sans-serif; }
+          .tiny { font-size: 9px; fill: #5f686f; font-family: Arial, Helvetica, sans-serif; }
+        </style>
+<text x="42.0" y="38.0" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Fig5 comparison: direct sweepGA 1:1 no-scaffold schematic</text>
+<text x="42.0" y="61.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >Direct sweepGA 1:1 no-scaffold comparison; coordinates are native 500 kb assembly-window offsets, not CHM13 projections.</text>
+<text x="42.0" y="82.0" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Flow legend</text>
+<rect x="132.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.40" opacity="0.780" />
+<text x="169.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAR1 positive-control flow</text>
+<rect x="342.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#bd3d2a" stroke="#812516" stroke-width="0.40" opacity="0.780" />
+<text x="379.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >primary PHR donor flow</text>
+<rect x="552.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#a87935" stroke="#76511e" stroke-width="0.40" opacity="0.540" />
+<text x="589.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >side fragment</text>
+<rect x="762.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#777777" stroke="#555555" stroke-width="0.40" opacity="0.440" />
+<text x="799.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >low-confidence tail</text>
+<rect x="972.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#bfc5ca" stroke="#68717a" stroke-width="0.40" opacity="0.540" />
+<text x="1009.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >same-chromosome context</text>
+<text x="42.0" y="112.0" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >1. PAR1 positive control</text>
+<text x="42.0" y="135.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027 paternal hap2 &lt;- PAN011 father</text>
+<text x="42.0" y="154.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAR 515 kb; same-chr 489 kb</text>
+<text x="430.0" y="164.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.</text>
+<text x="430.0" y="178.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >local coordinate inside each native 500 kb assembly window (0-based offset)</text>
+<line x1="430.00" y1="190.00" x2="1520.00" y2="190.00" stroke="#d8dcdf" stroke-width="1.00" />
+<line x1="430.00" y1="186.00" x2="430.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="430.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >0 kb</text>
+<line x1="648.00" y1="186.00" x2="648.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="648.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >100 kb</text>
+<line x1="866.00" y1="186.00" x2="866.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="866.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >200 kb</text>
+<line x1="1084.00" y1="186.00" x2="1084.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1084.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >300 kb</text>
+<line x1="1302.00" y1="186.00" x2="1302.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1302.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >400 kb</text>
+<line x1="1520.00" y1="186.00" x2="1520.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1520.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >500 kb</text>
+<text x="42.0" y="222.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chrX PAR1 context</text>
+<text x="42.0" y="239.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#1 chrX:3251-503251</text>
+<rect x="430.00" y="232.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="225.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >3,251</text>
+<text x="1520.0" y="225.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >503,251</text>
+<path d="M 430.00 232.00 L 415.00 241.00 L 430.00 250.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="408.0" y="245.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="end" >chrXp telomere left</text>
+<text x="1538.0" y="225.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >source window</text>
+<text x="42.0" y="296.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >product/child: PAN027 hap2 chrXp (paternal)</text>
+<text x="42.0" y="313.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >chrX:12265-512265</text>
+<rect x="430.00" y="306.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="299.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >12,265</text>
+<text x="1520.0" y="299.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >512,265</text>
+<path d="M 430.00 306.00 L 415.00 315.00 L 430.00 324.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="408.0" y="319.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="end" >chrXp telomere left</text>
+<text x="1538.0" y="299.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >recombinant/product window</text>
+<text x="42.0" y="370.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chrY PAR1 donor</text>
+<text x="42.0" y="387.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#2 chrY:5839-505839</text>
+<rect x="430.00" y="380.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="373.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >5,839</text>
+<text x="1520.0" y="373.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >505,839</text>
+<path d="M 430.00 380.00 L 415.00 389.00 L 430.00 398.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="408.0" y="393.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="end" >chrYp telomere left</text>
+<text x="1538.0" y="373.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >positive-control source</text>
+<path d="M 433.40 251.00 C 433.40 273.68, 430.00 282.32, 430.00 305.00 L 439.54 305.00 C 439.54 282.32, 442.97 273.68, 442.97 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 430.00 379.00 C 430.00 356.32, 430.00 347.68, 430.00 325.00 L 744.20 325.00 C 744.20 347.68, 744.13 356.32, 744.13 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 444.04 251.00 C 444.04 273.68, 439.90 282.32, 439.90 305.00 L 449.43 305.00 C 449.43 282.32, 453.52 273.68, 453.52 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 451.30 251.00 C 451.30 273.68, 448.63 282.32, 448.63 305.00 L 452.99 305.00 C 452.99 282.32, 455.77 273.68, 455.77 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 457.40 251.00 C 457.40 273.68, 452.98 282.32, 452.98 305.00 L 484.33 305.00 C 484.33 282.32, 488.75 273.68, 488.75 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 469.34 251.00 C 469.34 273.68, 469.18 282.32, 469.18 305.00 L 491.68 305.00 C 491.68 282.32, 491.85 273.68, 491.85 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 489.31 251.00 C 489.31 273.68, 491.53 282.32, 491.53 305.00 L 512.73 305.00 C 512.73 282.32, 510.50 273.68, 510.50 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 509.78 251.00 C 509.78 273.68, 511.17 282.32, 511.17 305.00 L 535.38 305.00 C 535.38 282.32, 534.04 273.68, 534.04 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 530.78 251.00 C 530.78 273.68, 555.06 282.32, 555.06 305.00 L 563.24 305.00 C 563.24 282.32, 538.94 273.68, 538.94 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 542.08 251.00 C 542.08 273.68, 559.08 282.32, 559.08 305.00 L 570.58 305.00 C 570.58 282.32, 553.38 273.68, 553.38 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 551.06 251.00 C 551.06 273.68, 568.70 282.32, 568.70 305.00 L 576.82 305.00 C 576.82 282.32, 559.12 273.68, 559.12 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 557.80 251.00 C 557.80 273.68, 576.86 282.32, 576.86 305.00 L 583.69 305.00 C 583.69 282.32, 564.57 273.68, 564.57 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 564.80 251.00 C 564.80 273.68, 583.30 282.32, 583.30 305.00 L 599.85 305.00 C 599.85 282.32, 581.32 273.68, 581.32 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 581.05 251.00 C 581.05 273.68, 599.85 282.32, 599.85 305.00 L 616.72 305.00 C 616.72 282.32, 597.92 273.68, 597.92 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 594.09 251.00 C 594.09 273.68, 612.56 282.32, 612.56 305.00 L 649.75 305.00 C 649.75 282.32, 631.28 273.68, 631.28 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 630.94 251.00 C 630.94 273.68, 649.58 282.32, 649.58 305.00 L 654.37 305.00 C 654.37 282.32, 635.75 273.68, 635.75 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 634.40 251.00 C 634.40 273.68, 666.01 282.32, 666.01 305.00 L 671.71 305.00 C 671.71 282.32, 640.06 273.68, 640.06 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 638.74 251.00 C 638.74 273.68, 670.58 282.32, 670.58 305.00 L 682.95 305.00 C 682.95 282.32, 651.13 273.68, 651.13 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 645.94 251.00 C 645.94 273.68, 681.99 282.32, 681.99 305.00 L 699.28 305.00 C 699.28 282.32, 663.08 273.68, 663.08 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 651.45 251.00 C 651.45 273.68, 722.74 282.32, 722.74 305.00 L 739.36 305.00 C 739.36 282.32, 667.99 273.68, 667.99 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 669.00 251.00 C 669.00 273.68, 739.15 282.32, 739.15 305.00 L 1520.00 305.00 C 1520.00 282.32, 1449.90 273.68, 1449.90 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 742.34 379.00 C 742.34 356.32, 742.49 347.68, 742.49 325.00 L 767.99 325.00 C 767.99 347.68, 767.94 356.32, 767.94 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 766.19 379.00 C 766.19 356.32, 766.33 347.68, 766.33 325.00 L 769.58 325.00 C 769.58 347.68, 769.36 356.32, 769.36 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 768.88 379.00 C 768.88 356.32, 768.60 347.68, 768.60 325.00 L 774.88 325.00 C 774.88 347.68, 775.16 356.32, 775.16 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 774.60 379.00 C 774.60 356.32, 772.86 347.68, 772.86 325.00 L 822.92 325.00 C 822.92 347.68, 824.55 356.32, 824.55 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 825.99 379.00 C 825.99 356.32, 822.21 347.68, 822.21 325.00 L 914.21 325.00 C 914.21 347.68, 917.96 356.32, 917.96 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 912.78 379.00 C 912.78 356.32, 910.18 347.68, 910.18 325.00 L 933.20 325.00 C 933.20 347.68, 935.66 356.32, 935.66 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 935.57 379.00 C 935.57 356.32, 935.06 347.68, 935.06 325.00 L 940.41 325.00 C 940.41 347.68, 940.90 356.32, 940.90 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 940.53 379.00 C 940.53 356.32, 940.39 347.68, 940.39 325.00 L 955.21 325.00 C 955.21 347.68, 955.34 356.32, 955.34 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 954.65 379.00 C 954.65 356.32, 955.60 347.68, 955.60 325.00 L 958.19 325.00 C 958.19 347.68, 957.24 356.32, 957.24 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 955.76 379.00 C 955.76 356.32, 957.06 347.68, 957.06 325.00 L 961.27 325.00 C 961.27 347.68, 959.89 356.32, 959.89 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 960.00 379.00 C 960.00 356.32, 961.23 347.68, 961.23 325.00 L 978.30 325.00 C 978.30 347.68, 977.08 356.32, 977.08 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 975.85 379.00 C 975.85 356.32, 977.89 347.68, 977.89 325.00 L 985.22 325.00 C 985.22 347.68, 983.31 356.32, 983.31 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 982.05 379.00 C 982.05 356.32, 985.20 347.68, 985.20 325.00 L 990.39 325.00 C 990.39 347.68, 987.25 356.32, 987.25 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 987.29 379.00 C 987.29 356.32, 990.61 347.68, 990.61 325.00 L 1008.09 325.00 C 1008.09 347.68, 1004.76 356.32, 1004.76 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1003.05 379.00 C 1003.05 356.32, 1007.77 347.68, 1007.77 325.00 L 1024.88 325.00 C 1024.88 347.68, 1020.25 356.32, 1020.25 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1018.14 379.00 C 1018.14 356.32, 1023.93 347.68, 1023.93 325.00 L 1075.82 325.00 C 1075.82 347.68, 1070.15 356.32, 1070.15 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1069.58 379.00 C 1069.58 356.32, 1075.54 347.68, 1075.54 325.00 L 1084.32 325.00 C 1084.32 347.68, 1078.46 356.32, 1078.46 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1083.62 379.00 C 1083.62 356.32, 1080.38 347.68, 1080.38 325.00 L 1090.82 325.00 C 1090.82 347.68, 1094.06 356.32, 1094.06 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1091.56 379.00 C 1091.56 356.32, 1088.57 347.68, 1088.57 325.00 L 1121.23 325.00 C 1121.23 347.68, 1124.22 356.32, 1124.22 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1121.33 379.00 C 1121.33 356.32, 1118.56 347.68, 1118.56 325.00 L 1129.06 325.00 C 1129.06 347.68, 1131.86 356.32, 1131.86 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1127.33 379.00 C 1127.33 356.32, 1124.34 347.68, 1124.34 325.00 L 1186.30 325.00 C 1186.30 347.68, 1189.43 356.32, 1189.43 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1190.76 379.00 C 1190.76 356.32, 1181.42 347.68, 1181.42 325.00 L 1196.68 325.00 C 1196.68 347.68, 1206.14 356.32, 1206.14 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1206.26 379.00 C 1206.26 356.32, 1199.22 347.68, 1199.22 325.00 L 1210.75 325.00 C 1210.75 347.68, 1217.80 356.32, 1217.80 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1217.80 379.00 C 1217.80 356.32, 1210.92 347.68, 1210.92 325.00 L 1222.92 325.00 C 1222.92 347.68, 1229.82 356.32, 1229.82 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1230.73 379.00 C 1230.73 356.32, 1222.92 347.68, 1222.92 325.00 L 1340.82 325.00 C 1340.82 347.68, 1348.95 356.32, 1348.95 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1347.76 379.00 C 1347.76 356.32, 1340.89 347.68, 1340.89 325.00 L 1347.25 325.00 C 1347.25 347.68, 1354.11 356.32, 1354.11 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1353.85 379.00 C 1353.85 356.32, 1346.28 347.68, 1346.28 325.00 L 1382.97 325.00 C 1382.97 347.68, 1390.66 356.32, 1390.66 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1390.23 379.00 C 1390.23 356.32, 1381.94 347.68, 1381.94 325.00 L 1396.65 325.00 C 1396.65 347.68, 1405.13 356.32, 1405.13 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1404.36 379.00 C 1404.36 356.32, 1395.57 347.68, 1395.57 325.00 L 1400.74 325.00 C 1400.74 347.68, 1409.54 356.32, 1409.54 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1405.89 379.00 C 1405.89 356.32, 1397.90 347.68, 1397.90 325.00 L 1406.78 325.00 C 1406.78 347.68, 1414.81 356.32, 1414.81 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1411.60 379.00 C 1411.60 356.32, 1404.23 347.68, 1404.23 325.00 L 1437.54 325.00 C 1437.54 347.68, 1444.88 356.32, 1444.88 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1443.98 379.00 C 1443.98 356.32, 1435.63 347.68, 1435.63 325.00 L 1445.47 325.00 C 1445.47 347.68, 1453.85 356.32, 1453.85 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1452.78 379.00 C 1452.78 356.32, 1445.29 347.68, 1445.29 325.00 L 1484.73 325.00 C 1484.73 347.68, 1492.05 356.32, 1492.05 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1492.12 379.00 C 1492.12 356.32, 1484.41 347.68, 1484.41 325.00 L 1490.09 325.00 C 1490.09 347.68, 1497.79 356.32, 1497.79 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 1495.94 379.00 C 1495.94 356.32, 1488.98 347.68, 1488.98 325.00 L 1513.20 325.00 C 1513.20 347.68, 1520.00 356.32, 1520.00 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<rect x="433.40" y="229.50" width="9.57" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="303.50" width="9.54" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="377.50" width="314.13" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="303.50" width="314.20" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="444.04" y="229.50" width="9.48" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="439.90" y="303.50" width="9.53" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="451.30" y="229.50" width="4.47" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="448.63" y="303.50" width="4.37" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="457.40" y="229.50" width="31.34" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="452.98" y="303.50" width="31.34" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="469.34" y="229.50" width="22.51" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="469.18" y="303.50" width="22.51" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="489.31" y="229.50" width="21.19" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="491.53" y="303.50" width="21.20" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="509.78" y="229.50" width="24.27" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="511.17" y="303.50" width="24.21" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="530.78" y="229.50" width="8.17" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="555.06" y="303.50" width="8.18" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="542.08" y="229.50" width="11.30" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="559.08" y="303.50" width="11.49" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="551.06" y="229.50" width="8.06" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="568.70" y="303.50" width="8.12" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="557.80" y="229.50" width="6.77" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="576.86" y="303.50" width="6.83" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="564.80" y="229.50" width="16.52" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="583.30" y="303.50" width="16.54" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="581.05" y="229.50" width="16.87" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="599.85" y="303.50" width="16.87" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="594.09" y="229.50" width="37.19" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="612.56" y="303.50" width="37.20" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="630.94" y="229.50" width="4.81" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="649.58" y="303.50" width="4.79" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="634.40" y="229.50" width="5.66" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="666.01" y="303.50" width="5.70" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="638.74" y="229.50" width="12.39" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="670.58" y="303.50" width="12.38" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="645.94" y="229.50" width="17.14" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="681.99" y="303.50" width="17.30" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="651.45" y="229.50" width="16.54" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="722.74" y="303.50" width="16.62" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="669.00" y="229.50" width="780.90" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="739.15" y="303.50" width="780.85" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="742.34" y="377.50" width="25.60" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="742.49" y="303.50" width="25.50" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="766.19" y="377.50" width="3.18" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="766.33" y="303.50" width="3.25" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="768.88" y="377.50" width="6.28" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="768.60" y="303.50" width="6.29" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="774.60" y="377.50" width="49.95" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="772.86" y="303.50" width="50.06" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="825.99" y="377.50" width="91.97" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="822.21" y="303.50" width="92.00" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="912.78" y="377.50" width="22.88" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="910.18" y="303.50" width="23.02" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="935.57" y="377.50" width="5.33" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="935.06" y="303.50" width="5.35" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="940.53" y="377.50" width="14.82" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="940.39" y="303.50" width="14.82" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="954.65" y="377.50" width="2.58" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="955.60" y="303.50" width="2.59" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="955.76" y="377.50" width="4.13" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="957.06" y="303.50" width="4.22" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="960.00" y="377.50" width="17.08" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="961.23" y="303.50" width="17.07" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="975.85" y="377.50" width="7.46" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="977.89" y="303.50" width="7.33" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="982.05" y="377.50" width="5.21" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="985.20" y="303.50" width="5.19" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="987.29" y="377.50" width="17.46" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="990.61" y="303.50" width="17.48" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1003.05" y="377.50" width="17.20" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1007.77" y="303.50" width="17.11" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1018.14" y="377.50" width="52.01" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1023.93" y="303.50" width="51.89" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1069.58" y="377.50" width="8.88" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1075.54" y="303.50" width="8.78" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1083.62" y="377.50" width="10.44" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1080.38" y="303.50" width="10.44" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1091.56" y="377.50" width="32.67" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1088.57" y="303.50" width="32.66" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1121.33" y="377.50" width="10.53" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1118.56" y="303.50" width="10.50" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1127.33" y="377.50" width="62.11" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1124.34" y="303.50" width="61.96" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1190.76" y="377.50" width="15.38" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1181.42" y="303.50" width="15.26" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1206.26" y="377.50" width="11.54" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1199.22" y="303.50" width="11.53" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1217.80" y="377.50" width="12.02" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1210.92" y="303.50" width="12.00" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1230.73" y="377.50" width="118.22" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1222.92" y="303.50" width="117.91" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1347.76" y="377.50" width="6.35" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1340.89" y="303.50" width="6.35" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1353.85" y="377.50" width="36.81" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1346.28" y="303.50" width="36.69" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1390.23" y="377.50" width="14.90" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1381.94" y="303.50" width="14.71" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1404.36" y="377.50" width="5.18" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1395.57" y="303.50" width="5.17" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1405.89" y="377.50" width="8.92" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1397.90" y="303.50" width="8.88" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1411.60" y="377.50" width="33.28" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1404.23" y="303.50" width="33.31" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1443.98" y="377.50" width="9.87" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1435.63" y="303.50" width="9.85" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1452.78" y="377.50" width="39.27" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1445.29" y="303.50" width="39.44" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1492.12" y="377.50" width="5.67" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1484.41" y="303.50" width="5.68" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1495.94" y="377.50" width="24.06" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="1488.98" y="303.50" width="24.22" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<text x="430.0" y="438.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Evidence blocks use local 0-based half-open offsets from direct sweepGA 1:1 no-scaffold PAFs; source labels show native 500 kb assembly windows.</text>
+<line x1="42.00" y1="460.00" x2="1638.00" y2="460.00" stroke="#d8dcdf" stroke-width="0.80" />
+<text x="42.0" y="516.0" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >2. PHR candidate 1: PAN027 chr9q with chr3q donor</text>
+<text x="42.0" y="539.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027 paternal hap2 &lt;- PAN011 father</text>
+<text x="42.0" y="558.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >side fragments 129 kb; same-chr 795 kb</text>
+<text x="430.0" y="568.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.</text>
+<text x="430.0" y="582.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >local coordinate inside each native 500 kb assembly window (0-based offset)</text>
+<line x1="430.00" y1="594.00" x2="1520.00" y2="594.00" stroke="#d8dcdf" stroke-width="1.00" />
+<line x1="430.00" y1="590.00" x2="430.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="430.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >0 kb</text>
+<line x1="648.00" y1="590.00" x2="648.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="648.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >100 kb</text>
+<line x1="866.00" y1="590.00" x2="866.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="866.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >200 kb</text>
+<line x1="1084.00" y1="590.00" x2="1084.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1084.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >300 kb</text>
+<line x1="1302.00" y1="590.00" x2="1302.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1302.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >400 kb</text>
+<line x1="1520.00" y1="590.00" x2="1520.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1520.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >500 kb</text>
+<text x="42.0" y="626.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr9q same-chromosome context</text>
+<text x="42.0" y="643.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#1 chr9:135595959-136095959</text>
+<text x="42.0" y="655.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#2 chr9:133240004-133740004</text>
+<rect x="430.00" y="636.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 636.00 L 1535.00 645.00 L 1520.00 654.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="649.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="629.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >source window</text>
+<text x="42.0" y="700.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >product/child: PAN027 hap2 chr9q (paternal)</text>
+<text x="42.0" y="717.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >chr9:135704825-136204825</text>
+<rect x="430.00" y="710.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="703.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >135,704,825</text>
+<text x="1520.0" y="703.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >136,204,825</text>
+<path d="M 1520.00 710.00 L 1535.00 719.00 L 1520.00 728.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="723.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="703.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >recombinant/product window</text>
+<text x="42.0" y="774.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr3q primary PHR donor</text>
+<text x="42.0" y="791.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#1 chr3:202049714-202549714</text>
+<text x="42.0" y="803.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#2 chr3:205075647-205575647</text>
+<rect x="430.00" y="784.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 784.00 L 1535.00 793.00 L 1520.00 802.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="797.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr3q telomere right</text>
+<text x="1538.0" y="777.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >candidate donor source</text>
+<path d="M 607.28 655.00 C 607.28 677.68, 430.00 686.32, 430.00 709.00 L 626.26 709.00 C 626.26 686.32, 803.53 677.68, 803.53 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 430.00 655.00 C 430.00 677.68, 431.33 686.32, 431.33 709.00 L 1519.60 709.00 C 1519.60 686.32, 1518.26 677.68, 1518.26 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 803.91 655.00 C 803.91 677.68, 624.86 686.32, 624.86 709.00 L 860.11 709.00 C 860.11 686.32, 1039.28 677.68, 1039.28 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 1037.74 655.00 C 1037.74 677.68, 859.89 686.32, 859.89 709.00 L 900.13 709.00 C 900.13 686.32, 1077.95 677.68, 1077.95 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 1077.20 655.00 C 1077.20 677.68, 899.22 686.32, 899.22 709.00 L 912.52 709.00 C 912.52 686.32, 1090.48 677.68, 1090.48 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 1090.34 655.00 C 1090.34 677.68, 912.51 686.32, 912.51 709.00 L 972.80 709.00 C 972.80 686.32, 1150.74 677.68, 1150.74 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 1150.44 655.00 C 1150.44 677.68, 972.65 686.32, 972.65 709.00 L 1073.07 709.00 C 1073.07 686.32, 1250.87 677.68, 1250.87 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<rect x="607.28" y="633.50" width="196.25" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="707.50" width="196.26" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="633.50" width="1088.26" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="431.33" y="707.50" width="1088.27" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="803.91" y="633.50" width="235.37" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="624.86" y="707.50" width="235.25" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1037.74" y="633.50" width="40.22" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="859.89" y="707.50" width="40.23" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1077.20" y="633.50" width="13.28" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="899.22" y="707.50" width="13.30" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1090.34" y="633.50" width="60.40" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="912.51" y="707.50" width="60.29" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1150.44" y="633.50" width="100.43" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="972.65" y="707.50" width="100.42" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<line x1="1378.44" y1="732.00" x2="1378.44" y2="737.00" stroke="#76511e" stroke-width="0.90" />
+<rect x="1237.29" y="706.00" width="282.31" height="26.00" rx="1.20" fill="#a87935" stroke="#76511e" stroke-width="0.60" opacity="0.760" />
+<text x="1378.4" y="745.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#76511e" text-anchor="middle" >caveat: chr1p 129 kb</text>
+<text x="430.0" y="842.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Evidence blocks use local 0-based half-open offsets from direct sweepGA 1:1 no-scaffold PAFs; source labels show native 500 kb assembly windows.</text>
+<line x1="42.00" y1="864.00" x2="1638.00" y2="864.00" stroke="#d8dcdf" stroke-width="0.80" />
+<text x="42.0" y="920.0" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >3. PHR candidate 2: PAN028 strict chr9q path</text>
+<text x="42.0" y="943.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN028 maternal hap1 &lt;- PAN027 mother</text>
+<text x="42.0" y="962.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >same-chr 798 kb</text>
+<text x="430.0" y="972.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.</text>
+<text x="430.0" y="986.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >local coordinate inside each native 500 kb assembly window (0-based offset)</text>
+<line x1="430.00" y1="998.00" x2="1520.00" y2="998.00" stroke="#d8dcdf" stroke-width="1.00" />
+<line x1="430.00" y1="994.00" x2="430.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="430.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >0 kb</text>
+<line x1="648.00" y1="994.00" x2="648.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="648.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >100 kb</text>
+<line x1="866.00" y1="994.00" x2="866.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="866.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >200 kb</text>
+<line x1="1084.00" y1="994.00" x2="1084.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1084.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >300 kb</text>
+<line x1="1302.00" y1="994.00" x2="1302.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1302.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >400 kb</text>
+<line x1="1520.00" y1="994.00" x2="1520.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1520.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >500 kb</text>
+<text x="42.0" y="1030.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr9q same-chromosome context</text>
+<text x="42.0" y="1047.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#1 chr9:128564684-129064684</text>
+<text x="42.0" y="1059.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#2 chr9:135704825-136204825</text>
+<rect x="430.00" y="1040.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 1040.00 L 1535.00 1049.00 L 1520.00 1058.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="1053.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="1033.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >source window</text>
+<text x="42.0" y="1104.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >product/child: PAN028 hap1 chr9q (haplotype1)</text>
+<text x="42.0" y="1121.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >chr9:134380985-134880985</text>
+<rect x="430.00" y="1114.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="1107.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >134,380,985</text>
+<text x="1520.0" y="1107.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >134,880,985</text>
+<path d="M 1520.00 1114.00 L 1535.00 1123.00 L 1520.00 1132.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="1127.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="1107.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >recombinant/product window</text>
+<text x="42.0" y="1178.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr3q primary PHR donor</text>
+<text x="42.0" y="1195.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#1 chr3:200905557-201405557</text>
+<text x="42.0" y="1207.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#2 chr3:202048279-202548279</text>
+<rect x="430.00" y="1188.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 1188.00 L 1535.00 1197.00 L 1520.00 1206.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="1201.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr3q telomere right</text>
+<text x="1538.0" y="1181.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >candidate donor source</text>
+<path d="M 430.00 1059.00 C 430.00 1081.68, 431.12 1090.32, 431.12 1113.00 L 538.06 1113.00 C 538.06 1090.32, 536.87 1081.68, 536.87 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 430.00 1059.00 C 430.00 1081.68, 440.15 1090.32, 440.15 1113.00 L 833.37 1113.00 C 833.37 1090.32, 823.34 1081.68, 823.34 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 534.97 1059.00 C 534.97 1081.68, 536.58 1090.32, 536.58 1113.00 L 862.16 1113.00 C 862.16 1090.32, 860.50 1081.68, 860.50 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 820.83 1059.00 C 820.83 1081.68, 831.24 1090.32, 831.24 1113.00 L 862.16 1113.00 C 862.16 1090.32, 851.76 1081.68, 851.76 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 854.83 1059.00 C 854.83 1081.68, 864.33 1090.32, 864.33 1113.00 L 901.01 1113.00 C 901.01 1090.32, 891.48 1081.68, 891.48 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 863.44 1059.00 C 863.44 1081.68, 864.33 1090.32, 864.33 1113.00 L 973.64 1113.00 C 973.64 1090.32, 972.80 1081.68, 972.80 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 890.73 1059.00 C 890.73 1081.68, 900.11 1090.32, 900.11 1113.00 L 975.45 1113.00 C 975.45 1090.32, 966.13 1081.68, 966.13 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 972.65 1059.00 C 972.65 1081.68, 973.34 1090.32, 973.34 1113.00 L 1199.84 1113.00 C 1199.84 1090.32, 1199.23 1081.68, 1199.23 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 966.01 1059.00 C 966.01 1081.68, 975.22 1090.32, 975.22 1113.00 L 1088.19 1113.00 C 1088.19 1090.32, 1078.98 1081.68, 1078.98 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 1195.78 1059.00 C 1195.78 1081.68, 1195.45 1090.32, 1195.45 1113.00 L 1518.70 1113.00 C 1518.70 1090.32, 1519.19 1081.68, 1519.19 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<rect x="430.00" y="1037.50" width="106.87" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="431.12" y="1111.50" width="106.94" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="1037.50" width="393.34" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="440.15" y="1111.50" width="393.22" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="534.97" y="1037.50" width="325.54" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="536.58" y="1111.50" width="325.58" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="820.83" y="1037.50" width="30.93" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="831.24" y="1111.50" width="30.91" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="854.83" y="1037.50" width="36.65" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="864.33" y="1111.50" width="36.69" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="863.44" y="1037.50" width="109.37" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="864.33" y="1111.50" width="109.32" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="890.73" y="1037.50" width="75.40" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="900.11" y="1111.50" width="75.35" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="972.65" y="1037.50" width="226.57" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="973.34" y="1111.50" width="226.51" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="966.01" y="1037.50" width="112.98" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="975.22" y="1111.50" width="112.97" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1195.78" y="1037.50" width="323.41" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="1195.45" y="1111.50" width="323.25" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<text x="430.0" y="1246.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Evidence blocks use local 0-based half-open offsets from direct sweepGA 1:1 no-scaffold PAFs; source labels show native 500 kb assembly windows.</text>
+<line x1="42.00" y1="1268.00" x2="1638.00" y2="1268.00" stroke="#d8dcdf" stroke-width="0.80" />
+</svg>
