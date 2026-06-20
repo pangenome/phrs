@@ -54,7 +54,7 @@ The script reads only:
 
 No heavy alignment, PAF filtering, or event reselection is performed.
 
-## Coordinate and Band Source
+## Coordinate Source and Unbanded Tracks
 
 Segment geometry and all displayed interval labels come from native sample
 assembly coordinates in `selected_segments.tsv` and `event_manifest.tsv`.
@@ -65,8 +65,9 @@ coordinates.
 The full schematic deliberately does not draw whole-chromosome-length tracks.
 Each evidence row is a native terminal assembly window with a local 0-500 kb
 axis. This keeps terminal donor patches visible at their actual local offsets
-instead of shrinking them onto chromosome-scale ideograms. The alternating bands
-inside each window are schematic guides only, not cytobands.
+instead of shrinking them onto chromosome-scale ideograms. The terminal-window
+tracks are deliberately plain and unbanded because these are extracted native
+assembly windows, not cytogenetic ideograms or G-banded chromosomes.
 
 ## Event Set
 

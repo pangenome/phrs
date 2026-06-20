@@ -14,6 +14,7 @@ from __future__ import annotations
 import csv
 import html
 import math
+import os
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -368,15 +369,6 @@ def draw_ideogram(
     exact_bands: bool,
 ) -> None:
     svg.rect(x0, y, width, height, TRACK_FILL, TRACK_STROKE, 1.1, rx=height / 2)
-    if exact_bands:
-        band_n = 12
-    else:
-        band_n = 8
-    for i in range(band_n):
-        if i % 2:
-            bx = x0 + width * i / band_n
-            bw = width / band_n
-            svg.rect(bx, y + 1.2, bw, height - 2.4, "#e3e6e8", "none", rx=0)
     if not exact_bands:
         cx = x0 + width * 0.5
         d = (
@@ -485,6 +477,16 @@ def manifest_source_windows(event: dict[str, str], arms: set[str]) -> str:
     return " | ".join(pieces)
 
 
+def single_window_label(value: str) -> Interval | None:
+    """Return one interval only when the label represents a single native window."""
+    if " | " in value or not value:
+        return None
+    try:
+        return parse_interval(value)
+    except ValueError:
+        return None
+
+
 def draw_terminal_window_track(
     svg: SVG,
     y: float,
@@ -496,16 +498,10 @@ def draw_terminal_window_track(
     svg.text(42, y - 10, label, 13, "700")
     svg.text(42, y + 7, sublabel, 10, "400", MUTED)
     svg.rect(TRACK_X0, y, TRACK_W, TRACK_H, TRACK_FILL, TRACK_STROKE, 1.1, rx=TRACK_H / 2)
-    for i in range(10):
-        if i % 2:
-            svg.rect(
-                TRACK_X0 + TRACK_W * i / 10,
-                y + 1.2,
-                TRACK_W / 10,
-                TRACK_H - 2.4,
-                "#e3e6e8",
-                "none",
-            )
+    window = single_window_label(sublabel)
+    if window is not None:
+        svg.text(TRACK_X0, y - 7, f"{window.start:,}", 9, "400", MUTED)
+        svg.text(TRACK_X1, y - 7, f"{window.end:,}", 9, "400", MUTED, anchor="end")
     telomere_right = arm.endswith("q")
     tx = TRACK_X1 if telomere_right else TRACK_X0
     direction = "right" if telomere_right else "left"
@@ -524,6 +520,14 @@ def draw_terminal_window_track(
 
 def draw_local_axis(svg: SVG, y: float) -> None:
     axis_y = y
+    svg.text(
+        TRACK_X0,
+        axis_y - 12,
+        "local coordinate inside each native 500 kb assembly window (0-based offset)",
+        10,
+        "700",
+        MUTED,
+    )
     svg.line(TRACK_X0, axis_y, TRACK_X1, axis_y, LIGHT, 1)
     for kb in [0, 100, 200, 300, 400, 500]:
         x = TRACK_X0 + TRACK_W * kb / 500
@@ -590,7 +594,7 @@ def draw_full_event(
     svg.text(
         TRACK_X0,
         y0 + 50,
-        "Full schematic now uses native 0-500 kb assembly-window coordinates for evidence; not CHM13-projected or whole-chromosome scale.",
+        "Full schematic uses plain unbanded native 0-500 kb assembly-window tracks; not CHM13-projected or whole-chromosome scale.",
         12,
         "700",
         MUTED,
@@ -723,7 +727,7 @@ def draw_event(
         svg.text(
             TRACK_X0,
             y0 + 25,
-            "Full chromosome/arm context; bands are neutral schematic bands from chromosome-size context, not exact cytobands.",
+            "Full chromosome/arm context uses plain unbanded tracks; coordinates are native sample assembly windows, not exact cytobands.",
             12,
             "400",
             MUTED,
@@ -897,9 +901,20 @@ def render(mode: str, output: Path) -> None:
 def convert_pdf(svg_path: Path) -> tuple[bool, str]:
     pdf_path = svg_path.with_suffix(".pdf")
     rsvg = shutil.which("rsvg-convert")
+    if rsvg is None and os.environ.get("GUIX_ENVIRONMENT"):
+        guix_rsvg = Path(os.environ["GUIX_ENVIRONMENT"]) / "bin" / "rsvg-convert"
+        if guix_rsvg.exists():
+            rsvg = str(guix_rsvg)
     if rsvg:
         subprocess.run([rsvg, "-f", "pdf", "-o", str(pdf_path), str(svg_path)], check=True)
-        return True, f"Converted with {rsvg}"
+        version = subprocess.run(
+            [rsvg, "--version"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        converter = "Guix librsvg " if "/gnu/store/" in rsvg else ""
+        return True, f"converted to {pdf_path.name} with {converter}{version} ({rsvg})."
     inkscape = shutil.which("inkscape")
     if inkscape:
         subprocess.run([inkscape, str(svg_path), "--export-type=pdf", f"--export-filename={pdf_path}"], check=True)
@@ -909,7 +924,7 @@ def convert_pdf(svg_path: Path) -> tuple[bool, str]:
     except Exception:
         return False, "No rsvg-convert, inkscape, or Python cairosvg was available."
     cairosvg.svg2pdf(url=str(svg_path), write_to=str(pdf_path))
-    return True, "Converted with Python cairosvg"
+    return True, "converted with Python cairosvg."
 
 
 def main() -> None:
@@ -918,7 +933,7 @@ def main() -> None:
     messages = []
     for svg_path in [FULL_SVG, FOCUS_SVG]:
         ok, message = convert_pdf(svg_path)
-        messages.append(f"{svg_path.name}: {'PDF written' if ok else 'SVG only'} ({message})")
+        messages.append(f"{svg_path.name}: {message if ok else f'SVG only ({message})'}")
     status_path = HERE / "pdf_conversion_status.txt"
     status_path.write_text("\n".join(messages) + "\n")
     for message in messages:
