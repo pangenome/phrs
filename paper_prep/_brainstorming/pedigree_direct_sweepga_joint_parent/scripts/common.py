@@ -6,7 +6,10 @@ import re
 
 
 PACKAGE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-FASTA = "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/washu.1Mb.telo_500kb_trimmed.fa.gz"
+FASTA = os.environ.get(
+    "WASHU_PEDIGREE_FASTA",
+    "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/washu.1Mb.telo_500kb_trimmed.fa.gz",
+)
 COMPARISONS = os.path.join(PACKAGE_DIR, "config", "comparisons.tsv")
 FILTER_MATRIX = os.path.join(PACKAGE_DIR, "config", "filter_matrix.tsv")
 
