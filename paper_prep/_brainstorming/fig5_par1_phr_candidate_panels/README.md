@@ -32,11 +32,20 @@ The script uses it only to recover community labels, score summaries, PHR/PAR
 status, and interpretive labels when a conservative segment has the same query,
 interval, donor arm, and donor haplotype.
 
-The script filters three pre-selected, review-facing examples:
+The script filters three pre-selected compact-review examples:
 
 - PAN027 paternal hap2 vs PAN011 father, chrX p PAR1 positive control.
 - PAN027 paternal hap2 vs PAN011 father, chr9 q terminal autosomal PHR candidate.
-- PAN028 maternal hap1 vs PAN027 mother, chr3 q independent autosomal PHR candidate.
+- PAN028 maternal hap1 vs PAN027 mother, chr3 q strict side-fragment panel,
+  retained only as a corrected/superseded compact-panel record.
+
+For manuscript-facing review, prefer the newer synteny schematic in
+`paper_prep/_brainstorming/fig5_synteny_recombination_schematic/`. Its
+corrected PAN028 event is `PAN028_chr9q_chr3q_PHR_candidate`, from query
+`PAN028#1#chr9.haplotype1:134380985-134880984_chr9_qarm`, with chr3q primary
+donor segments and a chr15q side fragment. This compact Panel C is the older
+PAN028 chr3q strict-path side-fragment view and is not a substitute for that
+event.
 
 ## Coordinate Convention
 
@@ -78,17 +87,23 @@ python3 paper_prep/_brainstorming/fig5_par1_phr_candidate_panels/plot_fig5_par1_
 Panel A is a known male PAR1 X/Y positive control and should be kept separate
 from the autosomal PHR interpretation.
 
-Panels B and C are candidate event-level examples compatible with chr3q/chr9q
-C3 PHR exchange. They are not presented as clean full crossovers. In Panel B,
-the terminal tract is mostly chr3q, while the chr15q segment is marked as a
-smaller side fragment within the single selected 1:1 path, and the tiny chr20q
-tail is treated as low-confidence. In Panel C, strict primary-path drawing
-shows chr7p, chr16q, and chr20q side fragments in the selected chr3q window;
-previous permissive chr9q patch calls are not drawn as alternate alignments.
+Panel B is a candidate event-level example compatible with chr3q/chr9q C3 PHR
+exchange, but is not presented as a clean full crossover. Its terminal tract is
+mostly chr3q, while the chr15q segment is marked as a smaller side fragment
+within the single selected 1:1 path, and the tiny chr20q tail is treated as
+low-confidence.
+
+Panel C has been corrected and superseded. Under the strict primary path for
+`PAN028#1#chr3.haplotype1:199233840-199733839_chr3_qarm`, it shows side
+fragments to chr7p, chr16q h1, and chr20q h2. It is not labeled as a PAN028
+PHR candidate, and permissive patch geometry must not be used to infer a chr9q
+donor. Use the newer synteny schematic's
+`PAN028_chr9q_chr3q_PHR_candidate` for the corrected PAN028 chr9q-to-chr3q
+event.
 
 The optional acrocentric/known-system panel was intentionally omitted here:
-the finite four-panel asset keeps PAR1 plus the two autosomal chr3q/chr9q
-examples legible and avoids a repetitive p-arm-dominated panel.
+the finite compact asset keeps PAR1 plus the autosomal review examples legible
+and avoids a repetitive p-arm-dominated panel.
 
 The asset is for review and presentation triage before any manuscript
 integration.

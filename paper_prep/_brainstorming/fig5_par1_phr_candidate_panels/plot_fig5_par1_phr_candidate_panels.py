@@ -54,6 +54,7 @@ PANELS = [
         "phr_status": "PAR1 positive-control",
         "xlim": (0, FULL_SPAN),
         "callout": "Main chrYp block at chrX:12,265-155,863; strict nb=1 1:1 path; C15/C15.",
+        "preferred_synteny_event": "",
     },
     {
         "panel": "B",
@@ -69,21 +70,23 @@ PANELS = [
         "phr_status": "autosomal PHR candidate",
         "xlim": (280_000, FULL_SPAN),
         "callout": "Strict primary path switches near chr9:136,151,769; terminal tract is mostly chr3q with small side fragments.",
+        "preferred_synteny_event": "",
     },
     {
         "panel": "C",
-        "title": "C  Independent PAN028 support: chr3 q terminal patch maps to chr9 q",
-        "short_title": "PAN028 chr3q candidate",
+        "title": "C  Superseded PAN028 chr3q side-fragment strict path",
+        "short_title": "PAN028 chr3q side-fragment panel",
         "label": "PAN028 maternal (hap1) vs PAN027 (mother)",
         "pair": "PAN028_vs_PAN027",
         "query": "PAN028#1#chr3.haplotype1:199233840-199733839_chr3_qarm",
-        "primary_arms": {"chr9q"},
+        "primary_arms": set(),
         "secondary_arms": {"chr7p", "chr16q", "chr20q"},
         "low_conf_arms": set(),
-        "interpretation": "Independent candidate compatible with chr3q/chr9q C3 exchange.",
-        "phr_status": "autosomal PHR candidate",
+        "interpretation": "Strict chr3q path shows chr7p, chr16q h1, and chr20q h2 side fragments only; not the preferred PAN028 PHR candidate.",
+        "phr_status": "superseded side-fragment panel",
         "xlim": (220_000, FULL_SPAN),
-        "callout": "Strict primary path has candidate side fragments across chr3:199,496,793-199,733,150; permissive chr9q patch calls are annotation only.",
+        "callout": "Strict nb=1 path contains chr7p, chr16q h1, and chr20q h2 side fragments; no strict chr9q donor is drawn.",
+        "preferred_synteny_event": "PAN028_chr9q_chr3q_PHR_candidate",
     },
 ]
 
@@ -570,12 +573,13 @@ def write_summary(segments: list[Segment], out_path: Path) -> list[dict[str, str
                     "has_phr": patch.has_phr,
                     "phr_or_par_status": panel["phr_status"],
                     "event_class": event_class(patch, panel),
+                    "preferred_synteny_event": panel["preferred_synteny_event"],
                     "interpretation_boundary": panel["interpretation"],
                 }
             )
     fieldnames = list(rows[0].keys())
     with out_path.open("w", newline="") as fh:
-        writer = csv.DictWriter(fh, delimiter="\t", fieldnames=fieldnames)
+        writer = csv.DictWriter(fh, delimiter="\t", fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     return rows
@@ -693,7 +697,7 @@ def draw_overview(c: Canvas, y: float, summary_rows: list[dict[str, str]]) -> No
     legend = [
         ("same-chromosome background", COLORS["background"]),
         ("PAR1 chrY donor", COLORS["primary_chrYp"]),
-        ("chr3/chr9 candidate donor", COLORS["primary_chr3q_chr9q"]),
+        ("primary donor tract", COLORS["primary_chr3q_chr9q"]),
         ("side/cross-community", COLORS["cross_community"]),
         ("low-confidence tail", COLORS["low_conf"]),
     ]
@@ -771,11 +775,20 @@ The script uses it only to recover community labels, score summaries, PHR/PAR
 status, and interpretive labels when a conservative segment has the same query,
 interval, donor arm, and donor haplotype.
 
-The script filters three pre-selected, review-facing examples:
+The script filters three pre-selected compact-review examples:
 
 - PAN027 paternal hap2 vs PAN011 father, chrX p PAR1 positive control.
 - PAN027 paternal hap2 vs PAN011 father, chr9 q terminal autosomal PHR candidate.
-- PAN028 maternal hap1 vs PAN027 mother, chr3 q independent autosomal PHR candidate.
+- PAN028 maternal hap1 vs PAN027 mother, chr3 q strict side-fragment panel,
+  retained only as a corrected/superseded compact-panel record.
+
+For manuscript-facing review, prefer the newer synteny schematic in
+`paper_prep/_brainstorming/fig5_synteny_recombination_schematic/`. Its
+corrected PAN028 event is `PAN028_chr9q_chr3q_PHR_candidate`, from query
+`PAN028#1#chr9.haplotype1:134380985-134880984_chr9_qarm`, with chr3q primary
+donor segments and a chr15q side fragment. This compact Panel C is the older
+PAN028 chr3q strict-path side-fragment view and is not a substitute for that
+event.
 
 ## Coordinate Convention
 
@@ -817,17 +830,23 @@ python3 paper_prep/_brainstorming/fig5_par1_phr_candidate_panels/plot_fig5_par1_
 Panel A is a known male PAR1 X/Y positive control and should be kept separate
 from the autosomal PHR interpretation.
 
-Panels B and C are candidate event-level examples compatible with chr3q/chr9q
-C3 PHR exchange. They are not presented as clean full crossovers. In Panel B,
-the terminal tract is mostly chr3q, while the chr15q segment is marked as a
-smaller side fragment within the single selected 1:1 path, and the tiny chr20q
-tail is treated as low-confidence. In Panel C, strict primary-path drawing
-shows chr7p, chr16q, and chr20q side fragments in the selected chr3q window;
-previous permissive chr9q patch calls are not drawn as alternate alignments.
+Panel B is a candidate event-level example compatible with chr3q/chr9q C3 PHR
+exchange, but is not presented as a clean full crossover. Its terminal tract is
+mostly chr3q, while the chr15q segment is marked as a smaller side fragment
+within the single selected 1:1 path, and the tiny chr20q tail is treated as
+low-confidence.
+
+Panel C has been corrected and superseded. Under the strict primary path for
+`PAN028#1#chr3.haplotype1:199233840-199733839_chr3_qarm`, it shows side
+fragments to chr7p, chr16q h1, and chr20q h2. It is not labeled as a PAN028
+PHR candidate, and permissive patch geometry must not be used to infer a chr9q
+donor. Use the newer synteny schematic's
+`PAN028_chr9q_chr3q_PHR_candidate` for the corrected PAN028 chr9q-to-chr3q
+event.
 
 The optional acrocentric/known-system panel was intentionally omitted here:
-the finite four-panel asset keeps PAR1 plus the two autosomal chr3q/chr9q
-examples legible and avoids a repetitive p-arm-dominated panel.
+the finite compact asset keeps PAR1 plus the autosomal review examples legible
+and avoids a repetitive p-arm-dominated panel.
 
 The asset is for review and presentation triage before any manuscript
 integration.

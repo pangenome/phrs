@@ -15,7 +15,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 6 0 obj
-<< /Length 17067 >>
+<< /Length 17144 >>
 stream
 BT /F2 13.00 Tf 0.1216 0.1216 0.1216 rg 16.000 734.000 Td (Candidate Fig. 5 asset pack: PAR1 control and autosomal PHR-compatible pedigree patches) Tj ET
 BT /F1 8.00 Tf 0.4000 0.4000 0.4000 rg 16.000 716.000 Td (Strict nb=1 sweepGA 1:1 no-scaffold primary path; axes are native assembly coordinates parsed from source names.) Tj ET
@@ -160,12 +160,11 @@ BT /F1 7.20 Tf 0.3333 0.3333 0.3333 rg 824.226 425.000 Td (136,154,825) Tj ET
 0.2902 0.2902 0.2902 RG 0.600 w 1068.000 444.000 m 1068.000 437.000 l S
 BT /F1 7.20 Tf 0.3333 0.3333 0.3333 rg 1047.408 425.000 Td (136,204,825) Tj ET
 BT /F1 7.20 Tf 0.3333 0.3333 0.3333 rg 940.704 412.000 Td (chr9 native bp \(0-based half-open\)) Tj ET
-BT /F2 11.00 Tf 0.1216 0.1216 0.1216 rg 86.000 392.000 Td (C  Independent PAN028 support: chr3 q terminal patch maps to chr9 q) Tj ET
+BT /F2 11.00 Tf 0.1216 0.1216 0.1216 rg 86.000 392.000 Td (C  Superseded PAN028 chr3q side-fragment strict path) Tj ET
 BT /F1 8.20 Tf 0.3333 0.3333 0.3333 rg 86.000 374.000 Td (PAN028 maternal \(hap1\) vs PAN027 \(mother\)) Tj ET
 BT /F1 7.40 Tf 0.3333 0.3333 0.3333 rg 86.000 362.000 Td (Displayed query window: chr3:199,453,840-199,733,840) Tj ET
-BT /F1 7.70 Tf 0.3333 0.3333 0.3333 rg 631.000 374.000 Td (Strict primary path has candidate side fragments across) Tj ET
-BT /F1 7.70 Tf 0.3333 0.3333 0.3333 rg 631.000 365.000 Td (chr3:199,496,793-199,733,150; permissive chr9q patch calls are) Tj ET
-BT /F1 7.70 Tf 0.3333 0.3333 0.3333 rg 631.000 356.000 Td (annotation only.) Tj ET
+BT /F1 7.70 Tf 0.3333 0.3333 0.3333 rg 631.000 374.000 Td (Strict nb=1 path contains chr7p, chr16q h1, and chr20q h2 side) Tj ET
+BT /F1 7.70 Tf 0.3333 0.3333 0.3333 rg 631.000 365.000 Td (fragments; no strict chr9q donor is drawn.) Tj ET
 0.9529 0.9412 0.9098 rg
 138.607 304.000 929.393 30.000 re
 f
@@ -236,7 +235,8 @@ BT /F1 7.00 Tf 0.4314 0.3529 0.1647 rg 953.792 354.000 Td (chr16q h1) Tj ET
 B
 0.4314 0.3529 0.1647 RG 0.500 w 1021.003 329.000 m 1021.003 340.000 l S
 BT /F1 7.00 Tf 0.4314 0.3529 0.1647 rg 995.523 344.000 Td (chr20q h2 side) Tj ET
-BT /F1 7.80 Tf 0.3333 0.3333 0.3333 rg 86.000 266.000 Td (Independent candidate compatible with chr3q/chr9q C3 exchange.) Tj ET
+BT /F1 7.80 Tf 0.3333 0.3333 0.3333 rg 86.000 266.000 Td (Strict chr3q path shows chr7p, chr16q h1, and chr20q h2 side fragments only; not the preferred PAN028 PHR) Tj ET
+BT /F1 7.80 Tf 0.3333 0.3333 0.3333 rg 86.000 257.000 Td (candidate.) Tj ET
 0.2902 0.2902 0.2902 RG 0.700 w 86.000 294.000 m 1068.000 294.000 l S
 0.2902 0.2902 0.2902 RG 0.600 w 191.214 298.000 m 191.214 291.000 l S
 BT /F1 7.20 Tf 0.3333 0.3333 0.3333 rg 170.622 279.000 Td (199,483,840) Tj ET
@@ -344,7 +344,8 @@ BT /F1 6.70 Tf 0.2000 0.2000 0.2000 rg 90.000 79.000 Td (C) Tj ET
 0.8392 0.8392 0.8392 RG 0.350 w
 140.000 50.000 145.000 40.000 re
 B
-BT /F1 6.70 Tf 0.2000 0.2000 0.2000 rg 144.000 79.000 Td (PAN028 chr3q candidate) Tj ET
+BT /F1 6.70 Tf 0.2000 0.2000 0.2000 rg 144.000 79.000 Td (PAN028 chr3q side-fragment) Tj ET
+BT /F1 6.70 Tf 0.2000 0.2000 0.2000 rg 144.000 70.500 Td (panel) Tj ET
 1.0000 1.0000 1.0000 rg
 0.8392 0.8392 0.8392 RG 0.350 w
 291.000 50.000 375.000 40.000 re
@@ -376,7 +377,7 @@ BT /F1 7.20 Tf 0.2667 0.2667 0.2667 rg 294.000 30.000 Td (PAR1 chrY donor) Tj ET
 0.4000 0.4000 0.4000 RG 0.300 w
 462.000 28.000 15.000 12.000 re
 B
-BT /F1 7.20 Tf 0.2667 0.2667 0.2667 rg 482.000 30.000 Td (chr3/chr9 candidate donor) Tj ET
+BT /F1 7.20 Tf 0.2667 0.2667 0.2667 rg 482.000 30.000 Td (primary donor tract) Tj ET
 0.6039 0.4784 0.5569 rg
 0.4000 0.4000 0.4000 RG 0.300 w
 650.000 28.000 15.000 12.000 re
@@ -400,5 +401,5 @@ xref
 0000000405 00000 n 
 trailer << /Size 7 /Root 1 0 R >>
 startxref
-17525
+17602
 %%EOF
