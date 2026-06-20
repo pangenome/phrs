@@ -10,8 +10,8 @@ manuscript Fig5.
 - `selected_segments.tsv` - one row per strict conservative segment from the selected query windows. It includes local query offsets, projected native query coordinates, target source windows, recovered target-side intervals from the strict PAF, identity/Jaccard, optional community annotations, and drawing role.
 - `coordinate_provenance.md` - coordinate-system and T2T/window audit. Read this before drawing labels.
 - `plot_synteny_recombination_schematic.py` - standard-library Python SVG renderer.
-- `fig5_synteny_recombination_full.svg` - full/context prototype: three event rows with chromosome/arm context, highlighted native source windows, and ribbons from source segments into the child/query window.
-- `fig5_synteny_recombination_full.pdf` - PDF rendering of the full/context prototype, generated with Guix `librsvg` / `rsvg-convert 2.54.5`.
+- `fig5_synteny_recombination_full.svg` - full schematic prototype: three event rows drawn as source/product/source native 0-500 kb terminal-window views. PAR1 shows chrX source, child chrX product, and chrY source; autosomal candidates show chr9q context, child chr9q product, and chr3q donor. chr15q/chr16q/chr20q side mappings are caveat markers only.
+- `fig5_synteny_recombination_full.pdf` - PDF rendering of the full source/product/source terminal-window prototype, generated with Guix `librsvg` / `rsvg-convert 2.54.5`.
 - `fig5_synteny_recombination_focus.svg` - event-window prototype: the same three event rows zoomed to the native 500 kb assembly windows with a consistent physical scale and 100 kb scale bars.
 - `fig5_synteny_recombination_focus.pdf` - PDF rendering of the event-window prototype, generated with Guix `librsvg` / `rsvg-convert 2.54.5`.
 - `pdf_conversion_status.txt` - records whether local SVG-to-PDF conversion was available during regeneration.
@@ -51,7 +51,6 @@ The script reads only:
 
 - `paper_prep/_brainstorming/fig5_synteny_recombination_schematic/event_manifest.tsv`
 - `paper_prep/_brainstorming/fig5_synteny_recombination_schematic/selected_segments.tsv`
-- `data/chm13.chrom.sizes`
 
 No heavy alignment, PAF filtering, or event reselection is performed.
 
@@ -63,12 +62,11 @@ Coordinates are 0-based half-open native assembly windows parsed from path names
 and strict primary-path PAF provenance. They are not CHM13-projected
 coordinates.
 
-No local cytoband/G-band table was found in the repo. The full/context SVG uses
-`data/chm13.chrom.sizes` only to provide approximate chromosome-length context
-and draws neutral alternating bands. These are schematic ideogram bands, not
-exact cytobands. For source windows whose native sample coordinates extend
-beyond the CHM13 chromosome-size line, the renderer extends that schematic track
-to the largest native coordinate needed for the plotted segments.
+The full schematic deliberately does not draw whole-chromosome-length tracks.
+Each evidence row is a native terminal assembly window with a local 0-500 kb
+axis. This keeps terminal donor patches visible at their actual local offsets
+instead of shrinking them onto chromosome-scale ideograms. The alternating bands
+inside each window are schematic guides only, not cytobands.
 
 ## Event Set
 
@@ -82,15 +80,15 @@ The third event deliberately replaces the earlier PAN028 chr3q review panel. The
 
 ## Drawing Guidance
 
-Use `selected_segments.tsv` for geometry. Draw the child/recombinant haplotype as the destination track, then draw source tracks for same-chromosome context and non-homologous donor blocks. Prefer block/flow/spline encodings over a many-color interval stack.
+Use `selected_segments.tsv` for geometry. Draw the child/recombinant haplotype as the middle destination track, with one source/donor window above and one source/donor window below. For PAR1, bracket the child chrX window with chrX and chrY PAR1 source windows. For autosomal candidates, bracket the child chr9q product with chr9q same-chromosome context above and chr3q primary donor below. Prefer block/flow/spline encodings over a many-color interval stack.
 
 Use the `event_role` column to group segments:
 
 - `same-chromosome context` - homologous/source context, useful as a parental chromosome track but not the recombination highlight.
 - `PAR positive control` - chrYp blocks in the male PAR1 sanity-check event.
 - `primary donor` - main chr3q donor blocks for autosomal candidate examples.
-- `side fragment` - secondary non-homologous blocks that should be shown explicitly when they require another source chromosome.
-- `low-confidence tail` - tiny/low-score fragment; show as a caveat if retained.
+- `side fragment` - secondary non-homologous blocks such as chr15q/chr16q; show as caveat markers/labels on the product, not as equivalent parent/source tracks.
+- `low-confidence tail` - tiny/low-score fragment such as chr20q; show as a caveat marker if retained.
 
 Coordinates are native sample assembly window coordinates, not CHM13. Segment intervals are 0-based half-open. Target-side exact intervals are recovered from the existing strict PAF rows where possible; do not invent CHM13 coordinates or whole-chromosome T2T context from this manifest.
 

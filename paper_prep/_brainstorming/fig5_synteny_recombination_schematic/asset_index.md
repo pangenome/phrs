@@ -4,8 +4,8 @@ This index lists the inspectable assets relevant to the Fig5 synteny recombinati
 
 ## Schematic Prototype Pack
 
-- `fig5_synteny_recombination_full.svg` - Full chromosome/arm-context schematic for the PAR1 positive control and two strict-path chr9q/chr3q PHR candidates, with neutral chromosome-length context and source-to-child flow ribbons.
-- `fig5_synteny_recombination_full.pdf` - PDF rendering of the full chromosome/arm-context schematic.
+- `fig5_synteny_recombination_full.svg` - Corrected full source/product/source schematic for the PAR1 positive control and two strict-path chr9q/chr3q PHR candidates. Each event uses local native 0-500 kb terminal-window coordinates; PAR1 shows chrX/child chrX/chrY windows, autosomal candidates show chr9q context/child chr9q product/chr3q donor, and chr15q/chr16q/chr20q side mappings are caveat markers only.
+- `fig5_synteny_recombination_full.pdf` - PDF rendering of the corrected full source/product/source terminal-window schematic.
 - `fig5_synteny_recombination_focus.svg` - Focused 500 kb native-window schematic for the same three events, using a consistent physical scale and labeled flow segments.
 - `fig5_synteny_recombination_focus.pdf` - PDF rendering of the focused native-window schematic.
 - `event_manifest.tsv` - Event-level manifest selecting exactly the PAR1 positive control, PAN027 chr9q PHR candidate, and corrected PAN028 strict chr9q PHR candidate, with coordinate provenance and donor/side-fragment summaries.

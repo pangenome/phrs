@@ -21,11 +21,9 @@ from pathlib import Path
 from typing import Callable, Iterable
 
 
-ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 EVENTS_TSV = HERE / "event_manifest.tsv"
 SEGMENTS_TSV = HERE / "selected_segments.tsv"
-CHROM_SIZES = ROOT / "data" / "chm13.chrom.sizes"
 
 FULL_SVG = HERE / "fig5_synteny_recombination_full.svg"
 FOCUS_SVG = HERE / "fig5_synteny_recombination_focus.svg"
@@ -106,6 +104,8 @@ class Segment:
     role: str
     query: Interval
     target: Interval
+    query_local: Interval
+    target_local: Interval
     query_window: Interval
     target_window: Interval
     target_name: str
@@ -141,21 +141,9 @@ def parse_interval(value: str, default_chrom: str | None = None) -> Interval:
     return Interval(chrom=chrom, start=int(start_s), end=int(end_s))
 
 
-def arm_to_chrom(arm: str) -> str:
-    if arm.endswith("p") or arm.endswith("q"):
-        return arm[:-1]
-    return arm
-
-
-def read_chrom_sizes() -> dict[str, int]:
-    sizes: dict[str, int] = {}
-    with CHROM_SIZES.open() as handle:
-        for line in handle:
-            if not line.strip():
-                continue
-            chrom, size = line.split()[:2]
-            sizes[chrom] = int(size)
-    return sizes
+def parse_local_interval(value: str) -> Interval:
+    start_s, end_s = value.strip().split("-", 1)
+    return Interval(chrom="local", start=int(start_s), end=int(end_s))
 
 
 def fmt_bp(value: int) -> str:
@@ -261,9 +249,8 @@ class SVG:
         )
 
 
-def load_data() -> tuple[list[dict[str, str]], list[Segment], dict[str, int]]:
+def load_data() -> tuple[list[dict[str, str]], list[Segment]]:
     events = sorted(read_tsv(EVENTS_TSV), key=lambda r: int(r["event_order"]))
-    chrom_sizes = read_chrom_sizes()
     segments: list[Segment] = []
     for row in read_tsv(SEGMENTS_TSV):
         query_window = parse_interval(row["query_source_window_native_0based_half_open"])
@@ -280,6 +267,10 @@ def load_data() -> tuple[list[dict[str, str]], list[Segment], dict[str, int]]:
                 role=row["event_role"],
                 query=query,
                 target=target,
+                query_local=parse_local_interval(
+                    f"{row['local_query_start_0based']}-{row['local_query_end_0based_exclusive']}"
+                ),
+                target_local=parse_local_interval(row["target_local_interval_0based_if_recovered"]),
                 query_window=query_window,
                 target_window=target_window,
                 target_name=row["target_name"],
@@ -289,7 +280,7 @@ def load_data() -> tuple[list[dict[str, str]], list[Segment], dict[str, int]]:
                 length=int(row["segment_length_bp"]),
             )
         )
-    return events, segments, chrom_sizes
+    return events, segments
 
 
 def event_segments(segments: Iterable[Segment], event_id: str) -> list[Segment]:
@@ -458,6 +449,18 @@ def focus_mapper(window: Interval) -> Callable[[Interval], tuple[float, float]]:
     return mapper
 
 
+def local_window_mapper(window_len: int = 500_000) -> Callable[[Interval], tuple[float, float]]:
+    denom = max(1, window_len)
+
+    def mapper(interval: Interval) -> tuple[float, float]:
+        return (
+            TRACK_X0 + interval.start / denom * TRACK_W,
+            TRACK_X0 + interval.end / denom * TRACK_W,
+        )
+
+    return mapper
+
+
 def role_totals(segs: list[Segment]) -> str:
     totals: dict[str, int] = {}
     for seg in segs:
@@ -471,6 +474,227 @@ def role_totals(segs: list[Segment]) -> str:
     ]
     pieces = [f"{label} {fmt_bp(totals[role])}" for role, label in ordered if role in totals]
     return "; ".join(pieces)
+
+
+def manifest_source_windows(event: dict[str, str], arms: set[str]) -> str:
+    pieces = []
+    for item in event["source_windows_by_arm"].split(" | "):
+        arm, _, rest = item.partition(":")
+        if arm in arms:
+            pieces.append(rest)
+    return " | ".join(pieces)
+
+
+def draw_terminal_window_track(
+    svg: SVG,
+    y: float,
+    label: str,
+    sublabel: str,
+    arm: str,
+    kind: str,
+) -> None:
+    svg.text(42, y - 10, label, 13, "700")
+    svg.text(42, y + 7, sublabel, 10, "400", MUTED)
+    svg.rect(TRACK_X0, y, TRACK_W, TRACK_H, TRACK_FILL, TRACK_STROKE, 1.1, rx=TRACK_H / 2)
+    for i in range(10):
+        if i % 2:
+            svg.rect(
+                TRACK_X0 + TRACK_W * i / 10,
+                y + 1.2,
+                TRACK_W / 10,
+                TRACK_H - 2.4,
+                "#e3e6e8",
+                "none",
+            )
+    telomere_right = arm.endswith("q")
+    tx = TRACK_X1 if telomere_right else TRACK_X0
+    direction = "right" if telomere_right else "left"
+    if telomere_right:
+        d = f"M {tx:.2f} {y:.2f} L {tx + 15:.2f} {y + TRACK_H / 2:.2f} L {tx:.2f} {y + TRACK_H:.2f} Z"
+        text_x = tx + 22
+        anchor = "start"
+    else:
+        d = f"M {tx:.2f} {y:.2f} L {tx - 15:.2f} {y + TRACK_H / 2:.2f} L {tx:.2f} {y + TRACK_H:.2f} Z"
+        text_x = tx - 22
+        anchor = "end"
+    svg.path(d, "#f9fbfb", TRACK_STROKE, 1.0)
+    svg.text(text_x, y + 13, f"{arm} telomere {direction}", 9, "700", MUTED, anchor=anchor)
+    svg.text(TRACK_X1 + 18, y - 7, kind, 10, "400", MUTED)
+
+
+def draw_local_axis(svg: SVG, y: float) -> None:
+    axis_y = y
+    svg.line(TRACK_X0, axis_y, TRACK_X1, axis_y, LIGHT, 1)
+    for kb in [0, 100, 200, 300, 400, 500]:
+        x = TRACK_X0 + TRACK_W * kb / 500
+        svg.line(x, axis_y - 4, x, axis_y + 4, LIGHT, 1)
+        svg.text(x, axis_y + 18, f"{kb} kb", 9, "400", MUTED, anchor="middle")
+
+
+def full_source_plan(event: dict[str, str], segs: list[Segment]) -> dict[str, object]:
+    event_id = event["event_id"]
+    if event_id == "PAR1_XY_positive_control":
+        top_roles = {"same-chromosome context"}
+        bottom_roles = {"PAR positive control"}
+        top_arm = "chrXp"
+        bottom_arm = "chrYp"
+        top_title = "source: chrX PAR1 context"
+        bottom_title = "source: chrY PAR1 donor"
+        bottom_kind = "positive-control source"
+    else:
+        top_roles = {"same-chromosome context"}
+        bottom_roles = {"primary donor"}
+        top_arm = "chr9q"
+        bottom_arm = "chr3q"
+        top_title = "source: chr9q same-chromosome context"
+        bottom_title = "source: chr3q primary PHR donor"
+        bottom_kind = "candidate donor source"
+
+    child_label = event["child_query_source"].split(" [", 1)[0]
+    return {
+        "top_roles": top_roles,
+        "bottom_roles": bottom_roles,
+        "top_arm": top_arm,
+        "bottom_arm": bottom_arm,
+        "top_title": top_title,
+        "bottom_title": bottom_title,
+        "bottom_kind": bottom_kind,
+        "child_label": child_label,
+        "top_windows": manifest_source_windows(event, {top_arm}),
+        "bottom_windows": manifest_source_windows(event, {bottom_arm}),
+        "child_window": event["query_native_window_0based_half_open"],
+    }
+
+
+def draw_full_event(
+    svg: SVG,
+    event: dict[str, str],
+    segs: list[Segment],
+    y0: float,
+) -> float:
+    title = {
+        "PAR1_XY_positive_control": "PAR1 positive control",
+        "PAN027_chr9q_chr3q_PHR_candidate": "PHR candidate 1: PAN027 chr9q with chr3q donor",
+        "PAN028_chr9q_chr3q_PHR_candidate": "PHR candidate 2: PAN028 strict chr9q path",
+    }.get(event["event_id"], event["event_id"])
+    plan = full_source_plan(event, segs)
+    mapper = local_window_mapper(500_000)
+
+    top_y = y0 + 116
+    child_y = top_y + 74
+    bottom_y = child_y + 74
+
+    svg.text(42, y0 + 26, f"{event['event_order']}. {title}", 20, "700")
+    svg.text(42, y0 + 49, event["transmission"], 13, "400", MUTED)
+    svg.text(42, y0 + 68, role_totals(segs), 12, "400", MUTED)
+    svg.text(
+        TRACK_X0,
+        y0 + 50,
+        "Full schematic now uses native 0-500 kb assembly-window coordinates for evidence; not CHM13-projected or whole-chromosome scale.",
+        12,
+        "700",
+        MUTED,
+    )
+    draw_local_axis(svg, y0 + 74)
+
+    draw_terminal_window_track(
+        svg,
+        top_y,
+        str(plan["top_title"]),
+        str(plan["top_windows"]),
+        str(plan["top_arm"]),
+        "source window",
+    )
+    draw_terminal_window_track(
+        svg,
+        child_y,
+        f"product/child: {plan['child_label']}",
+        str(plan["child_window"]),
+        event["query_arm"],
+        "recombinant/product window",
+    )
+    draw_terminal_window_track(
+        svg,
+        bottom_y,
+        str(plan["bottom_title"]),
+        str(plan["bottom_windows"]),
+        str(plan["bottom_arm"]),
+        str(plan["bottom_kind"]),
+    )
+
+    y_by_role_group = {
+        "top": top_y,
+        "child": child_y,
+        "bottom": bottom_y,
+    }
+    top_roles = set(plan["top_roles"])
+    bottom_roles = set(plan["bottom_roles"])
+
+    for seg in segs:
+        if seg.role not in top_roles and seg.role not in bottom_roles:
+            continue
+        style = ROLE_STYLE[seg.role]
+        sx0, sx1 = mapper(seg.target_local)
+        qx0, qx1 = mapper(seg.query_local)
+        source_y = top_y + TRACK_H + 1 if seg.role in top_roles else bottom_y - 1
+        query_y = child_y - 1 if seg.role in top_roles else child_y + TRACK_H + 1
+        svg.path(
+            ribbon_path(sx0, sx1, source_y, qx0, qx1, query_y),
+            style["fill"],
+            style["stroke"],
+            0.45,
+            style["opacity"],
+        )
+
+    for seg in segs:
+        style = ROLE_STYLE[seg.role]
+        if seg.role in top_roles:
+            sy = y_by_role_group["top"]
+        elif seg.role in bottom_roles:
+            sy = y_by_role_group["bottom"]
+        else:
+            continue
+        sx0, sx1 = mapper(seg.target_local)
+        qx0, qx1 = mapper(seg.query_local)
+        for x0, x1, y, stroke in [
+            (sx0, sx1, sy, style["stroke"]),
+            (qx0, qx1, child_y, "#202428"),
+        ]:
+            w = max(1.8, x1 - x0)
+            if w != x1 - x0:
+                mid = (x0 + x1) / 2
+                x0 = mid - w / 2
+            svg.rect(x0, y - 2.5, w, TRACK_H + 5, style["fill"], stroke, 0.6, rx=1.4, opacity=0.88)
+
+    caveats = [s for s in segs if s.role in {"side fragment", "low-confidence tail"}]
+    for i, seg in enumerate(caveats):
+        style = ROLE_STYLE[seg.role]
+        qx0, qx1 = mapper(seg.query_local)
+        mid = (qx0 + qx1) / 2
+        marker_y = child_y + TRACK_H + 17 + (i % 2) * 18
+        label_x = min(mid, TRACK_X1 - 10)
+        label_anchor = "end" if mid > TRACK_X1 - 80 else "middle"
+        svg.line(mid, child_y + TRACK_H + 4, mid, marker_y - 8, style["stroke"], 0.9)
+        svg.rect(qx0, child_y - 4, max(1.8, qx1 - qx0), TRACK_H + 8, style["fill"], style["stroke"], 0.6, rx=1.2, opacity=0.76)
+        svg.text(
+            label_x,
+            marker_y,
+            f"caveat: {seg.target_arm} {fmt_bp(seg.length)}",
+            9,
+            "700" if seg.role == "low-confidence tail" else "400",
+            style["stroke"],
+            anchor=label_anchor,
+        )
+
+    svg.text(
+        TRACK_X0,
+        bottom_y + 58,
+        "Evidence blocks use local 0-based half-open offsets from selected_segments.tsv; source labels show native 500 kb assembly windows.",
+        11,
+        "700",
+        TEXT,
+    )
+    return y0 + 380
 
 
 def draw_event(
@@ -636,20 +860,23 @@ def legend(svg: SVG, y: float) -> None:
 
 
 def render(mode: str, output: Path) -> None:
-    events, segments, chrom_sizes = load_data()
+    events, segments = load_data()
     # Estimate page height from the actual number of lanes.
-    y = TOP
-    for event in events:
-        tracks = build_tracks(event, event_segments(segments, event["event_id"]))
-        y += sum(max(track_height(t), TRACK_H) for t in tracks) + TRACK_GAP * (len(tracks) - 1) + EVENT_GAP + 120
-    height = math.ceil(y + 48)
+    if mode == "full":
+        height = math.ceil(TOP + len(events) * 380 + 34)
+    else:
+        y = TOP
+        for event in events:
+            tracks = build_tracks(event, event_segments(segments, event["event_id"]))
+            y += sum(max(track_height(t), TRACK_H) for t in tracks) + TRACK_GAP * (len(tracks) - 1) + EVENT_GAP + 120
+        height = math.ceil(y + 48)
 
     svg = SVG(PAGE_W, height)
     svg.text(42, 38, "Fig5 prototype: strict-path synteny/recombination schematic", 24, "700")
     svg.text(
         42,
         61,
-        "Geometry comes from selected_segments.tsv; autosomal PHR rows are candidate exchange-compatible patches, not event-level validation.",
+        "Geometry comes from strict primary-path selected_segments.tsv rows; coordinates are native 500 kb assembly-window offsets, not CHM13 projections.",
         13,
         "400",
         MUTED,
@@ -659,7 +886,10 @@ def render(mode: str, output: Path) -> None:
     y = TOP
     for event in events:
         segs = event_segments(segments, event["event_id"])
-        y = draw_event(svg, event, segs, chrom_sizes, y, mode)
+        if mode == "full":
+            y = draw_full_event(svg, event, segs, y)
+        else:
+            y = draw_event(svg, event, segs, {}, y, mode)
         svg.line(42, y - 30, PAGE_W - 42, y - 30, LIGHT, 0.8)
     svg.write(output)
 

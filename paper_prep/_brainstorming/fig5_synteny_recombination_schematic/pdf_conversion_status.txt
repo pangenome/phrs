@@ -1,2 +1,2 @@
-fig5_synteny_recombination_full.svg: converted to fig5_synteny_recombination_full.pdf with Guix librsvg rsvg-convert 2.54.5.
-fig5_synteny_recombination_focus.svg: converted to fig5_synteny_recombination_focus.pdf with Guix librsvg rsvg-convert 2.54.5.
+fig5_synteny_recombination_full.svg: converted to fig5_synteny_recombination_full.pdf with Guix librsvg rsvg-convert version 2.54.5 (/gnu/store/kawnjzdr5wi6x77psqsvmaqqni359df5-profile/bin/rsvg-convert).
+fig5_synteny_recombination_focus.svg: converted to fig5_synteny_recombination_focus.pdf with Guix librsvg rsvg-convert version 2.54.5 (/gnu/store/kawnjzdr5wi6x77psqsvmaqqni359df5-profile/bin/rsvg-convert).
