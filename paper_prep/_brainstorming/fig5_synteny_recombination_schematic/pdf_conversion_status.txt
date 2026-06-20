@@ -1,0 +1,2 @@
+fig5_synteny_recombination_full.svg: SVG only (No rsvg-convert, inkscape, or Python cairosvg was available.)
+fig5_synteny_recombination_focus.svg: SVG only (No rsvg-convert, inkscape, or Python cairosvg was available.)
