@@ -1,0 +1,3 @@
+inputs/*.fa
+inputs/*.fa.fai
+scripts/__pycache__/

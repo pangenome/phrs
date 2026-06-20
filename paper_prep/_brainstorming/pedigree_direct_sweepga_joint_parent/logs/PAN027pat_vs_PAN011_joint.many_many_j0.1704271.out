@@ -1,0 +1,29 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-20T15:21:21Z
+host=octopus07
+job_id=1704271
+comparison_id=PAN027pat_vs_PAN011_joint
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga 0.1.1
+coordinate_scope=500kb_telomeric_source_windows; paf_offsets_are_local_0_500kb_window_coordinates
+command=/home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv --output-file /tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv/PAN027pat_vs_PAN011_joint.paf /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.target.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-20 15:21:21 | /home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv --output-file /tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv/PAN027pat_vs_PAN011_joint.paf /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.target.fa  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa (Fasta)  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.target.fa (Fasta)  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.5s] Detected 1 + 2 genomes, using pairwise alignment  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.7s] /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa: 1 genome groups  (rss:4.86 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.7s] /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.target.fa: 2 genome groups  (rss:4.86 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 0.7s] Aligning 3 genomes in single fastga run (fastga k-mer frequency: 3)  (rss:4.86 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa (TMPDIR=/tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query
+[FastGA] GIXmake completed successfully
+[FastGA] run_alignment: Aligning /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa vs /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs/PAN027pat_vs_PAN011_joint.query.fa
+[FastGA] Calling FastGA: /home/erikg/.cargo/bin/FastGA -1:_tmp_34454_0.1aln -T8 -f3 PAN027pat_vs_PAN011_joint.query.fa PAN027pat_vs_PAN011_joint.query.fa (in dir: /moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/inputs, TMPDIR=/tmp/sweepga.PAN027pat_vs_PAN011_joint.1704271.PHQSSv)
+[FastGA] FastGA completed, converting .1aln to PAF
+Error: Failed to run FastGA alignment: ALNtoPAF failed with code None
+stdout: 
+stderr: 

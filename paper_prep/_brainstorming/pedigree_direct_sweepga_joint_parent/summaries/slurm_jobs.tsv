@@ -1,0 +1,4 @@
+comparison_id	job_id	num_mappings	scaffold_jump	stdout
+PAN027pat_vs_PAN011_joint	1704274	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/logs/PAN027pat_vs_PAN011_joint.many_many_j0.%j.out
+PAN027mat_vs_PAN010_joint	1704275	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/logs/PAN027mat_vs_PAN010_joint.many_many_j0.%j.out
+PAN028mat_vs_PAN027_joint	1704276	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2613/paper_prep/_brainstorming/pedigree_direct_sweepga_joint_parent/logs/PAN028mat_vs_PAN027_joint.many_many_j0.%j.out

@@ -1,0 +1,7 @@
+filter_id	num_mappings	scaffold_jump	min_identity	min_aln_length	min_query_coverage	note
+many_many_noscaffold	many:many	0	0	0	0	raw alignment setting; preserve as first-class artifact
+one_one_noscaffold	1:1	0	0	0	0	sweepGA mapping-axis filter comparable to strict prior no-scaffold analysis
+one_many_noscaffold	1:many	0	0	0	0	query-best, target-unbounded filter
+two_many_noscaffold	2:many	0	0	0	0	two query mappings, target-unbounded filter
+four_many_noscaffold	4:many	0	0	0	0	four query mappings, target-unbounded filter
+simple_i95_l1k_q80	many:many	0	0.95	1000	0.80	post-PAF simple threshold summary filter

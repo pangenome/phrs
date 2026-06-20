@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1332" viewBox="0 0 1680 1332">
+<rect width="100%" height="100%" fill="white"/>
+<style>
+          .small { font-size: 11px; fill: #5f686f; font-family: Arial, Helvetica, sans-serif; }
+          .tiny { font-size: 9px; fill: #5f686f; font-family: Arial, Helvetica, sans-serif; }
+        </style>
+<text x="42.0" y="38.0" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Fig5 comparison: direct sweepGA joint 4:many no-scaffold schematic</text>
+<text x="42.0" y="61.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >Joint parent-choice comparison against parent hap1+hap2; coordinates are local 0-500 kb telomeric-window offsets, not whole-genome or CHM13 projections.</text>
+<text x="42.0" y="82.0" font-size="12" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Flow legend</text>
+<rect x="132.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.40" opacity="0.780" />
+<text x="169.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAR1 positive-control flow</text>
+<rect x="342.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#bd3d2a" stroke="#812516" stroke-width="0.40" opacity="0.780" />
+<text x="379.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >primary PHR donor flow</text>
+<rect x="552.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#a87935" stroke="#76511e" stroke-width="0.40" opacity="0.540" />
+<text x="589.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >side fragment</text>
+<rect x="762.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#777777" stroke="#555555" stroke-width="0.40" opacity="0.440" />
+<text x="799.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >low-confidence tail</text>
+<rect x="972.00" y="71.00" width="30.00" height="9.00" rx="1.20" fill="#bfc5ca" stroke="#68717a" stroke-width="0.40" opacity="0.540" />
+<text x="1009.0" y="79.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >same-chromosome context</text>
+<text x="42.0" y="112.0" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >1. PAR1 positive control</text>
+<text x="42.0" y="135.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027 paternal hap2 &lt;- PAN011 father</text>
+<text x="42.0" y="154.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAR 144 kb; same-chr 363 kb</text>
+<text x="430.0" y="164.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.</text>
+<text x="430.0" y="178.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >local coordinate inside each native 500 kb assembly window (0-based offset)</text>
+<line x1="430.00" y1="190.00" x2="1520.00" y2="190.00" stroke="#d8dcdf" stroke-width="1.00" />
+<line x1="430.00" y1="186.00" x2="430.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="430.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >0 kb</text>
+<line x1="648.00" y1="186.00" x2="648.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="648.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >100 kb</text>
+<line x1="866.00" y1="186.00" x2="866.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="866.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >200 kb</text>
+<line x1="1084.00" y1="186.00" x2="1084.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1084.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >300 kb</text>
+<line x1="1302.00" y1="186.00" x2="1302.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1302.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >400 kb</text>
+<line x1="1520.00" y1="186.00" x2="1520.00" y2="194.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1520.0" y="208.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >500 kb</text>
+<text x="42.0" y="222.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chrX PAR1 context</text>
+<text x="42.0" y="239.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#1 chrX:3251-503251</text>
+<rect x="430.00" y="232.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="225.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >3,251</text>
+<text x="1520.0" y="225.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >503,251</text>
+<path d="M 430.00 232.00 L 415.00 241.00 L 430.00 250.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="408.0" y="245.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="end" >chrXp telomere left</text>
+<text x="1538.0" y="225.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >source window</text>
+<text x="42.0" y="296.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >product/child: PAN027 hap2 chrXp (paternal)</text>
+<text x="42.0" y="313.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >chrX:12265-512265</text>
+<rect x="430.00" y="306.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="299.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >12,265</text>
+<text x="1520.0" y="299.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >512,265</text>
+<path d="M 430.00 306.00 L 415.00 315.00 L 430.00 324.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="408.0" y="319.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="end" >chrXp telomere left</text>
+<text x="1538.0" y="299.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >recombinant/product window</text>
+<text x="42.0" y="370.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chrY PAR1 donor</text>
+<text x="42.0" y="387.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#2 chrY:5839-505839</text>
+<rect x="430.00" y="380.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="373.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >5,839</text>
+<text x="1520.0" y="373.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >505,839</text>
+<path d="M 430.00 380.00 L 415.00 389.00 L 430.00 398.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="408.0" y="393.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="end" >chrYp telomere left</text>
+<text x="1538.0" y="373.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >positive-control source</text>
+<path d="M 433.40 251.00 C 433.40 273.68, 430.00 282.32, 430.00 305.00 L 439.54 305.00 C 439.54 282.32, 442.97 273.68, 442.97 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 430.00 379.00 C 430.00 356.32, 430.00 347.68, 430.00 325.00 L 744.14 325.00 C 744.14 347.68, 744.15 356.32, 744.15 379.00 Z" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.45" opacity="0.580" />
+<path d="M 669.00 251.00 C 669.00 273.68, 739.15 282.32, 739.15 305.00 L 1520.00 305.00 C 1520.00 282.32, 1449.90 273.68, 1449.90 251.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<rect x="433.40" y="229.50" width="9.57" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="303.50" width="9.54" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="377.50" width="314.15" height="23.00" rx="1.40" fill="#2076b4" stroke="#0d4d7c" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="303.50" width="314.14" height="23.00" rx="1.40" fill="#2076b4" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="669.00" y="229.50" width="780.90" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="739.15" y="303.50" width="780.85" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<text x="430.0" y="438.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Evidence blocks use local 0-based half-open offsets from joint-parent direct sweepGA joint 4:many no-scaffold PAFs; source labels show native 500 kb assembly windows.</text>
+<line x1="42.00" y1="460.00" x2="1638.00" y2="460.00" stroke="#d8dcdf" stroke-width="0.80" />
+<text x="42.0" y="516.0" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >2. PHR candidate 1: PAN027 chr9q with chr3q donor</text>
+<text x="42.0" y="539.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027 paternal hap2 &lt;- PAN011 father</text>
+<text x="42.0" y="558.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >side fragments 30 kb; same-chr 589 kb</text>
+<text x="430.0" y="568.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.</text>
+<text x="430.0" y="582.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >local coordinate inside each native 500 kb assembly window (0-based offset)</text>
+<line x1="430.00" y1="594.00" x2="1520.00" y2="594.00" stroke="#d8dcdf" stroke-width="1.00" />
+<line x1="430.00" y1="590.00" x2="430.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="430.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >0 kb</text>
+<line x1="648.00" y1="590.00" x2="648.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="648.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >100 kb</text>
+<line x1="866.00" y1="590.00" x2="866.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="866.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >200 kb</text>
+<line x1="1084.00" y1="590.00" x2="1084.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1084.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >300 kb</text>
+<line x1="1302.00" y1="590.00" x2="1302.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1302.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >400 kb</text>
+<line x1="1520.00" y1="590.00" x2="1520.00" y2="598.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1520.0" y="612.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >500 kb</text>
+<text x="42.0" y="626.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr9q same-chromosome context</text>
+<text x="42.0" y="643.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#1 chr9:135595959-136095959</text>
+<text x="42.0" y="655.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#2 chr9:133240004-133740004</text>
+<rect x="430.00" y="636.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 636.00 L 1535.00 645.00 L 1520.00 654.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="649.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="629.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >source window</text>
+<text x="42.0" y="700.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >product/child: PAN027 hap2 chr9q (paternal)</text>
+<text x="42.0" y="717.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >chr9:135704825-136204825</text>
+<rect x="430.00" y="710.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="703.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >135,704,825</text>
+<text x="1520.0" y="703.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >136,204,825</text>
+<path d="M 1520.00 710.00 L 1535.00 719.00 L 1520.00 728.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="723.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="703.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >recombinant/product window</text>
+<text x="42.0" y="774.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr3q primary PHR donor</text>
+<text x="42.0" y="791.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#1 chr3:202049714-202549714</text>
+<text x="42.0" y="803.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN011#2 chr3:205075647-205575647</text>
+<rect x="430.00" y="784.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 784.00 L 1535.00 793.00 L 1520.00 802.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="797.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr3q telomere right</text>
+<text x="1538.0" y="777.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >candidate donor source</text>
+<path d="M 607.28 655.00 C 607.28 677.68, 430.00 686.32, 430.00 709.00 L 626.26 709.00 C 626.26 686.32, 803.53 677.68, 803.53 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 430.00 655.00 C 430.00 677.68, 431.33 686.32, 431.33 709.00 L 1519.60 709.00 C 1519.60 686.32, 1518.26 677.68, 1518.26 655.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<rect x="607.28" y="633.50" width="196.25" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="707.50" width="196.26" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="633.50" width="1088.26" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="431.33" y="707.50" width="1088.27" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<line x1="1486.77" y1="732.00" x2="1486.77" y2="737.00" stroke="#76511e" stroke-width="0.90" />
+<rect x="1453.53" y="706.00" width="66.46" height="26.00" rx="1.20" fill="#a87935" stroke="#76511e" stroke-width="0.60" opacity="0.760" />
+<text x="1486.8" y="745.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#76511e" text-anchor="end" >caveat: chr9p 30 kb</text>
+<text x="430.0" y="842.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Evidence blocks use local 0-based half-open offsets from joint-parent direct sweepGA joint 4:many no-scaffold PAFs; source labels show native 500 kb assembly windows.</text>
+<line x1="42.00" y1="864.00" x2="1638.00" y2="864.00" stroke="#d8dcdf" stroke-width="0.80" />
+<text x="42.0" y="920.0" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >3. PHR candidate 2: PAN028 strict chr9q path</text>
+<text x="42.0" y="943.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN028 maternal hap1 &lt;- PAN027 mother</text>
+<text x="42.0" y="962.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >primary donor 8 kb; side fragments 15 kb; same-chr 784 kb</text>
+<text x="430.0" y="972.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >Plain native 0-500 kb windows; unbanded; not CHM13 or whole-chromosome scale.</text>
+<text x="430.0" y="986.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >local coordinate inside each native 500 kb assembly window (0-based offset)</text>
+<line x1="430.00" y1="998.00" x2="1520.00" y2="998.00" stroke="#d8dcdf" stroke-width="1.00" />
+<line x1="430.00" y1="994.00" x2="430.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="430.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >0 kb</text>
+<line x1="648.00" y1="994.00" x2="648.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="648.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >100 kb</text>
+<line x1="866.00" y1="994.00" x2="866.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="866.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >200 kb</text>
+<line x1="1084.00" y1="994.00" x2="1084.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1084.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >300 kb</text>
+<line x1="1302.00" y1="994.00" x2="1302.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1302.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >400 kb</text>
+<line x1="1520.00" y1="994.00" x2="1520.00" y2="1002.00" stroke="#d8dcdf" stroke-width="1.00" />
+<text x="1520.0" y="1016.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="middle" >500 kb</text>
+<text x="42.0" y="1030.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr9q same-chromosome context</text>
+<text x="42.0" y="1047.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#1 chr9:128564684-129064684</text>
+<text x="42.0" y="1059.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#2 chr9:135704825-136204825</text>
+<rect x="430.00" y="1040.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 1040.00 L 1535.00 1049.00 L 1520.00 1058.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="1053.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="1033.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >source window</text>
+<text x="42.0" y="1104.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >product/child: PAN028 hap1 chr9q (haplotype1)</text>
+<text x="42.0" y="1121.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >chr9:134380985-134880985</text>
+<rect x="430.00" y="1114.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<text x="430.0" y="1107.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >134,380,985</text>
+<text x="1520.0" y="1107.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="end" >134,880,985</text>
+<path d="M 1520.00 1114.00 L 1535.00 1123.00 L 1520.00 1132.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="1127.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr9q telomere right</text>
+<text x="1538.0" y="1107.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >recombinant/product window</text>
+<text x="42.0" y="1178.0" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >source: chr3q primary PHR donor</text>
+<text x="42.0" y="1195.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#1 chr3:200905557-201405557</text>
+<text x="42.0" y="1207.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >PAN027#2 chr3:202048279-202548279</text>
+<rect x="430.00" y="1188.00" width="1090.00" height="18.00" rx="9.00" fill="#f4f5f5" stroke="#31363a" stroke-width="1.10" />
+<path d="M 1520.00 1188.00 L 1535.00 1197.00 L 1520.00 1206.00 Z" fill="#f9fbfb" stroke="#31363a" stroke-width="1.00" />
+<text x="1542.0" y="1201.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#5f686f" text-anchor="start" >chr3q telomere right</text>
+<text x="1538.0" y="1181.0" font-size="10" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#5f686f" text-anchor="start" >candidate donor source</text>
+<path d="M 430.00 1059.00 C 430.00 1081.68, 431.12 1090.32, 431.12 1113.00 L 538.06 1113.00 C 538.06 1090.32, 536.87 1081.68, 536.87 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 430.00 1059.00 C 430.00 1081.68, 440.15 1090.32, 440.15 1113.00 L 833.37 1113.00 C 833.37 1090.32, 823.34 1081.68, 823.34 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 534.97 1059.00 C 534.97 1081.68, 536.58 1090.32, 536.58 1113.00 L 862.16 1113.00 C 862.16 1090.32, 860.50 1081.68, 860.50 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 854.83 1059.00 C 854.83 1081.68, 864.33 1090.32, 864.33 1113.00 L 901.01 1113.00 C 901.01 1090.32, 891.48 1081.68, 891.48 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 863.44 1059.00 C 863.44 1081.68, 864.33 1090.32, 864.33 1113.00 L 973.64 1113.00 C 973.64 1090.32, 972.80 1081.68, 972.80 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 890.73 1059.00 C 890.73 1081.68, 900.11 1090.32, 900.11 1113.00 L 975.45 1113.00 C 975.45 1090.32, 966.13 1081.68, 966.13 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 972.92 1187.00 C 972.92 1164.32, 969.35 1155.68, 969.35 1133.00 L 986.27 1133.00 C 986.27 1155.68, 989.88 1164.32, 989.88 1187.00 Z" fill="#bd3d2a" stroke="#812516" stroke-width="0.45" opacity="0.580" />
+<path d="M 972.65 1059.00 C 972.65 1081.68, 973.34 1090.32, 973.34 1113.00 L 1199.84 1113.00 C 1199.84 1090.32, 1199.23 1081.68, 1199.23 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 966.01 1059.00 C 966.01 1081.68, 975.22 1090.32, 975.22 1113.00 L 1088.19 1113.00 C 1088.19 1090.32, 1078.98 1081.68, 1078.98 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<path d="M 1195.78 1059.00 C 1195.78 1081.68, 1195.45 1090.32, 1195.45 1113.00 L 1518.70 1113.00 C 1518.70 1090.32, 1519.19 1081.68, 1519.19 1059.00 Z" fill="#bfc5ca" stroke="#68717a" stroke-width="0.45" opacity="0.340" />
+<rect x="430.00" y="1037.50" width="106.87" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="431.12" y="1111.50" width="106.94" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="430.00" y="1037.50" width="393.34" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="440.15" y="1111.50" width="393.22" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="534.97" y="1037.50" width="325.54" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="536.58" y="1111.50" width="325.58" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="854.83" y="1037.50" width="36.65" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="864.33" y="1111.50" width="36.69" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="863.44" y="1037.50" width="109.37" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="864.33" y="1111.50" width="109.32" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="890.73" y="1037.50" width="75.40" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="900.11" y="1111.50" width="75.35" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="972.92" y="1185.50" width="16.96" height="23.00" rx="1.40" fill="#bd3d2a" stroke="#812516" stroke-width="0.60" opacity="0.880" />
+<rect x="969.35" y="1111.50" width="16.93" height="23.00" rx="1.40" fill="#bd3d2a" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="972.65" y="1037.50" width="226.57" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="973.34" y="1111.50" width="226.51" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="966.01" y="1037.50" width="112.98" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="975.22" y="1111.50" width="112.97" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<rect x="1195.78" y="1037.50" width="323.41" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#68717a" stroke-width="0.60" opacity="0.880" />
+<rect x="1195.45" y="1111.50" width="323.25" height="23.00" rx="1.40" fill="#bfc5ca" stroke="#202428" stroke-width="0.60" opacity="0.880" />
+<line x1="959.21" y1="1136.00" x2="959.21" y2="1141.00" stroke="#76511e" stroke-width="0.90" />
+<rect x="942.97" y="1110.00" width="32.48" height="26.00" rx="1.20" fill="#a87935" stroke="#76511e" stroke-width="0.60" opacity="0.760" />
+<text x="959.2" y="1149.0" font-size="9" font-family="Arial, Helvetica, sans-serif" font-weight="400" fill="#76511e" text-anchor="middle" >caveat: chr16p 15 kb</text>
+<text x="430.0" y="1246.0" font-size="11" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#16191c" text-anchor="start" >Evidence blocks use local 0-based half-open offsets from joint-parent direct sweepGA joint 4:many no-scaffold PAFs; source labels show native 500 kb assembly windows.</text>
+<line x1="42.00" y1="1268.00" x2="1638.00" y2="1268.00" stroke="#d8dcdf" stroke-width="0.80" />
+</svg>
