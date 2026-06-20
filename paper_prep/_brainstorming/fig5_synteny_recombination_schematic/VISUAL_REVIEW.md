@@ -2,7 +2,7 @@
 
 ## Short Review
 
-1. **Full context plus focused windows:** Yes. `fig5_synteny_recombination_full.svg` gives chromosome/arm context for all three selected events, while `fig5_synteny_recombination_focus.svg` zooms into the 500 kb native windows with 100 kb scale bars and labeled segment flows. The pair should be reviewed together; the full view is context, the focus view is the interpretable recombination-window view.
+1. **Full context plus focused windows:** Yes. `fig5_synteny_recombination_full.{svg,pdf}` gives chromosome/arm context for all three selected events, while `fig5_synteny_recombination_focus.{svg,pdf}` zooms into the 500 kb native windows with 100 kb scale bars and labeled segment flows. The pair should be reviewed together; the full view is context, the focus view is the interpretable recombination-window view.
 
 2. **Three strict primary-path events:** Mostly yes, with one important correction relative to older assets. The schematic manifest contains exactly the PAR1 positive control, PAN027 chr9q PHR candidate, and PAN028 chr9q PHR candidate. The second PHR event checked here is `PAN028_chr9q_chr3q_PHR_candidate`, not the older compact PAN028 chr3q panel: `event_manifest.tsv` reports PAN028 maternal hap1 chr9q (`chr9:134380985-134880985`) with 22 strict support rows, 499901 bp total support, 449356 bp same-chromosome chr9q context, 34172 bp chr3q primary donor, and chr15q/chr16q side fragments of 15166 bp and 1207 bp. `selected_segments.tsv` agrees with this role breakdown and has no chr7p or chr20q rows for the corrected PAN028 event.
 

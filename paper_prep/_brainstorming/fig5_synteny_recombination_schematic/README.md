@@ -11,14 +11,14 @@ manuscript Fig5.
 - `coordinate_provenance.md` - coordinate-system and T2T/window audit. Read this before drawing labels.
 - `plot_synteny_recombination_schematic.py` - standard-library Python SVG renderer.
 - `fig5_synteny_recombination_full.svg` - full/context prototype: three event rows with chromosome/arm context, highlighted native source windows, and ribbons from source segments into the child/query window.
+- `fig5_synteny_recombination_full.pdf` - PDF rendering of the full/context prototype, generated with Guix `librsvg` / `rsvg-convert 2.54.5`.
 - `fig5_synteny_recombination_focus.svg` - event-window prototype: the same three event rows zoomed to the native 500 kb assembly windows with a consistent physical scale and 100 kb scale bars.
+- `fig5_synteny_recombination_focus.pdf` - PDF rendering of the event-window prototype, generated with Guix `librsvg` / `rsvg-convert 2.54.5`.
 - `pdf_conversion_status.txt` - records whether local SVG-to-PDF conversion was available during regeneration.
 
-PDF files are not currently committed because this worktree does not have
-`rsvg-convert`, `inkscape`, or Python `cairosvg` installed. The renderer attempts
-all three options; when one is available it will also write
-`fig5_synteny_recombination_full.pdf` and
-`fig5_synteny_recombination_focus.pdf`.
+For these static SVG schematics, the preferred converter is Guix `librsvg`
+(`rsvg-convert`). Inkscape is a heavier fallback if a future SVG needs features
+outside librsvg's rendering support.
 
 ## Inspect / Regenerate
 
@@ -33,6 +33,18 @@ Regenerate from the repository root:
 
 ```bash
 python3 paper_prep/_brainstorming/fig5_synteny_recombination_schematic/plot_synteny_recombination_schematic.py
+```
+
+Convert the SVGs to PDFs with Guix:
+
+```bash
+guix shell librsvg -- bash -lc '
+  set -euo pipefail
+  cd /moosefs/erikg/phrs
+  RSVG="$(command -v rsvg-convert || find "$GUIX_ENVIRONMENT/bin" -name rsvg-convert -print -quit)"
+  "$RSVG" -f pdf -o paper_prep/_brainstorming/fig5_synteny_recombination_schematic/fig5_synteny_recombination_full.pdf paper_prep/_brainstorming/fig5_synteny_recombination_schematic/fig5_synteny_recombination_full.svg
+  "$RSVG" -f pdf -o paper_prep/_brainstorming/fig5_synteny_recombination_schematic/fig5_synteny_recombination_focus.pdf paper_prep/_brainstorming/fig5_synteny_recombination_schematic/fig5_synteny_recombination_focus.svg
+'
 ```
 
 The script reads only:

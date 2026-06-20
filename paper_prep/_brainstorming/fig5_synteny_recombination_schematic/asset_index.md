@@ -1,15 +1,17 @@
 # Fig5 Synteny Schematic Review Asset Index
 
-This index lists the inspectable assets relevant to the Fig5 synteny recombination schematic review pack. The schematic pack is SVG/table-only in this worktree; PDF conversion was unavailable during prototype generation.
+This index lists the inspectable assets relevant to the Fig5 synteny recombination schematic review pack. The schematic pack includes SVG sources, PDF renderings generated with Guix `librsvg` / `rsvg-convert 2.54.5`, and the TSV tables used for geometry.
 
 ## Schematic Prototype Pack
 
 - `fig5_synteny_recombination_full.svg` - Full chromosome/arm-context schematic for the PAR1 positive control and two strict-path chr9q/chr3q PHR candidates, with neutral chromosome-length context and source-to-child flow ribbons.
+- `fig5_synteny_recombination_full.pdf` - PDF rendering of the full chromosome/arm-context schematic.
 - `fig5_synteny_recombination_focus.svg` - Focused 500 kb native-window schematic for the same three events, using a consistent physical scale and labeled flow segments.
+- `fig5_synteny_recombination_focus.pdf` - PDF rendering of the focused native-window schematic.
 - `event_manifest.tsv` - Event-level manifest selecting exactly the PAR1 positive control, PAN027 chr9q PHR candidate, and corrected PAN028 strict chr9q PHR candidate, with coordinate provenance and donor/side-fragment summaries.
 - `selected_segments.tsv` - Segment-level strict primary-path table used for drawing geometry, including native query intervals, recovered target-side intervals, event roles, identity/Jaccard, and community annotations when exactly joined.
 - `coordinate_provenance.md` - Audit note documenting that coordinates are native sample assembly window coordinates, not CHM13-projected coordinates.
-- `pdf_conversion_status.txt` - Conversion status showing that `fig5_synteny_recombination_full.pdf` and `fig5_synteny_recombination_focus.pdf` were not generated because no local SVG-to-PDF converter was available.
+- `pdf_conversion_status.txt` - Conversion status recording the Guix `librsvg` converter used for the PDF outputs.
 
 ## Comparison Assets
 

@@ -1,2 +1,2 @@
-fig5_synteny_recombination_full.svg: SVG only (No rsvg-convert, inkscape, or Python cairosvg was available.)
-fig5_synteny_recombination_focus.svg: SVG only (No rsvg-convert, inkscape, or Python cairosvg was available.)
+fig5_synteny_recombination_full.svg: converted to fig5_synteny_recombination_full.pdf with Guix librsvg rsvg-convert 2.54.5.
+fig5_synteny_recombination_focus.svg: converted to fig5_synteny_recombination_focus.pdf with Guix librsvg rsvg-convert 2.54.5.
