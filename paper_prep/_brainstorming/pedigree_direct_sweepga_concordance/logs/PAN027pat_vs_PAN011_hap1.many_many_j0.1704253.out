@@ -1,0 +1,19 @@
+started_utc=2026-06-20T14:17:08Z
+host=octopus07
+job_id=1704253
+comparison_id=PAN027pat_vs_PAN011_hap1
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga 0.1.1
+command=/home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sweepga.PAN027pat_vs_PAN011_hap1.1704253.WrDdB1 --output-file - /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.query.fa /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.target.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-20 14:17:08 | /home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sweepga.PAN027pat_vs_PAN011_hap1.1704253.WrDdB1 --output-file - /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.query.fa /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.target.fa  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /dev/shm/sweepga.PAN027pat_vs_PAN011_hap1.1704253.WrDdB1  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.query.fa (Fasta)  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.target.fa (Fasta)  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 0.1s] Running fastga alignment: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.query.fa -> /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.target.fa  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.query.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap1.query.fa (TMPDIR=/dev/shm/sweepga.PAN027pat_vs_PAN011_hap1.1704253.WrDdB1)
+Error: Failed to prepare GDB: FAtoGDB failed with code Some(255)
+stdout: 
+stderr: FATAL ERROR: failed to remove temporary file  errno 2
+
+

@@ -1,0 +1,112 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 5964 >>
+stream
+BT
+/F1 16 Tf
+50 760 Td
+(Focused direct sweepGA concordance) Tj
+/F1 9 Tf
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN011#1 chr9q | direct PAN011#1 chr9q | ov=48900 | direct_swe) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN011#2 chr9q | direct PAN011#2 chr9q | ov=279017 | direct_sw) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | side fragment | discordant_target | expected PAN011#2 chr16q | direct PAN011#2 chr9q | ov=1207 | keep_gra) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN011#2 chr9q | direct PAN011#2 chr9q | ov=117820 | direct_sw) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | primary donor | agree | expected PAN011#2 chr3q | direct PAN011#2 chr3q | ov=25497 | direct_sweepga_can_b) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | primary donor | agree | expected PAN011#1 chr3q | direct PAN011#1 chr3q | ov=3825 | direct_sweepga_can_be) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | primary donor | agree | expected PAN011#2 chr3q | direct PAN011#2 chr3q | ov=14920 | direct_sweepga_can_b) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | side fragment | agree | expected PAN011#1 chr15q | direct PAN011#1 chr15q | ov=7273 | direct_sweepga_can_) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | primary donor | agree | expected PAN011#2 chr3q | direct PAN011#2 chr3q | ov=1048 | direct_sweepga_can_be) Tj
+0 -14 Td
+(PAN027_chr9q_chr3q_PHR_candidate | low-confidence tail | discordant_target | expected PAN011#1 chr20q | direct PAN011#1 chr9p | ov=492 | kee) Tj
+0 -14 Td
+(PAR1_XY_positive_control | PAR positive control | agree | expected PAN011#2 chrYp | direct PAN011#2 chrYp | ov=143598 | direct_sweepga_can_b) Tj
+0 -14 Td
+(PAR1_XY_positive_control | same-chromosome context | agree | expected PAN011#1 chrXp | direct PAN011#1 chrXp | ov=46001 | direct_sweepga_can) Tj
+0 -14 Td
+(PAR1_XY_positive_control | PAR positive control | agree | expected PAN011#2 chrYp | direct PAN011#2 chrYp | ov=5251 | direct_sweepga_can_be_) Tj
+0 -14 Td
+(PAR1_XY_positive_control | same-chromosome context | agree | expected PAN011#1 chrXp | direct PAN011#1 chrXp | ov=134797 | direct_sweepga_ca) Tj
+0 -14 Td
+(PAR1_XY_positive_control | PAR positive control | agree | expected PAN011#2 chrYp | direct PAN011#2 chrYp | ov=2024 | direct_sweepga_can_be_) Tj
+0 -14 Td
+(PAR1_XY_positive_control | same-chromosome context | agree | expected PAN011#1 chrXp | direct PAN011#1 chrXp | ov=168004 | direct_sweepga_ca) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=4142 | direct_swee) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#1 chr9q | direct PAN027#1 chr9q | ov=44981 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=147817 | direct_sw) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#1 chr9q | direct PAN027#1 chr9q | ov=11302 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=8181 | direct_swee) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#1 chr9q | direct PAN027#1 chr9q | ov=28502 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=1404 | direct_swee) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#1 chr9q | direct PAN027#1 chr9q | ov=24387 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=52696 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | discordant_target | expected PAN027#1 chr9q | direct PAN027#1 chr16q | ov=1018 ) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | side fragment | discordant_target | expected PAN027#2 chr16q | direct PAN027#2 chr9q | ov=1207 | keep_gra) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | agree | expected PAN027#1 chr3q | direct PAN027#1 chr3q | ov=2035 | direct_sweepga_can_be) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=19742 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | discordant_target | expected PAN027#2 chr3q | direct PAN027#2 chr9q | ov=1005 | keep_grap) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | inconclusive_partial_overlap | expected PAN027#1 chr3q | direct PAN027#1 chr3q | ov=947 |) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | discordant_target | expected PAN027#2 chr3q | direct PAN027#2 chr9q | ov=1426 | keep_grap) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=8305 | direct_swee) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | agree | expected PAN027#1 chr3q | direct PAN027#1 chr3q | ov=2626 | direct_sweepga_can_be) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | same-chromosome context | agree | expected PAN027#2 chr9q | direct PAN027#2 chr9q | ov=93106 | direct_swe) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | discordant_target | expected PAN027#2 chr3q | direct PAN027#2 chr9q | ov=3567 | keep_grap) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | side fragment | discordant_target | expected PAN027#2 chr15q | direct PAN027#2 chr9q | ov=15166 | keep_gr) Tj
+0 -14 Td
+(PAN028_chr9q_chr3q_PHR_candidate | primary donor | discordant_target | expected PAN027#1 chr3q | direct PAN027#1 chr19p | ov=8955 | keep_gra) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+6327
+%%EOF

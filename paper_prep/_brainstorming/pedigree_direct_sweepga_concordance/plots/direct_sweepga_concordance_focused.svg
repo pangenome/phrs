@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1002" viewBox="0 0 1500 1002">
+<style>text{font-family:Arial,sans-serif;font-size:12px}.h{font-weight:bold;font-size:14px}.small{font-size:10px}</style>
+<text class="h" x="20" y="28">Direct sweepGA parental haplotype concordance</text>
+<text x="20" y="50">Rows are graph-derived selected segments; bar length is direct PAF overlap with the graph interval.</text>
+<text x="20" y="94">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="108">same-chromosome context | PAN011#1 chr9q</text>
+<rect x="360" y="84" width="147" height="14" fill="#2b8cbe"/>
+<text x="515" y="96">agree; direct PAN011#1 chr9q; ov=48900 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="118">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="132">same-chromosome context | PAN011#2 chr9q</text>
+<rect x="360" y="108" width="840" height="14" fill="#2b8cbe"/>
+<text x="1208" y="120">agree; direct PAN011#2 chr9q; ov=279017 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="142">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="156">side fragment | PAN011#2 chr16q</text>
+<rect x="360" y="132" width="3" height="14" fill="#d95f0e"/>
+<text x="371" y="144">discordant_target; direct PAN011#2 chr9q; ov=1207 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="166">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="180">same-chromosome context | PAN011#2 chr9q</text>
+<rect x="360" y="156" width="354" height="14" fill="#2b8cbe"/>
+<text x="722" y="168">agree; direct PAN011#2 chr9q; ov=117820 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="190">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="204">primary donor | PAN011#2 chr3q</text>
+<rect x="360" y="180" width="76" height="14" fill="#2b8cbe"/>
+<text x="444" y="192">agree; direct PAN011#2 chr3q; ov=25497 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="214">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="228">primary donor | PAN011#1 chr3q</text>
+<rect x="360" y="204" width="11" height="14" fill="#2b8cbe"/>
+<text x="379" y="216">agree; direct PAN011#1 chr3q; ov=3825 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="238">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="252">primary donor | PAN011#2 chr3q</text>
+<rect x="360" y="228" width="44" height="14" fill="#2b8cbe"/>
+<text x="412" y="240">agree; direct PAN011#2 chr3q; ov=14920 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="262">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="276">side fragment | PAN011#1 chr15q</text>
+<rect x="360" y="252" width="21" height="14" fill="#2b8cbe"/>
+<text x="389" y="264">agree; direct PAN011#1 chr15q; ov=7273 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="286">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="300">primary donor | PAN011#2 chr3q</text>
+<rect x="360" y="276" width="3" height="14" fill="#2b8cbe"/>
+<text x="371" y="288">agree; direct PAN011#2 chr3q; ov=1048 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="310">PAN027_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="324">low-confidence tail | PAN011#1 chr20q</text>
+<rect x="360" y="300" width="1" height="14" fill="#d95f0e"/>
+<text x="369" y="312">discordant_target; direct PAN011#1 chr9p; ov=492 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="334">PAR1_XY_positive_control</text>
+<text class="small" x="20" y="348">PAR positive control | PAN011#2 chrYp</text>
+<rect x="360" y="324" width="432" height="14" fill="#2b8cbe"/>
+<text x="800" y="336">agree; direct PAN011#2 chrYp; ov=143598 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="358">PAR1_XY_positive_control</text>
+<text class="small" x="20" y="372">same-chromosome context | PAN011#1 chrXp</text>
+<rect x="360" y="348" width="138" height="14" fill="#2b8cbe"/>
+<text x="506" y="360">agree; direct PAN011#1 chrXp; ov=46001 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="382">PAR1_XY_positive_control</text>
+<text class="small" x="20" y="396">PAR positive control | PAN011#2 chrYp</text>
+<rect x="360" y="372" width="15" height="14" fill="#2b8cbe"/>
+<text x="383" y="384">agree; direct PAN011#2 chrYp; ov=5251 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="406">PAR1_XY_positive_control</text>
+<text class="small" x="20" y="420">same-chromosome context | PAN011#1 chrXp</text>
+<rect x="360" y="396" width="405" height="14" fill="#2b8cbe"/>
+<text x="773" y="408">agree; direct PAN011#1 chrXp; ov=134797 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="430">PAR1_XY_positive_control</text>
+<text class="small" x="20" y="444">PAR positive control | PAN011#2 chrYp</text>
+<rect x="360" y="420" width="6" height="14" fill="#2b8cbe"/>
+<text x="374" y="432">agree; direct PAN011#2 chrYp; ov=2024 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="454">PAR1_XY_positive_control</text>
+<text class="small" x="20" y="468">same-chromosome context | PAN011#1 chrXp</text>
+<rect x="360" y="444" width="505" height="14" fill="#2b8cbe"/>
+<text x="873" y="456">agree; direct PAN011#1 chrXp; ov=168004 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="478">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="492">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="468" width="12" height="14" fill="#2b8cbe"/>
+<text x="380" y="480">agree; direct PAN027#2 chr9q; ov=4142 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="502">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="516">same-chromosome context | PAN027#1 chr9q</text>
+<rect x="360" y="492" width="135" height="14" fill="#2b8cbe"/>
+<text x="503" y="504">agree; direct PAN027#1 chr9q; ov=44981 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="526">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="540">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="516" width="445" height="14" fill="#2b8cbe"/>
+<text x="813" y="528">agree; direct PAN027#2 chr9q; ov=147817 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="550">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="564">same-chromosome context | PAN027#1 chr9q</text>
+<rect x="360" y="540" width="34" height="14" fill="#2b8cbe"/>
+<text x="402" y="552">agree; direct PAN027#1 chr9q; ov=11302 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="574">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="588">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="564" width="24" height="14" fill="#2b8cbe"/>
+<text x="392" y="576">agree; direct PAN027#2 chr9q; ov=8181 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="598">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="612">same-chromosome context | PAN027#1 chr9q</text>
+<rect x="360" y="588" width="85" height="14" fill="#2b8cbe"/>
+<text x="453" y="600">agree; direct PAN027#1 chr9q; ov=28502 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="622">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="636">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="612" width="4" height="14" fill="#2b8cbe"/>
+<text x="372" y="624">agree; direct PAN027#2 chr9q; ov=1404 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="646">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="660">same-chromosome context | PAN027#1 chr9q</text>
+<rect x="360" y="636" width="73" height="14" fill="#2b8cbe"/>
+<text x="441" y="648">agree; direct PAN027#1 chr9q; ov=24387 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="670">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="684">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="660" width="158" height="14" fill="#2b8cbe"/>
+<text x="526" y="672">agree; direct PAN027#2 chr9q; ov=52696 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="694">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="708">same-chromosome context | PAN027#1 chr9q</text>
+<rect x="360" y="684" width="3" height="14" fill="#d95f0e"/>
+<text x="371" y="696">discordant_target; direct PAN027#1 chr16q; ov=1018 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="718">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="732">side fragment | PAN027#2 chr16q</text>
+<rect x="360" y="708" width="3" height="14" fill="#d95f0e"/>
+<text x="371" y="720">discordant_target; direct PAN027#2 chr9q; ov=1207 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="742">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="756">primary donor | PAN027#1 chr3q</text>
+<rect x="360" y="732" width="6" height="14" fill="#2b8cbe"/>
+<text x="374" y="744">agree; direct PAN027#1 chr3q; ov=2035 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="766">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="780">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="756" width="59" height="14" fill="#2b8cbe"/>
+<text x="427" y="768">agree; direct PAN027#2 chr9q; ov=19742 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="790">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="804">primary donor | PAN027#2 chr3q</text>
+<rect x="360" y="780" width="3" height="14" fill="#d95f0e"/>
+<text x="371" y="792">discordant_target; direct PAN027#2 chr9q; ov=1005 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="814">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="828">primary donor | PAN027#1 chr3q</text>
+<rect x="360" y="804" width="2" height="14" fill="#756bb1"/>
+<text x="370" y="816">inconclusive_partial_overlap; direct PAN027#1 chr3q; ov=947 bp; inconclusive_keep_graph_primary</text>
+<text x="20" y="838">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="852">primary donor | PAN027#2 chr3q</text>
+<rect x="360" y="828" width="4" height="14" fill="#d95f0e"/>
+<text x="372" y="840">discordant_target; direct PAN027#2 chr9q; ov=1426 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="862">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="876">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="852" width="25" height="14" fill="#2b8cbe"/>
+<text x="393" y="864">agree; direct PAN027#2 chr9q; ov=8305 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="886">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="900">primary donor | PAN027#1 chr3q</text>
+<rect x="360" y="876" width="7" height="14" fill="#2b8cbe"/>
+<text x="375" y="888">agree; direct PAN027#1 chr3q; ov=2626 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="910">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="924">same-chromosome context | PAN027#2 chr9q</text>
+<rect x="360" y="900" width="280" height="14" fill="#2b8cbe"/>
+<text x="648" y="912">agree; direct PAN027#2 chr9q; ov=93106 bp; direct_sweepga_can_be_primary_for_segment</text>
+<text x="20" y="934">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="948">primary donor | PAN027#2 chr3q</text>
+<rect x="360" y="924" width="10" height="14" fill="#d95f0e"/>
+<text x="378" y="936">discordant_target; direct PAN027#2 chr9q; ov=3567 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="958">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="972">side fragment | PAN027#2 chr15q</text>
+<rect x="360" y="948" width="45" height="14" fill="#d95f0e"/>
+<text x="413" y="960">discordant_target; direct PAN027#2 chr9q; ov=15166 bp; keep_graph_primary_pending_manual_review</text>
+<text x="20" y="982">PAN028_chr9q_chr3q_PHR_candidate</text>
+<text class="small" x="20" y="996">primary donor | PAN027#1 chr3q</text>
+<rect x="360" y="972" width="26" height="14" fill="#d95f0e"/>
+<text x="394" y="984">discordant_target; direct PAN027#1 chr19p; ov=8955 bp; keep_graph_primary_pending_manual_review</text>
+</svg>

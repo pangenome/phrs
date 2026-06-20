@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="348" viewBox="0 0 1200 348">
+<style>text{font-family:Arial,sans-serif;font-size:12px}.h{font-weight:bold;font-size:14px}</style>
+<text class="h" x="20" y="28">Direct sweepGA full-window overview</text>
+<text x="20" y="50">Raw many:many/no-scaffold PAF summaries by child-vs-parent-haplotype comparison.</text>
+<text x="20" y="94">PAN027mat_vs_PAN010_hap1</text>
+<rect x="330" y="82" width="425" height="14" fill="#3182bd"/>
+<text x="765" y="94">1044 records; 25.6 Mb aligned; 3.3 Mb inter-arm</text>
+<text x="20" y="132">PAN027mat_vs_PAN010_hap2</text>
+<rect x="330" y="120" width="446" height="14" fill="#3182bd"/>
+<text x="786" y="132">826 records; 26.9 Mb aligned; 5.0 Mb inter-arm</text>
+<text x="20" y="170">PAN027pat_vs_PAN011_hap1</text>
+<rect x="330" y="158" width="420" height="14" fill="#3182bd"/>
+<text x="760" y="170">525 records; 25.3 Mb aligned; 3.6 Mb inter-arm</text>
+<text x="20" y="208">PAN027pat_vs_PAN011_hap2</text>
+<rect x="330" y="196" width="426" height="14" fill="#3182bd"/>
+<text x="766" y="208">1196 records; 25.7 Mb aligned; 4.3 Mb inter-arm</text>
+<text x="20" y="246">PAN028mat_vs_PAN027_hap1</text>
+<rect x="330" y="234" width="483" height="14" fill="#3182bd"/>
+<text x="823" y="246">1308 records; 29.1 Mb aligned; 7.3 Mb inter-arm</text>
+<text x="20" y="284">PAN028mat_vs_PAN027_hap2</text>
+<rect x="330" y="272" width="600" height="14" fill="#3182bd"/>
+<text x="940" y="284">1659 records; 36.1 Mb aligned; 9.9 Mb inter-arm</text>
+</svg>

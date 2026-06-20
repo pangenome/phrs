@@ -1,0 +1,37 @@
+started_utc=2026-06-20T14:19:03Z
+host=octopus07
+job_id=1704266
+comparison_id=PAN027pat_vs_PAN011_hap2
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga 0.1.1
+command=/home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk --output-file /tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk/PAN027pat_vs_PAN011_hap2.paf /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-20 14:19:03 | /home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk --output-file /tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk/PAN027pat_vs_PAN011_hap2.paf /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa  (rss:3.23 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk  (rss:3.23 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa (Fasta)  (rss:3.23 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa (Fasta)  (rss:3.23 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 0.1s] Running fastga alignment: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa -> /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa  (rss:3.23 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa (TMPDIR=/tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query
+[FastGA] GIXmake completed successfully
+[FastGA] prepare_gdb: Converting "/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa (TMPDIR=/tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target
+[FastGA] GIXmake completed successfully
+[FastGA] run_alignment: Aligning /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.query.fa vs /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs/PAN027pat_vs_PAN011_hap2.target.fa
+[FastGA] Calling FastGA: /home/erikg/.cargo/bin/FastGA -1:_tmp_19508_0.1aln -T8 -f2 PAN027pat_vs_PAN011_hap2.query.fa PAN027pat_vs_PAN011_hap2.target.fa (in dir: /moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/inputs, TMPDIR=/tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk)
+[FastGA] FastGA completed, converting .1aln to PAF
+[FastGA] Conversion completed successfully, output size: 1047650 bytes
+[INFO ] [sweepga::align 20.3s] fastga alignment complete (20.2s)  (rss:6.28 MB disk:1023.10 KB peak_disk:2.34 GB)
+[INFO ] [sweepga::parse 20.3s] Parsing input PAF: /tmp/sweepga.PAN027pat_vs_PAN011_hap2.1704266.gFGcBk/.tmpSd76KL  (rss:7.52 MB disk:1023.10 KB peak_disk:2.34 GB)
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 1196 → 1196 mappings (100.0% kept)
+[INFO ] [sweepga]   Output: 25.8 Mb total, 94.6% avg identity
+[INFO ] [sweepga::done] align:20.2s filter:0.1s total:20.3s cpu:0.0x rss:9.36 MB disk_peak:2.34 GB disk_written:2.39 GB
+finished_utc=2026-06-20T14:19:24Z
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/raw_paf/PAN027pat_vs_PAN011_hap2.sweepga_many_many_j0.paf.gz
+bytes=286490

@@ -1,0 +1,7 @@
+comparison_id	job_id	num_mappings	scaffold_jump	stdout
+PAN027pat_vs_PAN011_hap1	1704265	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/logs/PAN027pat_vs_PAN011_hap1.many_many_j0.%j.out
+PAN027pat_vs_PAN011_hap2	1704266	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/logs/PAN027pat_vs_PAN011_hap2.many_many_j0.%j.out
+PAN027mat_vs_PAN010_hap1	1704267	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/logs/PAN027mat_vs_PAN010_hap1.many_many_j0.%j.out
+PAN027mat_vs_PAN010_hap2	1704268	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/logs/PAN027mat_vs_PAN010_hap2.many_many_j0.%j.out
+PAN028mat_vs_PAN027_hap1	1704269	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/logs/PAN028mat_vs_PAN027_hap1.many_many_j0.%j.out
+PAN028mat_vs_PAN027_hap2	1704270	many:many	0	/moosefs/erikg/phrs/.wg-worktrees/agent-2594/paper_prep/_brainstorming/pedigree_direct_sweepga_concordance/logs/PAN028mat_vs_PAN027_hap2.many_many_j0.%j.out
