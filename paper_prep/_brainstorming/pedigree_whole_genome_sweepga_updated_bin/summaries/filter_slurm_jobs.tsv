@@ -1,0 +1,2 @@
+stage	job_id	sweepga_devshm_base	stdout
+filter	1704342	/dev/shm	/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/logs/filter_matrix.%j.out

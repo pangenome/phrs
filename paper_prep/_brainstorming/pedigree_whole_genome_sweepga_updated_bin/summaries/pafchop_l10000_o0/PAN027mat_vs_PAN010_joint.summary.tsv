@@ -1,0 +1,2 @@
+comparison_id	tool	version	chop_length_bp	overlap_bp	keep_tags	raw_records	chopped_records	raw_query_bp	chopped_query_bp
+PAN027mat_vs_PAN010_joint	pafchop-rs	0.1.0	10000	0	false	409	316431	3161574384	3161574384

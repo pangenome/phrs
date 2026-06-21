@@ -1,0 +1,15 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-21T12:45:06Z
+host=octopus07
+job_id=1704341
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin
+pafchop_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pafchop-rs
+pafchop_bin=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/target/release/pafchop
+pafchop_sha256=2cf2acbd183e61e07e5fdee1ff9093bf354f790c2f68c6df6b9e5e6b33ae09a9
+chop_length=10000
+overlap=0
+jobs=3
+threads_per_job=8
+command=PAFCHOP_BIN=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/target/release/pafchop PAFCHOP_JOBS=3 PAFCHOP_THREADS_PER_JOB=8 /moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pafchop-rs/scripts/chop_package_parallel.sh /moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin 10000
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+slurmstepd: error: *** JOB 1704341 ON octopus07 CANCELLED AT 2026-06-21T12:45:23 ***

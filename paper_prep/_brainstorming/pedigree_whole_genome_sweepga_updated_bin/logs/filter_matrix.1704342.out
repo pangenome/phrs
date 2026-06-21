@@ -1,0 +1,139 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+filtering comparison=PAN027pat_vs_PAN011_joint filter=many_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027pat_vs_PAN011_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027pat_vs_PAN011_joint.many_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+filtering comparison=PAN027pat_vs_PAN011_joint filter=one_one_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027pat_vs_PAN011_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027pat_vs_PAN011_joint.one_one_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:45:57 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.vur5cdp4/filtered.paf /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.vur5cdp4/input.paf  (rss:7.53 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.vur5cdp4/input.paf (Paf)  (rss:7.53 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.vur5cdp4/input.paf  (rss:7.53 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 313481 → 302768 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 313481 → 302768 mappings (96.6% kept)
+[INFO ] [sweepga]   Output: 3027.9 Mb total, 99.9% avg identity
+[INFO ] [sweepga::done] total:1.3s cpu:0.9x rss:311.76 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027pat_vs_PAN011_joint filter=one_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027pat_vs_PAN011_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027pat_vs_PAN011_joint.one_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:00 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.1y3i80im/filtered.paf /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.1y3i80im/input.paf  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.1y3i80im/input.paf (Paf)  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.1y3i80im/input.paf  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 313481 → 302864 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 313481 → 302864 mappings (96.6% kept)
+[INFO ] [sweepga]   Output: 3028.8 Mb total, 99.9% avg identity
+[INFO ] [sweepga::done] total:1.2s cpu:0.9x rss:313.71 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027pat_vs_PAN011_joint filter=two_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027pat_vs_PAN011_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027pat_vs_PAN011_joint.two_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:03 | /home/erikg/.cargo/bin/sweepga --num-mappings 2:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint._z1g13io/filtered.paf /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint._z1g13io/input.paf  (rss:7.51 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint._z1g13io/input.paf (Paf)  (rss:7.51 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint._z1g13io/input.paf  (rss:7.51 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 313481 → 312184 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 313481 → 312184 mappings (99.6% kept)
+[INFO ] [sweepga]   Output: 3121.3 Mb total, 99.8% avg identity
+[INFO ] [sweepga::done] total:1.2s cpu:0.9x rss:315.55 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027pat_vs_PAN011_joint filter=four_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027pat_vs_PAN011_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027pat_vs_PAN011_joint.four_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:06 | /home/erikg/.cargo/bin/sweepga --num-mappings 4:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.qcvuthvl/filtered.paf /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.qcvuthvl/input.paf  (rss:7.48 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.qcvuthvl/input.paf (Paf)  (rss:7.48 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027pat_vs_PAN011_joint.qcvuthvl/input.paf  (rss:7.48 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 313481 → 312928 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 313481 → 312928 mappings (99.8% kept)
+[INFO ] [sweepga]   Output: 3128.7 Mb total, 99.8% avg identity
+[INFO ] [sweepga::done] total:1.3s cpu:0.9x rss:313.58 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027mat_vs_PAN010_joint filter=many_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027mat_vs_PAN010_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027mat_vs_PAN010_joint.many_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+filtering comparison=PAN027mat_vs_PAN010_joint filter=one_one_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027mat_vs_PAN010_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027mat_vs_PAN010_joint.one_one_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:10 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.yhy0vbi9/filtered.paf /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.yhy0vbi9/input.paf  (rss:7.62 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.yhy0vbi9/input.paf (Paf)  (rss:7.62 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.yhy0vbi9/input.paf  (rss:7.62 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 316431 → 302528 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 316431 → 302528 mappings (95.6% kept)
+[INFO ] [sweepga]   Output: 3025.4 Mb total, 99.9% avg identity
+[INFO ] [sweepga::done] total:1.3s cpu:0.9x rss:314.89 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027mat_vs_PAN010_joint filter=one_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027mat_vs_PAN010_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027mat_vs_PAN010_joint.one_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:13 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.zxmd6xf2/filtered.paf /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.zxmd6xf2/input.paf  (rss:7.62 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.zxmd6xf2/input.paf (Paf)  (rss:7.62 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.zxmd6xf2/input.paf  (rss:7.62 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 316431 → 302709 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 316431 → 302709 mappings (95.7% kept)
+[INFO ] [sweepga]   Output: 3027.2 Mb total, 99.9% avg identity
+[INFO ] [sweepga::done] total:1.3s cpu:0.9x rss:314.85 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027mat_vs_PAN010_joint filter=two_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027mat_vs_PAN010_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027mat_vs_PAN010_joint.two_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:16 | /home/erikg/.cargo/bin/sweepga --num-mappings 2:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.ststbizx/filtered.paf /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.ststbizx/input.paf  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.ststbizx/input.paf (Paf)  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.ststbizx/input.paf  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 316431 → 310401 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 316431 → 310401 mappings (98.1% kept)
+[INFO ] [sweepga]   Output: 3103.9 Mb total, 99.8% avg identity
+[INFO ] [sweepga::done] total:1.3s cpu:0.9x rss:316.55 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN027mat_vs_PAN010_joint filter=four_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN027mat_vs_PAN010_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN027mat_vs_PAN010_joint.four_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:19 | /home/erikg/.cargo/bin/sweepga --num-mappings 4:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.3e3lhlb4/filtered.paf /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.3e3lhlb4/input.paf  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.3e3lhlb4/input.paf (Paf)  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN027mat_vs_PAN010_joint.3e3lhlb4/input.paf  (rss:7.61 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 316431 → 313034 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 316431 → 313034 mappings (98.9% kept)
+[INFO ] [sweepga]   Output: 3130.7 Mb total, 99.6% avg identity
+[INFO ] [sweepga::done] total:1.3s cpu:0.9x rss:317.09 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN028mat_vs_PAN027_joint filter=many_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN028mat_vs_PAN027_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN028mat_vs_PAN027_joint.many_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+filtering comparison=PAN028mat_vs_PAN027_joint filter=one_one_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN028mat_vs_PAN027_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN028mat_vs_PAN027_joint.one_one_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:24 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.fugf_q0p/filtered.paf /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.fugf_q0p/input.paf  (rss:7.51 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.fugf_q0p/input.paf (Paf)  (rss:7.51 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.fugf_q0p/input.paf  (rss:7.51 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 670629 → 303572 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 670629 → 303572 mappings (45.3% kept)
+[INFO ] [sweepga]   Output: 3024.2 Mb total, 99.6% avg identity
+[INFO ] [sweepga::done] total:2.9s cpu:1.0x rss:454.26 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN028mat_vs_PAN027_joint filter=one_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN028mat_vs_PAN027_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN028mat_vs_PAN027_joint.one_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:29 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.1ybrcftl/filtered.paf /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.1ybrcftl/input.paf  (rss:7.59 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.1ybrcftl/input.paf (Paf)  (rss:7.59 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.1ybrcftl/input.paf  (rss:7.59 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 670629 → 308376 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 670629 → 308376 mappings (46.0% kept)
+[INFO ] [sweepga]   Output: 3071.6 Mb total, 99.3% avg identity
+[INFO ] [sweepga::done] total:3.3s cpu:1.0x rss:455.39 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN028mat_vs_PAN027_joint filter=two_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN028mat_vs_PAN027_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN028mat_vs_PAN027_joint.two_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:34 | /home/erikg/.cargo/bin/sweepga --num-mappings 2:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.uir26kzr/filtered.paf /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.uir26kzr/input.paf  (rss:7.52 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.uir26kzr/input.paf (Paf)  (rss:7.52 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.uir26kzr/input.paf  (rss:7.52 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 670629 → 478332 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 670629 → 478332 mappings (71.3% kept)
+[INFO ] [sweepga]   Output: 4746.1 Mb total, 99.1% avg identity
+[INFO ] [sweepga::done] total:3.7s cpu:0.9x rss:569.30 MB disk_peak:0 bytes disk_written:0 bytes
+filtering comparison=PAN028mat_vs_PAN027_joint filter=four_many_chopped input=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/chopped_paf_l10000_o0/PAN028mat_vs_PAN027_joint.chopped_l10000_o0.paf.gz output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/filtered_paf/PAN028mat_vs_PAN027_joint.four_many_chopped.paf.gz
+sweepga_filter_scratch_base=/dev/shm
+[INFO ] [sweepga::start 0.0s] 2026-06-21 12:46:41 | /home/erikg/.cargo/bin/sweepga --num-mappings 4:many --scaffold-jump 0 --output-file /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.w7p28cit/filtered.paf /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.w7p28cit/input.paf  (rss:7.60 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.w7p28cit/input.paf (Paf)  (rss:7.60 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_filter.PAN028mat_vs_PAN027_joint.w7p28cit/input.paf  (rss:7.60 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 670629 → 499096 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 670629 → 499096 mappings (74.4% kept)
+[INFO ] [sweepga]   Output: 4931.3 Mb total, 98.6% avg identity
+[INFO ] [sweepga::done] total:3.8s cpu:0.9x rss:573.84 MB disk_peak:0 bytes disk_written:0 bytes

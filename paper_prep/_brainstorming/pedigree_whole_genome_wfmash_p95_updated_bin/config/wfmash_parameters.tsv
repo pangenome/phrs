@@ -1,3 +1,0 @@
-parameter_set	description	wfmash_options
-literal_p95	Default wfmash mapping identity threshold requested for raw whole-genome direct-alignment recovery test.	-p 95
-permissive_p95	Sensitive homology-recovery configuration requested unless literal p95 already recovers clear chr3 support; run for all comparisons for uniform review.	-p 95 -w 1k -l 1k -n 50 -f -M
