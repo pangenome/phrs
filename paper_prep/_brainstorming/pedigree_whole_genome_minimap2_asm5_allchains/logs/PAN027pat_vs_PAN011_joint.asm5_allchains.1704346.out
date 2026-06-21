@@ -1,0 +1,20 @@
+date_utc=2026-06-21T16:19:34Z
+host=octopus07
+job_id=1704346
+run_label=v2.31-r1302
+comparison_id=PAN027pat_vs_PAN011_joint
+parameter_set=asm5_allchains
+threads=32
+scratch=/dev/shm/minimap2.1704346.v2.31-r1302.PAN027pat_vs_PAN011_joint.asm5_allchains
+target=/moosefs/erikg/phrs/.wg-worktrees/agent-2648/paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains/inputs/PAN027pat_vs_PAN011_joint.target.fa
+query=/moosefs/erikg/phrs/.wg-worktrees/agent-2648/paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains/inputs/PAN027pat_vs_PAN011_joint.query.fa
+scope=full whole-genome child-haplotype query FASTA and full whole-genome joint-parent target FASTA
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2648/paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains/raw_paf/v2.31-r1302/PAN027pat_vs_PAN011_joint.asm5_allchains.minimap2-v2.31-r1302.paf.gz
+minimap2_bin=/home/erikg/bin/minimap2
+minimap2_which=/home/erikg/bin/minimap2
+minimap2_realpath=/home/erikg/bin/minimap2-v2.31-r1302
+minimap2_sha256=5a0e9d6b351f1aa5d11a5067bd29a33bc50abe70c51fc9be9e1899ec1643c949
+minimap2_version=2.31-r1302 
+pigz_which=/usr/bin/pigz
+pigz_version=pigz 2.4 
+command=/home/erikg/bin/minimap2 -x asm5 -c --eqx -P --q-occ-frac=0 -t 32 /dev/shm/minimap2.1704346.v2.31-r1302.PAN027pat_vs_PAN011_joint.asm5_allchains/target.fa /dev/shm/minimap2.1704346.v2.31-r1302.PAN027pat_vs_PAN011_joint.asm5_allchains/query.fa | pigz -p 32 > /dev/shm/minimap2.1704346.v2.31-r1302.PAN027pat_vs_PAN011_joint.asm5_allchains/PAN027pat_vs_PAN011_joint.asm5_allchains.paf.gz

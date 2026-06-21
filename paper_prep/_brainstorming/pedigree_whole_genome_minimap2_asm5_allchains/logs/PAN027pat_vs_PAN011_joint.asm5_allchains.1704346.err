@@ -1,0 +1,8 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+[M::mm_idx_gen::78.380*1.41] collected minimizers
+[M::mm_idx_gen::83.394*2.37] sorted minimizers
+[M::main::83.394*2.37] loaded/built the index for 46 target sequence(s)
+[M::mm_mapopt_update::87.308*2.30] mid_occ = 301
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 46
+[M::mm_idx_stat::90.292*2.26] distinct minimizers: 220249510 (9.23% are singletons); average occurrences: 2.709; average spacing: 9.974; total length: 5950456305
+slurmstepd: error: *** JOB 1704346 ON octopus07 CANCELLED AT 2026-06-21T18:54:21 ***

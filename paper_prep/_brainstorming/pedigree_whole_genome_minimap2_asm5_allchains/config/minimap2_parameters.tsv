@@ -1,0 +1,2 @@
+parameter_set	preset	options	note
+asm5_allchains	asm5	-x asm5 -c --eqx -P --q-occ-frac=0	Primary Fig5 chr9/chr3 sensitivity run: high-identity assembly mapping, retain all chains, disable query-side high-occurrence minimizer filtering.
