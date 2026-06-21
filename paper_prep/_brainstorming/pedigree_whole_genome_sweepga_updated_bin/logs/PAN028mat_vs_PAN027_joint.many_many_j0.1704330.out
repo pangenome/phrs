@@ -1,0 +1,125 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-21T10:22:39Z
+host=octopus11
+job_id=1704330
+comparison_id=PAN028mat_vs_PAN027_joint
+coordinate_scope=full whole-genome assembly haplotype FASTA records
+scratch=/dev/shm/sg.1704330.ZjwCFO
+scratch_policy=sweepGA/FastGA graph/database/source-adjacent temporaries are explicitly placed under /dev/shm; SLURM_TMPDIR is not used for sweepGA scratch
+scratch_fastga_sources=/dev/shm/sg.1704330.ZjwCFO/q.fa,/dev/shm/sg.1704330.ZjwCFO/t.fa
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga_which=/home/erikg/.cargo/bin/sweepga
+sweepga_realpath=/home/erikg/.cargo/bin/sweepga
+sweepga_sha256=a0d7ac0c3312080d67de96d85cdcad9ce0c5a7e523897109b7f598c186ab85a6
+sweepga 0.1.1
+Efficient pangenome alignment filtering and sparsification tool
+
+Usage: sweepga [OPTIONS] [FILE]...
+
+Arguments:
+  [FILE]...
+          Input files: FASTA (1+) or PAF (1 only), auto-detected
+          
+            1 FASTA: align to self and filter
+            2+ FASTA: align all pairs and filter
+            1 PAF: filter alignments
+            stdin: auto-detect and process
+
+Options:
+      --output-file <OUTPUT_FILE>
+          Output file path (auto-detects format from extension: .paf or .1aln)
+
+      --paf
+          Output PAF format (default, kept for clarity and backwards compatibility)
+
+      --1aln
+          Output .1aln binary format instead of default PAF
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
+
+Alignment options:
+      --aligner <ALIGNER>
+          Aligner to use for FASTA input
+          
+          [default: fastga]
+          [possible values: fastga, wfmash]
+
+      --fastga
+          Use FastGA aligner (shorthand for --aligner fastga)
+
+      --wfmash
+          Use wfmash aligner (shorthand for --aligner wfmash)
+
+      --fastga-frequency <FREQUENCY>
+          FastGA k-mer frequency threshold (use k-mers occurring ≤ N times). Overrides --fastga-frequency-multiplier when set
+
+      --fastga-frequency-multiplier <FASTGA_FREQUENCY_MULTIPLIER>
+          FastGA k-mer frequency multiplier: when --fastga-frequency is unset, the effective frequency = `num_pansn_haplotypes * multiplier` (clamped to at least 10). Default 1 reproduces FastGA's historical behavior of one k-mer hit per haplotype
+          
+          [default: 1]
+
+      --map-pct-identity <MAP_PCT_IDENTITY>
+          Minimum percent identity for wfmash mapping (e.g. "90" or ANI preset "ani50-2")
+
+      --all-pairs
+          Align all genome pairs separately (slower, uses more memory, but handles many genomes)
+
+      --batch-bytes <BATCH_BYTES>
+          Maximum sequence data per batch (e.g., "50M", "2G"). Partitions genomes into batches. Stored as a raw string so library consumers (like impg's `sweepga::align_self_paf`) can pass it verbatim; parse via `crate::cli::parse_metric_number` at use sites when you need a numeric byte count
+
+      --batch-size <BATCH_SIZE>
+          Explicit number of genomes per batch (manual override). Overrides --batch-bytes and --max-disk
+
+      --max-disk <MAX_DISK>
+          Maximum disk space for temporary files during alignment (e.g., "100G", "500M"). Computes batch size automatically to stay within budget. Overrides --batch-bytes
+
+      --zstd
+          Compress k-mer index with zstd for ~2x disk savings and faster I/O
+
+      --zstd-level <ZSTD_LEVEL>
+          Zstd compression level (1-19, higher = smaller files but slower). Default: 3
+          
+          [default: 3]
+
+      --temp-dir <TEMPDIR>
+          Temporary directory for intermediate files (defaults to TMPDIR env var, then current directory; use "ramdisk" for /dev/shm)
+
+Basic filtering:
+      --min-aln-length <BLOCK_LENGTH>
+          Minimum alignment block length (omit to use aligner default)
+
+command=/home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.1704330.ZjwCFO --output-file /dev/shm/sg.1704330.ZjwCFO/PAN028mat_vs_PAN027_joint.paf /dev/shm/sg.1704330.ZjwCFO/q.fa /dev/shm/sg.1704330.ZjwCFO/t.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-21 10:22:39 | /home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.1704330.ZjwCFO --output-file /dev/shm/sg.1704330.ZjwCFO/PAN028mat_vs_PAN027_joint.paf /dev/shm/sg.1704330.ZjwCFO/q.fa /dev/shm/sg.1704330.ZjwCFO/t.fa  (rss:4.15 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /dev/shm/sg.1704330.ZjwCFO  (rss:4.15 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sg.1704330.ZjwCFO/q.fa (Fasta)  (rss:4.15 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /dev/shm/sg.1704330.ZjwCFO/t.fa (Fasta)  (rss:4.15 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 12.4s] Running fastga alignment: /dev/shm/sg.1704330.ZjwCFO/q.fa -> /dev/shm/sg.1704330.ZjwCFO/t.fa  (rss:4.15 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.1704330.ZjwCFO/q.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.1704330.ZjwCFO/q.fa (TMPDIR=/dev/shm/sg.1704330.ZjwCFO)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.1704330.ZjwCFO/q
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.1704330.ZjwCFO /dev/shm/sg.1704330.ZjwCFO/q
+[FastGA] GIXmake completed successfully
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.1704330.ZjwCFO/t.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.1704330.ZjwCFO/t.fa (TMPDIR=/dev/shm/sg.1704330.ZjwCFO)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.1704330.ZjwCFO/t
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.1704330.ZjwCFO /dev/shm/sg.1704330.ZjwCFO/t
+[FastGA] GIXmake completed successfully
+[FastGA] run_alignment: Aligning /dev/shm/sg.1704330.ZjwCFO/q.fa vs /dev/shm/sg.1704330.ZjwCFO/t.fa
+[FastGA] Calling FastGA: /home/erikg/.cargo/bin/FastGA -1:_tmp_45944_0.1aln -T8 -f2 q.fa t.fa (in dir: /dev/shm/sg.1704330.ZjwCFO, TMPDIR=/dev/shm/sg.1704330.ZjwCFO)
+[FastGA] FastGA completed, converting .1aln to PAF
+[FastGA] Conversion completed successfully, output size: 1384057141 bytes
+[INFO ] [sweepga::align 711.8s] fastga alignment complete (699.4s)  (rss:1.29 GB disk:1.29 GB peak_disk:87.42 GB)
+[INFO ] [sweepga::parse 711.8s] Parsing input PAF: /dev/shm/sg.1704330.ZjwCFO/.tmpUH3JPl  (rss:1.29 GB disk:1.29 GB peak_disk:87.42 GB)
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 16477 → 16477 mappings (100.0% kept)
+[INFO ] [sweepga]   Output: 6693.7 Mb total, 95.9% avg identity
+[INFO ] [sweepga::done] align:699.4s filter:19.2s total:718.6s cpu:0.1x rss:1.29 GB disk_peak:87.42 GB disk_written:88.71 GB
+finished_utc=2026-06-21T10:36:12Z
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/raw_paf/PAN028mat_vs_PAN027_joint.sweepga_many_many_j0.paf.gz
+bytes=266708308

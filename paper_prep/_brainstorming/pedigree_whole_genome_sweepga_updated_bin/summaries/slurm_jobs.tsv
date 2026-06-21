@@ -1,0 +1,4 @@
+stage	comparison_id	job_id	num_mappings	scaffold_jump	sweepga_devshm_base	stdout
+raw_many_many	PAN027pat_vs_PAN011_joint	1704328	many:many	0	/dev/shm	/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/logs/PAN027pat_vs_PAN011_joint.many_many_j0.%j.out
+raw_many_many	PAN027mat_vs_PAN010_joint	1704329	many:many	0	/dev/shm	/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/logs/PAN027mat_vs_PAN010_joint.many_many_j0.%j.out
+raw_many_many	PAN028mat_vs_PAN027_joint	1704330	many:many	0	/dev/shm	/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin/logs/PAN028mat_vs_PAN027_joint.many_many_j0.%j.out

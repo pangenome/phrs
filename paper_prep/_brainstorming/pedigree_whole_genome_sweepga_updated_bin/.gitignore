@@ -1,0 +1,16 @@
+inputs/*.fa
+inputs/*.fa.fai
+inputs/*.names.txt
+raw_paf/*.paf.gz
+chopped_paf/*.paf.gz
+chopped_paf/*.paf.gz.sha256
+chopped_paf_l*_o*/*.paf.gz
+chopped_paf_l*_o*/*.paf.gz.sha256
+filtered_paf/*.paf.gz
+filtered_paf/*.paf.gz.sha256
+logs/*.out
+logs/*.log
+logs/*.err
+quarantine/
+scripts/__pycache__/
+*.tmp

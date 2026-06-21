@@ -1,0 +1,7 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-21T10:03:05Z
+host=octopus07
+job_id=1704324
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2639/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_updated_bin
+scope=full whole-genome source FASTAs; no 500kb window FASTA
+finished_utc=2026-06-21T10:14:25Z

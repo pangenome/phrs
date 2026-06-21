@@ -1,0 +1,7 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-21T10:37:00Z
+host=octopus07
+job_id=1704331
+chop_length=500000
+overlap=0
+slurmstepd: error: *** JOB 1704331 ON octopus07 CANCELLED AT 2026-06-21T12:33:33 ***
