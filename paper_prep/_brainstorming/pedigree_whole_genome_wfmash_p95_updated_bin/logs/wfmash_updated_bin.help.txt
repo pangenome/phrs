@@ -1,0 +1,67 @@
+/home/erikg/bin/wfmash [target.fa] [query.fa] {OPTIONS}
+
+  target.fa                        target sequences (required)
+  query.fa                         query sequences (default: self-map)
+  INDEXING:
+    -W[FILE], --write-index=[FILE]   save index to FILE
+    -I[FILE], --read-index=[FILE]    load index from FILE
+    -b[SIZE], --batch=[SIZE]         target batch size for indexing [4G]
+  MINMERS:
+    -k[INT], --kmer-size=[INT]       k-mer size [15]
+    -s[INT], --sketch-size=[INT]     sketch size [auto]
+    -w[INT], --window-size=[INT]     window size [1k]
+  MAPPING:
+    -m, --approx-mapping             output mappings only (no alignment)
+    -K[FILE], --input-seeds=[FILE]   use external PAF seeds instead of MinHash
+    -p[FLOAT|aniXX[+/-N]], --map-pct-id=[FLOAT|aniXX[+/-N]]
+                                     minimum identity % or ANI preset (default: ani50-2)
+    --ani-sketch-size=[INT]          sketch size for ANI estimation [1000]
+    -n[INT], --mappings=[INT]        mappings per segment (plane sweep) [inf]
+    -l[INT], --block-length=[INT]    minimum block length [0]
+    -c[INT], --chain-jump=[INT]      chain jump (gap) [2k]
+    -P[INT], --max-length=[INT]      max mapping length [50k]
+    -N, --no-split                   map each sequence in one piece
+  FILTERING:
+    -f, --no-filter                  disable all filtering
+    -M, --no-merge                   keep all fragment mappings
+    -o, --one-to-one                 best mapping per query AND target
+    -O[FLOAT], --overlap=[FLOAT]     max overlap ratio [0.95]
+    -x[FLOAT], --sparsify=[FLOAT]    keep this fraction of mappings [1.0]
+    --hg-filter=[n,Δ,conf]           hypergeometric filter [1.0,0.0,99.9]
+    -H[INT], --l1-hits=[INT]         min hits for L1 filtering [3]
+    -F[FLOAT], --filter-freq=[FLOAT] filter high-freq minimizers [0.0002]
+  SCAFFOLDING:
+    -S[INT], --scaffold-mass=[INT]   min scaffold length [10k]
+    -D[INT], --scaffold-dist=[INT]   max scaffold distance [100k]
+    -j[INT], --scaffold-jump=[INT]   scaffold jump (gap) [100k]
+    -r[INT], --retain-per-scaffold=[INT]
+                                     mappings per scaffold chain [1]
+    --scaffold-overlap=[FLOAT]       scaffold chain overlap threshold [0.5]
+    --scaffold-out=[FILE]            output scaffold mappings to FILE
+  SELECTION:
+    -Y[C], --group-prefix=[C]        group by last occurrence of prefix delimiter [#]
+    -X, --self-maps                  include self mappings
+    -L, --lower-triangular           only map seq_i to seq_j if i>j
+    -T[pfx], --target-prefix=[pfx]   target name prefix filter
+    -R[FILE], --target-list=[FILE]   file with target sequence names
+    -Q[pfxs], --query-prefix=[pfxs]  query name prefix filter
+    -A[FILE], --query-list=[FILE]    file with query sequence names
+  ALIGNMENT:
+    -i[FILE], --align-paf=[FILE]     align from PAF file
+    -E[INT], --target-padding=[INT]  target padding [segment-length]
+    -U[INT], --query-padding=[INT]   query padding [segment-length]
+    -g[m,go1,ge1,go2,ge2], --wfa-params=[m,go1,ge1,go2,ge2]
+                                     gap costs [5,8,2,24,1]
+    --min-length=[INT]               minimum alignment length in bp [32]
+    --min-block-id=[FLOAT]           minimum block identity [0.1]
+  OUTPUT:
+    -a, --sam                        SAM format (default: PAF)
+    -d, --md-tag                     include MD tag
+  SYSTEM:
+    -t[INT], --threads=[INT]         threads [1]
+    -B[PATH], --tmp-base=[PATH]      temp file directory [pwd]
+    -Z, --keep-temp                  retain temporary files
+    --quiet                          disable progress output
+    --streaming-minhash              use streaming MinHash algorithm (experimental)
+    -v, --version                    version info
+    -h, --help                       show help
