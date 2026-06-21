@@ -1,0 +1,4 @@
+comparison_id	job_id	node	elapsed_before_cancel	fastga_invocation	tmp_output_size_bytes	devshm_scratch_size	devshm_available_at_check	note
+PAN027pat_vs_PAN011_joint	1704343	octopus07	02:38:18	/home/erikg/.cargo/bin/FastGA -1:_tmp_29921_0.1aln -T8 -f100 q.fa t.fa	0	98G	63G	Observed at 2026-06-21 15:15 UTC after about 2 h active FastGA runtime; process was CPU-active but emitted no .1aln content and no raw PAF.
+PAN027mat_vs_PAN010_joint	1704344	octopus08	02:38:18	/home/erikg/.cargo/bin/FastGA -1:_tmp_32887_0.1aln -T8 -f100 q.fa t.fa	0	99G	72G	Observed at 2026-06-21 15:15 UTC after about 2 h active FastGA runtime; process was CPU-active but emitted no .1aln content and no raw PAF.
+PAN028mat_vs_PAN027_joint	1704345	octopus09	02:38:18	/home/erikg/.cargo/bin/FastGA -1:_tmp_9030_0.1aln -T8 -f100 q.fa t.fa	0	99G	63G	Observed at 2026-06-21 15:15 UTC after about 2 h active FastGA runtime; process was CPU-active but emitted no .1aln content and no raw PAF.

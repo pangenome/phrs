@@ -1,0 +1,3 @@
+candidate_id	comparison_id	layer	paf_path	query_name	query_start	query_end	target_chrom	overlap_rows	sum_overlap_bp	query_union_bp	emits_chr3_target	raw_paf_status	note
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	raw_frequency100	none	PAN027#2#chr9	135704825	136204825	chr3	0	0	0	no	PATHOLOGICAL_NO_RAW_PAF	No raw PAF was emitted before the frequency-100 Slurm job was cancelled after 2:38:18 in FastGA -f100; no chr3 target rows are available in raw output.
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	raw_frequency100	none	PAN028#1#chr9	134380985	134880985	chr3	0	0	0	no	PATHOLOGICAL_NO_RAW_PAF	No raw PAF was emitted before the frequency-100 Slurm job was cancelled after 2:38:18 in FastGA -f100; no chr3 target rows are available in raw output.
