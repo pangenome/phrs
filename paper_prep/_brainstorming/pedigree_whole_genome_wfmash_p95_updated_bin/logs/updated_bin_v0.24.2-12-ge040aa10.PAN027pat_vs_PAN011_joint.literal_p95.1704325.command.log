@@ -1,0 +1,23 @@
+date_utc=2026-06-21T10:14:33Z
+host=octopus07
+job_id=1704325
+run_label=updated_bin_v0.24.2-12-ge040aa10
+comparison_id=PAN027pat_vs_PAN011_joint
+parameter_set=literal_p95
+threads=32
+scratch=/dev/shm/wfmash.1704325.updated_bin_v0.24.2-12-ge040aa10.PAN027pat_vs_PAN011_joint.literal_p95
+tmp_base=/dev/shm/wfmash.1704325.updated_bin_v0.24.2-12-ge040aa10.PAN027pat_vs_PAN011_joint.literal_p95/tmp
+target=/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa
+query=/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/raw_paf/updated_bin_v0.24.2-12-ge040aa10/PAN027pat_vs_PAN011_joint.literal_p95.wfmash-v0.24.2-12-ge040aa10.paf.gz
+wfmash_bin=/home/erikg/bin/wfmash
+wfmash_which=/home/erikg/.guix-profile/bin/wfmash
+wfmash_realpath=/home/erikg/bin/wfmash-v0.24.2-12-ge040aa10
+wfmash_sha256=14a6d5c7ac7be8890e904d11121341df118fad0c11193d0e91a9899e18a53d60
+wfmash_version=v0.24.2-12-ge040aa10 
+wfmash_help_first_line=/home/erikg/bin/wfmash [target.fa] [query.fa] {OPTIONS}
+wfmash_help_relevant=    -t[INT], --threads=[INT]         threads [1] 
+command=/home/erikg/bin/wfmash -p 95 -t 32 -B /dev/shm/wfmash.1704325.updated_bin_v0.24.2-12-ge040aa10.PAN027pat_vs_PAN011_joint.literal_p95/tmp /dev/shm/wfmash.1704325.updated_bin_v0.24.2-12-ge040aa10.PAN027pat_vs_PAN011_joint.literal_p95/target.fa /dev/shm/wfmash.1704325.updated_bin_v0.24.2-12-ge040aa10.PAN027pat_vs_PAN011_joint.literal_p95/query.fa > /dev/shm/wfmash.1704325.updated_bin_v0.24.2-12-ge040aa10.PAN027pat_vs_PAN011_joint.literal_p95/PAN027pat_vs_PAN011_joint.literal_p95.paf
+53eff77a94f5510f95aa010d00f6eab985d3d7a8c2f433a73d150e907311f804  /moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/raw_paf/updated_bin_v0.24.2-12-ge040aa10/PAN027pat_vs_PAN011_joint.literal_p95.wfmash-v0.24.2-12-ge040aa10.paf.gz
+2827411 /moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/raw_paf/updated_bin_v0.24.2-12-ge040aa10/PAN027pat_vs_PAN011_joint.literal_p95.wfmash-v0.24.2-12-ge040aa10.paf.gz
+status=OK
