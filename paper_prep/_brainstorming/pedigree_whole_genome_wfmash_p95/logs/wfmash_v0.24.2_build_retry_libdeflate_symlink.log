@@ -1,0 +1,42 @@
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 31%] Built target vendored_htslib
+[ 31%] Built target zlib_vendor
+[ 34%] Built target xz_vendor
+[ 35%] Built target htslib
+[ 35%] Built target gsl
+[ 35%] Built target bzip2_vendor
+[ 35%] Built target libdeflate
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 48%] Built target wflign_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 83%] Built target wfa2_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 96%] Built target wfa2cpp_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 97%] Built target wfa2
+make[2]: Warning: File 'CMakeFiles/wfmash.dir/compiler_depend.make' has modification time 6.4 s in the future
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 98%] Linking CXX executable bin/wfmash
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[100%] Built target wfmash

@@ -1,0 +1,16 @@
+date_utc=2026-06-21T07:04:55Z
+host=octopus07
+job_id=1704312
+comparison_id=PAN027pat_vs_PAN011_joint
+parameter_set=literal_p95
+threads=32
+scratch=/dev/shm/wfmash.1704312.PAN027pat_vs_PAN011_joint.literal_p95
+tmp_base=/dev/shm/wfmash.1704312.PAN027pat_vs_PAN011_joint.literal_p95/tmp
+target=/moosefs/erikg/phrs/.wg-worktrees/agent-2630/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95/inputs/PAN027pat_vs_PAN011_joint.target.fa
+query=/moosefs/erikg/phrs/.wg-worktrees/agent-2630/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95/inputs/PAN027pat_vs_PAN011_joint.query.fa
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2630/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95/raw_paf/PAN027pat_vs_PAN011_joint.literal_p95.wfmash.paf.gz
+wfmash_version= 
+command=wfmash -p 95 -t 32 -B /dev/shm/wfmash.1704312.PAN027pat_vs_PAN011_joint.literal_p95/tmp /dev/shm/wfmash.1704312.PAN027pat_vs_PAN011_joint.literal_p95/target.fa /dev/shm/wfmash.1704312.PAN027pat_vs_PAN011_joint.literal_p95/query.fa > /dev/shm/wfmash.1704312.PAN027pat_vs_PAN011_joint.literal_p95/PAN027pat_vs_PAN011_joint.literal_p95.paf
+a4aaa1ec7c2a051ae6617efa0790e6de4f90d80d93bdb1b376c3571fdd49921b  /moosefs/erikg/phrs/.wg-worktrees/agent-2630/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95/raw_paf/PAN027pat_vs_PAN011_joint.literal_p95.wfmash.paf.gz
+158594 /moosefs/erikg/phrs/.wg-worktrees/agent-2630/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95/raw_paf/PAN027pat_vs_PAN011_joint.literal_p95.wfmash.paf.gz
+status=OK

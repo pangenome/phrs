@@ -1,0 +1,6 @@
+	linux-vdso.so.1 (0x00007ffcf7b7d000)
+	libm.so.6 => /gnu/store/zvlp3n8iwa1svxmwv4q22pv1pb1c9pjq-glibc-2.39/lib/libm.so.6 (0x00007f8547cca000)
+	libgomp.so.1 => /gnu/store/10krix03rl5hqjv2c0qmj44ic9bgd8rc-gcc-toolchain-13.3.0/lib/libgomp.so.1 (0x00007f8547c7e000)
+	libc.so.6 => /gnu/store/zvlp3n8iwa1svxmwv4q22pv1pb1c9pjq-glibc-2.39/lib/libc.so.6 (0x00007f8547aa0000)
+	/gnu/store/zvlp3n8iwa1svxmwv4q22pv1pb1c9pjq-glibc-2.39/lib/ld-linux-x86-64.so.2 => /lib64/ld-linux-x86-64.so.2 (0x00007f8547dac000)
+	libgcc_s.so.1 => /gnu/store/dal6fyd7sr1zbb38rka0ryigmk5369jj-gcc-13.3.0-lib/lib/libgcc_s.so.1 (0x00007f8547a7b000)

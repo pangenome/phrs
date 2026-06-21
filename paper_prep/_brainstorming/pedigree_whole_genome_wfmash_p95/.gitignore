@@ -1,0 +1,10 @@
+inputs/
+raw_paf/
+build/
+tools/
+scripts/__pycache__/
+logs/*.out
+logs/*.err
+logs/*.tmp
+logs/*.running
+logs/*.failed

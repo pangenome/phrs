@@ -1,0 +1,172 @@
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[  8%] Performing configure step for 'htslib'
+[  8%] Performing configure step for 'vendored_htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 27%] Built target zlib_vendor
+[ 27%] Built target libdeflate
+[ 27%] Built target gsl
+[ 27%] Built target bzip2_vendor
+[ 27%] Built target xz_vendor
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+configure: WARNING: unrecognized options: --enable-static, --disable-shared
+[ 49%] Built target wflign_static
+checking for gcc... gcc
+[ 60%] Built target wfa2_static
+checking for gcc... gcc
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[2]: Warning: File 'deps/WFA2-lib/CMakeFiles/wfa2cpp_static.dir/compiler_depend.make' has modification time 6.8 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 62%] Built target wfa2cpp_static
+checking whether the C compiler works... checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... make[2]: Warning: File 'deps/WFA2-lib/CMakeFiles/wfa2.dir/compiler_depend.make' has modification time 6.7 s in the future
+
+checking whether we are cross compiling... make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+
+checking whether we are cross compiling... [ 89%] Built target wfa2
+no
+checking for suffix of object files... no
+o
+checking whether the compiler supports GNU C... checking for suffix of object files... yes
+checking whether gcc accepts -g... o
+checking whether the compiler supports GNU C... yes
+checking for gcc option to enable C11 features... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking for ranlib... ranlib
+checking for grep that handles long lines and -e... /bin/grep
+checking for C compiler warning flags... -Wall
+checking for gcc options needed to detect all undeclared functions... none needed
+checking for ranlib... ranlib
+checking for grep that handles long lines and -e... /bin/grep
+checking for C compiler warning flags... -Wall
+checking for gcc options needed to detect all undeclared functions... none needed
+checking for stdio.h... yes
+checking for stdlib.h... none needed
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for unistd.h... yes
+checking for sys/param.h... yes
+checking for sys/param.h... yes
+checking whether _XOPEN_SOURCE is declared... yes
+checking whether _XOPEN_SOURCE is declared... no
+checking C compiler flags needed for sse4.1... no
+checking C compiler flags needed for sse4.1... -msse4.1 -mssse3 -mpopcnt
+checking C compiler flags needed for avx2... -msse4.1 -mssse3 -mpopcnt
+checking C compiler flags needed for avx2... -mavx2 -mpopcnt
+checking C compiler flags needed for avx512f... -mavx2 -mpopcnt
+checking C compiler flags needed for avx512f... -mavx512f -mpopcnt
+checking for pkg-config... /gnu/store/a3lsdsalcmg5wnk67869af7wljprkbam-pkg-config-0.29.2/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for gcc option to enable large file support... none needed
+checking shared library type for unknown-Linux... plain .so
+checking whether the linker supports versioned symbols... -mavx512f -mpopcnt
+checking for pkg-config... /gnu/store/a3lsdsalcmg5wnk67869af7wljprkbam-pkg-config-0.29.2/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for gcc option to enable large file support... yes
+checking whether the compiler accepts -fvisibility=hidden... none needed
+checking shared library type for unknown-Linux... plain .so
+checking whether the linker supports versioned symbols... yes
+checking build system type... yes
+checking whether the compiler accepts -fvisibility=hidden... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for getpagesize... yes
+checking build system type... yes
+checking for working mmap... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for gmtime_r... yes
+checking for fsync... yes
+checking for gmtime_r... yes
+checking for drand48... yes
+checking for fsync... yes
+checking for srand48_deterministic... yes
+checking for drand48... yes
+no
+checking for srand48_deterministic... checking whether fdatasync is declared... yes
+checking for fdatasync... no
+checking whether fdatasync is declared... yes
+checking for library containing log... yes
+checking for fdatasync... yes
+checking for library containing log... -lm
+checking for zlib.h... yes
+checking for inflate in -lz... -lm
+checking for zlib.h... yes
+checking for library containing recv... yes
+checking for inflate in -lz... none required
+checking for bzlib.h... yes
+checking for library containing recv... yes
+checking for BZ2_bzBuffToBuffCompress in -lbz2... none required
+checking for bzlib.h... yes
+checking for lzma.h... yes
+checking for BZ2_bzBuffToBuffCompress in -lbz2... no
+checking for lzma_easy_buffer_encode in -llzma... yes
+checking for lzma.h... no
+configure: error: liblzma development files not found
+
+The CRAM format may use LZMA2 compression, which is implemented in HTSlib
+by using compression routines from liblzma <http://tukaani.org/xz/>.
+
+Building HTSlib requires liblzma development files to be installed on the
+build machine; you may need to ensure a package such as liblzma-dev (on Debian
+or Ubuntu Linux), xz-devel (on RPM-based Linux distributions or Cygwin), or
+xz (via Homebrew on macOS) is installed; or build XZ Utils from source.
+
+Either configure with --disable-lzma (which will make some CRAM files
+produced elsewhere unreadable) or resolve this error to build HTSlib.
+no
+checking for lzma_easy_buffer_encode in -llzma... make[2]: *** [CMakeFiles/htslib.dir/build.make:92: htslib/src/htslib-stamp/htslib-configure] Error 1
+make[1]: *** [CMakeFiles/Makefile2:289: CMakeFiles/htslib.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+no
+configure: error: liblzma development files not found
+
+The CRAM format may use LZMA2 compression, which is implemented in HTSlib
+by using compression routines from liblzma <http://tukaani.org/xz/>.
+
+Building HTSlib requires liblzma development files to be installed on the
+build machine; you may need to ensure a package such as liblzma-dev (on Debian
+or Ubuntu Linux), xz-devel (on RPM-based Linux distributions or Cygwin), or
+xz (via Homebrew on macOS) is installed; or build XZ Utils from source.
+
+Either configure with --disable-lzma (which will make some CRAM files
+produced elsewhere unreadable) or resolve this error to build HTSlib.
+make[2]: *** [CMakeFiles/vendored_htslib.dir/build.make:92: vendored_htslib/src/vendored_htslib-stamp/vendored_htslib-configure] Error 1
+make[1]: *** [CMakeFiles/Makefile2:161: CMakeFiles/vendored_htslib.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

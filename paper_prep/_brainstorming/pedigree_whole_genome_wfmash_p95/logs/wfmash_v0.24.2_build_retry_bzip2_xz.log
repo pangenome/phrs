@@ -1,0 +1,346 @@
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[  8%] Performing configure step for 'vendored_htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 13%] Performing configure step for 'htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 26%] Built target gsl
+[ 26%] Built target xz_vendor
+[ 26%] Built target bzip2_vendor
+[ 26%] Built target libdeflate
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 27%] Built target zlib_vendor
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 41%] Built target wflign_static
+configure: WARNING: unrecognized options: --enable-static, --disable-shared
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+checking for gcc... gcc
+[ 83%] Built target wfa2
+checking for gcc... gcc
+[ 88%] Built target wfa2_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 89%] Built target wfa2cpp_static
+checking whether the C compiler works... checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+
+checking whether we are cross compiling... checking whether we are cross compiling... no
+checking for suffix of object files... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking whether gcc accepts -g... yes
+yes
+checking for gcc option to enable C11 features... checking for gcc option to enable C11 features... none needed
+checking for ranlib... ranlib
+checking for grep that handles long lines and -e... none needed
+checking for ranlib... /bin/grep
+ranlib
+checking for C compiler warning flags... checking for grep that handles long lines and -e... /bin/grep
+checking for C compiler warning flags... -Wall
+checking for gcc options needed to detect all undeclared functions... -Wall
+checking for gcc options needed to detect all undeclared functions... none needed
+checking for stdio.h... none needed
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for stdlib.h... yes
+yes
+checking for string.h... checking for string.h... yes
+checking for inttypes.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for stdint.h... yes
+yes
+checking for strings.h... checking for strings.h... yes
+yes
+checking for sys/stat.h... checking for sys/stat.h... yes
+yes
+checking for sys/types.h... checking for sys/types.h... yes
+yes
+checking for unistd.h... checking for unistd.h... yes
+yes
+checking for sys/param.h... checking for sys/param.h... yes
+yes
+checking whether _XOPEN_SOURCE is declared... checking whether _XOPEN_SOURCE is declared... no
+no
+checking C compiler flags needed for sse4.1... checking C compiler flags needed for sse4.1... -msse4.1 -mssse3 -mpopcnt
+-msse4.1 -mssse3 -mpopcnt
+checking C compiler flags needed for avx2... checking C compiler flags needed for avx2... -mavx2 -mpopcnt
+checking C compiler flags needed for avx512f... -mavx2 -mpopcnt
+checking C compiler flags needed for avx512f... -mavx512f -mpopcnt
+checking for pkg-config... /gnu/store/a3lsdsalcmg5wnk67869af7wljprkbam-pkg-config-0.29.2/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for gcc option to enable large file support... -mavx512f -mpopcnt
+checking for pkg-config... /gnu/store/a3lsdsalcmg5wnk67869af7wljprkbam-pkg-config-0.29.2/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for gcc option to enable large file support... none needed
+checking shared library type for unknown-Linux... plain .so
+checking whether the linker supports versioned symbols... none needed
+checking shared library type for unknown-Linux... plain .so
+checking whether the linker supports versioned symbols... yes
+checking whether the compiler accepts -fvisibility=hidden... yes
+checking whether the compiler accepts -fvisibility=hidden... yes
+yes
+checking build system type... checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for getpagesize... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for working mmap... yes
+yes
+checking for gmtime_r... checking for gmtime_r... yes
+checking for fsync... yes
+checking for fsync... yes
+checking for drand48... yes
+checking for drand48... yes
+yes
+checking for srand48_deterministic... checking for srand48_deterministic... no
+no
+checking whether fdatasync is declared... checking whether fdatasync is declared... yes
+checking for fdatasync... yes
+checking for fdatasync... yes
+checking for library containing log... yes
+checking for library containing log... -lm
+checking for zlib.h... -lm
+checking for zlib.h... yes
+checking for inflate in -lz... yes
+checking for inflate in -lz... yes
+checking for library containing recv... yes
+checking for library containing recv... none required
+checking for bzlib.h... none required
+checking for bzlib.h... yes
+checking for BZ2_bzBuffToBuffCompress in -lbz2... yes
+checking for BZ2_bzBuffToBuffCompress in -lbz2... yes
+checking for lzma.h... yes
+checking for lzma.h... yes
+checking for lzma_easy_buffer_encode in -llzma... yes
+checking for lzma_easy_buffer_encode in -llzma... yes
+checking whether htscodecs files are present... yes
+checking for libdeflate.h... yes
+checking whether htscodecs files are present... yes
+checking for libdeflate.h... no
+checking for libdeflate_deflate_compress in -ldeflate... no
+checking for libdeflate_deflate_compress in -ldeflate... no
+configure: WARNING: GCS support not enabled: requires libcurl support
+checking for library containing regcomp... no
+checking for library containing regcomp... none required
+none required
+configure: creating ./config.status
+configure: creating ./config.status
+config.status: creating config.mk
+config.status: creating config.mk
+config.status: creating htslib.pc.tmp
+config.status: creating htslib.pc.tmp
+config.status: creating config.h
+config.status: creating config.h
+config.status: linking htscodecs_bundled.mk to htscodecs.mk
+configure: WARNING: unrecognized options: --enable-static, --disable-shared
+config.status: linking htscodecs_bundled.mk to htscodecs.mk
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 89%] Performing build step for 'vendored_htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 89%] Performing build step for 'htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[3]: Warning: File 'config.mk' has modification time 6.8 s in the future
+make[3]: Warning: File 'config.mk' has modification time 6.8 s in the future
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+guile: warning: failed to install locale
+guile: warning: failed to install locale
+guile: warning: failed to install locale
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 91%] Performing install step for 'htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[3]: Warning: File 'libhts.a' has modification time 4.2 s in the future
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 92%] Performing install step for 'vendored_htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[3]: Warning: File 'libhts.a' has modification time 4 s in the future
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 93%] Completed 'htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 94%] Built target htslib
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 96%] Completed 'vendored_htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 97%] Built target vendored_htslib
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[2]: Warning: File 'htslib/lib/libhts.a' has modification time 3.5 s in the future
+make[2]: *** No rule to make target 'libdeflate/lib64/libdeflate.a', needed by 'bin/wfmash'.  Stop.
+make[2]: *** Waiting for unfinished jobs....
+[ 98%] Building CXX object CMakeFiles/wfmash.dir/src/interface/main.cpp.o
+[ 98%] Building CXX object CMakeFiles/wfmash.dir/src/common/utils.cpp.o
+make[1]: *** [CMakeFiles/Makefile2:394: CMakeFiles/wfmash.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

@@ -1,0 +1,310 @@
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[  8%] Performing configure step for 'vendored_htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 15%] Performing configure step for 'htslib'
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 18%] Built target libdeflate
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 27%] Built target zlib_vendor
+[ 27%] Built target bzip2_vendor
+[ 27%] Built target gsl
+[ 27%] Built target xz_vendor
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 29%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_aligner.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 30%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_backtrace_buffer.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 30%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_attributes.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 30%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_align.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+configure: WARNING: unrecognized options: --enable-static, --disable-shared
+checking for gcc... gcc
+checking for gcc... gcc
+make[2]: Warning: File 'src/common/wflign/CMakeFiles/wflign_static.dir/compiler_depend.make' has modification time 6.5 s in the future
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 35%] Built target wflign_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 36%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_backtrace.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+checking whether the C compiler works... checking whether the C compiler works... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 36%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_backtrace_offload.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... make[2]: Warning: File 'deps/WFA2-lib/CMakeFiles/wfa2_static.dir/compiler_depend.make' has modification time 6.3 s in the future
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 37%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_bialign.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+
+checking whether we are cross compiling... 
+checking whether we are cross compiling... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 65%] Built target wfa2_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 65%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_bialigner.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 67%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+no
+checking for suffix of object files... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... o
+checking whether the compiler supports GNU C... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 67%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_components.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking whether gcc accepts -g... yes
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+checking whether gcc accepts -g... [ 68%] Building CXX object deps/WFA2-lib/CMakeFiles/wfa2cpp_static.dir/bindings/cpp/WFAligner.cpp.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for gcc option to enable C11 features... yes
+checking for gcc option to enable C11 features... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 69%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_compute_affine2p.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 69%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_compute_affine.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+none needed
+checking for ranlib... ranlib
+checking for grep that handles long lines and -e... none needed
+[ 70%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_compute.c.o
+checking for ranlib... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/bin/grep
+ranlib
+checking for grep that handles long lines and -e... checking for C compiler warning flags... /bin/grep
+checking for C compiler warning flags... -Wall
+checking for gcc options needed to detect all undeclared functions... -Wall
+checking for gcc options needed to detect all undeclared functions... none needed
+checking for stdio.h... none needed
+checking for stdio.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 70%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_compute_edit.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for stdlib.h... yes
+checking for stdlib.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for string.h... [ 72%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_compute_linear.c.o
+yes
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for inttypes.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 72%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_debug.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+[ 73%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_display.c.o
+checking for stdint.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/stat.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 73%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_extend.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for sys/types.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for sys/types.h... [ 74%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_heuristic.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for unistd.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for unistd.h... [ 74%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_pcigar.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for sys/param.h... [ 75%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_penalties.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking for sys/param.h... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 75%] Linking CXX static library ../../lib/libwfa2cpp.a
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+yes
+checking whether _XOPEN_SOURCE is declared... yes
+checking whether _XOPEN_SOURCE is declared... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 75%] Built target wfa2cpp_static
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 75%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_plot.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 77%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_slab.c.o
+[ 77%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_sequences.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+no
+checking C compiler flags needed for sse4.1... no
+checking C compiler flags needed for sse4.1... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 78%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_unialign.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 78%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_termination.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 79%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_extend_kernels_avx.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 79%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/wavefront/wavefront_extend_kernels.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 81%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/system/mm_stack.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 81%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/system/mm_allocator.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 82%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/system/profiler_counter.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 82%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/system/profiler_timer.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 83%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/utils/bitmap.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 83%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/utils/dna_text.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 84%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/utils/sequence_buffer.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 84%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/utils/vector.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 86%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/utils/commons.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 86%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/utils/heatmap.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 87%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/alignment/affine2p_penalties.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 87%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/alignment/affine_penalties.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 88%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/alignment/cigar.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 88%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/alignment/cigar_utils.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 89%] Building C object deps/WFA2-lib/CMakeFiles/wfa2.dir/alignment/score_matrix.c.o
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+-msse4.1 -mssse3 -mpopcnt
+checking C compiler flags needed for avx2... -msse4.1 -mssse3 -mpopcnt
+checking C compiler flags needed for avx2... /gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 89%] Linking C shared library ../../lib/libwfa2.so
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/3jhfhxdf6v5ms10x5zmnl166dh3yhbr1-bash-minimal-5.1.16/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+guile: warning: failed to install locale
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+/gnu/store/y9wj7889n87i8pabsgqrrdsx2yip4kyn-bash-minimal-5.2.37/bin/sh: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8): No such file or directory
+[ 89%] Built target wfa2
+-mavx2 -mpopcnt
+checking C compiler flags needed for avx512f... -mavx2 -mpopcnt
+checking C compiler flags needed for avx512f... -mavx512f -mpopcnt
+checking for pkg-config... /gnu/store/a3lsdsalcmg5wnk67869af7wljprkbam-pkg-config-0.29.2/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for gcc option to enable large file support... -mavx512f -mpopcnt
+checking for pkg-config... /gnu/store/a3lsdsalcmg5wnk67869af7wljprkbam-pkg-config-0.29.2/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for gcc option to enable large file support... none needed
+checking shared library type for unknown-Linux... plain .so
+checking whether the linker supports versioned symbols... none needed
+checking shared library type for unknown-Linux... plain .so
+checking whether the linker supports versioned symbols... yes
+checking whether the compiler accepts -fvisibility=hidden... yes
+checking whether the compiler accepts -fvisibility=hidden... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for getpagesize... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for working mmap... yes
+checking for gmtime_r... yes
+checking for gmtime_r... yes
+checking for fsync... yes
+checking for fsync... yes
+checking for drand48... yes
+checking for drand48... yes
+checking for srand48_deterministic... yes
+checking for srand48_deterministic... no
+checking whether fdatasync is declared... yes
+checking for fdatasync... no
+checking whether fdatasync is declared... yes
+checking for fdatasync... yes
+checking for library containing log... yes
+checking for library containing log... -lm
+checking for zlib.h... yes
+checking for inflate in -lz... -lm
+checking for zlib.h... yes
+checking for library containing recv... yes
+checking for inflate in -lz... none required
+checking for bzlib.h... yes
+checking for library containing recv... no
+checking for BZ2_bzBuffToBuffCompress in -lbz2... no
+configure: error: libbzip2 development files not found
+
+The CRAM format may use bzip2 compression, which is implemented in HTSlib
+by using compression routines from libbzip2 <http://www.bzip.org/>.
+
+Building HTSlib requires libbzip2 development files to be installed on the
+build machine; you may need to ensure a package such as libbz2-dev (on Debian
+or Ubuntu Linux) or bzip2-devel (on RPM-based Linux distributions or Cygwin)
+is installed.
+
+Either configure with --disable-bz2 (which will make some CRAM files
+produced elsewhere unreadable) or resolve this error to build HTSlib.
+none required
+checking for bzlib.h... make[2]: *** [CMakeFiles/htslib.dir/build.make:92: htslib/src/htslib-stamp/htslib-configure] Error 1
+make[1]: *** [CMakeFiles/Makefile2:289: CMakeFiles/htslib.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+no
+checking for BZ2_bzBuffToBuffCompress in -lbz2... no
+configure: error: libbzip2 development files not found
+
+The CRAM format may use bzip2 compression, which is implemented in HTSlib
+by using compression routines from libbzip2 <http://www.bzip.org/>.
+
+Building HTSlib requires libbzip2 development files to be installed on the
+build machine; you may need to ensure a package such as libbz2-dev (on Debian
+or Ubuntu Linux) or bzip2-devel (on RPM-based Linux distributions or Cygwin)
+is installed.
+
+Either configure with --disable-bz2 (which will make some CRAM files
+produced elsewhere unreadable) or resolve this error to build HTSlib.
+make[2]: *** [CMakeFiles/vendored_htslib.dir/build.make:92: vendored_htslib/src/vendored_htslib-stamp/vendored_htslib-configure] Error 1
+make[1]: *** [CMakeFiles/Makefile2:161: CMakeFiles/vendored_htslib.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2
