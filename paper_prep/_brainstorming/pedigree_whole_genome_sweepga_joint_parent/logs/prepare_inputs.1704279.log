@@ -1,0 +1,28 @@
+started_utc=2026-06-20T16:46:05Z
+host=octopus07
+job_id=1704279
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent
+scope=full whole-genome source FASTAs; no 500kb window FASTA
+
+gzip: /moosefs/pangenomes/washu_pedigree/PAN011.fa.gz: Input/output error
+Traceback (most recent call last):
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 43, in names_for_source
+    names = read_fai_names(fasta)
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 20, in read_fai_names
+    for line in fh:
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 207, in <module>
+    sys.exit(main())
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 134, in main
+    names, target_name_source = select_haplotype_names(row["target_source_fasta"], prefix, name_cache)
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 53, in select_haplotype_names
+    names, source = names_for_source(fasta, cache)
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 46, in names_for_source
+    names = stream_fasta_names(fasta)
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 35, in stream_fasta_names
+    raise subprocess.CalledProcessError(ret, ["gzip", "-cd", fasta])
+subprocess.CalledProcessError: Command '['gzip', '-cd', '/moosefs/pangenomes/washu_pedigree/PAN011.fa.gz']' returned non-zero exit status 1.

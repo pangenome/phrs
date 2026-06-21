@@ -1,0 +1,16 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-20T16:44:14Z
+host=octopus07
+job_id=1704278
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent
+scope=full whole-genome source FASTAs; no 500kb window FASTA
+Traceback (most recent call last):
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 142, in <module>
+    sys.exit(main())
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 80, in main
+    names = select_haplotype_names(row["target_source_fasta"], prefix)
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 28, in select_haplotype_names
+    names = read_fai_names(fasta)
+  File "/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/scripts/prepare_inputs.py", line 20, in read_fai_names
+    for line in fh:
+OSError: [Errno 5] Input/output error

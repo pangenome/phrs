@@ -1,0 +1,4 @@
+attempt	job_id	node	command_scope	failure
+1	1704277	octopus07	Slurm preparation wrapper	Script path bug: python3 tried to open /var/spool/slurmd/job1704277/prepare_inputs.py
+2	1704278	octopus07	Full-genome .fai inspection/extraction	OSError input/output error while reading a source .fai
+3	1704279	octopus07	Full-genome .fai inspection with gzip-stream fallback	gzip input/output error while streaming /moosefs/pangenomes/washu_pedigree/PAN011.fa.gz

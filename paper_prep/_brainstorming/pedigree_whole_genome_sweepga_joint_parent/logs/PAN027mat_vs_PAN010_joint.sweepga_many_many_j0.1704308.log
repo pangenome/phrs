@@ -1,0 +1,41 @@
+started_utc=2026-06-20T20:12:09Z
+host=octopus08
+job_id=1704308
+comparison_id=PAN027mat_vs_PAN010_joint
+coordinate_scope=full whole-genome assembly haplotype FASTA records
+scratch=/dev/shm/sg.1704308.42ZR4D
+scratch_policy=sweepGA/FastGA graph/database/source-adjacent temporaries are explicitly placed under /dev/shm; SLURM_TMPDIR is not used for sweepGA scratch
+scratch_fastga_sources=/dev/shm/sg.1704308.42ZR4D/q.fa,/dev/shm/sg.1704308.42ZR4D/t.fa
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga 0.1.1
+command=/home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.1704308.42ZR4D --output-file /dev/shm/sg.1704308.42ZR4D/PAN027mat_vs_PAN010_joint.paf /dev/shm/sg.1704308.42ZR4D/q.fa /dev/shm/sg.1704308.42ZR4D/t.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-20 20:12:09 | /home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.1704308.42ZR4D --output-file /dev/shm/sg.1704308.42ZR4D/PAN027mat_vs_PAN010_joint.paf /dev/shm/sg.1704308.42ZR4D/q.fa /dev/shm/sg.1704308.42ZR4D/t.fa  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /dev/shm/sg.1704308.42ZR4D  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sg.1704308.42ZR4D/q.fa (Fasta)  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /dev/shm/sg.1704308.42ZR4D/t.fa (Fasta)  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 13.0s] Running fastga alignment: /dev/shm/sg.1704308.42ZR4D/q.fa -> /dev/shm/sg.1704308.42ZR4D/t.fa  (rss:3.11 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.1704308.42ZR4D/q.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.1704308.42ZR4D/q.fa (TMPDIR=/dev/shm/sg.1704308.42ZR4D)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.1704308.42ZR4D/q
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.1704308.42ZR4D /dev/shm/sg.1704308.42ZR4D/q
+[FastGA] GIXmake completed successfully
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.1704308.42ZR4D/t.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.1704308.42ZR4D/t.fa (TMPDIR=/dev/shm/sg.1704308.42ZR4D)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.1704308.42ZR4D/t
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.1704308.42ZR4D /dev/shm/sg.1704308.42ZR4D/t
+[FastGA] GIXmake completed successfully
+[FastGA] run_alignment: Aligning /dev/shm/sg.1704308.42ZR4D/q.fa vs /dev/shm/sg.1704308.42ZR4D/t.fa
+[FastGA] Calling FastGA: /home/erikg/.cargo/bin/FastGA -1:_tmp_25419_0.1aln -T8 -f2 q.fa t.fa (in dir: /dev/shm/sg.1704308.42ZR4D, TMPDIR=/dev/shm/sg.1704308.42ZR4D)
+[FastGA] FastGA completed, converting .1aln to PAF
+[FastGA] Conversion completed successfully, output size: 56379894 bytes
+[INFO ] [sweepga::align 336.1s] fastga alignment complete (323.0s)  (rss:59.39 MB disk:53.77 MB peak_disk:87.39 GB)
+[INFO ] [sweepga::parse 336.1s] Parsing input PAF: /dev/shm/sg.1704308.42ZR4D/.tmpmKAEPv  (rss:59.39 MB disk:53.77 MB peak_disk:87.39 GB)
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 409 → 409 mappings (100.0% kept)
+[INFO ] [sweepga]   Output: 3164.0 Mb total, 92.1% avg identity
+[INFO ] [sweepga::done] align:323.0s filter:13.3s total:336.3s cpu:0.2x rss:59.39 MB disk_peak:87.39 GB disk_written:87.44 GB
+finished_utc=2026-06-20T20:17:48Z
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/raw_paf/PAN027mat_vs_PAN010_joint.sweepga_many_many_j0.paf.gz
+bytes=10344828

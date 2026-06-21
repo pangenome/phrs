@@ -1,0 +1,6 @@
+started_utc=2026-06-20T19:34:18Z
+host=octopus07
+job_id=1704290
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent
+scope=full whole-genome source FASTAs; no 500kb window FASTA
+finished_utc=2026-06-20T19:45:09Z

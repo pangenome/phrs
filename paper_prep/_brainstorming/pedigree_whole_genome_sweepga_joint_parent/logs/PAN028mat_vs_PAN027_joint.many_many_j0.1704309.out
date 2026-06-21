@@ -1,0 +1,42 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-20T20:12:09Z
+host=octopus09
+job_id=1704309
+comparison_id=PAN028mat_vs_PAN027_joint
+coordinate_scope=full whole-genome assembly haplotype FASTA records
+scratch=/dev/shm/sg.1704309.hHKV5j
+scratch_policy=sweepGA/FastGA graph/database/source-adjacent temporaries are explicitly placed under /dev/shm; SLURM_TMPDIR is not used for sweepGA scratch
+scratch_fastga_sources=/dev/shm/sg.1704309.hHKV5j/q.fa,/dev/shm/sg.1704309.hHKV5j/t.fa
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga 0.1.1
+command=/home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.1704309.hHKV5j --output-file /dev/shm/sg.1704309.hHKV5j/PAN028mat_vs_PAN027_joint.paf /dev/shm/sg.1704309.hHKV5j/q.fa /dev/shm/sg.1704309.hHKV5j/t.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-20 20:12:09 | /home/erikg/.cargo/bin/sweepga --fastga --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.1704309.hHKV5j --output-file /dev/shm/sg.1704309.hHKV5j/PAN028mat_vs_PAN027_joint.paf /dev/shm/sg.1704309.hHKV5j/q.fa /dev/shm/sg.1704309.hHKV5j/t.fa  (rss:3.09 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /dev/shm/sg.1704309.hHKV5j  (rss:3.09 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sg.1704309.hHKV5j/q.fa (Fasta)  (rss:3.09 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /dev/shm/sg.1704309.hHKV5j/t.fa (Fasta)  (rss:3.09 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 13.3s] Running fastga alignment: /dev/shm/sg.1704309.hHKV5j/q.fa -> /dev/shm/sg.1704309.hHKV5j/t.fa  (rss:3.09 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.1704309.hHKV5j/q.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.1704309.hHKV5j/q.fa (TMPDIR=/dev/shm/sg.1704309.hHKV5j)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.1704309.hHKV5j/q
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.1704309.hHKV5j /dev/shm/sg.1704309.hHKV5j/q
+[FastGA] GIXmake completed successfully
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.1704309.hHKV5j/t.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.1704309.hHKV5j/t.fa (TMPDIR=/dev/shm/sg.1704309.hHKV5j)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.1704309.hHKV5j/t
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.1704309.hHKV5j /dev/shm/sg.1704309.hHKV5j/t
+[FastGA] GIXmake completed successfully
+[FastGA] run_alignment: Aligning /dev/shm/sg.1704309.hHKV5j/q.fa vs /dev/shm/sg.1704309.hHKV5j/t.fa
+[FastGA] Calling FastGA: /home/erikg/.cargo/bin/FastGA -1:_tmp_48012_0.1aln -T8 -f2 q.fa t.fa (in dir: /dev/shm/sg.1704309.hHKV5j, TMPDIR=/dev/shm/sg.1704309.hHKV5j)
+[FastGA] FastGA completed, converting .1aln to PAF
+[FastGA] Conversion completed successfully, output size: 1384057141 bytes
+[INFO ] [sweepga::align 717.8s] fastga alignment complete (704.5s)  (rss:1.29 GB disk:1.29 GB peak_disk:87.42 GB)
+[INFO ] [sweepga::parse 717.8s] Parsing input PAF: /dev/shm/sg.1704309.hHKV5j/.tmpXBEZz5  (rss:1.29 GB disk:1.29 GB peak_disk:87.42 GB)
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 16477 → 16477 mappings (100.0% kept)
+[INFO ] [sweepga]   Output: 6693.7 Mb total, 95.9% avg identity
+[INFO ] [sweepga::done] align:704.5s filter:20.2s total:724.7s cpu:0.1x rss:1.29 GB disk_peak:87.42 GB disk_written:88.71 GB
+finished_utc=2026-06-20T20:25:45Z
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/raw_paf/PAN028mat_vs_PAN027_joint.sweepga_many_many_j0.paf.gz
+bytes=266708308

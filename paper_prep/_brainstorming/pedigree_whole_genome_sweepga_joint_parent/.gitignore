@@ -1,0 +1,10 @@
+inputs/*.fa
+inputs/*.fa.fai
+inputs/*.names.txt
+raw_paf/*.paf.gz
+chopped_paf/*.paf.gz
+filtered_paf/*.paf.gz
+logs/*.out
+logs/*.log
+logs/*.err
+*.tmp

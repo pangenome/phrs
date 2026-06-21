@@ -1,0 +1,2 @@
+stage	job_id	stdout	chop_length_bp	overlap_bp
+chop	1704310	/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent/logs/chop_matrix.%j.out	500000	0

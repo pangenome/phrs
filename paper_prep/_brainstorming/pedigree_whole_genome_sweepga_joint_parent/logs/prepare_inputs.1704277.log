@@ -1,0 +1,6 @@
+started_utc=2026-06-20T16:43:39Z
+host=octopus07
+job_id=1704277
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2616/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_joint_parent
+scope=full whole-genome source FASTAs; no 500kb window FASTA
+python3: can't open file '/var/spool/slurmd/job1704277/prepare_inputs.py': [Errno 2] No such file or directory
