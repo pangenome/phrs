@@ -8,22 +8,23 @@ non-evaluable rather than chr3-negative.
 
 ## Direct answers
 
-- Raw minimap2 PAF: **not evaluable yet**.  Jobs 1704357, 1704358, and 1704359
-  were launched on full whole-genome query/target FASTAs and each exceeded the
-  required 8 hour minimum long-run window, but no complete raw PAF had been
-  copied back to `raw_paf/v2.31-r1302/` when the summaries were written.
-  Therefore this run does **not** show absence of chr3 target rows; it only
-  shows no complete minimap2 PAF was available after the allowed minimum
-  runtime.
+- Raw minimap2 PAF: **not evaluable**.  Jobs 1704357, 1704358, and 1704359
+  were launched on full whole-genome query/target FASTAs, monitored without
+  cancellation until their 24 hour wall-time limits, and all three ended as
+  `TIMEOUT` (`1704357`/`1704358` at 2026-06-22 19:28:40 UTC; `1704359` at
+  2026-06-22 21:32:10 UTC).  No complete raw PAF was copied back to
+  `raw_paf/v2.31-r1302/` or harvestable from the original agent-2652 output
+  path.  Therefore this run does **not** show absence of chr3 target rows; it
+  shows no complete minimap2 PAF was available after the full 24 hour attempt.
 - 10 kb chopping plus sweepGA PAF filtering: **not run/evaluable** because the
-  required complete raw minimap2 PAFs were not yet present.  The package
-  contains scripts and configuration for `pafchop-rs` `l10000_o0` followed by
-  sweepGA filtering with `--scaffold-jump 0`, including `many:many` and
-  `4:many`, but those stages are gated on complete raw PAFs.
+  required complete raw minimap2 PAFs were absent after the terminal Slurm
+  state.  The package contains scripts and configuration for `pafchop-rs`
+  `l10000_o0` followed by sweepGA filtering with `--scaffold-jump 0`, including
+  `many:many` and `4:many`, but those stages are gated on complete raw PAFs.
 - Comparison context: updated wfmash p95 is chr3-positive for the PAN027/PAN028
   Fig5 candidate windows, while updated sweepGA/FastGA default evidence is
   chr3-negative.  This minimap2 long-run remains non-evaluable at the raw,
-  chopped, and filtered layers until raw PAFs complete.
+  chopped, and filtered layers because raw PAFs did not complete.
 
 ## Inputs and scope
 
@@ -73,6 +74,7 @@ Required summaries written for the no-complete-PAF state:
 - `summaries/sweepga_binary.tsv`
 - `summaries/slurm_jobs.tsv`
 - `summaries/paf_file_summary.tsv`
+- `summaries/raw_paf_harvest_manifest.tsv`
 - `summaries/raw_candidate_window_support.tsv`
 - `summaries/minimap2_chop_sweep_chr3_support_summary.tsv`
 - `summaries/longrun_runtime_diagnosis.tsv`
@@ -103,10 +105,19 @@ they finish under their 24 hour allocations and copy complete raw PAFs to
 `raw_paf/v2.31-r1302/`, run:
 
 ```bash
+paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/scripts/harvest_agent2652_raw_pafs.py
 paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/scripts/run_pafchop_rs_10kb.sh
-paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/scripts/run_filter_matrix.sh
+SWEEPGA_FILTER_IDS="many_many_chopped four_many_chopped" \
+  paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/scripts/run_filter_matrix.sh
 paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/scripts/run_summaries.sh
 ```
+
+`harvest_agent2652_raw_pafs.py` preserves the original agent-2652 Slurm output
+paths in `summaries/raw_paf_harvest_manifest.tsv`, verifies gzip integrity and
+record count, then copies only complete raw PAFs into this package's ignored
+`raw_paf/v2.31-r1302/` directory with a local `.sha256` sidecar.  The filter
+selector constrains this harvest task to the requested `many:many` and
+`4:many` evidence layers while leaving the diagnostic filter matrix intact.
 
 `run_pafchop_rs_10kb.sh` uses `pafchop-rs` with `PAF_CHOP_LENGTH=10000` and
 `PAF_CHOP_OVERLAP=0`.  `run_filter_matrix.sh` uses

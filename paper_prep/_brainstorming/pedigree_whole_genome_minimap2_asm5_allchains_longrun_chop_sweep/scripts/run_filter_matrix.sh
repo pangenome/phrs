@@ -11,6 +11,7 @@ COMPARISONS="$PACKAGE_DIR/config/comparisons.tsv"
 FILTERS="$PACKAGE_DIR/config/filter_matrix.tsv"
 STATUS="$PACKAGE_DIR/summaries/filter_manifest.tsv"
 SCRATCH_BASE="${SWEEPGA_DEVSHM_BASE:-/dev/shm}"
+FILTER_IDS="${SWEEPGA_FILTER_IDS:-}"
 if [[ ! -d "$SCRATCH_BASE" || ! -w "$SCRATCH_BASE" ]]; then
     echo "required sweepGA filter scratch base is not writable: $SCRATCH_BASE" >&2
     exit 1
@@ -27,6 +28,9 @@ while IFS=$'\t' read -r cid _rest; do
     [[ "$cid" == "comparison_id" || -z "$cid" ]] && continue
     while IFS=$'\t' read -r filter_id num_mappings scaffold_jump _source_dir _note; do
         [[ "$filter_id" == "filter_id" || -z "$filter_id" ]] && continue
+        if [[ -n "$FILTER_IDS" && " $FILTER_IDS " != *" $filter_id "* ]]; then
+            continue
+        fi
         input="$PACKAGE_DIR/$input_dir/${cid}.chopped_l${PAF_CHOP_LENGTH:-10000}_o${PAF_CHOP_OVERLAP:-0}.paf.gz"
         output="$PACKAGE_DIR/filtered_paf/${cid}.${filter_id}.paf.gz"
         echo "filtering comparison=$cid filter=$filter_id input=$input output=$output"
