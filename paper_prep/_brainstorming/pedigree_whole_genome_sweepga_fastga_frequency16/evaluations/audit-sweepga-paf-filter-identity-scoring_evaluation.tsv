@@ -1,0 +1,8 @@
+dimension	score	rationale
+required_report_and_tsv_artifacts	0.00	Neither required audit report nor TSV summary exists at the expected paths.
+direct_yes_no_conclusions	0.00	No submitted report documents the default scoring answer or the --scoring ani answer.
+synthetic_paf_verification	0.00	No synthetic PAF fixtures, commands, outputs, or retained-row summaries were found.
+source_and_help_inspection	0.00	No task-specific evidence of sweepGA help/source inspection was found.
+recommended_command	0.00	No minimal validated per-chunk identity filtering command was produced.
+commit_and_wg_provenance	0.00	No branch commit or task artifact exists for the requested audit.
+overall	0.00	Required deliverables are absent; task acceptance criteria are unmet.
