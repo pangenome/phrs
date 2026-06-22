@@ -1,0 +1,11 @@
+inputs/
+raw_paf/
+chopped_paf/
+chopped_paf_l*_o*/
+filtered_paf/
+build/
+tools/
+scripts/__pycache__/
+logs/*.tmp
+logs/*.running
+logs/*.failed

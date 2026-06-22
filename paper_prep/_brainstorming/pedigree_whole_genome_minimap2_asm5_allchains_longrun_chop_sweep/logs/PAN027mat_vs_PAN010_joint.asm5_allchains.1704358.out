@@ -1,0 +1,26 @@
+date_utc=2026-06-21T19:28:36Z
+host=octopus09
+job_id=1704358
+run_label=v2.31-r1302
+comparison_id=PAN027mat_vs_PAN010_joint
+parameter_set=asm5_allchains
+threads=32
+scratch=/dev/shm/minimap2.1704358.v2.31-r1302.PAN027mat_vs_PAN010_joint.asm5_allchains
+scratch_base=/dev/shm
+scratch_df=Filesystem      Size  Used Avail Use% Mounted on
+scratch_df=tmpfs           189G     0  189G   0% /dev/shm
+scratch_decision=node-local tmpfs /dev/shm selected when available; task explicitly permits /dev/shm and this avoids streaming large intermediate PAF output to moosefs
+min_runtime_before_unflushed_cancel=08:00:00
+runtime_policy=do not cancel solely because the node-local gzip is header-sized or unflushed before this runtime; cancel only for hard failure, OOM, devshm exhaustion, or manual/user decision
+target=/moosefs/erikg/phrs/.wg-worktrees/agent-2652/paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/inputs/PAN027mat_vs_PAN010_joint.target.fa
+query=/moosefs/erikg/phrs/.wg-worktrees/agent-2652/paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/inputs/PAN027mat_vs_PAN010_joint.query.fa
+scope=full whole-genome child-haplotype query FASTA and full whole-genome joint-parent target FASTA
+output=/moosefs/erikg/phrs/.wg-worktrees/agent-2652/paper_prep/_brainstorming/pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep/raw_paf/v2.31-r1302/PAN027mat_vs_PAN010_joint.asm5_allchains.minimap2-v2.31-r1302.paf.gz
+minimap2_bin=/home/erikg/bin/minimap2
+minimap2_which=/home/erikg/bin/minimap2
+minimap2_realpath=/home/erikg/bin/minimap2-v2.31-r1302
+minimap2_sha256=5a0e9d6b351f1aa5d11a5067bd29a33bc50abe70c51fc9be9e1899ec1643c949
+minimap2_version=2.31-r1302 
+pigz_which=/usr/bin/pigz
+pigz_version=pigz 2.4 
+command=/home/erikg/bin/minimap2 -x asm5 -c --eqx -P --q-occ-frac=0 -t 32 /dev/shm/minimap2.1704358.v2.31-r1302.PAN027mat_vs_PAN010_joint.asm5_allchains/target.fa /dev/shm/minimap2.1704358.v2.31-r1302.PAN027mat_vs_PAN010_joint.asm5_allchains/query.fa | pigz -p 32 > /dev/shm/minimap2.1704358.v2.31-r1302.PAN027mat_vs_PAN010_joint.asm5_allchains/PAN027mat_vs_PAN010_joint.asm5_allchains.paf.gz

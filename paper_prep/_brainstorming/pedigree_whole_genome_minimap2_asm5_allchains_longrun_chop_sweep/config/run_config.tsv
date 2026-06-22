@@ -1,0 +1,19 @@
+key	value
+package	pedigree_whole_genome_minimap2_asm5_allchains_longrun_chop_sweep
+minimap2_bin	/home/erikg/bin/minimap2
+minimap2_expected_version	2.31-r1302
+minimap2_parameter_set	asm5_allchains
+minimap2_options	-x asm5 -c --eqx -P --q-occ-frac=0
+minimap2_threads	32
+minimap2_memory	192G
+minimap2_slurm_time	24:00:00
+minimap2_scratch_base	/dev/shm
+scratch_decision	node-local /dev/shm selected; compute nodes reported 189G tmpfs available at job start and this avoids streaming large intermediate PAF output to moosefs
+min_runtime_before_unflushed_cancel	08:00:00
+runtime_policy	do not cancel solely because node-local gzip output is header-sized or unflushed before the minimum runtime; cancel only for hard failure, OOM, devshm exhaustion, or manual/user decision
+paf_chop_length	10000
+paf_chop_overlap	0
+sweepga_bin	/home/erikg/.cargo/bin/sweepga
+sweepga_filter_modes	many:many and 4:many required; filter matrix also retains diagnostic 1:1, 1:many, and 2:many rows for consistency with the updated sweepGA package
+sweepga_scaffold_jump	0
+raw_status_after_min_runtime	no complete raw PAF copied back after all three jobs exceeded the 8h minimum window; jobs were left running under their 24h Slurm allocations

@@ -1,0 +1,6 @@
+filter_id	num_mappings	scaffold_jump	source_paf_dir	note
+many_many_chopped	many:many	0	chopped_paf	chopped whole-genome-derived PAF; copy of chopped raw layer for matrix completeness
+one_one_chopped	1:1	0	chopped_paf	strict diagnostic control only; expected to suppress multimap PHR signal
+one_many_chopped	1:many	0	chopped_paf	query-best target-unbounded filter run jointly across both parental haplotypes
+two_many_chopped	2:many	0	chopped_paf	two query mappings target-unbounded filter run jointly across both parental haplotypes
+four_many_chopped	4:many	0	chopped_paf	four query mappings target-unbounded filter run jointly across both parental haplotypes; likely useful evidence layer

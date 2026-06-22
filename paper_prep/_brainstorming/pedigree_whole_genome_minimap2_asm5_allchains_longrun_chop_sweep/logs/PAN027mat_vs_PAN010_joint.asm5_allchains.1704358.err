@@ -1,0 +1,7 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+[M::mm_idx_gen::79.859*1.40] collected minimizers
+[M::mm_idx_gen::84.812*2.34] sorted minimizers
+[M::main::84.812*2.34] loaded/built the index for 46 target sequence(s)
+[M::mm_mapopt_update::88.058*2.29] mid_occ = 304
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 46
+[M::mm_idx_stat::91.184*2.25] distinct minimizers: 219511660 (4.85% are singletons); average occurrences: 2.767; average spacing: 9.976; total length: 6060045008
