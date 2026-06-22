@@ -1,0 +1,17 @@
+started_utc=2026-06-21T23:56:49Z
+host=octopus01
+job_id=manual_rerun
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16
+pafchop_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pafchop-rs
+pafchop_bin=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/target/release/pafchop
+pafchop_sha256=2cf2acbd183e61e07e5fdee1ff9093bf354f790c2f68c6df6b9e5e6b33ae09a9
+chop_length=10000
+overlap=0
+threads_per_job=8
+command=PAFCHOP_BIN=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/target/release/pafchop /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pafchop-rs/scripts/chop_one.sh /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN027pat_vs_PAN011_joint.sweepga_frequency16_many_many_j0.paf.gz /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/chopped_paf_l10000_o0/PAN027pat_vs_PAN011_joint.chopped_l10000_o0.paf.gz /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/summaries/pafchop_l10000_o0/PAN027pat_vs_PAN011_joint.summary.tsv PAN027pat_vs_PAN011_joint 10000 8
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+command=PAFCHOP_BIN=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/target/release/pafchop /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pafchop-rs/scripts/chop_one.sh /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN027mat_vs_PAN010_joint.sweepga_frequency16_many_many_j0.paf.gz /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/chopped_paf_l10000_o0/PAN027mat_vs_PAN010_joint.chopped_l10000_o0.paf.gz /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/summaries/pafchop_l10000_o0/PAN027mat_vs_PAN010_joint.summary.tsv PAN027mat_vs_PAN010_joint 10000 8
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+command=PAFCHOP_BIN=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/target/release/pafchop /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pafchop-rs/scripts/chop_one.sh /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN028mat_vs_PAN027_joint.sweepga_frequency16_many_many_j0.paf.gz /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/chopped_paf_l10000_o0/PAN028mat_vs_PAN027_joint.chopped_l10000_o0.paf.gz /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/summaries/pafchop_l10000_o0/PAN028mat_vs_PAN027_joint.summary.tsv PAN028mat_vs_PAN027_joint 10000 8
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+finished_utc=2026-06-21T23:59:16Z

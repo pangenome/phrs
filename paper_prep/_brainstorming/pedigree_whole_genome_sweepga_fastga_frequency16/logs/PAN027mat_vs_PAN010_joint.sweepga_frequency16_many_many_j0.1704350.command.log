@@ -1,0 +1,195 @@
+started_utc=2026-06-21T17:44:07Z
+host=octopus11
+job_id=1704350
+comparison_id=PAN027mat_vs_PAN010_joint
+parameter_set=frequency16
+coordinate_scope=full whole-genome assembly haplotype FASTA records
+scratch=/dev/shm/sg.freq16.1704350.DQoLdz
+scratch_base=/dev/shm
+scratch_policy=sweepGA/FastGA scratch is explicitly under /dev/shm; SLURM_TMPDIR is not used for sweepGA scratch
+scratch_fastga_sources=/dev/shm/sg.freq16.1704350.DQoLdz/q.fa,/dev/shm/sg.freq16.1704350.DQoLdz/t.fa
+sweepga=/home/erikg/.cargo/bin/sweepga
+sweepga_which=/home/erikg/.cargo/bin/sweepga
+sweepga_realpath=/home/erikg/.cargo/bin/sweepga
+sweepga_sha256=a0d7ac0c3312080d67de96d85cdcad9ce0c5a7e523897109b7f598c186ab85a6
+sweepga 0.1.1
+Efficient pangenome alignment filtering and sparsification tool
+
+Usage: sweepga [OPTIONS] [FILE]...
+
+Arguments:
+  [FILE]...
+          Input files: FASTA (1+) or PAF (1 only), auto-detected
+          
+            1 FASTA: align to self and filter
+            2+ FASTA: align all pairs and filter
+            1 PAF: filter alignments
+            stdin: auto-detect and process
+
+Options:
+      --output-file <OUTPUT_FILE>
+          Output file path (auto-detects format from extension: .paf or .1aln)
+
+      --paf
+          Output PAF format (default, kept for clarity and backwards compatibility)
+
+      --1aln
+          Output .1aln binary format instead of default PAF
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
+
+Alignment options:
+      --aligner <ALIGNER>
+          Aligner to use for FASTA input
+          
+          [default: fastga]
+          [possible values: fastga, wfmash]
+
+      --fastga
+          Use FastGA aligner (shorthand for --aligner fastga)
+
+      --wfmash
+          Use wfmash aligner (shorthand for --aligner wfmash)
+
+      --fastga-frequency <FREQUENCY>
+          FastGA k-mer frequency threshold (use k-mers occurring ≤ N times). Overrides --fastga-frequency-multiplier when set
+
+      --fastga-frequency-multiplier <FASTGA_FREQUENCY_MULTIPLIER>
+          FastGA k-mer frequency multiplier: when --fastga-frequency is unset, the effective frequency = `num_pansn_haplotypes * multiplier` (clamped to at least 10). Default 1 reproduces FastGA's historical behavior of one k-mer hit per haplotype
+          
+          [default: 1]
+
+      --map-pct-identity <MAP_PCT_IDENTITY>
+          Minimum percent identity for wfmash mapping (e.g. "90" or ANI preset "ani50-2")
+
+      --all-pairs
+          Align all genome pairs separately (slower, uses more memory, but handles many genomes)
+
+      --batch-bytes <BATCH_BYTES>
+          Maximum sequence data per batch (e.g., "50M", "2G"). Partitions genomes into batches. Stored as a raw string so library consumers (like impg's `sweepga::align_self_paf`) can pass it verbatim; parse via `crate::cli::parse_metric_number` at use sites when you need a numeric byte count
+
+      --batch-size <BATCH_SIZE>
+          Explicit number of genomes per batch (manual override). Overrides --batch-bytes and --max-disk
+
+      --max-disk <MAX_DISK>
+          Maximum disk space for temporary files during alignment (e.g., "100G", "500M"). Computes batch size automatically to stay within budget. Overrides --batch-bytes
+
+      --zstd
+          Compress k-mer index with zstd for ~2x disk savings and faster I/O
+
+      --zstd-level <ZSTD_LEVEL>
+          Zstd compression level (1-19, higher = smaller files but slower). Default: 3
+          
+          [default: 3]
+
+      --temp-dir <TEMPDIR>
+          Temporary directory for intermediate files (defaults to TMPDIR env var, then current directory; use "ramdisk" for /dev/shm)
+
+Basic filtering:
+      --min-aln-length <BLOCK_LENGTH>
+          Minimum alignment block length (omit to use aligner default)
+
+      --num-mappings <NUM_MAPPINGS>
+          n:m-best mappings kept in query:target dimensions. 1:1 (orthogonal), use ∞/many for unbounded. Default matches impg's historical pangenome setting: no mapping-axis filter before scaffolding
+          
+          [default: many:many]
+
+      --overlap <OVERLAP>
+          Maximum overlap ratio for plane sweep filtering
+          
+          [default: 0.95]
+
+      --scoring <SCORING>
+          Scoring function for plane sweep
+          
+          [default: log-length-ani]
+          [possible values: ani, length, length-ani, log-length-ani, matches]
+
+      --min-aln-identity <MIN_IDENTITY>
+          Minimum per-mapping identity filter applied to PAF records after alignment (0-1 fraction, 1-100%, or "aniN" for Nth percentile). This is a post-alignment PAF filter, not an alignment-stage knob — for wfmash's alignment-stage identity cutoff, use `--map-pct-identity`
+          
+          [default: 0]
+
+      --self
+          Keep self-mappings (excluded by default)
+
+      --no-filter
+          Disable all filtering
+
+Scaffolding and chaining:
+      --scaffold-jump <SCAFFOLD_JUMP>
+          Scaffold jump (gap) distance. 0 = disable scaffolding, >0 = enable (accepts k/m/g suffix). Default matches impg's historical 50kb — pass `--scaffold-jump 0` to turn scaffolding off
+          
+          [default: 50k]
+
+      --scaffold-mass <SCAFFOLD_MASS>
+          Minimum scaffold chain length (accepts k/m/g suffix)
+          
+          [default: 10k]
+
+      --scaffold-filter <SCAFFOLD_FILTER>
+          Scaffold filter mode: "1:1" (best), "M:N" (M per query, N per target), "many" (unbounded)
+          
+          [default: many:many]
+
+      --scaffold-overlap <SCAFFOLD_OVERLAP>
+          Scaffold chain overlap threshold for plane sweep filtering
+          
+          [default: 0.5]
+
+      --scaffold-dist <SCAFFOLD_DIST>
+          Maximum Euclidean distance from scaffold anchor for rescue (0 = no rescue, accepts k/m/g suffix)
+          
+          [default: 0]
+
+      --min-scaffold-identity <MIN_SCAFFOLD_IDENTITY>
+          Minimum scaffold identity threshold (0-1 fraction, 1-100%, "aniN", or defaults to --min-aln-identity)
+          
+          [default: 0]
+
+      --scaffolds-only
+          Output scaffold chains only (for debugging)
+check_fastga_begin
+=== FastGA Binary Locations ===
+
+✓ FastGA: /home/erikg/.cache/sweepga/0.1.1_fe5037d5e_wd47b7e3e/FastGA
+  Size: 383224 bytes
+  Executable: true
+  Location: System PATH
+
+✓ ALNtoPAF: /home/erikg/.cache/sweepga/0.1.1_fe5037d5e_wd47b7e3e/ALNtoPAF
+  Size: 321216 bytes
+  Executable: true
+  Location: System PATH
+
+✓ PAFtoALN: /home/erikg/.cache/sweepga/0.1.1_fe5037d5e_wd47b7e3e/PAFtoALN
+  Size: 213568 bytes
+  Executable: true
+  Location: System PATH
+
+All FastGA binaries found and ready to use!
+check_fastga_end
+command=/home/erikg/.cargo/bin/sweepga --fastga --fastga-frequency 16 --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.freq16.1704350.DQoLdz --output-file /dev/shm/sg.freq16.1704350.DQoLdz/PAN027mat_vs_PAN010_joint.frequency16.paf /dev/shm/sg.freq16.1704350.DQoLdz/q.fa /dev/shm/sg.freq16.1704350.DQoLdz/t.fa
+[INFO ] [sweepga::start 0.0s] 2026-06-21 17:44:07 | /home/erikg/.cargo/bin/sweepga --fastga --fastga-frequency 16 --num-mappings many:many --scaffold-jump 0 --temp-dir /dev/shm/sg.freq16.1704350.DQoLdz --output-file /dev/shm/sg.freq16.1704350.DQoLdz/PAN027mat_vs_PAN010_joint.frequency16.paf /dev/shm/sg.freq16.1704350.DQoLdz/q.fa /dev/shm/sg.freq16.1704350.DQoLdz/t.fa  (rss:4.24 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::tempdir 0.0s] Using temp directory: /dev/shm/sg.freq16.1704350.DQoLdz  (rss:4.24 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sg.freq16.1704350.DQoLdz/q.fa (Fasta)  (rss:4.24 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 2: /dev/shm/sg.freq16.1704350.DQoLdz/t.fa (Fasta)  (rss:4.24 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::align 12.2s] Running fastga alignment: /dev/shm/sg.freq16.1704350.DQoLdz/q.fa -> /dev/shm/sg.freq16.1704350.DQoLdz/t.fa  (rss:4.24 MB disk:0 bytes peak_disk:0 bytes)
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.freq16.1704350.DQoLdz/q.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.freq16.1704350.DQoLdz/q.fa (TMPDIR=/dev/shm/sg.freq16.1704350.DQoLdz)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.freq16.1704350.DQoLdz/q
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.freq16.1704350.DQoLdz /dev/shm/sg.freq16.1704350.DQoLdz/q
+[FastGA] GIXmake completed successfully
+[FastGA] prepare_gdb: Converting "/dev/shm/sg.freq16.1704350.DQoLdz/t.fa" to GDB
+[FastGA] Calling FAtoGDB: /home/erikg/.cargo/bin/FAtoGDB /dev/shm/sg.freq16.1704350.DQoLdz/t.fa (TMPDIR=/dev/shm/sg.freq16.1704350.DQoLdz)
+[FastGA] FAtoGDB completed successfully
+[FastGA] create_index: Creating index for /dev/shm/sg.freq16.1704350.DQoLdz/t
+[FastGA] Calling GIXmake: /home/erikg/.cargo/bin/GIXmake -T8 -P/dev/shm/sg.freq16.1704350.DQoLdz /dev/shm/sg.freq16.1704350.DQoLdz/t
+[FastGA] GIXmake completed successfully
+[FastGA] run_alignment: Aligning /dev/shm/sg.freq16.1704350.DQoLdz/q.fa vs /dev/shm/sg.freq16.1704350.DQoLdz/t.fa
+[FastGA] Calling FastGA: /home/erikg/.cargo/bin/FastGA -1:_tmp_5167_0.1aln -T8 -f16 q.fa t.fa (in dir: /dev/shm/sg.freq16.1704350.DQoLdz, TMPDIR=/dev/shm/sg.freq16.1704350.DQoLdz)

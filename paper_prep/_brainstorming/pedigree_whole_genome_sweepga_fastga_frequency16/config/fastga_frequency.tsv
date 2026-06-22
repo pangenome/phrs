@@ -1,0 +1,2 @@
+parameter_set	fastga_frequency	num_mappings	scaffold_jump	note
+frequency16	16	many:many	0	Primary explicit FastGA seed frequency sensitivity setting requested for Fig5 chr3 homology.

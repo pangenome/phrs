@@ -1,0 +1,6 @@
+started_utc=2026-06-21T17:43:56Z
+host=octopus01
+job_id=manual
+package_dir=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16
+scope=full whole-genome source FASTAs; no 500kb window FASTA
+finished_utc=2026-06-21T17:43:56Z

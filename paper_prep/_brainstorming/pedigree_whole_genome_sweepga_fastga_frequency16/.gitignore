@@ -1,0 +1,7 @@
+inputs/*.fa
+inputs/*.fa.fai
+inputs/*.names.txt
+raw_paf/
+chopped_paf_l10000_o0/
+filtered_paf/
+scripts/__pycache__/
