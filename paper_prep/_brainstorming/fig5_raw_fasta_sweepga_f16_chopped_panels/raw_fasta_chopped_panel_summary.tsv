@@ -1,0 +1,4 @@
+event_id	comparison_id	query_name	window_start	window_end	expected_target_chroms	segment_rows	expected_target_rows	sum_expected_overlap_bp	target_overlap_bp	status
+PAR1_XY_positive_control	PAN027pat_vs_PAN011_joint	PAN027#2#chrX	0	500000	chrX,chrY	266	258	515859	chr1:4000;chr12:5284;chr14:4000;chr15:9;chrX:349932;chrY:165927	OK
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	PAN027#2#chr9	135704825	136204825	chr3	360	40	80000	chr1:34000;chr11:5025;chr15:4000;chr16:10070;chr19:50000;chr20:2000;chr3:80000;chr9:531071	OK
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	PAN028#1#chr9	134380985	134880985	chr3	348	50	98009	chr1:4000;chr12:1271;chr16:50000;chr18:3172;chr19:2000;chr20:5242;chr3:98009;chr6:2407;chr8:2000;chr9:518061	OK
