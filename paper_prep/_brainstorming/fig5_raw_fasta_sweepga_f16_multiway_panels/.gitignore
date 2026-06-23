@@ -1,0 +1,8 @@
+work/
+evidence_paf/
+__pycache__/
+*.pyc
+*.paf
+*.paf.gz
+*.paf.gz.sha256
+preview_png/*.tmp.png
