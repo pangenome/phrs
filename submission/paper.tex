@@ -265,6 +265,10 @@ These patch calls include candidate gene-conversion-like tracts between
 non-homologous arms of the same community, for example between 9q and 3q, and
 crossover-like state switches, but they remain assembly-derived candidates
 rather than a per-event recombination truth set.
+Direct whole-genome alignment of the child to parental haplotypes with two
+independent aligners reproduces the 9q--3q donor at matching coordinates
+($\sim$99.9\% identity), confirming the patch reflects genuine
+inter-chromosomal sequence sharing rather than a graph artifact.
 A lower-merge rerun recovered intervals spanning published conversion- and
 crossover-associated tract scales, although tract length alone does not assign
 event-level mechanism.
@@ -658,6 +662,22 @@ The within-Leiden fraction was tested against a permutation null preserving
 per-arm patch-count marginals ($B = 10000$; per-community BH correction);
 Wilson 95\% CI on 494/538 is 89.2--93.9\%. The permutation implementation is
 included in the public analysis-code repository.
+
+\subsection*{Direct-alignment validation of inter-chromosomal patches}
+
+To test whether the flagged inter-chromosomal patches reflect genuine sequence
+sharing rather than graph artefacts, we realigned the implicated child
+haplotypes directly against the full whole-genome assemblies of both
+transmitting-parent haplotypes (a joint two-haplotype target), independently
+with two aligners: wfmash v0.24.2 (\texttt{-p 95}) and sweepGA 0.1.1, a FastGA
+wrapper (\texttt{--num-mappings many:many --scaffold-jump 0}). We then retained
+alignments whose query fell in the chr9q candidate flanks
+(PAN027 \texttt{chr9:135.7--136.2~Mb}; PAN028 \texttt{chr9:134.4--134.9~Mb}) and
+whose target lay on a non-homologous donor chromosome. Both aligners placed the
+donor on chr3q over matching coordinates ($\sim$201.2--202.5~Mb) at
+99.2--99.9\% per-block identity. FastGA recovered the chr3q signal only with an
+explicit k-mer occurrence threshold (\texttt{-f 16}); its sparser default
+seeding missed it, whereas wfmash recovered it under default settings.
 
 \subsection*{Software versions}
 
