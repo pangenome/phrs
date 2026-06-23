@@ -1,0 +1,4 @@
+filter_mode	filter_label	scaffold_jump	scoring	num_mappings
+raw_no_merge_ani	raw no chop; no merge; ANI	0	ani	1:1
+raw_merge50k_ani	raw no chop; 50 kb merge; ANI	50k	ani	1:1
+raw_merge50k_log_length_ani	raw no chop; 50 kb merge; log-length ANI	50k	log-length-ani	1:1
