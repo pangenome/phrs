@@ -1,0 +1,12 @@
+event	tool	binary_version	child_query	child_query_start	child_query_end	donor_target	donor_chrom	donor_start	donor_end	strand	residue_matches	block_len	identity_gi	block_class	note
+PAN027_chr9q_chr3q_PHR_candidate	wfmash	v0.24.2-12-ge040aa10	PAN027#2#chr9	136117000	136165000	PAN011#joint#h1_chr3	chr3	202461289	202509327	+	47971	48038	0.999292	main_donor	committed minimal_chr3 row
+PAN027_chr9q_chr3q_PHR_candidate	wfmash	v0.24.2-12-ge040aa10	PAN027#2#chr9	136166000	136191000	PAN011#joint#h1_chr3	chr3	202510328	202535329	+	24951	25001	0.998160	main_donor	committed minimal_chr3 row
+PAN027_chr9q_chr3q_PHR_candidate	sweepga_fastga_f16	sweepga_0.1.1	PAN027#2#chr9	136073322	136116336	PAN011#joint#h1_chr3	chr3	202417382	202460395	+	42979	43018	0.999094	main_donor	extracted on octopus01 from moosefs raw PAF
+PAN027_chr9q_chr3q_PHR_candidate	sweepga_fastga_f16	sweepga_0.1.1	PAN027#2#chr9	136116103	136204765	PAN011#joint#h1_chr3	chr3	202460391	202549099	+	88225	88811	0.993401	main_donor	extracted on octopus01 from moosefs raw PAF
+PAN027_chr9q_chr3q_PHR_candidate	sweepga_fastga_f16	sweepga_0.1.1	PAN027#2#chr9	136073322	136208157	PAN011#joint#h2_chr3	chr3	205444079	205578940	+	134570	134953	0.997162	haplotype_mirror	same locus on PAN011 hap2 (offset ~3 Mb)
+PAN028_chr9q_chr3q_PHR_candidate	wfmash	v0.24.2-12-ge040aa10	PAN028#1#chr9	134709119	134760000	PAN027#joint#h1_chr3	chr3	201234027	201284685	+	50356	50881	0.999008	main_donor	committed minimal_chr3 row
+PAN028_chr9q_chr3q_PHR_candidate	wfmash	v0.24.2-12-ge040aa10	PAN028#1#chr9	134764000	134814998	PAN027#joint#h2_chr3	chr3	202431105	202482361	+	50968	51256	0.999373	main_donor	committed minimal_chr3 row
+PAN028_chr9q_chr3q_PHR_candidate	wfmash	v0.24.2-12-ge040aa10	PAN028#1#chr9	134813000	134863981	PAN027#joint#h2_chr3	chr3	202480363	202531372	+	50931	51009	0.998921	main_donor	committed minimal_chr3 row
+PAN028_chr9q_chr3q_PHR_candidate	sweepga_fastga_f16	sweepga_0.1.1	PAN028#1#chr9	134748929	134791940	PAN027#joint#h2_chr3	chr3	202416032	202459045	+	42966	43020	0.998745	main_donor	extracted on octopus01 from moosefs raw PAF
+PAN028_chr9q_chr3q_PHR_candidate	sweepga_fastga_f16	sweepga_0.1.1	PAN028#1#chr9	134791707	134886033	PAN027#joint#h2_chr3	chr3	202459041	202553456	+	93778	94537	0.991969	main_donor	extracted on octopus01 from moosefs raw PAF
+PAN028_chr9q_chr3q_PHR_candidate	sweepga_fastga_f16	sweepga_0.1.1	PAN028#1#chr9	134748929	134886033	PAN027#joint#h1_chr3	chr3	201273616	201410842	+	136698	137339	0.995331	main_donor	extracted on octopus01 from moosefs raw PAF
