@@ -1,0 +1,5 @@
+filter_mode	label	num_mappings	scaffold_jump	scoring	note
+no_merge_ani	no-merge ANI	1:1	0	ani	Plane-sweep 1:1 filter on chopped whole-genome PAFs with scaffolding disabled.
+no_merge_log_length_ani	no-merge log-length-ANI	1:1	0	log-length-ani	Plane-sweep 1:1 filter on chopped whole-genome PAFs with scaffolding disabled and default log-length ANI scoring.
+scaffold50k_ani	50kb scaffold/merge ANI	1:1	50k	ani	Plane-sweep 1:1 filter with sweepGA 50 kb scaffold chaining enabled.
+scaffold50k_log_length_ani	50kb scaffold/merge log-length-ANI	1:1	50k	log-length-ani	Plane-sweep 1:1 filter with sweepGA 50 kb scaffold chaining enabled and default log-length ANI scoring.

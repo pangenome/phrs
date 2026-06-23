@@ -1,0 +1,5 @@
+filtered_paf/
+logs/
+__pycache__/
+scripts/__pycache__/
+*.tmp
