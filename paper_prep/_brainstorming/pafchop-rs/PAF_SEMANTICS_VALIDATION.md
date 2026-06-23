@@ -88,16 +88,25 @@ These optional tags are alignment-derived and are never copied stale:
 All other optional tags are copied only when `--keep-tags` is requested. This
 preserves non-alignment metadata such as `tp:A` or `st:Z` without duplicating
 or trusting stale identity-sensitive tags. Without `--keep-tags`, only repaired
-alignment tags and `zp/zc/zl/zo/zs/ze/zts/zte` provenance tags are emitted.
+alignment tags and `zp/zc/zl/zo/zm/zs/ze/zts/zte` provenance tags are emitted.
+The `zm:Z` tag and `chunk_mode` summary column record whether the row was
+split in historical `row-start` mode or absolute `query-grid` mode.
 
 ## Boundary semantics
 
-Chunks are defined on the query axis. Query-consuming operations (`M`, `=`,
-`X`, `I`) are clipped by overlap with the chunk's query interval. Target-only
-deletions (`D`) have no query span, so they are assigned deterministically to
-the chunk whose interval starts at that query position; a terminal deletion at
-the original query end is assigned to the final chunk. This makes no-overlap
-chunks sum back to the original CIGAR-derived identity totals.
+Chunks are defined on the query axis. In the backwards-compatible `row-start`
+mode, chunk boundaries start at each row's `q_start`; in `query-grid` mode,
+boundaries are absolute query-coordinate grid lines at `0,N,2N,...` intersected
+with the row interval. For example, `q_start=7`, `q_end=27`, and `--length 10`
+emits `7-10`, `10-20`, and `20-27` in query-grid mode, so another row covering
+`10-20` emits exactly the same query slice.
+
+Query-consuming operations (`M`, `=`, `X`, `I`) are clipped by overlap with the
+chunk's query interval. Target-only deletions (`D`) have no query span, so they
+are assigned deterministically to the chunk whose interval starts at that query
+position; a terminal deletion at the original query end is assigned to the final
+chunk. This makes no-overlap chunks sum back to the original CIGAR-derived
+identity totals.
 
 ## Validation run
 
@@ -110,6 +119,9 @@ The Rust test suite includes golden tests for:
 - recomputed PAF columns 10 and 11;
 - clipped `cs:Z` output when `cs:Z` is present;
 - refusal to chop rows without `cg:Z`;
+- query-grid chunk boundaries for shifted rows, reverse-strand rows, mixed
+  CIGAR operations crossing grid lines, and input-order deterministic
+  per-record concatenation;
 - property-style checks that no-overlap chunks sum to original identity
   metrics across mixed operation strings.
 

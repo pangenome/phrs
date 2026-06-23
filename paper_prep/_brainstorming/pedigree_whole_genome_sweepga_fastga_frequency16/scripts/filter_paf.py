@@ -17,7 +17,11 @@ def main():
     parser.add_argument("--output-dir", default="filtered_paf")
     parser.add_argument("--chop-length", default=os.environ.get("PAF_CHOP_LENGTH", "500000"))
     parser.add_argument("--overlap", default=os.environ.get("PAF_CHOP_OVERLAP", "0"))
+    parser.add_argument("--chunk-mode", default=os.environ.get("PAF_CHOP_MODE", "row-start"))
     args = parser.parse_args()
+    if args.chunk_mode not in ("row-start", "query-grid"):
+        raise SystemExit("--chunk-mode must be row-start or query-grid")
+    mode_suffix = "_query_grid" if args.chunk_mode == "query-grid" else ""
 
     filters = {row["filter_id"]: row for row in read_tsv(FILTER_MATRIX)}
     if args.filter_id not in filters:
@@ -27,7 +31,8 @@ def main():
     src = os.path.join(
         PACKAGE_DIR,
         args.input_dir,
-        "%s.chopped_l%s_o%s.paf.gz" % (args.comparison_id, args.chop_length, args.overlap),
+        "%s.chopped_l%s_o%s%s.paf.gz"
+        % (args.comparison_id, args.chop_length, args.overlap, mode_suffix),
     )
     out = os.path.join(PACKAGE_DIR, args.output_dir, "%s.%s.paf.gz" % (args.comparison_id, args.filter_id))
     os.makedirs(os.path.dirname(out), exist_ok=True)

@@ -10,6 +10,7 @@ struct Args {
     input: String,
     length: u64,
     overlap: u64,
+    chunk_mode: ChunkMode,
     keep_tags: bool,
     comparison_id: String,
     summary: Option<PathBuf>,
@@ -21,9 +22,25 @@ impl Default for Args {
             input: "-".to_string(),
             length: 10_000,
             overlap: 0,
+            chunk_mode: ChunkMode::RowStart,
             keep_tags: false,
             comparison_id: "NA".to_string(),
             summary: None,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum ChunkMode {
+    RowStart,
+    QueryGrid,
+}
+
+impl ChunkMode {
+    fn as_str(self) -> &'static str {
+        match self {
+            ChunkMode::RowStart => "row-start",
+            ChunkMode::QueryGrid => "query-grid",
         }
     }
 }
@@ -118,9 +135,12 @@ impl ChunkPlan {
 }
 
 fn usage() -> &'static str {
-    "usage: pafchop [--input PAF|-] [--length N] [--overlap N] [--keep-tags] [--comparison-id ID] [--summary TSV]\n\
+    "usage: pafchop [--input PAF|-] [--length N] [--overlap N] [--chunk-mode row-start|query-grid] [--query-grid] [--keep-tags] [--comparison-id ID] [--summary TSV]\n\
      \n\
      Streams PAF and splits each row into <=N bp query-axis fragments.\n\
+     Default chunk mode is row-start, which starts chunks at each row's q_start.\n\
+     query-grid mode uses absolute query-coordinate boundaries at 0,N,2N,...\n\
+     and currently requires --overlap 0.\n\
      Exact chunking requires cg:Z CIGAR operations. Alignment-derived columns\n\
      and tags are recomputed per fragment; stale cg/cs/NM/dv/de/df tags are\n\
      never copied from the input row."
@@ -164,6 +184,19 @@ where
             "-o" | "--overlap" => {
                 args.overlap = parse_size(&it.next().ok_or("--overlap requires a value")?)?
             }
+            "--chunk-mode" => {
+                let value = it.next().ok_or("--chunk-mode requires a value")?;
+                args.chunk_mode = match value.as_str() {
+                    "row-start" | "row_start" | "row" => ChunkMode::RowStart,
+                    "query-grid" | "query_grid" | "query" => ChunkMode::QueryGrid,
+                    _ => {
+                        return Err(format!(
+                            "--chunk-mode must be row-start or query-grid, got {value}"
+                        ))
+                    }
+                };
+            }
+            "--query-grid" => args.chunk_mode = ChunkMode::QueryGrid,
             "--keep-tags" => args.keep_tags = true,
             "--comparison-id" => {
                 args.comparison_id = it.next().ok_or("--comparison-id requires a value")?
@@ -182,6 +215,9 @@ where
     }
     if args.overlap >= args.length {
         return Err("--overlap must be smaller than --length".to_string());
+    }
+    if args.chunk_mode == ChunkMode::QueryGrid && args.overlap != 0 {
+        return Err("--chunk-mode query-grid currently requires --overlap 0".to_string());
     }
     Ok(args)
 }
@@ -578,14 +614,33 @@ fn plan_chunks(fields: &[&str], args: &Args, line_no: u64) -> Result<Vec<ChunkPl
         return Ok(Vec::new());
     }
 
-    let step = args.length - args.overlap;
     let mut chunks = Vec::new();
-    let mut offset = 0_u64;
-    while offset < span {
-        let chunk_q_start = q_start + offset;
-        let chunk_q_end = q_end.min(chunk_q_start + args.length);
-        chunks.push(ChunkPlan::new(chunk_q_start, chunk_q_end, cs_ops.is_some()));
-        offset += step;
+    match args.chunk_mode {
+        ChunkMode::RowStart => {
+            let step = args.length - args.overlap;
+            let mut offset = 0_u64;
+            while offset < span {
+                let chunk_q_start = q_start + offset;
+                let chunk_q_end = q_end.min(chunk_q_start + args.length);
+                chunks.push(ChunkPlan::new(chunk_q_start, chunk_q_end, cs_ops.is_some()));
+                offset += step;
+            }
+        }
+        ChunkMode::QueryGrid => {
+            let mut grid_start = (q_start / args.length) * args.length;
+            while grid_start < q_end {
+                let grid_end = grid_start.saturating_add(args.length);
+                let chunk_q_start = q_start.max(grid_start);
+                let chunk_q_end = q_end.min(grid_end);
+                if chunk_q_start < chunk_q_end {
+                    chunks.push(ChunkPlan::new(chunk_q_start, chunk_q_end, cs_ops.is_some()));
+                }
+                if grid_end == u64::MAX {
+                    break;
+                }
+                grid_start = grid_end;
+            }
+        }
     }
 
     let mut q_pos = q_start;
@@ -726,8 +781,10 @@ fn emit_fragment<W: Write>(
     }
     write!(
         out,
-        "\tzp:Z:{TOOL_NAME}\tzc:i:{idx}\tzl:i:{}\tzo:i:{}\tzs:i:{orig_q_start}\tze:i:{orig_q_end}\tzts:i:{orig_t_start}\tzte:i:{orig_t_end}\n",
-        args.length, args.overlap
+        "\tzp:Z:{TOOL_NAME}\tzc:i:{idx}\tzl:i:{}\tzo:i:{}\tzm:Z:{}\tzs:i:{orig_q_start}\tze:i:{orig_q_end}\tzts:i:{orig_t_start}\tzte:i:{orig_t_end}\n",
+        args.length,
+        args.overlap,
+        args.chunk_mode.as_str()
     )
 }
 
@@ -806,17 +863,18 @@ fn write_summary(args: &Args, stats: &Stats) -> Result<(), String> {
         BufWriter::new(File::create(path).map_err(|e| format!("{}: {e}", path.display()))?);
     writeln!(
         writer,
-        "comparison_id\ttool\tversion\tchop_length_bp\toverlap_bp\tkeep_tags\traw_records\tchopped_records\traw_query_bp\tchopped_query_bp"
+        "comparison_id\ttool\tversion\tchop_length_bp\toverlap_bp\tchunk_mode\tkeep_tags\traw_records\tchopped_records\traw_query_bp\tchopped_query_bp"
     )
     .map_err(|e| e.to_string())?;
     writeln!(
         writer,
-        "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
+        "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
         args.comparison_id,
         TOOL_NAME,
         env!("CARGO_PKG_VERSION"),
         args.length,
         args.overlap,
+        args.chunk_mode.as_str(),
         args.keep_tags,
         stats.raw_records,
         stats.chopped_records,
@@ -854,8 +912,18 @@ mod tests {
     use super::*;
 
     fn run_case(input: &str, length: u64, keep_tags: bool) -> (String, Stats) {
+        run_case_mode(input, length, keep_tags, ChunkMode::RowStart)
+    }
+
+    fn run_case_mode(
+        input: &str,
+        length: u64,
+        keep_tags: bool,
+        chunk_mode: ChunkMode,
+    ) -> (String, Stats) {
         let args = Args {
             length,
+            chunk_mode,
             keep_tags,
             comparison_id: "test".to_string(),
             ..Args::default()
@@ -884,10 +952,117 @@ mod tests {
         assert!(lines[0].contains("dv:f:0.000000"));
         assert!(lines[0].contains("de:f:0.000000"));
         assert!(lines[0].contains("zp:Z:pafchop-rs"));
+        assert!(lines[0].contains("zm:Z:row-start"));
         assert_eq!(stats.raw_records, 1);
         assert_eq!(stats.chopped_records, 3);
         assert_eq!(stats.raw_query_bp, 25);
         assert_eq!(stats.chopped_query_bp, 25);
+    }
+
+    #[test]
+    fn query_grid_uses_absolute_query_boundaries_for_shifted_rows() {
+        let input = "\
+q\t100\t7\t27\t+\tt1\t200\t100\t120\t20\t20\t60\tcg:Z:20=\n\
+q\t100\t3\t23\t+\tt2\t200\t300\t320\t20\t20\t60\tcg:Z:20=\n";
+        let (out, _) = run_case_mode(input, 10, false, ChunkMode::QueryGrid);
+        let lines: Vec<&str> = out.lines().collect();
+        assert_eq!(lines.len(), 6);
+        let intervals: Vec<(&str, &str, &str)> = lines
+            .iter()
+            .map(|line| {
+                let f = fields(line);
+                (f[5], f[2], f[3])
+            })
+            .collect();
+        assert_eq!(
+            intervals,
+            vec![
+                ("t1", "7", "10"),
+                ("t1", "10", "20"),
+                ("t1", "20", "27"),
+                ("t2", "3", "10"),
+                ("t2", "10", "20"),
+                ("t2", "20", "23"),
+            ]
+        );
+        assert!(lines[1].contains("zm:Z:query-grid"));
+        assert!(lines[4].starts_with("q\t100\t10\t20\t+\tt2\t200\t307\t317\t10\t10\t60\t"));
+    }
+
+    #[test]
+    fn query_grid_reverse_strand_uses_absolute_boundaries() {
+        let input = "q\t100\t7\t27\t-\tt\t200\t80\t100\t20\t20\t60\tcg:Z:20=\n";
+        let (out, _) = run_case_mode(input, 10, false, ChunkMode::QueryGrid);
+        let lines: Vec<&str> = out.lines().collect();
+        assert_eq!(lines.len(), 3);
+        let f0 = fields(lines[0]);
+        assert_eq!(&f0[2..4], &["7", "10"]);
+        assert_eq!(&f0[7..11], &["97", "100", "3", "3"]);
+        let f1 = fields(lines[1]);
+        assert_eq!(&f1[2..4], &["10", "20"]);
+        assert_eq!(&f1[7..11], &["87", "97", "10", "10"]);
+        let f2 = fields(lines[2]);
+        assert_eq!(&f2[2..4], &["20", "27"]);
+        assert_eq!(&f2[7..11], &["80", "87", "7", "7"]);
+    }
+
+    #[test]
+    fn query_grid_clips_cigar_across_grid_boundary() {
+        let input = "q\t100\t7\t27\t+\tt\t200\t50\t70\t14\t23\t60\tcg:Z:5=4X3I8=3D\tNM:i:10\tdv:f:0.1\tde:f:0.1\n";
+        let (out, _) = run_case_mode(input, 10, false, ChunkMode::QueryGrid);
+        let lines: Vec<&str> = out.lines().collect();
+        assert_eq!(lines.len(), 3);
+
+        let f0 = fields(lines[0]);
+        assert_eq!(&f0[2..4], &["7", "10"]);
+        assert_eq!(&f0[7..11], &["50", "53", "3", "3"]);
+        assert!(lines[0].contains("cg:Z:3="));
+        assert!(lines[0].contains("NM:i:0"));
+
+        let f1 = fields(lines[1]);
+        assert_eq!(&f1[2..4], &["10", "20"]);
+        assert_eq!(&f1[7..11], &["53", "60", "3", "10"]);
+        assert!(lines[1].contains("cg:Z:2=4X3I1="));
+        assert!(lines[1].contains("NM:i:7"));
+
+        let f2 = fields(lines[2]);
+        assert_eq!(&f2[2..4], &["20", "27"]);
+        assert_eq!(&f2[7..11], &["60", "70", "7", "10"]);
+        assert!(lines[2].contains("cg:Z:7=3D"));
+        assert!(lines[2].contains("NM:i:3"));
+    }
+
+    #[test]
+    fn query_grid_output_matches_per_record_parallel_concatenation() {
+        let input = "\
+q1\t100\t7\t27\t+\tt1\t200\t50\t70\t20\t20\t60\tcg:Z:20=\n\
+q2\t100\t3\t18\t-\tt2\t200\t80\t95\t15\t15\t60\tcg:Z:15=\n\
+q3\t100\t11\t29\t+\tt3\t200\t100\t117\t12\t19\t60\tcg:Z:4=2X3I5=2D4=\tNM:i:7\n";
+        let (sequential, sequential_stats) = run_case_mode(input, 10, false, ChunkMode::QueryGrid);
+
+        let mut concatenated = String::new();
+        let mut combined_stats = Stats::default();
+        for line in input.lines() {
+            let (chunked, stats) =
+                run_case_mode(&format!("{line}\n"), 10, false, ChunkMode::QueryGrid);
+            concatenated.push_str(&chunked);
+            combined_stats.raw_records += stats.raw_records;
+            combined_stats.chopped_records += stats.chopped_records;
+            combined_stats.raw_query_bp += stats.raw_query_bp;
+            combined_stats.chopped_query_bp += stats.chopped_query_bp;
+        }
+
+        assert_eq!(sequential, concatenated);
+        assert_eq!(sequential_stats.raw_records, combined_stats.raw_records);
+        assert_eq!(
+            sequential_stats.chopped_records,
+            combined_stats.chopped_records
+        );
+        assert_eq!(sequential_stats.raw_query_bp, combined_stats.raw_query_bp);
+        assert_eq!(
+            sequential_stats.chopped_query_bp,
+            combined_stats.chopped_query_bp
+        );
     }
 
     #[test]
