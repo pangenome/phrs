@@ -1,0 +1,5 @@
+filter_mode	filter_label	scaffold_jump	scoring	num_mappings	source
+no_merge_ani	no merge; ANI	0	ani	1:1	existing
+no_merge_log_length_ani	no merge; log-length ANI	0	log-length-ani	1:1	run
+merge50k_ani	50 kb merge; ANI	50k	ani	1:1	run
+merge50k_log_length_ani	50 kb merge; log-length ANI	50k	log-length-ani	1:1	run

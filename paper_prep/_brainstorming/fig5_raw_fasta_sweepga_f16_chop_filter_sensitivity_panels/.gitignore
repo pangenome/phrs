@@ -1,0 +1,6 @@
+filtered_paf/
+logs/*.out
+logs/*.err
+logs/*.log
+logs/*.tmp
+*.lock

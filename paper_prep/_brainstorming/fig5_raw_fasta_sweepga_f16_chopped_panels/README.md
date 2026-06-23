@@ -1,6 +1,10 @@
 # Fig5 raw FASTA SweepGA/FastGA f16 chopped candidate panels
 
-This directory contains the corrected compact Fig5 evidence panel generated
+Superseded: use
+`paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_chop_filter_sensitivity_panels/`
+for the corrected whole-genome chopped-then-filtered comparison panels.
+
+This directory contains the earlier compact Fig5 evidence panel generated
 from raw FASTA-derived whole-genome SweepGA/FastGA `--fastga-frequency 16`
 PAFs, not from `odgi untangle` output.
 
@@ -29,6 +33,11 @@ Tracked deliverables:
 - `raw_fasta_chopped_panel_segments.tsv`
 - `raw_fasta_chopped_panel_summary.tsv`
 - `slurm_jobs.tsv`
+
+Important caveat: this older draft performs the final 1:1 ANI filtering after
+query-window extraction, so its final filtering competition is not genome-wide.
+The superseding directory starts from whole-genome chopped PAFs, filters
+genome-wide, and subsets windows only for display.
 
 Large intermediate raw-window, 2 kb chopped, and 1:1 ANI-filtered PAFs are
 intentionally ignored under `work/` and `evidence_paf/`. Their absolute paths
