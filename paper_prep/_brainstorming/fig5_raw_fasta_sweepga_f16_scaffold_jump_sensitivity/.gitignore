@@ -1,0 +1,5 @@
+filtered_paf/*.paf.gz
+filtered_paf/*.paf.gz.sha256
+filtered_paf/*.tmp.*
+logs/*
+!logs/.gitkeep
