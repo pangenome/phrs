@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+<text x="500" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">Fig5 raw FASTA SweepGA/FastGA f16 no-chop 1:1 filtering and scaffold-merge comparison</text>
+<text x="265.00" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">1:1 no merge ANI</text>
+<text x="550.00" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">1:1 50 kb merge ANI</text>
+<text x="835.00" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">1:1 50 kb merge log-length ANI</text>
+<text x="122" y="112.00" text-anchor="end" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12">PAR1 X/Y positive control</text>
+<rect x="135.00" y="102.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="135.00" y="70.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="138.35" y="98.00" width="77.96" height="32" fill="#E7298A" stroke="#111111" stroke-width="0.7"/>
+<rect x="215.12" y="98.00" width="179.88" height="32" fill="#7570B3" stroke="#111111" stroke-width="0.7"/>
+<line x1="135.00" y1="130.00" x2="135.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="135.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0</text>
+<line x1="239.00" y1="130.00" x2="239.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="239.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0.2</text>
+<line x1="343.00" y1="130.00" x2="343.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="343.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0.4</text>
+<text x="142.00" y="86.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 2; union 493566 bp</text>
+<rect x="420.00" y="102.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="420.00" y="70.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="423.35" y="98.00" width="77.96" height="32" fill="#E7298A" stroke="#111111" stroke-width="0.7"/>
+<rect x="500.12" y="98.00" width="179.88" height="32" fill="#7570B3" stroke="#111111" stroke-width="0.7"/>
+<line x1="420.00" y1="130.00" x2="420.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="420.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0</text>
+<line x1="524.00" y1="130.00" x2="524.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="524.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0.2</text>
+<line x1="628.00" y1="130.00" x2="628.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="628.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0.4</text>
+<text x="427.00" y="86.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 2; union 493566 bp</text>
+<rect x="705.00" y="102.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="705.00" y="70.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="705.00" y="98.00" width="6.37" height="32" fill="#8A8A8A" stroke="#8A8A8A" stroke-width="0"/>
+<rect x="708.35" y="98.00" width="77.96" height="32" fill="#E7298A" stroke="#111111" stroke-width="0.7"/>
+<rect x="785.12" y="98.00" width="179.88" height="32" fill="#7570B3" stroke="#111111" stroke-width="0.7"/>
+<line x1="705.00" y1="130.00" x2="705.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="705.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0</text>
+<line x1="809.00" y1="130.00" x2="809.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="809.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0.2</text>
+<line x1="913.00" y1="130.00" x2="913.00" y2="136.00" stroke="#333" stroke-width="1"/>
+<text x="913.00" y="149.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">0.4</text>
+<text x="712.00" y="86.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 2; union 493566 bp</text>
+<text x="122" y="252.00" text-anchor="end" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12">PAN027 chr9q -&gt; chr3q</text>
+<rect x="135.00" y="242.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="135.00" y="210.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<line x1="184.49" y1="270.00" x2="184.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="184.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">135.8</text>
+<line x1="288.49" y1="270.00" x2="288.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="288.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">136.0</text>
+<line x1="392.49" y1="270.00" x2="392.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="392.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">136.2</text>
+<text x="142.00" y="226.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 0; union 0 bp</text>
+<text x="388.00" y="312.00" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#666666">CHR3_DROPPED</text>
+<rect x="420.00" y="242.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="420.00" y="210.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<line x1="469.49" y1="270.00" x2="469.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="469.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">135.8</text>
+<line x1="573.49" y1="270.00" x2="573.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="573.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">136.0</text>
+<line x1="677.49" y1="270.00" x2="677.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="677.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">136.2</text>
+<text x="427.00" y="226.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 0; union 0 bp</text>
+<text x="673.00" y="312.00" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#666666">CHR3_DROPPED</text>
+<rect x="705.00" y="242.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="705.00" y="210.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="705.00" y="238.00" width="259.91" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<line x1="754.49" y1="270.00" x2="754.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="754.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">135.8</text>
+<line x1="858.49" y1="270.00" x2="858.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="858.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">136.0</text>
+<line x1="962.49" y1="270.00" x2="962.49" y2="276.00" stroke="#333" stroke-width="1"/>
+<text x="962.49" y="289.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">136.2</text>
+<text x="712.00" y="226.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 0; union 0 bp</text>
+<text x="958.00" y="312.00" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#666666">CHR3_DROPPED</text>
+<text x="122" y="392.00" text-anchor="end" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="12">PAN028 chr9q -&gt; chr3q</text>
+<rect x="135.00" y="382.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="135.00" y="350.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="160.26" y="378.00" width="77.66" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="238.44" y="378.00" width="26.08" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="305.84" y="378.00" width="12.63" height="32" fill="#D95F02" stroke="#111111" stroke-width="0.7"/>
+<line x1="144.89" y1="410.00" x2="144.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="144.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.4</text>
+<line x1="248.89" y1="410.00" x2="248.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="248.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.6</text>
+<line x1="352.89" y1="410.00" x2="352.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="352.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.8</text>
+<text x="142.00" y="366.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 1; union 24288 bp</text>
+<text x="388.00" y="452.00" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#7A3B00">CHR3_SURVIVES</text>
+<rect x="420.00" y="382.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="420.00" y="350.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="445.26" y="378.00" width="77.66" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="523.44" y="378.00" width="26.08" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="590.84" y="378.00" width="12.63" height="32" fill="#D95F02" stroke="#111111" stroke-width="0.7"/>
+<line x1="429.89" y1="410.00" x2="429.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="429.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.4</text>
+<line x1="533.89" y1="410.00" x2="533.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="533.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.6</text>
+<line x1="637.89" y1="410.00" x2="637.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="637.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.8</text>
+<text x="427.00" y="366.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 1; union 24288 bp</text>
+<text x="673.00" y="452.00" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#7A3B00">CHR3_SURVIVES</text>
+<rect x="705.00" y="382.00" width="260.00" height="24" fill="#F3F3F3" stroke="#CCCCCC" stroke-width="1"/>
+<rect x="705.00" y="350.00" width="260.00" height="112" fill="none" stroke="#DDDDDD" stroke-width="1"/>
+<rect x="705.00" y="378.00" width="96.05" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="730.26" y="378.00" width="77.66" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="808.44" y="378.00" width="26.08" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="834.44" y="378.00" width="54.03" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<rect x="887.42" y="378.00" width="77.10" height="32" fill="#1B9E77" stroke="#1B9E77" stroke-width="0"/>
+<line x1="714.89" y1="410.00" x2="714.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="714.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.4</text>
+<line x1="818.89" y1="410.00" x2="818.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="818.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.6</text>
+<line x1="922.89" y1="410.00" x2="922.89" y2="416.00" stroke="#333" stroke-width="1"/>
+<text x="922.89" y="429.00" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">134.8</text>
+<text x="712.00" y="366.00" font-family="Arial, sans-serif" font-size="9" fill="#333">expected rows 0; union 0 bp</text>
+<text x="958.00" y="452.00" text-anchor="end" font-family="Arial, sans-serif" font-size="9" fill="#666666">CHR3_DROPPED</text>
+<text x="525" y="492" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">Absolute query chromosome coordinate (Mb)</text>
+<rect x="250" y="515" width="14" height="10" fill="#D95F02"/>
+<text x="270" y="524" font-family="Arial, sans-serif" font-size="10">chr3 donor</text>
+<rect x="360" y="515" width="14" height="10" fill="#1B9E77"/>
+<text x="380" y="524" font-family="Arial, sans-serif" font-size="10">chr9 context</text>
+<rect x="470" y="515" width="14" height="10" fill="#7570B3"/>
+<text x="490" y="524" font-family="Arial, sans-serif" font-size="10">chrX</text>
+<rect x="580" y="515" width="14" height="10" fill="#E7298A"/>
+<text x="600" y="524" font-family="Arial, sans-serif" font-size="10">chrY</text>
+<rect x="690" y="515" width="14" height="10" fill="#8A8A8A"/>
+<text x="710" y="524" font-family="Arial, sans-serif" font-size="10">other</text>
+</svg>

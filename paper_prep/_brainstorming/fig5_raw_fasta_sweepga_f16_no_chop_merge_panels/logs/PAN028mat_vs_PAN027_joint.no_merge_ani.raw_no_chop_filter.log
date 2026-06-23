@@ -1,0 +1,16 @@
+started_utc	2026-06-23T11:10:16.201258+00:00
+raw_paf	/moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN028mat_vs_PAN027_joint.sweepga_frequency16_many_many_j0.paf.gz
+output_gz	paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_no_chop_merge_panels/filtered_paf/PAN028mat_vs_PAN027_joint.no_merge_ani.raw_no_chop.paf.gz
+command	gzip -dc /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN028mat_vs_PAN027_joint.sweepga_frequency16_many_many_j0.paf.gz | /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --scoring ani --output-file paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_no_chop_merge_panels/work/raw_no_chop_filter.q0htwzoo/filtered.paf
+[INFO ] [sweepga::start 0.0s] 2026-06-23 11:10:16 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --scoring ani --output-file paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_no_chop_merge_panels/work/raw_no_chop_filter.q0htwzoo/filtered.paf  (rss:8.66 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 138.0s] stdin: Paf  (rss:15.48 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::parse 138.0s] Parsing input PAF: /tmp/.tmpaWaPKo  (rss:15.48 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 734679 → 7099 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 734679 → 7099 mappings (1.0% kept)
+[INFO ] [sweepga]   Output: 1253.4 Mb total, 99.3% avg identity
+[INFO ] [sweepga::done] total:257.1s cpu:0.6x rss:448.26 MB disk_peak:0 bytes disk_written:0 bytes
+gzip_returncode	0
+sweepga_returncode	0
+finished_utc	2026-06-23T11:14:37.005020+00:00
+elapsed_seconds	260.804

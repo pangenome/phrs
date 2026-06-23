@@ -1,0 +1,4 @@
+filter_mode	filter_label	scaffold_jump	scoring	num_mappings	plot_order	note
+no_merge_ani	no merge; ANI	0	ani	1:1	1	Raw whole-genome f16 many:many PAF filtered directly with one-to-one ANI scoring and no scaffolding.
+merge50k_ani	50 kb merge; ANI	50k	ani	1:1	2	Raw whole-genome f16 many:many PAF filtered directly with one-to-one ANI scoring after 50 kb scaffold merging.
+merge50k_log_length_ani	50 kb merge; log-length ANI	50k	log-length-ani	1:1	3	Raw whole-genome f16 many:many PAF filtered directly with one-to-one log-length-ANI scoring after 50 kb scaffold merging.
