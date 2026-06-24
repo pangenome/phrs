@@ -1,0 +1,2 @@
+parameter_set	fastga_frequency	num_mappings	scaffold_jump	note
+frequency32	32	many:many	0	Fig5 raw whole-genome SweepGA/FastGA iteration matching frequency16 run shape, with FastGA k-mer frequency raised to 32.
