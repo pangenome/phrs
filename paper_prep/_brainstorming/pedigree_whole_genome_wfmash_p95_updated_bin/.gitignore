@@ -1,5 +1,6 @@
 inputs/
 raw_paf/
+query_grid_filter/
 build/
 tools/
 scripts/__pycache__/

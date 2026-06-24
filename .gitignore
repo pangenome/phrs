@@ -5,3 +5,6 @@
 # Figure PDFs under paper_prep/figures/ are NOT excluded — those are figures, not draft renderings.
 paper_prep/synthesis/*.pdf
 paper_prep/synthesis/**/*.pdf
+
+# Rust build output from local helper crates.
+target/

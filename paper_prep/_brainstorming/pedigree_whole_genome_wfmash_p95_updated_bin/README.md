@@ -113,6 +113,8 @@ Required summaries:
 - `summaries/wfmash_jobs.tsv`
 - `summaries/paf_file_summary.tsv`
 - `summaries/candidate_window_support.tsv`
+- `summaries/query_grid_filter_manifest.tsv`
+- `summaries/query_grid_filter_candidate_window_support.tsv`
 
 Additional useful summary:
 
@@ -122,6 +124,51 @@ The candidate-window support summary is posthoc selection from raw whole-genome
 PAFs by query contig/window overlap and parsed target chromosome. It reports
 chr3 support for both candidate windows and also records other target
 chromosomes overlapping those same windows.
+
+## Query-grid SweepGA-compatible post-filter
+
+The `query_grid_filter/` outputs start from the raw updated-bin wfmash `-p 95`
+whole-genome PAFs and then apply the same post-alignment normalization used for
+the SweepGA/FastGA query-grid comparison runs:
+
+1. verify every raw PAF row has a `cg:Z` CIGAR tag, so exact coordinate-aware
+   chopping is possible;
+2. chop raw PAF rows with `pafchop-rs --chunk-mode query-grid --overlap 0` at
+   10 kb, 5 kb, and 2 kb query-grid lengths;
+3. filter each chopped PAF with SweepGA PAF filtering:
+   `--num-mappings 1:1 --scaffold-jump 0 --scoring ani --overlap 0`.
+
+The generated directories are:
+
+- `query_grid_filter/chopped_paf_qgrid_l10000_o0/`
+- `query_grid_filter/chopped_paf_qgrid_l5000_o0/`
+- `query_grid_filter/chopped_paf_qgrid_l2000_o0/`
+- `query_grid_filter/filtered_paf_qgrid_l10000_o0/`
+- `query_grid_filter/filtered_paf_qgrid_l5000_o0/`
+- `query_grid_filter/filtered_paf_qgrid_l2000_o0/`
+
+All chopped and filtered `.paf.gz` outputs were validated with `pigz -t` and
+have `.sha256` sidecars. The manifest records raw/chopped/filtered paths, row
+counts, commands, and binary paths/checksums:
+
+`summaries/query_grid_filter_manifest.tsv`
+
+Candidate-window chr3 support after the query-grid + SweepGA 1:1 filter is:
+
+| event | comparison | chop length bp | chr3 retained rows | chr3 overlap bp sum | chr3 union bp |
+| --- | --- | ---: | ---: | ---: | ---: |
+| `PAN027_chr9q_chr3q_PHR_candidate` | `PAN027pat_vs_PAN011_joint` | 10,000 | 0 | 0 | 0 |
+| `PAN027_chr9q_chr3q_PHR_candidate` | `PAN027pat_vs_PAN011_joint` | 5,000 | 0 | 0 | 0 |
+| `PAN027_chr9q_chr3q_PHR_candidate` | `PAN027pat_vs_PAN011_joint` | 2,000 | 1 | 2,000 | 2,000 |
+| `PAN028_chr9q_chr3q_PHR_candidate` | `PAN028mat_vs_PAN027_joint` | 10,000 | 1 | 4,998 | 4,998 |
+| `PAN028_chr9q_chr3q_PHR_candidate` | `PAN028mat_vs_PAN027_joint` | 5,000 | 3 | 15,000 | 15,000 |
+| `PAN028_chr9q_chr3q_PHR_candidate` | `PAN028mat_vs_PAN027_joint` | 2,000 | 5 | 10,000 | 10,000 |
+
+Reproduce from the repository root with:
+
+```bash
+paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/scripts/run_query_grid_filter.sh
+```
 
 ## Reproduction
 

@@ -1,0 +1,2 @@
+comparison_id	tool	version	chop_length_bp	overlap_bp	chunk_mode	keep_tags	raw_records	chopped_records	raw_query_bp	chopped_query_bp
+PAN027mat_vs_PAN010_joint	pafchop-rs	0.1.0	10000	0	query-grid	false	66634	393356	3321317568	3321317568
