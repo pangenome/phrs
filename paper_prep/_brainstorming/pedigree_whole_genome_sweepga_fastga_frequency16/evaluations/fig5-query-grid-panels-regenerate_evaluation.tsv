@@ -1,0 +1,10 @@
+dimension	score	rationale
+new_query_grid_figure_package	0.00	Required query-grid panel package is absent and no equivalent directory was found.
+rendered_pdf_png_svg_outputs	0.00	No query-grid Fig5 PDF PNG or SVG panel outputs were found.
+segment_and_summary_tsvs	0.00	No task-specific segment-level TSV or summary TSV with genomic query coordinates exists.
+manifest_sources_commands_checksums	0.00	No figure-package manifest records source PAFs chopped PAFs filtered PAFs command settings and sha256 checksums.
+plot_content_and_labeling	0.00	No new plot exists to satisfy PAR1 PAN027 PAN028 chop length labeling support separation or legend requirements.
+validation_evidence	0.00	No validation script output or rendered-panel validation evidence was found.
+readme_explanation	0.00	No README exists for a query-grid panel package explaining query-grid versus row-start chopping.
+commit_and_provenance	0.00	No task-specific commit exists; the branch is at the upstream dependency rerun commit.
+overall	0.00	Required committed deliverables are absent; all acceptance criteria are unmet.
