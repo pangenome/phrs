@@ -57,8 +57,8 @@ that high-identity pseudo-homologous regions occur on 41 of 48 chromosome arms.
 They form structured sequence communities in which established exchange systems
 appear as local peaks within a broader continuum. Human and mouse
 chromosome-contact maps show preferential proximity between sequence-similar
-ends, and in human data this relationship persists in adjacent flanks lacking
-the homology used to define the pairs. A three-generation pedigree assembled end
+ends, and in human data this relationship persists even in the adjacent flanks,
+which lack the homology used to define the pairs. A three-generation pedigree assembled end
 to end contains candidate exchange patches enriched within the same communities.
 These results generalize known subtelomeric exchange systems into a
 near-ubiquitous population-scale architecture and establish recurrent ectopic
@@ -120,7 +120,7 @@ whether that acrocentric result is one case of a genome-wide architecture.
 We revisit subtelomeric architecture without chromosomal partitioning, and ask
 three questions the cytogenetic era could pose but not resolve: how extensive is
 inter-chromosomal subtelomeric sharing across all 48 chromosome arms; how is it
-organized into sequence communities; and does sequence similarity predict
+organized into sequence communities; and does sequence similarity predict both
 three-dimensional proximity in the nucleus and compatible pedigree-resolved
 patch patterns within the same communities.
 
@@ -138,10 +138,11 @@ resulting alignments as an implicit pangenome graph and query it through their
 transitive closure, without ever building the graph
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
 Exhaustive all-against-all comparison is intractable, of order $10^{24}$
-base-pair comparisons, but pairwise flank alignments are highly redundant at
-this sample size and a sample suffices: wfmash evaluates 11.6\% of flank pairs,
-roughly $230\times$ the Erd\H{o}s and R\'{e}nyi threshold for a single connected
-component, so transitive closure recovers essentially every subtelomere.
+base-pair comparisons. Pairwise flank alignments, however, are highly redundant
+at this sample size, and a sample suffices: wfmash evaluates 11.6\% of flank
+pairs, roughly $230\times$ the Erd\H{o}s and R\'{e}nyi threshold for a single
+connected component, so transitive closure recovers essentially every
+subtelomere.
 As a quality control, querying any reference window recovers nearly all other
 haplotypes across the genome, with the expected exceptions of ribosomal DNA, the
 centromeres and the sex chromosomes.
@@ -188,8 +189,9 @@ subtelomere homology: the two pseudoautosomal pairs Xp/Yp and Xq/Yq
 \cite{acrocentric_Altemose2022}, the 10p/18p pair first reported by Linardopoulou
 and colleagues \cite{Linardopoulou2005}, and the 4q/10q D4Z4 pair
 \cite{dux4_d4z4_fshd_lemmers2010worldwide}.
-The same matrix highlights an enriched q-arm neighborhood, illustrated by 22q,
-21q, 19q, 1q, 13q and 17q, within the broader continuum.
+Beyond these discrete communities, the same matrix shows a weaker q-arm
+enrichment that does not resolve into a separate community (22q, 21q, 19q, 1q,
+13q and 17q).
 Average-linkage UPGMA provides a secondary display and method comparison on the
 same matrix, but we do not interpret the ordering as an evolutionary tree.
 
@@ -215,7 +217,7 @@ of the same orientation (only 17 of 75 pair a p-arm with a q-arm).
 \subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
 
 Why should pseudo-homolog regions persist at 41 of the 48 arms?
-In human contact-map data, aggregate contact at PHR coordinates increased with
+In human contact-map data, aggregate contact at PHR coordinates increases with
 PHR sequence similarity.
 We measured this per inter-chromosomal PHR pair within a single genome and
 without community labels in HG002 Pore-C (Fig.~\ref{fig:fig4}A; descriptive
@@ -246,8 +248,8 @@ Subtelomeric sequence similarity is positively correlated with contact across
 all four stages, with the same per-PHR-pair pointwise statistic shown across
 stages in Fig.~\ref{fig:fig4}C; direct clustered contrasts do not resolve a
 zygotene-specific peak.
-We therefore read the mouse data as evidence for a broad prophase-I
-sequence-to-contact association rather than a stage-specific maximum.
+We therefore read the mouse data as a broad prophase-I association between
+sequence similarity and contact, rather than a stage-specific peak.
 
 \subsection*{Pedigree-resolved patches are compatible with recent exchange}
 
@@ -278,19 +280,19 @@ use those assemblies only as a cross-assembler validation set; confirming
 individual WashU events will require orthogonal long-read recombination maps
 \cite{Halldorsson2019,palsson2025recomb}.
 
-Together these observations describe a self-reinforcing loop: shared sequence
-tracks three-dimensional proximity; proximity at the meiotic bouquet creates the
-opportunity for ectopic recombination between non-homologous chromosomes; and
-that recombination generates new shared sequence that enters the population and
-reinforces proximity at the next meiosis.
+Together, these observations suggest a self-reinforcing loop. Shared sequence
+tracks three-dimensional proximity. Proximity at the meiotic bouquet creates the
+opportunity for ectopic recombination between non-homologous chromosomes, and
+that recombination in turn generates new shared sequence that enters the
+population and reinforces proximity at the next meiosis.
 The 3.5 Mb of subtelomeric sequence described here therefore behaves as a
 population-scale extension of the cytogenetically defined subtelomeric systems
 that anchor it, shaped and maintained by recurrent ectopic exchange
 \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
-Which way the sequence--proximity link runs remains open, whether shared
-sequence drives co-localisation or enforced proximity generates shared sequence;
-the mechanism split among conversion, crossover-associated repair and larger
-exchange patterns also remains unresolved.
+Which way the sequence--proximity link runs is still open: whether shared
+sequence drives co-localisation, or enforced proximity generates shared
+sequence. The mechanism is likewise unresolved, split among conversion,
+crossover-associated repair and larger exchange patterns.
 Our human three-dimensional data are somatic rather than germline, with the
 meiotic-stage measurement supplied only by mouse.
 Resolving both will require germline-stage contact maps and long-read
