@@ -1,0 +1,3 @@
+event_id	comparison_id	query_name	query_start	query_end	expected_target_chrom	note
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	PAN027#2#chr9	135704825	136204825	chr3	Fig5 autosomal candidate window reviewed in corrected sweepGA evidence report.
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	PAN028#1#chr9	134380985	134880985	chr3	Fig5 autosomal candidate window reviewed in corrected sweepGA evidence report.
