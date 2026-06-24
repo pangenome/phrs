@@ -1,0 +1,6 @@
+/inputs/*.fa
+/inputs/*.fa.fai
+/inputs/*.names.txt
+/raw_paf/*.paf.gz
+/raw_paf/*.paf.gz.sha256
+/scripts/__pycache__/
