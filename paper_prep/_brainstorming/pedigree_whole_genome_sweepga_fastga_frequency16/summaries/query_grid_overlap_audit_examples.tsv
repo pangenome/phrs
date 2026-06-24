@@ -1,0 +1,78 @@
+event_id	comparison_id	chop_length_bp	source	line_no	query_interval	target_group	target_interval	strand	matches	alignment_length	mapq
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837764	135704825-135706000	chr9/h2	PAN011#joint#h2_chr9:133238040-133240040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837765	135706000-135708000	chr9/h2	PAN011#joint#h2_chr9:133240040-133242040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837766	135708000-135710000	chr9/h2	PAN011#joint#h2_chr9:133242040-133244040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837767	135710000-135712000	chr9/h2	PAN011#joint#h2_chr9:133244040-133246040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837768	135712000-135714000	chr9/h2	PAN011#joint#h2_chr9:133246040-133248040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837769	135714000-135716000	chr9/h2	PAN011#joint#h2_chr9:133248040-133250040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837770	135716000-135718000	chr9/h2	PAN011#joint#h2_chr9:133250040-133252040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	query_grid_filtered	837771	135718000-135720000	chr9/h2	PAN011#joint#h2_chr9:133252040-133254040	+	2000	2000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012102	136037407-136039407	chr3/h1	PAN011#joint#h1_chr3:202381955-202383955	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012104	136041407-136043407	chr3/h2	PAN011#joint#h2_chr3:205412541-205414541	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012103	136051407-136053407	chr3/h1	PAN011#joint#h1_chr3:202395963-202397963	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012105	136061877-136063877	chr3/h2	PAN011#joint#h2_chr3:205432771-205434771	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012106	136070020-136072020	chr3/h1	PAN011#joint#h1_chr3:202414229-202416229	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012132	136075322-136077322	chr3/h2	PAN011#joint#h2_chr3:205446071-205448071	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012126	136079322-136081322	chr3/h1	PAN011#joint#h1_chr3:202423380-202425380	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	2000	row_start_filtered_no_merge_ani	1012127	136085322-136087322	chr3/h1	PAN011#joint#h1_chr3:202429381-202431381	+	2000	2000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335651	135704825-135705000	chr9/h2	PAN011#joint#h2_chr9:133234040-133239040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335652	135705000-135710000	chr9/h2	PAN011#joint#h2_chr9:133239040-133244040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335653	135710000-135715000	chr9/h2	PAN011#joint#h2_chr9:133244040-133249040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335654	135715000-135720000	chr9/h2	PAN011#joint#h2_chr9:133249040-133254040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335655	135720000-135725000	chr9/h2	PAN011#joint#h2_chr9:133254040-133259040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335656	135725000-135730000	chr9/h2	PAN011#joint#h2_chr9:133259040-133264040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335657	135730000-135735000	chr9/h2	PAN011#joint#h2_chr9:133264040-133269040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	query_grid_filtered	335658	135735000-135740000	chr9/h2	PAN011#joint#h2_chr9:133269040-133274040	+	5000	5000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	row_start_filtered_no_merge_ani	365568	136098322-136103322	chr3/h2	PAN011#joint#h2_chr3:205469073-205474073	+	5000	5000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	row_start_filtered_no_merge_ani	365580	136141103-136146103	chr3/h1	PAN011#joint#h1_chr3:202485422-202490422	+	5000	5000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	row_start_filtered_no_merge_ani	365569	136143322-136148322	chr3/h2	PAN011#joint#h2_chr3:205514094-205519094	+	5000	5000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	row_start_filtered_no_merge_ani	365570	136163322-136168322	chr3/h2	PAN011#joint#h2_chr3:205534133-205539135	+	4999	5002	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	row_start_filtered_no_merge_ani	365571	136183322-136188322	chr3/h2	PAN011#joint#h2_chr3:205554133-205559130	+	4995	5000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	5000	row_start_filtered_no_merge_ani	365572	136198322-136203322	chr3/h2	PAN011#joint#h2_chr3:205569130-205574130	+	4989	5000	
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167889	135704825-135710000	chr9/h2	PAN011#joint#h2_chr9:133234040-133244040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167890	135710000-135720000	chr9/h2	PAN011#joint#h2_chr9:133244040-133254040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167891	135720000-135730000	chr9/h2	PAN011#joint#h2_chr9:133254040-133264040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167892	135730000-135740000	chr9/h2	PAN011#joint#h2_chr9:133264040-133274040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167893	135740000-135750000	chr9/h2	PAN011#joint#h2_chr9:133274040-133284040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167894	135750000-135760000	chr9/h2	PAN011#joint#h2_chr9:133284040-133294040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167895	135760000-135770000	chr9/h2	PAN011#joint#h2_chr9:133294040-133304040	+	10000	10000	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	query_grid_filtered	167896	135770000-135780000	chr9/h2	PAN011#joint#h2_chr9:133304040-133314041	+	10000	10001	255
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	10000	row_start_filtered_no_merge_ani	175142	136193322-136203322	chr3/h2	PAN011#joint#h2_chr3:205564130-205574130	+	9977	10000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815588	134380985-134382000	chr9/h1	PAN027#joint#h1_chr9:128559301-128561301	+	2000	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815589	134382000-134384000	chr9/h1	PAN027#joint#h1_chr9:128561301-128563301	+	2000	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815590	134384000-134386000	chr9/h1	PAN027#joint#h1_chr9:128563301-128565301	+	2000	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815591	134386000-134388000	chr9/h1	PAN027#joint#h1_chr9:128565301-128567301	+	2000	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815592	134388000-134390000	chr9/h1	PAN027#joint#h1_chr9:128567301-128569301	+	2000	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815593	134390000-134392000	chr9/h1	PAN027#joint#h1_chr9:128569301-128571298	+	1997	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815594	134392000-134394000	chr9/h1	PAN027#joint#h1_chr9:128571298-128573306	+	2000	2008	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	query_grid_filtered	815595	134394000-134396000	chr9/h1	PAN027#joint#h1_chr9:128573306-128575306	+	2000	2000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000820	134624325-134624334	chr3/h1	PAN027#joint#h1_chr3:201152872-201152881	+	9	9	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000884	134713518-134715518	chr3/h2	PAN027#joint#h2_chr3:202380605-202382605	+	2000	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000879	134717518-134719518	chr3/h1	PAN027#joint#h1_chr3:201242570-201244570	+	2000	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000880	134719518-134721518	chr3/h1	PAN027#joint#h1_chr3:201244570-201246570	+	2000	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000881	134723518-134725518	chr3/h1	PAN027#joint#h1_chr3:201248590-201250590	+	1999	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000882	134727518-134729518	chr3/h1	PAN027#joint#h1_chr3:201252590-201254590	+	2000	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000883	134729518-134731518	chr3/h1	PAN027#joint#h1_chr3:201254590-201256590	+	2000	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	2000	row_start_filtered_no_merge_ani	1000925	134746085-134748085	chr3/h1	PAN027#joint#h1_chr3:201270861-201272861	+	1997	2000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326804	134380985-134385000	chr9/h1	PAN027#joint#h1_chr9:128559301-128564301	+	5000	5000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326805	134385000-134390000	chr9/h1	PAN027#joint#h1_chr9:128564301-128569301	+	5000	5000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326806	134390000-134395000	chr9/h1	PAN027#joint#h1_chr9:128569301-128574306	+	4997	5008	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326807	134395000-134400000	chr9/h1	PAN027#joint#h1_chr9:128574306-128579306	+	5000	5000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326808	134400000-134405000	chr9/h1	PAN027#joint#h1_chr9:128579306-128584307	+	4999	5001	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326809	134405000-134410000	chr9/h1	PAN027#joint#h1_chr9:128584307-128589307	+	5000	5000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326810	134410000-134415000	chr9/h1	PAN027#joint#h1_chr9:128589307-128594306	+	4998	5000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	query_grid_filtered	326811	134415000-134420000	chr9/h1	PAN027#joint#h1_chr9:128594306-128599310	+	5000	5004	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	row_start_filtered_no_merge_ani	381658	134753929-134758929	chr3/h1	PAN027#joint#h1_chr3:201278614-201283614	+	4996	5000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	row_start_filtered_no_merge_ani	381659	134773929-134778929	chr3/h1	PAN027#joint#h1_chr3:201298617-201303617	+	4999	5000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	row_start_filtered_no_merge_ani	381660	134818929-134823929	chr3/h1	PAN027#joint#h1_chr3:201343648-201348648	+	5000	5000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	5000	row_start_filtered_no_merge_ani	381662	134826707-134831707	chr3/h2	PAN027#joint#h2_chr3:202494072-202499072	+	4999	5000	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163726	134380985-134390000	chr9/h1	PAN027#joint#h1_chr9:128559301-128569301	+	10000	10000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163727	134390000-134400000	chr9/h1	PAN027#joint#h1_chr9:128569301-128579306	+	9997	10008	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163728	134400000-134410000	chr9/h1	PAN027#joint#h1_chr9:128579306-128589307	+	9999	10001	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163729	134410000-134420000	chr9/h1	PAN027#joint#h1_chr9:128589307-128599310	+	9998	10004	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163730	134420000-134430000	chr9/h1	PAN027#joint#h1_chr9:128599310-128609310	+	9998	10000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163731	134430000-134440000	chr9/h1	PAN027#joint#h1_chr9:128609310-128619310	+	9999	10000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163732	134440000-134450000	chr9/h1	PAN027#joint#h1_chr9:128619310-128629310	+	9999	10000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	query_grid_filtered	163741	134450000-134460000	chr9/h2	PAN027#joint#h2_chr9:135773457-135783454	+	9991	10000	255
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	row_start_filtered_no_merge_ani	188223	134742085-134749317	chr3/h1	PAN027#joint#h1_chr3:201266861-201274082	+	7203	7237	
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	10000	row_start_filtered_no_merge_ani	188224	134828929-134838929	chr3/h1	PAN027#joint#h1_chr3:201353649-201363650	+	9995	10001	
