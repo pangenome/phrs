@@ -1,0 +1,4 @@
+event_id	comparison_id	query_name	query_start	query_end	expected_target_chroms	panel_label	note
+PAR1_XY_positive_control	PAN027pat_vs_PAN011_joint	PAN027#2#chrX	0	500000	chrX,chrY	PAR1 control	Positive-control X/Y pseudoautosomal signal from raw FASTA-derived f16 SweepGA/FastGA evidence.
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	PAN027#2#chr9	135704825	136204825	chr3	PAN027 chr9q -> chr3q	Candidate window from f16 package config/candidate_windows.tsv; query-grid panel uses genomic chr9 coordinates.
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	PAN028#1#chr9	134380985	134880985	chr3	PAN028 chr9q -> chr3q	Candidate window from f16 package config/candidate_windows.tsv; query-grid panel uses genomic chr9 coordinates.
