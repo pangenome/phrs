@@ -1,0 +1,7 @@
+comparison_id	query_name	target_name	target_start	chunk_q_start	chunk_q_end	chop_length_bp	chunk_mode	shared_query_grid_boundary	mode_tag	provenance
+shifted_same_query	qA	tA	100	7	10	10	query-grid	yes	zm:Z:query-grid	synthetic shifted raw mappings row_a 7-27 and row_b 12-32 on qA; both are cut at absolute qA grid boundary 20
+shifted_same_query	qA	tA	103	10	20	10	query-grid	yes	zm:Z:query-grid	synthetic shifted raw mappings row_a 7-27 and row_b 12-32 on qA; both are cut at absolute qA grid boundary 20
+shifted_same_query	qA	tA	113	20	27	10	query-grid	yes	zm:Z:query-grid	synthetic shifted raw mappings row_a 7-27 and row_b 12-32 on qA; both are cut at absolute qA grid boundary 20
+shifted_same_query	qA	tB	200	12	20	10	query-grid	yes	zm:Z:query-grid	synthetic shifted raw mappings row_a 7-27 and row_b 12-32 on qA; both are cut at absolute qA grid boundary 20
+shifted_same_query	qA	tB	208	20	30	10	query-grid	yes	zm:Z:query-grid	synthetic shifted raw mappings row_a 7-27 and row_b 12-32 on qA; both are cut at absolute qA grid boundary 20
+shifted_same_query	qA	tB	218	30	32	10	query-grid	yes	zm:Z:query-grid	synthetic shifted raw mappings row_a 7-27 and row_b 12-32 on qA; both are cut at absolute qA grid boundary 20

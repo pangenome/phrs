@@ -1,0 +1,31 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+started_utc=2026-06-23T16:28:37Z
+host=octopus07
+job_id=1706230
+array_task_id=3
+comparison_id=PAN027pat_vs_PAN011_joint
+chop_length=2000
+chunk_mode=query-grid
+threads=8
+scratch_dir=/dev/shm/sweepga_qgrid.1706230.3.QhEXJU
+raw_paf=/moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN027pat_vs_PAN011_joint.sweepga_frequency16_many_many_j0.paf.gz
+chopped_paf=/moosefs/erikg/phrs/.wg-worktrees/agent-2700/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/chopped_paf_qgrid_l2000_o0/PAN027pat_vs_PAN011_joint.chopped_l2000_o0_query_grid.paf.gz
+filtered_paf=/moosefs/erikg/phrs/.wg-worktrees/agent-2700/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/filtered_paf_chop_sensitivity_query_grid/l2000/PAN027pat_vs_PAN011_joint.one_to_one_ani_o0.chopped_l2000_o0_query_grid.paf.gz
+pafchop_bin=/moosefs/erikg/phrs/.wg-worktrees/agent-2700/target/release/pafchop
+pafchop_sha256=7595f929038d024e2d9e880607047b407f69e93380d8f8ceca5e443e19722ac7
+sweepga_bin=/home/erikg/.cargo/bin/sweepga
+sweepga_sha256=a0d7ac0c3312080d67de96d85cdcad9ce0c5a7e523897109b7f598c186ab85a6
+pigz_bin=/usr/bin/pigz
+pigz_sha256=b5024b8518004179f7486cb9a05aa5c97bb165565e9dcac2092d709c05ee0dca
+chop_command=/usr/bin/pigz -dc /moosefs/erikg/phrs/.wg-worktrees/agent-2649/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/raw_paf/PAN027pat_vs_PAN011_joint.sweepga_frequency16_many_many_j0.paf.gz | /moosefs/erikg/phrs/.wg-worktrees/agent-2700/target/release/pafchop --length 2000 --overlap 0 --chunk-mode query-grid --comparison-id PAN027pat_vs_PAN011_joint --summary /moosefs/erikg/phrs/.wg-worktrees/agent-2700/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/summaries/pafchop_qgrid_l2000_o0/PAN027pat_vs_PAN011_joint.summary.tsv.tmp.1706230.3 | /usr/bin/pigz -p 8 > /moosefs/erikg/phrs/.wg-worktrees/agent-2700/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/chopped_paf_qgrid_l2000_o0/PAN027pat_vs_PAN011_joint.chopped_l2000_o0_query_grid.paf.gz.tmp.1706230.3
+filter_command=/usr/bin/pigz -dc /moosefs/erikg/phrs/.wg-worktrees/agent-2700/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/chopped_paf_qgrid_l2000_o0/PAN027pat_vs_PAN011_joint.chopped_l2000_o0_query_grid.paf.gz > /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/input.paf && /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --scoring ani --overlap 0 --output-file /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/filtered.paf /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/input.paf && /usr/bin/pigz -p 8 -c /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/filtered.paf > /moosefs/erikg/phrs/.wg-worktrees/agent-2700/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/filtered_paf_chop_sensitivity_query_grid/l2000/PAN027pat_vs_PAN011_joint.one_to_one_ani_o0.chopped_l2000_o0_query_grid.paf.gz.tmp.1706230.3
+[INFO ] [sweepga::start 0.0s] 2026-06-23 18:55:00 | /home/erikg/.cargo/bin/sweepga --num-mappings 1:1 --scaffold-jump 0 --scoring ani --overlap 0 --output-file /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/filtered.paf /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/input.paf  (rss:4.25 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga::detect 0.0s] Input 1: /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/input.paf (Paf)  (rss:4.25 MB disk:0 bytes peak_disk:0 bytes)
+[E::fai_build_core] Format error, unexpected "P" at line 1
+[INFO ] [sweepga::parse 0.0s] Parsing input PAF: /dev/shm/sweepga_qgrid.1706230.3.QhEXJU/input.paf  (rss:5.14 MB disk:0 bytes peak_disk:0 bytes)
+[INFO ] [sweepga] Plane sweep: 13058186 → 1503843 mappings
+[INFO ] [sweepga] Plane sweep filtering (no scaffolding)
+[INFO ] [sweepga] Summary: 13058186 → 1503843 mappings (11.5% kept)
+[INFO ] [sweepga]   Output: 3007.1 Mb total, 100.0% avg identity
+[INFO ] [sweepga::done] total:131.7s cpu:1.0x rss:7.89 GB disk_peak:0 bytes disk_written:0 bytes
+finished_utc=2026-06-23T18:57:13Z

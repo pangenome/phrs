@@ -94,3 +94,20 @@ paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/scrip
   `summaries/candidate_window_support.tsv` if chopping/filtering ran
 
 Raw, chopped, and filtered PAFs and checksums are ignored.
+
+## Query-grid chop/filter sensitivity rerun
+
+The Fig5 f16 query-grid sensitivity rerun writes distinct outputs from the older
+row-start chopped layer:
+
+- chopped PAFs: `chopped_paf_qgrid_l<N>_o0/`
+- filtered PAFs: `filtered_paf_chop_sensitivity_query_grid/l<N>/`
+- required audit manifest: `summaries/query_grid_chop_filter_manifest.tsv`
+- Slurm/provenance audit: `summaries/query_grid_chop_filter_slurm.tsv`
+- shifted-boundary proof: `summaries/query_grid_shifted_boundary_audit.tsv`
+
+The required matrix covers all 3 comparisons at 10000, 5000, and 2000 bp. All
+required chopped and filtered gzip outputs validate with `pigz -t` and have
+sha256 sidecars. The attempted 1000 bp cells were cancelled after the first two
+rows made slow progress for more than an hour, so 1000 bp is intentionally not
+included in the required manifest.

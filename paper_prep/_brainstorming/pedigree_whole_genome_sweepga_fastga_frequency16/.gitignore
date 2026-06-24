@@ -2,6 +2,9 @@ inputs/*.fa
 inputs/*.fa.fai
 inputs/*.names.txt
 raw_paf/
+raw_paf
 chopped_paf_l10000_o0/
+chopped_paf_qgrid_l*_o0/
 filtered_paf/
+filtered_paf_chop_sensitivity_query_grid/
 scripts/__pycache__/
