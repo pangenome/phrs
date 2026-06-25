@@ -26,7 +26,7 @@ TMP_OUT="${OUT}.tmp.$$"
 TMP_SUMMARY="${SUMMARY}.tmp.$$"
 
 pigz -dc "$RAW" \
-    | "$BIN" --length "$CHOP_LENGTH" --overlap 0 --chunk-mode "$CHOP_MODE" --comparison-id "$COMPARISON_ID" --summary "$TMP_SUMMARY" \
+    | "$BIN" --length "$CHOP_LENGTH" --overlap 0 --chunk-mode "$CHOP_MODE" --threads "$THREADS" --comparison-id "$COMPARISON_ID" --summary "$TMP_SUMMARY" \
     | pigz -p "$THREADS" > "$TMP_OUT"
 
 mv "$TMP_OUT" "$OUT"
