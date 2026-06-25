@@ -3,4 +3,10 @@
 /inputs/*.names.txt
 /raw_paf/*.paf.gz
 /raw_paf/*.paf.gz.sha256
+/chopped_paf_qgrid_l*_o0/*.paf.gz
+/chopped_paf_qgrid_l*_o0/*.paf.gz.sha256
+/chopped_paf_qgrid_l*_o0/*.paf.gz.tmp.*
+/filtered_paf_chop_sensitivity_query_grid/l*/*.paf.gz
+/filtered_paf_chop_sensitivity_query_grid/l*/*.paf.gz.sha256
+/filtered_paf_chop_sensitivity_query_grid/l*/*.paf.gz.tmp.*
 /scripts/__pycache__/

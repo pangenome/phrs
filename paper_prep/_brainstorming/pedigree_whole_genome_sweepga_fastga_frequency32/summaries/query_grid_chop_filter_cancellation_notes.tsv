@@ -1,0 +1,4 @@
+event_utc	job_id	task_index	comparison_id	chop_length_bp	state	elapsed	exit_code	node	note
+2026-06-25T07:12:55Z	1706550_9	9	PAN028mat_vs_PAN027_joint	2000	CANCELLED by 1001	05:54:42	0:0	octopus07	Array element cancelled before final chopped or filtered output finalized.
+2026-06-25T07:44:27Z	1706559_9	9	PAN028mat_vs_PAN027_joint	2000	CANCELLED by 1001	00:31:23	0:0	octopus07	High-resource single-cell retry cancelled before final chopped or filtered output finalized.
+2026-06-25T07:15:11Z	1706560	9	PAN028mat_vs_PAN027_joint	2000	CANCELLED by 1001	00:00:53	0:0	octopus08	Single-cell retry cancelled before useful progress.

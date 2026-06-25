@@ -93,3 +93,48 @@ Validated with:
 ```bash
 paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency32/scripts/validate_outputs.sh
 ```
+
+## Query-grid chop/filter rerun
+
+The f32 query-grid chop/filter rerun is separate from the f16 query-grid
+package at
+`paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency16/`.
+It uses the f32 raw many:many PAFs directly from `raw_paf/`, not older chopped
+outputs.
+
+Required command shape:
+
+```bash
+pafchop --length <10000|5000|2000> --overlap 0 \
+  --chunk-mode query-grid --comparison-id <comparison>.f32
+
+/home/erikg/.cargo/bin/sweepga \
+  --num-mappings 1:1 \
+  --scaffold-jump 0 \
+  --scoring ani \
+  --overlap 0 \
+  --output-file /dev/shm/.../filtered.paf \
+  /dev/shm/.../input.paf
+```
+
+Outputs are distinct from f16:
+
+- chopped PAFs: `chopped_paf_qgrid_l<N>_o0/`
+- filtered PAFs: `filtered_paf_chop_sensitivity_query_grid/l<N>/`
+- manifest: `summaries/query_grid_chop_filter_manifest.tsv`
+- Slurm/status summary: `summaries/query_grid_chop_filter_slurm.tsv`
+- shifted-boundary proof: `summaries/query_grid_shifted_boundary_audit.tsv`
+
+Run status as of 2026-06-25:
+
+- Slurm array `1706550` completed 8 of 9 required f32 cells on `octopus07`.
+- The missing cell, `PAN028mat_vs_PAN027_joint` at 2000 bp, completed in
+  high-resource retry `1706561_9` on `octopus07`.
+- Earlier retries for that final cell (`1706550_9`, `1706559_9`, `1706560`) were
+  cancelled before final output finalization; they are recorded in
+  `summaries/query_grid_chop_filter_cancellation_notes.tsv`.
+- `summaries/query_grid_chop_filter_manifest.tsv` records all nine required
+  comparison x length rows as `OK` after `pigz -t` validation.
+
+The f16 package remains the comparison point for the completed query-grid
+sensitivity matrix, including the note that f16 1 kb was cancelled for runtime.
