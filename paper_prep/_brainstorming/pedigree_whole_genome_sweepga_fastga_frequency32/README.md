@@ -128,17 +128,13 @@ Outputs are distinct from f16:
 Run status as of 2026-06-25:
 
 - Slurm array `1706550` completed 8 of 9 required f32 cells on `octopus07`.
-- Completed and `pigz -t` validated cells: all three lengths for
-  `PAN027pat_vs_PAN011_joint`, all three lengths for
-  `PAN027mat_vs_PAN010_joint`, and 10000/5000 bp for
-  `PAN028mat_vs_PAN027_joint`.
-- Missing cell: `PAN028mat_vs_PAN027_joint` at 2000 bp. Array element
-  `1706550_9` was cancelled after 05:54:42 before finalizing the chopped PAF.
-  A high-resource single-cell retry, array job `1706559_9`, was cancelled after
-  00:31:23. A standard single-cell retry, job `1706560`, was also cancelled
-  after 00:00:53.
-- `summaries/query_grid_chop_filter_manifest.tsv` records this final cell as
-  `MISSING_OR_INVALID`; all other rows are `OK`.
+- The missing cell, `PAN028mat_vs_PAN027_joint` at 2000 bp, completed in
+  high-resource retry `1706561_9` on `octopus07`.
+- Earlier retries for that final cell (`1706550_9`, `1706559_9`, `1706560`) were
+  cancelled before final output finalization; they are recorded in
+  `summaries/query_grid_chop_filter_cancellation_notes.tsv`.
+- `summaries/query_grid_chop_filter_manifest.tsv` records all nine required
+  comparison x length rows as `OK` after `pigz -t` validation.
 
 The f16 package remains the comparison point for the completed query-grid
 sensitivity matrix, including the note that f16 1 kb was cancelled for runtime.
