@@ -1,0 +1,2 @@
+submitted_utc	job_id	array_spec	task_index	comparison_id	chop_length_bp	cpus_per_task	mem	time	pafchop_bin	pafchop_sha256	pafchop_queue_depth	command
+2026-06-25T07:44:28Z	1706561	9-9	9	PAN028mat_vs_PAN027_joint	2000	48	96G	24:00:00	/moosefs/erikg/phrs/.wg-worktrees/agent-2727/target/release/pafchop	b1cd0f335206eb0b30d7981a8f608d90ba01d08085b8603bba25cc2425311726	384	sbatch --array=9-9 --cpus-per-task=48 --mem=96G /moosefs/erikg/phrs/.wg-worktrees/agent-2727/paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency32/scripts/run_query_grid_chop_filter_one.sh
