@@ -222,32 +222,92 @@ draw_method_panel <- function(page_id, method_id, bottom_axis = FALSE) {
   }
 }
 
+draw_zoom_panel <- function(page_id) {
+  page_rows <- segments[segments$page_id == page_id & segments$callout_event_id != "", ]
+  page_rows <- page_rows[page_rows$segment_end > page_rows$segment_start, ]
+  par(mar = c(3.0, 4.9, 1.15, 0.8), xaxs = "i", yaxs = "i", family = "sans")
+  if (nrow(page_rows) == 0) {
+    plot.new()
+    text(0, 0.7, "No configured PAR/chr9q candidate window for this queried haplotype", adj = 0, cex = 0.62, col = "#555555")
+    return()
+  }
+  events <- data.frame()
+  for (event_id in unique(page_rows$callout_event_id)) {
+    rr <- page_rows[page_rows$callout_event_id == event_id, ]
+    rr$callout_window_start <- as.numeric(rr$callout_window_start)
+    rr$callout_window_end <- as.numeric(rr$callout_window_end)
+    rr <- rr[!is.na(rr$callout_window_start) & !is.na(rr$callout_window_end), ]
+    if (nrow(rr) == 0) next
+    one <- rr[1, c("callout_event_id", "callout_label", "query_chrom", "callout_window_start", "callout_window_end")]
+    events <- rbind(events, one)
+  }
+  events <- events[order(events$query_chrom, events$callout_window_start), ]
+  event_n <- nrow(events)
+  y_values <- rev(seq_along(method_order))
+  names(y_values) <- method_order
+  xlim <- c(0, event_n)
+  ylim <- c(0.35, length(method_order) + 0.85)
+  plot(NA, xlim = xlim, ylim = ylim, axes = FALSE, xlab = "", ylab = "")
+  text(0, length(method_order) + 0.67, "Candidate-window zooms: exact native query intervals", adj = 0, cex = 0.68, font = 2, col = text_col)
+  for (e in seq_len(event_n)) {
+    ev <- events[e, ]
+    x_base <- e - 1
+    rect(x_base + 0.02, 0.35, x_base + 0.98, length(method_order) + 0.45, col = ifelse(e %% 2 == 0, "#FAFAFA", "#FFFFFF"), border = "#E0E0E0", lwd = 0.35)
+    text(x_base + 0.50, length(method_order) + 0.38, short_event_label(ev$callout_event_id), cex = 0.52, font = 2)
+    text(x_base + 0.50, length(method_order) + 0.15, paste0(ev$query_chrom, ":", fmt_mb(ev$callout_window_start), "-", fmt_mb(ev$callout_window_end), " Mb"), cex = 0.40)
+    w0 <- ev$callout_window_start
+    w1 <- ev$callout_window_end
+    for (method_id in method_order) {
+      y <- y_values[method_id]
+      segments(x_base + 0.08, y, x_base + 0.92, y, col = background_col, lwd = 7.0, lend = "butt")
+      text(x_base + 0.06, y, sub(",.*$", "", short_method_label(method_id)), adj = 1, cex = 0.38, col = text_col)
+      rr <- page_rows[page_rows$callout_event_id == ev$callout_event_id & page_rows$method_id == method_id, ]
+      rr <- rr[rr$display_state == "interchromosomal", ]
+      if (nrow(rr) == 0) next
+      for (i in seq_len(nrow(rr))) {
+        x0 <- x_base + 0.08 + 0.84 * ((max(rr$segment_start[i], w0) - w0) / max(1, w1 - w0))
+        x1 <- x_base + 0.08 + 0.84 * ((min(rr$segment_end[i], w1) - w0) / max(1, w1 - w0))
+        if (x1 <= x0) next
+        col <- color_for_target(rr$display_target_chrom[i])
+        segments(x0, y, x1, y, col = adjustcolor(col, alpha.f = 0.92), lwd = 7.0, lend = "butt")
+        segments((x0 + x1) / 2, y - 0.22, (x0 + x1) / 2, y + 0.22, col = col, lwd = 0.45)
+      }
+      target_totals <- aggregate(display_support_bp ~ display_target_chrom, rr, sum)
+      target_totals <- target_totals[order(-target_totals$display_support_bp), ]
+      label <- paste(paste0(head(target_totals$display_target_chrom, 3), "=", fmt_bp(head(target_totals$display_support_bp, 3))), collapse = " ")
+      text(x_base + 0.50, y + 0.27, label, cex = 0.34, font = 2)
+    }
+  }
+  axis(1, at = seq_len(event_n) - 0.5, labels = events$callout_event_id, las = 2, tick = FALSE, cex.axis = 0.36)
+}
+
 draw_page <- function(page_id) {
   page_chroms <- chroms[chroms$page_id == page_id, ]
   page_label <- page_chroms$page_label[1]
-  layout(matrix(c(1, 2, 3, 4), ncol = 1), heights = c(0.32, 1, 1, 1))
+  layout(matrix(c(1, 2, 3, 4, 5), ncol = 1), heights = c(0.32, 1, 1, 1, 0.75))
   draw_header(page_id, page_label, page_chroms)
   draw_method_panel(page_id, method_order[1], bottom_axis = FALSE)
   draw_method_panel(page_id, method_order[2], bottom_axis = FALSE)
   draw_method_panel(page_id, method_order[3], bottom_axis = TRUE)
+  draw_zoom_panel(page_id)
 }
 
 page_ids <- unique(chroms$page_id[order(chroms$page_order)])
 
-pdf(file.path(panel_dir, paste0(prefix, ".pdf")), width = 15.2, height = 12.0, onefile = TRUE, useDingbats = FALSE)
+pdf(file.path(panel_dir, paste0(prefix, ".pdf")), width = 15.2, height = 13.1, onefile = TRUE, useDingbats = FALSE)
 for (page_id in page_ids) {
   draw_page(page_id)
 }
 dev.off()
 
 for (page_id in page_ids) {
-  pdf(file.path(panel_dir, paste0(prefix, ".", page_id, ".pdf")), width = 15.2, height = 12.0, onefile = FALSE, useDingbats = FALSE)
+  pdf(file.path(panel_dir, paste0(prefix, ".", page_id, ".pdf")), width = 15.2, height = 13.1, onefile = FALSE, useDingbats = FALSE)
   draw_page(page_id)
   dev.off()
-  png(file.path(panel_dir, paste0(prefix, ".", page_id, ".png")), width = 3040, height = 2400, res = 200, type = "cairo")
+  png(file.path(panel_dir, paste0(prefix, ".", page_id, ".png")), width = 3040, height = 2620, res = 200, type = "cairo")
   draw_page(page_id)
   dev.off()
-  svg(file.path(panel_dir, paste0(prefix, ".", page_id, ".svg")), width = 15.2, height = 12.0, onefile = FALSE)
+  svg(file.path(panel_dir, paste0(prefix, ".", page_id, ".svg")), width = 15.2, height = 13.1, onefile = FALSE)
   draw_page(page_id)
   dev.off()
 }

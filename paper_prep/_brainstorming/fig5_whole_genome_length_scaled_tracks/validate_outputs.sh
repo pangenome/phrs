@@ -56,6 +56,32 @@ for page in pages:
         if not inter:
             raise SystemExit(f"no interchromosomal rows for {page} {method}")
 
+bad_binned = [
+    row for row in segments
+    if row["method_id"] in {"wfmash_p95_qgrid2kb_1to1_ani", "sweepga_fastga_f32_qgrid2kb_1to1_ani"}
+    and row["source_row_type"] != "filtered_paf_record_exact_query_interval"
+]
+if bad_binned:
+    raise SystemExit(f"PAF-derived rows must be exact PAF records, saw {bad_binned[0]['source_row_type']}")
+
+for row in segments:
+    if row["source_row_type"] == "filtered_paf_record_exact_query_interval":
+        if not row["source_file"] or not row["paf_query_name"] or not row["paf_target_name"]:
+            raise SystemExit("exact PAF row missing source_file/paf_query_name/paf_target_name")
+        length = int(float(row["segment_end"])) - int(float(row["segment_start"]))
+        if length != int(float(row["segment_length_bp"])):
+            raise SystemExit("segment length does not match exact PAF query interval")
+
+for event in ("PAN027_chr9q_chr3q_PHR_candidate", "PAN028_chr9q_chr3q_PHR_candidate"):
+    hits = [
+        row for row in segments
+        if row["callout_event_id"] == event
+        and row["display_target_chrom"] == "chr3"
+        and row["display_state"] == "interchromosomal"
+    ]
+    if not hits:
+        raise SystemExit(f"missing exact chr3 support in callout {event}")
+
 print(f"validated {len(segments)} segments across {len(pages)} pages and {len(methods)} methods")
 PY
 

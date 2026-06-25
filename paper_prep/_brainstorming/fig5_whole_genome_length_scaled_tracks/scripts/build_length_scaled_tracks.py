@@ -2,13 +2,15 @@
 """Build length-scaled whole-genome track tables for Fig5.
 
 Inputs are already generated Fig5 products.  This script does not run aligners
-or SweepGA; it reshapes strict untangle segments and the 2 kb query-grid 1:1
-alignment support table into a common chromosome-row plotting format.
+or SweepGA; it reshapes strict untangle segments and exact 2 kb query-grid 1:1
+filtered PAF records into a common chromosome-row plotting format.
 """
 
 from __future__ import annotations
 
 import csv
+import gzip
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -17,12 +19,13 @@ ROOT = Path(__file__).resolve().parents[4]
 OUT_DIR = Path(__file__).resolve().parents[1]
 
 UNTANGLE = ROOT / "paper_prep/_brainstorming/fig5_untangle_whole_genome_overview/untangle_whole_genome_segments.tsv"
-BINNED = ROOT / "paper_prep/_brainstorming/fig5_whole_genome_alignment_overview/whole_genome_binned_support.tsv"
 F32_MANIFEST = ROOT / "paper_prep/_brainstorming/pedigree_whole_genome_sweepga_fastga_frequency32/summaries/query_grid_chop_filter_manifest.tsv"
 WFMASH_MANIFEST = ROOT / "paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/summaries/query_grid_filter_manifest.tsv"
+PANEL_WINDOWS = ROOT / "paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_query_grid_chop_filter_panels/config/panel_windows.tsv"
 
 CHR_ORDER = [f"chr{i}" for i in range(1, 23)] + ["chrX", "chrY"]
 CHR_RANK = {chrom: idx for idx, chrom in enumerate(CHR_ORDER)}
+CHR_RE = re.compile(r"chr(?:[0-9]{1,2}|X|Y)")
 
 PAGES = {
     "PAN027_vs_PAN010": {
@@ -79,6 +82,12 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
+def open_text(path: Path):
+    if str(path).endswith(".gz"):
+        return gzip.open(path, "rt")
+    return path.open("r", encoding="utf-8")
+
+
 def write_tsv(path: Path, fields: list[str], rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -96,6 +105,21 @@ def as_int(value: str) -> int:
     if value == "":
         return 0
     return int(float(value))
+
+
+def parse_chrom(name: str) -> str:
+    matches = CHR_RE.findall(name)
+    if not matches:
+        return "unknown"
+    return matches[-1]
+
+
+def paf_identity(parts: list[str]) -> float:
+    matches = int(parts[9])
+    block_length = int(parts[10])
+    if block_length <= 0:
+        return 0.0
+    return matches / block_length
 
 
 def add_chrom_length(chrom_lengths: dict[tuple[str, str], int], page_id: str, chrom: str, length: int) -> None:
@@ -128,10 +152,17 @@ def common_segment_fields() -> list[str]:
         "support_fraction",
         "mean_identity",
         "source_row_type",
+        "source_file",
+        "paf_query_name",
+        "paf_target_name",
+        "paf_target_start",
+        "paf_target_end",
         "winner_target_chrom",
         "top_interchrom_target_chrom",
         "callout_event_id",
         "callout_label",
+        "callout_window_start",
+        "callout_window_end",
     ]
 
 
@@ -145,9 +176,48 @@ def page_values_from_comparison(comparison_id: str) -> dict[str, object] | None:
     return COMPARISON_TO_PAGE.get(comparison_id)
 
 
+def load_callout_windows() -> list[dict[str, object]]:
+    if not PANEL_WINDOWS.exists():
+        return []
+    out = []
+    for row in read_tsv(PANEL_WINDOWS):
+        out.append(
+            {
+                "event_id": row["event_id"],
+                "comparison_id": row["comparison_id"],
+                "query_name": row["query_name"],
+                "query_start": as_int(row["query_start"]),
+                "query_end": as_int(row["query_end"]),
+                "panel_label": row["panel_label"],
+            }
+        )
+    return out
+
+
+def find_callout(callouts: list[dict[str, object]], comparison_id: str, qname: str, qstart: int, qend: int) -> tuple[str, str, str, str]:
+    for callout in callouts:
+        if callout["comparison_id"] != comparison_id:
+            continue
+        if callout["query_name"] != qname:
+            continue
+        if qstart < int(callout["query_end"]) and qend > int(callout["query_start"]):
+            return str(callout["event_id"]), str(callout["panel_label"]), str(callout["query_start"]), str(callout["query_end"])
+    return "", "", "", ""
+
+
+def callout_window_by_event(callouts: list[dict[str, object]], comparison_id: str, event_id: str) -> tuple[str, str]:
+    if not event_id:
+        return "", ""
+    for callout in callouts:
+        if callout["comparison_id"] == comparison_id and callout["event_id"] == event_id:
+            return str(callout["query_start"]), str(callout["query_end"])
+    return "", ""
+
+
 def add_untangle_segments(segments: list[dict[str, object]], chrom_lengths: dict[tuple[str, str], int]) -> None:
     method_id = "untangle_strict_primary_path"
     method = METHODS[method_id]
+    callouts = load_callout_windows()
     for row in read_tsv(UNTANGLE):
         page = page_values_from_pair(row["pair"])
         qchrom = row["query_chrom"]
@@ -158,6 +228,7 @@ def add_untangle_segments(segments: list[dict[str, object]], chrom_lengths: dict
         length = max(0, end - start)
         inter = row["interchromosomal"] == "1"
         target = row["target_chrom"] if inter else "same_chromosome"
+        callout_start, callout_end = callout_window_by_event(callouts, str(page["comparison_id"]), row.get("event_id", ""))
         segments.append(
             {
                 **page,
@@ -174,72 +245,92 @@ def add_untangle_segments(segments: list[dict[str, object]], chrom_lengths: dict
                 "support_fraction": "1.000000",
                 "mean_identity": row["identity"],
                 "source_row_type": "untangle_segment",
+                "source_file": str(UNTANGLE),
+                "paf_query_name": "",
+                "paf_target_name": "",
+                "paf_target_start": "",
+                "paf_target_end": "",
                 "winner_target_chrom": row["target_chrom"],
                 "top_interchrom_target_chrom": row["target_chrom"] if inter else "none",
                 "callout_event_id": row.get("event_id", ""),
                 "callout_label": row.get("event_label", ""),
+                "callout_window_start": callout_start,
+                "callout_window_end": callout_end,
             }
         )
 
 
-def add_binned_alignment_segments(segments: list[dict[str, object]], chrom_lengths: dict[tuple[str, str], int]) -> None:
-    family_to_method = {
-        "wfmash_p95_updated_bin": "wfmash_p95_qgrid2kb_1to1_ani",
-        "sweepga_fastga_f32": "sweepga_fastga_f32_qgrid2kb_1to1_ani",
-    }
-    for row in read_tsv(BINNED):
-        if row["method_family"] not in family_to_method or row["chop_length_bp"] != "2000":
+def iter_manifest_pafs(manifest_path: Path, method_id: str):
+    if not manifest_path.exists():
+        return
+    for row in read_tsv(manifest_path):
+        if row.get("status") != "OK" or row.get("chop_length_bp") != "2000":
             continue
-        page = page_values_from_comparison(row["comparison_id"])
+        paf = Path(row["filtered_paf"])
+        if not paf.exists():
+            continue
+        yield row["comparison_id"], paf, method_id
+
+
+def add_exact_paf_segments(segments: list[dict[str, object]], chrom_lengths: dict[tuple[str, str], int]) -> None:
+    callouts = load_callout_windows()
+    sources = list(iter_manifest_pafs(WFMASH_MANIFEST, "wfmash_p95_qgrid2kb_1to1_ani") or [])
+    sources.extend(iter_manifest_pafs(F32_MANIFEST, "sweepga_fastga_f32_qgrid2kb_1to1_ani") or [])
+    for comparison_id, paf, method_id in sources:
+        page = page_values_from_comparison(comparison_id)
         if page is None:
             continue
-        method_id = family_to_method[row["method_family"]]
         method = METHODS[method_id]
-        qchrom = row["query_chrom"]
-        qlen = as_int(row["query_chrom_length"])
-        add_chrom_length(chrom_lengths, page["page_id"], qchrom, qlen)
-        start = as_int(row["query_bin_start"])
-        end = as_int(row["query_bin_end"])
-        top_inter_bp = as_int(row["top_interchrom_support_bp"])
-        winner_bp = as_int(row["winner_support_bp"])
-        if row["no_support"] == "yes":
-            state = "no_support"
-            target = "no_support"
-            support_bp = 0
-        elif top_inter_bp > 0 and row["top_interchrom_target_chrom"] != "none":
-            state = "interchromosomal"
-            target = row["top_interchrom_target_chrom"]
-            support_bp = top_inter_bp
-        elif row["winner_target_family"] == "same_chromosome":
-            state = "same_chromosome"
-            target = "same_chromosome"
-            support_bp = winner_bp
-        else:
-            state = "interchromosomal"
-            target = row["winner_target_chrom"]
-            support_bp = winner_bp
-        segments.append(
-            {
-                **page,
-                "method_id": method_id,
-                **method,
-                "query_chrom": qchrom,
-                "query_chrom_length": qlen,
-                "segment_start": start,
-                "segment_end": min(end, qlen),
-                "segment_length_bp": max(0, min(end, qlen) - start),
-                "display_state": state,
-                "display_target_chrom": target,
-                "display_support_bp": support_bp,
-                "support_fraction": row["support_fraction"],
-                "mean_identity": row["winner_mean_identity"],
-                "source_row_type": "one_mb_display_bin_from_2kb_query_grid_filtered_paf",
-                "winner_target_chrom": row["winner_target_chrom"],
-                "top_interchrom_target_chrom": row["top_interchrom_target_chrom"],
-                "callout_event_id": row.get("callout_event_id", ""),
-                "callout_label": row.get("callout_label", ""),
-            }
-        )
+        with open_text(paf) as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                parts = line.rstrip("\n").split("\t")
+                if len(parts) < 12:
+                    continue
+                qname = parts[0]
+                qlen = int(parts[1])
+                qstart = int(parts[2])
+                qend = int(parts[3])
+                tname = parts[5]
+                tstart = int(parts[7])
+                tend = int(parts[8])
+                qchrom = parse_chrom(qname)
+                tchrom = parse_chrom(tname)
+                add_chrom_length(chrom_lengths, page["page_id"], qchrom, qlen)
+                if qchrom == tchrom:
+                    continue
+                length = max(0, qend - qstart)
+                callout_id, callout_label, callout_start, callout_end = find_callout(callouts, comparison_id, qname, qstart, qend)
+                segments.append(
+                    {
+                        **page,
+                        "method_id": method_id,
+                        **method,
+                        "query_chrom": qchrom,
+                        "query_chrom_length": qlen,
+                        "segment_start": qstart,
+                        "segment_end": qend,
+                        "segment_length_bp": length,
+                        "display_state": "interchromosomal",
+                        "display_target_chrom": tchrom,
+                        "display_support_bp": length,
+                        "support_fraction": "1.000000",
+                        "mean_identity": f"{paf_identity(parts):.6f}",
+                        "source_row_type": "filtered_paf_record_exact_query_interval",
+                        "source_file": str(paf),
+                        "paf_query_name": qname,
+                        "paf_target_name": tname,
+                        "paf_target_start": tstart,
+                        "paf_target_end": tend,
+                        "winner_target_chrom": tchrom,
+                        "top_interchrom_target_chrom": tchrom,
+                        "callout_event_id": callout_id,
+                        "callout_label": callout_label,
+                        "callout_window_start": callout_start,
+                        "callout_window_end": callout_end,
+                    }
+                )
 
 
 def build_chromosome_rows(chrom_lengths: dict[tuple[str, str], int]) -> list[dict[str, object]]:
@@ -309,13 +400,6 @@ def build_manifest_rows() -> list[dict[str, object]]:
             "settings": "no chopping; native query coordinates",
         },
         {
-            "artifact": "whole_genome_binned_support",
-            "path": BINNED,
-            "exists": BINNED.exists(),
-            "role": "common 1 Mb display-bin support table for filtered alignment PAFs",
-            "settings": "filtered to method_family in {wfmash_p95_updated_bin,sweepga_fastga_f32} and chop_length_bp=2000",
-        },
-        {
             "artifact": "sweepga_f32_query_grid_manifest",
             "path": F32_MANIFEST,
             "exists": F32_MANIFEST.exists(),
@@ -337,7 +421,7 @@ def main() -> int:
     segments: list[dict[str, object]] = []
     chrom_lengths: dict[tuple[str, str], int] = {}
     add_untangle_segments(segments, chrom_lengths)
-    add_binned_alignment_segments(segments, chrom_lengths)
+    add_exact_paf_segments(segments, chrom_lengths)
     segments.sort(
         key=lambda row: (
             int(row["page_order"]),

@@ -19,13 +19,16 @@ Each page contains three comparable evidence layers:
 - SweepGA/FastGA whole-genome alignment with `--fastga-frequency 32`, 2 kb
   query-grid chopped, then SweepGA `1:1` ANI filtering.
 
-For the two filtered alignment layers, the display uses the precomputed 1 Mb
-whole-genome support table generated from the 2 kb query-grid filtered PAFs.
-If a display bin contains retained interchromosomal support, the bin is colored
-and labeled by the strongest interchromosomal target chromosome; otherwise it is
-shown as same-chromosome gray or no-support background. This intentionally
-prevents same-chromosome support from visually hiding weaker interchromosomal
-target support in the whole-genome view.
+For the two filtered alignment layers, the display now scans the filtered PAFs
+directly and plots exact retained interchromosomal query intervals. It no longer
+uses the earlier 1 Mb binned support table for PAF geometry. Same-chromosome PAF
+records are not plotted one-by-one; the gray chromosome row is only a coordinate
+baseline. This keeps tiny 2 kb retained chr3 hits from being visually expanded
+into 1 Mb blocks.
+
+Each page also includes a candidate-window zoom band. The whole-genome rows keep
+chromosome-scale geometry, while the zoom band shows the configured PAR/chr9q
+candidate windows on a local scale so exact 2 kb PAF records are visible.
 
 Run from this directory:
 
@@ -49,3 +52,7 @@ Tables:
 - `length_scaled_track_chromosomes.tsv`
 - `length_scaled_track_summary.tsv`
 - `length_scaled_track_manifest.tsv`
+
+In `length_scaled_track_segments.tsv`, PAF-derived rows have
+`source_row_type=filtered_paf_record_exact_query_interval`, and
+`segment_start`/`segment_end` are the original PAF query start/end coordinates.
