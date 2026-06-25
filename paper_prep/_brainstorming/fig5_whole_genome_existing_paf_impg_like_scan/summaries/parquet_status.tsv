@@ -1,0 +1,4 @@
+tsv	parquet	status
+target_support_totals.tsv	target_support_totals.parquet	SKIP: pyarrow unavailable in default Slurm Python
+focal_region_summary.tsv	focal_region_summary.parquet	SKIP: pyarrow unavailable in default Slurm Python
+bin_target_support_manifest.tsv	bin_target_support_manifest.parquet	SKIP: pyarrow unavailable in default Slurm Python

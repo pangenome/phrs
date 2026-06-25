@@ -1,0 +1,2 @@
+slurm_job_id	hostname	slurm_cpus_per_task	input_paf_count	process_workers	pigz_threads_per_worker	accounted_helper_threads	wall_seconds	python_executable	method_id	evidence_layer	comparison_id	paf_path	input_lines	bin_target_rows	worker_seconds	pigz_threads	reducer	tmp_output
+1706571	octopus07	48	12	12	4	48		/usr/bin/python3									compact_recovery	paper_prep/_brainstorming/fig5_whole_genome_existing_paf_impg_like_scan/summaries/tmp_worker_bin_support

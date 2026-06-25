@@ -1,0 +1,7 @@
+region_id	comparison_id	query_chrom	query_arm	target_chrom	target_arm	region_class	note
+PAN027_chr9q_chr3q	PAN027pat_vs_PAN011_joint	chr9	q	chr3	q	fig5_candidate	PAN027 paternal chr9q support for chr3q, matching the Fig5 candidate event.
+PAN028_chr9q_chr3q	PAN028mat_vs_PAN027_joint	chr9	q	chr3	q	fig5_candidate	PAN028 maternal chr9q support for chr3q, matching the inherited Fig5 candidate event.
+PAN027_PAR_XY	PAN027pat_vs_PAN011_joint	chrX	p	chrY	p	PAR_positive_control	PAR1-like chrX-to-chrY support.
+PAN027_PAR_YX	PAN027pat_vs_PAN011_joint	chrY	p	chrX	p	PAR_positive_control	PAR1-like chrY-to-chrX support.
+PAN027_acro_p	PAN027pat_vs_PAN011_joint	acrocentric	p	acrocentric	p	acrocentric_control	Aggregate acrocentric p-arm cross-support among chr13, chr14, chr15, chr21, and chr22.
+PAN028_acro_p	PAN028mat_vs_PAN027_joint	acrocentric	p	acrocentric	p	acrocentric_control	Aggregate acrocentric p-arm cross-support among chr13, chr14, chr15, chr21, and chr22.

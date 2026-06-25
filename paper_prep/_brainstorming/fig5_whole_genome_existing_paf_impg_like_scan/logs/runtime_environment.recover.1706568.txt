@@ -1,0 +1,8 @@
+started_utc=2026-06-25T17:20:36Z
+hostname=octopus07
+SLURM_JOB_ID=1706568
+SLURM_CPUS_PER_TASK=48
+mode=reuse_worker_outputs
+python=/usr/bin/python3
+pigz=/usr/bin/pigz
+sort=/usr/bin/sort

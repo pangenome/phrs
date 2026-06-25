@@ -1,0 +1,6 @@
+started_utc=2026-06-25T17:06:27Z
+hostname=octopus07
+SLURM_JOB_ID=1706566
+SLURM_CPUS_PER_TASK=48
+python=/usr/bin/python3
+pigz=/usr/bin/pigz

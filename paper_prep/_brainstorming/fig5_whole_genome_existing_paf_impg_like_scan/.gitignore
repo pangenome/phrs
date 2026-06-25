@@ -1,0 +1,7 @@
+/logs/slurm-*.out
+/logs/slurm-*.err
+/logs/*.tmp
+/scripts/__pycache__/
+/summaries/tmp_worker_bin_support/
+*.parquet
+*.tsv.gz

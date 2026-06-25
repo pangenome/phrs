@@ -1,0 +1,7 @@
+started_utc=2026-06-25T17:50:35Z
+hostname=octopus07
+SLURM_JOB_ID=1706571
+SLURM_CPUS_PER_TASK=48
+mode=compact_worker_output_recovery
+awk=/usr/bin/awk
+sort=/usr/bin/sort
