@@ -86,7 +86,7 @@ pafchop_sha256="$(sha256sum "$PAFCHOP_BIN" | awk '{print $1}')"
 sweepga_sha256="$(sha256sum "$SWEEPGA" | awk '{print $1}')"
 pigz_sha256="$(sha256sum "$PIGZ" | awk '{print $1}')"
 chop_command="$PIGZ -dc $raw | $PAFCHOP_BIN --length $chop_length --overlap 0 --chunk-mode query-grid --threads $THREADS --comparison-id $comparison_id --summary $tmp_summary | $PIGZ $PIGZ_COMPRESSION_LEVEL -p $THREADS > $tmp_chopped"
-filter_command="$PIGZ -dc $chopped > $scratch_dir/input.paf && $SWEEPGA --num-mappings 1:1 --scaffold-jump 0 --scoring ani --overlap 0 --output-file $scratch_dir/filtered.paf $scratch_dir/input.paf && $PIGZ $PIGZ_COMPRESSION_LEVEL -p $THREADS -c $scratch_dir/filtered.paf > $tmp_filtered"
+filter_command="$PIGZ -dc $chopped > $scratch_dir/input.paf && $SWEEPGA --threads $THREADS --num-mappings 1:1 --scaffold-jump 0 --scoring ani --overlap 0 --output-file $scratch_dir/filtered.paf $scratch_dir/input.paf && $PIGZ $PIGZ_COMPRESSION_LEVEL -p $THREADS -c $scratch_dir/filtered.paf > $tmp_filtered"
 
 finish_status="FAILED"
 cleanup() {
@@ -139,6 +139,7 @@ exec > >(tee "$log") 2>&1
     echo "filter_command=$filter_command"
     "$PIGZ" -dc "$chopped" > "$scratch_dir/input.paf"
     "$SWEEPGA" \
+        --threads "$THREADS" \
         --num-mappings "$NUM_MAPPINGS" \
         --scaffold-jump "$SCAFFOLD_JUMP" \
         --scoring "$SCORING" \
