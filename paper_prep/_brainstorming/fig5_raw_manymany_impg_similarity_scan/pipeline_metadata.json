@@ -1,0 +1,7 @@
+{
+  "generated_utc": "2026-06-25T18:13:39Z",
+  "impg_path": "/home/erikg/.cargo/bin/impg",
+  "impg_version": "impg 0.4.1",
+  "merge_distance_probe": "IMPG 0.4.1 rejects --merge-distance 0 with --no-merge; jobs use --no-merge.",
+  "sequence_file_requirement": "IMPG 0.4.1 similarity requires --sequence-files for POA similarity output, so query_fasta and target_fasta from input_manifest.tsv are passed explicitly."
+}

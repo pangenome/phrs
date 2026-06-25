@@ -1,0 +1,7 @@
+bgzf_raw_paf/
+logs/
+outputs/*.tsv
+outputs/*.tsv.gz
+outputs/*.json
+*.impg
+tmp/
