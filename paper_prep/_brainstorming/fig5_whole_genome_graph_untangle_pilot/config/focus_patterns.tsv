@@ -1,0 +1,5 @@
+focus_id	class	query_regex	target_regex	interpretation
+chr9q_chr3q_candidate	candidate	PAN027#2#chr9	PAN011#.*#chr3	Expected Fig5 PHR candidate support if PAN027 paternal chr9q projects to PAN011 chr3q segments.
+chr9q_native_context	native_context	PAN027#2#chr9	PAN011#.*#chr9	Same-chromosome chr9 context; should dominate over interchromosomal candidate segments.
+par_xy_positive_control	positive_control	PAN027#2#chrX	PAN011#.*#chrY	PAR X/Y exchange-like support; validates that the graph/untangle path can recover known subtelomeric sharing.
+acrocentric_controls	acro_control	PAN027#2#chr(13|14|15|21|22)	PAN011#.*#chr(13|14|15|21|22)	Acrocentric p-arm control class where subtelomeric/rDNA-proximal sharing can be high and should be separated from chr9q/chr3q claims.

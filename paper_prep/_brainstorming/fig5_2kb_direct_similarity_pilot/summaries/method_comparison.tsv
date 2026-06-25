@@ -1,0 +1,59 @@
+event_id	comparison_id	method_id	top_target_chrom	top_target_class	top_aligned_bp_sum_across_bins	expected_target_aligned_bp_sum	expected_target_bins_with_support	same_chromosome_aligned_bp_sum	expected_vs_same_bp_ratio	par_partner_aligned_bp_sum	cross_acrocentric_aligned_bp_sum	supports_expected_target
+PAN027_PAR1_XY_positive_control	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chrX	same_chromosome	362564	144103	73	362564	0.397455	0	0	yes
+PAN027_PAR1_XY_positive_control	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chrX	same_chromosome	362564	144103	73	362564	0.397455	0	0	yes
+PAN027_PAR1_XY_positive_control	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chrX	same_chromosome	358190	144103	73	358190	0.402309	0	0	yes
+PAN027_PAR1_XY_positive_control	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN027_acro_chr13p_control	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chr13	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr13p_control	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chr13	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr13p_control	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chr13	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr13p_control	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	chr13	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr14p_control	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chr14	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr14p_control	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chr14	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr14p_control	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chr14	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr14p_control	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	chr14	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr15p_control	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chr15	expected	499999	499999	250	0		0	0	yes
+PAN027_acro_chr15p_control	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chr15	expected	499999	499999	250	0		0	0	yes
+PAN027_acro_chr15p_control	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chr15	expected	499999	499999	250	0		0	0	yes
+PAN027_acro_chr15p_control	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	chr15	expected	499999	499999	250	0		0	0	yes
+PAN027_acro_chr21p_control	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chr21	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr21p_control	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chr21	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr21p_control	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chr21	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr21p_control	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	chr21	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr22p_control	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chr22	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr22p_control	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chr22	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr22p_control	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chr22	expected	500000	500000	250	0		0	0	yes
+PAN027_acro_chr22p_control	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	chr22	expected	500000	500000	250	0		0	0	yes
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	sweepga_four_many_noscaffold	chr9	same_chromosome	619724	0	0	619724	0.0	0	0	no
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	sweepga_many_many_noscaffold	chr9	same_chromosome	619724	0	0	619724	0.0	0	0	no
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	sweepga_one_one_noscaffold	chr9	same_chromosome	499208	0	0	499208	0.0	0	0	no
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	sweepga_simple_i95_l1k_q80	chr9	same_chromosome	499208	0	0	499208	0.0	0	0	no
+PAN027_chr9q_chr3q_PHR_candidate	PAN027pat_vs_PAN011_joint	wfmash_p95_one_to_one_2kb	chr9	same_chromosome	435398	2000	1	435398	0.004593	0	0	yes
+PAN028_PAR1_XY_positive_control	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chrX	expected	862584	862584	232	0		0	0	yes
+PAN028_PAR1_XY_positive_control	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chrX	expected	868720	868720	232	0		0	0	yes
+PAN028_PAR1_XY_positive_control	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chrX	expected	516928	516928	229	0		0	0	yes
+PAN028_PAR1_XY_positive_control	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN028_acro_chr13p_control	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chr13	expected	634494	634494	241	0		0	0	yes
+PAN028_acro_chr13p_control	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chr13	expected	634494	634494	241	0		0	0	yes
+PAN028_acro_chr13p_control	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chr13	expected	634494	634494	241	0		0	0	yes
+PAN028_acro_chr13p_control	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	chr13	expected	461155	461155	231	0		0	0	yes
+PAN028_acro_chr14p_control	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chr22	cross_acrocentric	654303	223137	68	0		0	895061	yes
+PAN028_acro_chr14p_control	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chr22	cross_acrocentric	1514255	223137	68	0		0	1955710	yes
+PAN028_acro_chr14p_control	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chr14	expected	96566	96566	50	0		0	26457	yes
+PAN028_acro_chr14p_control	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN028_acro_chr15p_control	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chr13	cross_acrocentric	400633	87967	30	0		0	719026	yes
+PAN028_acro_chr15p_control	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chr13	cross_acrocentric	400633	115905	36	0		0	767272	yes
+PAN028_acro_chr15p_control	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chr13	cross_acrocentric	318598	0	0	0		0	427775	no
+PAN028_acro_chr15p_control	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN028_acro_chr21p_control	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chr14	cross_acrocentric	465025	90105	46	0		0	745141	yes
+PAN028_acro_chr21p_control	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chr14	cross_acrocentric	465025	90105	46	0		0	745141	yes
+PAN028_acro_chr21p_control	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chr14	cross_acrocentric	132419	0	0	0		0	320551	no
+PAN028_acro_chr21p_control	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN028_acro_chr22p_control	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chr14	cross_acrocentric	310698	210639	106	0		0	714861	yes
+PAN028_acro_chr22p_control	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chr14	cross_acrocentric	310698	210639	106	0		0	733681	yes
+PAN028_acro_chr22p_control	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chr14	cross_acrocentric	99451	0	0	0		0	201574	no
+PAN028_acro_chr22p_control	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	sweepga_four_many_noscaffold	chr9	same_chromosome	784316	7765	5	784316	0.0099	0	0	yes
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	sweepga_many_many_noscaffold	chr9	same_chromosome	784316	7765	5	784316	0.0099	0	0	yes
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	sweepga_one_one_noscaffold	chr9	same_chromosome	681106	0	0	681106	0.0	0	0	no
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	sweepga_simple_i95_l1k_q80	NO_SUPPORT	none	0	0	0	0		0	0	no
+PAN028_chr9q_chr3q_PHR_candidate	PAN028mat_vs_PAN027_joint	wfmash_p95_one_to_one_2kb	chr9	same_chromosome	385875	10000	5	385875	0.025915	0	0	yes
