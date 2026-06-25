@@ -1,0 +1,601 @@
+page_order	page_id	page_label	method_order	method_id	method_label	query_chrom	target_chrom	display_support_bp	covered_bp	row_count
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr3	chr9	3461	3461	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr15	1	1	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr22	101008	101008	34
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr15	6296	6296	5
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr21	3668	3668	3
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr14	chr21	1014	1014	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr16	chr19	5103	5103	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr21	chr22	25576	25576	16
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr21	chr13	10089	10089	8
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr22	chr13	13770	13770	9
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr1	chr15	7237	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr5	chr19	3719	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr8	chr16	1000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr10	chr18	3990	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr13	chr21	8000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr22	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr13	30899	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr14	15372	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr16	chr9	8000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr17	chr5	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr18	chr2	1000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr6	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr14	169	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr19	129	1024268	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chrX	29	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr20	7	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr3	106	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr1	52	507399	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr13	15	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr16	989	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr17	92	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr6	13	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr15	8	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr15	1556	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr6	414	392806	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr9	6000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr3	201	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr11	55	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr7	5	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chrX	5	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr20	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr3	3	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr14	2	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr1	1	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr13	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr3	87	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chrX	19	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr9	15	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr22	8	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr12	327	174794	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr1	138	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr16	23	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr7	2003	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chrX	217	71589	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr12	5	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr1	2006	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr4	5	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr11	chr1	150	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr11	chr19	39	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr3	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr4	19	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr15	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chrX	224	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr14	105	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr21	11	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr13	16090	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr21	4000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr22	4000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr5	24	407886	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr14	10543	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr6	253	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr4	104	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr20	8	30055	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr16	2	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr3	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr10	1238	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr1	499	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr2	87	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr12	56	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr20	13	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr8	10	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chrX	7	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr20	134	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr9	45	1214608	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr16	2	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr3	136	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr10	2232	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr11	196	1748151	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr17	63	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chrX	13	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr20	10	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr21	9	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr9	4	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr6	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr13	235	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr17	134	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr4	53	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr8	47	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr3	2000	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr21	18000	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr14	2020	2000000	2
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr4	25	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr15	2	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr11	117	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr8	5	1000000	1
+1	PAN027_hap1_maternal_vs_PAN010	PAN027 maternal hap1 <- PAN010 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr6	1	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr8	chr11	4046	4046	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr3	45290	45290	4
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr15	7273	7273	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr16	1207	1207	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr20	493	493	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr10	chr4	2464	2464	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr11	chr9	3916	3916	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr15	22029	22029	15
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr21	1206	1206	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr22	1687	1687	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chr19	chr7	3526	3526	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	1	untangle_strict_primary_path	Untangle strict primary path	chrX	chrY	150873	150873	3
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr3	chr20	4000	556063	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr4	chr8	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr7	chr19	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr9	chr7	17149	209149	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr13	chr22	18000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr22	36000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr13	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr3	1947	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr11	4000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr16	chr1	806	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr21	chr14	39000	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr21	chr4	1650	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr22	chr14	19605	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chrX	chrY	147001	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr15	19402	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr11	1113	1769562	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr16	256	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr4	236	3000000	3
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr8	220	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr19	121	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr5	102	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr9	35	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr7	11	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr3	1	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr13	302	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr11	77	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr17	67	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr5	45	3000000	3
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr4	35	3000000	3
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr15	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr9	2000	556063	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr20	463	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr8	209	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr10	2054	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr2	811	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr3	309	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr7	16	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr12	4	448508	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr5	4	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr6	4000	149871	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr19	1607	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr10	313	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr8	48	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr1	3	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr16	57	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr5	27	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr12	2005	1226487	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr13	1361	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr9	299	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr4	196	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr19	89	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr1	9	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr3	6	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr7	6	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr6	5	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr19	10000	209149	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr4	108	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr1	53	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr17	27	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr8	9	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr15	2071	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr4	383	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr6	106	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr2	77	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr21	24	510189	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr1	2	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr11	chr5	91	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr10	426	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chrY	305	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr19	144	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr1	105	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr11	96	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr2	70	1492916	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr20	4	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr18	1	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr15	6000	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr14	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr21	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr22	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr3	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr1	83	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr17	57	744078	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr13	28000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr22	14165	3000000	3
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr3	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr1	205	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr4	21	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr3	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr4	175	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr2	33	817628	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr7	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr4	2	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr6	135	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr8	126	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr13	13	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chrX	7	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr21	2000	492778	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr4	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr16	8000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr8	59	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr9	57	523024	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr14	45	521058	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr4	17	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr14	20000	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr13	2000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr10	217	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr4	6	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr13	24000	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr21	4000	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr20	179	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr7	45	384128	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr4	12	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chrY	164035	4000000	4
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr1	213	91348	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr6	212	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr4	28	2000000	2
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr11	23	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr5	5	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr14	4	1000000	1
+2	PAN027_hap2_paternal_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr16	3	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr1	chr8	19634	19634	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr1	chr11	2140	2140	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr1	chr15	1002	1002	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr3	chr7	27969	27969	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr3	chr20	25421	25421	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr3	chr16	3566	3566	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr4	chr22	6810	6810	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr4	chr10	2089	2089	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr9	44082	44082	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr6	19613	19613	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr1	8358	8358	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr3	8171	8171	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr17	1990	1990	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr5	chr11	1001	1001	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr7	chr19	10765	10765	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr7	chr20	6032	6032	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr7	chr6	2805	2805	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr7	chr11	1735	1735	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr7	chr16	1003	1003	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr3	34172	34172	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr15	15166	15166	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr19	9028	9028	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr9	chr16	1207	1207	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr10	chr4	1220	1220	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr22	106119	106119	36
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr21	16757	16757	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr13	chr15	6798	6798	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr14	chr22	106981	106981	11
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr14	chr15	47629	47629	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr14	chr21	23160	23160	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr14	chr4	5489	5489	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr14	chr13	2477	2477	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr13	146674	146674	37
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr22	48423	48423	12
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr5	47027	47027	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr21	44908	44908	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr14	23059	23059	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr9	4262	4262	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr6	2201	2201	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr15	chr11	1002	1002	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr16	chr17	1006	1006	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr19	chr6	1	1	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr21	chr14	28201	28201	16
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr21	chr15	12525	12525	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr21	chr22	2002	2002	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr22	chr14	141108	141108	17
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr22	chr15	33229	33229	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	1	untangle_strict_primary_path	Untangle strict primary path	chr22	chr1	6288	6288	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr1	chr17	26810	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr1	chr8	25235	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr3	chr15	36907	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr3	chr20	20624	739358	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr4	chr3	16013	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr4	chr15	8000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr4	chrX	3730	293730	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr5	chr6	19000	118583	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr5	chr1	8384	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr5	chr3	6	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr6	chr2	4000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr7	chr20	4000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr9	chr16	11000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr9	chr3	10000	886033	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr10	chr4	2000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr13	chr22	122976	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr13	chr21	44000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr13	chr14	17000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr22	742738	9000000	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr15	510172	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr21	269196	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr3	138441	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr14	chr13	124598	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr13	618577	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr14	299786	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr3	81502	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr15	chr5	53921	135805	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr16	chr3	10000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr17	chr8	2000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr18	chr11	1000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr21	chr13	909158	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr21	chr14	805863	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr21	chr22	511610	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr22	chr14	809382	9000000	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr22	chr15	238795	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr22	chr3	80051	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chr22	chr21	15353	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	2	wfmash_p95_qgrid2kb_1to1_ani	wfmash -p95 2 kb query-grid -> SweepGA 1:1 ANI	chrX	chr3	3227	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr21	36419	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr5	17948	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr19	12342	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr22	6044	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr10	4201	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr4	2146	15033879	16
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr17	2068	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr3	1997	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr7	1549	11000000	11
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr12	1111	12000000	12
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr13	978	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr18	973	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr11	741	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr16	704	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr2	647	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chrX	621	9000000	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr15	510	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr8	435	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr9	309	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr6	64	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr1	chr14	17	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr4	319	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr15	172	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chrX	82	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr1	23	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr3	17	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr2	chr20	1	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr21	38381	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr7	7348	8739358	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr15	4643	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr11	2597	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr4	2346	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr1	2184	11000000	11
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr13	2052	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr10	2030	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr14	1277	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr9	795	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr5	744	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr17	593	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chrX	334	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr20	300	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr12	232	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr18	135	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr6	100	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr19	45	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr8	28	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr3	chr2	15	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr1	8803	15000000	15
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr21	4000	1293730	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr14	2010	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr7	1622	13000000	13
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr3	1181	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chrX	808	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr8	633	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr12	483	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr2	404	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr6	404	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr16	343	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr5	289	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr9	286	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr11	229	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr18	219	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr20	141	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr15	92	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr10	76	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr22	71	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr13	43	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr4	chr17	22	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr1	21567	11118583	12
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr19	10179	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr9	4390	9000000	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr21	3081	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr4	2459	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr18	2301	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chrX	709	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr3	539	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr8	476	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr7	331	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr16	293	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr14	259	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr2	168	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr13	161	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr15	109	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr17	99	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr10	92	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr12	63	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr6	41	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr5	chr20	2	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr19	830	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr11	317	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr16	173	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr4	79	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr3	37	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr6	chr5	32	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr4	3379	13000000	13
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr6	2173	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr3	1493	9000000	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr9	1463	12000000	12
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr1	792	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr5	451	8037122	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chrX	287	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr2	212	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr15	189	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr12	170	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr11	153	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr16	126	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr14	97	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr13	42	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr8	35	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr21	6	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr7	chr10	1	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr18	308	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr17	119	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr5	34	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr2	5	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr8	chr7	1	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr3	6349	5886033	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr5	4509	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr7	2652	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr14	1054	8000000	8
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr4	433	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr2	321	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr6	311	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr11	282	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr8	219	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr15	182	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr10	161	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr1	121	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr13	110	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr12	93	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr16	55	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chrX	54	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr19	34	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr22	33	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr9	chr18	1	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr9	57	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr19	44	359451	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr10	chr18	1	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr11	chr3	1129	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr11	chr10	15	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr11	chr1	2	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr3	2769	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr7	1865	4549075	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr6	625	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chrX	541	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr4	397	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr15	350	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr10	337	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr2	320	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr16	300	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr8	221	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr11	192	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr18	189	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr1	136	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr14	132	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr5	69	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr21	35	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr13	14	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr12	chr9	10	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr21	94000	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chr14	576	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr13	chrX	296	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr21	403233	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr22	358442	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr15	224404	9000000	9
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr9	1212	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr4	646	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr8	462	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr6	365	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr13	319	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr11	294	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr3	279	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr12	240	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr1	181	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr7	111	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr18	38	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr10	37	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr19	35	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr5	23	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr17	19	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chrX	14	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr2	12	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr14	chr16	5	704436	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr13	490319	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr14	142384	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr21	46184	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr20	6566	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr5	4626	3135805	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr12	649	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr7	528	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr2	336	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr9	202	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr16	185	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr8	176	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr4	94	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr3	54	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr18	39	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr11	14	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr17	14	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr1	12	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chrX	8	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr15	chr22	7	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr10	510	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr1	295	634376	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr7	10	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr16	chr20	5	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr3	393	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr8	112	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr9	91	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chrX	81	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr7	62	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr17	chr4	14	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr21	751	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr8	569	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr1	385	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr3	329	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chrX	217	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr4	215	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr5	191	2406549	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr12	40	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr16	20	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr2	6	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr17	4	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr18	chr14	3	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr7	15	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr12	9	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr19	chr21	1	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr1	2000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr19	157	215834	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr17	134	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr14	8	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chrX	7	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr20	chr7	5	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr13	446184	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr14	381531	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr22	168000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr15	84454	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr7	1029	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr3	357	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr18	179	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chrX	157	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr5	118	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr4	65	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr1	61	444014	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr8	38	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr21	chr12	34	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr15	247263	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr14	210986	6489306	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr21	89371	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr13	8000	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chrX	128	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr4	108	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr3	62	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr1	59	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chr22	chr17	32	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr9	2321	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr12	1618	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr1	1481	7000000	7
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr3	1294	15000000	15
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr7	665	6000000	6
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr18	556	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr4	548	10000000	10
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr2	512	5000000	5
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr21	309	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr20	251	1085596	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr5	205	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr16	194	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr10	178	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr17	174	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr8	160	4000000	4
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr14	121	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr13	78	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr22	70	3000000	3
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr6	36	2000000	2
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr15	26	1000000	1
+3	PAN028_hap1_maternal_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	3	sweepga_fastga_f32_qgrid2kb_1to1_ani	SweepGA/FastGA -f32 2 kb query-grid -> 1:1 ANI	chrX	chr11	8	1000000	1
