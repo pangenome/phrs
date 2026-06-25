@@ -1,0 +1,15 @@
+work/
+summaries/*.command_manifest.tsv
+summaries/*.focus_summary.tsv
+summaries/*.focus_segments.tsv
+*.gfa
+*.og
+*.stpidx
+*.bedpe
+*.paf
+*.paf.gz
+*.fa
+*.fa.gz
+*.log
+*.err
+*.out
