@@ -1,0 +1,12 @@
+dimension	score	rationale
+new_comparison_package	0.00	Required comparison package directory is absent.
+rendered_pdf_png_svg_outputs	0.00	Required rendered PDF PNG and SVG outputs are absent.
+segment_tsv_genomic_query_coordinates_frequency	0.00	No comparison_panel_segments.tsv exists with genomic query coordinates or f16/f32 frequency column.
+summary_tsv_chr3_retained_support	0.00	No comparison_panel_summary.tsv exists reporting chr3 retained support by event chop and frequency.
+manifest_sources_commands_checksums	0.00	No comparison_panel_manifest.tsv exists recording source PAFs audits commands or checksums.
+plot_content_and_labeling	0.00	No figure exists to inspect for PAR1 PAN027 PAN028 query-grid comparisons labels settings or readable colors.
+f32_vs_f16_interpretability	0.00	No plot or summary makes clear whether f32 changes chr3 retained support relative to f16.
+validation_evidence	0.00	No non-empty rendered artifacts or validation logs were present.
+readme_explanation	0.00	No task-specific README exists explaining the iteration comparison.
+commit_and_provenance	0.00	No task-specific implementation commit exists ahead of main.
+overall	0.00	Required committed deliverables are absent; all acceptance criteria are unmet.
