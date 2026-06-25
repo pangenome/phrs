@@ -1,7 +1,10 @@
+use std::collections::BTreeMap;
 use std::env;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader, BufWriter, Write};
 use std::path::PathBuf;
+use std::sync::{mpsc, Arc, Mutex};
+use std::thread;
 
 const TOOL_NAME: &str = "pafchop-rs";
 
@@ -14,6 +17,7 @@ struct Args {
     keep_tags: bool,
     comparison_id: String,
     summary: Option<PathBuf>,
+    threads: usize,
 }
 
 impl Default for Args {
@@ -26,6 +30,7 @@ impl Default for Args {
             keep_tags: false,
             comparison_id: "NA".to_string(),
             summary: None,
+            threads: default_threads(),
         }
     }
 }
@@ -51,6 +56,26 @@ struct Stats {
     chopped_records: u64,
     raw_query_bp: u128,
     chopped_query_bp: u128,
+}
+
+impl Stats {
+    fn add(&mut self, other: &Stats) {
+        self.raw_records += other.raw_records;
+        self.chopped_records += other.chopped_records;
+        self.raw_query_bp += other.raw_query_bp;
+        self.chopped_query_bp += other.chopped_query_bp;
+    }
+}
+
+struct WorkItem {
+    line_no: u64,
+    line: String,
+}
+
+struct WorkResult {
+    line_no: u64,
+    output: Vec<u8>,
+    stats: Stats,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -135,15 +160,29 @@ impl ChunkPlan {
 }
 
 fn usage() -> &'static str {
-    "usage: pafchop [--input PAF|-] [--length N] [--overlap N] [--chunk-mode row-start|query-grid] [--query-grid] [--keep-tags] [--comparison-id ID] [--summary TSV]\n\
+    "usage: pafchop [--input PAF|-] [--length N] [--overlap N] [--chunk-mode row-start|query-grid] [--query-grid] [--threads N] [--keep-tags] [--comparison-id ID] [--summary TSV]\n\
      \n\
      Streams PAF and splits each row into <=N bp query-axis fragments.\n\
      Default chunk mode is row-start, which starts chunks at each row's q_start.\n\
      query-grid mode uses absolute query-coordinate boundaries at 0,N,2N,...\n\
      and currently requires --overlap 0.\n\
+     --threads defaults to PAFCHOP_THREADS, then SLURM_CPUS_PER_TASK, then available CPUs.\n\
      Exact chunking requires cg:Z CIGAR operations. Alignment-derived columns\n\
      and tags are recomputed per fragment; stale cg/cs/NM/dv/de/df tags are\n\
      never copied from the input row."
+}
+
+fn default_threads() -> usize {
+    for key in ["PAFCHOP_THREADS", "SLURM_CPUS_PER_TASK"] {
+        if let Ok(value) = env::var(key) {
+            if let Ok(threads) = value.parse::<usize>() {
+                if threads > 0 {
+                    return threads;
+                }
+            }
+        }
+    }
+    thread::available_parallelism().map_or(1, usize::from).max(1)
 }
 
 fn parse_size(s: &str) -> Result<u64, String> {
@@ -197,6 +236,13 @@ where
                 };
             }
             "--query-grid" => args.chunk_mode = ChunkMode::QueryGrid,
+            "--threads" => {
+                args.threads = it
+                    .next()
+                    .ok_or("--threads requires a value")?
+                    .parse::<usize>()
+                    .map_err(|_| "--threads must be a positive integer".to_string())?
+            }
             "--keep-tags" => args.keep_tags = true,
             "--comparison-id" => {
                 args.comparison_id = it.next().ok_or("--comparison-id requires a value")?
@@ -218,6 +264,9 @@ where
     }
     if args.chunk_mode == ChunkMode::QueryGrid && args.overlap != 0 {
         return Err("--chunk-mode query-grid currently requires --overlap 0".to_string());
+    }
+    if args.threads == 0 {
+        return Err("--threads must be > 0".to_string());
     }
     Ok(args)
 }
@@ -832,27 +881,224 @@ fn chop_line<W: Write>(
     Ok((chunks.len() as u64, chopped_bp))
 }
 
-fn process<R: BufRead, W: Write>(reader: R, out: &mut W, args: &Args) -> Result<Stats, String> {
+fn process_one_line<W: Write>(
+    line_no: u64,
+    line: &str,
+    out: &mut W,
+    args: &Args,
+) -> Result<Stats, String> {
+    let mut stats = Stats::default();
+    if line.trim().is_empty() || line.starts_with('#') {
+        return Ok(stats);
+    }
+    let fields: Vec<&str> = line.split('\t').collect();
+    let q_start = parse_u64(&fields, 2, line_no)?;
+    let q_end = parse_u64(&fields, 3, line_no)?;
+    let raw_bp = q_end
+        .checked_sub(q_start)
+        .ok_or_else(|| format!("line {line_no}: q_end < q_start"))?;
+    stats.raw_records += 1;
+    stats.raw_query_bp += raw_bp as u128;
+    let (n, bp) = chop_line(out, &fields, args, line_no)?;
+    stats.chopped_records += n;
+    stats.chopped_query_bp += bp;
+    Ok(stats)
+}
+
+fn process_serial<R: BufRead, W: Write>(
+    reader: R,
+    out: &mut W,
+    args: &Args,
+) -> Result<Stats, String> {
     let mut stats = Stats::default();
     for (idx, line) in reader.lines().enumerate() {
         let line_no = idx as u64 + 1;
         let line = line.map_err(|e| format!("line {line_no}: {e}"))?;
-        if line.trim().is_empty() || line.starts_with('#') {
-            continue;
-        }
-        let fields: Vec<&str> = line.split('\t').collect();
-        let q_start = parse_u64(&fields, 2, line_no)?;
-        let q_end = parse_u64(&fields, 3, line_no)?;
-        let raw_bp = q_end
-            .checked_sub(q_start)
-            .ok_or_else(|| format!("line {line_no}: q_end < q_start"))?;
-        stats.raw_records += 1;
-        stats.raw_query_bp += raw_bp as u128;
-        let (n, bp) = chop_line(out, &fields, args, line_no)?;
-        stats.chopped_records += n;
-        stats.chopped_query_bp += bp;
+        let line_stats = process_one_line(line_no, &line, out, args)?;
+        stats.add(&line_stats);
     }
     Ok(stats)
+}
+
+fn process_work_item(item: WorkItem, args: &Args) -> Result<WorkResult, String> {
+    let mut output = Vec::new();
+    let stats = process_one_line(item.line_no, &item.line, &mut output, args)?;
+    Ok(WorkResult {
+        line_no: item.line_no,
+        output,
+        stats,
+    })
+}
+
+fn flush_ready_results<W: Write>(
+    pending: &mut BTreeMap<u64, WorkResult>,
+    next_line_to_write: &mut u64,
+    out: &mut W,
+    stats: &mut Stats,
+) -> Result<(), String> {
+    while let Some(result) = pending.remove(next_line_to_write) {
+        out.write_all(&result.output).map_err(|e| e.to_string())?;
+        stats.add(&result.stats);
+        *next_line_to_write += 1;
+    }
+    Ok(())
+}
+
+fn receive_result<W: Write>(
+    result_rx: &mpsc::Receiver<Result<WorkResult, String>>,
+    pending: &mut BTreeMap<u64, WorkResult>,
+    next_line_to_write: &mut u64,
+    out: &mut W,
+    stats: &mut Stats,
+    received_records: &mut u64,
+) -> Result<(), String> {
+    let result = result_rx
+        .recv()
+        .map_err(|_| "pafchop worker result channel disconnected".to_string())??;
+    *received_records += 1;
+    pending.insert(result.line_no, result);
+    flush_ready_results(pending, next_line_to_write, out, stats)
+}
+
+fn drain_available_results<W: Write>(
+    result_rx: &mpsc::Receiver<Result<WorkResult, String>>,
+    pending: &mut BTreeMap<u64, WorkResult>,
+    next_line_to_write: &mut u64,
+    out: &mut W,
+    stats: &mut Stats,
+    received_records: &mut u64,
+) -> Result<(), String> {
+    loop {
+        match result_rx.try_recv() {
+            Ok(Ok(result)) => {
+                *received_records += 1;
+                pending.insert(result.line_no, result);
+                flush_ready_results(pending, next_line_to_write, out, stats)?;
+            }
+            Ok(Err(e)) => return Err(e),
+            Err(mpsc::TryRecvError::Empty) => return Ok(()),
+            Err(mpsc::TryRecvError::Disconnected) => return Ok(()),
+        }
+    }
+}
+
+fn work_queue_depth(threads: usize) -> usize {
+    env::var("PAFCHOP_QUEUE_DEPTH")
+        .ok()
+        .and_then(|x| x.parse::<usize>().ok())
+        .filter(|x| *x > 0)
+        .unwrap_or_else(|| threads.saturating_mul(8).max(64))
+}
+
+fn process_parallel<R: BufRead, W: Write>(
+    reader: R,
+    out: &mut W,
+    args: &Args,
+) -> Result<Stats, String> {
+    let threads = args.threads.max(1);
+    let queue_depth = work_queue_depth(threads);
+    let (work_tx, work_rx) = mpsc::sync_channel::<WorkItem>(queue_depth);
+    let work_rx = Arc::new(Mutex::new(work_rx));
+    let (result_tx, result_rx) = mpsc::channel::<Result<WorkResult, String>>();
+
+    let mut stats = Stats::default();
+    let mut pending = BTreeMap::new();
+    let mut next_line_to_write = 1_u64;
+    let mut sent_records = 0_u64;
+    let mut received_records = 0_u64;
+
+    thread::scope(|scope| -> Result<(), String> {
+        for _ in 0..threads {
+            let work_rx = Arc::clone(&work_rx);
+            let result_tx = result_tx.clone();
+            scope.spawn(move || loop {
+                let item = {
+                    let rx = match work_rx.lock() {
+                        Ok(rx) => rx,
+                        Err(_) => {
+                            let _ = result_tx
+                                .send(Err("pafchop work queue lock poisoned".to_string()));
+                            return;
+                        }
+                    };
+                    rx.recv()
+                };
+                match item {
+                    Ok(item) => {
+                        if result_tx.send(process_work_item(item, args)).is_err() {
+                            return;
+                        }
+                    }
+                    Err(_) => return,
+                }
+            });
+        }
+        drop(result_tx);
+
+        for (idx, line) in reader.lines().enumerate() {
+            let line_no = idx as u64 + 1;
+            let mut item = WorkItem {
+                line_no,
+                line: line.map_err(|e| format!("line {line_no}: {e}"))?,
+            };
+            loop {
+                match work_tx.try_send(item) {
+                    Ok(()) => {
+                        sent_records += 1;
+                        drain_available_results(
+                            &result_rx,
+                            &mut pending,
+                            &mut next_line_to_write,
+                            out,
+                            &mut stats,
+                            &mut received_records,
+                        )?;
+                        break;
+                    }
+                    Err(mpsc::TrySendError::Full(returned)) => {
+                        item = returned;
+                        receive_result(
+                            &result_rx,
+                            &mut pending,
+                            &mut next_line_to_write,
+                            out,
+                            &mut stats,
+                            &mut received_records,
+                        )?;
+                    }
+                    Err(mpsc::TrySendError::Disconnected(_)) => {
+                        return Err("pafchop work queue disconnected".to_string())
+                    }
+                }
+            }
+        }
+        drop(work_tx);
+
+        while received_records < sent_records {
+            receive_result(
+                &result_rx,
+                &mut pending,
+                &mut next_line_to_write,
+                out,
+                &mut stats,
+                &mut received_records,
+            )?;
+        }
+        flush_ready_results(&mut pending, &mut next_line_to_write, out, &mut stats)?;
+        if !pending.is_empty() {
+            return Err("pafchop internal error: pending output remains".to_string());
+        }
+        Ok(())
+    })?;
+    Ok(stats)
+}
+
+fn process<R: BufRead, W: Write>(reader: R, out: &mut W, args: &Args) -> Result<Stats, String> {
+    if args.threads <= 1 {
+        process_serial(reader, out, args)
+    } else {
+        process_parallel(reader, out, args)
+    }
 }
 
 fn write_summary(args: &Args, stats: &Stats) -> Result<(), String> {
@@ -863,12 +1109,12 @@ fn write_summary(args: &Args, stats: &Stats) -> Result<(), String> {
         BufWriter::new(File::create(path).map_err(|e| format!("{}: {e}", path.display()))?);
     writeln!(
         writer,
-        "comparison_id\ttool\tversion\tchop_length_bp\toverlap_bp\tchunk_mode\tkeep_tags\traw_records\tchopped_records\traw_query_bp\tchopped_query_bp"
+        "comparison_id\ttool\tversion\tchop_length_bp\toverlap_bp\tchunk_mode\tkeep_tags\tthreads\traw_records\tchopped_records\traw_query_bp\tchopped_query_bp"
     )
     .map_err(|e| e.to_string())?;
     writeln!(
         writer,
-        "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
+        "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}",
         args.comparison_id,
         TOOL_NAME,
         env!("CARGO_PKG_VERSION"),
@@ -876,6 +1122,7 @@ fn write_summary(args: &Args, stats: &Stats) -> Result<(), String> {
         args.overlap,
         args.chunk_mode.as_str(),
         args.keep_tags,
+        args.threads,
         stats.raw_records,
         stats.chopped_records,
         stats.raw_query_bp,
