@@ -16,6 +16,15 @@ The old directory
 `paper_prep/_brainstorming/fig5_whole_genome_existing_paf_impg_like_scan/` is
 not used here except as a failure record.
 
+## Current Status
+
+The 10 kb full-BED run completed for all three WFMASH raw PAF comparisons.
+SweepGA/FastGA f32 full-BED jobs `1706581` and `1706582` timed out at the
+24-hour Slurm walltime, and sibling job `1706583` was cancelled after that
+blocker was confirmed. Do not run the summary script until complete
+SweepGA `.tsv.gz` outputs are regenerated; the current SweepGA TSV files are
+partial or empty. See `REPORT.md` for exact job states and output paths.
+
 ## Commands
 
 Generate full-genome 10 kb target BEDs, six Slurm scripts, and manifests:
