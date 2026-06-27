@@ -1,0 +1,39 @@
+{
+  "attempt_utc": "2026-06-27T13:47:00Z",
+  "agent": "agent-2842",
+  "task_id": "finalize-fig5-raw",
+  "status": "blocked_waiting_for_slurm",
+  "reason": "Finalizer requires all 906 shard outputs and metadata to be complete, but submitted Slurm arrays 1706840-1706845 were still active/pending.",
+  "arrays": ["1706840", "1706841", "1706842", "1706843", "1706844", "1706845"],
+  "observed_squeue_summary": {
+    "pending_array_ranges": [
+      "1706840_[15-151%6]",
+      "1706841_[0-148%6]",
+      "1706842_[0-151%6]",
+      "1706843_[0-151%6]",
+      "1706844_[0-148%6]",
+      "1706845_[0-151%6]"
+    ],
+    "running_tasks": [
+      {
+        "job_id": "1706840_3",
+        "elapsed": "2:05:57",
+        "node": "octopus09"
+      },
+      {
+        "job_id": "1706840_14",
+        "elapsed": "1:53:54",
+        "node": "octopus11"
+      }
+    ]
+  },
+  "observed_parent_worktree_counts": {
+    "metadata_json": 15,
+    "tmp_gzip_outputs": 13,
+    "final_named_shard_outputs": 0
+  },
+  "parent_output_note": "The Slurm job scripts write completed shard files as *.tmp.<array>_<task>.gz. Before running the finalizer, completed temp gzip files should be normalized to each metadata output_tsv_gz path after all corresponding jobs have exited.",
+  "finalizer_not_run": true,
+  "finalizer_command": "python3 paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/scripts/finalize_2kb_sharded_impg.py",
+  "pending_summary_requirement": "After finalizer assembly, keep raw assembled all-hit outputs and all_interchromosomal_targets.tsv intact, but reduce per_window_target_similarity_support.tsv and full_genome_target_pattern_tracks.tsv to one deterministic best record per 2 kb target window."
+}
