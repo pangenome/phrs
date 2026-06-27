@@ -1,0 +1,2 @@
+submitted_job_count	submitted_job_ids	finalizer_script	finalizer_dependency	submitted_finalizer_job_id	partition	cpus_per_task	state
+6	1706862,1706863,1706864,1706865,1706866,1706867	/moosefs/erikg/phrs/.wg-worktrees/agent-2859/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_single_node_race/jobs/finalize_after_single_node_jobs.slurm.sh	afterany:1706862:1706863:1706864:1706865:1706866:1706867	1706868	tux	96	SUBMITTED

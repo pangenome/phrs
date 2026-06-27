@@ -1,0 +1,23 @@
+{
+  "comparisons": [
+    "PAN027mat_vs_PAN010_joint",
+    "PAN027pat_vs_PAN011_joint",
+    "PAN028mat_vs_PAN027_joint"
+  ],
+  "cpus_per_task": 96,
+  "finalizer_dependency": "afterany:1706862:1706863:1706864:1706865:1706866:1706867",
+  "finalizer_is_slurm_dependency_job": true,
+  "finalizer_job_id": "1706868",
+  "generated_utc": "2026-06-27T16:04:18Z",
+  "impg_path": "/home/erikg/.cargo/bin/impg",
+  "impg_version": "impg 0.4.1",
+  "methods": [
+    "sweepga_fastga_frequency32",
+    "wfmash_p95_updated_bin"
+  ],
+  "no_new_alignment_or_graph_construction": true,
+  "partition": "tux",
+  "scope": "raw unfiltered many:many PAF-backed IMPG similarity over existing full-genome 2 kb target BEDs",
+  "single_node_non_array_jobs": true,
+  "source_sharded_manifest": "/moosefs/erikg/phrs/.wg-worktrees/agent-2859/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/manifests/shard_manifest.tsv"
+}

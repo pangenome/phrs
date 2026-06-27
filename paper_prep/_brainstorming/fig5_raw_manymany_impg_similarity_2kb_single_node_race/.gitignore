@@ -1,0 +1,5 @@
+# Large Slurm runtime outputs stay on moosefs.
+/logs/
+/metadata/
+/outputs/
+/scripts/__pycache__/
