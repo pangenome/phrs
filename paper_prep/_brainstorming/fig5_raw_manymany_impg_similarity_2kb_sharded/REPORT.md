@@ -142,3 +142,55 @@ one hit per 2 kb query window using this deterministic rule: choose the hit with
 the highest similarity/ANI/support score first, then the greatest
 aligned/support length, then the stable lexical target coordinate key
 (`target_name`, `target_start`, `target_end`) to break any remaining tie.
+
+## Deferred Finalization Check: 2026-06-27T23:53:10Z
+
+Finalization was re-checked from WG task `finalize-fig5-raw-2` in worktree
+`/moosefs/erikg/phrs/.wg-worktrees/agent-2873`. The live shard tree remains:
+
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The main target tree remains:
+
+- `/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The dependency finalizer job was inspected first. `sacct -j 1706861` reported:
+
+```text
+JobIDRaw|JobID|JobName|State|ExitCode|Elapsed|Start|End|NodeList
+1706861|1706861|fig5_impg_finalize_2kb|PENDING|0:0|00:00:00|Unknown|Unknown|None assigned
+```
+
+Because job `1706861` is still pending for dependency release, it has not yet
+owned tmp shard normalization, finalizer execution, or rsync harvest.
+
+The Slurm guardrail still blocks assembly because arrays `1706840`-`1706845`
+remain active. Exact `squeue` state at `2026-06-27T23:53:10Z`:
+
+```text
+1706841_[0-148%6]  PENDING  0:00     (Priority)    fig5_impg_sweepg_PAN027pat_vs_P
+1706842_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_sweepg_PAN028mat_vs_P
+1706843_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN027mat_vs_P
+1706844_[0-148%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN027pat_vs_P
+1706845_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN028mat_vs_P
+1706840_[58-151%6] PENDING  0:00     (Resources)   fig5_impg_sweepg_PAN027mat_vs_P
+1706861            PENDING  0:00     (Dependency)  fig5_impg_finalize_2kb
+1706840_57         RUNNING  41:28    octopus09     fig5_impg_sweepg_PAN027mat_vs_P
+1706840_54         RUNNING  1:00:20  octopus11     fig5_impg_sweepg_PAN027mat_vs_P
+```
+
+`sacct` additionally reported `1706840_54` as `RUNNING` on `octopus11` and
+`1706840_57` as `RUNNING` on `octopus09`; arrays `1706841`, `1706842`,
+`1706843`, `1706844`, and `1706845` remained pending with no node assigned.
+Therefore `scripts/finalize_2kb_sharded_impg.py` was not run, no partial
+assembled outputs were harvested, and incomplete shards were not marked as data
+failures.
+
+A delayed WG follow-up was created to re-check Slurm state: `finalize-fig5-raw-3`.
+That follow-up should again inspect dependency finalizer job `1706861` before
+manual finalization. Only after all six arrays are terminal and successful
+should it normalize tmp shard filenames if needed, harvest or run the finalizer,
+preserve all-hit assembled outputs under `outputs/assembled/`, and verify that
+the plotting summaries reduce to one best hit per 2 kb query window using the
+documented deterministic tie-break: highest similarity/ANI/support score, then
+aligned/support length, then lexical target coordinates.
