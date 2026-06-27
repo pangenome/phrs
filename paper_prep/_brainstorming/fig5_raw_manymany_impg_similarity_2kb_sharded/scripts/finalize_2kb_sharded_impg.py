@@ -101,6 +101,37 @@ def metadata_for(path: str) -> dict[str, object]:
         return json.load(handle)
 
 
+def hit_rank(row: dict[str, object]) -> tuple[float, int, float, float, float]:
+    return (
+        float(row["estimated_identity"]),
+        int(row["intersection"]),
+        float(row["dice_similarity"]),
+        float(row["cosine_similarity"]),
+        float(row["jaccard_similarity"]),
+    )
+
+
+def stable_hit_key(row: dict[str, object]) -> tuple[object, ...]:
+    return (
+        str(row["other_chrom"]),
+        str(row["other_seq"]),
+        int(row["other_start"]),
+        int(row["other_end"]),
+        str(row["other_arm"]),
+        str(row["target_seq"]),
+        int(row["target_start"]),
+        int(row["target_end"]),
+    )
+
+
+def is_better_hit(candidate: dict[str, object], previous: dict[str, object]) -> bool:
+    candidate_rank = hit_rank(candidate)
+    previous_rank = hit_rank(previous)
+    if candidate_rank != previous_rank:
+        return candidate_rank > previous_rank
+    return stable_hit_key(candidate) < stable_hit_key(previous)
+
+
 def check_shards(rows: list[dict[str, str]]) -> list[dict[str, object]]:
     out: list[dict[str, object]] = []
     for row in rows:
@@ -149,7 +180,7 @@ def summarize_assembled(assembled_rows: list[dict[str, object]]) -> list[dict[st
     for manifest in assembled_rows:
         path = Path(str(manifest["assembled_output_tsv_gz"]))
         lengths = read_lengths(str(manifest["target_fasta"]))
-        best_by_window: dict[tuple[str, int, int, str], dict[str, object]] = {}
+        best_inter_by_window: dict[tuple[object, ...], dict[str, object]] = {}
         with gzip.open(path, "rt") as handle:
             reader = csv.DictReader(handle, delimiter="\t")
             for row in reader:
@@ -184,11 +215,18 @@ def summarize_assembled(assembled_rows: list[dict[str, object]]) -> list[dict[st
                 }
                 out["signal_class"] = annotate_signal(out)
                 edge_rows.append(out)
-                key = (str(target["seq"]), int(target["start"]), int(target["end"]), relation)
-                previous = best_by_window.get(key)
-                if previous is None or float(out["estimated_identity"]) > float(previous["estimated_identity"]):
-                    best_by_window[key] = out
-        best_rows.extend(best_by_window.values())
+                if relation == "interchromosomal":
+                    key = (
+                        manifest["method"],
+                        manifest["comparison_id"],
+                        str(target["seq"]),
+                        int(target["start"]),
+                        int(target["end"]),
+                    )
+                    previous = best_inter_by_window.get(key)
+                    if previous is None or is_better_hit(out, previous):
+                        best_inter_by_window[key] = out
+        best_rows.extend(best_inter_by_window.values())
 
     fields = [
         "method",
@@ -214,29 +252,23 @@ def summarize_assembled(assembled_rows: list[dict[str, object]]) -> list[dict[st
     write_tsv(OUT / "summaries/per_window_target_similarity_support.tsv", best_rows, fields)
     inter = [row for row in edge_rows if row["relation"] == "interchromosomal"]
     write_tsv(OUT / "summaries/all_interchromosomal_targets.tsv", inter, fields)
-    top_rows: list[dict[str, object]] = []
-    seen: set[tuple[object, ...]] = set()
-    for row in sorted(
-        inter,
+    top_rows = sorted(
+        best_rows,
         key=lambda item: (
             str(item["method"]),
             str(item["comparison_id"]),
             str(item["target_seq"]),
             int(item["target_start"]),
-            -float(item["estimated_identity"]),
+            int(item["target_end"]),
         ),
-    ):
-        key = (row["method"], row["comparison_id"], row["target_seq"], row["target_start"], row["target_end"])
-        if key not in seen:
-            seen.add(key)
-            top_rows.append(row)
+    )
     write_tsv(OUT / "summaries/top_interchromosomal_targets.tsv", top_rows, fields)
     write_tsv(OUT / "summaries/chr9q_chr3q_windows.tsv", [r for r in inter if r["signal_class"] == "chr9q_chr3q"], fields)
     write_tsv(OUT / "summaries/par_controls.tsv", [r for r in inter if r["signal_class"] == "PAR_control"], fields)
     write_tsv(OUT / "summaries/acrocentric_controls.tsv", [r for r in inter if r["signal_class"] == "acrocentric_control"], fields)
 
     tracks: dict[tuple[object, ...], dict[str, object]] = defaultdict(dict)
-    for row in inter:
+    for row in best_rows:
         key = (row["method"], row["comparison_id"], row["target_seq"], row["target_start"], row["target_end"], row["target_arm"])
         rec = tracks[key]
         rec.update(
@@ -249,11 +281,9 @@ def summarize_assembled(assembled_rows: list[dict[str, object]]) -> list[dict[st
                 "target_arm": row["target_arm"],
             }
         )
-        arms = set(str(rec.get("interchromosomal_arms", "")).split(",")) if rec.get("interchromosomal_arms") else set()
-        arms.add(str(row["other_arm"]))
-        rec["interchromosomal_arms"] = ",".join(sorted(arms))
-        rec["interchromosomal_edge_count"] = int(rec.get("interchromosomal_edge_count", 0)) + 1
-        rec["max_estimated_identity"] = max(float(rec.get("max_estimated_identity", 0)), float(row["estimated_identity"]))
+        rec["interchromosomal_arms"] = str(row["other_arm"])
+        rec["interchromosomal_edge_count"] = 1
+        rec["max_estimated_identity"] = float(row["estimated_identity"])
     write_tsv(
         OUT / "summaries/full_genome_target_pattern_tracks.tsv",
         list(tracks.values()),
