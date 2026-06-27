@@ -1,0 +1,18 @@
+{
+  "comparisons": [
+    "PAN027mat_vs_PAN010_joint",
+    "PAN027pat_vs_PAN011_joint",
+    "PAN028mat_vs_PAN027_joint"
+  ],
+  "generated_utc": "2026-06-27T11:39:24Z",
+  "impg_path": "/home/erikg/.cargo/bin/impg",
+  "impg_version": "impg 0.4.1",
+  "methods": [
+    "wfmash_p95_updated_bin",
+    "sweepga_fastga_frequency32"
+  ],
+  "no_new_alignment_or_graph_construction": true,
+  "scope": "raw unfiltered many:many PAF-backed IMPG similarity over exact full-genome 2 kb target windows",
+  "shard_windows": 20000,
+  "window_size_bp": 2000
+}

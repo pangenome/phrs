@@ -1,0 +1,7 @@
+# Large generated runtime artifacts stay on moosefs for Slurm jobs.
+/beds/
+/bed_shards/
+/logs/
+/metadata/
+/outputs/
+/scripts/__pycache__/
