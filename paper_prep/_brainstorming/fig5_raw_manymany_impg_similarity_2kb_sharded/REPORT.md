@@ -101,3 +101,44 @@ That writes one compressed assembled IMPG TSV per method x comparison under
 - `summaries/acrocentric_controls.tsv`
 - `summaries/full_genome_target_pattern_tracks.tsv`
 
+## Deferred Finalization Check: 2026-06-27T21:49:26Z
+
+Finalization was checked from WG task `finalize-fig5-raw-after-arrays` in
+worktree `/moosefs/erikg/phrs/.wg-worktrees/agent-2872`. The live shard tree
+remains:
+
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The main target tree remains:
+
+- `/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The Slurm guardrail blocked assembly because at least one of arrays
+`1706840`-`1706845` was still active. Exact `squeue` state at
+`2026-06-27T21:49:26Z`:
+
+```text
+1706841_[0-148%6]  PENDING  0:00     (Priority)    fig5_impg_sweepg_PAN027pat_vs_P
+1706842_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_sweepg_PAN028mat_vs_P
+1706843_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN027mat_vs_P
+1706844_[0-148%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN027pat_vs_P
+1706845_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN028mat_vs_P
+1706840_[50-151%6] PENDING  0:00     (Resources)   fig5_impg_sweepg_PAN027mat_vs_P
+1706861            PENDING  0:00     (Dependency)  fig5_impg_finalize_2kb
+1706840_49         RUNNING  1:51:00  octopus11     fig5_impg_sweepg_PAN027mat_vs_P
+1706840_18         RUNNING  5:16:42  octopus09     fig5_impg_sweepg_PAN027mat_vs_P
+```
+
+The previously submitted dependency finalizer job `1706861` is still pending
+with `Dependency` reason and should be harvested first when the arrays leave
+RUNNING/PENDING. Do not run `scripts/finalize_2kb_sharded_impg.py` manually
+against incomplete shards. A delayed WG follow-up was created to re-check Slurm
+state: `finalize-fig5-raw-2`. Only after all six arrays are terminal and
+successful should that follow-up harvest or run finalization.
+
+When finalization is permitted, preserve the all-hit assembled compressed IMPG
+TSVs under `outputs/assembled/` for audit. The plotting summaries must reduce to
+one hit per 2 kb query window using this deterministic rule: choose the hit with
+the highest similarity/ANI/support score first, then the greatest
+aligned/support length, then the stable lexical target coordinate key
+(`target_name`, `target_start`, `target_end`) to break any remaining tie.
