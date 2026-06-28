@@ -252,3 +252,70 @@ preserve all-hit assembled outputs under `outputs/assembled/`, and verify that
 the plotting summaries reduce to one best hit per 2 kb query window using the
 documented deterministic tie-break: highest similarity/ANI/support score, then
 aligned/support length, then lexical target coordinates.
+
+## Deferred Finalization Check: 2026-06-28T04:01:07Z
+
+Finalization was re-checked from WG task `finalize-fig5-raw-4` in worktree
+`/moosefs/erikg/phrs/.wg-worktrees/agent-2875`. The live shard tree remains:
+
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The main target tree remains:
+
+- `/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The dependency finalizer job was inspected first. `sacct -j 1706861` reported:
+
+```text
+JobID|JobName|State|ExitCode|Elapsed|Start|End|NodeList|Reason
+1706861|fig5_impg_finalize_2kb|PENDING|0:0|00:00:00|Unknown|Unknown|None assigned|Dependency
+```
+
+No live log file matching `*1706861*` was present under the live shard tree, so
+job `1706861` has not yet owned tmp shard normalization, finalizer execution,
+or rsync harvest.
+
+The Slurm guardrail still blocks assembly because arrays `1706840`-`1706845`
+remain active. Exact `squeue` state at `2026-06-28T04:01:07Z`:
+
+```text
+1706841_[0-148%6]  PENDING  0:00     (Priority)    fig5_impg_sweepg_PAN027pat_vs_P
+1706842_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_sweepg_PAN028mat_vs_P
+1706843_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN027mat_vs_P
+1706844_[0-148%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN027pat_vs_P
+1706845_[0-151%6]  PENDING  0:00     (Priority)    fig5_impg_wfmash_PAN028mat_vs_P
+1706840_[70-151%6] PENDING  0:00     (Resources)   fig5_impg_sweepg_PAN027mat_vs_P
+1706861            PENDING  0:00     (Dependency)  fig5_impg_finalize_2kb
+1706840_69         RUNNING  8:26     octopus09     fig5_impg_sweepg_PAN027mat_vs_P
+1706840_60         RUNNING  3:58:15  octopus11     fig5_impg_sweepg_PAN027mat_vs_P
+```
+
+`sacct` additionally reported `1706840_60` as `RUNNING` on `octopus11` since
+`2026-06-28T00:02:52` and `1706840_69` as `RUNNING` on `octopus09` since
+`2026-06-28T03:52:41`; array element `1706840_[70-151%6]` and arrays
+`1706841`, `1706842`, `1706843`, `1706844`, and `1706845` remain pending with
+no node assigned. The live logs currently extend through
+`logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_69.1706840.*`;
+shard 69 is still running, and shard 60 continues to emit IMPG progress lines.
+
+The checked-in `manifests/shard_completion_manifest.tsv` still has 906 data
+rows plus header. Its state column remains `MISSING_OR_INCOMPLETE` for all 906
+rows because the Slurm run has not completed and no finalizer or harvest has
+updated the manifest yet. No `outputs/assembled/` or `summaries/` products are
+present in this worktree at this blocked stage.
+
+No WFMASH, SweepGA/FastGA, minimap2, seqwish, odgi, alignment, shard
+normalization, finalizer, rsync harvest, or partial assembly command was run.
+Incomplete shards were not marked as data failures. A delayed WG follow-up was
+created to re-check Slurm state: `finalize-fig5-raw-5`.
+
+That follow-up should again inspect dependency finalizer job `1706861` before
+manual finalization. Only after all six arrays are terminal and successful
+should it normalize tmp shard filenames if needed, harvest or run the finalizer,
+preserve all-hit assembled outputs under `outputs/assembled/`, and verify that
+the plotting summaries reduce to one best hit per 2 kb query window using the
+documented deterministic tie-break: highest similarity/ANI/support score, then
+aligned/support length, then lexical target coordinates. This task does not
+supersede the failed `finalize-fig5-raw`; it preserves the guardrail and defers
+finalization until the Slurm dependency chain reaches a terminal successful
+state.
