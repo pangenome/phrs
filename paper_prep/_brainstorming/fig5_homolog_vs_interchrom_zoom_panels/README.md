@@ -10,6 +10,8 @@ target.
 - zoom size: 500 kb from the relevant telomere
 - orientation: p-arm telomeres are shown at the left edge; q-arm telomeres are
   shown at the right edge with actual q-arm coordinate endpoints annotated
+- scale: per-row coordinate endpoints are drawn on the tracks; a single 100 kb
+  scale bar replaces the full local-position axis
 - break glyphs mark the omitted chromosome-body side of each zoom
 - plotted signal: windows where the best interchromosomal IMPG match in the
   PAN011 father target beats the best same-chromosome/homolog match

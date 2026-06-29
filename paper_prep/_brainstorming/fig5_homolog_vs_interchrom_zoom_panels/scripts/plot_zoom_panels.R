@@ -48,10 +48,19 @@ panel_coord_label <- function(row) {
   len <- as.numeric(row$query_length)
   zoom <- as.numeric(row$zoom_bp)
   if (row$arm == "p") {
-    sprintf("%s p: 0-%.0f kb", row$query_chrom, zoom / 1000)
+    sprintf("%s p: %.3f-%.3f Mb", row$query_chrom, 0, zoom / 1e6)
   } else {
     sprintf("%s q: %.3f-%.3f Mb", row$query_chrom, (len - zoom) / 1e6, len / 1e6)
   }
+}
+
+row_coord_endpoints <- function(row) {
+  len <- as.numeric(row$query_length)
+  zoom <- as.numeric(row$zoom_bp)
+  if (row$arm == "p") {
+    return(c(sprintf("%.3f Mb", 0), sprintf("%.3f Mb", zoom / 1e6)))
+  }
+  c(sprintf("%.3f Mb", (len - zoom) / 1e6), sprintf("%.3f Mb", len / 1e6))
 }
 
 draw_break_glyph <- function(x, y, direction = c("right", "left")) {
@@ -71,23 +80,29 @@ draw_break_glyph <- function(x, y, direction = c("right", "left")) {
   par(xpd = xpd_old)
 }
 
-row_axis <- function(ticks, labels, y, cex = 0.43) {
-  segments(min(ticks), y, max(ticks), y, col = "#999999", lwd = 0.45)
-  segments(ticks, y, ticks, y - 0.055, col = "#999999", lwd = 0.45)
-  text(ticks, y - 0.095, labels, cex = cex, col = "#555555", adj = c(0.5, 1), xpd = NA)
+draw_coord_endpoints <- function(x0, x1, y, labels, cex = 0.42) {
+  text(x0, y, labels[1], cex = cex, col = "#555555", adj = c(0, 1), xpd = NA)
+  text(x1, y, labels[2], cex = cex, col = "#555555", adj = c(1, 1), xpd = NA)
+}
+
+draw_scale_bar <- function(x0, y, width_kb = 100) {
+  x1 <- x0 + width_kb
+  segments(x0, y, x1, y, col = "#444444", lwd = 1.1, lend = "butt")
+  segments(c(x0, x1), y - 0.055, c(x0, x1), y + 0.055, col = "#444444", lwd = 1.1)
+  text((x0 + x1) / 2, y - 0.10, sprintf("%d kb", width_kb), cex = 0.58, col = "#333333", adj = c(0.5, 1), xpd = NA)
 }
 
 draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
-  par(mar = c(3.7, 6.6, 3.7, 5.4), xaxs = "i", yaxs = "i")
+  par(mar = c(3.0, 6.6, 3.7, 5.4), xaxs = "i", yaxs = "i")
   n <- nrow(summary)
   p_x0 <- 0
   p_x1 <- 500
   q_x0 <- 650
   q_x1 <- 1150
 
-  plot(NA, xlim = c(-88, 1285), ylim = c(0.28, n + 1.12), axes = FALSE, xlab = "", ylab = "")
+  plot(NA, xlim = c(-88, 1285), ylim = c(0.04, n + 1.12), axes = FALSE, xlab = "", ylab = "")
   title("PAN027 paternal hap2 subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.02)
   mtext(
     "Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match",
@@ -95,14 +110,11 @@ draw_zoom <- function() {
     line = 0.55,
     cex = 0.62
   )
-  text((p_x0 + p_x1) / 2, n + 0.60, "p-arm telomeric windows (0-500 kb)", cex = 0.66, font = 2)
+  text((p_x0 + p_x1) / 2, n + 0.60, "p-arm telomeric windows (chromosome coordinates)", cex = 0.66, font = 2)
   text((q_x0 + q_x1) / 2, n + 0.60, "q-arm telomeric windows (chromosome coordinates)", cex = 0.66, font = 2)
 
   p_ticks <- seq(0, 500, by = 100)
-  segments(p_x0, 0.58, p_x1, 0.58, col = "#777777", lwd = 0.55)
-  segments(p_ticks, 0.58, p_ticks, 0.48, col = "#777777", lwd = 0.55)
-  text(p_ticks, 0.40, paste0(p_ticks, " kb"), cex = 0.58, col = "#444444", adj = c(0.5, 1), xpd = NA)
-  text((p_x0 + p_x1) / 2, 0.16, "p-arm coordinate from p telomere", cex = 0.68, col = "#444444", xpd = NA)
+  q_ticks <- seq(0, 500, by = 100)
 
   for (i in seq_len(n)) {
     row <- summary[i, ]
@@ -118,14 +130,12 @@ draw_zoom <- function() {
       text(-8, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
       text(-8, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
     } else {
-      q_ticks <- seq(0, 500, by = 125)
       segments(q_x0 + q_ticks, y - 0.18, q_x0 + q_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
       draw_break_glyph(q_x0 - 15, y, "left")
       text(q_x0 - 26, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
       text(q_x0 - 26, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
-      q_labels <- sprintf("%.3f", (as.numeric(row$query_length) - as.numeric(row$zoom_bp) + q_ticks * 1000) / 1e6)
-      row_axis(q_x0 + q_ticks, q_labels, y - 0.43)
     }
+    draw_coord_endpoints(x0, x1, y - 0.43, row_coord_endpoints(row))
 
     rows <- segments[segments$panel_id == row$panel_id, ]
     if (nrow(rows) > 0) {
@@ -203,7 +213,7 @@ draw_zoom <- function() {
       text(x + 6.5, y0, legend_targets[k], adj = 0, cex = 0.55)
     }
   }
-  text((q_x0 + q_x1) / 2, 0.16, "q-arm chromosome coordinate (Mb)", cex = 0.68, col = "#444444", xpd = NA)
+  draw_scale_bar((p_x1 + q_x0 - 100) / 2, 0.23, 100)
 }
 
 pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.pdf"), width = 13.8, height = 6.8, useDingbats = FALSE)
