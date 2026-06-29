@@ -1330,6 +1330,116 @@ harvest, and any alignment/graph-build command remain blocked. Delayed
 follow-up `finalize-fig5-raw-18` was created to re-check the same dependency
 chain.
 
+## Deferred Finalization Check: 2026-06-29T06:19:39Z
+
+Finalization was re-checked from WG task `finalize-fig5-raw-22` in worktree
+`/moosefs/erikg/phrs/.wg-worktrees/agent-2897`. The live shard tree remains:
+
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The main target tree remains:
+
+- `/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/`
+
+The dependency finalizer job was inspected first. `sacct -j 1706861` reported:
+
+```text
+JobIDRaw|JobID|State|ExitCode|Elapsed|Submit|Start|End|NodeList|Reason
+1706861|1706861|PENDING|0:0|00:00:00|2026-06-27T15:55:18|Unknown|Unknown|None assigned|Dependency
+```
+
+No live or main-tree finalizer log exists yet. Searches for files matching
+`*1706861*`, `*final*`, or `slurm-1706861*` found only
+`scripts/finalize_2kb_sharded_impg.py` and cached bytecode in the live tree;
+no `logs/finalize_after_arrays.*` or `slurm-1706861*` file is present.
+Therefore job `1706861` has not yet owned tmp shard normalization, finalizer
+execution, or rsync harvest.
+
+The Slurm guardrail still blocks assembly because arrays `1706840`-`1706845`
+remain active. Exact `squeue` state at this check:
+
+```text
+JOBID|STATE|REASON|TIME|TIME_LIMIT|NODES|NAME
+1706841_[0-148%6]|PENDING|Priority|0:00|1-00:00:00|1|fig5_impg_sweepg_PAN027pat_vs_P
+1706842_[0-151%6]|PENDING|Priority|0:00|1-00:00:00|1|fig5_impg_sweepg_PAN028mat_vs_P
+1706843_[0-151%6]|PENDING|Priority|0:00|1-00:00:00|1|fig5_impg_wfmash_PAN027mat_vs_P
+1706844_[0-148%6]|PENDING|Priority|0:00|1-00:00:00|1|fig5_impg_wfmash_PAN027pat_vs_P
+1706845_[0-151%6]|PENDING|Priority|0:00|1-00:00:00|1|fig5_impg_wfmash_PAN028mat_vs_P
+1706840_[99-151%6]|PENDING|Resources|0:00|1-00:00:00|1|fig5_impg_sweepg_PAN027mat_vs_P
+1706861|PENDING|Dependency|0:00|4:00:00|1|fig5_impg_finalize_2kb
+1706840_98|RUNNING|None|15:45|1-00:00:00|1|fig5_impg_sweepg_PAN027mat_vs_P
+1706840_94|RUNNING|None|2:13:00|1-00:00:00|1|fig5_impg_sweepg_PAN027mat_vs_P
+```
+
+`sacct` additionally reported `1706840_78` as terminal `TIMEOUT`:
+
+```text
+1706840_78|fig5_impg_sweepg_PAN027mat_vs_P|workers|TIMEOUT|0:0|1-00:00:13|2026-06-28T05:55:27|2026-06-29T05:55:40
+1706840_78.batch|batch||CANCELLED|0:15|1-00:00:14|2026-06-28T05:55:27|2026-06-29T05:55:41
+```
+
+The concrete live log paths for the timed-out shard are:
+
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_78.1706840.out`
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_78.1706840.err`
+
+The tail of the shard 78 stderr ends with:
+
+```text
+slurmstepd: error: *** JOB 1706932 ON octopus09 CANCELLED AT 2026-06-29T05:55:47 DUE TO TIME LIMIT ***
+```
+
+The concrete live log paths for the currently running shards are:
+
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_94.1706840.out`
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_94.1706840.err`
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_98.1706840.out`
+- `/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded/logs/sweepga_fastga_frequency32.PAN027mat_vs_PAN010_joint.shard_98.1706840.err`
+
+The checked-in and live `manifests/shard_completion_manifest.tsv` files still
+have 906 data rows plus header, and all 906 rows remain
+`MISSING_OR_INCOMPLETE`. The checked-in and live
+`manifests/assembled_outputs.tsv` files still have only their header. The live
+tree currently has shard tmp outputs only for the first array; shard `0078` is
+a partial timed-out tmp file, shards `0094` and `0098` are current tmp files,
+and neither the live tree nor the checked-in mirror currently has
+`outputs/assembled/` or `summaries/` products. Therefore the six assembled
+compressed outputs and downstream summary tables remain correctly blocked by
+RUNNING/PENDING Slurm state plus a terminal timeout that must be handled by the
+Slurm pipeline owner before any finalization can be trusted.
+
+No WFMASH, SweepGA/FastGA, minimap2, seqwish, odgi, alignment, shard
+normalization, finalizer, rsync harvest, or partial assembly command was run.
+Incomplete shards were not marked as data failures. A delayed WG follow-up was
+created to re-check Slurm state: `finalize-fig5-raw-23`. Because a direct child
+task would exceed the configured graph depth limit, that task was created at
+the same graph level as this one with `finalize-fig5-raw-11` as its upstream
+dependency instead of as a direct child.
+
+That follow-up should again inspect dependency finalizer job `1706861` before
+manual finalization. If any array remains running or pending, it should record
+the exact active state and defer again. If arrays are terminal but unsuccessful,
+it should diagnose failed Slurm shards with concrete log paths and avoid
+promoting incomplete tmp output. Only after all six arrays are terminal and
+successful should it normalize tmp shard filenames if needed, harvest or run
+the finalizer, preserve all-hit assembled outputs under `outputs/assembled/`,
+and verify that the plotting summaries reduce to one best hit per 2 kb query
+window using the documented deterministic tie-break: highest
+similarity/ANI/support score, then aligned/support length, then lexical target
+coordinates. This task does not supersede the failed `finalize-fig5-raw`; it
+preserves the guardrail and defers finalization until the Slurm dependency
+chain reaches a terminal successful state.
+
+## Latest Blocked-State Pointer: 2026-06-29T06:19:39Z
+
+The latest re-check is the `finalize-fig5-raw-22` section above. It records
+finalizer `1706861` still `PENDING` on `Dependency`, `1706840_94` and
+`1706840_98` still `RUNNING`, `1706840_[99-151%6]` still `PENDING`, arrays
+`1706841`-`1706845` still `PENDING`, and `1706840_78` terminal `TIMEOUT` with
+concrete live logs. Finalization, shard normalization, rsync harvest, and any
+alignment/graph-build command remain blocked. Delayed follow-up
+`finalize-fig5-raw-23` was created to re-check the same dependency chain.
+
 ## Deferred Finalization Check: 2026-06-29T01:59:23Z
 
 Finalization was re-checked from WG task `finalize-fig5-raw-18` in worktree
@@ -1684,3 +1794,16 @@ finalizer `1706861` still `PENDING` on `Dependency`, `1706840_78` and
 harvest, and any alignment/graph-build command remain blocked. Delayed
 follow-up `finalize-fig5-raw-22` was created to re-check the same dependency
 chain.
+
+## Latest Blocked-State Pointer: 2026-06-29T06:19:39Z
+
+The latest re-check is the `finalize-fig5-raw-22` section in this report. It
+records finalizer `1706861` still `PENDING` on `Dependency`, `1706840_94` and
+`1706840_98` still `RUNNING`, `1706840_[99-151%6]` still `PENDING`, arrays
+`1706841`-`1706845` still `PENDING`, and `1706840_78` terminal `TIMEOUT` with
+concrete live logs. Finalization, shard normalization, rsync harvest, and any
+alignment/graph-build command remain blocked. Delayed follow-up
+`finalize-fig5-raw-23` was created to re-check the same dependency chain. This
+task does not supersede the failed `finalize-fig5-raw`; it preserves the Slurm
+guardrail and defers finalization until the dependency chain reaches a
+terminal successful state.
