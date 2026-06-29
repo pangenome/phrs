@@ -4,10 +4,23 @@ out_dir <- "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels"
 segments <- read.delim(file.path(out_dir, "zoom_window_segments.tsv"), stringsAsFactors = FALSE, check.names = FALSE)
 summary <- read.delim(file.path(out_dir, "zoom_panel_summary.tsv"), stringsAsFactors = FALSE, check.names = FALSE)
 
+if (!"target_haplotype" %in% names(segments)) {
+  segments$target_haplotype <- "NA"
+}
 summary <- summary[order(summary$panel_order), ]
 segments$relative_start_kb <- segments$relative_start / 1000
 segments$relative_end_kb <- segments$relative_end / 1000
 segments$relative_mid_kb <- (segments$relative_start + segments$relative_end) / 2000
+segments$display_start_kb <- ifelse(
+  segments$arm == "q",
+  500 - segments$relative_end_kb,
+  segments$relative_start_kb
+)
+segments$display_end_kb <- ifelse(
+  segments$arm == "q",
+  500 - segments$relative_start_kb,
+  segments$relative_end_kb
+)
 
 target_cols <- c(
   chr1 = "#4E79A7", chr2 = "#A0CBE8", chr3 = "#D95F02", chr4 = "#FFBE7D",
@@ -34,6 +47,13 @@ fmt_targets <- function(value) {
   paste(pieces[seq_len(min(3, length(pieces)))], collapse = "\n")
 }
 
+target_run_label <- function(target_chrom, target_haplotype) {
+  if (is.na(target_haplotype) || target_haplotype == "NA" || !nzchar(target_haplotype)) {
+    return(target_chrom)
+  }
+  sprintf("%s %s", target_chrom, target_haplotype)
+}
+
 panel_coord_label <- function(row) {
   len <- as.numeric(row$query_length)
   zoom <- as.numeric(row$zoom_bp)
@@ -44,14 +64,31 @@ panel_coord_label <- function(row) {
   }
 }
 
+draw_break <- function(x, y, direction) {
+  xpd_old <- par("xpd")
+  par(xpd = NA)
+  if (direction == "right") {
+    segments(x + 3, y - 0.26, x + 8, y + 0.26, col = "#555555", lwd = 1.0)
+    segments(x + 9, y - 0.26, x + 14, y + 0.26, col = "#555555", lwd = 1.0)
+  } else {
+    segments(x - 14, y - 0.26, x - 9, y + 0.26, col = "#555555", lwd = 1.0)
+    segments(x - 8, y - 0.26, x - 3, y + 0.26, col = "#555555", lwd = 1.0)
+  }
+  par(xpd = xpd_old)
+}
+
+draw_telomere_cap <- function(x, y) {
+  segments(x, y - 0.23, x, y + 0.23, col = "#444444", lwd = 1.0)
+}
+
 draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
-  par(mar = c(4.0, 7.2, 3.7, 5.1), xaxs = "i", yaxs = "i")
+  par(mar = c(4.0, 7.7, 3.7, 5.1), xaxs = "i", yaxs = "i")
   n <- nrow(summary)
-  plot(NA, xlim = c(-92, 660), ylim = c(0.35, n + 1.0), axes = FALSE, xlab = "", ylab = "")
-  title("Subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.08)
-  mtext("Filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match; x-axis is distance inward from the telomere", side = 3, line = 0.55, cex = 0.66)
+  plot(NA, xlim = c(-116, 660), ylim = c(0.35, n + 1.0), axes = FALSE, xlab = "", ylab = "")
+  title("PAN027 paternal hap2 subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.02)
+  mtext("Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match", side = 3, line = 0.55, cex = 0.62)
   axis(1, at = seq(0, 500, by = 100), labels = paste0(seq(0, 500, by = 100), " kb"), cex.axis = 0.67)
   abline(v = seq(0, 500, by = 100), col = "#EFEFEF", lwd = 0.55)
 
@@ -59,14 +96,21 @@ draw_zoom <- function() {
     row <- summary[i, ]
     y <- n - i + 1
     rect(0, y - 0.18, 500, y + 0.18, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.8)
+    if (row$arm == "p") {
+      draw_telomere_cap(0, y)
+      draw_break(500, y, "right")
+    } else {
+      draw_break(0, y, "left")
+      draw_telomere_cap(500, y)
+    }
     rows <- segments[segments$panel_id == row$panel_id, ]
     if (nrow(rows) > 0) {
-      rows <- rows[order(rows$relative_start, rows$relative_end, rows$target_chrom), ]
+      rows <- rows[order(rows$display_start_kb, rows$display_end_kb, rows$target_chrom), ]
       for (j in seq_len(nrow(rows))) {
         rect(
-          rows$relative_start_kb[j],
+          rows$display_start_kb[j],
           y - 0.30,
-          rows$relative_end_kb[j],
+          rows$display_end_kb[j],
           y + 0.30,
           col = target_col(rows$target_chrom[j]),
           border = NA
@@ -74,32 +118,42 @@ draw_zoom <- function() {
       }
 
       # Label contiguous target runs of at least 6 kb, plus every chr3/chrY run.
-      run_start <- rows$relative_start_kb[1]
-      run_end <- rows$relative_end_kb[1]
+      run_start <- rows$display_start_kb[1]
+      run_end <- rows$display_end_kb[1]
       run_target <- rows$target_chrom[1]
-      emit_run <- function(start_kb, end_kb, target, y) {
+      run_haplotype <- rows$target_haplotype[1]
+      emit_run <- function(start_kb, end_kb, target, haplotype, y) {
         width <- end_kb - start_kb
-                  if (width >= 12 || (target %in% c("chr3", "chrY") && width >= 10)) {
-          text((start_kb + end_kb) / 2, y + 0.43, sprintf("%s %.0f kb", target, width), cex = 0.42, col = "#222222")
+        if (width >= 12 || (target %in% c("chr3", "chrY") && width >= 10)) {
+          label <- target_run_label(target, haplotype)
+          text((start_kb + end_kb) / 2, y + 0.43, sprintf("%s %.0f kb", label, width), cex = 0.40, col = "#222222")
         }
       }
       if (nrow(rows) > 1) {
         for (j in 2:nrow(rows)) {
-          contiguous <- rows$target_chrom[j] == run_target && rows$relative_start_kb[j] <= run_end + 0.001
+          contiguous <- rows$target_chrom[j] == run_target &&
+            rows$target_haplotype[j] == run_haplotype &&
+            rows$display_start_kb[j] <= run_end + 0.001
           if (contiguous) {
-            run_end <- max(run_end, rows$relative_end_kb[j])
+            run_end <- max(run_end, rows$display_end_kb[j])
           } else {
-            emit_run(run_start, run_end, run_target, y)
-            run_start <- rows$relative_start_kb[j]
-            run_end <- rows$relative_end_kb[j]
+            emit_run(run_start, run_end, run_target, run_haplotype, y)
+            run_start <- rows$display_start_kb[j]
+            run_end <- rows$display_end_kb[j]
             run_target <- rows$target_chrom[j]
+            run_haplotype <- rows$target_haplotype[j]
           }
         }
       }
-      emit_run(run_start, run_end, run_target, y)
+      emit_run(run_start, run_end, run_target, run_haplotype, y)
     }
-    text(-8, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
-    text(-8, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
+    text(-24, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
+    text(-24, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
+    if (row$arm == "q") {
+      len <- as.numeric(row$query_length)
+      text(0, y - 0.47, sprintf("%.3f Mb", (len - as.numeric(row$zoom_bp)) / 1e6), adj = c(0, 1), cex = 0.42, col = "#555555")
+      text(500, y - 0.47, sprintf("%.3f Mb", len / 1e6), adj = c(1, 1), cex = 0.42, col = "#555555")
+    }
     text(
       506,
       y,
@@ -123,7 +177,7 @@ draw_zoom <- function() {
       text(x + 6.5, y0, legend_targets[k], adj = 0, cex = 0.55)
     }
   }
-  mtext("Distance from telomere into chromosome arm", side = 1, line = 2.7, cex = 0.78)
+  mtext("Local position in 500 kb subtelomeric window (p telomere left; q telomere right)", side = 1, line = 2.7, cex = 0.78)
 }
 
 pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.pdf"), width = 13.8, height = 6.8, useDingbats = FALSE)

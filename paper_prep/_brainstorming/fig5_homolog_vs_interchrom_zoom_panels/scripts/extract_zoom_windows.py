@@ -30,6 +30,7 @@ PANEL_ORDER = [
 ]
 
 CHR_RE = re.compile(r"(chr(?:[0-9]+|X|Y|M))")
+TARGET_HAP_RE = re.compile(r"#(h[0-9]+)_")
 
 
 def chrom_name(value: str) -> str:
@@ -63,6 +64,11 @@ def target_bucket(target_chrom: str) -> str:
     if target_chrom in {"chr3", "chrY", "chr1", "chr13", "chr14", "chr15", "chr21", "chr22"}:
         return target_chrom
     return "other"
+
+
+def target_haplotype(target_name: str) -> str:
+    match = TARGET_HAP_RE.search(target_name)
+    return match.group(1) if match else "NA"
 
 
 def main() -> None:
@@ -116,6 +122,7 @@ def main() -> None:
                     "target_chrom": target_chrom,
                     "target_bucket": target_bucket(target_chrom),
                     "target_name": inter["other_seq"],
+                    "target_haplotype": target_haplotype(inter["other_seq"]),
                     "same_identity": f"{same_identity:.6f}",
                     "inter_identity": f"{inter_identity:.6f}",
                     "delta_identity": f"{inter_identity - same_identity:.6f}",
@@ -127,17 +134,22 @@ def main() -> None:
 
     summaries: list[dict[str, object]] = []
     by_panel: dict[str, list[dict[str, object]]] = defaultdict(list)
-    by_panel_target: dict[tuple[str, str], int] = defaultdict(int)
+    by_panel_target: dict[tuple[str, str, str], int] = defaultdict(int)
     for row in segments:
         by_panel[str(row["panel_id"])].append(row)
-        by_panel_target[(str(row["panel_id"]), str(row["target_chrom"]))] += int(row["window_overlap_bp"])
+        by_panel_target[
+            (str(row["panel_id"]), str(row["target_chrom"]), str(row["target_haplotype"]))
+        ] += int(row["window_overlap_bp"])
 
     for panel_order, (chrom, arm, label) in enumerate(PANEL_ORDER, start=1):
         panel_id = f"{chrom}_{arm}"
         rows = by_panel.get(panel_id, [])
         top_targets = [
-            f"{target}:{bp}"
-            for (pid, target), bp in sorted(by_panel_target.items(), key=lambda kv: (kv[0][0] != panel_id, -kv[1], kv[0][1]))
+            f"{target} {hap}:{bp}"
+            for (pid, target, hap), bp in sorted(
+                by_panel_target.items(),
+                key=lambda kv: (kv[0][0] != panel_id, -kv[1], kv[0][1], kv[0][2]),
+            )
             if pid == panel_id
         ]
         summaries.append(
@@ -173,6 +185,7 @@ def main() -> None:
         "target_chrom",
         "target_bucket",
         "target_name",
+        "target_haplotype",
         "same_identity",
         "inter_identity",
         "delta_identity",
@@ -206,4 +219,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

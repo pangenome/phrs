@@ -1,6 +1,6 @@
 panel_order	panel_id	panel_label	query_chrom	arm	query_length	zoom_bp	winning_windows	winning_bp	top_targets
-1	chrX_p	PAR1 X/Y control	chrX	p	154091348	500000	71	142000	chrY:142000
-2	chr22_p	chr22p acrocentric	chr22	p	48384128	500000	53	106000	chr14:58000;chr21:34000;chr13:10000;chr15:4000
-3	chr5_q	chr5q subtelomeric	chr5	q	182149871	500000	50	100000	chr1:70000;chr6:16000;chr11:4000;chr17:4000;chr19:2000;chr7:2000;chr8:2000
-4	chr15_p	chr15p acrocentric	chr15	p	98817628	500000	40	80000	chr13:56000;chr22:20000;chr14:2000;chr21:2000
-5	chr9_q	PAN027 chr9q -> chr3q	chr9	q	136209149	500000	25	50000	chr3:34000;chr19:6000;chr7:6000;chr11:4000
+1	chrX_p	PAR1 X/Y control	chrX	p	154091348	500000	71	142000	chrY h2:142000
+2	chr22_p	chr22p acrocentric	chr22	p	48384128	500000	53	106000	chr14 h1:54000;chr21 h1:18000;chr21 h2:16000;chr13 h2:8000;chr14 h2:4000;chr15 h2:4000;chr13 h1:2000
+3	chr5_q	chr5q subtelomeric	chr5	q	182149871	500000	50	100000	chr1 h2:68000;chr6 h2:14000;chr11 h2:4000;chr17 h2:4000;chr1 h1:2000;chr19 h2:2000;chr6 h1:2000;chr7 h1:2000;chr8 h2:2000
+4	chr15_p	chr15p acrocentric	chr15	p	98817628	500000	40	80000	chr13 h2:48000;chr22 h1:20000;chr13 h1:8000;chr14 h2:2000;chr21 h1:2000
+5	chr9_q	PAN027 chr9q -> chr3q	chr9	q	136209149	500000	25	50000	chr3 h2:34000;chr19 h2:6000;chr7 h2:6000;chr11 h1:4000
