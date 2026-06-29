@@ -1,0 +1,4 @@
+basis	windows_total	both_same_and_inter	inter_beats_same_windows	inter_beats_same_bp	same_beats_inter_windows	tie_windows	inter_only_windows	same_only_windows
+1:1	2427	21	9	18000	11	1	2406	0
+4:4	116379	96401	1649	3298000	94213	539	19977	1
+10:10	177998	174942	1778	3556000	172325	839	3052	4
