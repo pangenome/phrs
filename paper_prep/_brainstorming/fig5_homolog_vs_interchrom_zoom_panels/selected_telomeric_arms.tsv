@@ -1,0 +1,6 @@
+plot_order	query_chrom	arm	reason
+1	chrX	p	required_control
+2	chr22	p	top_telomeric_arm
+3	chr5	q	top_telomeric_arm
+4	chr15	p	top_telomeric_arm
+5	chr9	q	required_candidate
