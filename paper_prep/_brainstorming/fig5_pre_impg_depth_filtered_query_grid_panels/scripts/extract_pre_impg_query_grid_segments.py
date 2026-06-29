@@ -15,9 +15,9 @@ SOURCE_DIR = Path("paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_simila
 WINDOW_CONFIG = Path("paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_query_grid_chop_filter_panels/config/panel_windows.tsv")
 
 BASIS_OUTPUTS = {
-    "1:1": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.1to1.query_2000bp.predepth_top20.impg_similarity.tsv.gz",
-    "4:4": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.4to4.query_2000bp.predepth_top20.impg_similarity.tsv.gz",
-    "10:10": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_top20.impg_similarity.tsv.gz",
+    "1:1": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.1to1.query_2000bp.predepth_best_all.impg_similarity.tsv.gz",
+    "4:4": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.4to4.query_2000bp.predepth_best_all.impg_similarity.tsv.gz",
+    "10:10": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_best_all.impg_similarity.tsv.gz",
 }
 
 CHR_RE = re.compile(r"(?:^|[#_/])chr([0-9]+|X|Y|M)(?:[._#:/-]|$)")
@@ -72,12 +72,12 @@ def split_group(group: str) -> tuple[str, int, int]:
     return seq, int(start), int(end)
 
 
-def other_group(row: dict[str, str]) -> tuple[str, int, int] | None:
+def other_group(row: dict[str, str], prefix: str = "") -> tuple[str, int, int] | None:
     query_seq = row["chrom"]
     query_start = int(row["start"])
     query_end = int(row["end"])
-    a_seq, a_start, a_end = split_group(row["group.a"])
-    b_seq, b_start, b_end = split_group(row["group.b"])
+    a_seq, a_start, a_end = split_group(row[f"{prefix}group.a"])
+    b_seq, b_start, b_end = split_group(row[f"{prefix}group.b"])
     if (a_seq, a_start, a_end) == (query_seq, query_start, query_end):
         return b_seq, b_start, b_end
     if (b_seq, b_start, b_end) == (query_seq, query_start, query_end):
@@ -89,16 +89,6 @@ def target_bucket(chrom: str) -> str:
     if chrom in {"chr3", "chr9", "chrX", "chrY"}:
         return chrom
     return "other"
-
-
-def rank(row: dict[str, str]) -> tuple[float, int, float, float, str]:
-    return (
-        float(row["estimated.identity"]),
-        int(float(row["intersection"])),
-        float(row["dice.similarity"]),
-        float(row["jaccard.similarity"]),
-        row["group.b"],
-    )
 
 
 def keep_windows() -> list[dict[str, str]]:
@@ -120,81 +110,78 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
         if not path.exists():
             raise FileNotFoundError(path)
         seen: set[tuple[object, ...]] = set()
-        best_by_window_target: dict[tuple[object, ...], tuple[tuple[object, ...], dict[str, str], tuple[str, int, int]]] = {}
         with gzip.open(path, "rt") as handle:
             reader = csv.DictReader(handle, delimiter="\t")
             for row in reader:
                 query_name = row["chrom"]
                 if query_name not in windows_by_name:
                     continue
+                if row["interchrom_score"] == "" or row["homolog_score"] == "":
+                    continue
                 query_start = int(row["start"])
                 query_end = int(row["end"])
-                other = other_group(row)
+                other = other_group(row, "interchrom_")
                 if other is None:
                     continue
                 target_name, target_start, target_end = other
                 target_chrom = chrom_from_name(target_name)
                 query_chrom = chrom_from_name(query_name)
-                if target_chrom == query_chrom:
-                    continue
                 for window in windows_by_name[query_name]:
                     w_start = int(window["query_start"])
                     w_end = int(window["query_end"])
                     ov = overlap_bp(query_start, query_end, w_start, w_end)
                     if ov <= 0:
                         continue
-                    key = (basis, window["event_id"], query_name, query_start, query_end, target_chrom)
-                    rr = rank(row)
-                    if key not in best_by_window_target or rr > best_by_window_target[key][0]:
-                        best_by_window_target[key] = (rr, row, other)
-        for (basis, event_id, query_name, query_start, query_end, target_chrom), (_rr, row, other) in sorted(best_by_window_target.items()):
-            target_name, target_start, target_end = other
-            window = next(w for w in windows_by_name[query_name] if w["event_id"] == event_id)
-            w_start = int(window["query_start"])
-            w_end = int(window["query_end"])
-            clip_start = max(int(query_start), w_start)
-            clip_end = min(int(query_end), w_end)
-            dedup = (basis, event_id, query_name, clip_start, clip_end, target_name, target_start, target_end)
-            if dedup in seen:
-                continue
-            seen.add(dedup)
-            expected = set(window["expected_target_chroms"].split(","))
-            intersection = int(float(row["intersection"]))
-            identity = float(row["estimated.identity"])
-            segments.append(
-                {
-                    "event_id": event_id,
-                    "comparison_id": window["comparison_id"],
-                    "panel_label": window["panel_label"],
-                    "query_name": query_name,
-                    "query_chrom": chrom_from_name(query_name),
-                    "window_start": w_start,
-                    "window_end": w_end,
-                    "basis": basis,
-                    "chunk_mode": "pre-impg-query-window",
-                    "num_mappings": basis,
-                    "scaffold_jump": "0",
-                    "scoring": "impg-estimated-identity",
-                    "filter_overlap": "na",
-                    "query_start": query_start,
-                    "query_end": query_end,
-                    "query_clip_start": clip_start,
-                    "query_clip_end": clip_end,
-                    "window_overlap_bp": clip_end - clip_start,
-                    "target_name": target_name,
-                    "target_chrom": target_chrom,
-                    "target_bucket": target_bucket(target_chrom),
-                    "target_start": target_start,
-                    "target_end": target_end,
-                    "strand": ".",
-                    "matches": round(intersection * identity),
-                    "alignment_length": intersection,
-                    "identity": f"{identity:.6f}",
-                    "expected_target_chroms": window["expected_target_chroms"],
-                    "is_expected_target": "yes" if target_chrom in expected else "no",
-                    "source_tsv_gz": path,
-                }
-            )
+                    event_id = window["event_id"]
+                    clip_start = max(query_start, w_start)
+                    clip_end = min(query_end, w_end)
+                    dedup = (basis, event_id, query_name, clip_start, clip_end, target_name, target_start, target_end)
+                    if dedup in seen:
+                        continue
+                    seen.add(dedup)
+                    expected = set(window["expected_target_chroms"].split(","))
+                    intersection = int(float(row["interchrom_intersection"]))
+                    identity = float(row["interchrom_score"])
+                    homolog_score = float(row["homolog_score"])
+                    delta = float(row["delta_interchrom_minus_homolog"])
+                    segments.append(
+                        {
+                            "event_id": event_id,
+                            "comparison_id": window["comparison_id"],
+                            "panel_label": window["panel_label"],
+                            "query_name": query_name,
+                            "query_chrom": query_chrom,
+                            "window_start": w_start,
+                            "window_end": w_end,
+                            "basis": basis,
+                            "chunk_mode": "pre-impg-query-window-best-all",
+                            "num_mappings": basis,
+                            "scaffold_jump": "0",
+                            "scoring": "interchrom-minus-homolog-impg-estimated-identity",
+                            "filter_overlap": "na",
+                            "query_start": query_start,
+                            "query_end": query_end,
+                            "query_clip_start": clip_start,
+                            "query_clip_end": clip_end,
+                            "window_overlap_bp": clip_end - clip_start,
+                            "target_name": target_name,
+                            "target_chrom": target_chrom,
+                            "target_bucket": target_bucket(target_chrom),
+                            "target_start": target_start,
+                            "target_end": target_end,
+                            "strand": ".",
+                            "matches": round(intersection * identity),
+                            "alignment_length": intersection,
+                            "identity": f"{identity:.6f}",
+                            "homolog_identity": f"{homolog_score:.6f}",
+                            "delta_interchrom_minus_homolog": f"{delta:.6f}",
+                            "winner_class": row["winner_class"],
+                            "interchrom_beats_homolog": "yes" if delta > 0 else "no",
+                            "expected_target_chroms": window["expected_target_chroms"],
+                            "is_expected_target": "yes" if target_chrom in expected else "no",
+                            "source_tsv_gz": path,
+                        }
+                    )
         for window in windows:
             manifest.append(
                 {
@@ -219,6 +206,7 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
         for basis in BASIS_OUTPUTS:
             rows = by_key[(window["event_id"], basis)]
             expected_rows = [row for row in rows if row["is_expected_target"] == "yes"]
+            win_rows = [row for row in rows if row["interchrom_beats_homolog"] == "yes"]
             by_target_sum = defaultdict(int)
             by_target_intervals = defaultdict(list)
             for row in rows:
@@ -233,15 +221,17 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
                     "window_start": window["query_start"],
                     "window_end": window["query_end"],
                     "basis": basis,
-                    "chunk_mode": "pre-impg-query-window",
+                    "chunk_mode": "pre-impg-query-window-best-all",
                     "num_mappings": basis,
                     "scaffold_jump": "0",
-                    "scoring": "impg-estimated-identity",
+                    "scoring": "interchrom-minus-homolog-impg-estimated-identity",
                     "expected_target_chroms": window["expected_target_chroms"],
                     "segment_rows": len(rows),
                     "expected_target_rows": len(expected_rows),
+                    "interchrom_win_rows": len(win_rows),
                     "sum_expected_overlap_bp": sum(int(r["window_overlap_bp"]) for r in expected_rows),
                     "union_expected_overlap_bp": union_bp([(int(r["query_clip_start"]), int(r["query_clip_end"])) for r in expected_rows]),
+                    "union_interchrom_win_bp": union_bp([(int(r["query_clip_start"]), int(r["query_clip_end"])) for r in win_rows]),
                     "target_sum_overlap_bp": ";".join(f"{k}:{v}" for k, v in sorted(by_target_sum.items())),
                     "target_union_overlap_bp": ";".join(f"{k}:{union_bp(v)}" for k, v in sorted(by_target_intervals.items())),
                     "status": "OK" if rows else "NO_ROWS",
@@ -258,12 +248,14 @@ def main() -> None:
         "basis", "chunk_mode", "num_mappings", "scaffold_jump", "scoring", "filter_overlap",
         "query_start", "query_end", "query_clip_start", "query_clip_end", "window_overlap_bp",
         "target_name", "target_chrom", "target_bucket", "target_start", "target_end", "strand",
-        "matches", "alignment_length", "identity", "expected_target_chroms", "is_expected_target", "source_tsv_gz",
+        "matches", "alignment_length", "identity", "homolog_identity", "delta_interchrom_minus_homolog",
+        "winner_class", "interchrom_beats_homolog", "expected_target_chroms", "is_expected_target", "source_tsv_gz",
     ]
     summary_fields = [
         "event_id", "comparison_id", "query_name", "query_chrom", "window_start", "window_end",
         "basis", "chunk_mode", "num_mappings", "scaffold_jump", "scoring", "expected_target_chroms",
-        "segment_rows", "expected_target_rows", "sum_expected_overlap_bp", "union_expected_overlap_bp",
+        "segment_rows", "expected_target_rows", "interchrom_win_rows", "sum_expected_overlap_bp",
+        "union_expected_overlap_bp", "union_interchrom_win_bp",
         "target_sum_overlap_bp", "target_union_overlap_bp", "status",
     ]
     manifest_fields = ["event_id", "panel_label", "comparison_id", "query_name", "window_start", "window_end", "basis", "source_tsv_gz", "status"]
@@ -274,4 +266,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

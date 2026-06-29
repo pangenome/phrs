@@ -1,0 +1,12 @@
+started_utc=2026-06-29T15:56:42Z
+comparison_id=PAN027pat_vs_PAN011_joint
+bases=10:10
+window_size=2000
+max_window_depth=100
+max_post_impg_candidates=5000
+threads=96
+source_root=/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity
+query_fasta=/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa
+target_fasta=/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa
+impg=/home/erikg/.cargo/bin/impg
+impg 0.4.1
