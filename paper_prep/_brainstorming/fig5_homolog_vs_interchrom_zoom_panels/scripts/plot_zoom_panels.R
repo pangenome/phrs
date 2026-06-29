@@ -103,8 +103,20 @@ draw_zoom <- function() {
   plot_rows$plot_y <- rev(seq_len(n))
   header_y <- n + 0.56
   legend_y <- header_y + 0.32
+  x_center <- (track_x0 + track_x1) / 2
+  x_half_span <- 440
+  # Shift the data viewport slightly left so the fully annotated panel stack,
+  # including left labels and right summaries, is centered on the output page.
+  x_center_offset <- -14
 
-  plot(NA, xlim = c(-190, 690), ylim = c(0.04, legend_y + 0.26), axes = FALSE, xlab = "", ylab = "")
+  plot(
+    NA,
+    xlim = x_center + x_center_offset + c(-x_half_span, x_half_span),
+    ylim = c(0.04, legend_y + 0.26),
+    axes = FALSE,
+    xlab = "",
+    ylab = ""
+  )
   title("PAN027 paternal hap2 subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.02)
   mtext(
     "Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match",

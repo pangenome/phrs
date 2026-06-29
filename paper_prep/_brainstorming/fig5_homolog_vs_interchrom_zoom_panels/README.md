@@ -25,4 +25,10 @@ Build:
 
 ```bash
 bash paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/scripts/make_zoom_panels.sh
+python3 paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/scripts/validate_centered_layout.py
 ```
+
+The build script regenerates `zoom_window_segments.tsv` and
+`zoom_panel_summary.tsv` when the upstream class-winner gzip is available. In
+repo-only worktrees where that upstream output is absent, it reuses the
+committed TSV snapshots and regenerates only the PDF/PNG/SVG layout artifacts.
