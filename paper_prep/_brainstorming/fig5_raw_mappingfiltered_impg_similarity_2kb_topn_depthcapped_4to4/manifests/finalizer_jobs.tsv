@@ -1,0 +1,2 @@
+job_id	dependency	job_script	state
+1707097	afterok:1707085:1707086:1707087:1707089:1707091:1707093	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_raw_mappingfiltered_impg_similarity_2kb_topn_depthcapped_4to4/jobs/finalize_topn_depthcapped.slurm.sh	SUBMITTED

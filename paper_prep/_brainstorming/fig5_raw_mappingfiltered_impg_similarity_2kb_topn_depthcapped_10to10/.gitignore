@@ -1,0 +1,5 @@
+bed_shards_no_centromere/
+logs/
+metadata/
+outputs/
+scripts/__pycache__/

@@ -1,0 +1,9 @@
+{
+  "centromere_pad": 0,
+  "created_utc": "2026-06-29T10:33:20Z",
+  "max_candidates": 500,
+  "num_mappings": "10:10",
+  "source": "/moosefs/erikg/phrs/.wg-worktrees/agent-2837/paper_prep/_brainstorming/fig5_raw_manymany_impg_similarity_2kb_sharded",
+  "submitted": true,
+  "top_n": 20
+}
