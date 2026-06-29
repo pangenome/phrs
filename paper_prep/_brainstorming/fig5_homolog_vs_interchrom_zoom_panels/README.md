@@ -12,6 +12,8 @@ target.
   shown at the right edge with actual q-arm coordinate endpoints annotated
 - scale: per-row coordinate endpoints are drawn on the tracks; a single 100 kb
   scale bar replaces the full local-position axis
+- layout: panels are stacked in one centered column, with row-specific p/q
+  orientation indicated by the telomere-side signal and break glyph
 - break glyphs mark the omitted chromosome-body side of each zoom
 - plotted signal: windows where the best interchromosomal IMPG match in the
   PAN011 father target beats the best same-chromosome/homolog match

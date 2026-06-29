@@ -96,13 +96,15 @@ draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
   par(mar = c(3.0, 6.6, 3.7, 5.4), xaxs = "i", yaxs = "i")
+  track_x0 <- 0
+  track_x1 <- 500
   n <- nrow(summary)
-  p_x0 <- 0
-  p_x1 <- 500
-  q_x0 <- 650
-  q_x1 <- 1150
+  plot_rows <- summary
+  plot_rows$plot_y <- rev(seq_len(n))
+  header_y <- n + 0.56
+  legend_y <- header_y + 0.32
 
-  plot(NA, xlim = c(-88, 1285), ylim = c(0.04, n + 1.12), axes = FALSE, xlab = "", ylab = "")
+  plot(NA, xlim = c(-190, 690), ylim = c(0.04, legend_y + 0.26), axes = FALSE, xlab = "", ylab = "")
   title("PAN027 paternal hap2 subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.02)
   mtext(
     "Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match",
@@ -110,30 +112,36 @@ draw_zoom <- function() {
     line = 0.55,
     cex = 0.62
   )
-  text((p_x0 + p_x1) / 2, n + 0.60, "p-arm telomeric windows (chromosome coordinates)", cex = 0.66, font = 2)
-  text((q_x0 + q_x1) / 2, n + 0.60, "q-arm telomeric windows (chromosome coordinates)", cex = 0.66, font = 2)
+  text(
+    (track_x0 + track_x1) / 2,
+    header_y,
+    "500 kb subtelomeric windows (chromosome coordinates; p telomere left, q telomere right)",
+    cex = 0.66,
+    font = 2
+  )
 
   p_ticks <- seq(0, 500, by = 100)
   q_ticks <- seq(0, 500, by = 100)
+  label_x <- -38
 
-  for (i in seq_len(n)) {
-    row <- summary[i, ]
-    y <- n - i + 1
+  for (i in seq_len(nrow(plot_rows))) {
+    row <- plot_rows[i, ]
+    y <- row$plot_y
     is_p <- row$arm == "p"
-    x0 <- if (is_p) p_x0 else q_x0
-    x1 <- if (is_p) p_x1 else q_x1
+    x0 <- track_x0
+    x1 <- track_x1
 
     rect(x0, y - 0.18, x1, y + 0.18, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.8)
     if (is_p) {
-      segments(p_ticks, y - 0.18, p_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
-      draw_break_glyph(p_x1 + 15, y, "right")
-      text(-8, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
-      text(-8, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
+      segments(track_x0 + p_ticks, y - 0.18, track_x0 + p_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
+      draw_break_glyph(track_x1 + 15, y, "right")
+      text(label_x, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
+      text(label_x, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
     } else {
-      segments(q_x0 + q_ticks, y - 0.18, q_x0 + q_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
-      draw_break_glyph(q_x0 - 15, y, "left")
-      text(q_x0 - 26, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
-      text(q_x0 - 26, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
+      segments(track_x0 + q_ticks, y - 0.18, track_x0 + q_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
+      draw_break_glyph(track_x0 - 15, y, "left")
+      text(label_x, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
+      text(label_x, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
     }
     draw_coord_endpoints(x0, x1, y - 0.43, row_coord_endpoints(row))
 
@@ -143,8 +151,8 @@ draw_zoom <- function() {
         rows$plot_start_kb <- x0 + rows$relative_start_kb
         rows$plot_end_kb <- x0 + rows$relative_end_kb
       } else {
-        rows$plot_start_kb <- q_x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_end_kb
-        rows$plot_end_kb <- q_x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_start_kb
+        rows$plot_start_kb <- x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_end_kb
+        rows$plot_end_kb <- x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_start_kb
       }
       rows <- rows[order(rows$plot_start_kb, rows$plot_end_kb, rows$target_chrom, rows$target_haplotype), ]
 
@@ -191,7 +199,7 @@ draw_zoom <- function() {
     }
 
     text(
-      if (is_p) p_x1 + 32 else q_x1 + 8,
+      track_x1 + 32,
       y,
       sprintf("inter>same %.0f kb\n%s", as.numeric(row$winning_bp) / 1000, fmt_targets(row$top_targets)),
       adj = 0,
@@ -205,15 +213,16 @@ draw_zoom <- function() {
   legend_targets <- legend_targets[!is.na(legend_targets)]
   legend_targets <- legend_targets[seq_len(min(length(legend_targets), 10))]
   if (length(legend_targets) > 0) {
-    x0 <- 235
-    y0 <- n + 0.88
+    legend_step <- 45
+    x0 <- ((track_x0 + track_x1) - (length(legend_targets) - 1) * legend_step) / 2
+    y0 <- legend_y
     for (k in seq_along(legend_targets)) {
-      x <- x0 + (k - 1) * 45
+      x <- x0 + (k - 1) * legend_step
       rect(x, y0 - 0.075, x + 5, y0 + 0.075, col = target_col(legend_targets[k]), border = NA)
       text(x + 6.5, y0, legend_targets[k], adj = 0, cex = 0.55)
     }
   }
-  draw_scale_bar((p_x1 + q_x0 - 100) / 2, 0.23, 100)
+  draw_scale_bar((track_x0 + track_x1 - 100) / 2, 0.23, 100)
 }
 
 pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.pdf"), width = 13.8, height = 6.8, useDingbats = FALSE)
