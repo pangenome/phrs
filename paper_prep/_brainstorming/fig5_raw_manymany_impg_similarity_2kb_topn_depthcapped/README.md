@@ -7,7 +7,8 @@ Run settings:
 - Existing raw unfiltered PAFs only; no new WFMASH/SweepGA alignment.
 - 2 kb target windows from the previous full-genome BEDs.
 - CHM13 centromere intervals removed before `impg similarity`; no flanking pad.
-- `impg similarity` uses `--no-merge --num-mappings many:many --scaffold-jump 0 --max-depth 1`.
+- `impg similarity` uses `--no-merge --num-mappings many:many --scaffold-jump 0`.
+- It is non-transitive: the command does not pass `--transitive`.
 - Output stream keeps only interchromosomal top 20 rows per target window.
 - Windows with more than 500 raw candidate rows are skipped and recorded under `outputs/skipped_windows/`.
 

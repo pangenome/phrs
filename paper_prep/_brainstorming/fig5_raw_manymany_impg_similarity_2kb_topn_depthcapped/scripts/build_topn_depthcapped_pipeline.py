@@ -124,7 +124,7 @@ def job_script(path: Path, task_manifest: Path, top_n: int, max_candidates: int,
         "  printf 'chrom\\tstart\\tend\\traw_candidate_count\\tretained_count\\treason\\n' > \"$tmp_skip\"",
         "else",
         "  echo \"$command_text\"",
-        "  \"$impg\" similarity --alignment-files \"$impg_alignment_paf\" --target-bed \"$filtered_bed\" --sequence-files \"$query_fasta\" \"$target_fasta\" --gfa-engine poa --no-merge --num-mappings many:many --scaffold-jump 0 --max-depth 1 --threads \"${SLURM_CPUS_PER_TASK}\" | python3 \"$filter\" --top-n " + str(top_n) + " --max-candidates " + str(max_candidates) + " --interchrom-only --skip-report \"$tmp_skip\" | \"$pigz\" -p \"${SLURM_CPUS_PER_TASK}\" > \"$tmp_gz\"",
+        "  \"$impg\" similarity --alignment-files \"$impg_alignment_paf\" --target-bed \"$filtered_bed\" --sequence-files \"$query_fasta\" \"$target_fasta\" --gfa-engine poa --no-merge --num-mappings many:many --scaffold-jump 0 --threads \"${SLURM_CPUS_PER_TASK}\" | python3 \"$filter\" --top-n " + str(top_n) + " --max-candidates " + str(max_candidates) + " --interchrom-only --skip-report \"$tmp_skip\" | \"$pigz\" -p \"${SLURM_CPUS_PER_TASK}\" > \"$tmp_gz\"",
         "fi",
         "mv \"$tmp_gz\" \"$output_tsv_gz\"",
         "mv \"$tmp_skip\" \"$skip_report\"",
@@ -166,7 +166,7 @@ def main() -> None:
         output = OUT / "outputs/shards" / row["method"] / row["comparison_id"] / f"{row['method']}.{row['comparison_id']}.full_genome_2kb.shard_{int(row['shard_index']):04d}.topn{args.top_n}.impg_similarity.tsv.gz"
         skip = OUT / "outputs/skipped_windows" / row["method"] / row["comparison_id"] / f"{row['method']}.{row['comparison_id']}.full_genome_2kb.shard_{int(row['shard_index']):04d}.skipped.tsv"
         meta = OUT / "metadata/shards" / row["method"] / row["comparison_id"] / f"{row['method']}.{row['comparison_id']}.full_genome_2kb.shard_{int(row['shard_index']):04d}.metadata.json"
-        command = f"{IMPG} similarity --alignment-files {row['impg_alignment_paf']} --target-bed {filtered_bed} --sequence-files {row['query_fasta']} {row['target_fasta']} --gfa-engine poa --no-merge --num-mappings many:many --scaffold-jump 0 --max-depth 1 --threads ${{SLURM_CPUS_PER_TASK}} | filter top {args.top_n}, skip >{args.max_candidates}"
+        command = f"{IMPG} similarity --alignment-files {row['impg_alignment_paf']} --target-bed {filtered_bed} --sequence-files {row['query_fasta']} {row['target_fasta']} --gfa-engine poa --no-merge --num-mappings many:many --scaffold-jump 0 --threads ${{SLURM_CPUS_PER_TASK}} | filter top {args.top_n}, skip >{args.max_candidates}"
         new_rows.append({**row, "filtered_bed": str(filtered_bed), "output_tsv_gz": str(output), "skip_report": str(skip), "metadata_json": str(meta), "command": command})
 
     fields = ["method", "comparison_id", "source_raw_paf", "shard_index", "impg_alignment_paf", "query_fasta", "target_fasta", "full_target_bed", "filtered_bed", "output_tsv_gz", "skip_report", "metadata_json", "command"]

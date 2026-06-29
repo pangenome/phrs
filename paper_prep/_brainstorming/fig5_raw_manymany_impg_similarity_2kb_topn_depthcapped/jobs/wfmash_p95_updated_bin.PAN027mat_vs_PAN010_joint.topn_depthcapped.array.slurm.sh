@@ -36,7 +36,7 @@ if [ ! -s "$filtered_bed" ]; then
   printf 'chrom\tstart\tend\traw_candidate_count\tretained_count\treason\n' > "$tmp_skip"
 else
   echo "$command_text"
-  "$impg" similarity --alignment-files "$impg_alignment_paf" --target-bed "$filtered_bed" --sequence-files "$query_fasta" "$target_fasta" --gfa-engine poa --no-merge --num-mappings many:many --scaffold-jump 0 --max-depth 1 --threads "${SLURM_CPUS_PER_TASK}" | python3 "$filter" --top-n 20 --max-candidates 500 --interchrom-only --skip-report "$tmp_skip" | "$pigz" -p "${SLURM_CPUS_PER_TASK}" > "$tmp_gz"
+  "$impg" similarity --alignment-files "$impg_alignment_paf" --target-bed "$filtered_bed" --sequence-files "$query_fasta" "$target_fasta" --gfa-engine poa --no-merge --num-mappings many:many --scaffold-jump 0 --threads "${SLURM_CPUS_PER_TASK}" | python3 "$filter" --top-n 20 --max-candidates 500 --interchrom-only --skip-report "$tmp_skip" | "$pigz" -p "${SLURM_CPUS_PER_TASK}" > "$tmp_gz"
 fi
 mv "$tmp_gz" "$output_tsv_gz"
 mv "$tmp_skip" "$skip_report"
