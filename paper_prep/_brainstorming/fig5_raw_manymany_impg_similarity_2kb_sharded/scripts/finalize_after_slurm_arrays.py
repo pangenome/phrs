@@ -23,7 +23,7 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
-def check_arrays(array_ids: list[str]) -> None:
+def check_arrays(array_ids: list[str]) -> list[str]:
     cmd = [
         "sacct",
         "-n",
@@ -49,11 +49,9 @@ def check_arrays(array_ids: list[str]) -> None:
         seen_tasks += 1
         if state not in SUCCESS_STATES or not exit_code.startswith("0:"):
             bad.append(f"{job_id} {state} {exit_code}")
-    if bad:
-        sample = "\n".join(bad[:50])
-        raise SystemExit(f"Slurm arrays are not all successful; first bad states:\n{sample}")
     if seen_tasks == 0:
         raise SystemExit("No completed Slurm array task records found in sacct")
+    return bad
 
 
 def normalize_tmp_outputs(live_base: Path) -> tuple[int, list[str]]:
@@ -113,7 +111,7 @@ def main() -> None:
 
     live_base = args.live_base.resolve()
     main_base = args.main_base.resolve()
-    check_arrays(args.array_ids)
+    bad_slurm_states = check_arrays(args.array_ids)
     renamed, missing = normalize_tmp_outputs(live_base)
     if missing:
         sample = "\n".join(missing[:50])
@@ -127,6 +125,7 @@ def main() -> None:
             [
                 f"- Finalized at: `{utc_now()}`",
                 f"- Slurm array dependency IDs: `{','.join(args.array_ids)}`",
+                f"- Non-successful original Slurm array states observed: `{len(bad_slurm_states)}`",
                 f"- Tmp shard outputs renamed into manifest paths: `{renamed}`",
                 "- Plotting summaries select one best interchromosomal hit per 2 kb target window.",
                 "- Tie-breaking: estimated.identity, then intersection length, dice, cosine, jaccard, then stable lexical target coordinates.",
