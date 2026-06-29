@@ -11,16 +11,6 @@ summary <- summary[order(summary$panel_order), ]
 segments$relative_start_kb <- segments$relative_start / 1000
 segments$relative_end_kb <- segments$relative_end / 1000
 segments$relative_mid_kb <- (segments$relative_start + segments$relative_end) / 2000
-segments$display_start_kb <- ifelse(
-  segments$arm == "q",
-  500 - segments$relative_end_kb,
-  segments$relative_start_kb
-)
-segments$display_end_kb <- ifelse(
-  segments$arm == "q",
-  500 - segments$relative_start_kb,
-  segments$relative_end_kb
-)
 
 target_cols <- c(
   chr1 = "#4E79A7", chr2 = "#A0CBE8", chr3 = "#D95F02", chr4 = "#FFBE7D",
@@ -64,53 +54,95 @@ panel_coord_label <- function(row) {
   }
 }
 
-draw_break <- function(x, y, direction) {
+draw_break_glyph <- function(x, y, direction = c("right", "left")) {
+  direction <- match.arg(direction)
+  slant <- if (direction == "right") 1 else -1
   xpd_old <- par("xpd")
   par(xpd = NA)
-  if (direction == "right") {
-    segments(x + 3, y - 0.26, x + 8, y + 0.26, col = "#555555", lwd = 1.0)
-    segments(x + 9, y - 0.26, x + 14, y + 0.26, col = "#555555", lwd = 1.0)
-  } else {
-    segments(x - 14, y - 0.26, x - 9, y + 0.26, col = "#555555", lwd = 1.0)
-    segments(x - 8, y - 0.26, x - 3, y + 0.26, col = "#555555", lwd = 1.0)
+  for (offset in c(-3.2, 3.2)) {
+    segments(
+      x + offset - slant * 2.8, y - 0.32,
+      x + offset + slant * 2.8, y + 0.32,
+      col = "#555555",
+      lwd = 1.3,
+      lend = "butt"
+    )
   }
   par(xpd = xpd_old)
 }
 
-draw_telomere_cap <- function(x, y) {
-  segments(x, y - 0.23, x, y + 0.23, col = "#444444", lwd = 1.0)
+row_axis <- function(ticks, labels, y, cex = 0.43) {
+  segments(min(ticks), y, max(ticks), y, col = "#999999", lwd = 0.45)
+  segments(ticks, y, ticks, y - 0.055, col = "#999999", lwd = 0.45)
+  text(ticks, y - 0.095, labels, cex = cex, col = "#555555", adj = c(0.5, 1), xpd = NA)
 }
 
 draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
-  par(mar = c(4.0, 7.7, 3.7, 5.1), xaxs = "i", yaxs = "i")
+  par(mar = c(3.7, 6.6, 3.7, 5.4), xaxs = "i", yaxs = "i")
   n <- nrow(summary)
-  plot(NA, xlim = c(-116, 660), ylim = c(0.35, n + 1.0), axes = FALSE, xlab = "", ylab = "")
+  p_x0 <- 0
+  p_x1 <- 500
+  q_x0 <- 650
+  q_x1 <- 1150
+
+  plot(NA, xlim = c(-88, 1285), ylim = c(0.28, n + 1.12), axes = FALSE, xlab = "", ylab = "")
   title("PAN027 paternal hap2 subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.02)
-  mtext("Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match", side = 3, line = 0.55, cex = 0.62)
-  axis(1, at = seq(0, 500, by = 100), labels = paste0(seq(0, 500, by = 100), " kb"), cex.axis = 0.67)
-  abline(v = seq(0, 500, by = 100), col = "#EFEFEF", lwd = 0.55)
+  mtext(
+    "Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match",
+    side = 3,
+    line = 0.55,
+    cex = 0.62
+  )
+  text((p_x0 + p_x1) / 2, n + 0.60, "p-arm telomeric windows (0-500 kb)", cex = 0.66, font = 2)
+  text((q_x0 + q_x1) / 2, n + 0.60, "q-arm telomeric windows (chromosome coordinates)", cex = 0.66, font = 2)
+
+  p_ticks <- seq(0, 500, by = 100)
+  segments(p_x0, 0.58, p_x1, 0.58, col = "#777777", lwd = 0.55)
+  segments(p_ticks, 0.58, p_ticks, 0.48, col = "#777777", lwd = 0.55)
+  text(p_ticks, 0.40, paste0(p_ticks, " kb"), cex = 0.58, col = "#444444", adj = c(0.5, 1), xpd = NA)
+  text((p_x0 + p_x1) / 2, 0.16, "p-arm coordinate from p telomere", cex = 0.68, col = "#444444", xpd = NA)
 
   for (i in seq_len(n)) {
     row <- summary[i, ]
     y <- n - i + 1
-    rect(0, y - 0.18, 500, y + 0.18, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.8)
-    if (row$arm == "p") {
-      draw_telomere_cap(0, y)
-      draw_break(500, y, "right")
+    is_p <- row$arm == "p"
+    x0 <- if (is_p) p_x0 else q_x0
+    x1 <- if (is_p) p_x1 else q_x1
+
+    rect(x0, y - 0.18, x1, y + 0.18, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.8)
+    if (is_p) {
+      segments(p_ticks, y - 0.18, p_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
+      draw_break_glyph(p_x1 + 15, y, "right")
+      text(-8, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
+      text(-8, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
     } else {
-      draw_break(0, y, "left")
-      draw_telomere_cap(500, y)
+      q_ticks <- seq(0, 500, by = 125)
+      segments(q_x0 + q_ticks, y - 0.18, q_x0 + q_ticks, y + 0.18, col = "#EFEFEF", lwd = 0.55)
+      draw_break_glyph(q_x0 - 15, y, "left")
+      text(q_x0 - 26, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
+      text(q_x0 - 26, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
+      q_labels <- sprintf("%.3f", (as.numeric(row$query_length) - as.numeric(row$zoom_bp) + q_ticks * 1000) / 1e6)
+      row_axis(q_x0 + q_ticks, q_labels, y - 0.43)
     }
+
     rows <- segments[segments$panel_id == row$panel_id, ]
     if (nrow(rows) > 0) {
-      rows <- rows[order(rows$display_start_kb, rows$display_end_kb, rows$target_chrom), ]
+      if (is_p) {
+        rows$plot_start_kb <- x0 + rows$relative_start_kb
+        rows$plot_end_kb <- x0 + rows$relative_end_kb
+      } else {
+        rows$plot_start_kb <- q_x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_end_kb
+        rows$plot_end_kb <- q_x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_start_kb
+      }
+      rows <- rows[order(rows$plot_start_kb, rows$plot_end_kb, rows$target_chrom, rows$target_haplotype), ]
+
       for (j in seq_len(nrow(rows))) {
         rect(
-          rows$display_start_kb[j],
+          rows$plot_start_kb[j],
           y - 0.30,
-          rows$display_end_kb[j],
+          rows$plot_end_kb[j],
           y + 0.30,
           col = target_col(rows$target_chrom[j]),
           border = NA
@@ -118,8 +150,8 @@ draw_zoom <- function() {
       }
 
       # Label contiguous target runs of at least 6 kb, plus every chr3/chrY run.
-      run_start <- rows$display_start_kb[1]
-      run_end <- rows$display_end_kb[1]
+      run_start <- rows$plot_start_kb[1]
+      run_end <- rows$plot_end_kb[1]
       run_target <- rows$target_chrom[1]
       run_haplotype <- rows$target_haplotype[1]
       emit_run <- function(start_kb, end_kb, target, haplotype, y) {
@@ -133,13 +165,13 @@ draw_zoom <- function() {
         for (j in 2:nrow(rows)) {
           contiguous <- rows$target_chrom[j] == run_target &&
             rows$target_haplotype[j] == run_haplotype &&
-            rows$display_start_kb[j] <= run_end + 0.001
+            rows$plot_start_kb[j] <= run_end + 0.001
           if (contiguous) {
-            run_end <- max(run_end, rows$display_end_kb[j])
+            run_end <- max(run_end, rows$plot_end_kb[j])
           } else {
             emit_run(run_start, run_end, run_target, run_haplotype, y)
-            run_start <- rows$display_start_kb[j]
-            run_end <- rows$display_end_kb[j]
+            run_start <- rows$plot_start_kb[j]
+            run_end <- rows$plot_end_kb[j]
             run_target <- rows$target_chrom[j]
             run_haplotype <- rows$target_haplotype[j]
           }
@@ -147,15 +179,9 @@ draw_zoom <- function() {
       }
       emit_run(run_start, run_end, run_target, run_haplotype, y)
     }
-    text(-24, y + 0.11, row$panel_label, adj = 1, cex = 0.69, font = 2, xpd = NA)
-    text(-24, y - 0.18, panel_coord_label(row), adj = 1, cex = 0.52, col = "#444444", xpd = NA)
-    if (row$arm == "q") {
-      len <- as.numeric(row$query_length)
-      text(0, y - 0.47, sprintf("%.3f Mb", (len - as.numeric(row$zoom_bp)) / 1e6), adj = c(0, 1), cex = 0.42, col = "#555555")
-      text(500, y - 0.47, sprintf("%.3f Mb", len / 1e6), adj = c(1, 1), cex = 0.42, col = "#555555")
-    }
+
     text(
-      506,
+      if (is_p) p_x1 + 32 else q_x1 + 8,
       y,
       sprintf("inter>same %.0f kb\n%s", as.numeric(row$winning_bp) / 1000, fmt_targets(row$top_targets)),
       adj = 0,
@@ -169,15 +195,15 @@ draw_zoom <- function() {
   legend_targets <- legend_targets[!is.na(legend_targets)]
   legend_targets <- legend_targets[seq_len(min(length(legend_targets), 10))]
   if (length(legend_targets) > 0) {
-    x0 <- 0
-    y0 <- n + 0.58
+    x0 <- 235
+    y0 <- n + 0.88
     for (k in seq_along(legend_targets)) {
       x <- x0 + (k - 1) * 45
       rect(x, y0 - 0.075, x + 5, y0 + 0.075, col = target_col(legend_targets[k]), border = NA)
       text(x + 6.5, y0, legend_targets[k], adj = 0, cex = 0.55)
     }
   }
-  mtext("Local position in 500 kb subtelomeric window (p telomere left; q telomere right)", side = 1, line = 2.7, cex = 0.78)
+  text((q_x0 + q_x1) / 2, 0.16, "q-arm chromosome coordinate (Mb)", cex = 0.68, col = "#444444", xpd = NA)
 }
 
 pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.pdf"), width = 13.8, height = 6.8, useDingbats = FALSE)
