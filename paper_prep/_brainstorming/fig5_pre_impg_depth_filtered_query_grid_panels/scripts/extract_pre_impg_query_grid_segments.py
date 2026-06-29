@@ -15,9 +15,9 @@ SOURCE_DIR = Path("paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_simila
 WINDOW_CONFIG = Path("paper_prep/_brainstorming/fig5_raw_fasta_sweepga_f16_query_grid_chop_filter_panels/config/panel_windows.tsv")
 
 BASIS_OUTPUTS = {
-    "1:1": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.1to1.query_2000bp.predepth_top20.impg_similarity.tsv.gz",
-    "4:4": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.4to4.query_2000bp.predepth_top20.impg_similarity.tsv.gz",
-    "10:10": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_top20.impg_similarity.tsv.gz",
+    "1:1": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.1to1.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz",
+    "4:4": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.4to4.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz",
+    "10:10": SOURCE_DIR / "outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz",
 }
 
 CHR_RE = re.compile(r"(?:^|[#_/])chr([0-9]+|X|Y|M)(?:[._#:/-]|$)")
@@ -101,6 +101,13 @@ def rank(row: dict[str, str]) -> tuple[float, int, float, float, str]:
     )
 
 
+def similarity_class(row: dict[str, str], query_name: str, target_name: str) -> str:
+    winner_class = row.get("winner_class", "")
+    if winner_class in {"same_chrom", "interchrom"}:
+        return winner_class
+    return "same_chrom" if chrom_from_name(query_name) == chrom_from_name(target_name) else "interchrom"
+
+
 def keep_windows() -> list[dict[str, str]]:
     rows = []
     for row in read_tsv(WINDOW_CONFIG):
@@ -120,7 +127,7 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
         if not path.exists():
             raise FileNotFoundError(path)
         seen: set[tuple[object, ...]] = set()
-        best_by_window_target: dict[tuple[object, ...], tuple[tuple[object, ...], dict[str, str], tuple[str, int, int]]] = {}
+        best_by_query_window: dict[tuple[object, ...], dict[str, tuple[tuple[object, ...], dict[str, str], tuple[str, int, int]]]] = defaultdict(dict)
         with gzip.open(path, "rt") as handle:
             reader = csv.DictReader(handle, delimiter="\t")
             for row in reader:
@@ -135,20 +142,43 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
                 target_name, target_start, target_end = other
                 target_chrom = chrom_from_name(target_name)
                 query_chrom = chrom_from_name(query_name)
-                if target_chrom == query_chrom:
-                    continue
+                winner_class = similarity_class(row, query_name, target_name)
                 for window in windows_by_name[query_name]:
                     w_start = int(window["query_start"])
                     w_end = int(window["query_end"])
                     ov = overlap_bp(query_start, query_end, w_start, w_end)
                     if ov <= 0:
                         continue
-                    key = (basis, window["event_id"], query_name, query_start, query_end, target_chrom)
+                    key = (basis, window["event_id"], query_name, query_start, query_end)
                     rr = rank(row)
-                    if key not in best_by_window_target or rr > best_by_window_target[key][0]:
-                        best_by_window_target[key] = (rr, row, other)
-        for (basis, event_id, query_name, query_start, query_end, target_chrom), (_rr, row, other) in sorted(best_by_window_target.items()):
+                    if winner_class not in best_by_query_window[key] or rr > best_by_query_window[key][winner_class][0]:
+                        best_by_query_window[key][winner_class] = (rr, row, other)
+        for (basis, event_id, query_name, query_start, query_end), class_hits in sorted(best_by_query_window.items()):
+            same_hit = class_hits.get("same_chrom")
+            inter_hit = class_hits.get("interchrom")
+            if same_hit is not None and inter_hit is not None:
+                if inter_hit[0] > same_hit[0]:
+                    winner_class = "interchrom"
+                    inter_beats_same = "yes"
+                    comparison_status = "interchrom_beats_same_chrom"
+                else:
+                    winner_class = "same_chrom"
+                    inter_beats_same = "no"
+                    comparison_status = "same_chrom_beats_interchrom"
+            elif inter_hit is not None:
+                winner_class = "interchrom"
+                inter_beats_same = "no_same_chrom"
+                comparison_status = "no_same_chrom_candidate"
+            elif same_hit is not None:
+                winner_class = "same_chrom"
+                inter_beats_same = "no_interchrom"
+                comparison_status = "no_interchrom_candidate"
+            else:
+                continue
+
+            _rr, row, other = class_hits[winner_class]
             target_name, target_start, target_end = other
+            target_chrom = chrom_from_name(target_name)
             window = next(w for w in windows_by_name[query_name] if w["event_id"] == event_id)
             w_start = int(window["query_start"])
             w_end = int(window["query_end"])
@@ -161,6 +191,16 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
             expected = set(window["expected_target_chroms"].split(","))
             intersection = int(float(row["intersection"]))
             identity = float(row["estimated.identity"])
+            same_identity = float(same_hit[1]["estimated.identity"]) if same_hit is not None else None
+            inter_identity = float(inter_hit[1]["estimated.identity"]) if inter_hit is not None else None
+            inter_minus_same = inter_identity - same_identity if same_identity is not None and inter_identity is not None else None
+            same_target = chrom_from_name(other_group(same_hit[1])[0]) if same_hit is not None and other_group(same_hit[1]) is not None else ""
+            inter_target = chrom_from_name(other_group(inter_hit[1])[0]) if inter_hit is not None and other_group(inter_hit[1]) is not None else ""
+            is_expected_interchrom_win = (
+                winner_class == "interchrom"
+                and inter_beats_same == "yes"
+                and target_chrom in expected
+            )
             segments.append(
                 {
                     "event_id": event_id,
@@ -190,8 +230,19 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
                     "matches": round(intersection * identity),
                     "alignment_length": intersection,
                     "identity": f"{identity:.6f}",
+                    "winner_class": winner_class,
+                    "comparison_status": comparison_status,
+                    "has_same_chrom": "yes" if same_hit is not None else "no",
+                    "has_interchrom": "yes" if inter_hit is not None else "no",
+                    "same_target_chrom": same_target,
+                    "inter_target_chrom": inter_target,
+                    "same_identity": f"{same_identity:.6f}" if same_identity is not None else "",
+                    "inter_identity": f"{inter_identity:.6f}" if inter_identity is not None else "",
+                    "inter_minus_same_identity": f"{inter_minus_same:.6f}" if inter_minus_same is not None else "",
+                    "inter_beats_same": inter_beats_same,
                     "expected_target_chroms": window["expected_target_chroms"],
                     "is_expected_target": "yes" if target_chrom in expected else "no",
+                    "is_expected_interchrom_win": "yes" if is_expected_interchrom_win else "no",
                     "source_tsv_gz": path,
                 }
             )
@@ -219,6 +270,9 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
         for basis in BASIS_OUTPUTS:
             rows = by_key[(window["event_id"], basis)]
             expected_rows = [row for row in rows if row["is_expected_target"] == "yes"]
+            interchrom_winner_rows = [row for row in rows if row["winner_class"] == "interchrom"]
+            inter_beats_same_rows = [row for row in rows if row["inter_beats_same"] == "yes"]
+            expected_interchrom_win_rows = [row for row in rows if row["is_expected_interchrom_win"] == "yes"]
             by_target_sum = defaultdict(int)
             by_target_intervals = defaultdict(list)
             for row in rows:
@@ -242,6 +296,13 @@ def extract_segments(windows: list[dict[str, str]]) -> tuple[list[dict[str, obje
                     "expected_target_rows": len(expected_rows),
                     "sum_expected_overlap_bp": sum(int(r["window_overlap_bp"]) for r in expected_rows),
                     "union_expected_overlap_bp": union_bp([(int(r["query_clip_start"]), int(r["query_clip_end"])) for r in expected_rows]),
+                    "same_chrom_winner_rows": len([row for row in rows if row["winner_class"] == "same_chrom"]),
+                    "interchrom_winner_rows": len(interchrom_winner_rows),
+                    "interchrom_winner_union_bp": union_bp([(int(r["query_clip_start"]), int(r["query_clip_end"])) for r in interchrom_winner_rows]),
+                    "inter_beats_same_rows": len(inter_beats_same_rows),
+                    "inter_beats_same_union_bp": union_bp([(int(r["query_clip_start"]), int(r["query_clip_end"])) for r in inter_beats_same_rows]),
+                    "expected_interchrom_win_rows": len(expected_interchrom_win_rows),
+                    "expected_interchrom_win_union_bp": union_bp([(int(r["query_clip_start"]), int(r["query_clip_end"])) for r in expected_interchrom_win_rows]),
                     "target_sum_overlap_bp": ";".join(f"{k}:{v}" for k, v in sorted(by_target_sum.items())),
                     "target_union_overlap_bp": ";".join(f"{k}:{union_bp(v)}" for k, v in sorted(by_target_intervals.items())),
                     "status": "OK" if rows else "NO_ROWS",
@@ -258,12 +319,18 @@ def main() -> None:
         "basis", "chunk_mode", "num_mappings", "scaffold_jump", "scoring", "filter_overlap",
         "query_start", "query_end", "query_clip_start", "query_clip_end", "window_overlap_bp",
         "target_name", "target_chrom", "target_bucket", "target_start", "target_end", "strand",
-        "matches", "alignment_length", "identity", "expected_target_chroms", "is_expected_target", "source_tsv_gz",
+        "matches", "alignment_length", "identity", "winner_class", "comparison_status",
+        "has_same_chrom", "has_interchrom", "same_target_chrom", "inter_target_chrom",
+        "same_identity", "inter_identity", "inter_minus_same_identity", "inter_beats_same",
+        "expected_target_chroms", "is_expected_target", "is_expected_interchrom_win", "source_tsv_gz",
     ]
     summary_fields = [
         "event_id", "comparison_id", "query_name", "query_chrom", "window_start", "window_end",
         "basis", "chunk_mode", "num_mappings", "scaffold_jump", "scoring", "expected_target_chroms",
         "segment_rows", "expected_target_rows", "sum_expected_overlap_bp", "union_expected_overlap_bp",
+        "same_chrom_winner_rows", "interchrom_winner_rows", "interchrom_winner_union_bp",
+        "inter_beats_same_rows", "inter_beats_same_union_bp",
+        "expected_interchrom_win_rows", "expected_interchrom_win_union_bp",
         "target_sum_overlap_bp", "target_union_overlap_bp", "status",
     ]
     manifest_fields = ["event_id", "panel_label", "comparison_id", "query_name", "window_start", "window_end", "basis", "source_tsv_gz", "status"]
@@ -274,4 +341,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

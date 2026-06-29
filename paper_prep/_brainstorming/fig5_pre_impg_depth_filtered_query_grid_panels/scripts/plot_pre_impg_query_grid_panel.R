@@ -76,7 +76,7 @@ draw_panel <- function() {
   plot(NA, xlim = c(-0.52, 1.55), ylim = c(0.20, n_tracks + 1.45), axes = FALSE, xlab = "", ylab = "")
   title("Fig5 pre-IMPG depth-filtered SweepGA f32 query-grid panels", cex.main = 1.02, line = 2.25)
   mtext(
-    "Existing Fig5 query-grid style; IMPG similarity over query-space 2 kb windows after SweepGA 1:1 / 4:4 / 10:10 and pre-IMPG depth cap 100",
+    "Existing Fig5 query-grid style; each 2 kb query window is colored by the winner after comparing best same-chromosome vs best interchromosomal IMPG similarity",
     side = 3,
     line = 0.55,
     cex = 0.70
@@ -104,8 +104,8 @@ draw_panel <- function() {
           x1 <- max(0, min(1, xscale(as.numeric(rows$query_clip_start[j]))))
           x2 <- max(0, min(1, xscale(as.numeric(rows$query_clip_end[j]))))
           col <- target_col(rows$target_bucket[j])
-          border <- if (rows$is_expected_target[j] == "yes") "#111111" else NA
-          rect(x1, y - 0.24, x2, y + 0.24, col = col, border = border, lwd = if (rows$is_expected_target[j] == "yes") 0.45 else 0)
+          border <- if (rows$is_expected_interchrom_win[j] == "yes") "#111111" else NA
+          rect(x1, y - 0.24, x2, y + 0.24, col = col, border = border, lwd = if (rows$is_expected_interchrom_win[j] == "yes") 0.45 else 0)
         }
       }
       label <- sprintf("%s\n%s", event_label(event_id), basis)
@@ -114,9 +114,9 @@ draw_panel <- function() {
         1.025,
         y,
         sprintf(
-          "expected %s; union %.1f kb\ntop: %s",
-          row$expected_target_rows[1],
-          as.numeric(row$union_expected_overlap_bp[1]) / 1000,
+          "expected inter>same %s; union %.1f kb\nwinners: %s",
+          row$expected_interchrom_win_rows[1],
+          as.numeric(row$expected_interchrom_win_union_bp[1]) / 1000,
           summarize_target_union(row$target_union_overlap_bp[1])
         ),
         adj = 0,
@@ -139,10 +139,12 @@ pdf(file.path(panel_dir, paste0(prefix, ".pdf")), width = 13.5, height = 6.6, us
 draw_panel()
 dev.off()
 
-svg(file.path(panel_dir, paste0(prefix, ".svg")), width = 13.5, height = 6.6, onefile = TRUE)
-draw_panel()
-dev.off()
-
 png(file.path(panel_dir, paste0(prefix, ".png")), width = 2700, height = 1320, res = 200, type = "cairo")
 draw_panel()
 dev.off()
+
+if (identical(Sys.getenv("WRITE_SVG"), "1")) {
+  svg(file.path(panel_dir, paste0(prefix, ".svg")), width = 13.5, height = 6.6, onefile = TRUE)
+  draw_panel()
+  dev.off()
+}
