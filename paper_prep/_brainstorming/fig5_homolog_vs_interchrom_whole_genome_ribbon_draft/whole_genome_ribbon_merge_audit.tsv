@@ -11,6 +11,16 @@ interchrom	multi_window_runs	287
 interchrom	max_absorbed_query_endpoint_gap_bp	0
 interchrom	max_absorbed_donor_endpoint_gap_bp	0
 interchrom	merged_windows	1778
+interchrom	all_multi_window_runs_with_first_window_only_query_span	0
+interchrom	all_query_span_mismatch_runs	0
+interchrom	all_max_query_span_bp	92000
+interchrom	all_max_donor_span_bp	92003
+interchrom	all_max_windows_per_run	46
+interchrom	drawn_multi_window_runs_with_first_window_only_query_span	0
+interchrom	drawn_query_span_mismatch_runs	0
+interchrom	drawn_max_query_span_bp	92000
+interchrom	drawn_max_donor_span_bp	92003
+interchrom	drawn_max_windows_per_run	46
 homolog	source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
 homolog	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
 homolog	end_to_end_merge_gap_bp	0
@@ -23,3 +33,13 @@ homolog	multi_window_runs	38848
 homolog	max_absorbed_query_endpoint_gap_bp	0
 homolog	max_absorbed_donor_endpoint_gap_bp	0
 homolog	merged_windows	174123
+homolog	all_multi_window_runs_with_first_window_only_query_span	0
+homolog	all_query_span_mismatch_runs	0
+homolog	all_max_query_span_bp	1444000
+homolog	all_max_donor_span_bp	1444064
+homolog	all_max_windows_per_run	722
+homolog	drawn_multi_window_runs_with_first_window_only_query_span	0
+homolog	drawn_query_span_mismatch_runs	0
+homolog	drawn_max_query_span_bp	1444000
+homolog	drawn_max_donor_span_bp	1444064
+homolog	drawn_max_windows_per_run	722

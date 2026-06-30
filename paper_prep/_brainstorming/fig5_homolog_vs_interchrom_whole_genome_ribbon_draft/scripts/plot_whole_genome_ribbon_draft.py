@@ -465,7 +465,8 @@ def start_run(segment: Segment, run_name: str, run_counts: dict[str, int]) -> Ru
 
 def extend_run(run: Run, segment: Segment) -> None:
     donor_start, donor_end = sorted((segment.donor_start, segment.donor_end))
-    run.query_end = segment.query_end
+    run.query_start = min(run.query_start, segment.query_start)
+    run.query_end = max(run.query_end, segment.query_end)
     run.donor_start = min(run.donor_start, donor_start)
     run.donor_end = max(run.donor_end, donor_end)
     run.bp += segment.bp
@@ -514,6 +515,43 @@ def group_runs(segments: list[Segment]) -> list[Run]:
 
 def group_homolog_runs(segments: list[Segment]) -> list[Run]:
     return group_end_to_end_runs(segments, "homolog_run")
+
+
+def query_span(run: Run) -> int:
+    return run.query_end - run.query_start
+
+
+def donor_span(run: Run) -> int:
+    return abs(run.donor_end - run.donor_start)
+
+
+def validate_run_spans(runs: list[Run], label: str) -> None:
+    first_window_only = [
+        run
+        for run in runs
+        if run.windows > 1 and query_span(run) <= max(2000, CONTIGUOUS_MERGE_GAP_BP)
+    ]
+    query_span_mismatch = [run for run in runs if query_span(run) != run.bp]
+    if first_window_only or query_span_mismatch:
+        example = (first_window_only or query_span_mismatch)[0]
+        raise AssertionError(
+            f"{label} merged span validation failed for {example.run_id}: "
+            f"windows={example.windows} bp={example.bp} "
+            f"query={example.query_start}-{example.query_end} "
+            f"donor={example.donor_start}-{example.donor_end}"
+        )
+
+
+def span_audit_metrics(runs: list[Run]) -> dict[str, int]:
+    return {
+        "multi_window_runs_with_first_window_only_query_span": sum(
+            1 for run in runs if run.windows > 1 and query_span(run) <= max(2000, CONTIGUOUS_MERGE_GAP_BP)
+        ),
+        "query_span_mismatch_runs": sum(1 for run in runs if query_span(run) != run.bp),
+        "max_query_span_bp": max((query_span(run) for run in runs), default=0),
+        "max_donor_span_bp": max((donor_span(run) for run in runs), default=0),
+        "max_windows_per_run": max((run.windows for run in runs), default=0),
+    }
 
 
 def merge_audit_metrics(segments: list[Segment], runs: list[Run]) -> dict[str, int]:
@@ -588,6 +626,8 @@ def write_runs(path: Path, runs: list[Run]) -> None:
         "donor_start",
         "donor_end",
         "bp",
+        "query_span_bp",
+        "donor_span_bp",
         "windows",
         "mean_same_identity",
         "mean_inter_identity",
@@ -610,6 +650,8 @@ def write_runs(path: Path, runs: list[Run]) -> None:
                     "donor_start": run.donor_start,
                     "donor_end": run.donor_end,
                     "bp": run.bp,
+                    "query_span_bp": query_span(run),
+                    "donor_span_bp": donor_span(run),
                     "windows": run.windows,
                     "mean_same_identity": f"{run.mean_same_identity:.6f}",
                     "mean_inter_identity": f"{run.mean_inter_identity:.6f}",
@@ -631,6 +673,8 @@ def write_homolog_runs(path: Path, runs: list[Run]) -> None:
         "donor_start",
         "donor_end",
         "bp",
+        "query_span_bp",
+        "donor_span_bp",
         "windows",
         "mean_identity",
         "category",
@@ -651,6 +695,8 @@ def write_homolog_runs(path: Path, runs: list[Run]) -> None:
                     "donor_start": run.donor_start,
                     "donor_end": run.donor_end,
                     "bp": run.bp,
+                    "query_span_bp": query_span(run),
+                    "donor_span_bp": donor_span(run),
                     "windows": run.windows,
                     "mean_identity": f"{run.mean_same_identity:.6f}",
                     "category": "homologous_same_chrom",
@@ -663,6 +709,8 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: li
     for category in COLORS:
         selected = [run for run in runs if run.category == category]
         by_category[category] = (len(selected), sum(run.bp for run in selected))
+    all_span_audit = span_audit_metrics(all_runs)
+    drawn_span_audit = span_audit_metrics(runs)
     with path.open("w", newline="") as handle:
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
@@ -673,6 +721,10 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: li
         writer.writerow({"metric": "inter_beats_same_end_to_end_runs", "value": str(len(all_runs))})
         writer.writerow({"metric": "drawn_high_conf_runs", "value": str(len(runs))})
         writer.writerow({"metric": "drawn_high_conf_bp", "value": str(sum(run.bp for run in runs))})
+        for metric, value in all_span_audit.items():
+            writer.writerow({"metric": f"all_{metric}", "value": str(value)})
+        for metric, value in drawn_span_audit.items():
+            writer.writerow({"metric": f"drawn_{metric}", "value": str(value)})
         for category, (count, bp) in by_category.items():
             writer.writerow({"metric": f"{category}_runs", "value": str(count)})
             writer.writerow({"metric": f"{category}_bp", "value": str(bp)})
@@ -685,6 +737,8 @@ def write_homolog_summary(
     homolog_segments: list[Segment],
     inter_runs: list[Run],
 ) -> None:
+    all_span_audit = span_audit_metrics(all_homolog_runs)
+    drawn_span_audit = span_audit_metrics(homolog_runs)
     with path.open("w", newline="") as handle:
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
@@ -698,6 +752,10 @@ def write_homolog_summary(
         writer.writerow({"metric": "homolog_end_to_end_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
+        for metric, value in all_span_audit.items():
+            writer.writerow({"metric": f"all_{metric}", "value": str(value)})
+        for metric, value in drawn_span_audit.items():
+            writer.writerow({"metric": f"drawn_{metric}", "value": str(value)})
         writer.writerow({"metric": "drawn_interchrom_runs", "value": str(len(inter_runs))})
         writer.writerow({"metric": "drawn_interchrom_bp", "value": str(sum(run.bp for run in inter_runs))})
 
@@ -718,6 +776,8 @@ def write_merge_audit(
         ("homolog", homolog_segments, homolog_runs, homolog_drawn_runs),
     ]:
         audit = merge_audit_metrics(segments, runs)
+        span_audit = span_audit_metrics(runs)
+        drawn_span_audit = span_audit_metrics(drawn_runs)
         values = {
             "source": str(CLASS_WINNERS),
             "merge_rule": "same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction",
@@ -732,6 +792,10 @@ def write_merge_audit(
             "max_absorbed_donor_endpoint_gap_bp": str(audit["max_absorbed_donor_endpoint_gap_bp"]),
             "merged_windows": str(audit["merged_windows"]),
         }
+        for metric, value in span_audit.items():
+            values[f"all_{metric}"] = str(value)
+        for metric, value in drawn_span_audit.items():
+            values[f"drawn_{metric}"] = str(value)
         for metric, value in values.items():
             rows.append({"layer": layer, "metric": metric, "value": value})
     with path.open("w", newline="") as handle:
@@ -1084,10 +1148,14 @@ def main() -> None:
 
     segments = read_segments(CLASS_WINNERS)
     all_runs = group_runs(segments)
+    validate_run_spans(all_runs, "interchrom all")
     runs = high_confidence_runs(all_runs)
+    validate_run_spans(runs, "interchrom drawn")
     homolog_segments = read_homolog_segments(CLASS_WINNERS)
     all_homolog_runs = group_homolog_runs(homolog_segments)
+    validate_run_spans(all_homolog_runs, "homolog all")
     homolog_runs = high_confidence_homolog_runs(all_homolog_runs)
+    validate_run_spans(homolog_runs, "homolog drawn")
     write_runs(RUNS_OUT, runs)
     write_summary(SUMMARY_OUT, runs, all_runs, segments)
     write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
