@@ -1,0 +1,17 @@
+metric	value
+source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+all_inter_beats_same_runs	918
+drawn_high_conf_runs	59
+drawn_high_conf_bp	1118000
+PAR_XY_runs	2
+PAR_XY_bp	138000
+chr5_chr1_candidate_runs	2
+chr5_chr1_candidate_bp	52000
+chr9_chr3_candidate_runs	1
+chr9_chr3_candidate_bp	24000
+acro_acro_runs	50
+acro_acro_bp	846000
+acro_other_runs	4
+acro_other_bp	58000
+other_nonacro_runs	0
+other_nonacro_bp	0
