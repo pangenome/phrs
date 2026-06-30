@@ -10,8 +10,9 @@ whole-genome homolog-vs-interchrom overview:
 
 Design:
 
-- top genome: PAN027 paternal haplotype child query
-- lower genomes: PAN011 father donor haplotype 1 and haplotype 2
+- top genome: PAN011 father donor haplotype 1
+- middle genome: PAN027 paternal haplotype child query
+- bottom genome: PAN011 father donor haplotype 2
 - chromosomes are concatenated in chromosome order with actual chromosome-length
   scaling within each genome track
 - ribbons show adjacent 2 kb query windows where the best interchromosomal IMPG
@@ -38,12 +39,10 @@ Outputs:
 - `whole_genome_homologous_context_runs.tsv`
 - `whole_genome_homologous_context_summary.tsv`
 
-The homologous-context variant uses the same geometry but adds full
-same-chromosome father-child homologous chains as a light-gray ribbon layer.
-Those chains are grouped from all `same_chrom` class-winner rows with identity
-at least 0.95 and drawn when the grouped run is at least 50 kb. The colored
-interchromosomal/non-homologous ribbons are preserved on top.
-Because these tracts are sub-megabase to low-megabase features on a whole-genome
-axis, the gray homologous-chain glyph width is intentionally length-encoded
-at about 10 kb per pixel and capped at a 2.6 Mb visual span, while remaining
-anchored at the native query and donor coordinates.
+The homologous-context variant adds grouped same-chromosome father-child
+homologous chains as a light-gray donor-to-child ribbon layer. Those chains are
+grouped from all `same_chrom` class-winner rows with identity at least 0.95 and
+drawn when the grouped run is at least 10 kb. The colored
+interchromosomal/non-homologous ribbons are preserved on top. Ribbons use native
+query and donor interval endpoints, so the middle child lane shows how the
+paternal homologous components enter the child haplotype.
