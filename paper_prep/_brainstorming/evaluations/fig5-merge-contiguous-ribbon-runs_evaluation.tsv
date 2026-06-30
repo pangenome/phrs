@@ -1,0 +1,2 @@
+task_id	overall_score	confidence	rubric_underspecified	merge_semantics_score	homolog_chain_score	interchrom_run_score	source_provenance_score	visual_deliverables_score	summary_docs_score	validation_score	wg_process_score	non_destructive_score
+fig5-merge-contiguous-ribbon-runs	0.44	0.86	yes	0.15	0.45	0.20	0.95	0.95	0.75	0.35	0.45	0.90
