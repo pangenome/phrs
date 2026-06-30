@@ -72,6 +72,7 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
+HOMOLOG_RIBBON_OPACITY = 0.24
 HOMOLOG_MIN_BP = 50_000
 HOMOLOG_MIN_IDENTITY = 0.95
 CONTIGUOUS_MERGE_GAP_BP = 0
@@ -406,147 +407,8 @@ def read_homolog_segments(path: Path) -> list[Segment]:
     return segments
 
 
-def group_runs(segments: list[Segment]) -> list[Run]:
-    runs: list[Run] = []
-    current: Run | None = None
-    current_key: tuple[str, str] | None = None
-    run_counts: dict[str, int] = defaultdict(int)
-
-    ordered = sorted(
-        segments,
-        key=lambda s: (CHROM_ORDER.index(s.query_chrom), s.query_start, s.donor_seq, s.donor_start),
-    )
-    for segment in ordered:
-        key = (segment.query_seq, segment.donor_seq)
-        same_run = (
-            current is not None
-            and current_key == key
-            and segment.query_start <= current.query_end + 2_000
-            and (
-                abs(segment.donor_start - current.donor_end) <= 10_000
-                or abs(current.donor_start - segment.donor_end) <= 10_000
-            )
-        )
-        if same_run:
-            current.query_end = max(current.query_end, segment.query_end)
-            current.donor_start = min(current.donor_start, segment.donor_start)
-            current.donor_end = max(current.donor_end, segment.donor_end)
-            current.bp += segment.bp
-            current.windows += 1
-            current.weighted_same_identity += segment.same_identity * segment.bp
-            current.weighted_inter_identity += segment.inter_identity * segment.bp
-            continue
-
-        panel_id = segment.query_chrom
-        run_counts[panel_id] += 1
-        current = Run(
-            run_id=f"{panel_id}_run{run_counts[panel_id]:04d}",
-            query_seq=segment.query_seq,
-            query_chrom=segment.query_chrom,
-            query_start=segment.query_start,
-            query_end=segment.query_end,
-            donor_seq=segment.donor_seq,
-            donor_haplotype=segment.donor_haplotype,
-            target_chrom=segment.target_chrom,
-            donor_start=segment.donor_start,
-            donor_end=segment.donor_end,
-            bp=segment.bp,
-            windows=1,
-            weighted_same_identity=segment.same_identity * segment.bp,
-            weighted_inter_identity=segment.inter_identity * segment.bp,
-        )
-        runs.append(current)
-        current_key = key
-    return runs
-
-
-def group_homolog_runs(segments: list[Segment]) -> list[Run]:
-    runs: list[Run] = []
-    current: Run | None = None
-    current_key: tuple[str, str] | None = None
-    run_counts: dict[str, int] = defaultdict(int)
-
-    ordered = sorted(
-        segments,
-        key=lambda s: (CHROM_ORDER.index(s.query_chrom), s.query_start, s.donor_seq, s.donor_start),
-    )
-    for segment in ordered:
-        key = (segment.query_seq, segment.donor_seq)
-        same_run = (
-            current is not None
-            and current_key == key
-            and segment.query_start <= current.query_end + 10_000
-            and (
-                abs(segment.donor_start - current.donor_end) <= 50_000
-                or abs(current.donor_start - segment.donor_end) <= 50_000
-            )
-        )
-        if same_run:
-            current.query_end = max(current.query_end, segment.query_end)
-            current.donor_start = min(current.donor_start, segment.donor_start)
-            current.donor_end = max(current.donor_end, segment.donor_end)
-            current.bp += segment.bp
-            current.windows += 1
-            current.weighted_same_identity += segment.same_identity * segment.bp
-            current.weighted_inter_identity += segment.inter_identity * segment.bp
-            continue
-
-        run_counts[segment.query_chrom] += 1
-        current = Run(
-            run_id=f"{segment.query_chrom}_homolog_run{run_counts[segment.query_chrom]:04d}",
-            query_seq=segment.query_seq,
-            query_chrom=segment.query_chrom,
-            query_start=segment.query_start,
-            query_end=segment.query_end,
-            donor_seq=segment.donor_seq,
-            donor_haplotype=segment.donor_haplotype,
-            target_chrom=segment.target_chrom,
-            donor_start=segment.donor_start,
-            donor_end=segment.donor_end,
-            bp=segment.bp,
-            windows=1,
-            weighted_same_identity=segment.same_identity * segment.bp,
-            weighted_inter_identity=segment.inter_identity * segment.bp,
-        )
-        runs.append(current)
-        current_key = key
-    return runs
-
-
-def copy_run(run: Run) -> Run:
-    return Run(
-        run_id=run.run_id,
-        query_seq=run.query_seq,
-        query_chrom=run.query_chrom,
-        query_start=run.query_start,
-        query_end=run.query_end,
-        donor_seq=run.donor_seq,
-        donor_haplotype=run.donor_haplotype,
-        target_chrom=run.target_chrom,
-        donor_start=run.donor_start,
-        donor_end=run.donor_end,
-        bp=run.bp,
-        windows=run.windows,
-        weighted_same_identity=run.weighted_same_identity,
-        weighted_inter_identity=run.weighted_inter_identity,
-    )
-
-
-def intervals_touch(a_start: int, a_end: int, b_start: int, b_end: int, gap: int = CONTIGUOUS_MERGE_GAP_BP) -> bool:
-    a0, a1 = sorted((a_start, a_end))
-    b0, b1 = sorted((b_start, b_end))
-    return b0 <= a1 + gap and a0 <= b1 + gap
-
-
-def absorb_run(current: Run, run: Run) -> None:
-    current.query_start = min(current.query_start, run.query_start)
-    current.query_end = max(current.query_end, run.query_end)
-    current.donor_start = min(current.donor_start, run.donor_start)
-    current.donor_end = max(current.donor_end, run.donor_end)
-    current.bp += run.bp
-    current.windows += run.windows
-    current.weighted_same_identity += run.weighted_same_identity
-    current.weighted_inter_identity += run.weighted_inter_identity
+def touches(left: int, right: int) -> bool:
+    return abs(left - right) <= CONTIGUOUS_MERGE_GAP_BP
 
 
 def renumber_runs(runs: list[Run], run_name: str) -> list[Run]:
@@ -569,27 +431,88 @@ def renumber_runs(runs: list[Run], run_name: str) -> list[Run]:
     return ordered
 
 
-def merge_contiguous_runs(runs: list[Run], run_name: str) -> list[Run]:
-    """Collapse exact same-source/same-donor abutting runs before drawing."""
-    buckets: dict[tuple[str, str, str, str, str], list[Run]] = defaultdict(list)
-    for run in runs:
-        key = (run.query_seq, run.query_chrom, run.donor_seq, run.donor_haplotype, run.target_chrom)
-        buckets[key].append(run)
+def donor_step_direction(previous: Segment, segment: Segment, current_direction: int | None) -> int | None:
+    if not touches(segment.query_start, previous.query_end):
+        return None
+    if current_direction in {None, 1} and touches(segment.donor_start, previous.donor_end):
+        return 1
+    if current_direction in {None, -1} and touches(segment.donor_end, previous.donor_start):
+        return -1
+    return None
 
-    merged: list[Run] = []
-    for _key, key_runs in buckets.items():
+
+def start_run(segment: Segment, run_name: str, run_counts: dict[str, int]) -> Run:
+    run_counts[segment.query_chrom] += 1
+    donor_start, donor_end = sorted((segment.donor_start, segment.donor_end))
+    return Run(
+        run_id=f"{segment.query_chrom}_{run_name}{run_counts[segment.query_chrom]:04d}",
+        query_seq=segment.query_seq,
+        query_chrom=segment.query_chrom,
+        query_start=segment.query_start,
+        query_end=segment.query_end,
+        donor_seq=segment.donor_seq,
+        donor_haplotype=segment.donor_haplotype,
+        target_chrom=segment.target_chrom,
+        donor_start=donor_start,
+        donor_end=donor_end,
+        bp=segment.bp,
+        windows=1,
+        weighted_same_identity=segment.same_identity * segment.bp,
+        weighted_inter_identity=segment.inter_identity * segment.bp,
+    )
+
+
+def extend_run(run: Run, segment: Segment) -> None:
+    donor_start, donor_end = sorted((segment.donor_start, segment.donor_end))
+    run.query_end = segment.query_end
+    run.donor_start = min(run.donor_start, donor_start)
+    run.donor_end = max(run.donor_end, donor_end)
+    run.bp += segment.bp
+    run.windows += 1
+    run.weighted_same_identity += segment.same_identity * segment.bp
+    run.weighted_inter_identity += segment.inter_identity * segment.bp
+
+
+def group_end_to_end_runs(segments: list[Segment], run_name: str) -> list[Run]:
+    buckets: dict[tuple[str, str], list[Segment]] = defaultdict(list)
+    for segment in segments:
+        buckets[(segment.query_seq, segment.donor_seq)].append(segment)
+
+    runs: list[Run] = []
+    run_counts: dict[str, int] = defaultdict(int)
+    for _key, key_segments in sorted(
+        buckets.items(),
+        key=lambda item: (
+            CHROM_ORDER.index(item[1][0].query_chrom),
+            min(segment.query_start for segment in item[1]),
+            item[0][1],
+        ),
+    ):
         current: Run | None = None
-        for run in sorted(key_runs, key=lambda r: (r.query_start, r.query_end, r.donor_start, r.donor_end)):
-            if (
-                current is not None
-                and intervals_touch(current.query_start, current.query_end, run.query_start, run.query_end)
-                and intervals_touch(current.donor_start, current.donor_end, run.donor_start, run.donor_end)
-            ):
-                absorb_run(current, run)
-                continue
-            current = copy_run(run)
-            merged.append(current)
-    return renumber_runs(merged, run_name)
+        previous: Segment | None = None
+        direction: int | None = None
+        for segment in sorted(
+            key_segments,
+            key=lambda s: (CHROM_ORDER.index(s.query_chrom), s.query_start, s.query_end, s.donor_start, s.donor_end),
+        ):
+            next_direction = donor_step_direction(previous, segment, direction) if previous is not None else None
+            if current is not None and next_direction is not None:
+                direction = next_direction if direction is None else direction
+                extend_run(current, segment)
+            else:
+                current = start_run(segment, run_name, run_counts)
+                runs.append(current)
+                direction = None
+            previous = segment
+    return renumber_runs(runs, run_name)
+
+
+def group_runs(segments: list[Segment]) -> list[Run]:
+    return group_end_to_end_runs(segments, "run")
+
+
+def group_homolog_runs(segments: list[Segment]) -> list[Run]:
+    return group_end_to_end_runs(segments, "homolog_run")
 
 
 def high_confidence_runs(runs: list[Run]) -> list[Run]:
@@ -696,7 +619,7 @@ def write_homolog_runs(path: Path, runs: list[Run]) -> None:
             )
 
 
-def write_summary(path: Path, runs: list[Run], all_runs: list[Run], premerge_runs: list[Run]) -> None:
+def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: list[Segment]) -> None:
     by_category: dict[str, tuple[int, int]] = {}
     for category in COLORS:
         selected = [run for run in runs if run.category == category]
@@ -706,9 +629,9 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run], premerge_run
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
-        writer.writerow({"metric": "contiguous_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
-        writer.writerow({"metric": "premerge_inter_beats_same_runs", "value": str(len(premerge_runs))})
-        writer.writerow({"metric": "all_inter_beats_same_runs", "value": str(len(all_runs))})
+        writer.writerow({"metric": "end_to_end_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
+        writer.writerow({"metric": "inter_beats_same_segments_2kb", "value": str(len(segments))})
+        writer.writerow({"metric": "inter_beats_same_end_to_end_runs", "value": str(len(all_runs))})
         writer.writerow({"metric": "drawn_high_conf_runs", "value": str(len(runs))})
         writer.writerow({"metric": "drawn_high_conf_bp", "value": str(sum(run.bp for run in runs))})
         for category, (count, bp) in by_category.items():
@@ -720,7 +643,7 @@ def write_homolog_summary(
     path: Path,
     homolog_runs: list[Run],
     all_homolog_runs: list[Run],
-    premerge_homolog_runs: list[Run],
+    homolog_segments: list[Segment],
     inter_runs: list[Run],
 ) -> None:
     with path.open("w", newline="") as handle:
@@ -731,9 +654,9 @@ def write_homolog_summary(
         writer.writerow({"metric": "homolog_layer_definition", "value": "grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table"})
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
-        writer.writerow({"metric": "contiguous_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
-        writer.writerow({"metric": "premerge_homolog_runs", "value": str(len(premerge_homolog_runs))})
-        writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
+        writer.writerow({"metric": "end_to_end_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
+        writer.writerow({"metric": "homolog_segments_2kb", "value": str(len(homolog_segments))})
+        writer.writerow({"metric": "homolog_end_to_end_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
         writer.writerow({"metric": "drawn_interchrom_runs", "value": str(len(inter_runs))})
@@ -897,8 +820,8 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x_native(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x_native(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
         color = COLORS[run.category]
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
@@ -975,11 +898,11 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x_native(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x_native(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
-        svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.13)
+        svg.path(d, HOMOLOG_RIBBON, "none", 0, HOMOLOG_RIBBON_OPACITY)
 
     for run in homolog_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -994,8 +917,8 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x_native(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x_native(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
         color = COLORS[run.category]
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
@@ -1083,17 +1006,15 @@ def main() -> None:
     hap2_layout = target_layout("h2", target_lengths_by_key)
 
     segments = read_segments(CLASS_WINNERS)
-    premerge_runs = group_runs(segments)
-    all_runs = merge_contiguous_runs(premerge_runs, "run")
+    all_runs = group_runs(segments)
     runs = high_confidence_runs(all_runs)
     homolog_segments = read_homolog_segments(CLASS_WINNERS)
-    premerge_homolog_runs = group_homolog_runs(homolog_segments)
-    all_homolog_runs = merge_contiguous_runs(premerge_homolog_runs, "homolog_run")
+    all_homolog_runs = group_homolog_runs(homolog_segments)
     homolog_runs = high_confidence_homolog_runs(all_homolog_runs)
     write_runs(RUNS_OUT, runs)
-    write_summary(SUMMARY_OUT, runs, all_runs, premerge_runs)
+    write_summary(SUMMARY_OUT, runs, all_runs, segments)
     write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
-    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, premerge_homolog_runs, runs)
+    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, homolog_segments, runs)
     render(runs, query_layout, hap1_layout, hap2_layout)
     render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout)
     messages = convert_outputs()
@@ -1101,9 +1022,8 @@ def main() -> None:
     for message in messages:
         print(message)
     print(
-        f"segments={len(segments)} premerge_runs={len(premerge_runs)} all_runs={len(all_runs)} "
-        f"drawn_runs={len(runs)} homolog_segments={len(homolog_segments)} "
-        f"premerge_homolog_runs={len(premerge_homolog_runs)} homolog_runs={len(all_homolog_runs)} "
+        f"segments={len(segments)} all_runs={len(all_runs)} drawn_runs={len(runs)} "
+        f"homolog_segments={len(homolog_segments)} homolog_runs={len(all_homolog_runs)} "
         f"drawn_homolog_runs={len(homolog_runs)}"
     )
     print(f"wrote {SVG_OUT}")
