@@ -2,12 +2,12 @@ metric	value
 source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
 homolog_layer_definition	grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table
 homolog_min_identity	0.95
-homolog_min_bp	10000
+homolog_min_bp	50000
 end_to_end_merge_gap_bp	0
 homolog_segments_2kb	174123
 homolog_end_to_end_runs	66592
-drawn_homolog_runs	4737
-drawn_homolog_bp	111812000
+drawn_homolog_runs	314
+drawn_homolog_bp	48996000
 all_multi_window_runs_with_first_window_only_query_span	0
 all_query_span_mismatch_runs	0
 all_max_query_span_bp	1444000

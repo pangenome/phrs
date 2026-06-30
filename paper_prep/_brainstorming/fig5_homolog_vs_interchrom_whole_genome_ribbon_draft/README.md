@@ -44,9 +44,12 @@ The homologous-context variant uses the same geometry but adds full
 same-chromosome father-child homologous chains as a light-gray ribbon layer.
 Homologous chains are grouped from all `same_chrom` class-winner rows with
 identity at least 0.95 and drawn when the grouped run is at least 50 kb. Each
-light-gray homologous ribbon uses the native grouped donor interval and native
-grouped child interval as its two ends; it is not a start marker or
-length-encoded glyph. The colored interchromosomal/non-homologous winners are
+light-gray homologous ribbon uses the exact native grouped donor interval and
+exact native grouped child interval in the TSV outputs. For visibility on the
+whole-genome track, the plotted homologous ribbon and endpoint marks apply a
+display-only minimum width that scales with chain length; this keeps long
+homology visually legible without changing the exact end-to-end merge or
+reported coordinates. The colored interchromosomal/non-homologous winners are
 preserved on top.
 
 Raw 2 kb windows are grouped without gap-tolerant coalescing. A display merge

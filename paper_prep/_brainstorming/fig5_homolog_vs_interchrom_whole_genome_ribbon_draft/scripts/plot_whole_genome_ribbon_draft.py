@@ -73,8 +73,8 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
-HOMOLOG_RIBBON_OPACITY = 0.07
-HOMOLOG_MIN_BP = 10_000
+HOMOLOG_RIBBON_OPACITY = 0.24
+HOMOLOG_MIN_BP = 50_000
 HOMOLOG_MIN_IDENTITY = 0.95
 CONTIGUOUS_MERGE_GAP_BP = 0
 
@@ -324,7 +324,7 @@ def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end:
 
 
 def homolog_visual_width(bp: int) -> float:
-    return max(6.0, min(34.0, 4.0 + bp / 90_000.0))
+    return max(18.0, min(260.0, bp / 10_000.0))
 
 
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
@@ -818,12 +818,15 @@ def write_merge_audit(
 
 
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
-    c = (yb - ya) * 0.48
+    c = abs(yb - ya) * 0.48
+    direction = 1 if yb >= ya else -1
+    ya_ctrl = ya + direction * c
+    yb_ctrl = yb - direction * c
     return (
         f"M {xa0:.2f} {ya:.2f} "
-        f"C {xa0:.2f} {ya + c:.2f}, {xb0:.2f} {yb - c:.2f}, {xb0:.2f} {yb:.2f} "
+        f"C {xa0:.2f} {ya_ctrl:.2f}, {xb0:.2f} {yb_ctrl:.2f}, {xb0:.2f} {yb:.2f} "
         f"L {xb1:.2f} {yb:.2f} "
-        f"C {xb1:.2f} {yb - c:.2f}, {xa1:.2f} {ya + c:.2f}, {xa1:.2f} {ya:.2f} Z"
+        f"C {xb1:.2f} {yb_ctrl:.2f}, {xa1:.2f} {ya_ctrl:.2f}, {xa1:.2f} {ya:.2f} Z"
     )
 
 
@@ -1066,8 +1069,8 @@ def render_homolog_context(
         min_w = homolog_visual_width(run.bp)
         qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
         dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
-        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.24)
-        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.18)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.22)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.22)
 
     for run in inter_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -1098,7 +1101,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} exact-merged same-chromosome chains >=10 kb; gray glyph width scales with merged chain length.",
+        f"Light gray: {len(homolog_runs)} exact same-chromosome chains >=50 kb; display width scales with chain length to keep long homology visible.",
         19,
         "400",
         MUTED,
