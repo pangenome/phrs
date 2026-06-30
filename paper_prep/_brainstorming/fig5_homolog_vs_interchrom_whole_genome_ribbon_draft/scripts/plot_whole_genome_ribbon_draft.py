@@ -17,11 +17,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
 OUT_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft"
-CLASS_WINNERS = (
-    ROOT
-    / "paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/"
-    / "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz"
+CLASS_WINNERS_REL = (
+    "paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/"
+    "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz"
 )
+CLASS_WINNERS_CANDIDATES = [ROOT / CLASS_WINNERS_REL, Path("/moosefs/erikg/phrs") / CLASS_WINNERS_REL]
 QUERY_FAI = Path(
     "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
     "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"
@@ -65,6 +65,10 @@ HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
 HOMOLOG_MIN_BP = 50_000
 HOMOLOG_MIN_IDENTITY = 0.95
+HOMOLOG_GLYPH_BP_PER_PX = 10_000
+HOMOLOG_GLYPH_MIN_PX = 8.0
+HOMOLOG_GLYPH_MAX_BP = 2_600_000
+HOMOLOG_GLYPH_MAX_PX = HOMOLOG_GLYPH_MAX_BP / HOMOLOG_GLYPH_BP_PER_PX
 
 COLORS = {
     "PAR_XY": "#E7298A",
@@ -214,6 +218,14 @@ def chrom_name(value: str) -> str:
     return match.group(1) if match else value
 
 
+def resolve_existing_path(candidates: list[Path], label: str) -> Path:
+    for path in candidates:
+        if path.exists():
+            return path
+    tried = "\n".join(f"  - {path}" for path in candidates)
+    raise FileNotFoundError(f"could not find {label}; tried:\n{tried}")
+
+
 def parse_loc(value: str) -> tuple[str, int, int]:
     match = LOC_RE.match(value)
     if match is None:
@@ -310,7 +322,10 @@ def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end:
 
 
 def homolog_visual_width(bp: int) -> float:
-    return max(6.0, min(34.0, 4.0 + bp / 90_000.0))
+    return max(
+        HOMOLOG_GLYPH_MIN_PX,
+        min(HOMOLOG_GLYPH_MAX_PX, bp / HOMOLOG_GLYPH_BP_PER_PX),
+    )
 
 
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
@@ -645,6 +660,10 @@ def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs:
         writer.writerow({"metric": "homolog_layer_definition", "value": "full same_chrom father-child homologous chains from the 10:10 IMPG class-winner table"})
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
+        writer.writerow({"metric": "homolog_glyph_bp_per_px", "value": str(HOMOLOG_GLYPH_BP_PER_PX)})
+        writer.writerow({"metric": "homolog_glyph_min_px", "value": f"{HOMOLOG_GLYPH_MIN_PX:.1f}"})
+        writer.writerow({"metric": "homolog_glyph_max_bp", "value": str(HOMOLOG_GLYPH_MAX_BP)})
+        writer.writerow({"metric": "homolog_glyph_max_px", "value": f"{HOMOLOG_GLYPH_MAX_PX:.1f}"})
         writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
@@ -916,7 +935,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} full same-chromosome chains >=50 kb at identity >=0.95; gray width scales with grouped chain length.",
+        f"Light gray: {len(homolog_runs)} full same-chromosome chains >=50 kb at identity >=0.95; gray glyph width scales at 10 kb/px, capped at 2.6 Mb.",
         19,
         "400",
         MUTED,
@@ -973,6 +992,8 @@ def convert_outputs() -> list[str]:
 
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    global CLASS_WINNERS
+    CLASS_WINNERS = resolve_existing_path(CLASS_WINNERS_CANDIDATES, "10:10 IMPG class-winner source")
     _query_seqs, query_lengths = read_query_fai(QUERY_FAI)
     _target_seqs, target_lengths_by_key, _target_lengths_by_seq = read_target_fai(TARGET_FAI)
     query_layout = layout_for_lengths("PAN027 pat child", query_lengths)

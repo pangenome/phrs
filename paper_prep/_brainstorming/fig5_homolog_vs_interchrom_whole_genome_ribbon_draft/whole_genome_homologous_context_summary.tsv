@@ -3,6 +3,10 @@ source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtere
 homolog_layer_definition	full same_chrom father-child homologous chains from the 10:10 IMPG class-winner table
 homolog_min_identity	0.95
 homolog_min_bp	50000
+homolog_glyph_bp_per_px	10000
+homolog_glyph_min_px	8.0
+homolog_glyph_max_bp	2600000
+homolog_glyph_max_px	260.0
 all_homolog_runs	50280
 drawn_homolog_runs	364
 drawn_homolog_bp	62450000

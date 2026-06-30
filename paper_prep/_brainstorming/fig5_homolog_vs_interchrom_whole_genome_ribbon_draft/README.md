@@ -46,3 +46,6 @@ interchromosomal/non-homologous ribbons are preserved on top.
 Because these tracts are sub-megabase to low-megabase features on a whole-genome
 axis, the gray homologous-chain glyph width is enlarged in proportion to grouped
 run length while remaining anchored at the native query and donor coordinates.
+The length glyph scale is 10 kb per rendered pixel, with an 8 px minimum and a
+2.6 Mb / 260 px cap, so the gray layer reads as grouped chain length rather than
+start-position ticks on the whole-genome axis.
