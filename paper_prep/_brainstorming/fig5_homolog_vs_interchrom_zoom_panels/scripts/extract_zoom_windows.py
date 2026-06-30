@@ -22,11 +22,9 @@ QUERY_FAI = Path(
 ZOOM_BP = 500_000
 WINDOW_BP = 2_000
 PANEL_ORDER = [
-    ("chrX", "p", "PAR1 X/Y control"),
-    ("chr22", "p", "chr22p acrocentric"),
-    ("chr5", "q", "chr5q subtelomeric"),
-    ("chr15", "p", "chr15p acrocentric"),
-    ("chr9", "q", "PAN027 chr9q -> chr3q"),
+    ("chrX", "p", "chrXp PAR1"),
+    ("chr5", "q", "chr5q"),
+    ("chr9", "q", "chr9q"),
 ]
 
 CHR_RE = re.compile(r"(chr(?:[0-9]+|X|Y|M))")

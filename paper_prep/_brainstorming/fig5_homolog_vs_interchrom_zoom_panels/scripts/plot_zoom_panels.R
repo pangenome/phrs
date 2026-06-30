@@ -13,35 +13,14 @@ segments$relative_end_kb <- segments$relative_end / 1000
 segments$relative_mid_kb <- (segments$relative_start + segments$relative_end) / 2000
 
 target_cols <- c(
-  chr1 = "#4E79A7", chr2 = "#A0CBE8", chr3 = "#D95F02", chr4 = "#FFBE7D",
-  chr5 = "#59A14F", chr6 = "#8CD17D", chr7 = "#B6992D", chr8 = "#F1CE63",
-  chr9 = "#1B9E77", chr10 = "#86BCB6", chr11 = "#E15759", chr12 = "#FF9D9A",
-  chr13 = "#79706E", chr14 = "#8A8A8A", chr15 = "#9C755F", chr16 = "#D7B5A6",
-  chr17 = "#B07AA1", chr18 = "#D4A6C8", chr19 = "#2F4B7C", chr20 = "#665191",
-  chr21 = "#A05195", chr22 = "#D45087", chrX = "#7570B3", chrY = "#E7298A",
-  other = "#2C7FB8"
+  chrY = "#E7298A",
+  chr1 = "#4E79A7",
+  chr3 = "#D95F02",
+  other = "#B8B8B8"
 )
 
 target_col <- function(x) {
   ifelse(x %in% names(target_cols), target_cols[x], target_cols[["other"]])
-}
-
-fmt_targets <- function(value) {
-  if (is.na(value) || !nzchar(value)) return("")
-  parts <- strsplit(value, ";", fixed = TRUE)[[1]]
-  pieces <- vapply(parts, function(part) {
-    kv <- strsplit(part, ":", fixed = TRUE)[[1]]
-    if (length(kv) != 2) return("")
-    sprintf("%s %.0f kb", kv[1], as.numeric(kv[2]) / 1000)
-  }, character(1))
-  paste(pieces[seq_len(min(3, length(pieces)))], collapse = "\n")
-}
-
-target_run_label <- function(target_chrom, target_haplotype) {
-  if (is.na(target_haplotype) || target_haplotype == "NA" || !nzchar(target_haplotype)) {
-    return(target_chrom)
-  }
-  sprintf("%s %s", target_chrom, target_haplotype)
 }
 
 panel_coord_label <- function(row) {
@@ -92,6 +71,10 @@ draw_scale_bar <- function(x0, y, width_kb = 100) {
   text((x0 + x1) / 2, y - 0.10, sprintf("%d kb", width_kb), cex = 0.58, col = "#333333", adj = c(0.5, 1), xpd = NA)
 }
 
+draw_phr_span <- function(x0, x1, y) {
+  rect(x0, y - 0.35, x1, y + 0.35, col = adjustcolor("#6B6B6B", alpha.f = 0.07), border = "#555555", lwd = 0.75)
+}
+
 draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
@@ -104,10 +87,8 @@ draw_zoom <- function() {
   header_y <- n + 0.56
   legend_y <- header_y + 0.32
   x_center <- (track_x0 + track_x1) / 2
-  x_half_span <- 440
-  # Shift the data viewport slightly left so the fully annotated panel stack,
-  # including left labels and right summaries, is centered on the output page.
-  x_center_offset <- -14
+  x_half_span <- 380
+  x_center_offset <- -28
 
   plot(
     NA,
@@ -117,9 +98,9 @@ draw_zoom <- function() {
     xlab = "",
     ylab = ""
   )
-  title("PAN027 paternal hap2 subtelomeric homolog-vs-interchrom zooms", line = 2.15, cex.main = 1.02)
+  title("PAN027 paternal hap2 (PAN027#2) vs father PAN011 joint haplotypes (PAN011#1 + PAN011#2)", line = 2.15, cex.main = 0.98)
   mtext(
-    "Query PAN027#2 paternal haplotype vs PAN011 father joint haplotypes; filled 2 kb windows: best interchromosomal IMPG similarity beats best same-chromosome/homolog match",
+    "Filled 2 kb windows show where the best interchromosomal IMPG match beats the same-chromosome/homolog match; shaded boxes mark the PHR span",
     side = 3,
     line = 0.55,
     cex = 0.62
@@ -167,6 +148,7 @@ draw_zoom <- function() {
         rows$plot_end_kb <- x0 + as.numeric(row$zoom_bp) / 1000 - rows$relative_start_kb
       }
       rows <- rows[order(rows$plot_start_kb, rows$plot_end_kb, rows$target_chrom, rows$target_haplotype), ]
+      draw_phr_span(min(rows$plot_start_kb), max(rows$plot_end_kb), y)
 
       for (j in seq_len(nrow(rows))) {
         rect(
@@ -174,64 +156,25 @@ draw_zoom <- function() {
           y - 0.30,
           rows$plot_end_kb[j],
           y + 0.30,
-          col = target_col(rows$target_chrom[j]),
+          col = target_col(rows$target_bucket[j]),
           border = NA
         )
       }
-
-      # Label contiguous target runs of at least 6 kb, plus every chr3/chrY run.
-      run_start <- rows$plot_start_kb[1]
-      run_end <- rows$plot_end_kb[1]
-      run_target <- rows$target_chrom[1]
-      run_haplotype <- rows$target_haplotype[1]
-      emit_run <- function(start_kb, end_kb, target, haplotype, y) {
-        width <- end_kb - start_kb
-        if (width >= 12 || (target %in% c("chr3", "chrY") && width >= 10)) {
-          label <- target_run_label(target, haplotype)
-          text((start_kb + end_kb) / 2, y + 0.43, sprintf("%s %.0f kb", label, width), cex = 0.40, col = "#222222")
-        }
-      }
-      if (nrow(rows) > 1) {
-        for (j in 2:nrow(rows)) {
-          contiguous <- rows$target_chrom[j] == run_target &&
-            rows$target_haplotype[j] == run_haplotype &&
-            rows$plot_start_kb[j] <= run_end + 0.001
-          if (contiguous) {
-            run_end <- max(run_end, rows$plot_end_kb[j])
-          } else {
-            emit_run(run_start, run_end, run_target, run_haplotype, y)
-            run_start <- rows$plot_start_kb[j]
-            run_end <- rows$plot_end_kb[j]
-            run_target <- rows$target_chrom[j]
-            run_haplotype <- rows$target_haplotype[j]
-          }
-        }
-      }
-      emit_run(run_start, run_end, run_target, run_haplotype, y)
     }
-
-    text(
-      track_x1 + 32,
-      y,
-      sprintf("inter>same %.0f kb\n%s", as.numeric(row$winning_bp) / 1000, fmt_targets(row$top_targets)),
-      adj = 0,
-      cex = 0.46,
-      col = "#333333"
-    )
   }
 
-  legend_targets <- unique(segments$target_chrom)
-  legend_targets <- legend_targets[order(match(legend_targets, c("chrY", "chr3", "chr1", "chr13", "chr14", "chr15", "chr21", "chr22")), legend_targets)]
+  legend_targets <- unique(segments$target_bucket)
+  legend_targets <- legend_targets[order(match(legend_targets, c("chrY", "chr1", "chr3", "other")))]
   legend_targets <- legend_targets[!is.na(legend_targets)]
-  legend_targets <- legend_targets[seq_len(min(length(legend_targets), 10))]
+  legend_labels <- c(chrY = "target chrY", chr1 = "target chr1", chr3 = "target chr3", other = "other target")
   if (length(legend_targets) > 0) {
-    legend_step <- 45
+    legend_step <- 82
     x0 <- ((track_x0 + track_x1) - (length(legend_targets) - 1) * legend_step) / 2
     y0 <- legend_y
     for (k in seq_along(legend_targets)) {
       x <- x0 + (k - 1) * legend_step
       rect(x, y0 - 0.075, x + 5, y0 + 0.075, col = target_col(legend_targets[k]), border = NA)
-      text(x + 6.5, y0, legend_targets[k], adj = 0, cex = 0.55)
+      text(x + 6.5, y0, legend_labels[legend_targets[k]], adj = 0, cex = 0.55)
     }
   }
   draw_scale_bar((track_x0 + track_x1 - 100) / 2, 0.23, 100)

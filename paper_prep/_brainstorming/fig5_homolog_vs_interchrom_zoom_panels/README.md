@@ -14,12 +14,16 @@ target.
   scale bar replaces the full local-position axis
 - layout: panels are stacked in one centered column, with row-specific p/q
   orientation indicated by the telomere-side signal and break glyph
+- retained panels: chrXp/PAR1 control, chr5q, chr9q; chr22p and chr15p
+  acrocentric rows are intentionally omitted from this view
+- colors: best interchromosomal targets are collapsed to chrY, chr1, chr3, and
+  other target
+- PHR span: the shaded box behind each row marks the range covered by the
+  plotted interchromosome-over-homolog windows in that 500 kb subtelomeric view
 - break glyphs mark the omitted chromosome-body side of each zoom
 - plotted signal: windows where the best interchromosomal IMPG match in the
   PAN011 father target beats the best same-chromosome/homolog match
-- target summaries include the PAN011 target haplotype label (`h1`/`h2`) where
-  available, for example `chr3 h2`
-- panels: chrX p/PAR1, chr22 p, chr5 q, chr15 p, chr9 q
+- panels: chrX p/PAR1, chr5 q, chr9 q
 
 Build:
 
