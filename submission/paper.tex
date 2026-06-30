@@ -253,32 +253,24 @@ sequence similarity and contact, rather than a stage-specific peak.
 
 \subsection*{Pedigree-resolved patches are compatible with recent exchange}
 
-To ask whether recent exchange leaves compatible pedigree-resolved patches, we
-applied \texttt{odgi untangle} to the WashU three-generation T2T pedigree
-\cite{Cechova2025}, comparing each
-inherited child haplotype with the two haplotypes of the transmitting parent
-(Fig.~\ref{fig:fig5}).
-Patch calls were made without using the HPRCv2 community labels.
-Across three assayed child-haplotype transmissions, 494 of 538 high-quality
-inter-chromosomal patch calls (92\%) subsequently mapped between arms assigned
-to the same sequence-similarity community, above a marginal-aware permutation
-null (mean 77.0\%, $p < 10^{-4}$).
-These patch calls include candidate gene-conversion-like tracts between
-non-homologous arms of the same community, for example between 9q and 3q, and
-crossover-like state switches, but they remain assembly-derived candidates
-rather than a per-event recombination truth set.
-Direct whole-genome alignment of the child to parental haplotypes with two
-independent aligners reproduces the 9q--3q donor at matching coordinates
-(99.2--99.9\% per-block identity), confirming the patch reflects genuine
-inter-chromosomal sequence sharing rather than a graph artifact.
-A lower-merge rerun recovered intervals spanning published conversion- and
-crossover-associated tract scales, although tract length alone does not assign
-event-level mechanism.
-Fragmented CEPH1463 assemblies show that untangle can produce many
-inter-chromosomal patch calls outside the population-defined communities, so we
-use those assemblies only as a cross-assembler validation set; confirming
-individual WashU events will require orthogonal long-read recombination maps
-\cite{Halldorsson2019,palsson2025recomb}.
+To ask whether recent exchange can leave pedigree-resolved patterns compatible
+with PHR sharing, we compared the PAN027 paternal haplotype with a joint
+two-haplotype target from the transmitting father, PAN011
+\cite{Cechova2025}, using whole-genome alignment followed by 2 kb
+IMPG-similarity windows (Fig.~\ref{fig:fig5}).
+This male transmission provides an internal positive control: the same procedure
+recovers PAR1 sharing between Xp and Yp, the obligate site of male
+sex-chromosome recombination.
+It also recovers two putative autosomal PHR exchanges, chr5q/chr1p and
+chr9q/chr3q, in which the best inter-chromosomal father match beats the
+same-chromosome or homologous father match across adjacent windows.
+PHR and community labels were assigned only after calling; the highlighted pairs
+fall in the expected arm-level sequence-similarity communities and show
+post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
+We therefore interpret these as recombination-compatible PHR-exchange
+candidates, not breakpoint-resolved or event-level truth calls.
+Confirming individual WashU events will require orthogonal long-read
+recombination maps \cite{Halldorsson2019,palsson2025recomb}.
 
 Together, these observations suggest a self-reinforcing loop. Shared sequence
 tracks three-dimensional proximity. Proximity at the meiotic bouquet creates the
@@ -422,19 +414,25 @@ Group for generating and interpreting these data.
   \centering
   \makebox[\linewidth][c]{%
     \includegraphics[width=1.08\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.pdf}}
-  \caption{\textbf{Pedigree-resolved candidate subtelomeric patches.}
-    Candidate inter-chromosomal subtelomeric patches in the WashU
-    three-generation T2T pedigree. The PAN027 maternal haplotype (hap1,
-    inherited from the mother PAN010) is untangled against PAN010's two
-    haplotypes with \texttt{odgi untangle}, per chromosome arm (p-arms left,
-    q-arms right; purple bars mark high-quality inter-chromosomal patch calls).
-    Community labels were assigned after patch calling. Of 538 patch calls across
-    three child-haplotype transmissions, 494 (92\%; Wilson 95\% CI 89.2--93.9\%)
-    joined arms in the same independently inferred sequence-similarity community,
-    above a marginal-aware Monte Carlo null (mean 77.0\%, 95\% CI 75.4--78.8\%;
-    $p < 10^{-4}$). These candidate patches are compatible with crossover-like
-    reciprocal exchanges and gene-conversion-like tracts; cross-assembler
-    validation (CEPH1463) is described in the main text.}
+  \caption{\textbf{Pedigree-resolved donor-recipient ribbons for candidate PHR exchange.}
+    PAN027 inherited a paternal haplotype from PAN011; the child query haplotype
+    was compared with a joint two-haplotype PAN011 father target. Each panel
+    shows one 500 kb subtelomeric PAN027 recipient window above the PAN011 donor
+    window(s) selected by the best inter-chromosomal father match. Colored blocks
+    mark 2 kb query-space windows whose inter-chromosomal father match beats the
+    same-chromosome or homologous father match, and ribbons connect the
+    recipient window to the corresponding donor interval. Adjacent 2 kb windows
+    are merged for display when donor chromosome, haplotype and sequence
+    coordinates are consistent and nearby. Black bars mark PHR/PAR intervals; in
+    the Xp/Yp panel, PAR1 is drawn across the full visible 500 kb p-tip window
+    because the canonical PAR1 interval extends beyond the zoom. Gray triangles
+    indicate that the chromosome continues outside the plotted 500 kb window.
+    \textbf{(A)} Male Xp/Yp transmission, including PAR1 as an internal positive
+    control for obligate male sex-chromosome recombination. \textbf{(B,C)} Two
+    putative recombination-compatible autosomal PHR exchanges, chr5q/chr1p and
+    chr9q/chr3q. PHR/community labels were assigned only after calling; the
+    highlighted pairs are supported by the population arm-community/Jaccard
+    analysis (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).}
   \label{fig:fig5}
 \end{figure}
 
@@ -635,55 +633,28 @@ association rather than a stage-specific maximum.
 \texttt{vegan::mantel} cross-check within $\pm 0.02$ \cite{Zuo2021}; the Python
 and R implementations are included in the public analysis-code repository.
 
-\subsection*{Pedigree odgi-untangle}
+\subsection*{Pedigree direct-alignment windows}
 
-Pedigree patches were called from \texttt{odgi untangle nth-best=1} output by
-merging contiguous child-flank intervals assigned to the same transmitting
-parent chromosome and haplotype.
-The high-quality WashU denominator comprised all inter-chromosomal patches with
-\texttt{min\_score} $\geq 0.8$ and
-$500\ \mathrm{bp} \leq \mathrm{size} \leq 100\ \mathrm{kb}$.
-Leiden labels from the independently inferred HPRCv2 arm-level community graph
-were assigned only after patch calling.
-The primary statistic was the fraction of high-quality WashU patches whose query
-and donor arms shared a Leiden community, tested against a permutation null
-preserving per-arm patch-count marginals.
-Within-community status was used to select candidate patch-pattern examples
-and, for CEPH1463, as part of a conservative cross-assembler validation
-criterion \cite{Cechova2025,Porubsky2025}. The classification implementation is
-included in the public analysis-code repository.
-Patch tract lengths were interpreted alongside long-read primate meiotic
-recombination tract ranges (NCO 22--95 bp, CO-associated 318--688 bp)
-\cite{pedigree_Porsborg2025primaterecom,pedigree_Joseph2024PRDM9indep}.
-A lower-merge resolution check reran the same WashU targets with
-\texttt{odgi untangle -e 50000 -m 0 -j 0 -n 1}, merged adjacent best-hit
-intervals assigned to the same donor chromosome arm and haplotype, and
-summarised inter-chromosomal merged intervals with \texttt{min\_score}
-$\geq 0.8$ and length $\leq 100$ kb.
-The within-Leiden fraction was tested against a permutation null preserving
-per-arm patch-count marginals ($B = 10000$; per-community BH correction);
-Wilson 95\% CI on 494/538 is 89.2--93.9\%. The permutation implementation is
-included in the public analysis-code repository.
-
-\subsection*{Direct-alignment validation of inter-chromosomal patches}
-
-To test whether the flagged inter-chromosomal patches reflect genuine sequence
-sharing rather than graph artefacts, we realigned the implicated child
-haplotypes directly against the full whole-genome assemblies of both
-transmitting-parent haplotypes (a joint two-haplotype target), independently
-with two aligners: wfmash v0.24.2 (\texttt{-p 95}) and sweepGA 0.1.1, a FastGA
-wrapper (\texttt{--num-mappings many:many --scaffold-jump 0}). We then retained
-alignments whose query fell in the chr9q candidate flanks
-(PAN027 \texttt{chr9:135.7--136.2~Mb}; PAN028 \texttt{chr9:134.4--134.9~Mb}) and
-whose target lay on a non-homologous donor chromosome. Both aligners placed the
-donor on chr3q over matching coordinates ($\sim$201.2--202.5~Mb) at
-99.2--99.9\% per-block identity. FastGA recovered the chr3q signal only with an
-explicit k-mer occurrence threshold (\texttt{-f 16}); its sparser default
-seeding missed it, whereas wfmash recovered it under default settings.
+For Fig.~\ref{fig:fig5}, the PAN027 paternal haplotype was used as query against
+a joint two-haplotype PAN011 father target \cite{Cechova2025}. We started from
+an existing SweepGA/FastGA raw PAF generated with frequency threshold 32,
+many:many mappings and no scaffold jumps, then filtered it with sweepga 0.1.1
+to 1:1, 4:4 and 10:10 mapping classes; the main panels use the 10:10 class.
+The query was summarized in 2 kb windows. We excluded centromeric windows,
+windows without alignment support and windows with excessive inter-chromosomal
+PAF depth (maximum depth 100).
+For each retained window, we ran \texttt{impg similarity} 0.4.1 with POA, no
+merge, many:many mapping and scaffold jump 0. A window was assigned to an
+inter-chromosomal class when its best PAN011 father match on a non-homologous
+chromosome beat the same-chromosome or homologous father match. Adjacent 2 kb
+windows were merged only for display when donor chromosome, donor haplotype,
+donor sequence and nearby recipient and donor coordinates were consistent. PHR
+and arm-community labels were assigned after calling and were not used to select
+the windows.
 
 \subsection*{Software versions}
 
-wfmash 0.23.0-41-gb5f0ff1c; impg commit 5b96025; pggb and odgi bundled;
+wfmash v0.24.2-12-ge040aa10; sweepga 0.1.1; impg 0.4.1; pggb and odgi bundled;
 samtools, bedtools and bgzip via conda; hicexplorer 3.7.4; R packages
 \texttt{ape}, \texttt{vegan} and \texttt{cluster}.
 

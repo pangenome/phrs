@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draft donor/recipient ribbon view for PAN027 paternal Fig5 candidates."""
+"""Donor/recipient ribbon view for PAN027 paternal Fig5 candidates."""
 
 from __future__ import annotations
 
@@ -24,11 +24,10 @@ PHR_TABLE = Path(
     "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/"
     "all-vs-all.1Mb.p95.id95.len.tsv"
 )
-TARGET_FAI = (
-    ROOT
-    / ".wg-worktrees/agent-2636/paper_prep/_brainstorming/"
-    / "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/"
-    / "PAN027pat_vs_PAN011_joint.target.fa.fai"
+TARGET_FAI = Path(
+    "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
+    "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/"
+    "PAN027pat_vs_PAN011_joint.target.fa.fai"
 )
 
 SVG_OUT = HERE / "fig5_donor_recipient_ribbon_draft.svg"
@@ -61,7 +60,7 @@ TRACK_W = 1580
 TRACK_H = 20
 PANEL_GAP = 78
 DONOR_ROW_GAP = 54
-TOP = 152
+TOP = 88
 TEXT = "#222222"
 MUTED = "#5f6368"
 LIGHT = "#d7dadd"
@@ -506,7 +505,7 @@ def draw_phr_bar(
     if clipped_end <= clipped_start:
         return
     px0, px1 = x_for_window(clipped_start, clipped_end, window_start, window_end)
-    bar_y = y - 17 if placement == "top" else y + TRACK_H + 4
+    bar_y = y - 17 if placement == "top" else y + TRACK_H + 9
     svg.rect(px0, bar_y, px1 - px0, 6, PHR_FILL, "none", 0, 1.0, rx=0)
 
 
@@ -726,13 +725,6 @@ def render(
         panel_heights.append(150 + max(1, n) * DONOR_ROW_GAP)
     height = TOP + sum(panel_heights) + PANEL_GAP * len(panel_heights) + 40
     svg = SVG(PAGE_W, height)
-    svg.text(
-        68,
-        54,
-        "Fig5 donor-recipient ribbon draft: PAN027 paternal haplotype (child) vs PAN011 (father)",
-        31,
-        "700",
-    )
     y = TOP
     for panel_id in PANEL_ORDER:
         y = draw_panel(svg, panel_id, runs, phr_by_panel, donor_phrs, y)

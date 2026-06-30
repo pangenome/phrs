@@ -1,6 +1,6 @@
-# Fig5 donor-recipient ribbon draft
+# Fig5 donor-recipient ribbon
 
-Draft ribbon-style view for the three PAN027 paternal Fig5 recipient windows.
+Ribbon-style view for the three PAN027 paternal Fig5 recipient windows.
 This complements, rather than replaces,
 `paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/`.
 
@@ -23,6 +23,8 @@ Outputs:
 - `fig5_donor_recipient_ribbon_draft.pdf`
 - `fig5_donor_recipient_ribbon_draft.png`
 - `donor_recipient_runs.tsv`
+- `caption.md`
+- `methods.md`
 - `COMMUNITY_LINKAGE_NOTE.md`
 
 Geometry:
@@ -53,3 +55,9 @@ Build:
 ```bash
 bash paper_prep/_brainstorming/fig5_donor_recipient_ribbon_draft/scripts/make_donor_recipient_ribbons.sh
 ```
+
+Manuscript integration:
+
+- `caption.md` records the Fig. 5 caption language used in `submission/paper.tex`.
+- `methods.md` records the matching direct-alignment workflow summary.
+- The manuscript copy is `submission/fig/MainFigures/Fig5_pedigree_untangle.pdf`.
