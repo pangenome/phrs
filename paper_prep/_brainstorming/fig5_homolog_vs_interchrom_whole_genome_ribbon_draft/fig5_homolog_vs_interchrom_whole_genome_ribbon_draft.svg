@@ -183,7 +183,6 @@
 <path d="M 2529.66 271.00 C 2529.66 360.28, 1991.66 367.72, 1991.66 457.00 L 1991.68 457.00 C 1991.68 367.72, 2529.67 360.28, 2529.67 271.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2611.78 667.00 C 2611.78 746.68, 1992.28 421.32, 1992.28 501.00 L 1992.29 501.00 C 1992.29 421.32, 2611.80 746.68, 2611.80 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2612.68 667.00 C 2612.68 746.68, 1993.14 421.32, 1993.14 501.00 L 1993.14 501.00 C 1993.14 421.32, 2612.69 746.68, 2612.69 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
-<path d="M 1989.14 271.00 C 1989.14 360.28, 2532.31 367.72, 2532.31 457.00 L 2532.32 457.00 C 2532.32 367.72, 1989.15 360.28, 1989.15 271.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 1989.63 271.00 C 1989.63 360.28, 2532.77 367.72, 2532.77 457.00 L 2532.78 457.00 C 2532.78 367.72, 1989.64 360.28, 1989.64 271.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 1989.66 271.00 C 1989.66 360.28, 2532.80 367.72, 2532.80 457.00 L 2532.81 457.00 C 2532.81 367.72, 1989.67 360.28, 1989.67 271.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 1989.71 271.00 C 1989.71 360.28, 2532.85 367.72, 2532.85 457.00 L 2532.85 457.00 C 2532.85 367.72, 1989.72 360.28, 1989.72 271.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
@@ -209,6 +208,7 @@
 <path d="M 2612.71 667.00 C 2612.71 746.68, 1993.17 421.32, 1993.17 501.00 L 1993.18 501.00 C 1993.18 421.32, 2612.72 746.68, 2612.72 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2612.86 667.00 C 2612.86 746.68, 1993.45 421.32, 1993.45 501.00 L 1993.46 501.00 C 1993.46 421.32, 2612.87 746.68, 2612.87 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2611.99 667.00 C 2611.99 746.68, 1992.52 421.32, 1992.52 501.00 L 1992.54 501.00 C 1992.54 421.32, 2612.01 746.68, 2612.01 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
+<path d="M 1989.14 271.00 C 1989.14 360.28, 2532.31 367.72, 2532.31 457.00 L 2532.33 457.00 C 2532.33 367.72, 1989.16 360.28, 1989.16 271.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2611.67 667.00 C 2611.67 746.68, 1992.17 421.32, 1992.17 501.00 L 1992.18 501.00 C 1992.18 421.32, 2611.69 746.68, 2611.69 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2612.10 667.00 C 2612.10 746.68, 1992.62 421.32, 1992.62 501.00 L 1992.64 501.00 C 1992.64 421.32, 2612.12 746.68, 2612.12 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
 <path d="M 2612.88 667.00 C 2612.88 746.68, 1993.46 421.32, 1993.46 501.00 L 1993.48 501.00 C 1993.48 421.32, 2612.89 746.68, 2612.89 667.00 Z" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.160"/>
@@ -249,8 +249,6 @@
 <rect x="2610.29" y="670.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="1991.64" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="2611.18" y="670.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
-<rect x="2530.82" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
-<rect x="1987.65" y="230.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="2531.27" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="1988.14" y="230.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="2531.31" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
@@ -301,6 +299,8 @@
 <rect x="2611.37" y="670.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="1991.03" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="2610.50" y="670.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
+<rect x="2530.82" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
+<rect x="1987.65" y="230.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="1990.67" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="2610.18" y="670.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
 <rect x="1991.13" y="460.00" width="3.00" height="38.00" rx="1.50" fill="#6f6f6f" stroke="none" stroke-width="0.00" opacity="0.484"/>
@@ -373,6 +373,6 @@
 <text x="1779.0" y="810.0" font-size="21.0" font-weight="400" fill="#202124" text-anchor="start">acrocentric (50)</text>
 <rect x="2130.00" y="790.00" width="27.00" height="21.00" rx="0.00" fill="#9e9e9e" stroke="none" stroke-width="0.00" opacity="0.900"/>
 <text x="2169.0" y="810.0" font-size="21.0" font-weight="400" fill="#202124" text-anchor="start">acro-other (4)</text>
-<text x="360.0" y="855.0" font-size="19.0" font-weight="400" fill="#5f6368" text-anchor="start">Drawn: 59 high-confidence runs, 1.12 Mb total; threshold: run &gt;=10 kb and mean interchrom identity &gt;=0.95.</text>
+<text x="360.0" y="855.0" font-size="19.0" font-weight="400" fill="#5f6368" text-anchor="start">Drawn: 59 high-confidence runs, 1.13 Mb total; threshold: run &gt;=10 kb and mean interchrom identity &gt;=0.95.</text>
 <text x="360.0" y="883.0" font-size="19.0" font-weight="400" fill="#5f6368" text-anchor="start">All coordinates are native whole-genome coordinates collapsed into length-scaled chromosome-order tracks.</text>
 </svg>

@@ -74,6 +74,7 @@ HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
 HOMOLOG_MIN_BP = 50_000
 HOMOLOG_MIN_IDENTITY = 0.95
+CONTIGUOUS_MERGE_GAP_BP = 0
 
 COLORS = {
     "PAR_XY": "#E7298A",
@@ -512,6 +513,85 @@ def group_homolog_runs(segments: list[Segment]) -> list[Run]:
     return runs
 
 
+def copy_run(run: Run) -> Run:
+    return Run(
+        run_id=run.run_id,
+        query_seq=run.query_seq,
+        query_chrom=run.query_chrom,
+        query_start=run.query_start,
+        query_end=run.query_end,
+        donor_seq=run.donor_seq,
+        donor_haplotype=run.donor_haplotype,
+        target_chrom=run.target_chrom,
+        donor_start=run.donor_start,
+        donor_end=run.donor_end,
+        bp=run.bp,
+        windows=run.windows,
+        weighted_same_identity=run.weighted_same_identity,
+        weighted_inter_identity=run.weighted_inter_identity,
+    )
+
+
+def intervals_touch(a_start: int, a_end: int, b_start: int, b_end: int, gap: int = CONTIGUOUS_MERGE_GAP_BP) -> bool:
+    a0, a1 = sorted((a_start, a_end))
+    b0, b1 = sorted((b_start, b_end))
+    return b0 <= a1 + gap and a0 <= b1 + gap
+
+
+def absorb_run(current: Run, run: Run) -> None:
+    current.query_start = min(current.query_start, run.query_start)
+    current.query_end = max(current.query_end, run.query_end)
+    current.donor_start = min(current.donor_start, run.donor_start)
+    current.donor_end = max(current.donor_end, run.donor_end)
+    current.bp += run.bp
+    current.windows += run.windows
+    current.weighted_same_identity += run.weighted_same_identity
+    current.weighted_inter_identity += run.weighted_inter_identity
+
+
+def renumber_runs(runs: list[Run], run_name: str) -> list[Run]:
+    counts: dict[str, int] = defaultdict(int)
+    ordered = sorted(
+        runs,
+        key=lambda r: (
+            CHROM_ORDER.index(r.query_chrom),
+            r.query_start,
+            r.query_end,
+            r.donor_haplotype,
+            r.target_chrom,
+            r.donor_start,
+            r.donor_end,
+        ),
+    )
+    for run in ordered:
+        counts[run.query_chrom] += 1
+        run.run_id = f"{run.query_chrom}_{run_name}{counts[run.query_chrom]:04d}"
+    return ordered
+
+
+def merge_contiguous_runs(runs: list[Run], run_name: str) -> list[Run]:
+    """Collapse exact same-source/same-donor abutting runs before drawing."""
+    buckets: dict[tuple[str, str, str, str, str], list[Run]] = defaultdict(list)
+    for run in runs:
+        key = (run.query_seq, run.query_chrom, run.donor_seq, run.donor_haplotype, run.target_chrom)
+        buckets[key].append(run)
+
+    merged: list[Run] = []
+    for _key, key_runs in buckets.items():
+        current: Run | None = None
+        for run in sorted(key_runs, key=lambda r: (r.query_start, r.query_end, r.donor_start, r.donor_end)):
+            if (
+                current is not None
+                and intervals_touch(current.query_start, current.query_end, run.query_start, run.query_end)
+                and intervals_touch(current.donor_start, current.donor_end, run.donor_start, run.donor_end)
+            ):
+                absorb_run(current, run)
+                continue
+            current = copy_run(run)
+            merged.append(current)
+    return renumber_runs(merged, run_name)
+
+
 def high_confidence_runs(runs: list[Run]) -> list[Run]:
     out = [
         run
@@ -616,7 +696,7 @@ def write_homolog_runs(path: Path, runs: list[Run]) -> None:
             )
 
 
-def write_summary(path: Path, runs: list[Run], all_runs: list[Run]) -> None:
+def write_summary(path: Path, runs: list[Run], all_runs: list[Run], premerge_runs: list[Run]) -> None:
     by_category: dict[str, tuple[int, int]] = {}
     for category in COLORS:
         selected = [run for run in runs if run.category == category]
@@ -626,6 +706,8 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run]) -> None:
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
+        writer.writerow({"metric": "contiguous_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
+        writer.writerow({"metric": "premerge_inter_beats_same_runs", "value": str(len(premerge_runs))})
         writer.writerow({"metric": "all_inter_beats_same_runs", "value": str(len(all_runs))})
         writer.writerow({"metric": "drawn_high_conf_runs", "value": str(len(runs))})
         writer.writerow({"metric": "drawn_high_conf_bp", "value": str(sum(run.bp for run in runs))})
@@ -634,7 +716,13 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run]) -> None:
             writer.writerow({"metric": f"{category}_bp", "value": str(bp)})
 
 
-def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs: list[Run], inter_runs: list[Run]) -> None:
+def write_homolog_summary(
+    path: Path,
+    homolog_runs: list[Run],
+    all_homolog_runs: list[Run],
+    premerge_homolog_runs: list[Run],
+    inter_runs: list[Run],
+) -> None:
     with path.open("w", newline="") as handle:
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
@@ -643,6 +731,8 @@ def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs:
         writer.writerow({"metric": "homolog_layer_definition", "value": "grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table"})
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
+        writer.writerow({"metric": "contiguous_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
+        writer.writerow({"metric": "premerge_homolog_runs", "value": str(len(premerge_homolog_runs))})
         writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
@@ -993,15 +1083,17 @@ def main() -> None:
     hap2_layout = target_layout("h2", target_lengths_by_key)
 
     segments = read_segments(CLASS_WINNERS)
-    all_runs = group_runs(segments)
+    premerge_runs = group_runs(segments)
+    all_runs = merge_contiguous_runs(premerge_runs, "run")
     runs = high_confidence_runs(all_runs)
     homolog_segments = read_homolog_segments(CLASS_WINNERS)
-    all_homolog_runs = group_homolog_runs(homolog_segments)
+    premerge_homolog_runs = group_homolog_runs(homolog_segments)
+    all_homolog_runs = merge_contiguous_runs(premerge_homolog_runs, "homolog_run")
     homolog_runs = high_confidence_homolog_runs(all_homolog_runs)
     write_runs(RUNS_OUT, runs)
-    write_summary(SUMMARY_OUT, runs, all_runs)
+    write_summary(SUMMARY_OUT, runs, all_runs, premerge_runs)
     write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
-    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, runs)
+    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, premerge_homolog_runs, runs)
     render(runs, query_layout, hap1_layout, hap2_layout)
     render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout)
     messages = convert_outputs()
@@ -1009,8 +1101,9 @@ def main() -> None:
     for message in messages:
         print(message)
     print(
-        f"segments={len(segments)} all_runs={len(all_runs)} drawn_runs={len(runs)} "
-        f"homolog_segments={len(homolog_segments)} homolog_runs={len(all_homolog_runs)} "
+        f"segments={len(segments)} premerge_runs={len(premerge_runs)} all_runs={len(all_runs)} "
+        f"drawn_runs={len(runs)} homolog_segments={len(homolog_segments)} "
+        f"premerge_homolog_runs={len(premerge_homolog_runs)} homolog_runs={len(all_homolog_runs)} "
         f"drawn_homolog_runs={len(homolog_runs)}"
     )
     print(f"wrote {SVG_OUT}")

@@ -3,8 +3,10 @@ source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtere
 homolog_layer_definition	grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table
 homolog_min_identity	0.95
 homolog_min_bp	50000
-all_homolog_runs	50280
-drawn_homolog_runs	364
-drawn_homolog_bp	62450000
+contiguous_merge_gap_bp	0
+premerge_homolog_runs	50280
+all_homolog_runs	50273
+drawn_homolog_runs	361
+drawn_homolog_bp	62492000
 drawn_interchrom_runs	59
-drawn_interchrom_bp	1118000
+drawn_interchrom_bp	1126000
