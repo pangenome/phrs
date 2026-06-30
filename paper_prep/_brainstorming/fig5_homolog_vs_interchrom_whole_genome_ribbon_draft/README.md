@@ -18,6 +18,10 @@ Design:
   match beats the best same-chromosome/homologous match
 - drawn ribbons are filtered to runs of at least 10 kb and mean interchromosomal
   identity of at least 0.95
+- the independent homologous-context version keeps the same colored
+  interchromosomal/non-homologous ribbons and overlays the paired
+  same-chromosome/homologous best-match competitor from the same class-winner
+  windows as light-gray ribbons
 
 Build:
 
@@ -32,3 +36,8 @@ Outputs:
 - `fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.png`
 - `whole_genome_ribbon_runs.tsv`
 - `whole_genome_ribbon_summary.tsv`
+- `fig5_homologous_recombination_context_ribbon_draft.svg`
+- `fig5_homologous_recombination_context_ribbon_draft.pdf`
+- `fig5_homologous_recombination_context_ribbon_draft.png`
+- `homologous_recombination_context_ribbon_runs.tsv`
+- `homologous_recombination_context_ribbon_summary.tsv`

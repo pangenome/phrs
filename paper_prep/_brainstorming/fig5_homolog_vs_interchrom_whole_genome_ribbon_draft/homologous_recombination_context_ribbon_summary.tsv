@@ -1,0 +1,12 @@
+metric	value
+source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+all_inter_beats_same_runs	918
+drawn_colored_interchrom_runs	59
+drawn_colored_interchrom_bp	1118000
+drawn_light_gray_homolog_runs	90
+drawn_light_gray_homolog_bp	1118000
+interchrom_runs_with_homolog_layer	59
+homolog_h1_runs	59
+homolog_h1_bp	878000
+homolog_h2_runs	31
+homolog_h2_bp	240000
