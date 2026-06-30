@@ -10,8 +10,9 @@ target.
 - zoom size: 500 kb from the relevant telomere
 - orientation: p-arm telomeres are shown at the left edge; q-arm telomeres are
   shown at the right edge with actual q-arm coordinate endpoints annotated
-- scale: per-row coordinate endpoints are drawn on the tracks; a single 100 kb
-  scale bar replaces the full local-position axis
+- scale: 100 kb tick marks are drawn under each row and labeled in actual
+  PAN027#2 chromosome Mb coordinates; a single 100 kb scale bar is retained
+  for visual distance
 - chromosome-end window: the gray bar spans the first/last 500 kb of the
   PAN027#2 chromosome from the alignment FASTA; the dark cap marks the physical
   chromosome start/end in that displayed window

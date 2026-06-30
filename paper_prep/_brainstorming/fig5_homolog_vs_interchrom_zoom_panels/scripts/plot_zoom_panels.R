@@ -39,13 +39,16 @@ panel_coord_label <- function(row) {
   }
 }
 
-row_coord_endpoints <- function(row) {
+row_coord_ticks <- function(row) {
   len <- as.numeric(row$query_length)
   zoom <- as.numeric(row$zoom_bp)
+  tick_kb <- seq(0, zoom / 1000, by = 100)
   if (row$arm == "p") {
-    return(c(sprintf("chr start\n%.3f Mb", 0), sprintf("%.3f Mb", zoom / 1e6)))
+    coord_mb <- tick_kb / 1000
+  } else {
+    coord_mb <- (len - zoom + tick_kb * 1000) / 1e6
   }
-  c(sprintf("%.3f Mb", (len - zoom) / 1e6), sprintf("chr end\n%.3f Mb", len / 1e6))
+  data.frame(x = tick_kb, label = sprintf("%.3f", coord_mb))
 }
 
 draw_break_glyph <- function(x, y, direction = c("right", "left")) {
@@ -65,9 +68,16 @@ draw_break_glyph <- function(x, y, direction = c("right", "left")) {
   par(xpd = xpd_old)
 }
 
-draw_coord_endpoints <- function(x0, x1, y, labels, cex = 0.42) {
-  text(x0, y, labels[1], cex = cex, col = "#555555", adj = c(0, 1), xpd = NA)
-  text(x1, y, labels[2], cex = cex, col = "#555555", adj = c(1, 1), xpd = NA)
+draw_coord_ticks <- function(x0, y, row, cex = 0.30) {
+  ticks <- row_coord_ticks(row)
+  x <- x0 + ticks$x
+  segments(x, y - 0.060, x, y - 0.108, col = "#777777", lwd = 0.55, lend = "butt")
+  text(x, y - 0.122, ticks$label, cex = cex, col = "#555555", adj = c(0.5, 1), xpd = NA)
+}
+
+draw_terminal_label <- function(x, y, row) {
+  label <- if (row$arm == "p") "chr start" else "chr end"
+  text(x, y - 0.210, label, cex = 0.30, col = "#555555", adj = c(0.5, 1), xpd = NA)
 }
 
 draw_scale_bar <- function(x0, y, width_kb = 100) {
@@ -131,7 +141,7 @@ draw_zoom <- function() {
   text(
     (track_x0 + track_x1) / 2,
     header_y,
-    "500 kb subtelomeric windows (chromosome coordinates; p telomere left, q telomere right)",
+    "500 kb subtelomeric windows (chromosome coordinates; tick labels in Mb; p telomere left, q telomere right)",
     cex = 0.58,
     font = 2
   )
@@ -151,17 +161,19 @@ draw_zoom <- function() {
     if (is_p) {
       segments(track_x0 + p_ticks, y - 0.060, track_x0 + p_ticks, y + 0.060, col = "#EFEFEF", lwd = 0.5)
       draw_telomere_cap(track_x0, y)
+      draw_terminal_label(track_x0, y, row)
       draw_break_glyph(track_x1 + 15, y, "right")
       text(label_x, y + 0.055, row$panel_label, adj = 1, cex = 0.62, font = 2, xpd = NA)
       text(label_x, y - 0.100, panel_coord_label(row), adj = 1, cex = 0.45, col = "#444444", xpd = NA)
     } else {
       segments(track_x0 + q_ticks, y - 0.060, track_x0 + q_ticks, y + 0.060, col = "#EFEFEF", lwd = 0.5)
       draw_telomere_cap(track_x1, y)
+      draw_terminal_label(track_x1, y, row)
       draw_break_glyph(track_x0 - 15, y, "left")
       text(label_x, y + 0.055, row$panel_label, adj = 1, cex = 0.62, font = 2, xpd = NA)
       text(label_x, y - 0.100, panel_coord_label(row), adj = 1, cex = 0.45, col = "#444444", xpd = NA)
     }
-    draw_coord_endpoints(x0, x1, y - 0.155, row_coord_endpoints(row), cex = 0.34)
+    draw_coord_ticks(x0, y, row)
 
     rows <- segments[segments$panel_id == row$panel_id, ]
     if (nrow(rows) > 0) {
