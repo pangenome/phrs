@@ -73,12 +73,11 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
-HOMOLOG_RIBBON_OPACITY = 0.10
+HOMOLOG_RIBBON_OPACITY = 0.07
 HOMOLOG_MIN_BP = 10_000
 HOMOLOG_MIN_IDENTITY = 0.95
 CONTIGUOUS_MERGE_GAP_BP = 0
-HOMOLOG_DISPLAY_MERGE_MAX_QUERY_GAP_BP = 5_000_000
-HOMOLOG_DISPLAY_MERGE_MAX_DONOR_GAP_BP = 10_000_000
+INTERCHROM_RIBBON_MIN_W = 7.0
 
 COLORS = {
     "PAR_XY": "#E7298A",
@@ -326,7 +325,7 @@ def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end:
 
 
 def homolog_visual_width(bp: int) -> float:
-    return max(18.0, min(90.0, 8.0 + bp / 250_000.0))
+    return max(6.0, min(34.0, 4.0 + bp / 90_000.0))
 
 
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
@@ -572,66 +571,6 @@ def span_audit_metrics(runs: list[Run]) -> dict[str, int]:
     }
 
 
-def copy_run(run: Run) -> Run:
-    return Run(
-        run_id=run.run_id,
-        query_seq=run.query_seq,
-        query_chrom=run.query_chrom,
-        query_start=run.query_start,
-        query_end=run.query_end,
-        donor_seq=run.donor_seq,
-        donor_haplotype=run.donor_haplotype,
-        target_chrom=run.target_chrom,
-        donor_start=run.donor_start,
-        donor_end=run.donor_end,
-        bp=run.bp,
-        windows=run.windows,
-        weighted_same_identity=run.weighted_same_identity,
-        weighted_inter_identity=run.weighted_inter_identity,
-    )
-
-
-def coordinate_gap(a_start: int, a_end: int, b_start: int, b_end: int) -> int:
-    if b_start <= a_end and a_start <= b_end:
-        return 0
-    if b_start > a_end:
-        return b_start - a_end
-    return a_start - b_end
-
-
-def merge_homolog_display_blocks(runs: list[Run]) -> list[Run]:
-    buckets: dict[tuple[str, str, str, str, str], list[Run]] = defaultdict(list)
-    for run in runs:
-        if run.donor_haplotype in {"h1", "h2"}:
-            key = (run.query_seq, run.query_chrom, run.donor_haplotype, run.target_chrom, run.donor_seq)
-            buckets[key].append(run)
-
-    blocks: list[Run] = []
-    for _key, key_runs in buckets.items():
-        current: Run | None = None
-        for run in sorted(key_runs, key=lambda r: (r.query_start, r.query_end, r.donor_start, r.donor_end)):
-            if current is not None:
-                query_gap = coordinate_gap(current.query_start, current.query_end, run.query_start, run.query_end)
-                donor_gap = coordinate_gap(current.donor_start, current.donor_end, run.donor_start, run.donor_end)
-                if (
-                    run.query_start >= current.query_start
-                    and query_gap <= HOMOLOG_DISPLAY_MERGE_MAX_QUERY_GAP_BP
-                    and donor_gap <= HOMOLOG_DISPLAY_MERGE_MAX_DONOR_GAP_BP
-                ):
-                    current.query_start = min(current.query_start, run.query_start)
-                    current.query_end = max(current.query_end, run.query_end)
-                    current.donor_start = min(current.donor_start, run.donor_start)
-                    current.donor_end = max(current.donor_end, run.donor_end)
-                    current.bp += run.bp
-                    current.windows += run.windows
-                    current.weighted_same_identity += run.weighted_same_identity
-                    current.weighted_inter_identity += run.weighted_inter_identity
-                    continue
-            current = copy_run(run)
-            blocks.append(current)
-    return renumber_runs(blocks, "homolog_block")
-
-
 def merge_audit_metrics(segments: list[Segment], runs: list[Run]) -> dict[str, int]:
     buckets: dict[tuple[str, str], list[Segment]] = defaultdict(list)
     for segment in segments:
@@ -826,8 +765,6 @@ def write_homolog_summary(
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
         writer.writerow({"metric": "end_to_end_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
-        writer.writerow({"metric": "homolog_display_merge_max_query_gap_bp", "value": str(HOMOLOG_DISPLAY_MERGE_MAX_QUERY_GAP_BP)})
-        writer.writerow({"metric": "homolog_display_merge_max_donor_gap_bp", "value": str(HOMOLOG_DISPLAY_MERGE_MAX_DONOR_GAP_BP)})
         writer.writerow({"metric": "homolog_segments_2kb", "value": str(len(homolog_segments))})
         writer.writerow({"metric": "homolog_end_to_end_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
@@ -862,8 +799,6 @@ def write_merge_audit(
             "source": str(CLASS_WINNERS),
             "merge_rule": "same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction",
             "end_to_end_merge_gap_bp": str(CONTIGUOUS_MERGE_GAP_BP),
-            "homolog_display_merge_max_query_gap_bp": str(HOMOLOG_DISPLAY_MERGE_MAX_QUERY_GAP_BP if layer == "homolog" else "NA"),
-            "homolog_display_merge_max_donor_gap_bp": str(HOMOLOG_DISPLAY_MERGE_MAX_DONOR_GAP_BP if layer == "homolog" else "NA"),
             "raw_segments_2kb": str(audit["raw_segments_2kb"]),
             "end_to_end_runs": str(audit["end_to_end_runs"]),
             "drawn_runs": str(len(drawn_runs)),
@@ -887,15 +822,12 @@ def write_merge_audit(
 
 
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
-    c = abs(yb - ya) * 0.48
-    direction = 1 if yb >= ya else -1
-    ya_ctrl = ya + direction * c
-    yb_ctrl = yb - direction * c
+    c = (yb - ya) * 0.48
     return (
         f"M {xa0:.2f} {ya:.2f} "
-        f"C {xa0:.2f} {ya_ctrl:.2f}, {xb0:.2f} {yb_ctrl:.2f}, {xb0:.2f} {yb:.2f} "
+        f"C {xa0:.2f} {ya + c:.2f}, {xb0:.2f} {yb - c:.2f}, {xb0:.2f} {yb:.2f} "
         f"L {xb1:.2f} {yb:.2f} "
-        f"C {xb1:.2f} {yb_ctrl:.2f}, {xa1:.2f} {ya_ctrl:.2f}, {xa1:.2f} {ya:.2f} Z"
+        f"C {xb1:.2f} {yb - c:.2f}, {xa1:.2f} {ya + c:.2f}, {xa1:.2f} {ya:.2f} Z"
     )
 
 
@@ -918,10 +850,10 @@ def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
 
 def ribbon_opacity(category: str) -> float:
     if category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"}:
-        return 0.42
+        return 0.75
     if category == "acro_acro":
-        return 0.16
-    return 0.18
+        return 0.34
+    return 0.42
 
 
 def draw_interval(svg: SVG, x0: float, x1: float, y: float, color: str, opacity: float = 0.95) -> None:
@@ -1046,8 +978,8 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, INTERCHROM_RIBBON_MIN_W)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, INTERCHROM_RIBBON_MIN_W)
         color = COLORS[run.category]
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
@@ -1058,8 +990,8 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
         color = COLORS[run.category]
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, INTERCHROM_RIBBON_MIN_W)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, INTERCHROM_RIBBON_MIN_W)
         emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.55
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.88 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.88 * emph)
@@ -1099,7 +1031,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         98,
-        "Light-gray ribbons are display-merged same-chromosome father-child homologous blocks; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
+        "Light-gray ribbons are exact same-chromosome father-child homologous chains >=10 kb; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
         24,
         "400",
         MUTED,
@@ -1145,12 +1077,12 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, INTERCHROM_RIBBON_MIN_W)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, INTERCHROM_RIBBON_MIN_W)
         color = COLORS[run.category]
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
-        opacity = 0.55 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.28
+        opacity = 0.82 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.48
         svg.path(d, color, "none", 0, opacity)
 
     for run in inter_runs:
@@ -1158,8 +1090,8 @@ def render_homolog_context(
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
         color = COLORS[run.category]
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, INTERCHROM_RIBBON_MIN_W)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, INTERCHROM_RIBBON_MIN_W)
         emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.65
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.95 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.95 * emph)
@@ -1170,7 +1102,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} same-haplotype homologous display blocks >=10 kb; block merge allows <=5 Mb query gaps.",
+        f"Light gray: {len(homolog_runs)} exact same-chromosome chains >=10 kb; gray glyph width scales with chain length.",
         19,
         "400",
         MUTED,
@@ -1241,10 +1173,8 @@ def main() -> None:
     homolog_segments = read_homolog_segments(CLASS_WINNERS)
     all_homolog_runs = group_homolog_runs(homolog_segments)
     validate_run_spans(all_homolog_runs, "homolog all")
-    homolog_display_blocks = merge_homolog_display_blocks(all_homolog_runs)
-    validate_run_spans(homolog_display_blocks, "homolog display blocks", allow_query_gaps=True)
-    homolog_runs = high_confidence_homolog_runs(homolog_display_blocks)
-    validate_run_spans(homolog_runs, "homolog drawn", allow_query_gaps=True)
+    homolog_runs = high_confidence_homolog_runs(all_homolog_runs)
+    validate_run_spans(homolog_runs, "homolog drawn")
     write_runs(RUNS_OUT, runs)
     write_summary(SUMMARY_OUT, runs, all_runs, segments)
     write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
