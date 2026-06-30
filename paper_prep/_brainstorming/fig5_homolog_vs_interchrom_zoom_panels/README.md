@@ -12,6 +12,9 @@ target.
   shown at the right edge with actual q-arm coordinate endpoints annotated
 - scale: per-row coordinate endpoints are drawn on the tracks; a single 100 kb
   scale bar replaces the full local-position axis
+- chromosome-end window: the gray bar spans the first/last 500 kb of the
+  PAN027#2 chromosome from the alignment FASTA; the dark cap marks the physical
+  chromosome start/end in that displayed window
 - layout: panels are stacked in one centered column, with row-specific p/q
   orientation indicated by the telomere-side signal and break glyph; output is
   compacted to a 13.2 x 3.6 inch plotting area
@@ -27,6 +30,9 @@ target.
   script converts those offsets back to PAN027#2 full-chromosome coordinates
   using the sequence start embedded in the `seq` field, then clips/projects the
   intervals into the displayed PAN027#2 chromosome-coordinate zoom window.
+  Bracket labels report the projected full-chromosome PHR/PAR coordinates, so
+  terminal sequence outside the population-defined PHR remains visible when the
+  PHR/PAR does not extend exactly to the chromosome end.
 - break glyphs mark the omitted chromosome-body side of each zoom
 - plotted signal: windows where the best interchromosomal IMPG match in the
   PAN011 father target beats the best same-chromosome/homolog match

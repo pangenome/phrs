@@ -43,9 +43,9 @@ row_coord_endpoints <- function(row) {
   len <- as.numeric(row$query_length)
   zoom <- as.numeric(row$zoom_bp)
   if (row$arm == "p") {
-    return(c(sprintf("%.3f Mb", 0), sprintf("%.3f Mb", zoom / 1e6)))
+    return(c(sprintf("chr start\n%.3f Mb", 0), sprintf("%.3f Mb", zoom / 1e6)))
   }
-  c(sprintf("%.3f Mb", (len - zoom) / 1e6), sprintf("%.3f Mb", len / 1e6))
+  c(sprintf("%.3f Mb", (len - zoom) / 1e6), sprintf("chr end\n%.3f Mb", len / 1e6))
 }
 
 draw_break_glyph <- function(x, y, direction = c("right", "left")) {
@@ -83,17 +83,31 @@ draw_phr_span <- function(x0, x1, y) {
   segments(c(x0, x1), y0 - 0.035, c(x0, x1), y0 + 0.035, col = "#555555", lwd = 0.8, lend = "butt")
 }
 
+draw_telomere_cap <- function(x, y) {
+  segments(x, y - 0.088, x, y + 0.088, col = "#222222", lwd = 1.1, lend = "butt")
+}
+
+phr_coord_label <- function(row, panel_phr) {
+  start <- suppressWarnings(as.numeric(panel_phr$query_full_start[1]))
+  end <- suppressWarnings(as.numeric(panel_phr$query_full_end[1]))
+  if (is.na(start) || is.na(end)) {
+    return("")
+  }
+  label <- if (row$panel_id == "chrX_p") "PAR/PHR" else "PHR"
+  sprintf("%s: %.3f-%.3f Mb", label, start / 1e6, end / 1e6)
+}
+
 draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
-  par(mar = c(2.0, 6.3, 2.7, 3.8), xaxs = "i", yaxs = "i")
+  par(mar = c(2.1, 6.3, 2.8, 3.8), xaxs = "i", yaxs = "i")
   track_x0 <- 0
   track_x1 <- 500
   n <- nrow(summary)
   plot_rows <- summary
   row_step <- 0.52
   plot_rows$plot_y <- 0.62 + rev(seq_len(n) - 1) * row_step
-  header_y <- max(plot_rows$plot_y) + 0.34
+  header_y <- max(plot_rows$plot_y) + 0.38
   legend_y <- header_y + 0.22
   x_center <- (track_x0 + track_x1) / 2
   x_half_span <- 380
@@ -136,11 +150,13 @@ draw_zoom <- function() {
     rect(x0, y - 0.060, x1, y + 0.060, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.72)
     if (is_p) {
       segments(track_x0 + p_ticks, y - 0.060, track_x0 + p_ticks, y + 0.060, col = "#EFEFEF", lwd = 0.5)
+      draw_telomere_cap(track_x0, y)
       draw_break_glyph(track_x1 + 15, y, "right")
       text(label_x, y + 0.055, row$panel_label, adj = 1, cex = 0.62, font = 2, xpd = NA)
       text(label_x, y - 0.100, panel_coord_label(row), adj = 1, cex = 0.45, col = "#444444", xpd = NA)
     } else {
       segments(track_x0 + q_ticks, y - 0.060, track_x0 + q_ticks, y + 0.060, col = "#EFEFEF", lwd = 0.5)
+      draw_telomere_cap(track_x1, y)
       draw_break_glyph(track_x0 - 15, y, "left")
       text(label_x, y + 0.055, row$panel_label, adj = 1, cex = 0.62, font = 2, xpd = NA)
       text(label_x, y - 0.100, panel_coord_label(row), adj = 1, cex = 0.45, col = "#444444", xpd = NA)
@@ -178,6 +194,15 @@ draw_zoom <- function() {
           draw_phr_span(phr_start, phr_end, y)
         }
       }
+      text(
+        mean(range(suppressWarnings(as.numeric(panel_phr$plot_start)), suppressWarnings(as.numeric(panel_phr$plot_end)))) / 1000,
+        y + 0.195,
+        phr_coord_label(row, panel_phr),
+        cex = 0.34,
+        col = "#444444",
+        adj = c(0.5, 0.5),
+        xpd = NA
+      )
     }
   }
 
