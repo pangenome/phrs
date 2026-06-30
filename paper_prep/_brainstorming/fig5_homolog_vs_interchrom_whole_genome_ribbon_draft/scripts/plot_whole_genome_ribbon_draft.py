@@ -63,6 +63,8 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
+HOMOLOG_MIN_BP = 50_000
+HOMOLOG_MIN_IDENTITY = 0.95
 
 COLORS = {
     "PAR_XY": "#E7298A",
@@ -295,6 +297,22 @@ def interval_x(layout: GenomeLayout, chrom: str, start: int, end: int) -> tuple[
     return x0, x1
 
 
+def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end: int, min_w: float) -> tuple[float, float]:
+    x0 = x_for(layout, chrom, start)
+    x1 = x_for(layout, chrom, end)
+    if x1 < x0:
+        x0, x1 = x1, x0
+    if x1 - x0 < min_w:
+        mid = (x0 + x1) / 2
+        half = min_w / 2
+        x0, x1 = mid - half, mid + half
+    return x0, x1
+
+
+def homolog_visual_width(bp: int) -> float:
+    return max(6.0, min(34.0, 4.0 + bp / 90_000.0))
+
+
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
     other_seq = row["other_seq"]
     for field in ("group.a", "group.b"):
@@ -353,45 +371,39 @@ def read_segments(path: Path) -> list[Segment]:
 
 
 def read_homolog_segments(path: Path) -> list[Segment]:
-    grouped: dict[tuple[str, int, int], dict[str, dict[str, str]]] = defaultdict(dict)
+    segments: list[Segment] = []
     with gzip.open(path, "rt") as handle:
         for row in csv.DictReader(handle, delimiter="\t"):
-            key = (row["chrom"], int(row["start"]), int(row["end"]))
-            grouped[key][row["winner_class"]] = row
-
-    segments: list[Segment] = []
-    for (query_seq, start, end), rows in grouped.items():
-        if "same_chrom" not in rows or "interchrom" not in rows:
-            continue
-        same = rows["same_chrom"]
-        inter = rows["interchrom"]
-        same_identity = float(same["estimated.identity"])
-        inter_identity = float(inter["estimated.identity"])
-        if inter_identity <= same_identity:
-            continue
-        donor_seq, donor_start, donor_end = same_chrom_interval(same)
-        donor_hap, target_chrom = target_meta(donor_seq)
-        if donor_hap not in {"h1", "h2"}:
-            continue
-        query_chrom = same["query_chrom"]
-        if target_chrom != query_chrom:
-            continue
-        segments.append(
-            Segment(
-                query_seq=query_seq,
-                query_chrom=query_chrom,
-                query_start=start,
-                query_end=end,
-                donor_seq=donor_seq,
-                donor_haplotype=donor_hap,
-                target_chrom=target_chrom,
-                donor_start=donor_start,
-                donor_end=donor_end,
-                bp=end - start,
-                same_identity=same_identity,
-                inter_identity=same_identity,
+            if row["winner_class"] != "same_chrom":
+                continue
+            identity = float(row["estimated.identity"])
+            if identity < HOMOLOG_MIN_IDENTITY:
+                continue
+            donor_seq, donor_start, donor_end = same_chrom_interval(row)
+            donor_hap, target_chrom = target_meta(donor_seq)
+            if donor_hap not in {"h1", "h2"}:
+                continue
+            query_chrom = row["query_chrom"]
+            if target_chrom != query_chrom:
+                continue
+            start = int(row["start"])
+            end = int(row["end"])
+            segments.append(
+                Segment(
+                    query_seq=row["chrom"],
+                    query_chrom=query_chrom,
+                    query_start=start,
+                    query_end=end,
+                    donor_seq=donor_seq,
+                    donor_haplotype=donor_hap,
+                    target_chrom=target_chrom,
+                    donor_start=donor_start,
+                    donor_end=donor_end,
+                    bp=end - start,
+                    same_identity=identity,
+                    inter_identity=identity,
+                )
             )
-        )
     return segments
 
 
@@ -519,7 +531,7 @@ def high_confidence_runs(runs: list[Run]) -> list[Run]:
 
 def high_confidence_homolog_runs(runs: list[Run]) -> list[Run]:
     return sorted(
-        [run for run in runs if run.donor_haplotype in {"h1", "h2"}],
+        [run for run in runs if run.bp >= HOMOLOG_MIN_BP and run.donor_haplotype in {"h1", "h2"}],
         key=lambda r: (-r.bp, CHROM_ORDER.index(r.query_chrom), r.query_start, r.donor_haplotype),
     )
 
@@ -630,7 +642,9 @@ def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs:
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
-        writer.writerow({"metric": "homolog_layer_definition", "value": "same_chrom competitor rows paired with interchrom rows where interchrom identity is greater than same_chrom identity"})
+        writer.writerow({"metric": "homolog_layer_definition", "value": "full same_chrom father-child homologous chains from the 10:10 IMPG class-winner table"})
+        writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
+        writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
         writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
@@ -837,7 +851,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         98,
-        "Light-gray ribbons are same-chromosome father-child homologous runs; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
+        "Light-gray ribbons are full same-chromosome father-child homologous chains; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
         24,
         "400",
         MUTED,
@@ -858,8 +872,9 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        min_w = homolog_visual_width(run.bp)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
         d = ribbon_path(qx0, qx1, Y_QUERY + TRACK_H + 8, dx0, dx1, target_y[run.donor_haplotype] - 8)
         svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.16)
 
@@ -867,10 +882,11 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
-        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.30)
-        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.30)
+        min_w = homolog_visual_width(run.bp)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.28)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.28)
 
     for run in inter_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -900,7 +916,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} paired same-chromosome competitor runs for interchrom-over-same windows; colored overlay: {len(inter_runs)} non-homologous runs.",
+        f"Light gray: {len(homolog_runs)} full same-chromosome chains >=50 kb at identity >=0.95; gray width scales with grouped chain length.",
         19,
         "400",
         MUTED,

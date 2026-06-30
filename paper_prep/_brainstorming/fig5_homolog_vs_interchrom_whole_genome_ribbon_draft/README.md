@@ -38,7 +38,11 @@ Outputs:
 - `whole_genome_homologous_context_runs.tsv`
 - `whole_genome_homologous_context_summary.tsv`
 
-The homologous-context variant uses the same geometry but adds the paired
-same-chromosome competitor from each interchrom-over-same IMPG window as a
-light-gray ribbon layer. The colored interchromosomal/non-homologous ribbons are
-preserved on top.
+The homologous-context variant uses the same geometry but adds full
+same-chromosome father-child homologous chains as a light-gray ribbon layer.
+Those chains are grouped from all `same_chrom` class-winner rows with identity
+at least 0.95 and drawn when the grouped run is at least 50 kb. The colored
+interchromosomal/non-homologous ribbons are preserved on top.
+Because these tracts are sub-megabase to low-megabase features on a whole-genome
+axis, the gray homologous-chain glyph width is enlarged in proportion to grouped
+run length while remaining anchored at the native query and donor coordinates.
