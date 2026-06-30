@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="2600" height="954" viewBox="0 0 2600 954">
 <rect width="100%" height="100%" fill="white"/>
 <style>text{font-family:Arial,Helvetica,sans-serif;dominant-baseline:alphabetic}</style>
-<text x="68.0" y="54.0" font-size="31.0" font-weight="700" fill="#222222" text-anchor="start">Fig5 donor-recipient ribbon draft: PAN027 paternal hap2 vs father PAN011</text>
+<text x="68.0" y="54.0" font-size="31.0" font-weight="700" fill="#222222" text-anchor="start">Fig5 donor-recipient ribbon draft: PAN027 paternal haplotype (child) vs PAN011 (father)</text>
 <rect x="44.00" y="104.00" width="2512.00" height="176.00" rx="3.00" fill="#ffffff" stroke="#e0e2e4" stroke-width="0.80" opacity="1.000"/>
-<text x="68.0" y="134.0" font-size="25.0" font-weight="700" fill="#222222" text-anchor="start">chrXp PAR1 recipient -&gt; chrYp donor</text>
-<text x="512.0" y="215.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN027 hap2 chrXp</text>
+<text x="68.0" y="134.0" font-size="25.0" font-weight="700" fill="#222222" text-anchor="start">chrXp child recipient &lt;- chrYp father donor</text>
+<text x="512.0" y="215.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN027 paternal haplotype (child) chrXp</text>
 <rect x="540.00" y="196.00" width="1580.00" height="20.00" rx="2.00" fill="#f4f5f6" stroke="#c8ccd0" stroke-width="1.00" opacity="1.000"/>
 <line x1="540.00" y1="193.00" x2="540.00" y2="219.00" stroke="#111111" stroke-width="2.20" opacity="1.000"/>
 <polygon points="2128.00,198.00 2128.00,214.00 2145.00,206.00" fill="#9aa0a6" stroke="none" stroke-width="0.00" opacity="0.950"/>
@@ -24,7 +24,7 @@
 <rect x="584.24" y="191.00" width="290.72" height="30.00" rx="1.00" fill="#E7298A" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <rect x="887.60" y="191.00" width="145.36" height="30.00" rx="1.00" fill="#E7298A" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <rect x="1190.96" y="191.00" width="12.64" height="30.00" rx="1.00" fill="#E7298A" stroke="none" stroke-width="0.00" opacity="0.950"/>
-<text x="512.0" y="301.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN011 h2 chrYp</text>
+<text x="512.0" y="301.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN011 haplotype 2 (father) chrYp</text>
 <rect x="540.00" y="282.00" width="1580.00" height="20.00" rx="2.00" fill="#f4f5f6" stroke="#c8ccd0" stroke-width="1.00" opacity="1.000"/>
 <line x1="540.00" y1="279.00" x2="540.00" y2="305.00" stroke="#111111" stroke-width="2.20" opacity="1.000"/>
 <polygon points="2128.00,284.00 2128.00,300.00 2145.00,292.00" fill="#9aa0a6" stroke="none" stroke-width="0.00" opacity="0.950"/>
@@ -48,8 +48,8 @@
 <rect x="1176.17" y="278.00" width="12.64" height="28.00" rx="1.00" fill="#E7298A" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <path d="M 1190.96 223.00 C 1190.96 246.40, 1176.17 251.60, 1176.17 275.00 L 1188.81 275.00 C 1188.81 251.60, 1203.60 246.40, 1203.60 223.00 Z" fill="#E7298A" stroke="none" stroke-width="0.00" opacity="0.300"/>
 <rect x="44.00" y="358.00" width="2512.00" height="176.00" rx="3.00" fill="#ffffff" stroke="#e0e2e4" stroke-width="0.80" opacity="1.000"/>
-<text x="68.0" y="388.0" font-size="25.0" font-weight="700" fill="#222222" text-anchor="start">chr5q recipient -&gt; chr1p donor</text>
-<text x="512.0" y="469.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN027 hap2 chr5q</text>
+<text x="68.0" y="388.0" font-size="25.0" font-weight="700" fill="#222222" text-anchor="start">chr5q child recipient &lt;- chr1p father donor</text>
+<text x="512.0" y="469.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN027 paternal haplotype (child) chr5q</text>
 <rect x="540.00" y="450.00" width="1580.00" height="20.00" rx="2.00" fill="#f4f5f6" stroke="#c8ccd0" stroke-width="1.00" opacity="1.000"/>
 <line x1="2120.00" y1="447.00" x2="2120.00" y2="473.00" stroke="#111111" stroke-width="2.20" opacity="1.000"/>
 <polygon points="532.00,452.00 532.00,468.00 515.00,460.00" fill="#9aa0a6" stroke="none" stroke-width="0.00" opacity="0.950"/>
@@ -75,7 +75,7 @@
 <rect x="1930.81" y="445.00" width="25.28" height="30.00" rx="1.00" fill="#4E79A7" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <rect x="1962.41" y="445.00" width="12.64" height="30.00" rx="1.00" fill="#4E79A7" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <rect x="2012.97" y="445.00" width="6.32" height="30.00" rx="1.00" fill="#4E79A7" stroke="none" stroke-width="0.00" opacity="0.950"/>
-<text x="512.0" y="555.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN011 h2 chr1p</text>
+<text x="512.0" y="555.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN011 haplotype 2 (father) chr1p</text>
 <rect x="540.00" y="536.00" width="1580.00" height="20.00" rx="2.00" fill="#f4f5f6" stroke="#c8ccd0" stroke-width="1.00" opacity="1.000"/>
 <line x1="540.00" y1="533.00" x2="540.00" y2="559.00" stroke="#111111" stroke-width="2.20" opacity="1.000"/>
 <polygon points="2128.00,538.00 2128.00,554.00 2145.00,546.00" fill="#9aa0a6" stroke="none" stroke-width="0.00" opacity="0.950"/>
@@ -111,8 +111,8 @@
 <rect x="1009.53" y="532.00" width="6.31" height="28.00" rx="1.00" fill="#4E79A7" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <path d="M 1608.49 477.00 C 1608.49 500.40, 1009.53 505.60, 1009.53 529.00 L 1015.84 529.00 C 1015.84 505.60, 1614.81 500.40, 1614.81 477.00 Z" fill="#4E79A7" stroke="none" stroke-width="0.00" opacity="0.300"/>
 <rect x="44.00" y="612.00" width="2512.00" height="176.00" rx="3.00" fill="#ffffff" stroke="#e0e2e4" stroke-width="0.80" opacity="1.000"/>
-<text x="68.0" y="642.0" font-size="25.0" font-weight="700" fill="#222222" text-anchor="start">chr9q recipient -&gt; chr3q donor</text>
-<text x="512.0" y="723.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN027 hap2 chr9q</text>
+<text x="68.0" y="642.0" font-size="25.0" font-weight="700" fill="#222222" text-anchor="start">chr9q child recipient &lt;- chr3q father donor</text>
+<text x="512.0" y="723.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN027 paternal haplotype (child) chr9q</text>
 <rect x="540.00" y="704.00" width="1580.00" height="20.00" rx="2.00" fill="#f4f5f6" stroke="#c8ccd0" stroke-width="1.00" opacity="1.000"/>
 <line x1="2120.00" y1="701.00" x2="2120.00" y2="727.00" stroke="#111111" stroke-width="2.20" opacity="1.000"/>
 <polygon points="532.00,706.00 532.00,722.00 515.00,714.00" fill="#9aa0a6" stroke="none" stroke-width="0.00" opacity="0.950"/>
@@ -136,7 +136,7 @@
 <rect x="2059.49" y="699.00" width="6.32" height="30.00" rx="1.00" fill="#D95F02" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <rect x="2084.77" y="699.00" width="6.32" height="30.00" rx="1.00" fill="#D95F02" stroke="none" stroke-width="0.00" opacity="0.950"/>
 <rect x="2103.73" y="699.00" width="6.32" height="30.00" rx="1.00" fill="#D95F02" stroke="none" stroke-width="0.00" opacity="0.950"/>
-<text x="512.0" y="809.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN011 h2 chr3q</text>
+<text x="512.0" y="809.0" font-size="18.0" font-weight="700" fill="#222222" text-anchor="end">PAN011 haplotype 2 (father) chr3q</text>
 <rect x="540.00" y="790.00" width="1580.00" height="20.00" rx="2.00" fill="#f4f5f6" stroke="#c8ccd0" stroke-width="1.00" opacity="1.000"/>
 <line x1="2120.00" y1="787.00" x2="2120.00" y2="813.00" stroke="#111111" stroke-width="2.20" opacity="1.000"/>
 <polygon points="532.00,792.00 532.00,808.00 515.00,800.00" fill="#9aa0a6" stroke="none" stroke-width="0.00" opacity="0.950"/>

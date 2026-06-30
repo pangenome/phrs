@@ -37,9 +37,9 @@ CONVERSION_STATUS = HERE / "conversion_status.txt"
 
 PANEL_ORDER = ["chrX_p", "chr5_q", "chr9_q"]
 PANEL_TITLES = {
-    "chrX_p": "chrXp PAR1 recipient -> chrYp donor",
-    "chr5_q": "chr5q recipient -> chr1p donor",
-    "chr9_q": "chr9q recipient -> chr3q donor",
+    "chrX_p": "chrXp child recipient <- chrYp father donor",
+    "chr5_q": "chr5q child recipient <- chr1p father donor",
+    "chr9_q": "chr9q child recipient <- chr3q father donor",
 }
 DOMINANT_BY_PANEL = {
     "chrX_p": {"chrY"},
@@ -571,7 +571,11 @@ def arm_from_window_label(label: str) -> str:
 def donor_label(run: Run) -> str:
     match = TARGET_RE.match(run.donor_seq)
     if match:
-        return f"PAN011 {match.group('hap')} {match.group('chrom')}{arm_from_window_label(run.donor_window_label)}"
+        hap_number = match.group("hap")[1:]
+        return (
+            f"PAN011 haplotype {hap_number} (father) "
+            f"{match.group('chrom')}{arm_from_window_label(run.donor_window_label)}"
+        )
     return run.donor_seq.replace("PAN011#joint#", "PAN011 ")
 
 
@@ -607,7 +611,14 @@ def draw_panel(
     svg.text(68, y - 18, PANEL_TITLES.get(panel_id, panel_id), 25, "700")
 
     rec_y = y + 44
-    draw_track(svg, rec_y, f"PAN027 hap2 {first.query_chrom}{first.arm}", rec_start, rec_end, rec_anchor)
+    draw_track(
+        svg,
+        rec_y,
+        f"PAN027 paternal haplotype (child) {first.query_chrom}{first.arm}",
+        rec_start,
+        rec_end,
+        rec_anchor,
+    )
 
     phr_rows = phr_by_panel.get(panel_id, [])
     for phr in phr_rows:
@@ -680,7 +691,13 @@ def render(
         panel_heights.append(122 + max(1, n) * DONOR_ROW_GAP)
     height = TOP + sum(panel_heights) + PANEL_GAP * len(panel_heights) + 40
     svg = SVG(PAGE_W, height)
-    svg.text(68, 54, "Fig5 donor-recipient ribbon draft: PAN027 paternal hap2 vs father PAN011", 31, "700")
+    svg.text(
+        68,
+        54,
+        "Fig5 donor-recipient ribbon draft: PAN027 paternal haplotype (child) vs PAN011 (father)",
+        31,
+        "700",
+    )
     y = TOP
     for panel_id in PANEL_ORDER:
         y = draw_panel(svg, panel_id, runs, phr_by_panel, donor_phrs, y)
