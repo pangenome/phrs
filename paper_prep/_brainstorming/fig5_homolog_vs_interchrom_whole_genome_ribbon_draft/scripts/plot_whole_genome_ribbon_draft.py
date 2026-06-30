@@ -73,8 +73,8 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
-HOMOLOG_RIBBON_OPACITY = 0.24
-HOMOLOG_MIN_BP = 50_000
+HOMOLOG_RIBBON_OPACITY = 0.07
+HOMOLOG_MIN_BP = 10_000
 HOMOLOG_MIN_IDENTITY = 0.95
 CONTIGUOUS_MERGE_GAP_BP = 0
 
@@ -312,6 +312,19 @@ def interval_x(layout: GenomeLayout, chrom: str, start: int, end: int) -> tuple[
         mid = (x0 + x1) / 2
         x0, x1 = mid - 1.5, mid + 1.5
     return x0, x1
+
+
+def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end: int, min_w: float) -> tuple[float, float]:
+    x0, x1 = interval_x_native(layout, chrom, start, end)
+    if x1 - x0 < min_w:
+        mid = (x0 + x1) / 2
+        half = min_w / 2
+        x0, x1 = mid - half, mid + half
+    return x0, x1
+
+
+def homolog_visual_width(bp: int) -> float:
+    return max(6.0, min(34.0, 4.0 + bp / 90_000.0))
 
 
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
@@ -805,7 +818,7 @@ def write_merge_audit(
 
 
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
-    c = abs(yb - ya) * 0.48
+    c = (yb - ya) * 0.48
     return (
         f"M {xa0:.2f} {ya:.2f} "
         f"C {xa0:.2f} {ya + c:.2f}, {xb0:.2f} {yb - c:.2f}, {xb0:.2f} {yb:.2f} "
@@ -1039,8 +1052,9 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        min_w = homolog_visual_width(run.bp)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
         svg.path(d, HOMOLOG_RIBBON, "none", 0, HOMOLOG_RIBBON_OPACITY)
@@ -1049,10 +1063,11 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
-        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.22)
-        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.22)
+        min_w = homolog_visual_width(run.bp)
+        qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
+        dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.24)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.18)
 
     for run in inter_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -1083,7 +1098,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} grouped same-chromosome chains >=50 kb drawn as donor-interval to child-interval ribbons.",
+        f"Light gray: {len(homolog_runs)} exact-merged same-chromosome chains >=10 kb; gray glyph width scales with merged chain length.",
         19,
         "400",
         MUTED,

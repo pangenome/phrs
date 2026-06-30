@@ -26,8 +26,8 @@ homolog	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjace
 homolog	end_to_end_merge_gap_bp	0
 homolog	raw_segments_2kb	174123
 homolog	end_to_end_runs	66592
-homolog	drawn_runs	314
-homolog	drawn_bp	48996000
+homolog	drawn_runs	4737
+homolog	drawn_bp	111812000
 homolog	absorbed_fragments	107531
 homolog	multi_window_runs	38848
 homolog	max_absorbed_query_endpoint_gap_bp	0
