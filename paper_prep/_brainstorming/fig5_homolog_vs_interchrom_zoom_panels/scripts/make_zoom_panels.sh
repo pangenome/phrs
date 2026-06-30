@@ -10,6 +10,7 @@ if [[ -r "$class_winners" ]]; then
   python3 "$out_dir/scripts/extract_zoom_windows.py"
 elif [[ -r "$out_dir/zoom_window_segments.tsv" && -r "$out_dir/zoom_panel_summary.tsv" ]]; then
   echo "Using committed zoom panel TSV snapshots; upstream class-winner gzip not found: $class_winners" >&2
+  python3 "$out_dir/scripts/extract_zoom_windows.py" --phr-only
 else
   echo "Missing upstream class-winner gzip and committed zoom panel TSV snapshots" >&2
   exit 1

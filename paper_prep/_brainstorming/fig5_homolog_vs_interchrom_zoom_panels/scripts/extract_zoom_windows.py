@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import gzip
+import argparse
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -77,44 +78,109 @@ def target_haplotype(target_name: str) -> str:
     return match.group(1) if match else "NA"
 
 
-def read_phr_table(path: Path) -> dict[tuple[str, str], dict[str, object]]:
-    out: dict[tuple[str, str], dict[str, object]] = {}
+def project_phr_interval(
+    row: dict[str, str],
+    lengths: dict[str, tuple[str, int]],
+    source_path: Path,
+) -> dict[str, object] | None:
+    match = PHR_SEQ_RE.match(row["seq"])
+    if match is None:
+        return None
+
+    query_name = match.group("query_prefix").split(".")[0]
+    if not query_name.startswith("PAN027#2#"):
+        return None
+
+    chrom = chrom_name(query_name)
+    if chrom not in lengths:
+        return None
+
+    arm = "p" if match.group("arm") == "p" else "q"
+    panel_lookup = {(chrom, arm): (idx + 1, label) for idx, (chrom, arm, label) in enumerate(PANEL_ORDER)}
+    panel = panel_lookup.get((chrom, arm))
+    if panel is None:
+        return None
+
+    if row["region_start"] == "." or row["region_end"] == ".":
+        return None
+
+    seq_start = int(match.group("seq_start"))
+    seq_end = int(match.group("seq_end"))
+    region_start = int(row["region_start"])
+    region_end = int(row["region_end"])
+    if region_end <= region_start:
+        return None
+
+    full_start = seq_start + region_start
+    full_end = seq_start + region_end
+    query_length = lengths[chrom][1]
+
+    if arm == "p":
+        plot_start = max(0, min(ZOOM_BP, full_start))
+        plot_end = max(0, min(ZOOM_BP, full_end))
+    else:
+        window_start = query_length - ZOOM_BP
+        plot_start = max(0, min(ZOOM_BP, full_start - window_start))
+        plot_end = max(0, min(ZOOM_BP, full_end - window_start))
+
+    if plot_end <= plot_start:
+        return None
+
+    panel_order, panel_label = panel
+    return {
+        "panel_order": panel_order,
+        "panel_id": f"{chrom}_{arm}",
+        "panel_label": panel_label,
+        "query_name": query_name,
+        "query_chrom": chrom,
+        "arm": arm,
+        "query_length": query_length,
+        "zoom_bp": ZOOM_BP,
+        "phr_source": str(source_path),
+        "phr_seq": row["seq"],
+        "flank_start": seq_start,
+        "flank_end": seq_end + 1,
+        "region_start": region_start,
+        "region_end": region_end,
+        "query_full_start": full_start,
+        "query_full_end": full_end,
+        "plot_start": plot_start,
+        "plot_end": plot_end,
+        "chrs_involved": row.get("chrs_involved", "NA"),
+        "arms_involved": row.get("arms_involved", "NA"),
+    }
+
+
+def read_phr_table(path: Path, lengths: dict[str, tuple[str, int]]) -> dict[tuple[str, str], list[dict[str, object]]]:
+    out: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)
     with path.open() as handle:
         for row in csv.DictReader(handle, delimiter="\t"):
-            if row["region_start"] == "." or row["region_end"] == ".":
+            projected = project_phr_interval(row, lengths, path)
+            if projected is None:
                 continue
-            match = PHR_SEQ_RE.match(row["seq"])
-            if match is None:
-                continue
-            query_name = match.group("query_prefix").split(".")[0]
-            chrom = chrom_name(query_name)
-            arm = "p" if match.group("arm") == "p" else "q"
-            if not query_name.startswith("PAN027#2#"):
-                continue
-            seq_start = int(match.group("seq_start"))
-            region_start = int(row["region_start"])
-            region_end = int(row["region_end"])
-            out[(chrom, arm)] = {
-                "phr_source": str(path),
-                "phr_seq": row["seq"],
-                "phr_region_start": region_start,
-                "phr_region_end": region_end,
-                "phr_full_start": seq_start + region_start,
-                "phr_full_end": seq_start + region_end,
-            }
+            out[(str(projected["query_chrom"]), str(projected["arm"]))].append(projected)
     return out
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--phr-only",
+        action="store_true",
+        help="Refresh only projected WashU PHR intervals; keep committed window snapshots untouched.",
+    )
+    args = parser.parse_args()
+
     lengths = read_fai(QUERY_FAI)
-    phr_by_chrom_arm = read_phr_table(PHR_TABLE)
+    phr_by_chrom_arm = read_phr_table(PHR_TABLE, lengths)
     panel_by_chrom_arm = {(chrom, arm): (idx + 1, label) for idx, (chrom, arm, label) in enumerate(PANEL_ORDER)}
     groups: dict[tuple[str, int, int], dict[str, dict[str, str]]] = defaultdict(dict)
 
-    with gzip.open(CLASS_WINNERS, "rt") as handle:
-        for row in csv.DictReader(handle, delimiter="\t"):
-            key = (row["chrom"], int(row["start"]), int(row["end"]))
-            groups[key][row["winner_class"]] = row
+    if not args.phr_only:
+        with gzip.open(CLASS_WINNERS, "rt") as handle:
+            for row in csv.DictReader(handle, delimiter="\t"):
+                key = (row["chrom"], int(row["start"]), int(row["end"]))
+                groups[key][row["winner_class"]] = row
 
     segments: list[dict[str, object]] = []
     for (query_name, start, end), rows in groups.items():
@@ -187,7 +253,8 @@ def main() -> None:
             )
             if pid == panel_id
         ]
-        phr = phr_by_chrom_arm.get((chrom, arm), {})
+        phr_rows = phr_by_chrom_arm.get((chrom, arm), [])
+        first_phr = phr_rows[0] if phr_rows else {}
         summaries.append(
             {
                 "panel_order": panel_order,
@@ -200,16 +267,53 @@ def main() -> None:
                 "winning_windows": len(rows),
                 "winning_bp": sum(int(row["window_overlap_bp"]) for row in rows),
                 "top_targets": ";".join(top_targets),
-                "phr_source": phr.get("phr_source", "NA"),
-                "phr_seq": phr.get("phr_seq", "NA"),
-                "phr_region_start": phr.get("phr_region_start", "NA"),
-                "phr_region_end": phr.get("phr_region_end", "NA"),
-                "phr_full_start": phr.get("phr_full_start", "NA"),
-                "phr_full_end": phr.get("phr_full_end", "NA"),
+                "phr_interval_count": len(phr_rows),
+                "phr_source": first_phr.get("phr_source", "NA"),
+                "phr_seq": first_phr.get("phr_seq", "NA"),
+                "phr_region_start": first_phr.get("region_start", "NA"),
+                "phr_region_end": first_phr.get("region_end", "NA"),
+                "phr_full_start": first_phr.get("query_full_start", "NA"),
+                "phr_full_end": first_phr.get("query_full_end", "NA"),
             }
         )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    phr_fields = [
+        "panel_order",
+        "panel_id",
+        "panel_label",
+        "query_name",
+        "query_chrom",
+        "arm",
+        "query_length",
+        "zoom_bp",
+        "phr_source",
+        "phr_seq",
+        "flank_start",
+        "flank_end",
+        "region_start",
+        "region_end",
+        "query_full_start",
+        "query_full_end",
+        "plot_start",
+        "plot_end",
+        "chrs_involved",
+        "arms_involved",
+    ]
+    phr_rows_flat = [
+        row
+        for rows in phr_by_chrom_arm.values()
+        for row in rows
+    ]
+    with (OUT_DIR / "zoom_phr_intervals.tsv").open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, delimiter="\t", fieldnames=phr_fields, lineterminator="\n")
+        writer.writeheader()
+        for row in sorted(phr_rows_flat, key=lambda r: (int(r["panel_order"]), int(r["plot_start"]), int(r["plot_end"]))):
+            writer.writerow(row)
+
+    if args.phr_only:
+        return
+
     segment_fields = [
         "panel_order",
         "panel_id",
@@ -246,6 +350,7 @@ def main() -> None:
         "winning_windows",
         "winning_bp",
         "top_targets",
+        "phr_interval_count",
         "phr_source",
         "phr_seq",
         "phr_region_start",

@@ -3,6 +3,12 @@
 out_dir <- "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels"
 segments <- read.delim(file.path(out_dir, "zoom_window_segments.tsv"), stringsAsFactors = FALSE, check.names = FALSE)
 summary <- read.delim(file.path(out_dir, "zoom_panel_summary.tsv"), stringsAsFactors = FALSE, check.names = FALSE)
+phr_path <- file.path(out_dir, "zoom_phr_intervals.tsv")
+phr_intervals <- if (file.exists(phr_path)) {
+  read.delim(phr_path, stringsAsFactors = FALSE, check.names = FALSE)
+} else {
+  data.frame()
+}
 
 if (!"target_haplotype" %in% names(segments)) {
   segments$target_haplotype <- "NA"
@@ -72,50 +78,23 @@ draw_scale_bar <- function(x0, y, width_kb = 100) {
 }
 
 draw_phr_span <- function(x0, x1, y) {
-  y0 <- y + 0.145
-  segments(x0, y0, x1, y0, col = "#555555", lwd = 0.85, lend = "butt")
-  segments(c(x0, x1), y0 - 0.045, c(x0, x1), y0 + 0.045, col = "#555555", lwd = 0.85, lend = "butt")
-}
-
-phr_interval_kb <- function(row) {
-  if (!all(c("phr_full_start", "phr_full_end") %in% names(row))) {
-    return(NULL)
-  }
-  full_start <- suppressWarnings(as.numeric(row$phr_full_start))
-  full_end <- suppressWarnings(as.numeric(row$phr_full_end))
-  if (is.na(full_start) || is.na(full_end) || full_end <= full_start) {
-    return(NULL)
-  }
-  len <- as.numeric(row$query_length)
-  zoom <- as.numeric(row$zoom_bp)
-  if (row$arm == "p") {
-    x0 <- full_start
-    x1 <- full_end
-  } else {
-    window_start <- len - zoom
-    x0 <- full_start - window_start
-    x1 <- full_end - window_start
-  }
-  x0 <- max(0, x0)
-  x1 <- min(zoom, x1)
-  if (x1 <= x0) {
-    return(NULL)
-  }
-  c(x0 / 1000, x1 / 1000)
+  y0 <- y + 0.118
+  segments(x0, y0, x1, y0, col = "#555555", lwd = 0.8, lend = "butt")
+  segments(c(x0, x1), y0 - 0.035, c(x0, x1), y0 + 0.035, col = "#555555", lwd = 0.8, lend = "butt")
 }
 
 draw_zoom <- function() {
   op <- par(no.readonly = TRUE)
   on.exit(par(op), add = TRUE)
-  par(mar = c(2.4, 6.6, 3.3, 4.2), xaxs = "i", yaxs = "i")
+  par(mar = c(2.0, 6.3, 2.7, 3.8), xaxs = "i", yaxs = "i")
   track_x0 <- 0
   track_x1 <- 500
   n <- nrow(summary)
   plot_rows <- summary
-  row_step <- 0.66
-  plot_rows$plot_y <- 0.74 + rev(seq_len(n) - 1) * row_step
-  header_y <- max(plot_rows$plot_y) + 0.42
-  legend_y <- header_y + 0.28
+  row_step <- 0.52
+  plot_rows$plot_y <- 0.62 + rev(seq_len(n) - 1) * row_step
+  header_y <- max(plot_rows$plot_y) + 0.34
+  legend_y <- header_y + 0.22
   x_center <- (track_x0 + track_x1) / 2
   x_half_span <- 380
   x_center_offset <- -28
@@ -123,23 +102,23 @@ draw_zoom <- function() {
   plot(
     NA,
     xlim = x_center + x_center_offset + c(-x_half_span, x_half_span),
-    ylim = c(0.03, legend_y + 0.23),
+    ylim = c(0.03, legend_y + 0.18),
     axes = FALSE,
     xlab = "",
     ylab = ""
   )
-  title("PAN027 paternal hap2 (PAN027#2) vs father PAN011 joint haplotypes (PAN011#1 + PAN011#2)", line = 2.15, cex.main = 0.98)
+  title("PAN027 paternal hap2 (PAN027#2) vs father PAN011 joint haplotypes (PAN011#1 + PAN011#2)", line = 1.8, cex.main = 0.92)
   mtext(
-    "Filled 2 kb windows show where the best interchromosomal IMPG match beats the same-chromosome/homolog match; thin brackets mark population-derived PHR intervals",
+    "Filled 2 kb windows: best interchromosomal IMPG match beats same-chromosome/homolog match; brackets: WashU population-derived PHR intervals projected to PAN027#2",
     side = 3,
-    line = 0.55,
-    cex = 0.60
+    line = 0.38,
+    cex = 0.56
   )
   text(
     (track_x0 + track_x1) / 2,
     header_y,
     "500 kb subtelomeric windows (chromosome coordinates; p telomere left, q telomere right)",
-    cex = 0.62,
+    cex = 0.58,
     font = 2
   )
 
@@ -154,19 +133,19 @@ draw_zoom <- function() {
     x0 <- track_x0
     x1 <- track_x1
 
-    rect(x0, y - 0.075, x1, y + 0.075, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.75)
+    rect(x0, y - 0.060, x1, y + 0.060, col = "#F5F5F5", border = "#C7C7C7", lwd = 0.72)
     if (is_p) {
-      segments(track_x0 + p_ticks, y - 0.075, track_x0 + p_ticks, y + 0.075, col = "#EFEFEF", lwd = 0.5)
+      segments(track_x0 + p_ticks, y - 0.060, track_x0 + p_ticks, y + 0.060, col = "#EFEFEF", lwd = 0.5)
       draw_break_glyph(track_x1 + 15, y, "right")
-      text(label_x, y + 0.065, row$panel_label, adj = 1, cex = 0.66, font = 2, xpd = NA)
-      text(label_x, y - 0.115, panel_coord_label(row), adj = 1, cex = 0.49, col = "#444444", xpd = NA)
+      text(label_x, y + 0.055, row$panel_label, adj = 1, cex = 0.62, font = 2, xpd = NA)
+      text(label_x, y - 0.100, panel_coord_label(row), adj = 1, cex = 0.45, col = "#444444", xpd = NA)
     } else {
-      segments(track_x0 + q_ticks, y - 0.075, track_x0 + q_ticks, y + 0.075, col = "#EFEFEF", lwd = 0.5)
+      segments(track_x0 + q_ticks, y - 0.060, track_x0 + q_ticks, y + 0.060, col = "#EFEFEF", lwd = 0.5)
       draw_break_glyph(track_x0 - 15, y, "left")
-      text(label_x, y + 0.065, row$panel_label, adj = 1, cex = 0.66, font = 2, xpd = NA)
-      text(label_x, y - 0.115, panel_coord_label(row), adj = 1, cex = 0.49, col = "#444444", xpd = NA)
+      text(label_x, y + 0.055, row$panel_label, adj = 1, cex = 0.62, font = 2, xpd = NA)
+      text(label_x, y - 0.100, panel_coord_label(row), adj = 1, cex = 0.45, col = "#444444", xpd = NA)
     }
-    draw_coord_endpoints(x0, x1, y - 0.19, row_coord_endpoints(row), cex = 0.38)
+    draw_coord_endpoints(x0, x1, y - 0.155, row_coord_endpoints(row), cex = 0.34)
 
     rows <- segments[segments$panel_id == row$panel_id, ]
     if (nrow(rows) > 0) {
@@ -182,17 +161,23 @@ draw_zoom <- function() {
       for (j in seq_len(nrow(rows))) {
         rect(
           rows$plot_start_kb[j],
-          y - 0.105,
+          y - 0.090,
           rows$plot_end_kb[j],
-          y + 0.105,
+          y + 0.090,
           col = target_col(rows$target_bucket[j]),
           border = NA
         )
       }
     }
-    phr <- phr_interval_kb(row)
-    if (!is.null(phr)) {
-      draw_phr_span(phr[1], phr[2], y)
+    panel_phr <- phr_intervals[phr_intervals$panel_id == row$panel_id, , drop = FALSE]
+    if (nrow(panel_phr) > 0) {
+      for (j in seq_len(nrow(panel_phr))) {
+        phr_start <- suppressWarnings(as.numeric(panel_phr$plot_start[j])) / 1000
+        phr_end <- suppressWarnings(as.numeric(panel_phr$plot_end[j])) / 1000
+        if (!is.na(phr_start) && !is.na(phr_end) && phr_end > phr_start) {
+          draw_phr_span(phr_start, phr_end, y)
+        }
+      }
     }
   }
 
@@ -210,17 +195,17 @@ draw_zoom <- function() {
       text(x + 6.5, y0, legend_labels[legend_targets[k]], adj = 0, cex = 0.55)
     }
   }
-  draw_scale_bar((track_x0 + track_x1 - 100) / 2, 0.19, 100)
+  draw_scale_bar((track_x0 + track_x1 - 100) / 2, 0.15, 100)
 }
 
-pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.pdf"), width = 13.8, height = 4.6, useDingbats = FALSE)
+pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.pdf"), width = 13.2, height = 3.6, useDingbats = FALSE)
 draw_zoom()
 dev.off()
 
-png(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.png"), width = 2760, height = 920, res = 200, type = "cairo")
+png(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.png"), width = 2640, height = 720, res = 200, type = "cairo")
 draw_zoom()
 dev.off()
 
-svg(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.svg"), width = 13.8, height = 4.6, onefile = TRUE)
+svg(file.path(out_dir, "fig5_homolog_vs_interchrom_zoom_panels.svg"), width = 13.2, height = 3.6, onefile = TRUE)
 draw_zoom()
 dev.off()
