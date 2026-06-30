@@ -38,6 +38,7 @@ Outputs:
 - `whole_genome_ribbon_summary.tsv`
 - `whole_genome_homologous_context_runs.tsv`
 - `whole_genome_homologous_context_summary.tsv`
+- `whole_genome_ribbon_merge_audit.tsv`
 
 The homologous-context variant uses the same geometry but adds full
 same-chromosome father-child homologous chains as a light-gray ribbon layer.
@@ -47,3 +48,12 @@ light-gray homologous ribbon uses the native grouped donor interval and native
 grouped child interval as its two ends; it is not a start marker or
 length-encoded glyph. The colored interchromosomal/non-homologous winners are
 preserved on top.
+
+Raw 2 kb windows are grouped without gap-tolerant coalescing. A display merge
+collapses windows with the same child sequence and donor sequence only when the
+child endpoint and donor endpoint both touch exactly in a consistent donor
+direction (`end_to_end_merge_gap_bp = 0`). This makes adjacent same donor-child
+chains render as one wider ribbon while preserving the later fragments in the
+merged run's interval, base-pair total, and window count.
+`whole_genome_ribbon_merge_audit.tsv` records the raw, end-to-end merged, and
+drawn counts and the maximum absorbed query/donor endpoint gaps.

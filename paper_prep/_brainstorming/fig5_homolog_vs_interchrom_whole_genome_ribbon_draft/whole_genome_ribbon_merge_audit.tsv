@@ -1,0 +1,25 @@
+layer	metric	value
+interchrom	source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+interchrom	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
+interchrom	end_to_end_merge_gap_bp	0
+interchrom	raw_segments_2kb	1778
+interchrom	end_to_end_runs	1021
+interchrom	drawn_runs	52
+interchrom	drawn_bp	940000
+interchrom	absorbed_fragments	757
+interchrom	multi_window_runs	287
+interchrom	max_absorbed_query_endpoint_gap_bp	0
+interchrom	max_absorbed_donor_endpoint_gap_bp	0
+interchrom	merged_windows	1778
+homolog	source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+homolog	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
+homolog	end_to_end_merge_gap_bp	0
+homolog	raw_segments_2kb	174123
+homolog	end_to_end_runs	66592
+homolog	drawn_runs	314
+homolog	drawn_bp	48996000
+homolog	absorbed_fragments	107531
+homolog	multi_window_runs	38848
+homolog	max_absorbed_query_endpoint_gap_bp	0
+homolog	max_absorbed_donor_endpoint_gap_bp	0
+homolog	merged_windows	174123

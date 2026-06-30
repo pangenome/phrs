@@ -46,6 +46,7 @@ RUNS_OUT = OUT_DIR / "whole_genome_ribbon_runs.tsv"
 SUMMARY_OUT = OUT_DIR / "whole_genome_ribbon_summary.tsv"
 HOMOLOG_RUNS_OUT = OUT_DIR / "whole_genome_homologous_context_runs.tsv"
 HOMOLOG_SUMMARY_OUT = OUT_DIR / "whole_genome_homologous_context_summary.tsv"
+MERGE_AUDIT_OUT = OUT_DIR / "whole_genome_ribbon_merge_audit.tsv"
 CONVERSION_STATUS = OUT_DIR / "conversion_status.txt"
 
 CHROM_ORDER = [f"chr{i}" for i in range(1, 22 + 1)] + ["chrX", "chrY"]
@@ -515,6 +516,44 @@ def group_homolog_runs(segments: list[Segment]) -> list[Run]:
     return group_end_to_end_runs(segments, "homolog_run")
 
 
+def merge_audit_metrics(segments: list[Segment], runs: list[Run]) -> dict[str, int]:
+    buckets: dict[tuple[str, str], list[Segment]] = defaultdict(list)
+    for segment in segments:
+        buckets[(segment.query_seq, segment.donor_seq)].append(segment)
+
+    absorbed_fragments = 0
+    max_query_gap = 0
+    max_donor_gap = 0
+    for _key, key_segments in buckets.items():
+        previous: Segment | None = None
+        direction: int | None = None
+        for segment in sorted(
+            key_segments,
+            key=lambda s: (CHROM_ORDER.index(s.query_chrom), s.query_start, s.query_end, s.donor_start, s.donor_end),
+        ):
+            next_direction = donor_step_direction(previous, segment, direction) if previous is not None else None
+            if previous is not None and next_direction is not None:
+                max_query_gap = max(max_query_gap, abs(segment.query_start - previous.query_end))
+                if next_direction == 1:
+                    max_donor_gap = max(max_donor_gap, abs(segment.donor_start - previous.donor_end))
+                else:
+                    max_donor_gap = max(max_donor_gap, abs(segment.donor_end - previous.donor_start))
+                direction = next_direction if direction is None else direction
+                absorbed_fragments += 1
+            else:
+                direction = None
+            previous = segment
+    return {
+        "raw_segments_2kb": len(segments),
+        "end_to_end_runs": len(runs),
+        "absorbed_fragments": absorbed_fragments,
+        "multi_window_runs": sum(1 for run in runs if run.windows > 1),
+        "max_absorbed_query_endpoint_gap_bp": max_query_gap,
+        "max_absorbed_donor_endpoint_gap_bp": max_donor_gap,
+        "merged_windows": sum(run.windows for run in runs),
+    }
+
+
 def high_confidence_runs(runs: list[Run]) -> list[Run]:
     out = [
         run
@@ -661,6 +700,44 @@ def write_homolog_summary(
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
         writer.writerow({"metric": "drawn_interchrom_runs", "value": str(len(inter_runs))})
         writer.writerow({"metric": "drawn_interchrom_bp", "value": str(sum(run.bp for run in inter_runs))})
+
+
+def write_merge_audit(
+    path: Path,
+    inter_segments: list[Segment],
+    inter_runs: list[Run],
+    inter_drawn_runs: list[Run],
+    homolog_segments: list[Segment],
+    homolog_runs: list[Run],
+    homolog_drawn_runs: list[Run],
+) -> None:
+    fields = ["layer", "metric", "value"]
+    rows: list[dict[str, str]] = []
+    for layer, segments, runs, drawn_runs in [
+        ("interchrom", inter_segments, inter_runs, inter_drawn_runs),
+        ("homolog", homolog_segments, homolog_runs, homolog_drawn_runs),
+    ]:
+        audit = merge_audit_metrics(segments, runs)
+        values = {
+            "source": str(CLASS_WINNERS),
+            "merge_rule": "same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction",
+            "end_to_end_merge_gap_bp": str(CONTIGUOUS_MERGE_GAP_BP),
+            "raw_segments_2kb": str(audit["raw_segments_2kb"]),
+            "end_to_end_runs": str(audit["end_to_end_runs"]),
+            "drawn_runs": str(len(drawn_runs)),
+            "drawn_bp": str(sum(run.bp for run in drawn_runs)),
+            "absorbed_fragments": str(audit["absorbed_fragments"]),
+            "multi_window_runs": str(audit["multi_window_runs"]),
+            "max_absorbed_query_endpoint_gap_bp": str(audit["max_absorbed_query_endpoint_gap_bp"]),
+            "max_absorbed_donor_endpoint_gap_bp": str(audit["max_absorbed_donor_endpoint_gap_bp"]),
+            "merged_windows": str(audit["merged_windows"]),
+        }
+        for metric, value in values.items():
+            rows.append({"layer": layer, "metric": metric, "value": value})
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
@@ -1015,6 +1092,7 @@ def main() -> None:
     write_summary(SUMMARY_OUT, runs, all_runs, segments)
     write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
     write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, homolog_segments, runs)
+    write_merge_audit(MERGE_AUDIT_OUT, segments, all_runs, runs, homolog_segments, all_homolog_runs, homolog_runs)
     render(runs, query_layout, hap1_layout, hap2_layout)
     render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout)
     messages = convert_outputs()
