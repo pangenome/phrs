@@ -12,6 +12,10 @@ Inputs:
   `paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/zoom_phr_intervals.tsv`
 - PAN011 target chromosome lengths:
   `/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa.fai`
+- community/Jaccard check:
+  `data/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv`,
+  `paper_prep/manuscript_revision/C0_continuum/arm_pair_similarity_long.tsv`,
+  and `paper_prep/manuscript_revision/C0_continuum/community_similarity_summary.tsv`
 
 Outputs:
 
@@ -19,6 +23,7 @@ Outputs:
 - `fig5_donor_recipient_ribbon_draft.pdf`
 - `fig5_donor_recipient_ribbon_draft.png`
 - `donor_recipient_runs.tsv`
+- `COMMUNITY_LINKAGE_NOTE.md`
 
 Geometry:
 
@@ -29,13 +34,16 @@ Geometry:
 - Donor rows are displayed as unique 500 kb PAN011 windows containing one or
   more winning donor intervals. They are p-tip, q-tip, or local 500 kb windows
   depending on where the winning donor interval lies.
+- Gray triangles mark the end of a displayed 500 kb window where the chromosome
+  continues outside the plotted interval.
+- Black bars show the population-defined PHR/PAR intervals on recipient and
+  donor tracks when available.
 - Adjacent 2 kb windows are merged into a run when they share the same donor
   sequence/haplotype and remain adjacent in both recipient and donor space.
 - Dominant donors for the three panels (`chrY`, `chr1`, `chr3`) are always
-  drawn; other donor runs are drawn when they have at least 4 kb support.
-  Remaining 2 kb singleton "other" hits are summarized in text below the panel.
-  The per-run TSV records both the run and the donor 500 kb window used for
-  plotting.
+  drawn; other donor runs are drawn when they have at least 4 kb support. The
+  `chr9_q -> chr7` row and redundant `chr5_q -> chr1 h1` donor row are
+  suppressed for the clean display and flagged in `donor_recipient_runs.tsv`.
 
 Build:
 

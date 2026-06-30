@@ -20,6 +20,10 @@ HERE = ROOT / "paper_prep/_brainstorming/fig5_donor_recipient_ribbon_draft"
 ZOOM_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels"
 SEGMENTS_TSV = ZOOM_DIR / "zoom_window_segments.tsv"
 PHR_TSV = ZOOM_DIR / "zoom_phr_intervals.tsv"
+PHR_TABLE = Path(
+    "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/"
+    "all-vs-all.1Mb.p95.id95.len.tsv"
+)
 TARGET_FAI = (
     ROOT
     / ".wg-worktrees/agent-2636/paper_prep/_brainstorming/"
@@ -33,9 +37,9 @@ CONVERSION_STATUS = HERE / "conversion_status.txt"
 
 PANEL_ORDER = ["chrX_p", "chr5_q", "chr9_q"]
 PANEL_TITLES = {
-    "chrX_p": "chrXp PAR1 recipient -> chrY donor",
-    "chr5_q": "chr5q recipient -> chr1-dominant donor set",
-    "chr9_q": "chr9q recipient -> chr3q-dominant donor set",
+    "chrX_p": "chrXp PAR1 recipient -> chrYp donor",
+    "chr5_q": "chr5q recipient -> chr1p donor",
+    "chr9_q": "chr9q recipient -> chr3q donor",
 }
 DOMINANT_BY_PANEL = {
     "chrX_p": {"chrY"},
@@ -48,14 +52,16 @@ COLORS = {
     "chr3": "#D95F02",
     "other": "#9E9E9E",
 }
+PHR_FILL = "#111111"
+CONTINUATION_FILL = "#9aa0a6"
 
 PAGE_W = 2600
 TRACK_X0 = 540
 TRACK_W = 1580
-TRACK_H = 18
+TRACK_H = 20
 PANEL_GAP = 78
-DONOR_ROW_GAP = 48
-TOP = 190
+DONOR_ROW_GAP = 54
+TOP = 152
 TEXT = "#222222"
 MUTED = "#5f6368"
 LIGHT = "#d7dadd"
@@ -63,6 +69,10 @@ FAINT = "#f4f5f6"
 
 LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 TARGET_RE = re.compile(r"PAN011#joint#(?P<hap>h[12])_(?P<chrom>chr(?:[0-9]+|X|Y|M))")
+PHR_SEQ_RE = re.compile(
+    r"^PAN011#(?P<hap_no>[12])#(?P<chrom>chr(?:[0-9]+|X|Y|M))\.[^:]+:"
+    r"(?P<seq_start>[0-9]+)-(?P<seq_end>[0-9]+)_(?P<label_chrom>chr(?:[0-9]+|X|Y|M))_(?P<arm>[pq])arm$"
+)
 
 
 @dataclass
@@ -115,6 +125,7 @@ class Run:
     donor_window_start: int = 0
     donor_window_end: int = 0
     donor_window_label: str = ""
+    suppressed: bool = False
 
     @property
     def target_bucket(self) -> str:
@@ -126,6 +137,16 @@ class Run:
         if self.target_bucket == "other":
             prefix = f"other: {self.target_chrom}"
         return f"{prefix} {self.target_haplotype}"
+
+
+@dataclass(frozen=True)
+class PhrInterval:
+    seq: str
+    haplotype: str
+    chrom: str
+    arm: str
+    full_start: int
+    full_end: int
 
 
 def esc(value: object) -> str:
@@ -172,6 +193,20 @@ class SVG:
             f'<rect x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{h:.2f}" '
             f'rx="{rx:.2f}" fill="{fill}" stroke="{stroke}" stroke-width="{sw:.2f}" '
             f'opacity="{opacity:.3f}"/>'
+        )
+
+    def polygon(
+        self,
+        points: list[tuple[float, float]],
+        fill: str,
+        stroke: str = "none",
+        sw: float = 0.0,
+        opacity: float = 1.0,
+    ) -> None:
+        pts = " ".join(f"{x:.2f},{y:.2f}" for x, y in points)
+        self.add(
+            f'<polygon points="{pts}" fill="{fill}" stroke="{stroke}" '
+            f'stroke-width="{sw:.2f}" opacity="{opacity:.3f}"/>'
         )
 
     def line(
@@ -264,6 +299,32 @@ def read_phr_intervals(path: Path) -> dict[str, list[dict[str, str]]]:
     return out
 
 
+def read_population_phrs(path: Path) -> dict[tuple[str, str, str], list[PhrInterval]]:
+    out: dict[tuple[str, str, str], list[PhrInterval]] = defaultdict(list)
+    with path.open() as handle:
+        for row in csv.DictReader(handle, delimiter="\t"):
+            if row["region_start"] == "." or row["region_end"] == ".":
+                continue
+            match = PHR_SEQ_RE.match(row["seq"])
+            if match is None:
+                continue
+            haplotype = f"h{match.group('hap_no')}"
+            chrom = match.group("chrom")
+            arm = "p" if row["arm"] == "parm" else "q"
+            flank_start = int(match.group("seq_start"))
+            out[(haplotype, chrom, arm)].append(
+                PhrInterval(
+                    seq=row["seq"],
+                    haplotype=haplotype,
+                    chrom=chrom,
+                    arm=arm,
+                    full_start=flank_start + int(row["region_start"]),
+                    full_end=flank_start + int(row["region_end"]),
+                )
+            )
+    return out
+
+
 def group_runs(segments: list[Segment]) -> list[Run]:
     runs: list[Run] = []
     by_panel: dict[str, list[Segment]] = defaultdict(list)
@@ -327,6 +388,14 @@ def group_runs(segments: list[Segment]) -> list[Run]:
     return runs
 
 
+def should_suppress(run: Run) -> bool:
+    if run.panel_id == "chr9_q" and run.target_chrom == "chr7":
+        return True
+    if run.panel_id == "chr5_q" and run.target_chrom == "chr1" and run.target_haplotype == "h1":
+        return True
+    return False
+
+
 def donor_window(run: Run, target_lengths: dict[str, int]) -> tuple[int, int, str]:
     length = target_lengths.get(run.donor_seq)
     if length is None:
@@ -346,8 +415,9 @@ def donor_window(run: Run, target_lengths: dict[str, int]) -> tuple[int, int, st
 
 def mark_drawn_runs(runs: list[Run], target_lengths: dict[str, int]) -> None:
     for run in runs:
+        run.suppressed = should_suppress(run)
         dominant = run.target_chrom in DOMINANT_BY_PANEL.get(run.panel_id, set())
-        run.drawn = run.bp >= 4_000 or dominant
+        run.drawn = not run.suppressed and (run.bp >= 4_000 or dominant)
         start, end, label = donor_window(run, target_lengths)
         run.donor_window_start = start
         run.donor_window_end = end
@@ -379,6 +449,7 @@ def write_runs(path: Path, runs: list[Run]) -> None:
         "donor_window_start",
         "donor_window_end",
         "donor_window_label",
+        "suppressed",
     ]
     with path.open("w", newline="") as handle:
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
@@ -400,6 +471,32 @@ def x_for_window(start: int, end: int, window_start: int, window_end: int) -> tu
     return x0, x1
 
 
+def draw_continuation(svg: SVG, y: float, side: str) -> None:
+    mid = y + TRACK_H / 2
+    if side == "right":
+        x = TRACK_X0 + TRACK_W
+        points = [(x + 8, y + 2), (x + 8, y + TRACK_H - 2), (x + 25, mid)]
+    else:
+        x = TRACK_X0
+        points = [(x - 8, y + 2), (x - 8, y + TRACK_H - 2), (x - 25, mid)]
+    svg.polygon(points, CONTINUATION_FILL, "none", 0, 0.95)
+
+
+def draw_cut_glyphs(svg: SVG, y: float, anchor: str) -> None:
+    if anchor == "left":
+        draw_continuation(svg, y, "right")
+    elif anchor == "right":
+        draw_continuation(svg, y, "left")
+    else:
+        draw_continuation(svg, y, "left")
+        draw_continuation(svg, y, "right")
+
+
+def draw_phr_bar(svg: SVG, y: float, start: int, end: int, window_start: int, window_end: int) -> None:
+    px0, px1 = x_for_window(start, end, window_start, window_end)
+    svg.rect(px0, y - 17, px1 - px0, 6, PHR_FILL, "none", 0, 1.0, rx=0)
+
+
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
     c = abs(yb - ya) * 0.45
     return (
@@ -416,17 +513,18 @@ def draw_ticks(svg: SVG, y: float, start: int, end: int, anchor: str) -> None:
         x = TRACK_X0 + offset / width * TRACK_W
         svg.line(x, y + TRACK_H, x, y + TRACK_H + 10, "#777777", 0.8)
         if offset in (0, width) or offset % 200_000 == 0:
-            svg.text(x, y + TRACK_H + 25, f"{(start + offset) / 1e6:.3f}", 10, "400", MUTED, "middle")
-    svg.text(TRACK_X0 + TRACK_W + 12, y + TRACK_H + 25, "Mb", 10, "400", MUTED)
-    svg.text(TRACK_X0 if anchor == "left" else TRACK_X0 + TRACK_W, y + TRACK_H + 42, anchor, 10, "400", MUTED, "middle")
+            svg.text(x, y + TRACK_H + 26, f"{(start + offset) / 1e6:.3f}", 12, "400", MUTED, "middle")
+    svg.text(TRACK_X0 + TRACK_W + 15, y + TRACK_H + 26, "Mb", 12, "400", MUTED)
+    svg.text(TRACK_X0 if anchor == "left" else TRACK_X0 + TRACK_W, y + TRACK_H + 44, anchor, 11, "400", MUTED, "middle")
 
 
 def draw_track(svg: SVG, y: float, label: str, start: int, end: int, anchor: str) -> None:
-    svg.text(TRACK_X0 - 24, y + TRACK_H - 2, label, 15, "700", TEXT, "end")
+    svg.text(TRACK_X0 - 28, y + TRACK_H - 1, label, 18, "700", TEXT, "end")
     svg.rect(TRACK_X0, y, TRACK_W, TRACK_H, FAINT, "#c8ccd0", 1.0, rx=2)
     if anchor in {"left", "right"}:
         cap_x = TRACK_X0 if anchor == "left" else TRACK_X0 + TRACK_W
         svg.line(cap_x, y - 3, cap_x, y + TRACK_H + 3, "#111111", 2.2)
+    draw_cut_glyphs(svg, y, anchor)
     draw_ticks(
         svg,
         y,
@@ -462,17 +560,31 @@ def target_label(run: Run) -> str:
     return f"{run.target_chrom} {run.target_haplotype}"
 
 
+def arm_from_window_label(label: str) -> str:
+    if label.startswith("p"):
+        return "p"
+    if label.startswith("q"):
+        return "q"
+    return ""
+
+
 def donor_label(run: Run) -> str:
     match = TARGET_RE.match(run.donor_seq)
     if match:
-        return f"PAN011 {match.group('hap')} {match.group('chrom')} donor"
+        return f"PAN011 {match.group('hap')} {match.group('chrom')}{arm_from_window_label(run.donor_window_label)}"
     return run.donor_seq.replace("PAN011#joint#", "PAN011 ")
 
 
-def draw_panel(svg: SVG, panel_id: str, runs: list[Run], phr_by_panel: dict[str, list[dict[str, str]]], y: float) -> float:
+def draw_panel(
+    svg: SVG,
+    panel_id: str,
+    runs: list[Run],
+    phr_by_panel: dict[str, list[dict[str, str]]],
+    donor_phrs: dict[tuple[str, str, str], list[PhrInterval]],
+    y: float,
+) -> float:
     panel_runs = [run for run in runs if run.panel_id == panel_id]
-    drawn = [run for run in panel_runs if run.drawn]
-    omitted = [run for run in panel_runs if not run.drawn]
+    drawn = [run for run in panel_runs if run.drawn and not run.suppressed]
     if not panel_runs:
         return y
 
@@ -490,37 +602,21 @@ def draw_panel(svg: SVG, panel_id: str, runs: list[Run], phr_by_panel: dict[str,
     rec_end = first.zoom_bp if first.arm == "p" else first.query_length
     rec_anchor = "left" if first.arm == "p" else "right"
 
-    panel_h = 132 + max(1, len(donor_rows)) * DONOR_ROW_GAP + (34 if omitted else 0)
+    panel_h = 122 + max(1, len(donor_rows)) * DONOR_ROW_GAP
     svg.rect(44, y - 48, PAGE_W - 88, panel_h, "#ffffff", "#e0e2e4", 0.8, rx=3)
-    svg.text(68, y - 20, PANEL_TITLES.get(panel_id, panel_id), 22, "700")
-    svg.text(
-        68,
-        y + 4,
-        "Ribbons use IMPG class-winning 2 kb windows; each donor row is one 500 kb PAN011 window containing one or more winning donor intervals.",
-        12,
-        "400",
-        MUTED,
-    )
+    svg.text(68, y - 18, PANEL_TITLES.get(panel_id, panel_id), 25, "700")
 
     rec_y = y + 44
-    draw_track(svg, rec_y, f"recipient {first.panel_label}", rec_start, rec_end, rec_anchor)
+    draw_track(svg, rec_y, f"PAN027 hap2 {first.query_chrom}{first.arm}", rec_start, rec_end, rec_anchor)
 
     phr_rows = phr_by_panel.get(panel_id, [])
     for phr in phr_rows:
-        px0, px1 = x_for_window(int(phr["query_full_start"]), int(phr["query_full_end"]), rec_start, rec_end)
-        svg.line(px0, rec_y - 10, px1, rec_y - 10, "#555555", 1.1)
-        svg.line(px0, rec_y - 16, px0, rec_y - 4, "#555555", 1.1)
-        svg.line(px1, rec_y - 16, px1, rec_y - 4, "#555555", 1.1)
+        draw_phr_bar(svg, rec_y, int(phr["query_full_start"]), int(phr["query_full_end"]), rec_start, rec_end)
 
-    label_items: list[tuple[float, float, str]] = []
     for run in drawn:
         rx0, rx1 = x_for_window(run.query_start, run.query_end, rec_start, rec_end)
         color = COLORS[run.target_bucket]
         svg.rect(rx0, rec_y - 5, rx1 - rx0, TRACK_H + 10, color, "none", 0, 0.95, rx=1)
-        label_items.append((rx0, rx1, target_label(run)))
-    for center, _width, label, lane in label_lanes(label_items):
-        if lane <= 2:
-            svg.text(center, rec_y - 21 - lane * 13, label, 11, "700", MUTED, "middle")
 
     donor_y0 = rec_y + 86
     for idx, (_key, row_runs) in enumerate(donor_rows):
@@ -535,17 +631,17 @@ def draw_panel(svg: SVG, panel_id: str, runs: list[Run], phr_by_panel: dict[str,
             "left" if run.donor_window_label == "p tip" else "right" if run.donor_window_label == "q tip" else "local",
         )
 
-        total_bp = sum(item.bp for item in row_runs)
-        min_donor = min(item.donor_start for item in row_runs)
-        max_donor = max(item.donor_end for item in row_runs)
-        svg.text(
-            TRACK_X0 + TRACK_W + 30,
-            donor_y + TRACK_H - 2,
-            f"{min_donor / 1e6:.3f}-{max_donor / 1e6:.3f} Mb; {total_bp // 1000} kb support; {len(row_runs)} run(s)",
-            11,
-            "400",
-            MUTED,
-        )
+        donor_arm = arm_from_window_label(run.donor_window_label)
+        if donor_arm:
+            for phr in donor_phrs.get((run.target_haplotype, run.target_chrom, donor_arm), []):
+                draw_phr_bar(
+                    svg,
+                    donor_y,
+                    phr.full_start,
+                    phr.full_end,
+                    run.donor_window_start,
+                    run.donor_window_end,
+                )
 
         for item in row_runs:
             color = COLORS[item.target_bucket]
@@ -554,20 +650,6 @@ def draw_panel(svg: SVG, panel_id: str, runs: list[Run], phr_by_panel: dict[str,
             rx0, rx1 = x_for_window(item.query_start, item.query_end, rec_start, rec_end)
             d = ribbon_path(rx0, rx1, rec_y + TRACK_H + 7, dx0, dx1, donor_y - 7)
             svg.path(d, color, "none", 0, 0.24 if item.target_bucket == "other" else 0.30)
-
-    if omitted:
-        summary = defaultdict(int)
-        for run in omitted:
-            summary[f"{run.target_chrom} {run.target_haplotype}"] += run.bp
-        bits = ", ".join(f"{label} {bp // 1000} kb" for label, bp in sorted(summary.items()))
-        svg.text(
-            TRACK_X0,
-            donor_y0 + len(donor_rows) * DONOR_ROW_GAP + 16,
-            f"Grey singletons not ribboned as donor rows: {bits}",
-            12,
-            "400",
-            MUTED,
-        )
 
     return y + panel_h + PANEL_GAP
 
@@ -582,32 +664,26 @@ def draw_legend(svg: SVG, y: float) -> None:
         x += 190 if bucket != "other" else 260
 
 
-def render(runs: list[Run], phr_by_panel: dict[str, list[dict[str, str]]]) -> None:
+def render(
+    runs: list[Run],
+    phr_by_panel: dict[str, list[dict[str, str]]],
+    donor_phrs: dict[tuple[str, str, str], list[PhrInterval]],
+) -> None:
     panel_heights = []
     for panel_id in PANEL_ORDER:
         row_keys = {
             (run.donor_seq, run.donor_window_start, run.donor_window_end, run.donor_window_label)
             for run in runs
-            if run.panel_id == panel_id and run.drawn
+            if run.panel_id == panel_id and run.drawn and not run.suppressed
         }
         n = len(row_keys)
-        omitted = any(run.panel_id == panel_id and not run.drawn for run in runs)
-        panel_heights.append(132 + max(1, n) * DONOR_ROW_GAP + (34 if omitted else 0))
+        panel_heights.append(122 + max(1, n) * DONOR_ROW_GAP)
     height = TOP + sum(panel_heights) + PANEL_GAP * len(panel_heights) + 40
     svg = SVG(PAGE_W, height)
-    svg.text(68, 48, "Fig5 donor-recipient ribbon draft: PAN027 paternal hap2 vs father PAN011", 27, "700")
-    svg.text(
-        68,
-        76,
-        "Recipient subtelomeric windows are PAN027#2; donor loci are PAN011 joint-haplotype intervals that win over the same-chromosome/homolog match.",
-        14,
-        "400",
-        MUTED,
-    )
-    draw_legend(svg, 112)
+    svg.text(68, 54, "Fig5 donor-recipient ribbon draft: PAN027 paternal hap2 vs father PAN011", 31, "700")
     y = TOP
     for panel_id in PANEL_ORDER:
-        y = draw_panel(svg, panel_id, runs, phr_by_panel, y)
+        y = draw_panel(svg, panel_id, runs, phr_by_panel, donor_phrs, y)
     svg.write(SVG_OUT)
 
 
@@ -651,7 +727,8 @@ def main() -> None:
     mark_drawn_runs(runs, target_lengths)
     write_runs(RUNS_OUT, runs)
     phr_by_panel = read_phr_intervals(PHR_TSV)
-    render(runs, phr_by_panel)
+    donor_phrs = read_population_phrs(PHR_TABLE)
+    render(runs, phr_by_panel, donor_phrs)
     messages = convert_outputs()
     CONVERSION_STATUS.write_text("\n".join(messages) + "\n")
     for message in messages:
