@@ -198,3 +198,7 @@ dev.off()
 svg(file.path(out_dir, "fig5_homolog_vs_interchrom_whole_genome.10to10.svg"), width = 14.5, height = 9.2, onefile = TRUE)
 draw_tracks("10:10")
 dev.off()
+
+pdf(file.path(out_dir, "fig5_homolog_vs_interchrom_whole_genome.10to10.pdf"), width = 14.5, height = 9.2, useDingbats = FALSE)
+draw_tracks("10:10")
+dev.off()
