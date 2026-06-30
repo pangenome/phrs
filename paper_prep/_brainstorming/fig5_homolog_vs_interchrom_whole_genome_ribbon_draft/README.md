@@ -38,7 +38,9 @@ Outputs:
 - `whole_genome_homologous_context_runs.tsv`
 - `whole_genome_homologous_context_summary.tsv`
 
-The homologous-context variant uses the same geometry but adds the paired
-same-chromosome competitor from each interchrom-over-same IMPG window as a
-light-gray ribbon layer. The colored interchromosomal/non-homologous ribbons are
-preserved on top.
+The homologous-context variant uses the same geometry but adds all
+same-chromosome PAN011 paternal `same_chrom` class-winner windows from the same
+10:10 IMPG source as a light-gray homologous-chain ribbon layer. This gray
+context is genome-wide and is no longer limited to the same-chromosome
+competitor rows paired with interchrom-over-same windows. The colored
+interchromosomal/non-homologous winner ribbons are preserved on top.

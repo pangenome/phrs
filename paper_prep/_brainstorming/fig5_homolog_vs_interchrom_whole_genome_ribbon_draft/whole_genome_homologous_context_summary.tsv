@@ -1,8 +1,14 @@
 metric	value
 source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
-homolog_layer_definition	same_chrom competitor rows paired with interchrom rows where interchrom identity is greater than same_chrom identity
-all_homolog_runs	378
-drawn_homolog_runs	378
-drawn_homolog_bp	3553532
+homolog_layer_definition	all same_chrom class-winner rows from the PAN027pat_vs_PAN011_joint SweepGA/F32 10:10 IMPG source, restricted to PAN011 h1/h2 same-chromosome paternal donor chains
+homolog_source_windows	174946
+homolog_chain_max_query_gap_bp	50000
+all_homolog_runs	25537
+drawn_homolog_runs	25537
+drawn_homolog_bp	349887393
+drawn_homolog_h1_runs	10332
+drawn_homolog_h1_bp	136831024
+drawn_homolog_h2_runs	15205
+drawn_homolog_h2_bp	213056369
 drawn_interchrom_runs	59
 drawn_interchrom_bp	1118000

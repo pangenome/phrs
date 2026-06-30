@@ -17,11 +17,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
 OUT_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft"
-CLASS_WINNERS = (
+CLASS_WINNERS_REPO = (
     ROOT
     / "paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/"
     / "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz"
 )
+CLASS_WINNERS_MIRROR = Path(
+    "/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/"
+    "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz"
+)
+CLASS_WINNERS = CLASS_WINNERS_REPO if CLASS_WINNERS_REPO.exists() else CLASS_WINNERS_MIRROR
 QUERY_FAI = Path(
     "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
     "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"
@@ -63,6 +68,7 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
+HOMOLOG_CHAIN_MAX_QUERY_GAP = 50_000
 
 COLORS = {
     "PAR_XY": "#E7298A",
@@ -353,45 +359,37 @@ def read_segments(path: Path) -> list[Segment]:
 
 
 def read_homolog_segments(path: Path) -> list[Segment]:
-    grouped: dict[tuple[str, int, int], dict[str, dict[str, str]]] = defaultdict(dict)
-    with gzip.open(path, "rt") as handle:
-        for row in csv.DictReader(handle, delimiter="\t"):
-            key = (row["chrom"], int(row["start"]), int(row["end"]))
-            grouped[key][row["winner_class"]] = row
-
     segments: list[Segment] = []
-    for (query_seq, start, end), rows in grouped.items():
-        if "same_chrom" not in rows or "interchrom" not in rows:
-            continue
-        same = rows["same_chrom"]
-        inter = rows["interchrom"]
-        same_identity = float(same["estimated.identity"])
-        inter_identity = float(inter["estimated.identity"])
-        if inter_identity <= same_identity:
-            continue
-        donor_seq, donor_start, donor_end = same_chrom_interval(same)
-        donor_hap, target_chrom = target_meta(donor_seq)
-        if donor_hap not in {"h1", "h2"}:
-            continue
-        query_chrom = same["query_chrom"]
-        if target_chrom != query_chrom:
-            continue
-        segments.append(
-            Segment(
-                query_seq=query_seq,
-                query_chrom=query_chrom,
-                query_start=start,
-                query_end=end,
-                donor_seq=donor_seq,
-                donor_haplotype=donor_hap,
-                target_chrom=target_chrom,
-                donor_start=donor_start,
-                donor_end=donor_end,
-                bp=end - start,
-                same_identity=same_identity,
-                inter_identity=same_identity,
+    with gzip.open(path, "rt") as handle:
+        for same in csv.DictReader(handle, delimiter="\t"):
+            if same["winner_class"] != "same_chrom":
+                continue
+            donor_seq, donor_start, donor_end = same_chrom_interval(same)
+            donor_hap, target_chrom = target_meta(donor_seq)
+            if donor_hap not in {"h1", "h2"}:
+                continue
+            query_chrom = same["query_chrom"]
+            if target_chrom != query_chrom:
+                continue
+            start = int(same["start"])
+            end = int(same["end"])
+            same_identity = float(same["estimated.identity"])
+            segments.append(
+                Segment(
+                    query_seq=same["chrom"],
+                    query_chrom=query_chrom,
+                    query_start=start,
+                    query_end=end,
+                    donor_seq=donor_seq,
+                    donor_haplotype=donor_hap,
+                    target_chrom=target_chrom,
+                    donor_start=donor_start,
+                    donor_end=donor_end,
+                    bp=end - start,
+                    same_identity=same_identity,
+                    inter_identity=same_identity,
+                )
             )
-        )
     return segments
 
 
@@ -464,11 +462,7 @@ def group_homolog_runs(segments: list[Segment]) -> list[Run]:
         same_run = (
             current is not None
             and current_key == key
-            and segment.query_start <= current.query_end + 10_000
-            and (
-                abs(segment.donor_start - current.donor_end) <= 50_000
-                or abs(current.donor_start - segment.donor_end) <= 50_000
-            )
+            and segment.query_start <= current.query_end + HOMOLOG_CHAIN_MAX_QUERY_GAP
         )
         if same_run:
             current.query_end = max(current.query_end, segment.query_end)
@@ -624,16 +618,31 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run]) -> None:
             writer.writerow({"metric": f"{category}_bp", "value": str(bp)})
 
 
-def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs: list[Run], inter_runs: list[Run]) -> None:
+def write_homolog_summary(
+    path: Path,
+    homolog_runs: list[Run],
+    all_homolog_runs: list[Run],
+    inter_runs: list[Run],
+    homolog_segment_count: int,
+) -> None:
+    by_haplotype: dict[str, tuple[int, int]] = {}
+    for hap in ("h1", "h2"):
+        selected = [run for run in homolog_runs if run.donor_haplotype == hap]
+        by_haplotype[hap] = (len(selected), sum(run.bp for run in selected))
     with path.open("w", newline="") as handle:
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
-        writer.writerow({"metric": "homolog_layer_definition", "value": "same_chrom competitor rows paired with interchrom rows where interchrom identity is greater than same_chrom identity"})
+        writer.writerow({"metric": "homolog_layer_definition", "value": "all same_chrom class-winner rows from the PAN027pat_vs_PAN011_joint SweepGA/F32 10:10 IMPG source, restricted to PAN011 h1/h2 same-chromosome paternal donor chains"})
+        writer.writerow({"metric": "homolog_source_windows", "value": str(homolog_segment_count)})
+        writer.writerow({"metric": "homolog_chain_max_query_gap_bp", "value": str(HOMOLOG_CHAIN_MAX_QUERY_GAP)})
         writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
         writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
+        for hap, (count, bp) in by_haplotype.items():
+            writer.writerow({"metric": f"drawn_homolog_{hap}_runs", "value": str(count)})
+            writer.writerow({"metric": f"drawn_homolog_{hap}_bp", "value": str(bp)})
         writer.writerow({"metric": "drawn_interchrom_runs", "value": str(len(inter_runs))})
         writer.writerow({"metric": "drawn_interchrom_bp", "value": str(sum(run.bp for run in inter_runs))})
 
@@ -900,7 +909,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} paired same-chromosome competitor runs for interchrom-over-same windows; colored overlay: {len(inter_runs)} non-homologous runs.",
+        f"Light gray: {len(homolog_runs)} full same-chromosome paternal homologous-chain runs; colored overlay: {len(inter_runs)} non-homologous runs.",
         19,
         "400",
         MUTED,
@@ -972,7 +981,7 @@ def main() -> None:
     write_runs(RUNS_OUT, runs)
     write_summary(SUMMARY_OUT, runs, all_runs)
     write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
-    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, runs)
+    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, runs, len(homolog_segments))
     render(runs, query_layout, hap1_layout, hap2_layout)
     render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout)
     messages = convert_outputs()

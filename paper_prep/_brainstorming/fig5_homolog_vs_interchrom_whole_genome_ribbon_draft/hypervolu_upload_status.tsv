@@ -1,0 +1,2 @@
+timestamp_utc	destination	status	detail
+2026-06-30T16:50Z	hypervolu.me	blocked	ssh -o BatchMode=yes -o ConnectTimeout=8 hypervolu.me refused authentication: Permission denied (publickey,password)
