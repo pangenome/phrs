@@ -1,0 +1,2 @@
+task_id	overall_score	confidence	rubric_underspecified	source_data_score	length_scaled_tracks_score	ribbon_extraction_score	visualization_deliverables_score	run_table_score	reproducibility_score	wg_process_score	non_destructive_score
+fig5-whole-genome-10to10-ribbon-overlay-draft	0.02	0.94	yes	0.05	0.05	0.00	0.00	0.00	0.00	0.00	0.25
