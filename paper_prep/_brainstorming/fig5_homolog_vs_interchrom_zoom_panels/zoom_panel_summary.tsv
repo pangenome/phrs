@@ -1,4 +1,4 @@
-panel_order	panel_id	panel_label	query_chrom	arm	query_length	zoom_bp	winning_windows	winning_bp	top_targets
-1	chrX_p	chrXp PAR1	chrX	p	154091348	500000	71	142000	chrY h2:142000
-2	chr5_q	chr5q	chr5	q	182149871	500000	50	100000	chr1 h2:68000;chr6 h2:14000;chr11 h2:4000;chr17 h2:4000;chr1 h1:2000;chr19 h2:2000;chr6 h1:2000;chr7 h1:2000;chr8 h2:2000
-3	chr9_q	chr9q	chr9	q	136209149	500000	25	50000	chr3 h2:34000;chr19 h2:6000;chr7 h2:6000;chr11 h1:4000
+panel_order	panel_id	panel_label	query_chrom	arm	query_length	zoom_bp	winning_windows	winning_bp	top_targets	phr_source	phr_seq	phr_region_start	phr_region_end	phr_full_start	phr_full_end
+1	chrX_p	chrXp PAR1	chrX	p	154091348	500000	71	142000	chrY h2:142000	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv	PAN027#2#chrX.paternal:12265-512264_chrX_parm	0	120000	12265	132265
+2	chr5_q	chr5q	chr5	q	182149871	500000	50	100000	chr1 h2:68000;chr6 h2:14000;chr11 h2:4000;chr17 h2:4000;chr1 h1:2000;chr19 h2:2000;chr6 h1:2000;chr7 h1:2000;chr8 h2:2000	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv	PAN027#2#chr5.paternal:181639593-182139592_chr5_qarm	315000	500000	181954593	182139593
+3	chr9_q	chr9q	chr9	q	136209149	500000	25	50000	chr3 h2:34000;chr19 h2:6000;chr7 h2:6000;chr11 h1:4000	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv	PAN027#2#chr9.paternal:135704825-136204824_chr9_qarm	195000	500000	135899825	136204825

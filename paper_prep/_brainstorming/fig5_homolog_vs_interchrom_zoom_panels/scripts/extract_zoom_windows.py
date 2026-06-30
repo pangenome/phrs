@@ -19,6 +19,10 @@ QUERY_FAI = Path(
     "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
     "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"
 )
+PHR_TABLE = Path(
+    "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/"
+    "all-vs-all.1Mb.p95.id95.len.tsv"
+)
 ZOOM_BP = 500_000
 WINDOW_BP = 2_000
 PANEL_ORDER = [
@@ -29,6 +33,10 @@ PANEL_ORDER = [
 
 CHR_RE = re.compile(r"(chr(?:[0-9]+|X|Y|M))")
 TARGET_HAP_RE = re.compile(r"#(h[0-9]+)_")
+PHR_SEQ_RE = re.compile(
+    r"^(?P<query_prefix>[^:]+):(?P<seq_start>[0-9]+)-(?P<seq_end>[0-9]+)_"
+    r"(?P<label_chrom>chr(?:[0-9]+|X|Y|M))_(?P<arm>[pq])arm$"
+)
 
 
 def chrom_name(value: str) -> str:
@@ -69,8 +77,37 @@ def target_haplotype(target_name: str) -> str:
     return match.group(1) if match else "NA"
 
 
+def read_phr_table(path: Path) -> dict[tuple[str, str], dict[str, object]]:
+    out: dict[tuple[str, str], dict[str, object]] = {}
+    with path.open() as handle:
+        for row in csv.DictReader(handle, delimiter="\t"):
+            if row["region_start"] == "." or row["region_end"] == ".":
+                continue
+            match = PHR_SEQ_RE.match(row["seq"])
+            if match is None:
+                continue
+            query_name = match.group("query_prefix").split(".")[0]
+            chrom = chrom_name(query_name)
+            arm = "p" if match.group("arm") == "p" else "q"
+            if not query_name.startswith("PAN027#2#"):
+                continue
+            seq_start = int(match.group("seq_start"))
+            region_start = int(row["region_start"])
+            region_end = int(row["region_end"])
+            out[(chrom, arm)] = {
+                "phr_source": str(path),
+                "phr_seq": row["seq"],
+                "phr_region_start": region_start,
+                "phr_region_end": region_end,
+                "phr_full_start": seq_start + region_start,
+                "phr_full_end": seq_start + region_end,
+            }
+    return out
+
+
 def main() -> None:
     lengths = read_fai(QUERY_FAI)
+    phr_by_chrom_arm = read_phr_table(PHR_TABLE)
     panel_by_chrom_arm = {(chrom, arm): (idx + 1, label) for idx, (chrom, arm, label) in enumerate(PANEL_ORDER)}
     groups: dict[tuple[str, int, int], dict[str, dict[str, str]]] = defaultdict(dict)
 
@@ -150,6 +187,7 @@ def main() -> None:
             )
             if pid == panel_id
         ]
+        phr = phr_by_chrom_arm.get((chrom, arm), {})
         summaries.append(
             {
                 "panel_order": panel_order,
@@ -162,6 +200,12 @@ def main() -> None:
                 "winning_windows": len(rows),
                 "winning_bp": sum(int(row["window_overlap_bp"]) for row in rows),
                 "top_targets": ";".join(top_targets),
+                "phr_source": phr.get("phr_source", "NA"),
+                "phr_seq": phr.get("phr_seq", "NA"),
+                "phr_region_start": phr.get("phr_region_start", "NA"),
+                "phr_region_end": phr.get("phr_region_end", "NA"),
+                "phr_full_start": phr.get("phr_full_start", "NA"),
+                "phr_full_end": phr.get("phr_full_end", "NA"),
             }
         )
 
@@ -202,6 +246,12 @@ def main() -> None:
         "winning_windows",
         "winning_bp",
         "top_targets",
+        "phr_source",
+        "phr_seq",
+        "phr_region_start",
+        "phr_region_end",
+        "phr_full_start",
+        "phr_full_end",
     ]
     with (OUT_DIR / "zoom_window_segments.tsv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=segment_fields, lineterminator="\n")

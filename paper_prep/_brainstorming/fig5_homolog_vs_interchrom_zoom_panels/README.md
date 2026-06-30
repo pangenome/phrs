@@ -18,8 +18,12 @@ target.
   acrocentric rows are intentionally omitted from this view
 - colors: best interchromosomal targets are collapsed to chrY, chr1, chr3, and
   other target
-- PHR span: the shaded box behind each row marks the range covered by the
-  plotted interchromosome-over-homolog windows in that 500 kb subtelomeric view
+- PHR interval: the thin bracket above each row is projected from the WashU
+  population-derived PHR table
+  `/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv`.
+  The table gives offsets within the 500 kb telomere-trimmed sequence; the
+  script converts those offsets back to PAN027#2 full-chromosome coordinates
+  using the sequence start embedded in the `seq` field.
 - break glyphs mark the omitted chromosome-body side of each zoom
 - plotted signal: windows where the best interchromosomal IMPG match in the
   PAN011 father target beats the best same-chromosome/homolog match
