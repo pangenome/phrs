@@ -310,7 +310,7 @@ def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end:
 
 
 def homolog_visual_width(bp: int) -> float:
-    return max(6.0, min(34.0, 4.0 + bp / 90_000.0))
+    return max(18.0, min(260.0, bp / 10_000.0))
 
 
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
@@ -876,7 +876,7 @@ def render_homolog_context(
         qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
         dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
         d = ribbon_path(qx0, qx1, Y_QUERY + TRACK_H + 8, dx0, dx1, target_y[run.donor_haplotype] - 8)
-        svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.16)
+        svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.11)
 
     for run in homolog_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -885,8 +885,8 @@ def render_homolog_context(
         min_w = homolog_visual_width(run.bp)
         qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
         dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
-        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.28)
-        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.28)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.22)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.22)
 
     for run in inter_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -916,7 +916,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} full same-chromosome chains >=50 kb at identity >=0.95; gray width scales with grouped chain length.",
+        f"Light gray: {len(homolog_runs)} full same-chromosome chains >=50 kb; gray glyph width encodes chain length at ~10 kb/px, capped at 2.6 Mb.",
         19,
         "400",
         MUTED,
