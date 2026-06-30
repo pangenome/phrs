@@ -1,0 +1,2 @@
+task_id	overall_score	confidence	rubric_underspecified	gap_distribution_score	tolerance_choice_score	homolog_flexible_merge_score	switch_overlay_preservation_score	visual_deliverables_score	audit_docs_score	validation_evidence_score	source_provenance_score	wg_process_score	non_destructive_score
+fig5-flex-merge-homologous-inheritance-blocks	0.71	0.83	yes	0.30	0.45	0.82	0.78	0.92	0.62	0.66	0.95	0.85	0.95
