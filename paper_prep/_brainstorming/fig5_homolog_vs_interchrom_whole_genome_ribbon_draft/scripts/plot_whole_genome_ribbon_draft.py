@@ -17,11 +17,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
 OUT_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft"
-CLASS_WINNERS = (
+CLASS_WINNERS_NAME = (
+    "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp."
+    "predepth_class_winners.impg_similarity.tsv.gz"
+)
+LOCAL_CLASS_WINNERS = (
     ROOT
     / "paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/"
-    / "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz"
+    / CLASS_WINNERS_NAME
 )
+MOOSEFS_CLASS_WINNERS = (
+    Path("/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs")
+    / CLASS_WINNERS_NAME
+)
+CLASS_WINNERS = LOCAL_CLASS_WINNERS if LOCAL_CLASS_WINNERS.exists() else MOOSEFS_CLASS_WINNERS
 QUERY_FAI = Path(
     "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
     "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"
@@ -63,7 +72,7 @@ MUTED = "#5f6368"
 GRID = "#e8eaed"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
-HOMOLOG_MIN_BP = 10_000
+HOMOLOG_MIN_BP = 50_000
 HOMOLOG_MIN_IDENTITY = 0.95
 
 COLORS = {
@@ -286,31 +295,20 @@ def x_for(layout: GenomeLayout, chrom: str, pos: int) -> float:
     return TRACK_X0 + offset / layout.total * TRACK_W
 
 
-def interval_x(layout: GenomeLayout, chrom: str, start: int, end: int) -> tuple[float, float]:
+def interval_x_native(layout: GenomeLayout, chrom: str, start: int, end: int) -> tuple[float, float]:
     x0 = x_for(layout, chrom, start)
     x1 = x_for(layout, chrom, end)
     if x1 < x0:
         x0, x1 = x1, x0
+    return x0, x1
+
+
+def interval_x(layout: GenomeLayout, chrom: str, start: int, end: int) -> tuple[float, float]:
+    x0, x1 = interval_x_native(layout, chrom, start, end)
     if x1 - x0 < 3.0:
         mid = (x0 + x1) / 2
         x0, x1 = mid - 1.5, mid + 1.5
     return x0, x1
-
-
-def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end: int, min_w: float) -> tuple[float, float]:
-    x0 = x_for(layout, chrom, start)
-    x1 = x_for(layout, chrom, end)
-    if x1 < x0:
-        x0, x1 = x1, x0
-    if x1 - x0 < min_w:
-        mid = (x0 + x1) / 2
-        half = min_w / 2
-        x0, x1 = mid - half, mid + half
-    return x0, x1
-
-
-def homolog_visual_width(bp: int) -> float:
-    return max(18.0, min(260.0, bp / 10_000.0))
 
 
 def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
@@ -642,7 +640,7 @@ def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs:
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
-        writer.writerow({"metric": "homolog_layer_definition", "value": "full same_chrom father-child homologous chains from the 10:10 IMPG class-winner table"})
+        writer.writerow({"metric": "homolog_layer_definition", "value": "grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table"})
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
         writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
@@ -653,19 +651,13 @@ def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs:
 
 
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
-    c = (yb - ya) * 0.48
+    c = abs(yb - ya) * 0.48
     return (
         f"M {xa0:.2f} {ya:.2f} "
         f"C {xa0:.2f} {ya + c:.2f}, {xb0:.2f} {yb - c:.2f}, {xb0:.2f} {yb:.2f} "
         f"L {xb1:.2f} {yb:.2f} "
         f"C {xb1:.2f} {yb - c:.2f}, {xa1:.2f} {ya + c:.2f}, {xa1:.2f} {ya:.2f} Z"
     )
-
-
-def facing_edges(source_y: float, target_y: float, pad: float = 8.0) -> tuple[float, float]:
-    if source_y < target_y:
-        return source_y + TRACK_H + pad, target_y - pad
-    return source_y - pad, target_y + TRACK_H + pad
 
 
 def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
@@ -695,6 +687,12 @@ def ribbon_opacity(category: str) -> float:
 
 def draw_interval(svg: SVG, x0: float, x1: float, y: float, color: str, opacity: float = 0.95) -> None:
     svg.rect(x0, y - 5, x1 - x0, TRACK_H + 10, color, "none", 0, opacity, rx=1.5)
+
+
+def ribbon_y_for(source_y: float, target_y: float) -> tuple[float, float]:
+    if source_y < target_y:
+        return source_y + TRACK_H + 8, target_y - 8
+    return source_y - 8, target_y + TRACK_H + 8
 
 
 def label_text(run: Run) -> str:
@@ -790,7 +788,11 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         MUTED,
     )
 
-    for y, label in [(Y_H1 - 16, "father donor h1"), (Y_QUERY + TRACK_H + 8, "child query"), (Y_H2 - 16, "father donor h2")]:
+    for y, label in [
+        (Y_H1 - 16, "father donor h1"),
+        (Y_QUERY + TRACK_H + 8, "child query"),
+        (Y_H2 - 16, "father donor h2"),
+    ]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
         svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
 
@@ -805,11 +807,11 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x_native(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x_native(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
         color = COLORS[run.category]
-        donor_edge, child_edge = facing_edges(target_y[run.donor_haplotype], Y_QUERY, 9)
-        d = ribbon_path(dx0, dx1, donor_edge, qx0, qx1, child_edge)
+        donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
+        d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
         svg.path(d, color, "none", 0, ribbon_opacity(run.category))
 
     for run in runs:
@@ -858,13 +860,17 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         98,
-        "Light-gray ribbons are grouped same-chromosome chains from father haplotypes into the child; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
+        "Light-gray ribbons are full same-chromosome father-child homologous chains; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
         24,
         "400",
         MUTED,
     )
 
-    for y, label in [(Y_H1 - 16, "father donor h1"), (Y_QUERY + TRACK_H + 8, "child query"), (Y_H2 - 16, "father donor h2")]:
+    for y, label in [
+        (Y_H1 - 16, "father donor h1"),
+        (Y_QUERY + TRACK_H + 8, "child query"),
+        (Y_H2 - 16, "father donor h2"),
+    ]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
         svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
 
@@ -879,11 +885,11 @@ def render_homolog_context(
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
-        donor_edge, child_edge = facing_edges(target_y[run.donor_haplotype], Y_QUERY, 8)
-        d = ribbon_path(dx0, dx1, donor_edge, qx0, qx1, child_edge)
-        svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.055)
+        qx0, qx1 = interval_x_native(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x_native(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
+        d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
+        svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.13)
 
     for run in homolog_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
@@ -891,18 +897,18 @@ def render_homolog_context(
             continue
         qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
         dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
-        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.34)
-        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.18)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.22)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.22)
 
     for run in inter_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
         if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
             continue
-        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
-        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        qx0, qx1 = interval_x_native(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x_native(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
         color = COLORS[run.category]
-        donor_edge, child_edge = facing_edges(target_y[run.donor_haplotype], Y_QUERY, 10)
-        d = ribbon_path(dx0, dx1, donor_edge, qx0, qx1, child_edge)
+        donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
+        d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
         opacity = 0.55 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.28
         svg.path(d, color, "none", 0, opacity)
 
@@ -923,7 +929,7 @@ def render_homolog_context(
     svg.text(
         TRACK_X0,
         FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} grouped same-chromosome donor-to-child chains >=10 kb, drawn with native interval endpoints.",
+        f"Light gray: {len(homolog_runs)} grouped same-chromosome chains >=50 kb drawn as donor-interval to child-interval ribbons.",
         19,
         "400",
         MUTED,

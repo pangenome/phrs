@@ -8,14 +8,14 @@ whole-genome homolog-vs-interchrom overview:
 
 `paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz`
 
-Design:
+Lane layout:
 
 - top genome: PAN011 father donor haplotype 1
 - middle genome: PAN027 paternal haplotype child query
-- bottom genome: PAN011 father donor haplotype 2
+- lower genome: PAN011 father donor haplotype 2
 - chromosomes are concatenated in chromosome order with actual chromosome-length
   scaling within each genome track
-- ribbons show adjacent 2 kb query windows where the best interchromosomal IMPG
+- colored ribbons show adjacent 2 kb query windows where the best interchromosomal IMPG
   match beats the best same-chromosome/homologous match
 - drawn ribbons are filtered to runs of at least 10 kb and mean interchromosomal
   identity of at least 0.95
@@ -39,10 +39,11 @@ Outputs:
 - `whole_genome_homologous_context_runs.tsv`
 - `whole_genome_homologous_context_summary.tsv`
 
-The homologous-context variant adds grouped same-chromosome father-child
-homologous chains as a light-gray donor-to-child ribbon layer. Those chains are
-grouped from all `same_chrom` class-winner rows with identity at least 0.95 and
-drawn when the grouped run is at least 10 kb. The colored
-interchromosomal/non-homologous ribbons are preserved on top. Ribbons use native
-query and donor interval endpoints, so the middle child lane shows how the
-paternal homologous components enter the child haplotype.
+The homologous-context variant uses the same geometry but adds full
+same-chromosome father-child homologous chains as a light-gray ribbon layer.
+Homologous chains are grouped from all `same_chrom` class-winner rows with
+identity at least 0.95 and drawn when the grouped run is at least 50 kb. Each
+light-gray homologous ribbon uses the native grouped donor interval and native
+grouped child interval as its two ends; it is not a start marker or
+length-encoded glyph. The colored interchromosomal/non-homologous winners are
+preserved on top.
