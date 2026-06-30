@@ -38,6 +38,9 @@ Geometry:
   continues outside the plotted interval.
 - Black bars show the population-defined PHR/PAR intervals on recipient and
   donor tracks when available.
+- In the Xp/Yp panel, PAR1 is drawn across the full visible 500 kb p-tip
+  window. The underlying PHR-call table only marks a 120 kb high-sharing call in
+  this family, but that is not the full PAR1 annotation.
 - Adjacent 2 kb windows are merged into a run when they share the same donor
   sequence/haplotype and remain adjacent in both recipient and donor space.
 - Dominant donors for the three panels (`chrY`, `chr1`, `chr3`) are always

@@ -37,9 +37,9 @@ CONVERSION_STATUS = HERE / "conversion_status.txt"
 
 PANEL_ORDER = ["chrX_p", "chr5_q", "chr9_q"]
 PANEL_TITLES = {
-    "chrX_p": "chrXp child recipient <- chrYp father donor",
-    "chr5_q": "chr5q child recipient <- chr1p father donor",
-    "chr9_q": "chr9q child recipient <- chr3q father donor",
+    "chrX_p": "chrXp child recipient ← chrYp father donor",
+    "chr5_q": "chr5q child recipient ← chr1p father donor",
+    "chr9_q": "chr9q child recipient ← chr3q father donor",
 }
 DOMINANT_BY_PANEL = {
     "chrX_p": {"chrY"},
@@ -492,9 +492,22 @@ def draw_cut_glyphs(svg: SVG, y: float, anchor: str) -> None:
         draw_continuation(svg, y, "right")
 
 
-def draw_phr_bar(svg: SVG, y: float, start: int, end: int, window_start: int, window_end: int) -> None:
-    px0, px1 = x_for_window(start, end, window_start, window_end)
-    svg.rect(px0, y - 17, px1 - px0, 6, PHR_FILL, "none", 0, 1.0, rx=0)
+def draw_phr_bar(
+    svg: SVG,
+    y: float,
+    start: int,
+    end: int,
+    window_start: int,
+    window_end: int,
+    placement: str = "top",
+) -> None:
+    clipped_start = max(start, window_start)
+    clipped_end = min(end, window_end)
+    if clipped_end <= clipped_start:
+        return
+    px0, px1 = x_for_window(clipped_start, clipped_end, window_start, window_end)
+    bar_y = y - 17 if placement == "top" else y + TRACK_H + 4
+    svg.rect(px0, bar_y, px1 - px0, 6, PHR_FILL, "none", 0, 1.0, rx=0)
 
 
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
@@ -606,7 +619,7 @@ def draw_panel(
     rec_end = first.zoom_bp if first.arm == "p" else first.query_length
     rec_anchor = "left" if first.arm == "p" else "right"
 
-    panel_h = 122 + max(1, len(donor_rows)) * DONOR_ROW_GAP
+    panel_h = 150 + max(1, len(donor_rows)) * DONOR_ROW_GAP
     svg.rect(44, y - 48, PAGE_W - 88, panel_h, "#ffffff", "#e0e2e4", 0.8, rx=3)
     svg.text(68, y - 18, PANEL_TITLES.get(panel_id, panel_id), 25, "700")
 
@@ -621,8 +634,19 @@ def draw_panel(
     )
 
     phr_rows = phr_by_panel.get(panel_id, [])
-    for phr in phr_rows:
-        draw_phr_bar(svg, rec_y, int(phr["query_full_start"]), int(phr["query_full_end"]), rec_start, rec_end)
+    if panel_id == "chrX_p":
+        draw_phr_bar(svg, rec_y, rec_start, rec_end, rec_start, rec_end, "top")
+    else:
+        for phr in phr_rows:
+            draw_phr_bar(
+                svg,
+                rec_y,
+                int(phr["query_full_start"]),
+                int(phr["query_full_end"]),
+                rec_start,
+                rec_end,
+                "top",
+            )
 
     for run in drawn:
         rx0, rx1 = x_for_window(run.query_start, run.query_end, rec_start, rec_end)
@@ -643,7 +667,17 @@ def draw_panel(
         )
 
         donor_arm = arm_from_window_label(run.donor_window_label)
-        if donor_arm:
+        if panel_id == "chrX_p" and run.target_chrom in {"chrX", "chrY"} and donor_arm == "p":
+            draw_phr_bar(
+                svg,
+                donor_y,
+                run.donor_window_start,
+                run.donor_window_end,
+                run.donor_window_start,
+                run.donor_window_end,
+                "bottom",
+            )
+        elif donor_arm:
             for phr in donor_phrs.get((run.target_haplotype, run.target_chrom, donor_arm), []):
                 draw_phr_bar(
                     svg,
@@ -652,6 +686,7 @@ def draw_panel(
                     phr.full_end,
                     run.donor_window_start,
                     run.donor_window_end,
+                    "bottom",
                 )
 
         for item in row_runs:
@@ -688,7 +723,7 @@ def render(
             if run.panel_id == panel_id and run.drawn and not run.suppressed
         }
         n = len(row_keys)
-        panel_heights.append(122 + max(1, n) * DONOR_ROW_GAP)
+        panel_heights.append(150 + max(1, n) * DONOR_ROW_GAP)
     height = TOP + sum(panel_heights) + PANEL_GAP * len(panel_heights) + 40
     svg = SVG(PAGE_W, height)
     svg.text(
