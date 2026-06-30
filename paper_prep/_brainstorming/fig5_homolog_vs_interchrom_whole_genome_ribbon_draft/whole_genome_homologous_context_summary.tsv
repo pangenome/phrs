@@ -1,0 +1,8 @@
+metric	value
+source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+homolog_layer_definition	same_chrom competitor rows paired with interchrom rows where interchrom identity is greater than same_chrom identity
+all_homolog_runs	378
+drawn_homolog_runs	378
+drawn_homolog_bp	3553532
+drawn_interchrom_runs	59
+drawn_interchrom_bp	1118000

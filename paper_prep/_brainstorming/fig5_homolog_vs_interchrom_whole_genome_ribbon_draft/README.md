@@ -30,5 +30,15 @@ Outputs:
 - `fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.svg`
 - `fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.pdf`
 - `fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.png`
+- `fig5_homologous_recombination_context_ribbon_draft.svg`
+- `fig5_homologous_recombination_context_ribbon_draft.pdf`
+- `fig5_homologous_recombination_context_ribbon_draft.png`
 - `whole_genome_ribbon_runs.tsv`
 - `whole_genome_ribbon_summary.tsv`
+- `whole_genome_homologous_context_runs.tsv`
+- `whole_genome_homologous_context_summary.tsv`
+
+The homologous-context variant uses the same geometry but adds the paired
+same-chromosome competitor from each interchrom-over-same IMPG window as a
+light-gray ribbon layer. The colored interchromosomal/non-homologous ribbons are
+preserved on top.

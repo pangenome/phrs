@@ -1,1 +1,2 @@
-converted PDF and PNG with rsvg-convert version 2.54.5 (/gnu/store/kawnjzdr5wi6x77psqsvmaqqni359df5-profile/bin/rsvg-convert)
+converted PDF and PNG with rsvg-convert version 2.54.5
+converted homologous-context PDF and PNG with rsvg-convert version 2.54.5

@@ -32,8 +32,11 @@ TARGET_FAI = Path(
 )
 
 SVG_OUT = OUT_DIR / "fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.svg"
+HOMOLOG_SVG_OUT = OUT_DIR / "fig5_homologous_recombination_context_ribbon_draft.svg"
 RUNS_OUT = OUT_DIR / "whole_genome_ribbon_runs.tsv"
 SUMMARY_OUT = OUT_DIR / "whole_genome_ribbon_summary.tsv"
+HOMOLOG_RUNS_OUT = OUT_DIR / "whole_genome_homologous_context_runs.tsv"
+HOMOLOG_SUMMARY_OUT = OUT_DIR / "whole_genome_homologous_context_summary.tsv"
 CONVERSION_STATUS = OUT_DIR / "conversion_status.txt"
 
 CHROM_ORDER = [f"chr{i}" for i in range(1, 22 + 1)] + ["chrX", "chrY"]
@@ -43,16 +46,23 @@ TARGET_RE = re.compile(r"PAN011#joint#(?P<hap>h[12])_(?P<chrom>chr(?:[0-9]+|X|Y|
 LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 
 PAGE_W = 3000
-PAGE_H = 1320
+PAGE_H = 900
 TRACK_X0 = 360
 TRACK_W = 2360
-TRACK_H = 26
-Y_QUERY = 245
-Y_H1 = 690
-Y_H2 = 1020
+TRACK_H = 28
+Y_QUERY = 235
+Y_H1 = 465
+Y_H2 = 675
+GRID_Y0 = 145
+GRID_Y1 = 745
+LEGEND_Y = 810
+FOOTNOTE_Y1 = 855
+FOOTNOTE_Y2 = 883
 TEXT = "#202124"
 MUTED = "#5f6368"
 GRID = "#e8eaed"
+HOMOLOG_COLOR = "#b8bdc3"
+HOMOLOG_RIBBON = "#cfd3d7"
 
 COLORS = {
     "PAR_XY": "#E7298A",
@@ -295,6 +305,15 @@ def donor_interval(row: dict[str, str]) -> tuple[str, int, int]:
     return seq, start, end
 
 
+def same_chrom_interval(row: dict[str, str]) -> tuple[str, int, int]:
+    other_seq = row["other_seq"]
+    for field in ("group.a", "group.b"):
+        seq, start, end = parse_loc(row[field])
+        if seq == other_seq:
+            return seq, start, end
+    return parse_loc(row["group.a"])
+
+
 def read_segments(path: Path) -> list[Segment]:
     grouped: dict[tuple[str, int, int], dict[str, dict[str, str]]] = defaultdict(dict)
     with gzip.open(path, "rt") as handle:
@@ -328,6 +347,49 @@ def read_segments(path: Path) -> list[Segment]:
                 bp=end - start,
                 same_identity=same_identity,
                 inter_identity=inter_identity,
+            )
+        )
+    return segments
+
+
+def read_homolog_segments(path: Path) -> list[Segment]:
+    grouped: dict[tuple[str, int, int], dict[str, dict[str, str]]] = defaultdict(dict)
+    with gzip.open(path, "rt") as handle:
+        for row in csv.DictReader(handle, delimiter="\t"):
+            key = (row["chrom"], int(row["start"]), int(row["end"]))
+            grouped[key][row["winner_class"]] = row
+
+    segments: list[Segment] = []
+    for (query_seq, start, end), rows in grouped.items():
+        if "same_chrom" not in rows or "interchrom" not in rows:
+            continue
+        same = rows["same_chrom"]
+        inter = rows["interchrom"]
+        same_identity = float(same["estimated.identity"])
+        inter_identity = float(inter["estimated.identity"])
+        if inter_identity <= same_identity:
+            continue
+        donor_seq, donor_start, donor_end = same_chrom_interval(same)
+        donor_hap, target_chrom = target_meta(donor_seq)
+        if donor_hap not in {"h1", "h2"}:
+            continue
+        query_chrom = same["query_chrom"]
+        if target_chrom != query_chrom:
+            continue
+        segments.append(
+            Segment(
+                query_seq=query_seq,
+                query_chrom=query_chrom,
+                query_start=start,
+                query_end=end,
+                donor_seq=donor_seq,
+                donor_haplotype=donor_hap,
+                target_chrom=target_chrom,
+                donor_start=donor_start,
+                donor_end=donor_end,
+                bp=end - start,
+                same_identity=same_identity,
+                inter_identity=same_identity,
             )
         )
     return segments
@@ -387,6 +449,59 @@ def group_runs(segments: list[Segment]) -> list[Run]:
     return runs
 
 
+def group_homolog_runs(segments: list[Segment]) -> list[Run]:
+    runs: list[Run] = []
+    current: Run | None = None
+    current_key: tuple[str, str] | None = None
+    run_counts: dict[str, int] = defaultdict(int)
+
+    ordered = sorted(
+        segments,
+        key=lambda s: (CHROM_ORDER.index(s.query_chrom), s.query_start, s.donor_seq, s.donor_start),
+    )
+    for segment in ordered:
+        key = (segment.query_seq, segment.donor_seq)
+        same_run = (
+            current is not None
+            and current_key == key
+            and segment.query_start <= current.query_end + 10_000
+            and (
+                abs(segment.donor_start - current.donor_end) <= 50_000
+                or abs(current.donor_start - segment.donor_end) <= 50_000
+            )
+        )
+        if same_run:
+            current.query_end = max(current.query_end, segment.query_end)
+            current.donor_start = min(current.donor_start, segment.donor_start)
+            current.donor_end = max(current.donor_end, segment.donor_end)
+            current.bp += segment.bp
+            current.windows += 1
+            current.weighted_same_identity += segment.same_identity * segment.bp
+            current.weighted_inter_identity += segment.inter_identity * segment.bp
+            continue
+
+        run_counts[segment.query_chrom] += 1
+        current = Run(
+            run_id=f"{segment.query_chrom}_homolog_run{run_counts[segment.query_chrom]:04d}",
+            query_seq=segment.query_seq,
+            query_chrom=segment.query_chrom,
+            query_start=segment.query_start,
+            query_end=segment.query_end,
+            donor_seq=segment.donor_seq,
+            donor_haplotype=segment.donor_haplotype,
+            target_chrom=segment.target_chrom,
+            donor_start=segment.donor_start,
+            donor_end=segment.donor_end,
+            bp=segment.bp,
+            windows=1,
+            weighted_same_identity=segment.same_identity * segment.bp,
+            weighted_inter_identity=segment.inter_identity * segment.bp,
+        )
+        runs.append(current)
+        current_key = key
+    return runs
+
+
 def high_confidence_runs(runs: list[Run]) -> list[Run]:
     out = [
         run
@@ -399,6 +514,13 @@ def high_confidence_runs(runs: list[Run]) -> list[Run]:
             {"acro_acro": 0, "acro_other": 1, "other_nonacro": 2, "chr5_chr1_candidate": 3, "chr9_chr3_candidate": 4, "PAR_XY": 5}[r.category],
             r.bp,
         ),
+    )
+
+
+def high_confidence_homolog_runs(runs: list[Run]) -> list[Run]:
+    return sorted(
+        [run for run in runs if run.donor_haplotype in {"h1", "h2"}],
+        key=lambda r: (-r.bp, CHROM_ORDER.index(r.query_chrom), r.query_start, r.donor_haplotype),
     )
 
 
@@ -445,6 +567,45 @@ def write_runs(path: Path, runs: list[Run]) -> None:
             )
 
 
+def write_homolog_runs(path: Path, runs: list[Run]) -> None:
+    fields = [
+        "run_id",
+        "query_chrom",
+        "query_start",
+        "query_end",
+        "target_chrom",
+        "donor_haplotype",
+        "donor_seq",
+        "donor_start",
+        "donor_end",
+        "bp",
+        "windows",
+        "mean_identity",
+        "category",
+    ]
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        for run in runs:
+            writer.writerow(
+                {
+                    "run_id": run.run_id,
+                    "query_chrom": run.query_chrom,
+                    "query_start": run.query_start,
+                    "query_end": run.query_end,
+                    "target_chrom": run.target_chrom,
+                    "donor_haplotype": run.donor_haplotype,
+                    "donor_seq": run.donor_seq,
+                    "donor_start": run.donor_start,
+                    "donor_end": run.donor_end,
+                    "bp": run.bp,
+                    "windows": run.windows,
+                    "mean_identity": f"{run.mean_same_identity:.6f}",
+                    "category": "homologous_same_chrom",
+                }
+            )
+
+
 def write_summary(path: Path, runs: list[Run], all_runs: list[Run]) -> None:
     by_category: dict[str, tuple[int, int]] = {}
     for category in COLORS:
@@ -463,6 +624,20 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run]) -> None:
             writer.writerow({"metric": f"{category}_bp", "value": str(bp)})
 
 
+def write_homolog_summary(path: Path, homolog_runs: list[Run], all_homolog_runs: list[Run], inter_runs: list[Run]) -> None:
+    with path.open("w", newline="") as handle:
+        fields = ["metric", "value"]
+        writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
+        writer.writerow({"metric": "homolog_layer_definition", "value": "same_chrom competitor rows paired with interchrom rows where interchrom identity is greater than same_chrom identity"})
+        writer.writerow({"metric": "all_homolog_runs", "value": str(len(all_homolog_runs))})
+        writer.writerow({"metric": "drawn_homolog_runs", "value": str(len(homolog_runs))})
+        writer.writerow({"metric": "drawn_homolog_bp", "value": str(sum(run.bp for run in homolog_runs))})
+        writer.writerow({"metric": "drawn_interchrom_runs", "value": str(len(inter_runs))})
+        writer.writerow({"metric": "drawn_interchrom_bp", "value": str(sum(run.bp for run in inter_runs))})
+
+
 def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: float) -> str:
     c = abs(yb - ya) * 0.48
     return (
@@ -474,7 +649,7 @@ def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: f
 
 
 def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
-    svg.text(TRACK_X0 - 26, y + TRACK_H - 3, layout.label, 20, "700", TEXT, "end")
+    svg.text(TRACK_X0 - 26, y + TRACK_H - 2, layout.label, 30, "700", TEXT, "end")
     for idx, chrom in enumerate(CHROM_ORDER):
         if chrom not in layout.lengths:
             continue
@@ -484,9 +659,9 @@ def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
         svg.rect(x0, y, x1 - x0, TRACK_H, fill, "#ffffff", 1.1, 1.0, rx=0)
         if x1 - x0 >= 38:
             label = chrom.replace("chr", "")
-            svg.text((x0 + x1) / 2, y - 9, label, 13, "600", MUTED, "middle")
+            svg.text((x0 + x1) / 2, y - 9, label, 19, "600", MUTED, "middle")
         if chrom in {"chr1", "chr3", "chr5", "chr9", "chr13", "chr15", "chr21", "chr22", "chrX", "chrY"}:
-            svg.line(x0, 160, x0, 1135, GRID, 0.7, 0.55)
+            svg.line(x0, GRID_Y0, x0, GRID_Y1, GRID, 0.7, 0.55)
     svg.rect(TRACK_X0, y, TRACK_W, TRACK_H, "none", "#bdc1c6", 1.1, 1.0, rx=0)
 
 
@@ -523,28 +698,28 @@ def draw_callouts(svg: SVG, runs: list[Run], query_layout: GenomeLayout) -> None
     for run in sorted(selected, key=lambda r: x_for(query_layout, r.query_chrom, (r.query_start + r.query_end) // 2)):
         x0, x1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
         center = (x0 + x1) / 2
-        width = max(120, len(label_text(run)) * 10)
+        width = max(170, len(label_text(run)) * 15)
         lane = 0
         for idx, last_right in enumerate(lanes):
-            if center - width / 2 > last_right + 18:
+            if center - width / 2 > last_right + 24:
                 lane = idx
                 lanes[idx] = center + width / 2
                 break
         else:
             lane = len(lanes)
             lanes.append(center + width / 2)
-        y = Y_QUERY - 86 - lane * 34
+        y = Y_QUERY - 100 - lane * 42
         color = COLORS[run.category]
         svg.line(center, Y_QUERY - 9, center, y + 8, color, 1.4, 0.9)
-        svg.text(center, y, label_text(run), 18, "700", color, "middle")
-        svg.text(center, y + 20, f"{run.bp / 1000:.0f} kb, {run.donor_haplotype}", 13, "400", MUTED, "middle")
+        svg.text(center, y, label_text(run), 27, "700", color, "middle")
+        svg.text(center, y + 29, f"{run.bp / 1000:.0f} kb, {run.donor_haplotype}", 20, "400", MUTED, "middle")
 
 
 def draw_legend(svg: SVG, runs: list[Run]) -> None:
     x = TRACK_X0
-    y = 1190
-    svg.text(x, y, "Ribbon classes", 16, "700", MUTED)
-    x += 145
+    y = LEGEND_Y
+    svg.text(x, y, "Ribbon classes", 24, "700", MUTED)
+    x += 210
     for category, label in [
         ("PAR_XY", "PAR1 positive control"),
         ("chr5_chr1_candidate", "chr5q/chr1p candidate"),
@@ -556,26 +731,48 @@ def draw_legend(svg: SVG, runs: list[Run]) -> None:
         count = sum(1 for run in runs if run.category == category)
         if count == 0:
             continue
-        svg.rect(x, y - 13, 18, 14, COLORS[category], "none", 0, 0.9)
-        svg.text(x + 26, y, f"{label} ({count})", 14, "400", TEXT)
-        x += 275 if category != "other_nonacro" else 150
+        svg.rect(x, y - 20, 27, 21, COLORS[category], "none", 0, 0.9)
+        svg.text(x + 39, y, f"{label} ({count})", 21, "400", TEXT)
+        x += 390 if category != "other_nonacro" else 220
+
+
+def draw_homolog_legend(svg: SVG, runs: list[Run], homolog_runs: list[Run]) -> None:
+    x = TRACK_X0
+    y = LEGEND_Y
+    svg.text(x, y, "Ribbon classes", 24, "700", MUTED)
+    x += 210
+    svg.rect(x, y - 20, 27, 21, HOMOLOG_COLOR, "none", 0, 0.9)
+    svg.text(x + 39, y, f"same chromosome homologous ({len(homolog_runs)})", 21, "400", TEXT)
+    x += 560
+    for category, label in [
+        ("PAR_XY", "PAR1 non-homologous"),
+        ("chr5_chr1_candidate", "chr5q/chr1p"),
+        ("chr9_chr3_candidate", "chr9q/chr3q"),
+        ("acro_acro", "acrocentric"),
+    ]:
+        count = sum(1 for run in runs if run.category == category)
+        if count == 0:
+            continue
+        svg.rect(x, y - 20, 27, 21, COLORS[category], "none", 0, 0.9)
+        svg.text(x + 39, y, f"{label} ({count})", 21, "400", TEXT)
+        x += 360
 
 
 def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayout, hap2_layout: GenomeLayout) -> None:
     svg = SVG(PAGE_W, PAGE_H)
-    svg.text(TRACK_X0, 72, "Whole-genome 10:10 SweepGA/F32 IMPG class winners with donor ribbons", 28, "700", TEXT)
+    svg.text(TRACK_X0, 58, "Whole-genome 10:10 SweepGA/F32 IMPG class winners with donor ribbons", 42, "700", TEXT)
     svg.text(
         TRACK_X0,
-        104,
+        98,
         "PAN027 paternal child query; ribbons mark high-confidence 2 kb runs where the best interchromosomal match beats the best same-chromosome match.",
-        16,
+        24,
         "400",
         MUTED,
     )
 
     for y, label in [(Y_QUERY + TRACK_H + 8, "child query"), (Y_H1 - 16, "father donor h1"), (Y_H2 - 16, "father donor h2")]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
-        svg.text(TRACK_X0 + TRACK_W + 22, y + 5, label, 13, "400", MUTED)
+        svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
 
     draw_genome_track(svg, query_layout, Y_QUERY)
     draw_genome_track(svg, hap1_layout, Y_H1)
@@ -611,21 +808,112 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
     total_bp = sum(run.bp for run in runs)
     svg.text(
         TRACK_X0,
-        1235,
+        FOOTNOTE_Y1,
         f"Drawn: {len(runs)} high-confidence runs, {total_bp / 1e6:.2f} Mb total; threshold: run >=10 kb and mean interchrom identity >=0.95.",
-        14,
+        19,
         "400",
         MUTED,
     )
     svg.text(
         TRACK_X0,
-        1260,
+        FOOTNOTE_Y2,
         "All coordinates are native whole-genome coordinates collapsed into length-scaled chromosome-order tracks.",
-        14,
+        19,
         "400",
         MUTED,
     )
     svg.write(SVG_OUT)
+
+
+def render_homolog_context(
+    inter_runs: list[Run],
+    homolog_runs: list[Run],
+    query_layout: GenomeLayout,
+    hap1_layout: GenomeLayout,
+    hap2_layout: GenomeLayout,
+) -> None:
+    svg = SVG(PAGE_W, PAGE_H)
+    svg.text(TRACK_X0, 58, "Whole-genome homologous inheritance context with non-homologous winners", 42, "700", TEXT)
+    svg.text(
+        TRACK_X0,
+        98,
+        "Light-gray ribbons are same-chromosome father-child homologous runs; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
+        24,
+        "400",
+        MUTED,
+    )
+
+    for y, label in [(Y_QUERY + TRACK_H + 8, "child query"), (Y_H1 - 16, "father donor h1"), (Y_H2 - 16, "father donor h2")]:
+        svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
+        svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
+
+    draw_genome_track(svg, query_layout, Y_QUERY)
+    draw_genome_track(svg, hap1_layout, Y_H1)
+    draw_genome_track(svg, hap2_layout, Y_H2)
+
+    target_layouts = {"h1": hap1_layout, "h2": hap2_layout}
+    target_y = {"h1": Y_H1, "h2": Y_H2}
+
+    for run in homolog_runs:
+        target_layout_obj = target_layouts.get(run.donor_haplotype)
+        if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
+            continue
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        d = ribbon_path(qx0, qx1, Y_QUERY + TRACK_H + 8, dx0, dx1, target_y[run.donor_haplotype] - 8)
+        svg.path(d, HOMOLOG_RIBBON, "none", 0, 0.16)
+
+    for run in homolog_runs:
+        target_layout_obj = target_layouts.get(run.donor_haplotype)
+        if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
+            continue
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.30)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.30)
+
+    for run in inter_runs:
+        target_layout_obj = target_layouts.get(run.donor_haplotype)
+        if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
+            continue
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        color = COLORS[run.category]
+        d = ribbon_path(qx0, qx1, Y_QUERY + TRACK_H + 10, dx0, dx1, target_y[run.donor_haplotype] - 10)
+        opacity = 0.55 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.28
+        svg.path(d, color, "none", 0, opacity)
+
+    for run in inter_runs:
+        target_layout_obj = target_layouts.get(run.donor_haplotype)
+        if target_layout_obj is None or run.target_chrom not in target_layout_obj.lengths:
+            continue
+        color = COLORS[run.category]
+        qx0, qx1 = interval_x(query_layout, run.query_chrom, run.query_start, run.query_end)
+        dx0, dx1 = interval_x(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end)
+        emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.65
+        draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.95 * emph)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.95 * emph)
+
+    draw_callouts(svg, inter_runs, query_layout)
+    draw_homolog_legend(svg, inter_runs, homolog_runs)
+
+    svg.text(
+        TRACK_X0,
+        FOOTNOTE_Y1,
+        f"Light gray: {len(homolog_runs)} paired same-chromosome competitor runs for interchrom-over-same windows; colored overlay: {len(inter_runs)} non-homologous runs.",
+        19,
+        "400",
+        MUTED,
+    )
+    svg.text(
+        TRACK_X0,
+        FOOTNOTE_Y2,
+        "All tracks use native whole-genome coordinates collapsed into length-scaled chromosome-order tracks.",
+        19,
+        "400",
+        MUTED,
+    )
+    svg.write(HOMOLOG_SVG_OUT)
 
 
 def find_rsvg() -> str | None:
@@ -646,17 +934,24 @@ def find_rsvg() -> str | None:
     return None
 
 
-def convert_outputs() -> list[str]:
-    messages: list[str] = []
+def convert_one(svg_path: Path) -> str | None:
     rsvg = find_rsvg()
     if rsvg is None:
+        return None
+    subprocess.run([rsvg, "-f", "pdf", "-o", str(svg_path.with_suffix(".pdf")), str(svg_path)], check=True)
+    subprocess.run([rsvg, "-f", "png", "-o", str(svg_path.with_suffix(".png")), str(svg_path)], check=True)
+    return subprocess.run([rsvg, "--version"], check=True, text=True, capture_output=True).stdout.strip()
+
+
+def convert_outputs() -> list[str]:
+    messages: list[str] = []
+    version = convert_one(SVG_OUT)
+    if version is None:
         return ["SVG only: no rsvg-convert found."]
-    pdf = SVG_OUT.with_suffix(".pdf")
-    png = SVG_OUT.with_suffix(".png")
-    subprocess.run([rsvg, "-f", "pdf", "-o", str(pdf), str(SVG_OUT)], check=True)
-    subprocess.run([rsvg, "-f", "png", "-o", str(png), str(SVG_OUT)], check=True)
-    version = subprocess.run([rsvg, "--version"], check=True, text=True, capture_output=True).stdout.strip()
-    messages.append(f"converted PDF and PNG with {version} ({rsvg})")
+    homolog_version = convert_one(HOMOLOG_SVG_OUT)
+    messages.append(f"converted PDF and PNG with {version}")
+    if homolog_version is not None:
+        messages.append(f"converted homologous-context PDF and PNG with {homolog_version}")
     return messages
 
 
@@ -671,14 +966,24 @@ def main() -> None:
     segments = read_segments(CLASS_WINNERS)
     all_runs = group_runs(segments)
     runs = high_confidence_runs(all_runs)
+    homolog_segments = read_homolog_segments(CLASS_WINNERS)
+    all_homolog_runs = group_homolog_runs(homolog_segments)
+    homolog_runs = high_confidence_homolog_runs(all_homolog_runs)
     write_runs(RUNS_OUT, runs)
     write_summary(SUMMARY_OUT, runs, all_runs)
+    write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
+    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, runs)
     render(runs, query_layout, hap1_layout, hap2_layout)
+    render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout)
     messages = convert_outputs()
     CONVERSION_STATUS.write_text("\n".join(messages) + "\n")
     for message in messages:
         print(message)
-    print(f"segments={len(segments)} all_runs={len(all_runs)} drawn_runs={len(runs)}")
+    print(
+        f"segments={len(segments)} all_runs={len(all_runs)} drawn_runs={len(runs)} "
+        f"homolog_segments={len(homolog_segments)} homolog_runs={len(all_homolog_runs)} "
+        f"drawn_homolog_runs={len(homolog_runs)}"
+    )
     print(f"wrote {SVG_OUT}")
     print(f"wrote {RUNS_OUT}")
 
