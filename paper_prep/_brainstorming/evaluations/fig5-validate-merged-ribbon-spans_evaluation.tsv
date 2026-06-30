@@ -1,0 +1,2 @@
+task_id	overall_score	confidence	rubric_underspecified	endpoint_merge_semantics_score	exact_merge_clarity_score	validation_evidence_score	rebuild_artifacts_score	deliverable_completeness_score	source_provenance_score	wg_process_score	non_destructive_score
+fig5-validate-merged-ribbon-spans	0.88	0.84	yes	0.95	0.90	0.82	0.90	0.92	0.95	0.88	0.95
