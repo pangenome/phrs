@@ -8,13 +8,14 @@ whole-genome homolog-vs-interchrom overview:
 
 `paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz`
 
-Design:
+Lane layout:
 
-- top genome: PAN027 paternal haplotype child query
-- lower genomes: PAN011 father donor haplotype 1 and haplotype 2
+- top genome: PAN011 father donor haplotype 1
+- middle genome: PAN027 paternal haplotype child query
+- lower genome: PAN011 father donor haplotype 2
 - chromosomes are concatenated in chromosome order with actual chromosome-length
   scaling within each genome track
-- ribbons show adjacent 2 kb query windows where the best interchromosomal IMPG
+- colored ribbons show adjacent 2 kb query windows where the best interchromosomal IMPG
   match beats the best same-chromosome/homologous match
 - drawn ribbons are filtered to runs of at least 10 kb and mean interchromosomal
   identity of at least 0.95
@@ -40,10 +41,9 @@ Outputs:
 
 The homologous-context variant uses the same geometry but adds full
 same-chromosome father-child homologous chains as a light-gray ribbon layer.
-Those chains are grouped from all `same_chrom` class-winner rows with identity
-at least 0.95 and drawn when the grouped run is at least 50 kb. The colored
-interchromosomal/non-homologous ribbons are preserved on top.
-Because these tracts are sub-megabase to low-megabase features on a whole-genome
-axis, the gray homologous-chain glyph width is intentionally length-encoded
-at about 10 kb per pixel and capped at a 2.6 Mb visual span, while remaining
-anchored at the native query and donor coordinates.
+Homologous chains are grouped from all `same_chrom` class-winner rows with
+identity at least 0.95 and drawn when the grouped run is at least 50 kb. Each
+light-gray homologous ribbon uses the native grouped donor interval and native
+grouped child interval as its two ends; it is not a start marker or
+length-encoded glyph. The colored interchromosomal/non-homologous winners are
+preserved on top.
