@@ -267,10 +267,16 @@ same-chromosome or homologous father match across adjacent windows.
 PHR and community labels were assigned only after calling; the highlighted pairs
 fall in the expected arm-level sequence-similarity communities and show
 post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
-We therefore interpret these as recombination-compatible PHR-exchange
-candidates, not breakpoint-resolved or event-level truth calls.
-Confirming individual WashU events will require orthogonal long-read
-recombination maps \cite{Halldorsson2019,palsson2025recomb}.
+The two candidates differ in support. An independent aligner (wfmash)
+reproduces the chr9q/chr3q donor at the same chr3q subtelomeric locus at
+$>$99.8\% identity, so this exchange is concordant across methods; the
+chr5q/chr1p signal exceeds its same-chromosome match by only a narrow identity
+margin and is not recovered by wfmash, which maps the window to chr5, making it
+a weaker, aligner-dependent candidate.
+We interpret both as recombination-compatible PHR-exchange candidates rather
+than breakpoint-resolved or event-level truth calls, and confirming individual
+WashU events will require orthogonal long-read recombination maps
+\cite{Halldorsson2019,palsson2025recomb}.
 
 Together, these observations suggest a self-reinforcing loop. Shared sequence
 tracks three-dimensional proximity. Proximity at the meiotic bouquet creates the
@@ -432,7 +438,9 @@ Group for generating and interpreting these data.
     putative recombination-compatible autosomal PHR exchanges, chr5q/chr1p and
     chr9q/chr3q. PHR/community labels were assigned only after calling; the
     highlighted pairs are supported by the population arm-community/Jaccard
-    analysis (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).}
+    analysis (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3). Of the two autosomal
+    candidates, only chr9q/chr3q is reproduced by an independent aligner
+    (wfmash); chr5q/chr1p is a weaker, aligner-dependent candidate (main text).}
   \label{fig:fig5}
 \end{figure}
 
@@ -651,6 +659,12 @@ windows were merged only for display when donor chromosome, donor haplotype,
 donor sequence and nearby recipient and donor coordinates were consistent. PHR
 and arm-community labels were assigned after calling and were not used to select
 the windows.
+As an independent check, the two autosomal candidates were re-examined in a
+whole-genome wfmash v0.24.2 \texttt{-p 95} alignment of the same
+PAN027-versus-PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on
+chr3q at $>$99.8\% identity over the same coordinates, but placed the chr5q
+window on chr5 with no chr1 donor above threshold, so only chr9q/chr3q is
+concordant across aligners.
 
 \subsection*{Software versions}
 
