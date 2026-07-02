@@ -16,7 +16,7 @@ live in the repo.
 |---|---|---|
 | Fig1a | computed | HPRCv2 repo `plot-impg-coverage.inter-chr-map.R` (external clone) |
 | Fig1b | computed | deck `v9/06a_q_axis_kbp/make_06a_q_axis_kbp.R` |
-| Fig2a | computed | deck `v6/pggb_graph_black/render_pggb_layout_component8_black.R` |
+| Fig2a | computed | `make_fig2a_pggb_layout.R` (here) — odgi layout main component, nodes colored by arm-level Leiden community (same palette as Fig2b); inputs `data/fig2a_pggb_layout.og.lay.tsv.gz` + `data/fig2a_node_community.tsv.gz` |
 | Fig2b+2c | computed | `make_fig2bc_jaccard_heatmaps.R` (here) — one combined `Fig2bc_jaccard` file, both panels + one shared legend |
 | Fig4a | computed | `make_fig4a_human_scatter.R` (here) — HG002 Pore-C all-points (single panel); full 2-panel HG002+CHM13 kept in `_backup/make_fig4a_human_scatter_full.R` |
 | Fig4b | computed | `make_fig4b_porec_community.R` (here) — Pore-C matrix + community colour bands/labels |
@@ -32,6 +32,7 @@ Fig3 panels are `.png`.
 ## Computed — scripts here (location-aware, run from anywhere)
 
 ```bash
+Rscript submission/scripts/figures/make_fig2a_pggb_layout.R        # Fig2a  odgi layout main component, nodes colored by arm-level Leiden community
 Rscript submission/scripts/figures/make_fig2bc_jaccard_heatmaps.R  # Fig2bc combined tree- + community-ordered Jaccard heatmaps
 Rscript submission/scripts/figures/make_fig4a_human_scatter.R      # Fig4a  HG002 Pore-C all-points rho=0.381 n=2830 (single panel)
 Rscript submission/scripts/figures/make_ed1_human_contacts.R     # ED1    3-panel replicate: CHM13 Hi-C 0.716/652, HG002 Hi-C 0.662/2544, HG002 CiFi 0.191/2757 (50 kbp)

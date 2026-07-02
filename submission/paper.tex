@@ -337,9 +337,11 @@ Group for generating and interpreting these data.
   \includegraphics[width=\linewidth]{fig/MainFigures/Fig2bc_jaccard.pdf}
   \caption{\textbf{Pangenome similarity structure and communities.}
     \textbf{(A)} PGGB/odgi 2D layout of the all-subtelomere PHR graph (727,156
-    layout nodes; main connected component). All 15,668 PHR flanks fall into a
-    single component, so subtelomeres are linked across non-homologous
-    chromosomes rather than partitioned by chromosome.
+    layout nodes; main connected component), each node colored by the arm-level
+    Leiden community of the PHR paths crossing it (same community palette as
+    panel B). All 15,668 PHR flanks fall into a single component, so subtelomeres
+    are linked across non-homologous chromosomes rather than partitioned by
+    chromosome, yet the communities occupy distinct regions of the layout.
     \textbf{(B)} Arm-level Jaccard similarity heatmap ($41 \times 41$), shown
     twice. \emph{Left}, ordered by an average-linkage UPGMA dendrogram used as a
     display order for similar subtelomeric PHR profiles (p-arms red, q-arms
@@ -507,8 +509,10 @@ Output: 15,668 PHRs (83.2\% of flanks), 41 of 48 arms.
 \texttt{pggb -p 95 -D /scratch}; \texttt{odgi similarity --all -P} over the
 15,668 sequences yields the $15668 \times 15668$ Jaccard matrix
 \cite{Garrison2024pggb,pangenome_graphs_impg_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
-The single connected component is rendered with \texttt{odgi layout} +
-\texttt{odgi draw} (Fig.~\ref{fig:fig2}A).
+The single connected component is positioned with \texttt{odgi layout} and
+rendered from the layout coordinates in R, each node colored by the dominant
+arm-level Leiden community of the PHR paths crossing it
+(\texttt{make\_fig2a\_pggb\_layout.R}; Fig.~\ref{fig:fig2}A).
 
 \subsection*{Arm-level distance matrix}
 
