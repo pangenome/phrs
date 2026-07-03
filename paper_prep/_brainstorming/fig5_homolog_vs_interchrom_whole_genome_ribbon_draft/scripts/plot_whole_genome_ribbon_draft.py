@@ -322,6 +322,14 @@ def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end:
         mid = (x0 + x1) / 2
         half = min_w / 2
         x0, x1 = mid - half, mid + half
+        chrom_x0 = x_for(layout, chrom, 0)
+        chrom_x1 = x_for(layout, chrom, layout.lengths[chrom])
+        if x0 < chrom_x0:
+            x1 = min(chrom_x1, x1 + chrom_x0 - x0)
+            x0 = chrom_x0
+        if x1 > chrom_x1:
+            x0 = max(chrom_x0, x0 - (x1 - chrom_x1))
+            x1 = chrom_x1
     return x0, x1
 
 
