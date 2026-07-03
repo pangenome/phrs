@@ -71,6 +71,7 @@ FOOTNOTE_Y2 = 883
 TEXT = "#202124"
 MUTED = "#5f6368"
 GRID = "#e8eaed"
+CHROM_BORDER = "#111111"
 HOMOLOG_COLOR = "#b8bdc3"
 HOMOLOG_RIBBON = "#cfd3d7"
 HOMOLOG_RIBBON_OPACITY = 0.07
@@ -848,6 +849,27 @@ def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
     svg.rect(TRACK_X0, y, TRACK_W, TRACK_H, "none", "#bdc1c6", 1.1, 1.0, rx=0)
 
 
+def draw_chromosome_boundary_bars(svg: SVG, layout: GenomeLayout, y: float) -> None:
+    xs: list[float] = []
+    last_chrom: str | None = None
+    for chrom in CHROM_ORDER:
+        if chrom not in layout.lengths:
+            continue
+        xs.append(x_for(layout, chrom, 0))
+        last_chrom = chrom
+    if last_chrom is not None:
+        xs.append(x_for(layout, last_chrom, layout.lengths[last_chrom]))
+
+    for x in xs:
+        svg.line(x, y - 4, x, y + TRACK_H + 4, CHROM_BORDER, 1.0, 0.9)
+
+
+def draw_all_chromosome_boundary_bars(svg: SVG, query_layout: GenomeLayout, hap1_layout: GenomeLayout, hap2_layout: GenomeLayout) -> None:
+    draw_chromosome_boundary_bars(svg, hap1_layout, Y_H1)
+    draw_chromosome_boundary_bars(svg, query_layout, Y_QUERY)
+    draw_chromosome_boundary_bars(svg, hap2_layout, Y_H2)
+
+
 def ribbon_opacity(category: str) -> float:
     if category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"}:
         return 0.75
@@ -996,6 +1018,7 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.88 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.88 * emph)
 
+    draw_all_chromosome_boundary_bars(svg, query_layout, hap1_layout, hap2_layout)
     draw_callouts(svg, runs, query_layout)
     draw_legend(svg, runs)
 
@@ -1096,6 +1119,7 @@ def render_homolog_context(
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.95 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.95 * emph)
 
+    draw_all_chromosome_boundary_bars(svg, query_layout, hap1_layout, hap2_layout)
     draw_callouts(svg, inter_runs, query_layout)
     draw_homolog_legend(svg, inter_runs, homolog_runs)
 
