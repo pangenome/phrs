@@ -69,7 +69,7 @@ draw <- function() {
     xs <- seq(min(x), max(x), length.out = 100)
     lines(xs, 10 ^ predict(fit, data.frame(x = xs)), col = "#111111", lwd = 1.35)
   }
-  legend("bottomright", inset = c(0.02, 0.04), bty = "n", cex = 1.4,
+  legend("bottomright", inset = c(0.02, 0.04), bty = "n", cex = 1.15,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(n, big.mark = ",")),
                     sprintf("descriptive pointwise Spearman rho = %s",
@@ -82,10 +82,13 @@ draw <- function() {
   plot(seq_len(nrow(stages)), stages$rho, type = "b", pch = 21,
        bg = "#1f77b4",
        col = "#111111", lwd = 1.4, cex = 2.1, xaxt = "n",
+       xlim = c(0.55, nrow(stages) + 0.45),
        ylim = c(yl[1] - 0.06, yl[2] + 0.07),
        xlab = "Meiotic prophase stage", ylab = "Per-pair Spearman rho",
        main = "", cex.lab = 1.55, cex.axis = 1.4)
-  axis(1, at = seq_len(nrow(stages)), labels = levels(stages$stage), cex.axis = 1.4)
+  axis(1, at = seq_len(nrow(stages)), labels = FALSE)
+  mtext(unname(stage_keys[levels(stages$stage)]), side = 1,
+        at = seq_len(nrow(stages)), line = 0.9, cex = 1.05)
   text(seq_len(nrow(stages)), stages$rho + 0.030,
        sprintf("%.3f", stages$rho), cex = 1.2, xpd = NA)
 }

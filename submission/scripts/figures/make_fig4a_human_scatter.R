@@ -70,7 +70,7 @@ plot_one <- function(it) {
     xs <- seq(min(x), max(x), length.out = 100)
     lines(xs, 10 ^ predict(fit, data.frame(x = xs)), col = "#111111", lwd = 1.35)
   }
-  legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.3,
+  legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.08,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
                     sprintf("descriptive pointwise Spearman rho = %s",

@@ -15,7 +15,7 @@ live in the repo.
 | Figure | How | Generator / source |
 |---|---|---|
 | Fig1a | computed | HPRCv2 repo `plot-impg-coverage.inter-chr-map.R` (external clone) |
-| Fig1b | computed | deck `v9/06a_q_axis_kbp/make_06a_q_axis_kbp.R` |
+| Fig1b | computed | `make_fig1b_lengths.R` (here) — per-end PHR length heatstrip (terminal 500 kbp, 10 kbp columns, q arms flipped); input `data/all-vs-all.1Mb.p95.id95.len.tsv` |
 | Fig2a | computed | `make_fig2a_pggb_layout.R` (here) — odgi layout main component, nodes colored by arm-level Leiden community (same palette as Fig2b); inputs `data/fig2a_pggb_layout.og.lay.tsv.gz` + `data/fig2a_node_community.tsv.gz` |
 | Fig2b+2c | computed | `make_fig2bc_jaccard_heatmaps.R` (here) — one combined `Fig2bc_jaccard` file, both panels + one shared legend |
 | Fig4a | computed | `make_fig4a_human_scatter.R` (here) — HG002 Pore-C all-points (single panel); full 2-panel HG002+CHM13 kept in `_backup/make_fig4a_human_scatter_full.R` |
@@ -32,6 +32,7 @@ Fig3 panels are `.png`.
 ## Computed — scripts here (location-aware, run from anywhere)
 
 ```bash
+Rscript submission/scripts/figures/make_fig1b_lengths.R           # Fig1b  per-end PHR length heatstrip (terminal 500 kbp, 10 kbp columns, q arms flipped)
 Rscript submission/scripts/figures/make_fig2a_pggb_layout.R        # Fig2a  odgi layout main component, nodes colored by arm-level Leiden community
 Rscript submission/scripts/figures/make_fig2bc_jaccard_heatmaps.R  # Fig2bc combined tree- + community-ordered Jaccard heatmaps
 Rscript submission/scripts/figures/make_fig4a_human_scatter.R      # Fig4a  HG002 Pore-C all-points rho=0.381 n=2830 (single panel)
@@ -46,27 +47,13 @@ dot per inter-chromosomal PHR sequence pair, single-sample (a sample's own PHRs
 vs its own length-normalised contact). The full 2-panel HG002+CHM13 version of
 the old Fig4a is preserved in `_backup/make_fig4a_human_scatter_full.R`.
 
-## Computed — deck generators (run, then copy the output in)
+## Computed — deck generators (migrated)
 
-Generators live under `slides/v2-review-zoom/_revision_assets/`; provenance in
-`paper_prep/20260521_pptx-slide-image-provenance.md`. They default to `/moosefs`
-paths, so pass the `data/` copies, then copy the result into `submission/fig/`.
-
-```bash
-# Fig1b
-S=slides/v2-review-zoom/_revision_assets/v9/06a_q_axis_kbp
-PHR_LENGTH_TSV=data/all-vs-all.1Mb.p95.id95.len.tsv Rscript $S/make_06a_q_axis_kbp.R
-cp $S/phr_length_arm_heatstrip_10kbp.pdf submission/fig/MainFigures/Fig1b_lengths.pdf
-
-# Fig2a (PNG only)
-S=slides/v2-review-zoom/_revision_assets/v6/pggb_graph_black
-Rscript $S/render_pggb_layout_component8_black.R \
-  --layout-tsv data/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz.6e0e250.11fba48.645f51d.smooth.final.og.lay.tsv \
-  --out $S/pggb_graph_2d_black.png
-cp $S/pggb_graph_2d_black.png submission/fig/MainFigures/Fig2a_pggb_layout.png
-
-# (Fig2b/2c and Fig4b are now built by their make_*.R scripts above, not here.)
-```
+Fig1b and Fig2a were previously rendered by frozen slide generators under
+`slides/v2-review-zoom/_revision_assets/` and copied in. Both are now built
+directly by `make_fig1b_lengths.R` and `make_fig2a_pggb_layout.R` above (the
+frozen slide assets are left untouched for provenance;
+`paper_prep/20260521_pptx-slide-image-provenance.md`).
 
 ## Computed — Fig1a (external `pangenome/HPRCv2` repo)
 
