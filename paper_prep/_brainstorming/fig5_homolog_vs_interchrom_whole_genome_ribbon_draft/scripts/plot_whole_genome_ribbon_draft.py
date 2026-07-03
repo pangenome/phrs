@@ -864,10 +864,26 @@ def draw_chromosome_boundary_bars(svg: SVG, layout: GenomeLayout, y: float) -> N
         svg.line(x, y - 4, x, y + TRACK_H + 4, CHROM_BORDER, 1.0, 0.9)
 
 
-def draw_all_chromosome_boundary_bars(svg: SVG, query_layout: GenomeLayout, hap1_layout: GenomeLayout, hap2_layout: GenomeLayout) -> None:
-    draw_chromosome_boundary_bars(svg, hap1_layout, Y_H1)
-    draw_chromosome_boundary_bars(svg, query_layout, Y_QUERY)
-    draw_chromosome_boundary_bars(svg, hap2_layout, Y_H2)
+def draw_chromosome_labels(svg: SVG, layout: GenomeLayout, y: float) -> None:
+    for chrom in CHROM_ORDER:
+        if chrom not in layout.lengths:
+            continue
+        x0 = x_for(layout, chrom, 0)
+        x1 = x_for(layout, chrom, layout.lengths[chrom])
+        if x1 - x0 >= 38:
+            label = chrom.replace("chr", "")
+            svg.text((x0 + x1) / 2, y - 9, label, 20, "700", TEXT, "middle")
+
+
+def draw_chromosome_track_overlay(svg: SVG, layout: GenomeLayout, y: float) -> None:
+    draw_chromosome_boundary_bars(svg, layout, y)
+    draw_chromosome_labels(svg, layout, y)
+
+
+def draw_all_chromosome_track_overlays(svg: SVG, query_layout: GenomeLayout, hap1_layout: GenomeLayout, hap2_layout: GenomeLayout) -> None:
+    draw_chromosome_track_overlay(svg, hap1_layout, Y_H1)
+    draw_chromosome_track_overlay(svg, query_layout, Y_QUERY)
+    draw_chromosome_track_overlay(svg, hap2_layout, Y_H2)
 
 
 def ribbon_opacity(category: str) -> float:
@@ -1018,8 +1034,8 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.88 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.88 * emph)
 
-    draw_all_chromosome_boundary_bars(svg, query_layout, hap1_layout, hap2_layout)
     draw_callouts(svg, runs, query_layout)
+    draw_all_chromosome_track_overlays(svg, query_layout, hap1_layout, hap2_layout)
     draw_legend(svg, runs)
 
     total_bp = sum(run.bp for run in runs)
@@ -1119,8 +1135,8 @@ def render_homolog_context(
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.95 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.95 * emph)
 
-    draw_all_chromosome_boundary_bars(svg, query_layout, hap1_layout, hap2_layout)
     draw_callouts(svg, inter_runs, query_layout)
+    draw_all_chromosome_track_overlays(svg, query_layout, hap1_layout, hap2_layout)
     draw_homolog_legend(svg, inter_runs, homolog_runs)
 
     svg.text(
