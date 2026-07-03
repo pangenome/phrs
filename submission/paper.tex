@@ -26,7 +26,7 @@
 %   Fig 3  Architecture of representative communities (browser)  (deck slides 14,15,16)
 %   Fig 4  Sequence similarity predicts 3D proximity             (deck slides 20,21,22)
 %          a HG002 Pore-C all-points scatter; b Pore-C community matrix; c mouse bouquet
-%   Fig 5  Pedigree-resolved subtelomeric exchange (untangle)    (deck slides 24,26)
+%   Fig 5  Whole-genome pedigree-resolved subtelomeric exchange  (deck slides 24,26)
 % Extended Data: ED1 = 3-panel replicate of Fig 4a across genomes/assays (CHM13
 % Hi-C, HG002 Hi-C, HG002 CiFi), all 50 kbp all-points. The mouse
 % meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
@@ -58,8 +58,10 @@ They form structured sequence communities in which established exchange systems
 appear as local peaks within a broader continuum. Human and mouse
 chromosome-contact maps show preferential proximity between sequence-similar
 ends, and in human data this relationship persists even in the adjacent flanks,
-which lack the homology used to define the pairs. A three-generation pedigree assembled end
-to end contains candidate exchange patches enriched within the same communities.
+which lack the homology used to define the pairs. A whole-genome comparison in
+a three-generation pedigree assembled end to end recovers PAR1 as a positive
+control and identifies putative non-homologous subtelomeric exchange patches
+within the same sequence communities.
 These results generalize known subtelomeric exchange systems into a
 near-ubiquitous population-scale architecture and establish recurrent ectopic
 exchange as a genome-wide force in the concerted evolution of human chromosome
@@ -251,32 +253,41 @@ zygotene-specific peak.
 We therefore read the mouse data as a broad prophase-I association between
 sequence similarity and contact, rather than a stage-specific peak.
 
-\subsection*{Pedigree-resolved patches are compatible with recent exchange}
+\subsection*{Whole-genome pedigree windows recover putative subtelomeric exchange}
 
 To ask whether recent exchange can leave pedigree-resolved patterns compatible
 with PHR sharing, we compared the PAN027 paternal haplotype with a joint
 two-haplotype target from the transmitting father, PAN011
 \cite{Cechova2025}, using whole-genome alignment followed by 2 kb
 IMPG-similarity windows (Fig.~\ref{fig:fig5}).
-This male transmission provides an internal positive control: the same procedure
-recovers PAR1 sharing between Xp and Yp, the obligate site of male
-sex-chromosome recombination.
-It also recovers two putative autosomal PHR exchanges, chr5q/chr1p and
-chr9q/chr3q, in which the best inter-chromosomal father match beats the
-same-chromosome or homologous father match across adjacent windows.
+This male transmission is a useful positive-control setting because
+recombination is biased toward chromosome ends in the male germline
+\cite{Bherer2017}, and the same procedure recovers PAR1 sharing between Xp and
+Yp, the obligate site of male sex-chromosome recombination.
+Against a background of same-chromosome father-child inheritance, the
+whole-genome scan also highlights two short putative autosomal PHR exchanges,
+chr5q/chr1p and chr9q/chr3q, in which the best non-homologous father match
+beats the same-chromosome or homologous father match across adjacent windows.
+These segments are modest in length (20--40 kb for the autosomal calls, and
+138 kb total for PAR1) and lie within independently defined PHR/PAR intervals.
 PHR and community labels were assigned only after calling; the highlighted pairs
 fall in the expected arm-level sequence-similarity communities and show
 post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
-The two candidates differ in support. An independent aligner (wfmash)
+
+The two autosomal candidates differ in support. An independent aligner (wfmash)
 reproduces the chr9q/chr3q donor at the same chr3q subtelomeric locus at
 $>$99.8\% identity, so this exchange is concordant across methods; the
 chr5q/chr1p signal exceeds its same-chromosome match by only a narrow identity
 margin and is not recovered by wfmash, which maps the window to chr5, making it
-a weaker, aligner-dependent candidate.
-We interpret both as recombination-compatible PHR-exchange candidates rather
-than breakpoint-resolved or event-level truth calls, and confirming individual
-WashU events will require orthogonal long-read recombination maps
-\cite{Halldorsson2019,palsson2025recomb}.
+a weaker, aligner-dependent candidate. Manual comparison with the WashU
+pedigree recombination annotation agrees that this paternal transmission has no
+ordinary chr3 crossover (M. Cechova and T. Marschall, personal communication),
+so the chr9q/chr3q signal is not explained by a standard homologous chr3
+recombination event. We therefore interpret these patterns as putative
+recombination-compatible PHR-exchange candidates, not breakpoint-resolved event
+calls. Follow-up work should test transmission of the implicated chromosome
+ends in descendant haplotypes and apply orthogonal assays such as FISH or
+long-read single-gamete recombination maps \cite{Halldorsson2019,palsson2025recomb}.
 
 Together, these observations suggest a self-reinforcing loop. Shared sequence
 tracks three-dimensional proximity. Proximity at the meiotic bouquet creates the
@@ -423,28 +434,23 @@ Group for generating and interpreting these data.
 \begin{figure}[h!]
   \centering
   \makebox[\linewidth][c]{%
-    \includegraphics[width=1.08\linewidth]{fig/MainFigures/Fig5_pedigree_untangle.pdf}}
-  \caption{\textbf{Pedigree-resolved donor-recipient ribbons for candidate PHR exchange.}
-    PAN027 inherited a paternal haplotype from PAN011; the child query haplotype
-    was compared with a joint two-haplotype PAN011 father target. Each panel
-    shows one 500 kb subtelomeric PAN027 recipient window above the PAN011 donor
-    window(s) selected by the best inter-chromosomal father match. Colored blocks
-    mark 2 kb query-space windows whose inter-chromosomal father match beats the
-    same-chromosome or homologous father match, and ribbons connect the
-    recipient window to the corresponding donor interval. Adjacent 2 kb windows
-    are merged for display when donor chromosome, haplotype and sequence
-    coordinates are consistent and nearby. Black bars mark PHR/PAR intervals; in
-    the Xp/Yp panel, PAR1 is drawn across the full visible 500 kb p-tip window
-    because the canonical PAR1 interval extends beyond the zoom. Gray triangles
-    indicate that the chromosome continues outside the plotted 500 kb window.
-    \textbf{(A)} Male Xp/Yp transmission, including PAR1 as an internal positive
-    control for obligate male sex-chromosome recombination. \textbf{(B,C)} Two
-    putative recombination-compatible autosomal PHR exchanges, chr5q/chr1p and
-    chr9q/chr3q. PHR/community labels were assigned only after calling; the
-    highlighted pairs are supported by the population arm-community/Jaccard
-    analysis (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3). Of the two autosomal
-    candidates, only chr9q/chr3q is reproduced by an independent aligner
-    (wfmash); chr5q/chr1p is a weaker, aligner-dependent candidate (main text).}
+    \includegraphics[width=1.08\linewidth]{fig/MainFigures/Fig5_whole_genome_recombination.png}}
+  \caption{\textbf{Whole-genome pedigree view of putative subtelomeric exchange in a paternal transmission.}
+    PAN027 inherited the paternal query haplotype shown in the middle track from
+    PAN011; the upper and lower tracks show the two PAN011 father haplotypes.
+    Chromosomes are concatenated in native chromosome order and scaled by their
+    assembled lengths; thin black bars mark chromosome boundaries. Light-gray
+    ribbons show same-chromosome father-child homologous chains ($\geq 10$ kb,
+    identity $\geq 0.95$). Colored ribbons show 2 kb query-space windows,
+    grouped into $\geq 10$ kb runs, where the best PAN011 non-homologous father
+    match beats the best same-chromosome or homologous father match in the same
+    IMPG scan. The male Xp/Yp PAR1 signal is an internal positive control for
+    obligate sex-chromosome recombination. The chr5q/chr1p and chr9q/chr3q
+    ribbons are putative autosomal PHR-exchange candidates; PHR and community
+    labels were assigned only after calling, and the highlighted pairs fall in
+    the expected population arm-community/Jaccard groups (Xp/Yp C15,
+    chr5q/chr1p C11, chr9q/chr3q C3). Acrocentric p-arm matches are also
+    recovered, as expected from known acrocentric homology.}
   \label{fig:fig5}
 \end{figure}
 
@@ -653,18 +659,25 @@ For Fig.~\ref{fig:fig5}, the PAN027 paternal haplotype was used as query against
 a joint two-haplotype PAN011 father target \cite{Cechova2025}. We started from
 an existing SweepGA/FastGA raw PAF generated with frequency threshold 32,
 many:many mappings and no scaffold jumps, then filtered it with sweepga 0.1.1
-to 1:1, 4:4 and 10:10 mapping classes; the main panels use the 10:10 class.
-The query was summarized in 2 kb windows. We excluded centromeric windows,
-windows without alignment support and windows with excessive inter-chromosomal
-PAF depth (maximum depth 100).
+to 10:10 mapping classes for the main figure. The query was summarized in
+non-overlapping 2 kb windows. We excluded centromeric windows, windows without
+alignment support and windows with excessive inter-chromosomal PAF depth
+(maximum depth 100).
 For each retained window, we ran \texttt{impg similarity} 0.4.1 with POA, no
-merge, many:many mapping and scaffold jump 0. A window was assigned to an
-inter-chromosomal class when its best PAN011 father match on a non-homologous
-chromosome beat the same-chromosome or homologous father match. Adjacent 2 kb
-windows were merged only for display when donor chromosome, donor haplotype,
-donor sequence and nearby recipient and donor coordinates were consistent. PHR
-and arm-community labels were assigned after calling and were not used to select
-the windows.
+merge, many:many mapping and scaffold jump 0. Within each query window, the best
+same-chromosome/homologous PAN011 father match and the best non-homologous
+PAN011 father match were retained. A window was assigned to the non-homologous
+class only when the non-homologous match had the highest similarity. Adjacent
+2 kb windows were grouped into runs only when query and donor intervals touched
+end to end on the same donor chromosome, donor haplotype and donor sequence
+(\texttt{end\_to\_end\_merge\_gap\_bp = 0}); no gap-tolerant or transitive
+display merge was used. Colored runs in Fig.~\ref{fig:fig5} are non-homologous
+runs of at least 10 kb with mean inter-chromosomal identity at least 0.95.
+The same IMPG table was used to draw the gray inheritance background:
+same-chromosome father-child rows with identity at least 0.95 were grouped by
+the same exact end-to-end rule and drawn when the resulting chain was at least
+10 kb. PHR and arm-community labels were assigned after calling and were not
+used to select the windows.
 As an independent check, the two autosomal candidates were re-examined in a
 whole-genome wfmash v0.24.2 \texttt{-p 95} alignment of the same
 PAN027-versus-PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on

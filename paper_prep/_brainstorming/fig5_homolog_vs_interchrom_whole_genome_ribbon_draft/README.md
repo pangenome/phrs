@@ -43,7 +43,7 @@ Outputs:
 The homologous-context variant uses the same geometry but adds full
 same-chromosome father-child homologous chains as a light-gray ribbon layer.
 Homologous chains are grouped from all `same_chrom` class-winner rows with
-identity at least 0.95 and drawn when the grouped run is at least 50 kb. Each
+identity at least 0.95 and drawn when the grouped run is at least 10 kb. Each
 light-gray homologous ribbon uses the exact native grouped donor interval and
 exact native grouped child interval in the TSV outputs. For visibility on the
 whole-genome track, the plotted homologous ribbon and endpoint marks apply a
@@ -52,11 +52,11 @@ homology visually legible without changing the exact end-to-end merge or
 reported coordinates. The colored interchromosomal/non-homologous winners are
 preserved on top.
 
-Raw 2 kb windows are grouped without gap-tolerant coalescing. A display merge
+Raw 2 kb windows are grouped without gap-tolerant coalescing. The run builder
 collapses windows with the same child sequence and donor sequence only when the
 child endpoint and donor endpoint both touch exactly in a consistent donor
 direction (`end_to_end_merge_gap_bp = 0`). This makes adjacent same donor-child
-chains render as one wider ribbon while preserving the later fragments in the
-merged run's interval, base-pair total, and window count.
+chains render as one wider ribbon while preserving all fragments in the run's
+interval, base-pair total, and window count.
 `whole_genome_ribbon_merge_audit.tsv` records the raw, end-to-end merged, and
 drawn counts and the maximum absorbed query/donor endpoint gaps.
