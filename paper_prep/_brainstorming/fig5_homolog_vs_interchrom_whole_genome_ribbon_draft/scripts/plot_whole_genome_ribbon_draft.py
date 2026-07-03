@@ -72,9 +72,9 @@ TEXT = "#202124"
 MUTED = "#5f6368"
 GRID = "#e8eaed"
 CHROM_BORDER = "#111111"
-HOMOLOG_COLOR = "#9fa7af"
-HOMOLOG_RIBBON = "#aeb6be"
-HOMOLOG_RIBBON_OPACITY = 0.12
+HOMOLOG_COLOR = "#b8bdc3"
+HOMOLOG_RIBBON = "#cfd3d7"
+HOMOLOG_RIBBON_OPACITY = 0.07
 HOMOLOG_MIN_BP = 10_000
 HOMOLOG_MIN_IDENTITY = 0.95
 CONTIGUOUS_MERGE_GAP_BP = 0
@@ -322,14 +322,6 @@ def interval_x_with_min_width(layout: GenomeLayout, chrom: str, start: int, end:
         mid = (x0 + x1) / 2
         half = min_w / 2
         x0, x1 = mid - half, mid + half
-        chrom_x0 = x_for(layout, chrom, 0)
-        chrom_x1 = x_for(layout, chrom, layout.lengths[chrom])
-        if x0 < chrom_x0:
-            x1 = min(chrom_x1, x1 + chrom_x0 - x0)
-            x0 = chrom_x0
-        if x1 > chrom_x1:
-            x0 = max(chrom_x0, x0 - (x1 - chrom_x1))
-            x1 = chrom_x1
     return x0, x1
 
 
@@ -1101,8 +1093,8 @@ def render_homolog_context(
         min_w = homolog_visual_width(run.bp)
         qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, min_w)
         dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, min_w)
-        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.30)
-        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.30)
+        draw_interval(svg, qx0, qx1, Y_QUERY, HOMOLOG_COLOR, 0.22)
+        draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], HOMOLOG_COLOR, 0.22)
 
     for run in inter_runs:
         target_layout_obj = target_layouts.get(run.donor_haplotype)
