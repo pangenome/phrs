@@ -1,0 +1,24 @@
+metric	value
+source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN028mat_vs_PAN027_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+homolog_layer_definition	grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table
+homolog_min_identity	0.95
+homolog_min_bp	10000
+end_to_end_merge_gap_bp	0
+homolog_segments_2kb	165026
+homolog_end_to_end_runs	81044
+drawn_homolog_runs	3604
+drawn_homolog_bp	69906560
+all_multi_window_runs_with_first_window_only_query_span	0
+all_query_span_shorter_than_bp_runs	0
+all_query_span_longer_than_bp_runs	0
+all_max_query_span_bp	580000
+all_max_donor_span_bp	580045
+all_max_windows_per_run	290
+drawn_multi_window_runs_with_first_window_only_query_span	0
+drawn_query_span_shorter_than_bp_runs	0
+drawn_query_span_longer_than_bp_runs	0
+drawn_max_query_span_bp	580000
+drawn_max_donor_span_bp	580045
+drawn_max_windows_per_run	290
+drawn_interchrom_runs	104
+drawn_interchrom_bp	2070000

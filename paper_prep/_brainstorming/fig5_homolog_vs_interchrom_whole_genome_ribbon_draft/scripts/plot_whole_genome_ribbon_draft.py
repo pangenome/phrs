@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Whole-genome ribbon draft for PAN027 paternal interchrom-over-homolog calls."""
+"""Whole-genome ribbon renderer for interchrom-over-homolog class-winner calls."""
 
 from __future__ import annotations
 
+import argparse
 import csv
 import gzip
 import html
@@ -16,7 +17,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[4]
-OUT_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft"
+DEFAULT_OUT_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft"
 CLASS_WINNERS_NAME = (
     "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp."
     "predepth_class_winners.impg_similarity.tsv.gz"
@@ -31,28 +32,19 @@ MOOSEFS_CLASS_WINNERS = (
     / CLASS_WINNERS_NAME
 )
 CLASS_WINNERS = LOCAL_CLASS_WINNERS if LOCAL_CLASS_WINNERS.exists() else MOOSEFS_CLASS_WINNERS
-QUERY_FAI = Path(
+DEFAULT_QUERY_FAI = Path(
     "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
     "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"
 )
-TARGET_FAI = Path(
+DEFAULT_TARGET_FAI = Path(
     "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
     "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa.fai"
 )
 
-SVG_OUT = OUT_DIR / "fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.svg"
-HOMOLOG_SVG_OUT = OUT_DIR / "fig5_homologous_recombination_context_ribbon_draft.svg"
-RUNS_OUT = OUT_DIR / "whole_genome_ribbon_runs.tsv"
-SUMMARY_OUT = OUT_DIR / "whole_genome_ribbon_summary.tsv"
-HOMOLOG_RUNS_OUT = OUT_DIR / "whole_genome_homologous_context_runs.tsv"
-HOMOLOG_SUMMARY_OUT = OUT_DIR / "whole_genome_homologous_context_summary.tsv"
-MERGE_AUDIT_OUT = OUT_DIR / "whole_genome_ribbon_merge_audit.tsv"
-CONVERSION_STATUS = OUT_DIR / "conversion_status.txt"
-
 CHROM_ORDER = [f"chr{i}" for i in range(1, 22 + 1)] + ["chrX", "chrY"]
 ACRO = {"chr13", "chr14", "chr15", "chr21", "chr22"}
 CHR_RE = re.compile(r"(chr(?:[0-9]+|X|Y|M))")
-TARGET_RE = re.compile(r"PAN011#joint#(?P<hap>h[12])_(?P<chrom>chr(?:[0-9]+|X|Y|M))")
+TARGET_RE = re.compile(r".+#joint#(?P<hap>h[12])_(?P<chrom>chr(?:[0-9]+|X|Y|M))")
 LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 
 PAGE_W = 3000
@@ -152,6 +144,27 @@ class Run:
         if self.query_chrom in ACRO or self.target_chrom in ACRO:
             return "acro_other"
         return "other_nonacro"
+
+
+@dataclass
+class RenderConfig:
+    comparison_id: str
+    class_winners: Path
+    query_fai: Path
+    target_fai: Path
+    out_dir: Path
+    query_label: str
+    target_h1_label: str
+    target_h2_label: str
+    layer_label: str
+    svg_out: Path
+    homolog_svg_out: Path
+    runs_out: Path
+    summary_out: Path
+    homolog_runs_out: Path
+    homolog_summary_out: Path
+    merge_audit_out: Path
+    conversion_status: Path
 
 
 class SVG:
@@ -285,13 +298,12 @@ def layout_for_lengths(label: str, lengths: dict[str, int]) -> GenomeLayout:
     return GenomeLayout(label=label, offsets=offsets, lengths=lengths, total=offset)
 
 
-def target_layout(hap: str, length_by_key: dict[tuple[str, str], int]) -> GenomeLayout:
+def target_layout(hap: str, length_by_key: dict[tuple[str, str], int], label: str) -> GenomeLayout:
     lengths = {
         chrom: length_by_key[(hap, chrom)]
         for chrom in CHROM_ORDER
         if (hap, chrom) in length_by_key
     }
-    label = f"PAN011 father {hap}"
     return layout_for_lengths(label, lengths)
 
 
@@ -722,7 +734,7 @@ def write_homolog_runs(path: Path, runs: list[Run]) -> None:
             )
 
 
-def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: list[Segment]) -> None:
+def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: list[Segment], source: Path) -> None:
     by_category: dict[str, tuple[int, int]] = {}
     for category in COLORS:
         selected = [run for run in runs if run.category == category]
@@ -733,7 +745,7 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: li
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
-        writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
+        writer.writerow({"metric": "source", "value": str(source)})
         writer.writerow({"metric": "end_to_end_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
         writer.writerow({"metric": "inter_beats_same_segments_2kb", "value": str(len(segments))})
         writer.writerow({"metric": "inter_beats_same_end_to_end_runs", "value": str(len(all_runs))})
@@ -754,6 +766,7 @@ def write_homolog_summary(
     all_homolog_runs: list[Run],
     homolog_segments: list[Segment],
     inter_runs: list[Run],
+    source: Path,
 ) -> None:
     all_span_audit = span_audit_metrics(all_homolog_runs)
     drawn_span_audit = span_audit_metrics(homolog_runs)
@@ -761,7 +774,7 @@ def write_homolog_summary(
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
-        writer.writerow({"metric": "source", "value": str(CLASS_WINNERS)})
+        writer.writerow({"metric": "source", "value": str(source)})
         writer.writerow({"metric": "homolog_layer_definition", "value": "grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table"})
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
@@ -786,6 +799,7 @@ def write_merge_audit(
     homolog_segments: list[Segment],
     homolog_runs: list[Run],
     homolog_drawn_runs: list[Run],
+    source: Path,
 ) -> None:
     fields = ["layer", "metric", "value"]
     rows: list[dict[str, str]] = []
@@ -797,7 +811,7 @@ def write_merge_audit(
         span_audit = span_audit_metrics(runs)
         drawn_span_audit = span_audit_metrics(drawn_runs)
         values = {
-            "source": str(CLASS_WINNERS),
+            "source": str(source),
             "merge_rule": "same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction",
             "end_to_end_merge_gap_bp": str(CONTIGUOUS_MERGE_GAP_BP),
             "raw_segments_2kb": str(audit["raw_segments_2kb"]),
@@ -985,22 +999,28 @@ def draw_homolog_legend(svg: SVG, runs: list[Run], homolog_runs: list[Run]) -> N
         x += 360
 
 
-def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayout, hap2_layout: GenomeLayout) -> None:
+def render(
+    runs: list[Run],
+    query_layout: GenomeLayout,
+    hap1_layout: GenomeLayout,
+    hap2_layout: GenomeLayout,
+    config: RenderConfig,
+) -> None:
     svg = SVG(PAGE_W, PAGE_H)
     svg.text(TRACK_X0, 58, "Whole-genome 10:10 SweepGA/F32 IMPG class winners with donor ribbons", 42, "700", TEXT)
     svg.text(
         TRACK_X0,
         98,
-        "PAN027 paternal child query; ribbons mark high-confidence 2 kb runs where the best interchromosomal match beats the best same-chromosome match.",
+        f"{config.comparison_id}: {config.query_label}; ribbons mark high-confidence 2 kb runs where the best interchromosomal match beats the best same-chromosome match.",
         24,
         "400",
         MUTED,
     )
 
     for y, label in [
-        (Y_H1 - 16, "father donor h1"),
-        (Y_QUERY + TRACK_H + 8, "child query"),
-        (Y_H2 - 16, "father donor h2"),
+        (Y_H1 - 16, config.target_h1_label),
+        (Y_QUERY + TRACK_H + 8, config.query_label),
+        (Y_H2 - 16, config.target_h2_label),
     ]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
         svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
@@ -1055,7 +1075,7 @@ def render(runs: list[Run], query_layout: GenomeLayout, hap1_layout: GenomeLayou
         "400",
         MUTED,
     )
-    svg.write(SVG_OUT)
+    svg.write(config.svg_out)
 
 
 def render_homolog_context(
@@ -1064,22 +1084,23 @@ def render_homolog_context(
     query_layout: GenomeLayout,
     hap1_layout: GenomeLayout,
     hap2_layout: GenomeLayout,
+    config: RenderConfig,
 ) -> None:
     svg = SVG(PAGE_W, PAGE_H)
     svg.text(TRACK_X0, 58, "Whole-genome homologous inheritance context with non-homologous winners", 42, "700", TEXT)
     svg.text(
         TRACK_X0,
         98,
-        "Light-gray ribbons are exact same-chromosome father-child homologous chains >=10 kb; colored ribbons are interchromosomal winners from the same 10:10 IMPG scan.",
+        f"{config.comparison_id}: light-gray ribbons are exact same-chromosome {config.layer_label} homologous chains >=10 kb; colored ribbons are interchromosomal winners.",
         24,
         "400",
         MUTED,
     )
 
     for y, label in [
-        (Y_H1 - 16, "father donor h1"),
-        (Y_QUERY + TRACK_H + 8, "child query"),
-        (Y_H2 - 16, "father donor h2"),
+        (Y_H1 - 16, config.target_h1_label),
+        (Y_QUERY + TRACK_H + 8, config.query_label),
+        (Y_H2 - 16, config.target_h2_label),
     ]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
         svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
@@ -1155,7 +1176,7 @@ def render_homolog_context(
         "400",
         MUTED,
     )
-    svg.write(HOMOLOG_SVG_OUT)
+    svg.write(config.homolog_svg_out)
 
 
 def find_rsvg() -> str | None:
@@ -1185,45 +1206,114 @@ def convert_one(svg_path: Path) -> str | None:
     return subprocess.run([rsvg, "--version"], check=True, text=True, capture_output=True).stdout.strip()
 
 
-def convert_outputs() -> list[str]:
+def convert_outputs(config: RenderConfig) -> list[str]:
     messages: list[str] = []
-    version = convert_one(SVG_OUT)
+    version = convert_one(config.svg_out)
     if version is None:
         return ["SVG only: no rsvg-convert found."]
-    homolog_version = convert_one(HOMOLOG_SVG_OUT)
+    homolog_version = convert_one(config.homolog_svg_out)
     messages.append(f"converted PDF and PNG with {version}")
     if homolog_version is not None:
         messages.append(f"converted homologous-context PDF and PNG with {homolog_version}")
     return messages
 
 
-def main() -> None:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    _query_seqs, query_lengths = read_query_fai(QUERY_FAI)
-    _target_seqs, target_lengths_by_key, _target_lengths_by_seq = read_target_fai(TARGET_FAI)
-    query_layout = layout_for_lengths("PAN027 pat child", query_lengths)
-    hap1_layout = target_layout("h1", target_lengths_by_key)
-    hap2_layout = target_layout("h2", target_lengths_by_key)
+def build_config(args: argparse.Namespace) -> RenderConfig:
+    out_dir = args.output_dir
+    prefix = args.output_prefix or args.comparison_id
+    legacy_default_names = (
+        args.output_prefix is None
+        and args.comparison_id == "PAN027pat_vs_PAN011_joint"
+        and out_dir == DEFAULT_OUT_DIR
+    )
+    if legacy_default_names:
+        svg_out = out_dir / "fig5_homolog_vs_interchrom_whole_genome_ribbon_draft.svg"
+        homolog_svg_out = out_dir / "fig5_homologous_recombination_context_ribbon_draft.svg"
+        runs_out = out_dir / "whole_genome_ribbon_runs.tsv"
+        summary_out = out_dir / "whole_genome_ribbon_summary.tsv"
+        homolog_runs_out = out_dir / "whole_genome_homologous_context_runs.tsv"
+        homolog_summary_out = out_dir / "whole_genome_homologous_context_summary.tsv"
+        merge_audit_out = out_dir / "whole_genome_ribbon_merge_audit.tsv"
+        conversion_status = out_dir / "conversion_status.txt"
+    else:
+        svg_out = out_dir / f"{prefix}.whole_genome_ribbon.svg"
+        homolog_svg_out = out_dir / f"{prefix}.whole_genome_homologous_context_ribbon.svg"
+        runs_out = out_dir / f"{prefix}.whole_genome_ribbon_runs.tsv"
+        summary_out = out_dir / f"{prefix}.whole_genome_ribbon_summary.tsv"
+        homolog_runs_out = out_dir / f"{prefix}.whole_genome_homologous_context_runs.tsv"
+        homolog_summary_out = out_dir / f"{prefix}.whole_genome_homologous_context_summary.tsv"
+        merge_audit_out = out_dir / f"{prefix}.whole_genome_ribbon_merge_audit.tsv"
+        conversion_status = out_dir / f"{prefix}.conversion_status.txt"
+    return RenderConfig(
+        comparison_id=args.comparison_id,
+        class_winners=args.class_winners,
+        query_fai=args.query_fai,
+        target_fai=args.target_fai,
+        out_dir=out_dir,
+        query_label=args.query_label,
+        target_h1_label=args.target_h1_label,
+        target_h2_label=args.target_h2_label,
+        layer_label=args.layer_label,
+        svg_out=svg_out,
+        homolog_svg_out=homolog_svg_out,
+        runs_out=runs_out,
+        summary_out=summary_out,
+        homolog_runs_out=homolog_runs_out,
+        homolog_summary_out=homolog_summary_out,
+        merge_audit_out=merge_audit_out,
+        conversion_status=conversion_status,
+    )
 
-    segments = read_segments(CLASS_WINNERS)
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Render whole-genome homologous-competition ribbons from a 10:10 "
+            "IMPG class-winner TSV.GZ. Filtering thresholds are fixed to the "
+            "accepted Fig. 5 draft values."
+        )
+    )
+    parser.add_argument("--comparison-id", default="PAN027pat_vs_PAN011_joint")
+    parser.add_argument("--class-winners", type=Path, default=CLASS_WINNERS)
+    parser.add_argument("--query-fai", type=Path, default=DEFAULT_QUERY_FAI)
+    parser.add_argument("--target-fai", type=Path, default=DEFAULT_TARGET_FAI)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUT_DIR)
+    parser.add_argument("--output-prefix", default=None)
+    parser.add_argument("--query-label", default="PAN027 paternal child query")
+    parser.add_argument("--target-h1-label", default="PAN011 father donor h1")
+    parser.add_argument("--target-h2-label", default="PAN011 father donor h2")
+    parser.add_argument("--layer-label", default="father-child")
+    return parser.parse_args()
+
+
+def main() -> None:
+    config = build_config(parse_args())
+    config.out_dir.mkdir(parents=True, exist_ok=True)
+    _query_seqs, query_lengths = read_query_fai(config.query_fai)
+    _target_seqs, target_lengths_by_key, _target_lengths_by_seq = read_target_fai(config.target_fai)
+    query_layout = layout_for_lengths(config.query_label, query_lengths)
+    hap1_layout = target_layout("h1", target_lengths_by_key, config.target_h1_label)
+    hap2_layout = target_layout("h2", target_lengths_by_key, config.target_h2_label)
+
+    segments = read_segments(config.class_winners)
     all_runs = group_runs(segments)
     validate_run_spans(all_runs, "interchrom all")
     runs = high_confidence_runs(all_runs)
     validate_run_spans(runs, "interchrom drawn")
-    homolog_segments = read_homolog_segments(CLASS_WINNERS)
+    homolog_segments = read_homolog_segments(config.class_winners)
     all_homolog_runs = group_homolog_runs(homolog_segments)
     validate_run_spans(all_homolog_runs, "homolog all")
     homolog_runs = high_confidence_homolog_runs(all_homolog_runs)
     validate_run_spans(homolog_runs, "homolog drawn")
-    write_runs(RUNS_OUT, runs)
-    write_summary(SUMMARY_OUT, runs, all_runs, segments)
-    write_homolog_runs(HOMOLOG_RUNS_OUT, homolog_runs)
-    write_homolog_summary(HOMOLOG_SUMMARY_OUT, homolog_runs, all_homolog_runs, homolog_segments, runs)
-    write_merge_audit(MERGE_AUDIT_OUT, segments, all_runs, runs, homolog_segments, all_homolog_runs, homolog_runs)
-    render(runs, query_layout, hap1_layout, hap2_layout)
-    render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout)
-    messages = convert_outputs()
-    CONVERSION_STATUS.write_text("\n".join(messages) + "\n")
+    write_runs(config.runs_out, runs)
+    write_summary(config.summary_out, runs, all_runs, segments, config.class_winners)
+    write_homolog_runs(config.homolog_runs_out, homolog_runs)
+    write_homolog_summary(config.homolog_summary_out, homolog_runs, all_homolog_runs, homolog_segments, runs, config.class_winners)
+    write_merge_audit(config.merge_audit_out, segments, all_runs, runs, homolog_segments, all_homolog_runs, homolog_runs, config.class_winners)
+    render(runs, query_layout, hap1_layout, hap2_layout, config)
+    render_homolog_context(runs, homolog_runs, query_layout, hap1_layout, hap2_layout, config)
+    messages = convert_outputs(config)
+    config.conversion_status.write_text("\n".join(messages) + "\n")
     for message in messages:
         print(message)
     print(
@@ -1231,8 +1321,8 @@ def main() -> None:
         f"homolog_segments={len(homolog_segments)} homolog_runs={len(all_homolog_runs)} "
         f"drawn_homolog_runs={len(homolog_runs)}"
     )
-    print(f"wrote {SVG_OUT}")
-    print(f"wrote {RUNS_OUT}")
+    print(f"wrote {config.svg_out}")
+    print(f"wrote {config.runs_out}")
 
 
 if __name__ == "__main__":
