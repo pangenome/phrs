@@ -1,0 +1,3 @@
+event_id	pair	transmission	query_window	segments	total_bp	same_chr_context_bp	primary_chr3q_bp	side_chr15q_bp	side_chr16q_bp	low_conf_chr20q_bp	within_community_bp	cross_community_bp	same_chr_annotated_bp	weighted_identity_pct	weighted_jaccard
+PAN027_chr9q_chr3q_PHR_candidate	PAN027_vs_PAN011	PAN027 paternal hap2 <- PAN011 father	chr9:135704825-136204825	10	500000	445737	45290	7273	1207	493	46497	7766	117820	99.9195	0.998448
+PAN028_chr9q_chr3q_PHR_candidate	PAN028_vs_PAN027	PAN028 maternal hap1 <- PAN027 mother	chr9:134380985-134880985	22	499901	449356	34172	15166	1207	0	23798	15166	388355	99.8415	0.996944

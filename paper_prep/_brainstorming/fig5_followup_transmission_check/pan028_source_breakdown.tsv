@@ -1,0 +1,7 @@
+event_id	role	target_arm	PAN028_source_in_PAN027	bp	segments	weighted_identity_pct	weighted_jaccard	local_intervals
+PAN028_chr9q_chr3q_PHR_candidate	primary donor	chr3q	PAN027 maternal hap1	28174	4	99.8267	0.996546	329410-331445;352192-366750;376481-379107;490946-499901
+PAN028_chr9q_chr3q_PHR_candidate	primary donor	chr3q	PAN027 paternal hap2	5998	3	99.7316	0.994729	351187-352192;366750-368176;472213-475780
+PAN028_chr9q_chr3q_PHR_candidate	same-chromosome context	chr9q	PAN027 maternal hap1	113448	5	99.8287	0.996587	4657-49638;197455-210534;218715-247217;248621-274489;327185-328203
+PAN028_chr9q_chr3q_PHR_candidate	same-chromosome context	chr9q	PAN027 paternal hap2	335908	8	99.8816	0.997785	0-4657;49638-197455;210534-218715;247217-248621;274489-327185;331445-351187;368176-376481;379107-472213
+PAN028_chr9q_chr3q_PHR_candidate	side fragment	chr15q	PAN027 paternal hap2	15166	1	99.1068	0.982371	475780-490946
+PAN028_chr9q_chr3q_PHR_candidate	side fragment	chr16q	PAN027 paternal hap2	1207	1	100.0000	1.000000	328203-329410
