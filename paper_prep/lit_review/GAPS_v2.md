@@ -20,7 +20,7 @@ Both refreshes are integrated into `SYNTHESIS_v2.md` Parts II (acrocentric/rDNA 
 
 ## Bibliography-level gaps (mostly carried forward from v1)
 
-- **`Cechova2025`** is cited as "(in press)" with no DOI; the WashU pedigree paper is not yet on bioRxiv per the lead author's clarification. Update DOI once available.
+- **`Cechova2025`** has moved from the earlier in-press / not-yet-bioRxiv status to a public bioRxiv preprint (DOI `10.64898/2025.12.14.693655`; PMID `41473289`). Use the preprint for WashU pedigree assembly provenance. Keep the Fig. 5 statement that the relevant PAN011 to PAN027 paternal lineage has no ordinary chr3 crossover as personal communication unless the WashU recombination annotation becomes public.
 - **`Porubsky2025`** is cited as "(in press)" with no DOI; the CEPH1463 paper was published in *Nature* (April 2025) per the lead author's recent comment. Update with the published DOI before submission.
 - **`deLima2025`** is "(in submission)"; verify status before submission. (Note: topic_05 v3-opus refresh assigns this paper a sequence-resolved SST1-mechanism finding that is now load-bearing for C8.)
 - **`Xu2025`** lists "Hanbo Xu and others" — replace with full author list once the manuscript is in its published form.
