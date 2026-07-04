@@ -12,6 +12,8 @@ manuscript Fig5.
 - `../fig5_washu_recombination_comparison.md` - citation/status note for the
   comparison with the WashU pedigree recombination annotation and the current
   boundary between direct preprint citation and personal communication.
+- `../fig5_fish_validation_plan.md` - FISH and orthogonal-validation plan that
+  separates current computational evidence from future experimental validation.
 - `plot_synteny_recombination_schematic.py` - standard-library Python SVG renderer.
 - `fig5_synteny_recombination_full.svg` - full schematic prototype: three event rows drawn as source/product/source native 0-500 kb terminal-window views. PAR1 shows chrX source, child chrX product, and chrY source; autosomal candidates show chr9q context, child chr9q product, and chr3q donor. chr15q/chr16q/chr20q side mappings are caveat markers only.
 - `fig5_synteny_recombination_full.pdf` - PDF rendering of the full source/product/source terminal-window prototype, generated with Guix `librsvg` / `rsvg-convert 2.54.5`.
