@@ -20,6 +20,8 @@ MAX_WINDOW_DEPTH="${MAX_WINDOW_DEPTH:-100}"
 TOP_N="${TOP_N:-20}"
 MAX_POST_IMPG_CANDIDATES="${MAX_POST_IMPG_CANDIDATES:-500}"
 SCORING="${SWEEPGA_SCORING:-ani}"
+RUN_TOPN="${RUN_TOPN:-1}"
+RUN_CLASS_WINNERS="${RUN_CLASS_WINNERS:-0}"
 THREADS="${SLURM_CPUS_PER_TASK:-96}"
 SCRATCH_BASE="${SCRATCH_BASE:-/dev/shm}"
 
@@ -61,6 +63,8 @@ trap 'rm -rf "$SCRATCH"' EXIT
   echo "window_size=$WINDOW_SIZE"
   echo "max_window_depth=$MAX_WINDOW_DEPTH"
   echo "top_n=$TOP_N"
+  echo "run_topn=$RUN_TOPN"
+  echo "run_class_winners=$RUN_CLASS_WINNERS"
   echo "sweepga=$SWEEPGA"
   "$SWEEPGA" --version
   echo "impg=$IMPG"
@@ -75,7 +79,7 @@ RAW_UNCOMPRESSED="$SCRATCH/${COMPARISON_ID}.raw.paf"
 "$PIGZ" -dc -p "$THREADS" "$RAW_PAF" > "$RAW_UNCOMPRESSED"
 
 MANIFEST="$OUT/summaries/pre_impg_depth_filtered_manifest.${COMPARISON_ID}.${SLURM_JOB_ID:-manual}.tsv"
-printf "comparison_id\tbasis\traw_paf\tfiltered_paf\tquery_bed\tdepth_summary\timpg_similarity_tsv_gz\tskip_report\tstatus\n" > "$MANIFEST"
+printf "comparison_id\tbasis\traw_paf\tfiltered_paf\tquery_bed\tdepth_summary\ttopn_impg_similarity_tsv_gz\ttopn_skip_report\tclass_winner_tsv_gz\tclass_winner_skip_report\tstatus\n" > "$MANIFEST"
 
 for BASIS in $BASES; do
   BASIS_ID="${BASIS/:/to}"
@@ -84,8 +88,10 @@ for BASIS in $BASES; do
   QUERY_BED="$OUT/beds/${COMPARISON_ID}.query_${WINDOW_SIZE}bp.${BASIS_ID}.maxdepth${MAX_WINDOW_DEPTH}.bed"
   DEPTH_REPORT="$OUT/summaries/${COMPARISON_ID}.${BASIS_ID}.query_${WINDOW_SIZE}bp.depth_report.tsv"
   DEPTH_SUMMARY="$OUT/summaries/${COMPARISON_ID}.${BASIS_ID}.query_${WINDOW_SIZE}bp.depth_summary.tsv"
-  OUTPUT_GZ="$OUT/outputs/${COMPARISON_ID}.sweepga_f32.${BASIS_ID}.query_${WINDOW_SIZE}bp.predepth_top${TOP_N}.impg_similarity.tsv.gz"
-  SKIP_REPORT="$OUT/summaries/${COMPARISON_ID}.${BASIS_ID}.query_${WINDOW_SIZE}bp.impg_topn_skip.tsv"
+  TOPN_OUTPUT_GZ="$OUT/outputs/${COMPARISON_ID}.sweepga_f32.${BASIS_ID}.query_${WINDOW_SIZE}bp.predepth_top${TOP_N}.impg_similarity.tsv.gz"
+  TOPN_SKIP_REPORT="$OUT/summaries/${COMPARISON_ID}.${BASIS_ID}.query_${WINDOW_SIZE}bp.impg_topn_skip.tsv"
+  CLASS_OUTPUT_GZ="$OUT/outputs/${COMPARISON_ID}.sweepga_f32.${BASIS_ID}.query_${WINDOW_SIZE}bp.predepth_class_winners.impg_similarity.tsv.gz"
+  CLASS_SKIP_REPORT="$OUT/summaries/${COMPARISON_ID}.${BASIS_ID}.query_${WINDOW_SIZE}bp.impg_class_winner_skip.tsv"
 
   echo "[$(date -Is)] sweepga filter basis=$BASIS"
   "$SWEEPGA" \
@@ -114,28 +120,55 @@ for BASIS in $BASES; do
     --interchrom-only \
     --pigz-threads "$THREADS"
 
-  echo "[$(date -Is)] impg similarity basis=$BASIS"
-  "$IMPG" similarity \
-    --alignment-files "$FILTERED_PAF" \
-    --target-bed "$QUERY_BED" \
-    --sequence-files "$QUERY_FASTA" "$TARGET_FASTA" \
-    --gfa-engine poa \
-    --no-merge \
-    --num-mappings many:many \
-    --scaffold-jump 0 \
-    --threads "$THREADS" \
-    | python3 "$OUT/scripts/filter_impg_similarity_topn.py" \
-        --top-n "$TOP_N" \
-        --max-candidates "$MAX_POST_IMPG_CANDIDATES" \
-        --interchrom-only \
-        --skip-report "$SKIP_REPORT" \
-    | "$PIGZ" -p "$THREADS" > "$OUTPUT_GZ.tmp"
-  gzip -t "$OUTPUT_GZ.tmp"
-  mv "$OUTPUT_GZ.tmp" "$OUTPUT_GZ"
+  if [[ "$RUN_TOPN" == "1" ]]; then
+    echo "[$(date -Is)] impg top-N similarity basis=$BASIS"
+    "$IMPG" similarity \
+      --alignment-files "$FILTERED_PAF" \
+      --target-bed "$QUERY_BED" \
+      --sequence-files "$QUERY_FASTA" "$TARGET_FASTA" \
+      --gfa-engine poa \
+      --no-merge \
+      --num-mappings many:many \
+      --scaffold-jump 0 \
+      --threads "$THREADS" \
+      | python3 "$OUT/scripts/filter_impg_similarity_topn.py" \
+          --top-n "$TOP_N" \
+          --max-candidates "$MAX_POST_IMPG_CANDIDATES" \
+          --interchrom-only \
+          --skip-report "$TOPN_SKIP_REPORT" \
+      | "$PIGZ" -p "$THREADS" > "$TOPN_OUTPUT_GZ.tmp"
+    gzip -t "$TOPN_OUTPUT_GZ.tmp"
+    mv "$TOPN_OUTPUT_GZ.tmp" "$TOPN_OUTPUT_GZ"
+  else
+    TOPN_OUTPUT_GZ="NA"
+    TOPN_SKIP_REPORT="NA"
+  fi
 
-  printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\tOK\n" \
-    "$COMPARISON_ID" "$BASIS" "$RAW_PAF" "$FILTERED_PAF" "$QUERY_BED" "$DEPTH_SUMMARY" "$OUTPUT_GZ" "$SKIP_REPORT" >> "$MANIFEST"
+  if [[ "$RUN_CLASS_WINNERS" == "1" ]]; then
+    echo "[$(date -Is)] impg same-chrom/interchrom class winners basis=$BASIS"
+    "$IMPG" similarity \
+      --alignment-files "$FILTERED_PAF" \
+      --target-bed "$QUERY_BED" \
+      --sequence-files "$QUERY_FASTA" "$TARGET_FASTA" \
+      --gfa-engine poa \
+      --no-merge \
+      --num-mappings many:many \
+      --scaffold-jump 0 \
+      --threads "$THREADS" \
+      | python3 "$OUT/scripts/filter_impg_similarity_class_winners.py" \
+          --max-candidates "$MAX_POST_IMPG_CANDIDATES" \
+          --skip-report "$CLASS_SKIP_REPORT" \
+      | "$PIGZ" -p "$THREADS" > "$CLASS_OUTPUT_GZ.tmp"
+    gzip -t "$CLASS_OUTPUT_GZ.tmp"
+    mv "$CLASS_OUTPUT_GZ.tmp" "$CLASS_OUTPUT_GZ"
+  else
+    CLASS_OUTPUT_GZ="NA"
+    CLASS_SKIP_REPORT="NA"
+  fi
+
+  printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\tOK\n" \
+    "$COMPARISON_ID" "$BASIS" "$RAW_PAF" "$FILTERED_PAF" "$QUERY_BED" "$DEPTH_SUMMARY" \
+    "$TOPN_OUTPUT_GZ" "$TOPN_SKIP_REPORT" "$CLASS_OUTPUT_GZ" "$CLASS_SKIP_REPORT" >> "$MANIFEST"
 done
 
 date -u +"finished_utc=%Y-%m-%dT%H:%M:%SZ" | tee -a "$OUT/metadata/runtime.${SLURM_JOB_ID:-manual}.txt"
-
