@@ -1,2 +1,1 @@
-converted PDF and PNG with rsvg-convert version 2.54.5
-converted homologous-context PDF and PNG with rsvg-convert version 2.54.5
+SVG only: no rsvg-convert found.

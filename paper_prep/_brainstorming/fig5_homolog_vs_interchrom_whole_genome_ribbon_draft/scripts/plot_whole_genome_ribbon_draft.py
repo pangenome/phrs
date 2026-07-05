@@ -22,6 +22,16 @@ CLASS_WINNERS_NAME = (
     "PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp."
     "predepth_class_winners.impg_similarity.tsv.gz"
 )
+def _first_existing(paths: list[Path]) -> Path:
+    for p in paths:
+        if p.exists():
+            return p
+    return paths[-1]
+
+# Prefer the repo-vendored copies in data/ (self-contained; no moosefs needed).
+# Fall back to the original moosefs sources when absent. Override on the CLI with
+# --class-winners / --query-fai / --target-fai.
+DATA_CLASS_WINNERS = ROOT / "data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz"
 LOCAL_CLASS_WINNERS = (
     ROOT
     / "paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/"
@@ -31,15 +41,17 @@ MOOSEFS_CLASS_WINNERS = (
     Path("/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs")
     / CLASS_WINNERS_NAME
 )
-CLASS_WINNERS = LOCAL_CLASS_WINNERS if LOCAL_CLASS_WINNERS.exists() else MOOSEFS_CLASS_WINNERS
-DEFAULT_QUERY_FAI = Path(
-    "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
-    "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"
-)
-DEFAULT_TARGET_FAI = Path(
-    "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
-    "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa.fai"
-)
+CLASS_WINNERS = _first_existing([DATA_CLASS_WINNERS, LOCAL_CLASS_WINNERS, MOOSEFS_CLASS_WINNERS])
+DEFAULT_QUERY_FAI = _first_existing([
+    ROOT / "data/fig5_PAN027pat_vs_PAN011_joint.query.fa.fai",
+    Path("/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
+         "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.query.fa.fai"),
+])
+DEFAULT_TARGET_FAI = _first_existing([
+    ROOT / "data/fig5_PAN027pat_vs_PAN011_joint.target.fa.fai",
+    Path("/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
+         "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa.fai"),
+])
 
 CHROM_ORDER = [f"chr{i}" for i in range(1, 22 + 1)] + ["chrX", "chrY"]
 ACRO = {"chr13", "chr14", "chr15", "chr21", "chr22"}
@@ -47,21 +59,22 @@ CHR_RE = re.compile(r"(chr(?:[0-9]+|X|Y|M))")
 TARGET_RE = re.compile(r".+#joint#(?P<hap>h[12])_(?P<chrom>chr(?:[0-9]+|X|Y|M))")
 LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 
-PAGE_W = 3000
-PAGE_H = 900
-TRACK_X0 = 360
-TRACK_W = 2360
+PAGE_W = 3600
+PAGE_H = 840
+TRACK_X0 = 560
+TRACK_W = 2900
 TRACK_H = 28
-Y_H1 = 235
-Y_QUERY = 465
-Y_H2 = 675
-GRID_Y0 = 145
-GRID_Y1 = 745
-LEGEND_Y = 810
-FOOTNOTE_Y1 = 855
-FOOTNOTE_Y2 = 883
+Y_H1 = 115
+Y_QUERY = 345
+Y_H2 = 555
+GRID_Y0 = 25
+GRID_Y1 = 625
+LEGEND_Y = 690
+FOOTNOTE_Y1 = 955
+FOOTNOTE_Y2 = 990
 TEXT = "#202124"
 MUTED = "#5f6368"
+FONT_SCALE = 1.9   # global multiplier on every text size (bump to enlarge fonts)
 GRID = "#e8eaed"
 CHROM_BORDER = "#111111"
 HOMOLOG_COLOR = "#b8bdc3"
@@ -191,7 +204,7 @@ class SVG:
         if rotate is not None:
             transform = f' transform="rotate({rotate:.1f} {x:.1f} {y:.1f})"'
         self.add(
-            f'<text x="{x:.1f}" y="{y:.1f}" font-size="{size:.1f}" '
+            f'<text x="{x:.1f}" y="{y:.1f}" font-size="{size * FONT_SCALE:.1f}" '
             f'font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{transform}>'
             f"{html.escape(str(text))}</text>"
         )
@@ -949,18 +962,18 @@ def draw_callouts(svg: SVG, runs: list[Run], query_layout: GenomeLayout) -> None
         else:
             lane = len(lanes)
             lanes.append(center + width / 2)
-        y = Y_QUERY - 100 - lane * 42
+        y = Y_QUERY - 140 - lane * 42
         color = COLORS[run.category]
         svg.line(center, Y_QUERY - 9, center, y + 8, color, 1.4, 0.9)
         svg.text(center, y, label_text(run), 27, "700", color, "middle")
-        svg.text(center, y + 29, f"{run.bp / 1000:.0f} kb, {run.donor_haplotype}", 20, "400", MUTED, "middle")
+        svg.text(center, y + int(29 * FONT_SCALE), f"{run.bp / 1000:.0f} kb, {run.donor_haplotype}", 20, "400", MUTED, "middle")
 
 
 def draw_legend(svg: SVG, runs: list[Run]) -> None:
     x = TRACK_X0
     y = LEGEND_Y
     svg.text(x, y, "Ribbon classes", 24, "700", MUTED)
-    x += 210
+    x += int(210 * FONT_SCALE)
     for category, label in [
         ("PAR_XY", "PAR1 positive control"),
         ("chr5_chr1_candidate", "chr5q/chr1p candidate"),
@@ -974,29 +987,37 @@ def draw_legend(svg: SVG, runs: list[Run]) -> None:
             continue
         svg.rect(x, y - 20, 27, 21, COLORS[category], "none", 0, 0.9)
         svg.text(x + 39, y, f"{label} ({count})", 21, "400", TEXT)
-        x += 390 if category != "other_nonacro" else 220
+        x += int((390 if category != "other_nonacro" else 220) * FONT_SCALE)
 
 
 def draw_homolog_legend(svg: SVG, runs: list[Run], homolog_runs: list[Run]) -> None:
+    sw = 27 * FONT_SCALE   # swatch scales with the font
+    sh = 21 * FONT_SCALE
+    # row 1: title + the same-chromosome homologous class
     x = TRACK_X0
     y = LEGEND_Y
     svg.text(x, y, "Ribbon classes", 24, "700", MUTED)
-    x += 210
-    svg.rect(x, y - 20, 27, 21, HOMOLOG_COLOR, "none", 0, 0.9)
-    svg.text(x + 39, y, f"same chromosome homologous ({len(homolog_runs)})", 21, "400", TEXT)
-    x += 560
+    x += int(230 * FONT_SCALE)
+    svg.rect(x, y - sh + 3, sw, sh, HOMOLOG_COLOR, "none", 0, 0.9)
+    svg.text(x + sw + 16, y, f"same chromosome ({len(homolog_runs)})", 21, "400", TEXT)
+    x += int(560 * FONT_SCALE)
+    acro_n = sum(1 for run in runs if run.category == "acro_acro")
+    svg.rect(x, y - sh + 3, sw, sh, COLORS["acro_acro"], "none", 0, 0.9)
+    svg.text(x + sw + 16, y, f"acrocentric ({acro_n})", 21, "400", TEXT)
+    # row 2: highlighted candidate classes
+    x = TRACK_X0
+    y = LEGEND_Y + int(54 * FONT_SCALE)
     for category, label in [
-        ("PAR_XY", "PAR1 non-homologous"),
+        ("PAR_XY", "PAR1"),
         ("chr5_chr1_candidate", "chr5q/chr1p"),
         ("chr9_chr3_candidate", "chr9q/chr3q"),
-        ("acro_acro", "acrocentric"),
     ]:
         count = sum(1 for run in runs if run.category == category)
         if count == 0:
             continue
-        svg.rect(x, y - 20, 27, 21, COLORS[category], "none", 0, 0.9)
-        svg.text(x + 39, y, f"{label} ({count})", 21, "400", TEXT)
-        x += 360
+        svg.rect(x, y - sh + 3, sw, sh, COLORS[category], "none", 0, 0.9)
+        svg.text(x + sw + 16, y, f"{label} ({count})", 21, "400", TEXT)
+        x += int(360 * FONT_SCALE)
 
 
 def render(
@@ -1007,15 +1028,6 @@ def render(
     config: RenderConfig,
 ) -> None:
     svg = SVG(PAGE_W, PAGE_H)
-    svg.text(TRACK_X0, 58, "Whole-genome 10:10 SweepGA/F32 IMPG class winners with donor ribbons", 42, "700", TEXT)
-    svg.text(
-        TRACK_X0,
-        98,
-        f"{config.comparison_id}: {config.query_label}; ribbons mark high-confidence 2 kb runs where the best interchromosomal match beats the best same-chromosome match.",
-        24,
-        "400",
-        MUTED,
-    )
 
     for y, label in [
         (Y_H1 - 16, config.target_h1_label),
@@ -1023,7 +1035,6 @@ def render(
         (Y_H2 - 16, config.target_h2_label),
     ]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
-        svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
 
     draw_genome_track(svg, query_layout, Y_QUERY)
     draw_genome_track(svg, hap1_layout, Y_H1)
@@ -1059,22 +1070,6 @@ def render(
     draw_legend(svg, runs)
 
     total_bp = sum(run.bp for run in runs)
-    svg.text(
-        TRACK_X0,
-        FOOTNOTE_Y1,
-        f"Drawn: {len(runs)} high-confidence runs, {total_bp / 1e6:.2f} Mb total; threshold: run >=10 kb and mean interchrom identity >=0.95.",
-        19,
-        "400",
-        MUTED,
-    )
-    svg.text(
-        TRACK_X0,
-        FOOTNOTE_Y2,
-        "All coordinates are native whole-genome coordinates collapsed into length-scaled chromosome-order tracks.",
-        19,
-        "400",
-        MUTED,
-    )
     svg.write(config.svg_out)
 
 
@@ -1087,15 +1082,6 @@ def render_homolog_context(
     config: RenderConfig,
 ) -> None:
     svg = SVG(PAGE_W, PAGE_H)
-    svg.text(TRACK_X0, 58, "Whole-genome homologous inheritance context with non-homologous winners", 42, "700", TEXT)
-    svg.text(
-        TRACK_X0,
-        98,
-        f"{config.comparison_id}: light-gray ribbons are exact same-chromosome {config.layer_label} homologous chains >=10 kb; colored ribbons are interchromosomal winners.",
-        24,
-        "400",
-        MUTED,
-    )
 
     for y, label in [
         (Y_H1 - 16, config.target_h1_label),
@@ -1103,7 +1089,6 @@ def render_homolog_context(
         (Y_H2 - 16, config.target_h2_label),
     ]:
         svg.line(TRACK_X0, y, TRACK_X0 + TRACK_W, y, "#f1f3f4", 0.8, 0.8)
-        svg.text(TRACK_X0 + TRACK_W + 22, y + 7, label, 20, "400", MUTED)
 
     draw_genome_track(svg, query_layout, Y_QUERY)
     draw_genome_track(svg, hap1_layout, Y_H1)
@@ -1160,22 +1145,6 @@ def render_homolog_context(
     draw_all_chromosome_track_overlays(svg, query_layout, hap1_layout, hap2_layout)
     draw_homolog_legend(svg, inter_runs, homolog_runs)
 
-    svg.text(
-        TRACK_X0,
-        FOOTNOTE_Y1,
-        f"Light gray: {len(homolog_runs)} exact same-chromosome chains >=10 kb; gray glyph width scales with chain length.",
-        19,
-        "400",
-        MUTED,
-    )
-    svg.text(
-        TRACK_X0,
-        FOOTNOTE_Y2,
-        "All tracks use native whole-genome coordinates collapsed into length-scaled chromosome-order tracks.",
-        19,
-        "400",
-        MUTED,
-    )
     svg.write(config.homolog_svg_out)
 
 

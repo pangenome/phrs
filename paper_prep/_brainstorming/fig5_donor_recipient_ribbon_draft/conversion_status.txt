@@ -1,1 +1,1 @@
-converted PDF and PNG with rsvg-convert version 2.54.5 (/gnu/store/kawnjzdr5wi6x77psqsvmaqqni359df5-profile/bin/rsvg-convert)
+SVG only: no rsvg-convert found.

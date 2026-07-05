@@ -3,10 +3,16 @@
 Draft whole-genome ribbon view for the corrected `PAN027pat_vs_PAN011_joint`
 SweepGA/F32 10:10 IMPG class-winner scan.
 
-This uses the same source data as the Fig5 zoom/ribbon and the corrected
-whole-genome homolog-vs-interchrom overview:
+Inputs are vendored in `data/` so the figure is self-contained (no moosefs
+needed); the script falls back to the moosefs sources, or override on the CLI:
 
-`paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz`
+- IMPG 10:10 class-winner scan (`--class-winners`):
+  `data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz`
+  (14 MB; the `PAN027pat_vs_PAN011_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz` scan)
+- child query chromosome lengths (`--query-fai`):
+  `data/fig5_PAN027pat_vs_PAN011_joint.query.fa.fai`
+- father joint-target chromosome lengths (`--target-fai`):
+  `data/fig5_PAN027pat_vs_PAN011_joint.target.fa.fai`
 
 Lane layout:
 
@@ -20,11 +26,19 @@ Lane layout:
 - drawn ribbons are filtered to runs of at least 10 kb and mean interchromosomal
   identity of at least 0.95
 
-Build:
+Regenerate:
 
 ```bash
+# python3 (stdlib) reads the vendored data/ inputs; rsvg-convert (librsvg, via
+# guix) is needed for PDF/PNG, otherwise it writes SVG only. The wrapper passes
+# the published track labels (PAN011 father h1 / PAN027 pat child / PAN011 father h2).
 bash paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft/scripts/make_whole_genome_ribbon_draft.sh
 ```
+
+Note: the committed SVG/PDF/PNG were rendered by an earlier version of the label
+logic; re-running the current script reproduces the same ribbons/coordinates but
+differs by a few cosmetic label-text lines (the right-edge layer labels and a
+comparison-id subtitle prefix).
 
 Outputs:
 

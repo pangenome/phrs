@@ -4,18 +4,22 @@ Ribbon-style view for the three PAN027 paternal Fig5 recipient windows.
 This complements, rather than replaces,
 `paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/`.
 
-Inputs:
+Inputs (all in-repo now — the figure is self-contained, no moosefs needed):
 
 - recipient/window calls:
   `paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/zoom_window_segments.tsv`
-- projected WashU population PHR/PAR intervals:
+- projected WashU population PHR/PAR intervals (the black bars):
   `paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels/zoom_phr_intervals.tsv`
-- PAN011 target chromosome lengths:
-  `/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa.fai`
-- community/Jaccard check:
-  `data/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv`,
-  `paper_prep/manuscript_revision/C0_continuum/arm_pair_similarity_long.tsv`,
-  and `paper_prep/manuscript_revision/C0_continuum/community_similarity_summary.tsv`
+- WashU donor-population PHR length table:
+  `data/fig5_washu.all-vs-all.1Mb.p95.id95.len.tsv`
+- PAN011 (joint father target) chromosome lengths:
+  `data/fig5_PAN027pat_vs_PAN011_joint.target.fa.fai`
+
+The last two were vendored from moosefs
+(`/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv`
+and the `pedigree_whole_genome_wfmash_p95_updated_bin` target `.fai`); override
+the vendored copies with the `FIG5_PHR_TABLE` / `FIG5_TARGET_FAI` env vars to
+point back at the moosefs sources.
 
 Outputs:
 
@@ -50,14 +54,25 @@ Geometry:
   `chr9_q -> chr7` row and redundant `chr5_q -> chr1 h1` donor row are
   suppressed for the clean display and flagged in `donor_recipient_runs.tsv`.
 
-Build:
+Regenerate:
 
 ```bash
+# Needs: python3 (standard library only) and, for the PDF/PNG, rsvg-convert
+# (librsvg, available via guix). Without rsvg-convert the script still writes
+# the SVG and warns "SVG only: no rsvg-convert found."
 bash paper_prep/_brainstorming/fig5_donor_recipient_ribbon_draft/scripts/make_donor_recipient_ribbons.sh
 ```
 
-Manuscript integration:
+Writes `fig5_donor_recipient_ribbon_draft.{svg,pdf,png}` and
+`donor_recipient_runs.tsv` into this directory. Deterministic: the same inputs
+reproduce byte-identical SVG/PNG.
+
+Vendor the result into the manuscript:
+
+```bash
+cp paper_prep/_brainstorming/fig5_donor_recipient_ribbon_draft/fig5_donor_recipient_ribbon_draft.pdf \
+   submission/fig/MainFigures/Fig5_pedigree_untangle.pdf
+```
 
 - `caption.md` records the Fig. 5 caption language used in `submission/paper.tex`.
 - `methods.md` records the matching direct-alignment workflow summary.
-- The manuscript copy is `submission/fig/MainFigures/Fig5_pedigree_untangle.pdf`.

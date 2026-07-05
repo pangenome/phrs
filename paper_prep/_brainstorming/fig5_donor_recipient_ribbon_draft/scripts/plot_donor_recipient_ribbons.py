@@ -20,15 +20,16 @@ HERE = ROOT / "paper_prep/_brainstorming/fig5_donor_recipient_ribbon_draft"
 ZOOM_DIR = ROOT / "paper_prep/_brainstorming/fig5_homolog_vs_interchrom_zoom_panels"
 SEGMENTS_TSV = ZOOM_DIR / "zoom_window_segments.tsv"
 PHR_TSV = ZOOM_DIR / "zoom_phr_intervals.tsv"
-PHR_TABLE = Path(
-    "/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/"
-    "all-vs-all.1Mb.p95.id95.len.tsv"
-)
-TARGET_FAI = Path(
-    "/moosefs/erikg/phrs/.wg-worktrees/agent-2636/paper_prep/_brainstorming/"
-    "pedigree_whole_genome_wfmash_p95_updated_bin/inputs/"
-    "PAN027pat_vs_PAN011_joint.target.fa.fai"
-)
+# Vendored in the repo (data/) so the figure is self-contained. Override with
+# the FIG5_PHR_TABLE / FIG5_TARGET_FAI env vars to point back at the moosefs
+# sources: /moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu/all-vs-all.1Mb.p95.id95.len.tsv
+# and .../pedigree_whole_genome_wfmash_p95_updated_bin/inputs/PAN027pat_vs_PAN011_joint.target.fa.fai
+PHR_TABLE = Path(os.environ.get(
+    "FIG5_PHR_TABLE",
+    ROOT / "data/fig5_washu.all-vs-all.1Mb.p95.id95.len.tsv"))
+TARGET_FAI = Path(os.environ.get(
+    "FIG5_TARGET_FAI",
+    ROOT / "data/fig5_PAN027pat_vs_PAN011_joint.target.fa.fai"))
 
 SVG_OUT = HERE / "fig5_donor_recipient_ribbon_draft.svg"
 RUNS_OUT = HERE / "donor_recipient_runs.tsv"
