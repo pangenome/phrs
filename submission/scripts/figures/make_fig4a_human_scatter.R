@@ -73,7 +73,7 @@ plot_one <- function(it) {
   legend("bottomright", inset = c(0.01, 0.09), bty = "n", cex = 1.08,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
-                    sprintf("descriptive pointwise Spearman rho = %s",
+                    sprintf("Spearman rho = %s",
                             fmt_rho(it$rho))))
   legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
          cex = 0.95, text.col = "black", text.font = 3, inset = c(-0.05, -0.015))

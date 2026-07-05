@@ -42,45 +42,61 @@ offset_sides <- function(P, sep) {
   list(P + nrm * sep/2, P - nrm * sep/2)
 }
 
-## --- compact, locally-placed bivalents (leptotene / pachytene / diplotene) ---
-# each bivalent sits over a home angle th on the envelope; telomeres on the rim
-draw_local <- function(cx, cy, R, th, style) {
-  E <- function(a) pol(cx, cy, R * 0.985, a)          # point on the envelope
-  Iin <- function(a, rf) pol(cx, cy, R * rf, a)        # interior point
-  tel <- function() {}
-  if (style == "lepto") {                              # one unpaired thread
-    p0 <- E(th - 9); p2 <- E(th + 9)
-    lines(bez(p0, Iin(th, 0.55), p2), col = homo_col, lwd = 1.6)
-    return(rbind(p0, p2))
+## --- interior-spanning chromosomes (leptotene / pachytene / diplotene) ---
+# chromosomes are long threads that cross the nucleus interior between telomeres
+# anchored on the envelope (as in the classic prophase-I cartoon).
+rimpt <- function(cx, cy, R, a) pol(cx, cy, R * 0.985, a)
+
+# leptotene: many dispersed telomeres; thin UNPAIRED threads criss-cross the centre
+draw_lepto <- function(cx, cy, R) {
+  set.seed(11)
+  na <- 14
+  angs <- seq(0, 360, length.out = na + 1)[1:na] + runif(na, -7, 7)
+  T <- t(sapply(angs, function(a) rimpt(cx, cy, R, a)))
+  ord <- sample(na)
+  for (i in seq(1, na - 1, by = 2)) {
+    p0 <- T[ord[i], ]; p2 <- T[ord[i + 1], ]
+    ctrl <- c(cx + runif(1, -0.5, 0.5) * R, cy + runif(1, -0.5, 0.5) * R)
+    lines(bez(p0, ctrl, p2, n = 90), col = homo_col, lwd = 1.25)
   }
-  if (style == "pachy") {                              # synapsed bivalent (paired + SC rungs)
-    p0 <- E(th - 9); p2 <- E(th + 9)
-    P <- bez(p0, Iin(th, 0.55), p2); s <- offset_sides(P, R * 0.055)
-    lines(s[[1]], col = homo_col, lwd = 1.5); lines(s[[2]], col = homo_col, lwd = 1.5)
-    ix <- round(seq(7, nrow(P) - 7, length.out = 5))
-    segments(s[[1]][ix, 1], s[[1]][ix, 2], s[[2]][ix, 1], s[[2]][ix, 2], col = homo_col, lwd = 0.6)
-    return(rbind(p0, p2))
+  T
+}
+
+# pachytene: a few THICK synapsed bivalents spanning the interior (X pattern)
+draw_pachy <- function(cx, cy, R) {
+  set.seed(21)
+  np <- 4
+  a1 <- runif(1, 0, 40) + seq(0, 360, length.out = np + 1)[1:np]
+  telos <- matrix(NA, 0, 2)
+  for (k in seq_len(np)) {
+    aa <- a1[k]; bb <- a1[k] + 180 + runif(1, -24, 24)
+    p0 <- rimpt(cx, cy, R, aa); p2 <- rimpt(cx, cy, R, bb)
+    ctrl <- c(cx + runif(1, -0.32, 0.32) * R, cy + runif(1, -0.32, 0.32) * R)
+    lines(bez(p0, ctrl, p2, n = 110), col = homo_col, lwd = 4.3)
+    telos <- rbind(telos, p0, p2)
   }
-  if (style == "cross") {                              # 1-chiasma bivalent: two homologs cross
-    ch <- Iin(th, 0.72)                                # the chiasma
-    tA1 <- E(th - 13); tA2 <- E(th + 5); tB1 <- E(th - 5); tB2 <- E(th + 13)
-    lines(bez(tA1, ch, tA2), col = homo_col, lwd = 1.5)
-    lines(bez(tB1, ch, tB2), col = homo_col, lwd = 1.5)
-    points(ch[1], ch[2], pch = 4, col = chia_col, cex = 0.7, lwd = 1.3)   # chiasma X
-    return(rbind(tA1, tA2, tB1, tB2))
+  telos
+}
+
+# diplotene: paired homologs spanning the interior, joined at chiasmata (X marks)
+draw_diplo <- function(cx, cy, R) {
+  set.seed(31)
+  np <- 4
+  a1 <- runif(1, 0, 40) + seq(0, 360, length.out = np + 1)[1:np]
+  telos <- matrix(NA, 0, 2); chi <- matrix(NA, 0, 2)
+  for (k in seq_len(np)) {
+    aa <- a1[k]; bb <- a1[k] + 180 + runif(1, -22, 22)
+    p0 <- rimpt(cx, cy, R, aa); p2 <- rimpt(cx, cy, R, bb)
+    # push the control off-centre (own quadrant) so the arcs fan out, not bunch
+    ctrl <- c(cx + sample(c(-1, 1), 1) * runif(1, 0.14, 0.40) * R,
+              cy + sample(c(-1, 1), 1) * runif(1, 0.14, 0.40) * R)
+    P <- bez(p0, ctrl, p2, n = 130); s <- offset_sides(P, R * 0.05)
+    lines(s[[1]], col = homo_col, lwd = 2.6); lines(s[[2]], col = homo_col, lwd = 2.6)
+    chi <- rbind(chi, P[round(nrow(P) * 0.5), ])
+    telos <- rbind(telos, p0, p2)
   }
-  if (style == "ring") {                               # 2-chiasma bivalent: a loop
-    c1 <- Iin(th - 4, 0.70); c2 <- Iin(th + 4, 0.70)   # two chiasmata
-    lines(bez(c1, Iin(th, 0.55), c2), col = homo_col, lwd = 1.5)   # inner arc
-    lines(bez(c1, Iin(th, 0.86), c2), col = homo_col, lwd = 1.5)   # outer arc
-    tA1 <- E(th - 14); tA2 <- E(th - 7); tB1 <- E(th + 7); tB2 <- E(th + 14)
-    segments(c1[1], c1[2], tA1[1], tA1[2], col = homo_col, lwd = 1.5)
-    segments(c1[1], c1[2], tA2[1], tA2[2], col = homo_col, lwd = 1.5)
-    segments(c2[1], c2[2], tB1[1], tB1[2], col = homo_col, lwd = 1.5)
-    segments(c2[1], c2[2], tB2[1], tB2[2], col = homo_col, lwd = 1.5)
-    points(rbind(c1, c2), pch = 4, col = chia_col, cex = 0.55, lwd = 1.1)
-    return(rbind(tA1, tA2, tB1, tB2))
-  }
+  points(chi, pch = 4, col = chia_col, cex = 0.85, lwd = 1.6)
+  telos
 }
 
 ## --- zygotene bouquet (telomeres pulled to one pole; loops hang down) ---
@@ -109,23 +125,21 @@ draw_stage <- function(cx, cy, R, label, kind) {
   highlight <- kind == "zygo"
   th <- seq(0, 2*pi, length.out=220)
   polygon(cx + R*cos(th), cy + R*sin(th), border=env_col, lwd=2, col="#fcfcfc")
-  homes <- c(35, 107, 180, 253, 325)
   if (kind == "zygo") {
     telos <- draw_bouquet(cx, cy, R)
     draw_centrosome(cx, cy + R*1.20, telos)
   } else if (kind == "lepto") {
-    telos <- do.call(rbind, lapply(homes, function(h) draw_local(cx, cy, R, h, "lepto")))
+    telos <- draw_lepto(cx, cy, R)
   } else if (kind == "pachy") {
-    telos <- do.call(rbind, lapply(homes, function(h) draw_local(cx, cy, R, h, "pachy")))
+    telos <- draw_pachy(cx, cy, R)
   } else if (kind == "diplo") {
-    sty <- c("cross","ring","cross","ring","cross")
-    telos <- do.call(rbind, Map(function(h,s) draw_local(cx, cy, R, h, s), homes, sty))
+    telos <- draw_diplo(cx, cy, R)
   }
   points(telos, pch=21, bg=telo_col, col="white", cex=1.35, lwd=0.55)
-  text(cx, cy - R*1.44, label, cex=1.4, font=2, col="#222222")
+  text(cx, cy - R*1.44, label, cex=1.95, font=2, col="#222222")
   if (highlight) {
-    text(cx - R*0.62, cy + R*0.93, "bouquet", cex=1.2, font=2, col=telo_col, adj=c(1, 0.5))
-    text(cx + R*0.26, cy + R*1.24, "centrosome", cex=1.2, col="#555b62", adj=c(0, 0.5))
+    text(cx - R*0.62, cy + R*0.93, "bouquet", cex=1.6, font=2, col=telo_col, adj=c(1, 0.5))
+    text(cx + R*0.26, cy + R*1.24, "centrosome", cex=1.6, col="#555b62", adj=c(0, 0.5))
   }
 }
 
@@ -140,7 +154,7 @@ draw <- function() {
   draw_stage(xs[4], cy, R, "diplotene", "diplo")
   legend(x=19.25, y=1.15, xjust=0.5, yjust=0.5, horiz=TRUE, bty="n", pch=c(21,4),
          pt.bg=c(telo_col,NA), col=c("white",chia_col), pt.cex=c(1.5,1.0), pt.lwd=c(0.6,1.3),
-         legend=c("telomere (subtelomeric PHRs)","chiasma"), cex=1.1, text.col="#222222")
+         legend=c("telomere (subtelomeric PHRs)","chiasma"), cex=1.55, text.col="#222222")
 }
 
 png(file.path(out_dir, "meiosis_stages.png"), width=2400, height=771, res=200, type="cairo")

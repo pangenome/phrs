@@ -61,7 +61,7 @@ draw <- function() {
        bg = adjustcolor("#1f77b4", alpha.f = 0.22),
        col = adjustcolor("#1f1f1f", alpha.f = 0.12), lwd = 0.25, cex = 0.6,
        xlab = "PHR-pair Jaccard similarity",
-       ylab = "Zygotene Hi-C contact (norm.)",
+       ylab = "Zygotene 3D contact frequency",
        main = "", cex.lab = 1.55, cex.axis = 1.4)
   grid(col = "#e6e6e6", lwd = 0.7)
   if (length(unique(x)) > 2) {
@@ -72,7 +72,7 @@ draw <- function() {
   legend("bottomright", inset = c(0.02, 0.04), bty = "n", cex = 1.15,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(n, big.mark = ",")),
-                    sprintf("descriptive pointwise Spearman rho = %s",
+                    sprintf("Spearman rho = %s",
                             fmt_rho(rho))))
   legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
          cex = 1.1, text.col = "black", text.font = 3, inset = c(-0.04, -0.01))

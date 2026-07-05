@@ -33,31 +33,32 @@ args <- commandArgs(trailingOnly = TRUE)
 script_dir <- if (length(.this_file)) normalizePath(dirname(.this_file)) else getwd()
 repo_root  <- normalizePath(file.path(script_dir, "..", "..", ".."))
 
-layout_path <- if (length(args) >= 1) args[[1]] else
-  file.path(repo_root, "data/fig2a_pggb_layout.og.lay.tsv.gz")
-node_comm_path <- if (length(args) >= 2) args[[2]] else
-  file.path(repo_root, "data/fig2a_node_community.tsv.gz")
-out_dir <- if (length(args) >= 3) args[[3]] else
-  file.path(repo_root, "submission/fig/MainFigures")
+val <- function(flag, default) {
+  h <- which(args == flag)
+  if (length(h) && h[length(h)] < length(args)) args[h[length(h)] + 1] else default
+}
+layout_path    <- val("--layout",    file.path(repo_root, "data/fig2a_pggb_layout.og.lay.tsv.gz"))
+node_comm_path <- val("--node-comm", file.path(repo_root, "data/fig2a_node_community.tsv.gz"))
+out_dir        <- val("--out-dir",   file.path(repo_root, "submission/fig/MainFigures"))
+out_name       <- val("--out-name",  "Fig2a_pggb_layout.png")
 
-point_alpha <- 0.65
-point_cex   <- 0.30
+# --mono [color]: single-color, non-community layout with no legend (defaults to
+# charcoal). Omit --mono for the community-colored manuscript panel.
+mono <- any(args == "--mono")
+mono_color <- if (mono) { v <- val("--mono", "#111111"); if (grepl("^--", v)) "#111111" else v } else NA_character_
+
+point_alpha <- if (mono) 0.30 else 0.65
+point_cex   <- if (mono) 0.12 else 0.30
 background  <- "white"
-border_col  <- "#b8c0cc"
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
-stopifnot(file.exists(layout_path), file.exists(node_comm_path))
+stopifnot(file.exists(layout_path))
 
 lay <- read.delim(gzfile(layout_path), sep = "\t", stringsAsFactors = FALSE)
 # main connected component = the one with the most layout nodes (component 8)
 comp_main <- as.integer(names(which.max(table(lay$component))))
 lay <- lay[lay$component == comp_main, c("idx", "X", "Y")]
 lay$node <- lay$idx %/% 2L + 1L
-
-nc <- read.delim(gzfile(node_comm_path), sep = "\t", header = FALSE,
-                 stringsAsFactors = FALSE, col.names = c("node", "community"))
-lay$community <- nc$community[match(lay$node, nc$node)]
-lay$community[is.na(lay$community)] <- "NA"
 
 # Canonical paper community palette -- identical to
 # submission/scripts/figures/make_fig2bc_jaccard_heatmaps.R and
@@ -67,30 +68,39 @@ pal <- c(C1="#2E6FBB", C2="#D95F02", C3="#1B9E77", C4="#7570B3", C5="#E7298A",
          C11="#FB9A99", C12="#FDBF6F", C13="#CAB2D6", C14="#6A3D9A", C15="#B15928",
          `NA`="#D9D9D9")
 levs <- names(pal)
-lay$community <- factor(lay$community, levels = levs)
 
-# draw NA first, then rarer communities, largest on top
-lay <- lay[order(lay$community != "NA", table(lay$community)[as.character(lay$community)]), ]
+if (!mono) {
+  stopifnot(file.exists(node_comm_path))
+  nc <- read.delim(gzfile(node_comm_path), sep = "\t", header = FALSE,
+                   stringsAsFactors = FALSE, col.names = c("node", "community"))
+  lay$community <- nc$community[match(lay$node, nc$node)]
+  lay$community[is.na(lay$community)] <- "NA"
+  lay$community <- factor(lay$community, levels = levs)
+  # draw NA first, then rarer communities, largest on top
+  lay <- lay[order(lay$community != "NA", table(lay$community)[as.character(lay$community)]), ]
+  col_vec <- grDevices::adjustcolor(pal[as.character(lay$community)], alpha.f = point_alpha)
+} else {
+  col_vec <- grDevices::adjustcolor(mono_color, alpha.f = point_alpha)
+}
 
 plot_x <- lay$Y; plot_y <- lay$X   # rotate as in the published panel
 
-png_path <- file.path(out_dir, "Fig2a_pggb_layout.png")
+png_path <- file.path(out_dir, out_name)
 png(png_path, width = 1920, height = 1080, res = 144, bg = background, type = "cairo")
 par(mar = c(0.18, 0.18, 0.18, 0.18), xaxs = "i", yaxs = "i", family = "sans")
-plot(plot_x, plot_y, pch = 16, cex = point_cex,
-     col = grDevices::adjustcolor(pal[as.character(lay$community)], alpha.f = point_alpha),
+plot(plot_x, plot_y, pch = 16, cex = point_cex, col = col_vec,
      axes = FALSE, ann = FALSE, asp = 1)
-usr <- par("usr"); rect(usr[1], usr[3], usr[2], usr[4], border = border_col, lwd = 2)
 
-present <- levs[levs %in% as.character(unique(lay$community))]
-present_named <- present[present != "NA"]
-present_named <- present_named[order(as.integer(sub("^C", "", present_named)))]
-leg     <- c(present_named, if ("NA" %in% present) "no community")
-leg_col <- c(pal[present_named], if ("NA" %in% present) pal[["NA"]])
-legend("topleft", legend = leg, col = leg_col, pch = 16, pt.cex = 1.1,
-       ncol = 2, bty = "n", cex = 0.8, text.col = "#1f1f1f", title = "Community")
+if (!mono) {
+  present <- levs[levs %in% as.character(unique(lay$community))]
+  present_named <- present[present != "NA"]
+  present_named <- present_named[order(as.integer(sub("^C", "", present_named)))]
+  leg     <- c(present_named, if ("NA" %in% present) "no community")
+  leg_col <- c(pal[present_named], if ("NA" %in% present) pal[["NA"]])
+  legend("topleft", legend = leg, col = leg_col, pch = 16, pt.cex = 1.1,
+         ncol = 2, bty = "n", cex = 0.8, text.col = "#1f1f1f", title = "Community")
+}
 invisible(dev.off())
 
-cat("wrote ", png_path, "\n", sep = "")
-cat("main component: ", comp_main, "  nodes plotted: ", nrow(lay), "\n", sep = "")
-print(sort(table(droplevels(lay$community)), decreasing = TRUE))
+cat("wrote ", png_path, "  (", if (mono) paste0("mono ", mono_color) else "community",
+    "; ", nrow(lay), " nodes, component ", comp_main, ")\n", sep = "")
