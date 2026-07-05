@@ -28,7 +28,8 @@
 %          a HG002 Pore-C all-points scatter; b Pore-C community matrix; c mouse bouquet
 %   Fig 5  Whole-genome pedigree-resolved subtelomeric exchange  (deck slides 24,26)
 % Extended Data: ED1 = 3-panel replicate of Fig 4a across genomes/assays (CHM13
-% Hi-C, HG002 Hi-C, HG002 CiFi), all 50 kbp all-points. The mouse
+% Hi-C, HG002 Hi-C, HG002 CiFi), all 50 kbp all-points. ED2 = maternal
+% whole-genome pedigree recombination companion scans for Fig 5. The mouse
 % meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
 % Figure-generation workflows are provided in the public analysis-code repository.
 % ============================================================================
@@ -273,6 +274,12 @@ These segments are modest in length (20--40 kb for the autosomal calls, and
 PHR and community labels were assigned only after calling; the highlighted pairs
 fall in the expected arm-level sequence-similarity communities and show
 post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
+Applying the same whole-genome homologous-competition scan to the maternal
+PAN027 and PAN028 transmissions provides companion context rather than a second
+primary claim: PAN027 maternal windows resolve only the expected
+acrocentric-acrocentric class, while PAN028 maternal windows are again dominated
+by acrocentric-acrocentric sharing, with one additional chr5/chr1 candidate
+visible in the same display framework (Extended Data Fig.~\ref{fig:ed2}).
 
 The two autosomal candidates differ in support. An independent aligner (wfmash)
 reproduces the chr9q/chr3q donor at the same chr3q subtelomeric locus at
@@ -684,6 +691,16 @@ PAN027-versus-PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on
 chr3q at $>$99.8\% identity over the same coordinates, but placed the chr5q
 window on chr5 with no chr1 donor above threshold, so only chr9q/chr3q is
 concordant across aligners.
+For Extended Data Fig.~\ref{fig:ed2}, the same direct-alignment workflow,
+thresholds and display rules were applied to two maternal comparisons:
+PAN027 maternal haplotype against the joint PAN010 mother target, and PAN028
+maternal haplotype against the joint PAN027 mother target. These companion scans
+used the same f32 raw PAF source class, the same required 10:10 SweepGA
+pre-filter, the same 2 kb query windows, the same centromere and depth filters,
+and the same class-winner IMPG comparison between best same-chromosome
+homologous and best non-homologous matches. The successful maternal IMPG jobs
+were run on one 96-thread Slurm node each; their class-winner outputs were
+validated with \texttt{gzip -t} before rendering.
 
 \subsection*{Software versions}
 
@@ -745,6 +762,37 @@ the pedigree within-community fraction (observed $p < 10^{-4}$).
     sparsest assay, $\sim$90\% of pairs zero-contact, hence the weakest
     directionally concordant signal).}
   \label{fig:ed1}
+\end{figure}
+
+\begin{figure}[p!]
+  \centering
+  \textbf{A}\par
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig2a_PAN027_maternal_recombination.png}
+  \vspace{0.75em}
+
+  \textbf{B}\par
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig2b_PAN028_maternal_recombination.png}
+  \caption{\textbf{Maternal whole-genome homologous-competition scans companion
+    to Fig.~\ref{fig:fig5}.} The same direct-alignment and IMPG class-winner
+    procedure used for the paternal Fig.~\ref{fig:fig5} scan was applied to two
+    maternal transmissions. In each panel, the middle track is the child query
+    haplotype and the upper and lower tracks are the two maternal donor
+    haplotypes, with chromosomes concatenated in native order and scaled by
+    assembled length. Light-gray ribbons show same-chromosome maternal
+    homologous chains ($\geq 10$ kb, identity $\geq 0.95$). Colored ribbons show
+    grouped 2 kb query windows in which the best non-homologous maternal match
+    beats the best same-chromosome homologous match after the required
+    SweepGA/FastGA f32 raw PAF was reduced by \texttt{sweepga --num-mappings
+    10:10 --scaffold-jump 0 --scoring ani} before IMPG similarity.
+    \textbf{(A)} PAN027 maternal haplotype compared with the joint PAN010 mother
+    target. The drawn high-confidence non-homologous runs are
+    acrocentric-acrocentric. \textbf{(B)} PAN028 maternal haplotype compared
+    with the joint PAN027 mother target. The display is dominated by
+    acrocentric-acrocentric runs, with one chr5/chr1 candidate and one
+    acrocentric-other run. These panels provide maternal-transmission context
+    for the Fig.~\ref{fig:fig5} paternal candidate calls rather than additional
+    breakpoint-resolved event calls.}
+  \label{fig:ed2}
 \end{figure}
 
 \end{document}
