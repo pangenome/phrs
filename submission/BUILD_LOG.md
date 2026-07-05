@@ -2,6 +2,32 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after Supplementary Table 1 updates
+
+Date: 2026-07-05
+
+Command:
+
+```
+cd submission
+make clean && make
+```
+
+Environment note: this local build used the Guix TeX Live tree with constrained
+`TEXINPUTS`, `BIBINPUTS`, `BSTINPUTS`, `TEXFORMATS`, and font-map variables so
+that `jnl.cls` loads the intended Natbib configuration.
+
+Result: `make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+grep -c 'undefined' paper.log  # -> 0
+ls -lh paper.pdf               # -> 3.7M, 26 pages
+```
+
+**PASS** -- no undefined references/citations in the final `paper.log`.
+
 ## Current build attempt after guarded manuscript patch
 
 Date: 2026-06-17

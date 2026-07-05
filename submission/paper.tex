@@ -274,6 +274,9 @@ These segments are modest in length (20--40 kb for the autosomal calls, and
 PHR and community labels were assigned only after calling; the highlighted pairs
 fall in the expected arm-level sequence-similarity communities and show
 post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
+Exact assembly-native intervals, identities, same-chromosome competitor scores,
+PHR/community annotations, wfmash concordance status and corresponding
+arm-level CHM13 PHR BED intervals are provided in Supplementary Table~1.
 Applying the same whole-genome homologous-competition scan to the maternal
 PAN027 and PAN028 transmissions provides companion context rather than a second
 primary claim: PAN027 maternal windows resolve only the expected
@@ -703,6 +706,12 @@ and the same class-winner IMPG comparison between best same-chromosome
 homologous and best non-homologous matches. The successful maternal IMPG jobs
 were run on one 96-thread Slurm node each; their class-winner outputs were
 validated with \texttt{gzip -t} before rendering.
+Supplementary Table~1 was generated from the grouped run summaries and reports
+assembly-native query and donor intervals, 2 kb window counts, mean identities,
+same-chromosome competitor scores, post hoc PHR/community labels and wfmash
+status for the displayed calls. The CHM13 columns in that table are arm-level
+PHR annotations from \texttt{data/chm13.phrs.bed}; they are not exact
+coordinate liftovers of the pedigree-specific haplotype assemblies.
 
 \subsection*{Software versions}
 
@@ -713,11 +722,17 @@ samtools, bedtools and bgzip via conda; hicexplorer 3.7.4; R packages
 \subsection*{Data and code availability}
 
 Analysis code, manuscript source, figure-generation scripts, and vendored
-figure inputs are available at \url{https://github.com/ekg/phrs}. HPRC v2
+figure inputs are available at \url{https://github.com/pangenome/phrs}. HPRC v2
 assemblies, CHM13v2.0, WashU pedigree assemblies, CEPH1463 assemblies, and
 published 3D-genome datasets are available from their cited public releases and
 accessions; accession-level identifiers are listed with the corresponding
 citations and source-data tables.
+The repository includes the canonical CHM13-coordinate PHR BED used for
+arm-level annotations (\texttt{data/chm13.phrs.bed}), the compact pedigree audit
+table at
+\url{submission/supplementary/Supplementary_Table_1_pedigree_runs.tsv}, and the
+figure-generation inputs for Fig.~\ref{fig:fig5} and Extended Data
+Fig.~\ref{fig:ed2}.
 The public repository includes re-alignment workflows and command lines for
 Hi-C, Pore-C, CiFi and Dip-C. These workflows start from the cited public
 raw-read datasets; deposited processed files generated with default MAPQ
@@ -796,5 +811,20 @@ the pedigree within-community fraction (observed $p < 10^{-4}$).
     breakpoint-resolved event calls.}
   \label{fig:ed2}
 \end{figure}
+
+\clearpage
+\section{Supplementary Table Legends}
+
+\noindent\textbf{Supplementary Table 1. Displayed pedigree non-homologous runs
+and PHR annotations.}
+Tab-delimited audit table for the Fig.~\ref{fig:fig5} paternal
+homologous-competition scan and the companion maternal scans in Extended Data
+Fig.~\ref{fig:ed2}. Rows include the PAR1 positive-control runs, the paternal
+chr5q/chr1p and chr9q/chr3q candidate runs, representative acrocentric context
+runs, and the displayed maternal companion candidates. Query and donor intervals
+are 0-based half-open coordinates in the assembly-native haplotype sequences.
+The CHM13 PHR columns report the implicated arm-level intervals from
+\texttt{data/chm13.phrs.bed}; they are not exact liftovers of the
+pedigree-specific haplotype intervals.
 
 \end{document}

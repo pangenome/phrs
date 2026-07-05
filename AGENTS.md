@@ -8,7 +8,7 @@ arms, 15 arm-level / 50 sequence-level communities), plus 3D-genome validation
 (Hi-C, Pore-C, CiFi, Dip-C, sperm sc, RPE-1, mouse meiosis). Outputs are a
 14-section analysis report, paper figures, and slide decks.
 
-GitHub: `https://github.com/ekg/phrs`.
+GitHub: `https://github.com/pangenome/phrs`.
 
 ## Where data lives
 
