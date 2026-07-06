@@ -4,11 +4,11 @@
 
 ## Overview
 
-**What it does.** Identifies and characterizes inter-chromosomal subtelomeric sequence sharing across 233 HPRCv2 human samples, validates the findings with 3D genome data from multiple technologies and organisms.
+**What it does.** Identifies and characterizes inter-chromosomal subtelomeric sequence sharing across 232 HPRCv2 individuals, validates the findings with 3D genome data from multiple technologies and organisms.
 
-**How.** Extract the terminal 500 kb from each chromosome arm across 465 haplotypes (contigs ≥ 1 Mb). Align all-vs-all at ≥95% identity to find which arms share sequence across different chromosomes. Build a pangenome graph from these shared regions, then cluster arms into communities by graph similarity. Annotate communities with genes and repeats. Validate by testing whether same-community arms sit closer in 3D nuclear space — using Hi-C (6 human samples), Pore-C and CiFi (HG002), Dip-C single-cell (16 GM12878 cells), sperm single-cell (20 cells), RPE-1 (3 datasets), and mouse meiotic Hi-C (4 stages).
+**How.** Extract the terminal 500 kb from each chromosome arm across 465 near-complete assemblies (contigs ≥ 1 Mb). Align all-vs-all at ≥95% identity to find which arms share sequence across different chromosomes. Build a pangenome graph from these shared regions, then cluster arms into communities by graph similarity. Annotate communities with genes and repeats. Validate by testing whether same-community arms sit closer in 3D nuclear space — using Hi-C (6 human samples), Pore-C and CiFi (HG002), Dip-C single-cell (16 GM12878 cells), sperm single-cell (20 cells), RPE-1 (3 datasets), and mouse meiotic Hi-C (4 stages).
 
-**Key metrics.** 233 samples (465 haplotypes), 48 chromosome arms (41 with inter-chromosomal signal), 15,668 PHR sequences, 15 arm-level communities, 50 sequence-level communities. 3D validation across 4 technologies, 2 cell types (lymphoblastoid cell lines [LCL], retinal pigment epithelium [RPE-1]), sperm, and mouse meiosis.
+**Key metrics.** 232 individuals (465 near-complete assemblies), 48 chromosome arms (41 with inter-chromosomal signal), 15,668 PHR sequences, 15 arm-level communities, 50 sequence-level communities. 3D validation across 4 technologies, 2 cell types (lymphoblastoid cell lines [LCL], retinal pigment epithelium [RPE-1]), sperm, and mouse meiosis.
 
 **Result.** Chromosome arms that share subtelomeric sequence cluster into discrete communities. These communities are reflected in 3D nuclear proximity — arms in the same community are physically closer than arms in different communities. This holds in bulk Hi-C, single-cell Dip-C, haploid sperm, and mouse meiotic cells.
 
@@ -178,7 +178,7 @@
 
 **How.** The L78442.1 cosmid (36.3 kb, the original f7501 clone from Mefford & Trask 2002, with 3 regions of similarity to olfactory receptor genes including the expressed *OR-A* gene) was aligned against each of the 18,827 subtelomeric flanks individually (minimap2 `-x asm20`, one-vs-one to avoid multi-mapping). Haplotypes with ≥30 kb matching bases were counted as carrying f7501.
 
-**Key metrics.** Per-arm distribution across 465 haplotypes (233 samples × 2 haplotypes, minus 1 for CHM13 which has a single haplotype). Population enrichment tested by Fisher's exact test (one-sided greater) for each superpopulation independently (AFR=134, AMR=88, EAS=104, EUR=65, SAS=74 haplotypes); the table reports the most significantly enriched superpopulation per arm. The per-arm distribution reproduces Mefford & Trask's Figure 3 at population scale:
+**Key metrics.** Per-arm distribution across 465 near-complete assemblies (two haplotypes for each of the 232 individuals plus CHM13). Population enrichment tested by Fisher's exact test (one-sided greater) for each superpopulation independently over these 465 assemblies, with the single haploid CHM13 grouped into EUR (AFR=134, AMR=88, EAS=104, EUR=65, SAS=74 haplotypes; these sum to 465). The cohort demographics proper are 232 individuals / 464 HPRC haplotypes (EUR = 32 individuals, 64 haplotypes); CHM13 is a reference anchor, not a study individual. The table reports the most significantly enriched superpopulation per arm. The per-arm distribution reproduces Mefford & Trask's Figure 3 at population scale:
 
 | Arm | Haps | % of 465 | Mefford status | Leiden | AFR | AMR | EAS | EUR | SAS | Best enriched | % | OR | p-value |
 |-----|-----:|--------:|----------------|--------|----:|----:|----:|----:|----:|:---:|---:|----:|--------:|
@@ -203,11 +203,11 @@
 - **Three additional AFR-enriched arms identified**: chr8_p (9/10 = 90% AFR, p=8.5e-05, C11), chr16_p (19/25 = 76% AFR, p=6.7e-07, C9), chr9_q (59/138 = 43% AFR, p=1.9e-05, C3).
 - **chr2_q is SAS-enriched**: 17/22 = 77% SAS (p=6.8e-11, C12).
 - **chr6_p is AMR-enriched**: 8/13 = 62% AMR (p=7.0e-04, C5).
-- **chr15_q refinement**: Mefford classified chr15_q as "FIXED" based on 52 individuals by FISH. At 233 samples, the overall prevalence (85.6%) confirms near-fixation, but with significant EUR enrichment (p=2.5e-04): 98.5% of EUR haplotypes carry f7501 (64/65) vs only 64.9% of AFR (87/134). Non-AFR populations are uniformly high: AMR 92.0%, SAS 91.9%, EAS 94.2%, EUR 98.5%. This is consistent with ongoing f7501 loss in African populations or incomplete lineage sorting at this locus.
+- **chr15_q refinement**: Mefford classified chr15_q as "FIXED" based on 52 individuals by FISH. Across the 465 assemblies, the overall prevalence (85.6%) confirms near-fixation, but with significant EUR enrichment (p=2.5e-04): 98.5% of EUR haplotypes carry f7501 (64/65) vs only 64.9% of AFR (87/134). Non-AFR populations are uniformly high: AMR 92.0%, SAS 91.9%, EAS 94.2%, EUR 98.5%. This is consistent with ongoing f7501 loss in African populations or incomplete lineage sorting at this locus.
 - **Novel locations not in Mefford**: chr1_p (5 haplotypes, C11), chr20_p (2, C12), and chrX_q (1, C14) carry f7501 at ≥30 kb but are absent from Mefford's Figure 3 (which used FISH on 52 individuals). These may represent rare or recently acquired f7501 copies below the detection threshold of the original FISH survey.
 - **chr4_q and chr19_q absence**: Mefford's Figure 3 lists chr4_q and chr19_q as variable f7501 sites detected by FISH. The L78442 cosmid produces zero alignments ≥30 kb to any chr19_q flank (457 tested) and only ~954 bp partial matches to chr4_q. The f7501 copies at these arms are too divergent for sequence alignment at asm20 stringency, despite being detectable by FISH cross-hybridization.
 
-**Conclusion.** The f7501 distribution across 465 haplotypes reproduces the FISH-based patterns observed by Mefford & Trask (2002) in 52 individuals and extends them with three newly identified AFR-enriched sites, population-specific enrichments at chr2_q (SAS) and chr6_p (AMR), and three novel f7501 locations (chr1_p, chr20_p, chrX_q) not reported by FISH.
+**Conclusion.** The f7501 distribution across 465 near-complete assemblies reproduces the FISH-based patterns observed by Mefford & Trask (2002) in 52 individuals and extends them with three newly identified AFR-enriched sites, population-specific enrichments at chr2_q (SAS) and chr6_p (AMR), and three novel f7501 locations (chr1_p, chr20_p, chrX_q) not reported by FISH.
 
 ---
 
@@ -363,7 +363,7 @@ Having defined community structure at both arm and sequence levels, the next sec
 **Key metrics.** 18,827 total sequences → 15,668 retained (3,159 with no inter-chromosomal signal removed; chimeric chr18_q already excluded in §4).
 
 **Result.**
-- **Gene annotations**: 173,881 gene annotations extracted (374 unique genes) across 233 samples and 39 arms. Two arms — chr7_q and chr12_q — have zero gene annotations because their similarity regions are confined to 5–25 kb at the telomeric tip, below the detection threshold of Liftoff annotation pipelines.
+- **Gene annotations**: 173,881 gene annotations extracted (374 unique genes) across 232 individuals and 39 arms. Two arms — chr7_q and chr12_q — have zero gene annotations because their similarity regions are confined to 5–25 kb at the telomeric tip, below the detection threshold of Liftoff annotation pipelines.
 - **TAR1 repeats**: 21,544 TAR1 entries across 14,816 sequences (94.6%) and all 41 arms.
 
 **Conclusion.** The gene and repeat annotations provide the basis for characterizing the biological content of each community (§9) and testing whether exchange status affects gene repertoire (§10).
@@ -418,7 +418,7 @@ Having defined community structure at both arm and sequence levels, the next sec
 
 **Result.** Highest island counts per arm: chr20_q (1,765 islands), chr12_q (1,149), chr16_p (898), chr18_p (851). The per-arm positional distribution shows telomere-proximal bias for most p-arms (16/21 with median < 500 bp from telomere). Five p-arms with larger PHR regions have deeper islands (chr11_p 153 kb, chr6_p 99 kb, chr20_p 65 kb, chr18_p 54 kb, chr16_p 1.1 kb). This is consistent with Ambrosini et al.'s (2007) observation that internal (TTAGGG)n-like sequences "almost always co-localize to duplicon boundaries" — islands mark past duplication breakpoints, so arms with more layered duplication history have islands distributed deeper into the subtelomeric zone.
 
-**Conclusion.** Island lengths (median 79 bp) are shorter than Ambrosini et al.'s (2007) observation that "most [islands are] in the 150-200 bp range" (max 823 bp). The difference is methodological: our detection uses degenerate motif search (canonical + 3 variant hexamers + mixed patterns) with a 50 bp minimum across 15,668 sequences from 465 haplotypes, capturing shorter and more degenerate tracts that were not detected in Ambrosini's single-reference analysis.
+**Conclusion.** Island lengths (median 79 bp) are shorter than Ambrosini et al.'s (2007) observation that "most [islands are] in the 150-200 bp range" (max 823 bp). The difference is methodological: our detection uses degenerate motif search (canonical + 3 variant hexamers + mixed patterns) with a 50 bp minimum across 15,668 sequences from 465 near-complete assemblies, capturing shorter and more degenerate tracts that were not detected in Ambrosini's single-reference analysis.
 
 ### 8.5 TTAGGG island boundary enrichment test
 
@@ -512,7 +512,7 @@ C15 (PAR1) has 32.1% protein-coding genes, reflecting the functional gene conten
 
 **Key metrics.** 10 OR4F family genes detected across 7 communities (C3, C5, C8, C9, C11, C12, C14). OR4F5 and OR4F8P most widespread (14 arms each). IQSEC3 detected in C5 (chr12_p, 453 samples).
 
-**Result.** Confirms at population scale that "human subtelomeres can contain genes, such as members of the olfactory receptor gene family" (Mefford & Trask 2002) and extends Ambrosini et al.'s (2007) OR duplicon architecture (Table 1, Block 2) to 465 haplotypes.
+**Result.** Confirms at population scale that "human subtelomeres can contain genes, such as members of the olfactory receptor gene family" (Mefford & Trask 2002) and extends Ambrosini et al.'s (2007) OR duplicon architecture (Table 1, Block 2) to 465 near-complete assemblies.
 
 ### 9.3 Ambrosini subtelomere-specific blocks → Leiden communities
 
@@ -694,7 +694,7 @@ Note: C8 (chr15_q), C9 (chr16_p), C10 (chr17_p), and C13 (chr4_p) are single-arm
 
 **What it does.** Tests whether the frequency of cross-arm affinity (carrying a foreign chromosome's subtelomeric sequence) differs between human superpopulations (AFR, AMR, EAS, EUR, SAS). If subtelomeric exchange events occurred at different rates or times in different populations, the frequency of cross-arm haplotypes should differ between superpopulations.
 
-**How.** For each arm/community pair, a 2x5 contingency table (cross-arm vs self-arm x 5 superpopulations) is tested with **Fisher's exact test** — a non-parametric test for association between two categorical variables that is exact (does not rely on asymptotic approximations) and is appropriate for small expected cell counts. P-values are BH-corrected across 19 arm/community pairs (from 11 multi-arm communities). All 233 samples have superpopulation annotation.
+**How.** For each arm/community pair, a 2x5 contingency table (cross-arm vs self-arm x 5 superpopulations) is tested with **Fisher's exact test** — a non-parametric test for association between two categorical variables that is exact (does not rely on asymptotic approximations) and is appropriate for small expected cell counts. P-values are BH-corrected across 19 arm/community pairs (from 11 multi-arm communities). All 232 individuals have superpopulation annotation.
 
 **Key metrics.** 10 of 19 pairs show significant superpopulation bias (p_adj < 0.05):
 
@@ -711,7 +711,7 @@ Note: C8 (chr15_q), C9 (chr16_p), C10 (chr17_p), and C13 (chr4_p) are single-arm
 | C1 | chr10_q | 26 | 331 | AFR=4; AMR=3; EAS=3; EUR=1; SAS=11 | AFR=79; AMR=63; EAS=60; EUR=45; SAS=49 | 0.030 |
 | C11 | chr6_q | 12 | 428 | AFR=1; AMR=1; EAS=0; EUR=4; SAS=4 | AFR=107; AMR=78; EAS=79; EUR=55; SAS=64 | 0.032 |
 
-Notable patterns: chr16_q (C3) cross-arm is 70% AFR (60/86), consistent with the f7501 AFR-enrichment in §6.1.1. chr4_q (C1) cross-arm is AFR-enriched (52/146 = 36% vs baseline 28.8%). chrX_p (C15) self-arm is entirely AFR (18/18), indicating that the rare non-cross-arm PAR1 haplotypes are exclusively African.
+Notable patterns: chr16_q (C3) cross-arm is 70% AFR (60/86), consistent with the f7501 AFR-enrichment in §6.1.1. chr4_q (C1) cross-arm is AFR-enriched (52/146 = 36% vs baseline 28.9%). chrX_p (C15) self-arm is entirely AFR (18/18), indicating that the rare non-cross-arm PAR1 haplotypes are exclusively African.
 
 **Fst across subtelomeric types**: **Fst** (fixation index) measures genetic differentiation between populations. Fst = 0 means allele frequencies are identical across populations; Fst = 1 means populations are fixed for different alleles. Here, the "allele" at each arm is binary: self-arm (0) or cross-arm (1). Hudson's Fst estimator is computed for each pair of superpopulations across the 10 arm/community pairs with the strongest signal and averaged:
 
@@ -903,7 +903,7 @@ The overall Spearman correlation between breakpoint position and median ITS posi
 
 1. **Subtelomeric regions form discrete communities of inter-chromosomal similarity.**
    - *What*: 41 chromosome arms cluster into 15 communities (arm level) and 50 (sequence level).
-   - *Key metrics*: 233 individuals, 465 haplotypes, 15,668 PHR sequences.
+   - *Key metrics*: 232 individuals, 465 near-complete assemblies, 15,668 PHR sequences.
    - *Conclusion*: The community structure reflects shared duplicon content acquired through inter-chromosomal exchange and is consistent across all samples.
 
 2. **Three categories of subtelomeric architecture.**
@@ -1080,7 +1080,7 @@ The overall Spearman correlation between breakpoint position and median ITS posi
 
 ### 12.5 Per-PHR-pair sequence similarity vs 3D proximity
 
-**What it does.** Correlates per-arm-pair sequence similarity with Hi-C contact at finer resolution than the Mantel test (§12.3). While the Mantel test uses a single arm-level distance matrix averaged across all 233 samples, this test uses per-arm-pair mean Jaccard similarity computed from the full sequence-level pairwise comparisons, preserving more of the underlying variance.
+**What it does.** Correlates per-arm-pair sequence similarity with Hi-C contact at finer resolution than the Mantel test (§12.3). While the Mantel test uses a single arm-level distance matrix averaged across all 232 individuals, this test uses per-arm-pair mean Jaccard similarity computed from the full sequence-level pairwise comparisons, preserving more of the underlying variance.
 
 **How.** For each pair of arms on different chromosomes, the mean Jaccard similarity is computed from all sequence pairs (e.g., 440 × 450 = 198,000 pairwise comparisons for two arms with ~440 sequences each). This mean Jaccard is then correlated with the Hi-C contact value for that arm pair using **Spearman rank correlation** (a non-parametric measure of monotonic association; rho = 1 means perfect positive monotonic relationship). Expected direction: positive rho — arm pairs with higher mean Jaccard similarity should have higher Hi-C contact.
 
@@ -2058,7 +2058,7 @@ All B/W ratios are well below 1.0 at every resolution for both window sizes. The
 
 ### Sample composition
 
-**Key metrics.** 233 HPRCv2 samples: AFR = 67 (28.8%), EAS = 52 (22.3%), AMR = 44 (18.9%), SAS = 37 (15.9%), EUR = 33 (14.2%). Population-level findings (§10.3) should be interpreted with this imbalance in mind. Within-superpopulation heterogeneity is not modeled.
+**Key metrics.** 232 HPRCv2 individuals: AFR = 67 (28.9%), EAS = 52 (22.4%), AMR = 44 (19.0%), SAS = 37 (15.9%), EUR = 32 (13.8%). Population-level findings (§10.3) should be interpreted with this imbalance in mind. Within-superpopulation heterogeneity is not modeled.
 
 ### Methodological limitations
 
@@ -2132,9 +2132,9 @@ Additional quantitative confirmations from literature claim tests:
 
 **What it does.** Identifies 24 findings that go beyond the published literature — quantitative extensions of known biology and new observations:
 
-1. **Population-scale community structure**: 41 arms clustering into 15 communities across 233 individuals — the first population-scale quantification showing that single-genome duplicon architecture organizes into discrete, reproducible communities across 465 haplotypes.
+1. **Population-scale community structure**: 41 arms clustering into 15 communities across 232 individuals — the first population-scale quantification showing that single-genome duplicon architecture organizes into discrete, reproducible communities across 465 near-complete assemblies.
 2. **Three-category arm classification**: Homogeneous (7/41), polymorphic (34/41, up to 7 types), and fully interchangeable (acrocentric p-arms). This extends the qualitative patchwork model of Mefford & Trask (2002) with a quantitative framework.
-3. **Population-scale cross-arm affinity**: 15.1% of sequences (2,271/15,668) resemble a foreign arm more than their own — the first population-scale quantification across 465 haplotypes.
+3. **Population-scale cross-arm affinity**: 15.1% of sequences (2,271/15,668) resemble a foreign arm more than their own — the first population-scale quantification across 465 near-complete assemblies.
 4. **Subtelomeric type discordance quantified at population scale**: Up to 46.1% of individuals carry two structurally different subtelomeric types at the same locus — the first population-scale quantification of structural heterozygosity at subtelomeres, extending qualitative observations from Mefford & Trask (2002) and Linardopoulou et al. (2005).
 5. **Gene repertoire replacement scores**: Complete (0.91–1.0) at chr13_p/chr14_p/chr15_p and PAR, partial (0.0–0.72) at autosomal communities — a gradient of homogenization mapped onto the community structure for the first time.
 6. **3D genome mirrors sequence communities**: Three independent technologies provide evidence consistent with community-structured 3D co-localization (Hi-C B/W 0.027–0.074 enrichment, Dip-C 1.8–4.9% closer), though effect sizes vary substantially across samples and the finer 50-community partition does not reach significance in Dip-C.
@@ -2259,13 +2259,13 @@ Additional quantitative confirmations from literature claim tests:
 
 | Path | Description | Section |
 |------|-------------|---------|
-| `/moosefs/pangenomes/HPRCv2/*.fa.gz` | 465 HPRCv2 assembly FASTA files (233 samples × 2 haplotypes, CHM13 has 1) | 0 |
+| `/moosefs/pangenomes/HPRCv2/*.fa.gz` | 465 near-complete assemblies analyzed (464 HPRC haplotypes from 232 individuals plus CHM13; GRCh38 in the mirror excluded) | 0 |
 | `/moosefs/pangenomes/HPRCv2/chm13v2.0_maskedY_rCRS.fa.PanSN.fa.gz` | CHM13v2.0 reference (masked Y, rCRS mitochondria) in PanSN format | 0 |
 | `/moosefs/guarracino/HPRCv2/PHR_III/pq-classification/chm13.centromeres.approximate.bed` | CHM13 centromere coordinates (from Julian's active_arrays) | 1 |
 | `/moosefs/guarracino/HPRCv2/PHR_III/liftoff_genes_hprc_r2_v1.0.index.csv` | Index mapping 462 haplotype-specific Liftoff GFF3 files | 8 |
 | `/moosefs/guarracino/HPRCv2/PHR_III/hprc_annotations/*.gff3.gz` | 464 haplotype-specific + CHM13 gene annotations (Liftoff GFF3; includes HG002 from JHU Liftoff v0.6) | 8 |
 | `/moosefs/guarracino/HPRCv2/PHR_III/repeat_masker_bed_hprc_r2_v1.0.index.csv` | Index mapping RepeatMasker BED files | 8 |
-| `/moosefs/guarracino/HPRCv2/PHR_III/hprc_repeatmasker/*.RepeatMasker.bed.gz` | 465 haplotype-specific + CHM13 repeat annotations (includes HG002 converted from bigBed to 10-col BED with PanSN naming) | 8 |
+| `/moosefs/guarracino/HPRCv2/PHR_III/hprc_repeatmasker/*.RepeatMasker.bed.gz` | 464 haplotype-specific + CHM13 = 465 repeat annotations (includes HG002 converted from bigBed to 10-col BED with PanSN naming) | 8 |
 | `/moosefs/guarracino/HPRCv2/data/hprc-sequence-production.tsv` | HPRCv2 sample metadata (sample, superpopulation, sequencing info) | 10 |
 
 ### Verification scripts

@@ -721,7 +721,7 @@
 
 **Body:**
 - impg of HPRCv2
-- ~11.6% with 466 haplotypes
+- ~11.6% with 465 near-complete assemblies
 - 230x critical threshold
 
 **Speaker notes:** (none)

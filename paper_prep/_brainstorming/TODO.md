@@ -142,7 +142,7 @@ The PHR-only analysis should:
 ### Step 5: Reconcile with Andrea's report (section 9)
 
 Andrea's report already has per-community gene enrichment (section 9) using
-174K gene annotations across 233 samples. Key findings:
+174K gene annotations across 232 individuals. Key findings:
 - 374 unique genes across 39 arms
 - Predominantly pseudogenes (28-86%) and ncRNA
 - OR4F family in 7 communities

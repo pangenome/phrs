@@ -23,7 +23,7 @@ Each finding from `SURVEY_10_11_12_limits_summary_lit.md §1.2` has at least one
 
 | # | Finding | Anchor metric | Main / ED panel(s) | Status |
 |---|---|---|---|---|
-| 1 | Subtelomeric regions form discrete inter-chromosomal communities | 41 arms → 15 / 50 communities; 233 individuals × 465 haplotypes × 15,668 PHRs | **Fig 1a, Fig 1c**, ED2a, ED2d, Table 1 | ✓ |
+| 1 | Subtelomeric regions form discrete inter-chromosomal communities | 41 arms → 15 / 50 communities; 232 individuals × 465 near-complete assemblies × 15,668 PHRs | **Fig 1a, Fig 1c**, ED2a, ED2d, Table 1 | ✓ |
 | 2 | Three categories of subtelomeric architecture | Homogeneous 8/41, polymorphic 34/41, fully interchangeable 7/41 | **Fig 1d** | ✓ |
 | 3 | Recurrent inter-chromosomal exchange | Cross-arm 15.9 % (arm) / 11.1 % (seq); discordance up to 47.5 % | **Fig 1b, Fig 1d**, ED2c, Fig 2a (discordance) | ✓ |
 | 4 | Acrocentric / sex chromosome subtelomere gene-repertoire overlap | chr13_p replacement 1.000; chr14_p 83.0 % cross-arm; PAR1/PAR2 score 1.000 | **Fig 2c**, Table 1 | ✓ |

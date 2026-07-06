@@ -7,7 +7,7 @@
 **Key metrics.** 18,827 total sequences → 15,668 retained (3,158 with no inter-chromosomal signal removed; chimeric chr18_q already excluded in the inter-chromosomal detection section).
 
 **Result.**
-- **Gene annotations**: 173,881 gene annotations extracted (374 unique genes) across 233 samples and 39 arms. Two arms — chr7_q and chr12_q — have zero gene annotations because their similarity regions are confined to 5–25 kb at the telomeric tip, below the detection threshold of Liftoff annotation pipelines.
+- **Gene annotations**: 173,881 gene annotations extracted (374 unique genes) across 232 individuals and 39 arms. Two arms — chr7_q and chr12_q — have zero gene annotations because their similarity regions are confined to 5–25 kb at the telomeric tip, below the detection threshold of Liftoff annotation pipelines.
 - **TAR1 repeats**: 21,544 TAR1 entries across 14,816 sequences (94.6%) and all 41 arms.
 
 **Conclusion.** The gene and repeat annotations provide the basis for characterizing the biological content of each community (the gene enrichment section) and testing whether exchange status affects gene repertoire (the heterogeneity section).
@@ -62,7 +62,7 @@
 
 **Result.** Highest island counts per arm: chr20_q (1,765 islands), chr12_q (1,149), chr16_p (898), chr18_p (851). The per-arm positional distribution shows telomere-proximal bias for most p-arms (16/21 with median < 500 bp from telomere). Five p-arms with larger PHR regions have deeper islands (chr11_p 153 kb, chr6_p 99 kb, chr20_p 65 kb, chr18_p 54 kb, chr16_p 1.1 kb). This is consistent with Ambrosini et al.'s (2007) observation that internal (TTAGGG)n-like sequences "almost always co-localize to duplicon boundaries" — islands mark past duplication breakpoints, so arms with more layered duplication history have islands distributed deeper into the subtelomeric zone.
 
-**Conclusion.** Island lengths (median 79 bp) are shorter than Ambrosini et al.'s (2007) observation that "most [islands are] in the 150-200 bp range" (max 823 bp). The difference is methodological: our detection uses degenerate motif search (canonical + 3 variant hexamers + mixed patterns) with a 50 bp minimum across 15,668 sequences from 465 haplotypes, capturing shorter and more degenerate tracts that were not detected in Ambrosini's single-reference analysis.
+**Conclusion.** Island lengths (median 79 bp) are shorter than Ambrosini et al.'s (2007) observation that "most [islands are] in the 150-200 bp range" (max 823 bp). The difference is methodological: our detection uses degenerate motif search (canonical + 3 variant hexamers + mixed patterns) with a 50 bp minimum across 15,668 sequences from 465 near-complete assemblies, capturing shorter and more degenerate tracts that were not detected in Ambrosini's single-reference analysis.
 
 ### TTAGGG island boundary enrichment test
 

@@ -2,7 +2,7 @@
 
 1. **Subtelomeric regions form discrete communities of inter-chromosomal similarity.**
    - *What*: 41 chromosome arms cluster into 15 communities (arm level) and 50 (sequence level).
-   - *Key metrics*: 233 individuals, 465 haplotypes, 15,668 PHR sequences.
+   - *Key metrics*: 232 individuals, 465 near-complete assemblies, 15,668 PHR sequences.
    - *Conclusion*: The community structure reflects shared duplicon content acquired through inter-chromosomal exchange and is consistent across all samples.
 
 2. **Three categories of subtelomeric architecture.**

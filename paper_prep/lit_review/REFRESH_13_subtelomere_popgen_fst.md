@@ -12,7 +12,7 @@
 
 This topic covers the population-genetic interpretation of subtelomeric haplotype sharing
 (cross-arm affinity) across the five HPRC v2 superpopulations (AFR=67, EAS=52, AMR=44,
-SAS=37, EUR=33 diploid individuals; 465 haplotypes). The primary analytic claim is that
+SAS=37, EUR=32 diploid individuals; 465 near-complete assemblies). The primary analytic claim is that
 Hudson FST at subtelomeric binary haplotypes (cross-arm vs. self-arm) recapitulates the
 canonical out-of-Africa split: AFR vs. non-AFR FST ≈ 0.10–0.15, while all non-AFR
 pairwise values are ≈ 0 (range −0.047 to +0.007), and that two loci (chr16q at 70% AFR

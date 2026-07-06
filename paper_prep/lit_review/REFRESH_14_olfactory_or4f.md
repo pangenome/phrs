@@ -250,4 +250,4 @@ All PubMed queries used `date_from: 2023/01/01, date_to: 2026/12/31` unless note
 
 ### Field-specific observation
 
-No 2023–2026 paper specifically studies OR4F genes in the context of human subtelomeric community structure, pangenome variation, or arm-specific pseudogenization rates. This confirms that our paper's OR4F gradient finding (11.1%–99.8% across 16 arms in 465 haplotypes) is genuinely novel. The absence of such papers strengthens, not weakens, the C5 claim novelty.
+No 2023–2026 paper specifically studies OR4F genes in the context of human subtelomeric community structure, pangenome variation, or arm-specific pseudogenization rates. This confirms that our paper's OR4F gradient finding (11.1%–99.8% across 16 arms in 465 near-complete assemblies) is genuinely novel. The absence of such papers strengthens, not weakens, the C5 claim novelty.

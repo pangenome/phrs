@@ -13,8 +13,8 @@ Cytogenetic-era studies sketched the human subtelomere as a "patchwork"
 of duplicated blocks shared across non-homologous chromosome ends, but
 the population-scale architecture of these exchanges and their relation
 to nuclear organisation has remained invisible. We analyse 18,827
-telomere-anchored 500 kb flanks across 465 HPRCv2 haplotype-resolved
-assemblies from 233 individuals; 83 % carry inter-chromosomal sequence
+telomere-anchored 500 kb flanks across 465 near-complete assemblies
+(232 HPRCv2 individuals and CHM13); 83 % carry inter-chromosomal sequence
 sharing, partitioning 41 chromosome arms into 15 inter-chromosomal
 communities and 15,668 polymorphic homology regions (PHRs) into 50
 sequence-level communities (Leiden, modularity Q = 0.97). Within
@@ -66,7 +66,7 @@ carries a recoverable demographic signal. Second, the
 partition predicts contact frequencies measured by Hi-C and its
 derivatives across cell types, single cells, and meiotic stages. Third,
 the #emph[unification] of named special cases (PARs, D4Z4, acrocentric
-p-arms) into a single quantitative framework. The HPRCv2 pangenome — 233
+p-arms) into a single quantitative framework. The HPRCv2 pangenome — 232
 individuals × 2 haplotypes, telomere-to-telomere where complete —
 enables, for the first time, a population-scale, sequence-resolved,
 haplotype-resolved analysis of all 24 chromosome ends together,
@@ -82,8 +82,8 @@ population structure directly in pedigrees.
 
 == 2. Population-scale subtelomeric communities define an interchromosomal landscape
 <population-scale-subtelomeric-communities-define-an-interchromosomal-landscape>
-We extracted 18,827 telomere-anchored 500 kb flanks from 465 HPRCv2
-haplotype assemblies, ran wfmash all-vs-all (asm20, p95, id95, length ≥
+We extracted 18,827 telomere-anchored 500 kb flanks from 465 near-complete
+assemblies, ran wfmash all-vs-all (asm20, p95, id95, length ≥
 30 kb), built per-flank PAF graphs and called 15,668 polymorphic
 homology regions (PHRs) where ≥ 2 non-homologous arms share sequence
 (`Methods`; pipeline schematic \[ED1\]). PHRs have median length 105 kb
@@ -122,7 +122,7 @@ sequence resolution, and the model extends to 39 of 48 testable arms
 (\[Fig 2b\]; details in §3).
 
 We reproduce the f7501 distribution of @MeffordTrask2002 across 465
-haplotypes, fix all sites previously noted, and after BH-FDR correction
+near-complete assemblies, fix all sites previously noted, and after BH-FDR correction
 within the 80-test (16 arms × 5 superpopulations) family identify 8 arm
 × superpopulation pairs at q \< 0.05: chr16\_q AFR (OR\_conditional =
 17.24, 95 % CI \[9.41, 32.97\], q = 5.3 × 10⁻²⁵), chr2\_q SAS (OR =
@@ -343,8 +343,8 @@ is a population-genetic record, and PARs are its named tip.
 
 == 7. Methods (online; \~500-word stub)
 <methods-online-500-word-stub>
-#strong[Assemblies and flank extraction.] Inputs: 233 HPRCv2 individuals
-× 2 haplotypes = 465 assemblies (CHM13 added → 466 in some counts),
+#strong[Assemblies and flank extraction.] Inputs: 232 HPRCv2 individuals
+× 2 haplotypes = 464 assemblies plus the haploid CHM13 anchor = 465 near-complete assemblies,
 HG002v1.1, T2T-CHM13v2.0, RPE1v1.1, WashU pedigree T2T (PAN010 / PAN011
 \/ PAN027 / PAN028) @Cechova2025, CEPH1463 hifiasm + verkko draft
 assemblies @Porubsky2025, and mouse B6 + CAST T2T @Francis2025. p/q-arm

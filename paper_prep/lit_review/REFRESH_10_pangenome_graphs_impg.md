@@ -63,7 +63,7 @@ Recommendation: ADD alongside `@pangenome_graphs_impg_Hickey2024` in Methods P3 
 
 **[heumos2024nfcore]** Heumos et al., 2024. Cluster-efficient pangenome graph construction with nf-core/pangenome. *Bioinformatics* 40(11):btae609. PMID:39400346 / DOI:10.1093/bioinformatics/btae609
 
-Claim it supports: End-to-end-report §01 Pipeline ("pggb -p 95 -D /scratch") and NATURE_DRAFT_v1.md Methods L56 ("pggb -p 95 -D /scratch"). The draft implicitly claims that "the current subtelomere study is among the first publications to demonstrate the pangenome graph methods stack at 466-haplotype scale" (topic-10 review, Open questions section). Heumos et al. describe nf-core/pangenome, a production-grade Nextflow wrapper for the exact pipeline (wfmash → seqwish → smoothxg → gfaffix → odgi) deployed on HPC clusters. The paper demonstrates construction of a 1000-haplotype chromosome-19 pangenome (2-3x the subtelomere dataset size) with a 2-3× speedup over standalone pggb. This directly validates the scalability of the pipeline at larger-than-current-study scale.
+Claim it supports: End-to-end-report §01 Pipeline ("pggb -p 95 -D /scratch") and NATURE_DRAFT_v1.md Methods L56 ("pggb -p 95 -D /scratch"). The draft implicitly claims that "the current subtelomere study is among the first publications to demonstrate the pangenome graph methods stack at 465-assembly scale" (topic-10 review, Open questions section). Heumos et al. describe nf-core/pangenome, a production-grade Nextflow wrapper for the exact pipeline (wfmash → seqwish → smoothxg → gfaffix → odgi) deployed on HPC clusters. The paper demonstrates construction of a 1000-haplotype chromosome-19 pangenome (2-3x the subtelomere dataset size) with a 2-3× speedup over standalone pggb. This directly validates the scalability of the pipeline at larger-than-current-study scale.
 
 Recommendation: ADD to Methods section after the `@Garrison2024pggb` citation where pggb is described, to provide the production-deployment and scalability reference. Also cite in the "HPRC v2 and population-scale implicit graphs" open-questions paragraph.
 
@@ -80,7 +80,7 @@ Recommendation: ADD to Methods section after the `@Garrison2024pggb` citation wh
   pages     = {btae609},
   doi       = {10.1093/bioinformatics/btae609},
   pmid      = {39400346},
-  note      = {nf-core/pangenome: Nextflow HPC wrapper for the wfmash→seqwish→smoothxg→gfaffix→odgi pipeline; constructs 1000-haplotype chromosome-19 pangenome; 2-3x speedup over standalone pggb; validates scalability beyond 466-haplotype current study scale.}
+  note      = {nf-core/pangenome: Nextflow HPC wrapper for the wfmash→seqwish→smoothxg→gfaffix→odgi pipeline; constructs 1000-haplotype chromosome-19 pangenome; 2-3x speedup over standalone pggb; validates scalability beyond 465-assembly current study scale.}
 }
 ```
 

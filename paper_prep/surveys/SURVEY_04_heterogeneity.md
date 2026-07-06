@@ -143,7 +143,7 @@ All paths verified by directory listing.
 - `its_breakpoint_coloc.tsv` — closest internal-TTAGGG block to each arm's breakpoint (§1.3 Test 3)
 
 ### 3.3 Sample metadata
-- `/moosefs/guarracino/HPRCv2/data/hprc-sequence-production.tsv` — superpopulation labels for the 233 samples (§1.4)
+- `/moosefs/guarracino/HPRCv2/data/hprc-sequence-production.tsv` — superpopulation labels for the 232 individuals (§1.4)
 
 ---
 
@@ -154,7 +154,7 @@ All paths verified by directory listing.
 | Allele vs paralog distance (§1.1) | Wilcoxon signed-rank, paired allele-vs-paralog Jaccard distance per individual per community | None reported across communities (each community tested independently) | Jaccard distance from k-mer set comparison; "paralog" = closest sequence from a different arm in the same community |
 | Arm separation (§1.2) | Silhouette score on within-community Jaccard distances; "separation ratio" = inter-arm / intra-arm distance | n/a | Only multi-arm communities are testable (single-arm communities excluded) |
 | Cross-arm affinity (§1.11) | Per-sequence rule: nearest neighbour in same community is "foreign-arm" | n/a (descriptive) | 2,484 / 15,668 sequences cross-arm |
-| Population structure (§1.4) | 2 × 5 contingency Fisher exact per arm-community pair (cross/self × AFR/AMR/EAS/EUR/SAS) | BH-correction across 19 pairs | All 233 samples have superpop annotation |
+| Population structure (§1.4) | 2 × 5 contingency Fisher exact per arm-community pair (cross/self × AFR/AMR/EAS/EUR/SAS) | BH-correction across 19 pairs | All 232 individuals have superpop annotation |
 | Pairwise Fst (§1.4) | Hudson estimator on binary site (cross-arm = 1, self-arm = 0) per pair, averaged across the 10 strongest pairs | n/a | Mean Fst = 0.044 |
 | Type discordance (§1.5) | Per-individual classification of the two haplotypes; rate = discordant / (concordant + discordant) | n/a | 35 arm-community pairs reported; threshold > 20 % flagged |
 | Region length (§1.6) | Wilcoxon rank-sum on PHR length, cross vs self per arm-community | BH across 18 pairs | 14 / 18 significant |

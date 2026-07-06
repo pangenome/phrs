@@ -160,7 +160,7 @@
 
 **How.** The L78442.1 cosmid (36.3 kb, the original f7501 clone from Mefford & Trask 2002, with 3 regions of similarity to olfactory receptor genes including the expressed *OR-A* gene) was aligned against each of the 18,827 subtelomeric flanks individually (minimap2 `-x asm20`, one-vs-one to avoid multi-mapping). Haplotypes with ≥30 kb matching bases were counted as carrying f7501.
 
-**Key metrics.** Per-arm distribution across 465 haplotypes (233 samples × 2 haplotypes, minus 1 for CHM13 which has a single haplotype). Population enrichment tested by Fisher's exact test (one-sided greater) for each superpopulation independently (AFR=134, AMR=88, EAS=104, EUR=65, SAS=74 haplotypes); the table reports the most significantly enriched superpopulation per arm. The per-arm distribution reproduces Mefford & Trask's Figure 3 at population scale:
+**Key metrics.** Per-arm distribution across 465 near-complete assemblies (two haplotypes for each of the 232 individuals plus CHM13). Population enrichment tested by Fisher's exact test (one-sided greater) for each superpopulation independently over these 465 assemblies, with the single haploid CHM13 grouped into EUR (AFR=134, AMR=88, EAS=104, EUR=65, SAS=74 haplotypes; these sum to 465). The cohort demographics proper are 232 individuals / 464 HPRC haplotypes (EUR = 32 individuals, 64 haplotypes); CHM13 is a reference anchor, not a study individual. The table reports the most significantly enriched superpopulation per arm and reproduces Mefford & Trask's Figure 3 at population scale:
 
 | Arm | Haps | % of 465 | Mefford status | Leiden | AFR | AMR | EAS | EUR | SAS | Best enriched | % | OR | p-value |
 |-----|-----:|--------:|----------------|--------|----:|----:|----:|----:|----:|:---:|---:|----:|--------:|
@@ -185,11 +185,11 @@
 - **Three additional AFR-enriched arms identified**: chr8_p (9/10 = 90% AFR, p=8.5e-05, C11), chr16_p (19/25 = 76% AFR, p=6.7e-07, C9), chr9_q (59/138 = 43% AFR, p=1.9e-05, C3).
 - **chr2_q is SAS-enriched**: 17/22 = 77% SAS (p=6.8e-11, C12).
 - **chr6_p is AMR-enriched**: 8/13 = 62% AMR (p=7.0e-04, C5).
-- **chr15_q refinement**: Mefford classified chr15_q as "FIXED" based on 52 individuals by FISH. At 233 samples, the overall prevalence (85.6%) confirms near-fixation, but with significant EUR enrichment (p=2.5e-04): 98.5% of EUR haplotypes carry f7501 (64/65) vs only 64.9% of AFR (87/134). Non-AFR populations are uniformly high: AMR 92.0%, SAS 91.9%, EAS 94.2%, EUR 98.5%. This is consistent with ongoing f7501 loss in African populations or incomplete lineage sorting at this locus.
+- **chr15_q refinement**: Mefford classified chr15_q as "FIXED" based on 52 individuals by FISH. Across the 465 assemblies, the overall prevalence (85.6%) confirms near-fixation, but with significant EUR enrichment (p=2.5e-04): 98.5% of EUR haplotypes carry f7501 (64/65) vs only 64.9% of AFR (87/134). Non-AFR populations are uniformly high: AMR 92.0%, SAS 91.9%, EAS 94.2%, EUR 98.5%. This is consistent with ongoing f7501 loss in African populations or incomplete lineage sorting at this locus.
 - **Novel locations not in Mefford**: chr1_p (5 haplotypes, C11), chr20_p (2, C12), and chrX_q (1, C14) carry f7501 at ≥30 kb but are absent from Mefford's Figure 3 (which used FISH on 52 individuals). These may represent rare or recently acquired f7501 copies below the detection threshold of the original FISH survey.
 - **chr4_q and chr19_q absence**: Mefford's Figure 3 lists chr4_q and chr19_q as variable f7501 sites detected by FISH. The L78442 cosmid produces zero alignments ≥30 kb to any chr19_q flank (457 tested) and only ~954 bp partial matches to chr4_q. The f7501 copies at these arms are too divergent for sequence alignment at asm20 stringency, despite being detectable by FISH cross-hybridization.
 
-**Conclusion.** The f7501 distribution across 465 haplotypes reproduces the FISH-based patterns observed by Mefford & Trask (2002) in 52 individuals and extends them with three newly identified AFR-enriched sites, population-specific enrichments at chr2_q (SAS) and chr6_p (AMR), and three novel f7501 locations (chr1_p, chr20_p, chrX_q) not reported by FISH.
+**Conclusion.** The f7501 distribution across 465 near-complete assemblies reproduces the FISH-based patterns observed by Mefford & Trask (2002) in 52 individuals and extends them with three newly identified AFR-enriched sites, population-specific enrichments at chr2_q (SAS) and chr6_p (AMR), and three novel f7501 locations (chr1_p, chr20_p, chrX_q) not reported by FISH.
 
 ---
 
@@ -357,7 +357,7 @@ Having defined community structure at both arm and sequence levels, the next sec
 **Input data:**
 | File | Description |
 |------|-------------|
-| `/moosefs/pangenomes/HPRCv2/*.fa.gz` | 465 HPRCv2 assemblies |
+| `/moosefs/pangenomes/HPRCv2/*.fa.gz` | 465 near-complete assemblies analyzed (GRCh38 in the mirror excluded) |
 | `/moosefs/guarracino/HPRCv2/PHR_III/pq-classification/chm13.centromeres.approximate.bed` | CHM13 centromere coordinates |
 
 **Intermediate files:**

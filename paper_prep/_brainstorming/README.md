@@ -1,6 +1,6 @@
 # Off-target materials from prior manuscript session
 
-The files in this directory were produced during a prior synthesis run that hill-climbed on copy-number-weighted ORA / hypergeometric-test / OR4F-gene-family minutiae. They do **not** anchor on the canonical paper described in `paper_prep/synthesis/ABSTRACT.md` ("Concerted evolution and unorthodox recombination of human subtelomeres" — implicit pangenome graph methodology, 466-haplotype HPRC v2 dataset, extended interchromosomal subtelomeric homology, NJ-tree cladistic analysis, PCA + community detection, Hi-C 3D-proximity hypothesis).
+The files in this directory were produced during a prior synthesis run that hill-climbed on copy-number-weighted ORA / hypergeometric-test / OR4F-gene-family minutiae. They do **not** anchor on the canonical paper described in `paper_prep/synthesis/ABSTRACT.md` ("Concerted evolution and unorthodox recombination of human subtelomeres" — implicit pangenome graph methodology, 465-assembly HPRC v2 dataset, extended interchromosomal subtelomeric homology, NJ-tree cladistic analysis, PCA + community detection, Hi-C 3D-proximity hypothesis).
 
 Retained here for possible salvage. **Not part of the canonical manuscript pipeline.**
 
@@ -212,7 +212,7 @@ Top-level synthesis documents from the prior session (executive summaries, decis
 - Top-level subtelomere data assets (`chm13.phrs.bed`, `chm13.phrs.no_acro.bed`, `CHM13-HG002.sub-telo-phrs.bed`, `chm13-annotations.bed`, `chm13v2.0_RefSeq_Liftoff_v5.2.gff3.gz`, `hprc25272.CHM13.w100kb-xm5-id098-l5k.tsv.gz`) left in place.
 - Top-level canonical figure assets (`identity_heatmap_chr*.pdf`, `p_*.{pdf,png}`) left in place.
 - Top-level canonical/uncertain-but-on-topic docs (`subtelomeric_analysis_report.{md,pdf}`, `framing_synthesis.md`, `plot-impg-coverage.R`, `phrs.*` gene reference files, `PHR_Subtelomeric Regions_Summary_March 2026.xlsx`, `T2T_Subtelomeric_Gene_Summary (1).xlsx`) left in place per the "leave when uncertain" rule.
-- `paper_prep/synthesis/MANUSCRIPT_DRAFT.{md,typ}`, `MANUSCRIPT_SKELETON.md`, `ARCHITECT_TASK_BRIEF.md`, `WORK_DECOMPOSITION.md`, `ACCEPTANCE_CHECKLIST.md`, `STATS_AUDIT.md`, `SCRIPT_INVENTORY.md`, `TALK_OUTLINE_15MIN.md`, `VERSIONS.md`, `CAPTIONS.md`, `NOVEL_CONTRIBUTIONS.tsv`, `LIMITATIONS_X_FINDINGS.tsv` were inspected and found to anchor on the canonical abstract (41 arms → 15 communities, 233 individuals × 465 haplotypes, Hi-C/Pore-C/CiFi/Dip-C/sperm/mouse meiotic, pedigree, out-of-Africa). They are kept in `paper_prep/synthesis/`.
+- `paper_prep/synthesis/MANUSCRIPT_DRAFT.{md,typ}`, `MANUSCRIPT_SKELETON.md`, `ARCHITECT_TASK_BRIEF.md`, `WORK_DECOMPOSITION.md`, `ACCEPTANCE_CHECKLIST.md`, `STATS_AUDIT.md`, `SCRIPT_INVENTORY.md`, `TALK_OUTLINE_15MIN.md`, `VERSIONS.md`, `CAPTIONS.md`, `NOVEL_CONTRIBUTIONS.tsv`, `LIMITATIONS_X_FINDINGS.tsv` were inspected and found to anchor on the canonical abstract (41 arms → 15 communities, 232 individuals × 465 near-complete assemblies, Hi-C/Pore-C/CiFi/Dip-C/sperm/mouse meiotic, pedigree, out-of-Africa). They are kept in `paper_prep/synthesis/`.
 
 ---
 
@@ -220,7 +220,7 @@ Top-level synthesis documents from the prior session (executive summaries, decis
 
 **Date:** 2026-05-05 (later same day)
 **Method:** `git mv` (history preserved)
-**Reason:** The lead author (Erik Garrison) reviewed the rendered `MANUSCRIPT_DRAFT.pdf` and rejected it as "minutiae synthesis" and "from another dimension" relative to the canonical abstract. Despite the parking agent's judgment above that the synthesis docs reference canonical topics (41 arms, 466 haplotypes, Hi-C, etc.), the lead author determined that these materials, as exposition, *do not deliver the actual paper described in `ABSTRACT.md`* — even when the topical surface looks right, the framing, priorities, and HPRC-v2-companion positioning are wrong. **Lead-author judgment overrides agent classification.** All synthesis-dir docs from the prior session (except `ABSTRACT.md` and `REFERENCES.bib`) were therefore relocated here.
+**Reason:** The lead author (Erik Garrison) reviewed the rendered `MANUSCRIPT_DRAFT.pdf` and rejected it as "minutiae synthesis" and "from another dimension" relative to the canonical abstract. Despite the parking agent's judgment above that the synthesis docs reference canonical topics (41 arms, 465 near-complete assemblies, Hi-C, etc.), the lead author determined that these materials, as exposition, *do not deliver the actual paper described in `ABSTRACT.md`* — even when the topical surface looks right, the framing, priorities, and HPRC-v2-companion positioning are wrong. **Lead-author judgment overrides agent classification.** All synthesis-dir docs from the prior session (except `ABSTRACT.md` and `REFERENCES.bib`) were therefore relocated here.
 
 Files relocated in this batch (from `paper_prep/synthesis/` to here):
 

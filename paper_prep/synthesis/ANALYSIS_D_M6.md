@@ -23,7 +23,7 @@ Sources:
 Both studies use the same Hudson F_ST estimator that the §04 pipeline uses. Pair-by-pair baselines are embedded in `scripts/popgen/matched_fst_d_m6.py:PUBLISHED_FST_1000G_HGDP`.
 
 Why this is acceptable as the "matched" control even though the cohort is 1000G/HGDP rather than HPRC v2:
-- Continental F_ST between AFR / AMR / EAS / EUR / SAS in the 1000G and HGDP cohorts is **stable across cohorts** to within +/- 0.01 (HGDP vs 1000G Phase 1 vs 1000G Phase 3: see Patterson 2012 Table S3 and Bhatia 2013 Fig 3 cross-cohort comparison). The 233-sample HPRC v2 sub-cohort is genome-wide indistinguishable from the larger 1000G cohort at this resolution.
+- Continental F_ST between AFR / AMR / EAS / EUR / SAS in the 1000G and HGDP cohorts is **stable across cohorts** to within +/- 0.01 (HGDP vs 1000G Phase 1 vs 1000G Phase 3: see Patterson 2012 Table S3 and Bhatia 2013 Fig 3 cross-cohort comparison). The 232-individual HPRC v2 sub-cohort is genome-wide indistinguishable from the larger 1000G cohort at this resolution.
 - The native HPRC v2 sampled-window control (specification in `run_native_window_control` in the script) would, by construction, recover the same continental baseline within the resampling noise envelope; this is a known property of Hudson F_ST genome-wide (Bhatia 2013, Fig 4).
 
 ## 3. Block-jackknife 95% CIs over arm blocks

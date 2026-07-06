@@ -10,7 +10,7 @@ Analysis of inter-chromosomal patches in odgi untangle results (`nth.best=1`) fo
 | CEPH1463 hifiasm | 28 (Porubsky et al. 2025) | Fragmented contigs (~780/sample) | 324 / 2,775 (12%) | Low — supplementary |
 | CEPH1463 verkko | 14 (NA12877-NA12887, NA12889-NA12892) | Fragmented contigs (~144/sample) | 359 / 2,671 (13%) | Low — supplementary |
 
-**Key principle**: Only inter-chromosomal patches whose source and query arms are in the SAME Leiden community (from `hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv`) are considered biologically credible. The Leiden community structure was derived from 233 HPRCv2 samples and represents the reference truth for which subtelomeric arm pairs share sequence.
+**Key principle**: Only inter-chromosomal patches whose source and query arms are in the SAME Leiden community (from `hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv`) are considered biologically credible. The Leiden community structure was derived from 232 HPRCv2 individuals and represents the reference truth for which subtelomeric arm pairs share sequence.
 
 **WashU is the primary dataset** because of its T2T quality. CEPH1463 results are reported only where BOTH hifiasm AND verkko detect the same parent feature (cross-assembler validation), to control for assembly fragmentation artifacts.
 

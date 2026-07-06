@@ -19,7 +19,7 @@ consistent with the body. Do not polish text that should be removed.
 
 | Lines | Current content | Recommendation | Reason |
 | --- | --- | --- | --- |
-| `submission/paper.tex:413-420` | Sample selection and reference frame | Keep, revise wording | Required for 466/465+CHM13 promise. `233 HPRC v2 v1.1 individuals` at line 415 is awkward; check intended HPRC v2 naming. |
+| `submission/paper.tex:413-420` | Sample selection and reference frame | Keep, revise wording | Required for the 465-near-complete-assembly (464 HPRC + CHM13) promise. `233 HPRC v2 v1.1 individuals` at line 415 is awkward and should read 232; check intended HPRC v2 naming. |
 | `submission/paper.tex:422-433` | Sample exclusions | Keep, possibly compress | Supports flank census and explains GRCh38/Y/PAR and chr18_q chimera exclusions. Technical but relevant. |
 | `submission/paper.tex:435-440` | Telomere-anchored flank extraction | Keep | Required support for 18,827 flanks, 48 arms and 500 kb truncation caveat. |
 | `submission/paper.tex:442-448` | wfmash all-vs-all alignment | Keep, tighten | Supports implicit graph method and 95% identity. Consider moving panmixia/transitive-closure rationale into the following subsection to avoid repetition. |
@@ -45,7 +45,7 @@ consistent with the body. Do not polish text that should be removed.
 
 | Claim or figure promise | Body / legend location | Required Methods support |
 | --- | --- | --- |
-| 466 near-complete assemblies; 465 HPRC v2 haplotypes plus CHM13 | Abstract `submission/paper.tex:53`; Results `submission/paper.tex:111-113` | Sample selection `submission/paper.tex:413-420`; check wording at line 415. |
+| 465 near-complete assemblies; 464 HPRC v2 haplotypes plus CHM13 | Abstract `submission/paper.tex:53`; Results `submission/paper.tex:111-113` | Sample selection `submission/paper.tex:413-420`; check wording at line 415. |
 | Telomere-anchored 500 kb flanks and 18,827 flanks | Results `submission/paper.tex:111-113`; Fig. 1/PHR extent | Flank extraction `submission/paper.tex:435-440`; sample exclusions `submission/paper.tex:422-433`. |
 | No chromosomal partitioning; implicit pangenome graph | Abstract `submission/paper.tex:53`; Results `submission/paper.tex:110-125` | wfmash/IMPG support `submission/paper.tex:442-458`. |
 | 15,668 PHRs on 41/48 arms | Results `submission/paper.tex:129-134`; abstract `submission/paper.tex:53` | PHR detection `submission/paper.tex:460-465`. |

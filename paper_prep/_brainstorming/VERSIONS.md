@@ -60,7 +60,7 @@
 
 | Dataset | Assembly | Version / provenance |
 |---|---|---|
-| **HPRCv2** | 233 individuals × 2 haplotypes = 465 (CHM13 added → 466 in some counts) | HPRCv2 1Mb-tip subset; assemblies at `/moosefs/pangenomes/HPRCv2/*.fa.gz`. |
+| **HPRCv2** | 232 individuals × 2 haplotypes = 464, plus CHM13 = 465 near-complete assemblies | HPRCv2 1Mb-tip subset; assemblies at `/moosefs/pangenomes/HPRCv2/*.fa.gz`. |
 | **HG002** | HG002v1.1 (T2T) | Used for Liftoff JHU v0.6 haplotype-specific annotation. |
 | **CHM13** | T2T-CHM13v2.0 | Used for centromere coords, repeat-mask reference, Hi-C reference. |
 | **WashU pedigree (PAN010 / PAN011 / PAN027 / PAN028)** | T2T (Cechova et al. 2025) | Used for the headline pedigree analysis. |

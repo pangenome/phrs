@@ -130,7 +130,7 @@ The distortion has three parts:
    were incompletely assembled and standard alignments partition homologous
    sequence by chromosome." That tail is the **negative image of sentence 2**:
 
-   - "incompletely assembled"  ↔  sentence 2 "466 **near-complete assemblies**"
+   - "incompletely assembled"  ↔  sentence 2 "465 **near-complete assemblies**"
    - "standard alignments partition … by chromosome"  ↔  sentence 2 "queries
      transitive relationships **without chromosomal or positional priors**"
 
@@ -175,7 +175,7 @@ treated as — they share sequence across non-homologous chromosomes. This is th
 talk's core surprise (cue 137–139), it gives "the paper a biological reason to
 exist before the method appears" (`ABSTRACT_TEXTURE_SYNTHESIS.md:9`), and it
 hands off cleanly to the existing sentence 2 ("Here we survey subtelomeric
-sequence sharing across 466 near-complete assemblies …"). It also removes the
+sequence sharing across 465 near-complete assemblies …"). It also removes the
 sentence-1/sentence-2 redundancy by letting sentence 2 own the assembly +
 alignment points.
 
@@ -283,5 +283,5 @@ one clean turn.
 
 Drop-in check against the existing sentence 2: "… shared with the ends of other,
 non-homologous chromosomes. Here we survey subtelomeric sequence sharing across
-466 near-complete assemblies (465 HPRC v2 haplotypes together with CHM13) …" —
+465 near-complete assemblies (232 HPRC v2 individuals and CHM13) …" —
 reads continuously, with no repeated idea.

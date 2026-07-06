@@ -8,7 +8,7 @@ This research reveals substantial evidence for biological connections between ol
 
 ### 1. Inter-chromosomal Sharing of OR Genes in Subtelomeric PHRs
 
-**Evidence from HPRC Analysis**: The comprehensive subtelomeric analysis across 233 HPRCv2 human samples (465 haplotypes) demonstrates that **OR4F family genes are actively shared across chromosome arms through inter-chromosomal exchange**:
+**Evidence from HPRC Analysis**: The comprehensive subtelomeric analysis across 232 HPRCv2 human individuals (465 near-complete assemblies) demonstrates that **OR4F family genes are actively shared across chromosome arms through inter-chromosomal exchange**:
 
 - **OR4F Distribution**: OR4F family genes detected across **7 distinct communities** (C3, C5, C8, C9, C11, C12, C14) in the subtelomeric similarity network
 - **Widespread Exchange**: OR4F5 and OR4F8P are the most widespread, found across **14 chromosome arms each**
@@ -23,10 +23,10 @@ This research reveals substantial evidence for biological connections between ol
 
 ### 2. HPRC and T2T Literature Documentation of PHR-OR Connections
 
-**Population-Scale Validation**: The HPRCv2 analysis across 465 haplotypes **confirms and extends** prior single-reference observations:
+**Population-Scale Validation**: The HPRCv2 analysis across 465 near-complete assemblies **confirms and extends** prior single-reference observations:
 
 - **Mefford & Trask (2002) Confirmation**: Population-scale validation that "human subtelomeres can contain genes, such as members of the olfactory receptor gene family" 
-- **Ambrosini et al. (2007) Extension**: The analysis extends Ambrosini's OR duplicon architecture (Table 1, Block 2) from single reference to **465 haplotypes**, demonstrating conservation across human populations
+- **Ambrosini et al. (2007) Extension**: The analysis extends Ambrosini's OR duplicon architecture (Table 1, Block 2) from single reference to **465 near-complete assemblies**, demonstrating conservation across human populations
 
 **T2T Assembly Contributions**: 
 - **pq-contigs**: T2T or near-T2T contigs spanning both chromosome arms enabled comprehensive OR gene mapping in previously unresolved subtelomeric regions
@@ -100,7 +100,7 @@ From the olfactory receptor research, **4 LINC genes (LINC01001, LINC01002, LINC
 ### Primary Research Sources
 
 **HPRC/T2T Literature**:
-- HPRCv2 analysis across 233 human samples validating inter-chromosomal OR sharing
+- HPRCv2 analysis across 232 human individuals validating inter-chromosomal OR sharing
 - T2T assembly contributions enabling comprehensive subtelomeric OR gene mapping
 - Population-scale confirmation of Mefford & Trask (2002) and Ambrosini et al. (2007) findings
 

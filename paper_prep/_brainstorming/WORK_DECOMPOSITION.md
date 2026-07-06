@@ -136,7 +136,7 @@ The following figure-source paths in `MANUSCRIPT_SKELETON.md` exist conceptually
 
 19. **`SURVEY_01 §5 #11` version-pinning TODO.** pggb / odgi / igraph / R-package versions must be captured from a fresh `sessionInfo()` and Guix profile manifest before manuscript freeze. Captured by `validate-reproducibility-paths` in `paper_prep/synthesis/VERSIONS.md` §7 as a Methods TODO; downstream `compile-manuscript-draft` should flag in Methods.
 
-20. **`SURVEY_02 §5 #2` Liftoff version pinning.** HPRC annotation-index Liftoff version (used for 462 of the 465 haplotypes) must be added alongside the JHU v0.6 already documented for HG002. Methods TODO; tracked in `VERSIONS.md`.
+20. **`SURVEY_02 §5 #2` Liftoff version pinning.** HPRC annotation-index Liftoff version (used for 462 of the 465 near-complete assemblies) must be added alongside the JHU v0.6 already documented for HG002. Methods TODO; tracked in `VERSIONS.md`.
 
 21. **`SURVEY_01 §1.5` minimap2 version pinning.** Cross-aligner agreement was run with minimap2 v2.30; the current audit host runs 2.24-r1122. Methods must explicitly cite v2.30 for the chimera-flagging analysis to remain reproducible. Tracked in `VERSIONS.md`.
 

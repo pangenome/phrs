@@ -56,7 +56,7 @@ All bibkeys referenced below are present in `REFERENCES_v4.bib`. The action verb
 
 **Actions:**
 - **ADD `@andreace2023pangenome`** (REFRESH_10). On the PGGB clause: independent benchmark confirming PGGB's superiority for complete variation capture.
-- **ADD `@heumos2024nfcore`** (REFRESH_10). On the pipeline scaling clause (or methods chain): nf-core/pangenome scaling to 1000 haplotypes is contemporaneous with our 466-haplotype operation. Lower priority than #1.
+- **ADD `@heumos2024nfcore`** (REFRESH_10). On the pipeline scaling clause (or methods chain): nf-core/pangenome scaling to 1000 haplotypes is contemporaneous with our 465-assembly operation. Lower priority than #1.
 
 **Methods gap**: The 12% wfmash sampling rate and Erdős-Rényi connectivity argument remain *uncited externally*. No new paper closes this. The manuscript or its companion methods paper must formalize this internally.
 

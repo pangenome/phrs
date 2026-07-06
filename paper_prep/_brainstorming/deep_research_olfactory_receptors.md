@@ -192,7 +192,7 @@ This comprehensive analysis integrates deep research findings across six major a
 **HPRC/T2T Literature Documentation:**
 
 **Population-Scale Evidence:**
-- **465 haplotypes** across 233 HPRC samples confirm inter-chromosomal OR sharing
+- **465 near-complete assemblies** across 232 HPRC individuals confirm inter-chromosomal OR sharing
 - **83.2% of subtelomeric sequences** show inter-chromosomal matches
 - **Community detection:** OR4F genes span 7 distinct communities (C3, C5, C8, C9, C11, C12, C14)
 - **T2T assemblies** enabled comprehensive subtelomeric OR mapping
@@ -400,7 +400,7 @@ The integration of findings across functional characterization, copy number vari
 - "Subtelomeric Copy Number Variations: The Importance of 4p/4q Deletions" - PubMed 27665090
 
 **PHR-OR Biology:**
-- HPRCv2 analysis across 233 human samples (465 haplotypes)
+- HPRCv2 analysis across 232 human individuals (465 near-complete assemblies)
 - T2T assembly contributions for subtelomeric OR mapping
 - Population-scale validation of Mefford & Trask (2002) findings
 - CTCF and lamin-dependent insulator function studies

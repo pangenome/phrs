@@ -1,7 +1,7 @@
 # Extended Data Figure 1 — Pipeline and per-arm flank inventory
 
-**(a)** Pipeline overview: 465 HPRCv2 v1.1 haplotype assemblies (233
-individuals) → 18,827 telomere-anchored 500 kb subtelomeric flanks across 48
+**(a)** Pipeline overview: 465 near-complete assemblies (232 HPRC v2
+individuals and CHM13) → 18,827 telomere-anchored 500 kb subtelomeric flanks across 48
 arms → wfmash all-vs-all `-p 95 -t 48` (18,827 PAFs) → impg sliding-window
 scan (id ≥ 0.95, ≥ 2 chrs, ≥ 5 alns/chr, ≥ 3 kb output) → 15,668 PHRs
 (83.2 %) → pggb + odgi similarity (15,668 × 15,668 Jaccard) → Leiden 15

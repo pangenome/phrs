@@ -36,7 +36,7 @@ C15 (PAR1) has 32.1% protein-coding genes, reflecting the functional gene conten
 
 **Key metrics.** 10 OR4F family genes detected across 7 communities (C3, C5, C8, C9, C11, C12, C14). OR4F5 and OR4F8P most widespread (14 arms each). IQSEC3 detected in C5 (chr12_p, 453 samples).
 
-**Result.** Confirms at population scale that "human subtelomeres can contain genes, such as members of the olfactory receptor gene family" (Mefford & Trask 2002) and extends Ambrosini et al.'s (2007) OR duplicon architecture (Table 1, Block 2) to 465 haplotypes.
+**Result.** Confirms at population scale that "human subtelomeres can contain genes, such as members of the olfactory receptor gene family" (Mefford & Trask 2002) and extends Ambrosini et al.'s (2007) OR duplicon architecture (Table 1, Block 2) to 465 near-complete assemblies.
 
 ### Ambrosini subtelomere-specific blocks → Leiden communities
 

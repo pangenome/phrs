@@ -13,7 +13,7 @@
 |---|---|---|---|---|
 | 1 | Title + cytogenetic-era continuity | — | f7501 to pangenome | Four-decade arc: cytogenetic banding → flow-sorted FISH → cosmid surveys → pangenome |
 | 2 | Why subtelomeres? | [F1a] | 18,827 / 15,668 | Telomere-anchored 500 kb captures the inter-chromosomal sharing zone Flint/Mefford described |
-| 3 | The dataset and pipeline at a glance | [F1] | 233 / 465 | Reproducible pipeline; 95 % identity, deliberately captures Ambrosini's high-identity peak |
+| 3 | The dataset and pipeline at a glance | [F1] | 232 / 465 | Reproducible pipeline; 95 % identity, deliberately captures Ambrosini's high-identity peak |
 | 4 | 41 arms → 15 communities | [F1c] | 12 of 15 | Leiden recapitulates known biology (D4Z4, PAR1/2, acrocentric-p, f7501, OR4F); UPGMA agrees on 12/15 |
 | 5 | Three architectural categories | [F1d] | 8/41 / 34/41 / 7/41 | Quantitative extension of Mefford & Trask's "patchwork" model |
 | 6 | Within-community: arm identity is preserved (almost) everywhere | [F2a] | p < 1e-300, 8/9 | Allele closer than paralog in 8/9 multi-arm communities; C7 is the lone reversal (70.5 % paralog closer) |
@@ -32,7 +32,7 @@
 
 ### Slide 1 — Title + cytogenetic-era continuity (~1 min)
 - One-line title: "Population-scale subtelomeric communities mirror 3D nuclear organisation."
-- One-image set-up: f7501 cosmid FISH pattern (Mefford & Trask 2002 Fig. 3 reference) → "this work, 465 haplotypes, four decades later".
+- One-image set-up: f7501 cosmid FISH pattern (Mefford & Trask 2002 Fig. 3 reference) → "this work, 465 near-complete assemblies, four decades later".
 - Four-decade narrative arc in two sentences (cytogenetic banding → flow-sorted FISH → cosmid surveys → pangenome). Source: `SURVEY_FRAMING Part 3`.
 
 ### Slide 2 — Why subtelomeres? [F1a] (~50 s)
@@ -41,7 +41,7 @@
 - Four prior anchors named (Flint 1997 two-domain; Mefford & Trask 2002 patchwork; Linardopoulou 2005 hot spots; Ambrosini 2007 duplicons).
 
 ### Slide 3 — Dataset & pipeline [F1, ED1a] (~50 s)
-- 233 individuals × 2 haplotypes = 465 → 12,649 classified contigs → 18,827 telomere-anchored 500 kb flanks → 15,668 PHRs (`SURVEY_01 §1`).
+- 232 individuals × 2 haplotypes = 464, plus CHM13 = 465 near-complete assemblies → 12,649 classified contigs → 18,827 telomere-anchored 500 kb flanks → 15,668 PHRs (`SURVEY_01 §1`).
 - Pipeline schematic (5 stages); 95 % identity threshold deliberately captures the high-identity Ambrosini peak.
 - One sentence honesty: "the 91 % older-exchange peak is missed by design".
 
@@ -131,7 +131,7 @@
 
 | Number | Anchor (one-liner if asked) |
 |---|---|
-| 233 / 465 | individuals / haplotypes (HPRCv2) |
+| 232 / 465 | individuals / near-complete assemblies (HPRCv2) |
 | 18,827 / 15,668 | flanks / signal-bearing PHRs |
 | 41 → 15 | arms → arm-level communities |
 | 50 | sequence-level communities |

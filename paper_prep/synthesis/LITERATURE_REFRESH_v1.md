@@ -178,7 +178,7 @@ Between the NATURE_DRAFT_v1 freeze and 2026-05-17, the subtelomere literature mo
 
 ### Contradiction 1: D4Z4 NOT confined to 4q/10q
 - **Draft sentence (P1)**: "the D4Z4 macrosatellite of 4q35 is found in degenerate copies on 10q26 and underlies facioscapulohumeral dystrophy [@dux4_d4z4_fshd_lemmers2010worldwide; @dux4_d4z4_fshd_lemmers2007]."
-- **Draft sentence (P4)**: "Finally, 4q and 10q pair through the D4Z4 macrosatellite [@dux4_d4z4_fshd_lemmers2010worldwide; @dux4_d4z4_fshd_lemmers2007; @Cabianca2012], with wide copy-number diversity across the 465 haplotypes."
+- **Draft sentence (P4)**: "Finally, 4q and 10q pair through the D4Z4 macrosatellite [@dux4_d4z4_fshd_lemmers2010worldwide; @dux4_d4z4_fshd_lemmers2007; @Cabianca2012], with wide copy-number diversity across the 465 near-complete assemblies."
 - **Contradicting paper**: Salsi et al. 2026, Eur J Hum Genet (DOI 10.1038/s41431-025-02000-x, PMID 41535478). Using T2T-CHM13, identifies D4Z4 with intact DUX4 ORFs or polyadenylation signals on **at least ten additional chromosomes** beyond 4q35/10q26.
 - **Recommended human action**: Insert one hedging clause: "the canonical 4q/10q D4Z4 pair, with degenerate D4Z4-like copies on at least ten additional chromosomes revealed in T2T-CHM13 [@Salsi2026fshd]."
 - **Severity**: HIGH (operational/cytogenetic, not numerical; reviewers may flag).

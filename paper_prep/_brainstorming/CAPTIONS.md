@@ -12,7 +12,7 @@
 
 ## Figure 1 — Population-scale subtelomeric communities (the landscape)
 
-*Inter-chromosomal subtelomeric sharing partitions 41 chromosome arms into 15 communities across 465 HPRCv2 haplotypes from 233 individuals.* **(a)** Genome-wide stacked identity heatmap (n = 465 haplotypes × 24 chromosomes) shows discrete blocks of telomere-anchored shared sequence; 15,668 PHRs called from 18,827 telomere-anchored 500 kb flanks (`SURVEY_01 §1.1–§1.5`). **(b)** Genome-wide n-chromosomes-sharing heatmap with PHR-call BED overlay; 83 % of flanks (n = 15,621/18,827) carry inter-chromosomal sequence sharing. **(c)** 41 × 41 arm-level Jaccard distance heatmap (Leiden, k = 15; modularity Q = 0.97; silhouette s = 0.347 arm-level / 0.602 sequence-level; 12/15 UPGMA-Leiden agreement, `SURVEY_01 §1.8, §1.10`). **(d)** Per-arm architecture-category bar — homogeneous 8/41, polymorphic 34/41, fully interchangeable 7/41 (acrocentric p-arms + PARs). 15.9 % of subtelomeric sequences cross-arm at the arm level; 11.1 % at the sequence level (n = 15,668 sequences; `SURVEY_04 §1.4, §1.11`).
+*Inter-chromosomal subtelomeric sharing partitions 41 chromosome arms into 15 communities across 465 near-complete assemblies from 232 individuals.* **(a)** Genome-wide stacked identity heatmap (n = 465 near-complete assemblies × 24 chromosomes) shows discrete blocks of telomere-anchored shared sequence; 15,668 PHRs called from 18,827 telomere-anchored 500 kb flanks (`SURVEY_01 §1.1–§1.5`). **(b)** Genome-wide n-chromosomes-sharing heatmap with PHR-call BED overlay; 83 % of flanks (n = 15,621/18,827) carry inter-chromosomal sequence sharing. **(c)** 41 × 41 arm-level Jaccard distance heatmap (Leiden, k = 15; modularity Q = 0.97; silhouette s = 0.347 arm-level / 0.602 sequence-level; 12/15 UPGMA-Leiden agreement, `SURVEY_01 §1.8, §1.10`). **(d)** Per-arm architecture-category bar — homogeneous 8/41, polymorphic 34/41, fully interchangeable 7/41 (acrocentric p-arms + PARs). 15.9 % of subtelomeric sequences cross-arm at the arm level; 11.1 % at the sequence level (n = 15,668 sequences; `SURVEY_04 §1.4, §1.11`).
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## Extended Data Figure 1 — Pipeline and per-arm flank inventory
 
-*From assemblies to communities.* **(a)** Pipeline schematic (no statistic): 465 HPRCv2 haplotype-resolved assemblies → 18,827 telomere-anchored 500 kb flanks → wfmash all-vs-all (asm20, p95, id95, len ≥ 30 kb) → impg projection → Leiden community detection. **(b)** Per-arm flank counts across 48 arms with assembly QC overlay (n = 18,827 flanks; assembly classifications from `contig_classifications.tsv`; `SURVEY_01 §3`). **(c)** PHR length distribution (n = 15,668 PHRs; median 105 kb, mean 144 kb). **(d)** Chr18_q (NA18982#1) chimera evidence — wfmash + minimap2 dotplot, NNN gap, and Flagger annotation flagging the chimera (`SURVEY_01 §1.5, §5 item 6`).
+*From assemblies to communities.* **(a)** Pipeline schematic (no statistic): 465 near-complete assemblies → 18,827 telomere-anchored 500 kb flanks → wfmash all-vs-all (asm20, p95, id95, len ≥ 30 kb) → impg projection → Leiden community detection. **(b)** Per-arm flank counts across 48 arms with assembly QC overlay (n = 18,827 flanks; assembly classifications from `contig_classifications.tsv`; `SURVEY_01 §3`). **(c)** PHR length distribution (n = 15,668 PHRs; median 105 kb, mean 144 kb). **(d)** Chr18_q (NA18982#1) chimera evidence — wfmash + minimap2 dotplot, NNN gap, and Flagger annotation flagging the chimera (`SURVEY_01 §1.5, §5 item 6`).
 
 ---
 
@@ -48,7 +48,7 @@
 
 ## Extended Data Figure 3 — Annotation: TAR1 + internal (TTAGGG)n + telomere length
 
-*Subtelomeric annotation across 465 haplotypes.* **(a)** TAR1 prevalence per arm (PAR1 absence; acrocentric intermediate; autosomal saturation; `SURVEY_02 §6 Fig M1a`). **(b)** Internal (TTAGGG)n island length distribution and canonical-fraction histogram (n = 18,352 islands across 8,321 sequences = 53.1 % of PHR sequences; mode 50–74 bp; 32.2 % canonical, 47.2 % variant-dominant). **(c)** Terminal telomere length by community (n = 15 communities; Kruskal-Wallis H = 100.89, p = 3.2 × 10⁻¹⁵; `SURVEY_02 §6 ED3`). **(d)** Per-arm TAR1 positional distance-from-telomere (n = 41 arms; `SURVEY_02 §6 Fig M1b`).
+*Subtelomeric annotation across 465 near-complete assemblies.* **(a)** TAR1 prevalence per arm (PAR1 absence; acrocentric intermediate; autosomal saturation; `SURVEY_02 §6 Fig M1a`). **(b)** Internal (TTAGGG)n island length distribution and canonical-fraction histogram (n = 18,352 islands across 8,321 sequences = 53.1 % of PHR sequences; mode 50–74 bp; 32.2 % canonical, 47.2 % variant-dominant). **(c)** Terminal telomere length by community (n = 15 communities; Kruskal-Wallis H = 100.89, p = 3.2 × 10⁻¹⁵; `SURVEY_02 §6 ED3`). **(d)** Per-arm TAR1 positional distance-from-telomere (n = 41 arms; `SURVEY_02 §6 Fig M1b`).
 
 ---
 
@@ -85,6 +85,6 @@
 ## Caption conventions and gaps
 
 - **Effect-size convention** is included in each caption (B/W or W/B for 3D distances, ρ for correlations, Wilcoxon p for paired distance comparisons, Fst for population structure). For pure schematic panels (ED1a, ED8a, ED8b) no statistic is associated; the underlying TSV path is cited instead.
-- **Headline numbers** (n = 233 individuals, n = 465 haplotypes, n = 18,827 flanks, n = 15,668 PHRs, n = 41 arms / 15 communities / 50 sequence-communities) are quoted in the Results main text and in `MANUSCRIPT_SKELETON.md` headline-numbers section, not repeated in every caption.
+- **Headline numbers** (n = 232 individuals, n = 465 near-complete assemblies, n = 18,827 flanks, n = 15,668 PHRs, n = 41 arms / 15 communities / 50 sequence-communities) are quoted in the Results main text and in `MANUSCRIPT_SKELETON.md` headline-numbers section, not repeated in every caption.
 - **Multi-test correction** state per p-value is the responsibility of `validate-statistics-fdr-cis` (task 10) — captions here flag uncorrected p-values where the underlying survey did so.
 - **Schematics** (ED1a pipeline; ED8a feedback loop; ED8b D4Z4 tethering) intentionally carry no test statistic — the validation task `validate-captions-references` flags these as schematic-only and not as missing statistics.

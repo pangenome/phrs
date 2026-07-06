@@ -27,8 +27,8 @@ Line numbers refer to `paper_prep/synthesis/NATURE_DRAFT_v1.md` and to the respe
 
 | # | Claim (location, line, verbatim) | Value in draft | Value in report (file:section) | Status |
 |---|---|---|---|---|
-| 1 | Abstract L18: "465 near-complete haplotype assemblies from 233 individuals" | 465 / 233 | 11_summary.md L5 "233 individuals, 465 haplotypes" | MATCH |
-| 2 | Abstract L18: "plus CHM13v2.0 (466 haplotype-equivalent units)" | 466 | derivable (465 HPRC + CHM13 = 466); 01_pipeline.md L27 says 18,827 across 48 arms from 465 HPRC + CHM13 | UNDERSPECIFIED-IN-REPORT (figure not explicit but math agrees) |
+| 1 | Abstract L18: "465 near-complete assemblies from 232 individuals" | 465 / 232 | 11_summary.md L5 "232 individuals, 465 near-complete assemblies" | MATCH |
+| 2 | Abstract L18: "232 HPRC v2 individuals and CHM13v2.0 (465 near-complete assemblies)" | 465 | derivable (464 HPRC haplotypes + CHM13 = 465 near-complete assemblies); 01_pipeline.md L27 says 18,827 across 48 arms from 464 HPRC haplotypes + CHM13 | UNDERSPECIFIED-IN-REPORT (figure not explicit but math agrees) |
 | 3 | Abstract L18: "18,827 telomere-anchored 500 kb flanks" | 18,827 | 01_pipeline.md L27 ✓ | MATCH |
 | 4 | Abstract L18: "15,668 pseudohomologous regions" | 15,668 | 01_pipeline.md L71 ✓ | MATCH |
 | 5 | Main L24: "15,668 PHRs (83.2% of flanks)" | 83.2% | 01_pipeline.md L71 "15,668 sequences (83.2%)" ✓ | MATCH |
@@ -103,7 +103,7 @@ Line numbers refer to `paper_prep/synthesis/NATURE_DRAFT_v1.md` and to the respe
 | 74 | Main L42: "Lalli et al…Spearman ρ = -0.35, n = 46" | −0.35 / 46 | 07_integrated.md L103 reports "rho = −0.43, p = 0.006" (39 arms); 12_literature.md L73 same (rho = −0.43, N = 39). ed8c caption notes "Survey-reported published values: ρ = −0.43 (39 arms)" vs the panel's own "46 arms, ρ = −0.35". | **DIVERGES.** Draft follows ed8c panel numbers (−0.35, n=46) instead of the report's −0.43, N=39. |
 | 75 | Main L42: "collapses to ρ ≈ 0 (n = 40)" | ≈ 0 / 40 | 07_integrated.md L103 and 12_literature.md L99 give "rho = 0.00, N = 32"; ed8c "ρ = −0.01, p = 0.97, N = 40" | **DIVERGES (same as row 74).** |
 | 76 | Main L42: "DUX4 family copy counts in Extended Data Fig. 4c, range 0 to 22" | 0–22 | 07_integrated.md L60 "C1 sequences: median 22 DUX4L; non-C1 outliers: 0–2" (median 22, not range max 22; outliers 0–2); ed4c caption says DUX4 16–20 copies | UNDERSPECIFIED-IN-REPORT (no clean "range 0 to 22"; combines two different statistics from §07 and ed4) |
-| 77 | Methods L46: "AFR 67, EAS 52, AMR 44, SAS 37, EUR 33" | 67/52/44/37/33 | 10_limitations.md L5 ✓ | MATCH |
+| 77 | Methods L46: "AFR 67, EAS 52, AMR 44, SAS 37, EUR 32" | 67/52/44/37/32 | 10_limitations.md L5 ✓ | MATCH |
 | 78 | Methods L48: "MIN_LEN = 1 Mb" (implicit "1 Mb contig minimum") | 1 Mb | 01_pipeline.md L25 ✓ | MATCH |
 | 79 | Main L32: "C7 acrocentric p-arms… chr21_p 94.0%, chr14_p 83.0%, chr15_p 76.5%, chr13_p 88.2%, chr22_p 43.0%" | 94.0 / 83.0 / 76.5 / 88.2 / 43.0 | 04_heterogeneity.md L64–74 arm-level table: chr21_p 94.0%, chr14_p 83.0%, chr15_p 76.5%, chr22_p 43.0%; **chr13_p is not in the arm-level cross-arm table**; the seq-level table (01_pipeline.md L294) shows chr13_p 100% | DIVERGES (chr13_p 88.2% is in neither table; possibly a different aggregation) |
 | 80 | Main L36: "(C1 D4Z4 radial 0.732 peripheral, C14 PAR2 0.840 peripheral, C10 chr17p 0.474 interior)" — second occurrence in same paragraph | same | (see row 55) | MATCH |

@@ -76,7 +76,7 @@ I am asking one question: does the paper hit the same 5-7 story beats as the tal
 
 **Transcript cite:** 00:29:15-00:30:27 (segments 24-50).
 
-**Draft (P2, line 34):** "We treat every haplotype as its own reference. From the 233 individuals we used 465 HPRC v2 haplotype assemblies..."
+**Draft (P2, line 34):** "We treat every haplotype as its own reference. From the 232 individuals we used 465 near-complete assemblies..."
 
 **Transcript (00:29:15-00:30:24, G02/G03):** "these graph models...are effectively equivalent to alignments between the genomes. And they're the same. It's just a different way of thinking of them." / "technical reasons led us to break them apart."
 

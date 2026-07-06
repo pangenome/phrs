@@ -73,7 +73,7 @@ Cross-referencing our PHR-only GO enrichment (245 genes, 28 significant terms) w
 ## Consistency Assessment
 
 ### Expected Subset Relationship: ✅ CONFIRMED
-**Prediction**: CHM13-only PHR analysis should be a subset of the 233-sample analysis
+**Prediction**: CHM13-only PHR analysis should be a subset of the 232-individual analysis
 **Evidence**:
 - PHR genes (245) < Community genes (374) ✓
 - Major gene families show strong but not complete overlap ✓

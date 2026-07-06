@@ -35,7 +35,7 @@ changes the absolute rate by a factor of ~6.
 |---|---|---|---|---|
 | **A** | N_arms_signal × per_arm_PHR × 2 hap/parent = 41 × 85.4 kb × 2 | 7.00 | 21.0 | Task-prescribed. × 2 reflects that the meiosis has 2 parental haplotypes as donor pool; the child haploid is searched against both. |
 | **B** | Per-haploid PHR pangenome length (Abstract) | 3.50 | 10.5 | Mechanistically clean: each event is detected ONCE in the child's transmitted haploid; donor pool weighting is not added. |
-| **C** | 18,827 flanks ÷ 465 haplotypes × 500 kb = 20.24 Mb/haploid | 20.24 | 60.7 | Liberal: counts all flank sequence, including non-PHR. Fairer comparison to genome-wide cM/Mb maps that are not PHR-restricted. |
+| **C** | 18,827 flanks ÷ 465 near-complete assemblies × 500 kb = 20.24 Mb/haploid | 20.24 | 60.7 | Liberal: counts all flank sequence, including non-PHR. Fairer comparison to genome-wide cM/Mb maps that are not PHR-restricted. |
 
 CHM13 PHR sequence per haploid in `chm13.phrs.bed` = 6.015 Mb (37 entries),
 which is intermediate between B (3.5 Mb, pangenome median) and C (20.24 Mb,

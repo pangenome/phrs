@@ -78,7 +78,7 @@ And the abstract:
 > "the canonical D4Z4 macrosatellite on 4q35 and 10q26 underlies facioscapulohumeral dystrophy."
 
 And P4:
-> "4q and 10q pair through the canonical D4Z4 macrosatellite, with wide copy-number diversity across the 465 haplotypes."
+> "4q and 10q pair through the canonical D4Z4 macrosatellite, with wide copy-number diversity across the 465 near-complete assemblies."
 
 There is no mention of cancer in the paper's treatment of the 4q/10q community.
 
@@ -87,7 +87,7 @@ There is no mention of cancer in the paper's treatment of the 4q/10q community.
 
 **Divergence:** The speaker used the cancer/oncology link as the motivating reason to care about the 4q/10q DUX4 community. The paper introduces it exclusively through the FSHD lens. These are not contradictory — DUX4 is implicated in both FSHD and cancer — but a reader of the paper has no idea why the speaker found 4q/10q particularly noteworthy, because the cancer angle is absent. This is not a scientific error; it is a narrative motivation missing from the paper that the speaker used to engage the audience. Given that the target journal is Nature (broad readership), the cancer connection would help non-FSHD readers care about the 4q/10q community.
 
-**Suggested fix:** In P1, after the FSHD sentence, add: "DUX4 reactivation is also an oncofetal programme in multiple cancer types, providing additional motivation for tracking copy-number variation across haplotypes." In P4, after "wide copy-number diversity across the 465 haplotypes," add a parenthetical: "(relevant to both FSHD penetrance and somatic DUX4 reactivation in cancer)."
+**Suggested fix:** In P1, after the FSHD sentence, add: "DUX4 reactivation is also an oncofetal programme in multiple cancer types, providing additional motivation for tracking copy-number variation across haplotypes." In P4, after "wide copy-number diversity across the 465 near-complete assemblies," add a parenthetical: "(relevant to both FSHD penetrance and somatic DUX4 reactivation in cancer)."
 
 ---
 

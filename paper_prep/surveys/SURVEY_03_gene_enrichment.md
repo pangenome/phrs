@@ -205,7 +205,7 @@ The section as written **does not currently surface this copy-aware ORA**. Wheth
 
 **Fig SI-G1.G — Annotation density per community.** *Status:* ✗ TODO at arm level (✓ at sequence level). Caption: "Mean Liftoff gene-annotation density (genes per kb of PHR sequence) per community. C7 acrocentrics carry the highest density driven by mitochondrial-pseudogene insertions in T2T assemblies."
 
-**Fig SI-G3 — OR4F population-scale heatmap.** *Status:* ✗ TODO (new). Caption: "10 OR4F family members across 41 arms × 465 haplotypes. OR4F5 and OR4F8P are present in 14 arms each, extending Mefford & Trask (2002) and Ambrosini et al. (2007, Block 2) to population scale."
+**Fig SI-G3 — OR4F population-scale heatmap.** *Status:* ✗ TODO (new). Caption: "10 OR4F family members across 41 arms × 465 near-complete assemblies. OR4F5 and OR4F8P are present in 14 arms each, extending Mefford & Trask (2002) and Ambrosini et al. (2007, Block 2) to population scale."
 
 **Fig SI-G4 — D4Z4 / DUX4L panel.** *Status:* ✗ TODO. Caption: "C1-specific D4Z4 macrosatellite array on chr4_q / chr10_q. 22 DUX4L pseudogenes are detected; the chr4_q permissive 4qA haplotype is the established FSHD locus (Lemmers et al. 2010)."
 

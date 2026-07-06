@@ -2,7 +2,7 @@
 
 ### Sample composition
 
-**Key metrics.** 233 HPRCv2 samples: AFR = 67 (28.8%), EAS = 52 (22.3%), AMR = 44 (18.9%), SAS = 37 (15.9%), EUR = 33 (14.2%). Population-level findings (the cross-arm affinity section) should be interpreted with this imbalance in mind. Within-superpopulation heterogeneity is not modeled.
+**Key metrics.** 232 HPRCv2 individuals: AFR = 67 (28.9%), EAS = 52 (22.4%), AMR = 44 (19.0%), SAS = 37 (15.9%), EUR = 32 (13.8%). Population-level findings (the cross-arm affinity section) should be interpreted with this imbalance in mind. Within-superpopulation heterogeneity is not modeled.
 
 ### Methodological limitations
 

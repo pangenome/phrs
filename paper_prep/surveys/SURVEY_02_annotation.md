@@ -10,7 +10,7 @@ Scope: gene + repeat (TAR1) annotation pipeline, internal (TTAGGG)n islands, ter
 **Annotation coverage**
 - Inputs: 464 haplotype-specific Liftoff GFF3 + CHM13 (465 total). HG002 annotated separately with JHU Liftoff v0.6 on HG002v1.1.
 - 18,827 PHR sequences → **15,668 retained** (3,158 removed for no inter-chromosomal signal; chimeric chr18_q already excluded upstream).
-- **173,881 gene annotations** (374 unique genes) across 233 samples and 39 arms; chr7_q and chr12_q yield zero genes (PHR confined to 5–25 kb tip, below Liftoff threshold).
+- **173,881 gene annotations** (374 unique genes) across 232 individuals and 39 arms; chr7_q and chr12_q yield zero genes (PHR confined to 5–25 kb tip, below Liftoff threshold).
 - **21,544 TAR1 entries** across 14,816 sequences (94.6%) and all 41 arms.
 
 **TAR1 prevalence**
@@ -137,7 +137,7 @@ No figures exist for: TAR1 positional distribution, internal (TTAGGG)n islands (
 ### Main-text candidates
 - **Fig M1. TAR1 + internal-island landscape across 41 chromosome arms** [GEN]
   Multi-panel arm-ordered plot. (a) TAR1 prevalence per arm (highlight PAR1 absence, acrocentric drop, autosomal saturation); (b) TAR1 positional density (telomere-proximal mode + acrocentric/chr9_q deep tail); (c) Internal (TTAGGG)n island count per arm; (d) Median island distance from telomere per arm.
-  *Caption.* "Subtelomeric repeat content is structured along chromosome arms. (a) TAR1 prevalence is near-saturating on autosomes (>99%), absent in PAR1, and intermediate (73–79%) on acrocentric p-arms. (b) TAR1 sits within 10 kb of the telomere on most arms; acrocentric p-arms and chr9_q carry deeper TAR1 reflecting their large PHR regions. (c) Internal (TTAGGG)n islands are most abundant on chr20_q, chr12_q, chr16_p, chr18_p. (d) Most p-arms place islands near the telomere; arms with large PHRs (chr11_p, chr6_p, chr20_p, chr18_p, chr16_p) extend islands deeper. n=15,668 PHR sequences across 465 haplotypes."
+  *Caption.* "Subtelomeric repeat content is structured along chromosome arms. (a) TAR1 prevalence is near-saturating on autosomes (>99%), absent in PAR1, and intermediate (73–79%) on acrocentric p-arms. (b) TAR1 sits within 10 kb of the telomere on most arms; acrocentric p-arms and chr9_q carry deeper TAR1 reflecting their large PHR regions. (c) Internal (TTAGGG)n islands are most abundant on chr20_q, chr12_q, chr16_p, chr18_p. (d) Most p-arms place islands near the telomere; arms with large PHRs (chr11_p, chr6_p, chr20_p, chr18_p, chr16_p) extend islands deeper. n=15,668 PHR sequences across 465 near-complete assemblies."
 
 - **Fig M2. TTAGGG island composition reveals degenerate telomeric remnants** [GEN]
   (a) Length distribution histogram with mode at 50–74 bp; overlay Ambrosini et al. (2007) reported 150–200 bp range; (b) Hexamer-composition stacked bar (TTAGGG / TGAGGG / TTGGGG / TCAGGG); (c) Distribution of canonical-fraction per island (showing only 32.2% are ≥80% canonical).
@@ -163,7 +163,7 @@ No figures exist for: TAR1 positional distribution, internal (TTAGGG)n islands (
 The annotation section is supporting material rather than the main result; budget **2 slides** (≈90 s).
 
 - **Slide A — "Every subtelomere carries the same building blocks."**
-  - 173,881 gene annotations (374 unique genes) and 21,544 TAR1 entries across 15,668 PHR sequences from 465 haplotypes.
+  - 173,881 gene annotations (374 unique genes) and 21,544 TAR1 entries across 15,668 PHR sequences from 465 near-complete assemblies.
   - TAR1 in **all 41 arms**, near-saturating outside PAR1; PAR1 is essentially TAR1-free (chrX_p 0.3%, chrY_p 1.1%) — consistent with PAR1 being a crossover region, not a repeat-mediated exchange region.
   - Visual: Fig M1 (TAR1 prevalence + position landscape).
 

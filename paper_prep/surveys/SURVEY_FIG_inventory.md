@@ -32,7 +32,7 @@ find . -type f \( -iname "*.png" -o -iname "*.pdf" -o -iname "*.svg" -o -iname "
 
 | PATH | TOPIC | CAPTION HINT | RES/QUALITY | LIKELY USE |
 |---|---|---|---|---|
-| `p_genome_wide_identity_heatmap.pdf` | Pipeline §01 | Genome-wide stacked identity heatmap (with inset zoom). Per-position max identity across 465 haplotypes per arm, all 24 chromosomes stacked. | Vector PDF, 2.5 MB, with inset draw_plot composition | **main** (top candidate Fig 1) |
+| `p_genome_wide_identity_heatmap.pdf` | Pipeline §01 | Genome-wide stacked identity heatmap (with inset zoom). Per-position max identity across 465 near-complete assemblies per arm, all 24 chromosomes stacked. | Vector PDF, 2.5 MB, with inset draw_plot composition | **main** (top candidate Fig 1) |
 | `p_genome_wide_identity_heatmap.png` | Pipeline §01 | Same as above, raster. | 1440×1079 PNG | talk-only / web preview |
 | `p_genome_wide_identity_heatmap_no_inset.pdf` | Pipeline §01 | Genome-wide identity heatmap, no inset (clean version). | Vector PDF, 2.5 MB | **main** (alt Fig 1) |
 | `p_genome_wide_identity_heatmap_no_inset.png` | Pipeline §01 | Same, raster. | PNG | talk-only |
@@ -59,7 +59,7 @@ find . -type f \( -iname "*.png" -o -iname "*.pdf" -o -iname "*.svg" -o -iname "
 
 | PATH (family pattern) | TOPIC | CAPTION HINT | RES/QUALITY | LIKELY USE |
 |---|---|---|---|---|
-| `identity_heatmap_chr{1..22,M,X,Y}.pdf` (×25) | Pipeline §01 | Per-chromosome identity heatmap, full chromosome, all 465 haplotypes stacked. | Vector PDF | **SI atlas** (1 panel/chromosome) |
+| `identity_heatmap_chr{1..22,M,X,Y}.pdf` (×25) | Pipeline §01 | Per-chromosome identity heatmap, full chromosome, all 465 near-complete assemblies stacked. | Vector PDF | **SI atlas** (1 panel/chromosome) |
 | `identity_heatmap_chr{1..22,M,X}.zoom_0-1.pdf` (×24) | Pipeline §01 | Same, zoomed to first 1 Mb (p-arm subtelomere). | Vector PDF | **SI atlas** (zoom set) |
 | `identity_heatmap_chr{1..22,X,Y}.zoom_last1mb.pdf` (×24) | Pipeline §01 | Same, zoomed to terminal 1 Mb (q-arm subtelomere). | Vector PDF | **SI atlas** (zoom set) |
 

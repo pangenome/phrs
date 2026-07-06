@@ -39,9 +39,9 @@ continues to satisfy the promises it creates.
   `ABSTRACT_TEXTURE_SYNTHESIS.md:35`.
 
 - Abstract sentence 2, `submission/paper.tex:53`; source text at
-  `ABSTRACT_nature.md:9`: keep. The 466/465+CHM13 framing is coherent:
-  "466 near-complete assemblies" is immediately parenthesized as "465 HPRC v2
-  haplotypes together with CHM13", matching the stable-number rule at
+  `ABSTRACT_nature.md:9`: keep. The 465-near-complete-assembly framing is coherent:
+  "465 near-complete assemblies" is immediately parenthesized as "232 HPRC v2
+  individuals and CHM13", matching the stable-number rule at
   `ABSTRACT_TEXTURE_SYNTHESIS.md:70` and the body support at
   `submission/paper.tex:111` to `submission/paper.tex:113`. "Implicit pangenome
   graph" and "approximately 12%" are technical, but the sentence keeps them
@@ -109,7 +109,7 @@ continues to satisfy the promises it creates.
 
 ## Body-section obligations created by the abstract
 
-- The implicit-graph Results must support the abstract's 466/465+CHM13 and
+- The implicit-graph Results must support the abstract's 465-near-complete-assembly and
   12%-sampling promise without drifting into method-first prose. Current support
   is at `submission/paper.tex:110` to `submission/paper.tex:125`; Methods support
   starts at `submission/paper.tex:413`.

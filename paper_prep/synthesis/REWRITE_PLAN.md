@@ -133,7 +133,7 @@ Depends on: none.
 Lane: B
 Inputs: `/moosefs/guarracino/HPRCv2/assemblies/`, `/moosefs/guarracino/HPRCv2/PHR_III/HiC/sample_info.tsv`, HPRC v2 main-paper sample table.
 Output: `paper_prep/synthesis/dataset_table.tsv` + `paper_prep/synthesis/sections/06_methods_dataset.md`.
-Acceptance: TSV has one row per sample × haplotype with included/excluded flag + reason; the total = 466 and the 466 number is reconciled with HPRC v2's published count. Methods sub-section cites the canonical 466.
+Acceptance: TSV has one row per sample × haplotype with included/excluded flag + reason; the total = 465 near-complete assemblies (232 individuals × 2 haplotypes plus CHM13) and the 465 number is reconciled with HPRC v2's published count. Methods sub-section cites the canonical 465.
 Depends on: none.
 
 ### TASK-13: Run NJ on sequence-level distance matrix + bootstrap; export .newick

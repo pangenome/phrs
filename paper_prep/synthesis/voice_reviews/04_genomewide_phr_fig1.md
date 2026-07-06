@@ -72,9 +72,9 @@ is valuable because it prevents "near-ubiquity" from sounding like universality.
 If the line is moved or compressed, preserve both the count and the limitation:
 7 of 48 arms carry no detectable interchromosomal homology under this assay.
 
-Use 465 HPRC v2 haplotypes plus CHM13 in the Fig. 1 legend. The current legend
+Use 464 HPRC v2 haplotypes plus CHM13 (= 465 near-complete assemblies) in the Fig. 1 legend. The current legend
 at `submission/paper.tex:296` to `submission/paper.tex:297` does this correctly.
-Use 466 near-complete assemblies only where a more abstract dataset summary is
+Use 465 near-complete assemblies only where a more abstract dataset summary is
 needed.
 
 ## 3. Caveat language for flank-size truncation and PHR extent

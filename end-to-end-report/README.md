@@ -2,11 +2,11 @@
 
 ## Overview
 
-**What it does.** Identifies and characterizes inter-chromosomal subtelomeric sequence sharing across 233 HPRCv2 human samples, validates the findings with 3D genome data from multiple technologies and organisms.
+**What it does.** Identifies and characterizes inter-chromosomal subtelomeric sequence sharing across 232 HPRCv2 individuals, validates the findings with 3D genome data from multiple technologies and organisms.
 
-**How.** Extract the terminal 500 kb from each chromosome arm across 465 haplotypes (contigs ≥ 1 Mb). Align all-vs-all at ≥95% identity to find which arms share sequence across different chromosomes. Build a pangenome graph from these shared regions, then cluster arms into communities by graph similarity. Annotate communities with genes and repeats. Validate by testing whether same-community arms sit closer in 3D nuclear space — using Hi-C (6 human samples), Pore-C and CiFi (HG002), Dip-C single-cell (16 GM12878 cells), sperm single-cell (20 cells), RPE-1 (3 datasets), and mouse meiotic Hi-C (4 stages).
+**How.** Extract the terminal 500 kb from each chromosome arm across 465 near-complete assemblies (contigs ≥ 1 Mb). Align all-vs-all at ≥95% identity to find which arms share sequence across different chromosomes. Build a pangenome graph from these shared regions, then cluster arms into communities by graph similarity. Annotate communities with genes and repeats. Validate by testing whether same-community arms sit closer in 3D nuclear space — using Hi-C (6 human samples), Pore-C and CiFi (HG002), Dip-C single-cell (16 GM12878 cells), sperm single-cell (20 cells), RPE-1 (3 datasets), and mouse meiotic Hi-C (4 stages).
 
-**Key metrics.** 233 samples (465 haplotypes), 48 chromosome arms (41 with inter-chromosomal signal), 15,668 PHR sequences, 15 arm-level communities, 50 sequence-level communities. 3D validation across 4 technologies, 2 cell types (lymphoblastoid cell lines [LCL], retinal pigment epithelium [RPE-1]), sperm, and mouse meiosis.
+**Key metrics.** 232 individuals (465 near-complete assemblies), 48 chromosome arms (41 with inter-chromosomal signal), 15,668 PHR sequences, 15 arm-level communities, 50 sequence-level communities. 3D validation across 4 technologies, 2 cell types (lymphoblastoid cell lines [LCL], retinal pigment epithelium [RPE-1]), sperm, and mouse meiosis.
 
 **Result.** Chromosome arms that share subtelomeric sequence cluster into discrete communities. These communities are reflected in 3D nuclear proximity — arms in the same community are physically closer than arms in different communities. This holds in bulk Hi-C, single-cell Dip-C, haploid sperm, and mouse meiotic cells.
 

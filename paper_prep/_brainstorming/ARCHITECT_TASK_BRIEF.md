@@ -6,7 +6,7 @@ This file is the description for the Phase-2 fan-in task. It is referenced by th
 
 We are preparing **two coupled deliverables** from the existing end-to-end report at `end-to-end-report/` and accompanying repo artifacts:
 
-1. A **Nature manuscript** on subtelomeric sequence sharing across HPRCv2 (233 samples, 465 haplotypes, 15 arm-level + 50 sequence-level communities) validated by 3D genome data across multiple technologies, cell types, and species.
+1. A **Nature manuscript** on subtelomeric sequence sharing across HPRCv2 (232 individuals, 465 near-complete assemblies, 15 arm-level + 50 sequence-level communities) validated by 3D genome data across multiple technologies, cell types, and species.
 2. A **15-minute conference presentation** keyed to the manuscript's main figures.
 
 The work is organized as a divide-and-conquer pipeline:

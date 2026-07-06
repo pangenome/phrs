@@ -79,7 +79,7 @@ Note: C8 (chr15_q), C9 (chr16_p), C10 (chr17_p), and C13 (chr4_p) are single-arm
 
 **What it does.** Tests whether the frequency of cross-arm affinity (carrying a foreign chromosome's subtelomeric sequence) differs between human superpopulations (AFR, AMR, EAS, EUR, SAS). If subtelomeric exchange events occurred at different rates or times in different populations, the frequency of cross-arm haplotypes should differ between superpopulations.
 
-**How.** For each arm/community pair, a 2x5 contingency table (cross-arm vs self-arm x 5 superpopulations) is tested with **Fisher's exact test** — a non-parametric test for association between two categorical variables that is exact (does not rely on asymptotic approximations) and is appropriate for small expected cell counts. P-values are BH-corrected across 19 arm/community pairs (from 11 multi-arm communities). All 233 samples have superpopulation annotation.
+**How.** For each arm/community pair, a 2x5 contingency table (cross-arm vs self-arm x 5 superpopulations) is tested with **Fisher's exact test** — a non-parametric test for association between two categorical variables that is exact (does not rely on asymptotic approximations) and is appropriate for small expected cell counts. P-values are BH-corrected across 19 arm/community pairs (from 11 multi-arm communities). All 232 individuals have superpopulation annotation.
 
 **Key metrics.** 10 of 19 pairs show significant superpopulation bias (p_adj < 0.05):
 
@@ -96,7 +96,7 @@ Note: C8 (chr15_q), C9 (chr16_p), C10 (chr17_p), and C13 (chr4_p) are single-arm
 | C1 | chr10_q | 26 | 331 | AFR=4; AMR=3; EAS=3; EUR=1; SAS=11 | AFR=79; AMR=63; EAS=60; EUR=45; SAS=49 | 0.030 |
 | C11 | chr6_q | 12 | 428 | AFR=1; AMR=1; EAS=0; EUR=4; SAS=4 | AFR=107; AMR=78; EAS=79; EUR=55; SAS=64 | 0.032 |
 
-Notable patterns: chr16_q (C3) cross-arm is 70% AFR (60/86), consistent with the f7501 AFR-enrichment in the arm-level community detection. chr4_q (C1) cross-arm is AFR-enriched (52/146 = 36% vs baseline 28.8%). chrX_p (C15) self-arm is entirely AFR (18/18), indicating that the rare non-cross-arm PAR1 haplotypes are exclusively African.
+Notable patterns: chr16_q (C3) cross-arm is 70% AFR (60/86), consistent with the f7501 AFR-enrichment in the arm-level community detection. chr4_q (C1) cross-arm is AFR-enriched (52/146 = 36% vs baseline 28.9%). chrX_p (C15) self-arm is entirely AFR (18/18), indicating that the rare non-cross-arm PAR1 haplotypes are exclusively African.
 
 **Fst across subtelomeric types**: **Fst** (fixation index) measures genetic differentiation between populations. Fst = 0 means allele frequencies are identical across populations; Fst = 1 means populations are fixed for different alleles. Here, the "allele" at each arm is binary: self-arm (0) or cross-arm (1). Hudson's Fst estimator is computed for each pair of superpopulations across the 10 arm/community pairs with the strongest signal and averaged:
 

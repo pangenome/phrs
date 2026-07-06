@@ -250,7 +250,7 @@ Each upgrade: target location in draft + suggested new sentence + transcript tim
 
 **U05 — Add a QC sentence in Results P1 confirming the pangenome is correctly connected**
 - Target: Results P1, after the PHR count sentence.
-- Suggested addition: "As a sanity check, IMPG transitive closure recovers all 465 haplotypes at virtually every megabase window genome-wide, with the expected gaps at rDNA, centromeres, and sex chromosomes — confirming that the graph is correctly connected before any PHR calls are made."
+- Suggested addition: "As a sanity check, IMPG transitive closure recovers all 465 near-complete assemblies at virtually every megabase window genome-wide, with the expected gaps at rDNA, centromeres, and sex chromosomes — confirming that the graph is correctly connected before any PHR calls are made."
 - Justification: G07 (00:33:44–00:33:53): "In this panmictic population... you effectively hope that in every megabase pair of every chromosome, you see all the other genomes. And that's true."
 
 **U06 — Add Mefford "tiny slice" framing in intro P1**

@@ -15,7 +15,7 @@ spine is:
    constraint without beginning in command-line detail.
 2. `submission/paper.tex:111` to `submission/paper.tex:115`: the data scale and
    no-chromosomal-prior alignment. This should remain visible, but it can be
-   more compressed: 465 HPRC v2 haplotypes plus CHM13, 18,827 500 kb
+   more compressed: 464 HPRC v2 haplotypes plus CHM13, 18,827 500 kb
    telomere-anchored flanks, all-to-all alignment at 95% identity, no homologous
    chromosome restriction.
 3. `submission/paper.tex:116` to `submission/paper.tex:120`: the implicit graph
@@ -100,11 +100,11 @@ Better left to Methods:
 
 ## 3. Phrase-level risks and suggested alternatives
 
-- Risk at `submission/paper.tex:111`: "From the 233 individuals we used 465 HPRC
+- Risk at `submission/paper.tex:111`: "From the 232 individuals we used 464 HPRC
   v2 haplotype assemblies together with CHM13v2.0" is correct but less aligned
-  with the house abstract anchor than "466 near-complete assemblies (465 HPRC v2
-  haplotypes together with CHM13)." Suggested alternative: "Across 466
-  near-complete assemblies -- 465 HPRC v2 haplotypes together with CHM13v2.0 --
+  with the house abstract anchor than "465 near-complete assemblies (232 HPRC v2
+  individuals and CHM13)." Suggested alternative: "Across 465
+  near-complete assemblies -- 464 HPRC v2 haplotypes together with CHM13v2.0 --
   we extracted..." If manuscript style avoids dashes, use parentheses.
 - Risk at `submission/paper.tex:113`: "aligned them all-against-all" is clear to
   specialists but can sound absolute when the next sentence says only 11.6% of
@@ -156,11 +156,11 @@ Better left to Methods:
 ## 4. Consistency obligations for Methods
 
 - Assembly counts must stay synchronized across abstract, Results, and Methods.
-  Use "466 near-complete assemblies" for the dataset-scale framing and define it
-  as "465 HPRC v2 haplotypes together with CHM13" when enumerating inputs.
+  Use "465 near-complete assemblies" for the dataset-scale framing and define it
+  as "464 HPRC v2 haplotypes together with CHM13" when enumerating inputs.
   `submission/paper.tex:111` to `submission/paper.tex:112` is internally
   consistent with the house abstract, but any rewrite should avoid switching to
-  "466 HPRC haplotypes" or implying CHM13 is one of the 465 HPRC v2 haplotypes.
+  "465 HPRC haplotypes" or implying CHM13 is one of the 464 HPRC v2 haplotypes.
 - If Results rounds to "approximately 12%" or says "sampled all-to-all
   comparison," Methods should retain the realised 11.6% value at
   `submission/paper.tex:455` and state how it relates to the all-vs-all

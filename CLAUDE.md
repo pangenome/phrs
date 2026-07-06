@@ -3,7 +3,7 @@
 ## Project: subtelomeric PHR analysis
 
 Research repo, not a software product. Inter-chromosomal subtelomeric sequence
-sharing across 233 HPRCv2 samples (465 haplotypes, 15,668 PHRs, 41 signal-bearing
+sharing across 232 HPRCv2 individuals (465 near-complete assemblies, 15,668 PHRs, 41 signal-bearing
 arms, 15 arm-level / 50 sequence-level communities), plus 3D-genome validation
 (Hi-C, Pore-C, CiFi, Dip-C, sperm sc, RPE-1, mouse meiosis). Outputs are a
 14-section analysis report, paper figures, and slide decks.

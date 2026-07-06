@@ -39,12 +39,12 @@ finding in 11 and 12 should be read. They split into three groups.
 
 | Superpop | N | % |
 |---|---|---|
-| AFR | 67 | 28.8 |
-| EAS | 52 | 22.3 |
-| AMR | 44 | 18.9 |
+| AFR | 67 | 28.9 |
+| EAS | 52 | 22.4 |
+| AMR | 44 | 19.0 |
 | SAS | 37 | 15.9 |
-| EUR | 33 | 14.2 |
-| **Total** | **233** | **100.0** |
+| EUR | 32 | 13.8 |
+| **Total** | **232** | **100.0** |
 
 Within-superpopulation heterogeneity is not modelled. Population-scale
 findings (the cross-arm-affinity / Fst section) inherit this imbalance.
@@ -133,7 +133,7 @@ where the paper-prep team needs them as numbers to quote.
 
 | # | Finding | Anchor metric(s) |
 |---|---|---|
-| 1 | Subtelomeric regions form discrete inter-chromosomal communities. | 41 arms → 15 arm-level / 50 sequence-level communities; 233 individuals × 465 haplotypes × 15,668 PHR sequences. |
+| 1 | Subtelomeric regions form discrete inter-chromosomal communities. | 41 arms → 15 arm-level / 50 sequence-level communities; 232 individuals × 465 near-complete assemblies × 15,668 PHR sequences. |
 | 2 | Three categories of subtelomeric architecture. | (a) Homogeneous: 8/41 arms with 0 % cross-arm. (b) Polymorphic: 34/41 spanning ≥ 2 seq-level communities. (c) Fully interchangeable: 7/41 with 100 % cross-arm. |
 | 3 | Recurrent inter-chromosomal exchange. | Arm-level cross-arm 15.9 % (2 484 / 15 668); seq-level 11.1 % (1 740 / 15 668). Discordance up to 47.5 %. |
 | 4 | Extensive gene-repertoire overlap at acrocentric and sex chromosome subtelomeres. | chr13_p replacement score 1.000 toward all other acrocentric p-arms; chr14_p (N = 229) 83.0 % cross-arm with other acrocentric p-arms; PAR1/PAR2 score 1.000. |
@@ -240,7 +240,7 @@ recomputed from upstream tables. The minimal pointer set:
 
 ### 3.1 §10 (limitations)
 
-- Sample composition counts (233 / 5 superpops): `hprc-sequence-production.tsv` (referenced in §12 caveat 5 but resolved in §10).
+- Sample composition counts (232 / 5 superpops): `hprc-sequence-production.tsv` (referenced in §12 caveat 5 but resolved in §10).
 - Cross-arm 15.9 % / arm-level cross-arm rates: per-arm cross-arm TSV from `find-multichr-regions-incremental.py` outputs (SURVEY_01).
 - Discordance 47.5 % cap: per-arm discordance TSV (SURVEY_04).
 - Mantel ρ exclusion-set values (HG002 0.657 → 0.790; HG02148 0.152 → 0.720): `output_q0_XX/community_enrichment_k50/exclusion_no_*/<sample>_mantel_3d.tsv` and the matched flanking files (SURVEY_05 / 06).
@@ -353,9 +353,9 @@ biology."
 Numbering matches §12 lines 29–55 (the source heading reads "24
 findings" but the enumerated list runs 1–27).
 
-N1.  **Population-scale community structure** — first quantification of 41 arms → 15 communities across 233 individuals / 465 haplotypes.
+N1.  **Population-scale community structure** — first quantification of 41 arms → 15 communities across 232 individuals / 465 near-complete assemblies.
 N2.  **Three-category arm classification** — homogeneous / polymorphic / fully interchangeable; quantitative extension of Mefford & Trask's qualitative patchwork model.
-N3.  **Population-scale cross-arm affinity** — 15.9 % (2 484 / 15 668), first across 465 haplotypes.
+N3.  **Population-scale cross-arm affinity** — 15.9 % (2 484 / 15 668), first across 465 near-complete assemblies.
 N4.  **Subtelomeric type discordance at population scale** — up to 47.5 % structural heterozygosity per locus.
 N5.  **Gene-repertoire replacement scores** — complete (0.91–1.0) at chr13_p / chr14_p / chr15_p / PAR; partial (0.0–0.72) at autosomal communities — first homogenisation gradient mapped onto community structure.
 N6.  **3D genome mirrors sequence communities** — three independent technologies; effect sizes vary across samples; finer 50-community partition does not reach significance in Dip-C.
@@ -492,7 +492,7 @@ in § 5.
 **T-1. Master "key findings" summary panel (paper main text + talk).**
 *Caption:* "Twelve anchoring biological findings of the paper.
 Numbered 1–12, each labelled with its single most quotable metric:
-(1) 41 arms → 15 communities, 233 individuals; (2) 8/41 homogeneous,
+(1) 41 arms → 15 communities, 232 individuals; (2) 8/41 homogeneous,
 34/41 polymorphic, 7/41 fully interchangeable; (3) 15.9 % cross-arm
 arm-level (11.1 % at sequence level); (4) chr13_p replacement score
 1.000, chr14_p 83.0 % cross-arm; (5) 10 arm/community pairs FDR-
@@ -586,8 +586,8 @@ The talk should treat 10/11/12 as the **closing 3 slides** of the
 biology section — the talk's "what we found / what's new / what we
 didn't claim" beats. Suggested order:
 
-1. **One-slide headline (slide ~9 of ~15).** "Across 233 individuals
-   and 465 haplotypes we resolve 41 chromosome arms into 15 inter-
+1. **One-slide headline (slide ~9 of ~15).** "Across 232 individuals
+   and 465 near-complete assemblies we resolve 41 chromosome arms into 15 inter-
    chromosomal subtelomeric communities, with 15.9 % of sequences
    resembling a foreign arm more than their own — and 3D nuclear
    organisation mirrors this structure across four technologies, two
@@ -641,7 +641,7 @@ Recall numbers, prioritised for memorisation in the talk:
 
 | Number | Anchor |
 |---|---|
-| 233 / 465 | individuals / haplotypes |
+| 232 / 465 | individuals / near-complete assemblies |
 | 41 → 15 | arms → arm-level communities |
 | 15.9 % | cross-arm at arm level (11.1 % seq-level) |
 | 47.5 % | maximum discordance |

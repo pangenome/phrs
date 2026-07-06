@@ -1,9 +1,9 @@
 # Figure 1 — Population-scale subtelomeric communities (the landscape)
 
 **Caption.** Inter-chromosomal subtelomeric sharing partitions 41 chromosome
-arms into 15 communities across 465 HPRCv2 haplotypes
+arms into 15 communities across 465 near-complete assemblies
 (18,827 telomere-anchored 500 kb flanks; 15,668 PHRs).
-**(a)** Genome-wide stacked identity heatmap, 465 haplotypes × 24
+**(a)** Genome-wide stacked identity heatmap, 465 near-complete assemblies × 24
 chromosomes (per-position maximum identity to any matching chromosome,
 100 kb windows). Telomere-anchored high-identity blocks mark the
 inter-chromosomal exchange landscape.

@@ -152,7 +152,7 @@ The repo root also contains a large suite of statistical-validation / benchmarki
 
 The following are **data** paths repeatedly cited as inputs/outputs to the scripts above; they are tracked here so the figure-source-path verification (next section) is unambiguous.
 
-- `/moosefs/pangenomes/HPRCv2/*.fa.gz` — 465 HPRCv2 assemblies (input).
+- `/moosefs/pangenomes/HPRCv2/*.fa.gz` — 465 near-complete assemblies (input).
 - `/moosefs/guarracino/HPRCv2/PHR_III/pq-classification/contig_classifications.tsv` — 12,649 contigs.
 - `/moosefs/guarracino/HPRCv2/PHR_III/hprcv2.1Mb.telo_500kb_trimmed.fa.gz` — 18,827 flanks.
 - `/moosefs/guarracino/HPRCv2/PHR_III/hprcv2.1Mb.telo_trimmed.p95.id95.fa.gz` — 15,668 PHRs.

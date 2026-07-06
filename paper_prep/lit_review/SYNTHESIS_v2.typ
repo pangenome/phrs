@@ -275,7 +275,7 @@ telomere; (ii) TAR1 (Brown 1990) immediately proximal; (iii) a
 duplicated patchwork of subtelomere-specific repeats; (iv) often,
 internal (TTAGGG)n islands deeper in. In the present manuscript,
 chapters 02 and 04 of Andrea’s report quantify each of these layers
-across 466 haplotypes (TAR1 prevalence 94.6%; absent from PAR1 at 0.5%;
+across 465 near-complete assemblies (TAR1 prevalence 94.6%; absent from PAR1 at 0.5%;
 18,352 internal (TTAGGG)n islands across 8,321 sequences), and these
 observations are direct population-scale validation of the Flint and
 Brown structural model.
@@ -310,7 +310,7 @@ single-haplotype references: even with a full-length BAC tile across a
 chromosome-end region, individual subtelomeres show major copy-number,
 allele-organisation and gene-content variation that a reference cannot
 represent. This exposure motivates C2 (the implicit pangenome graph as a
-reference-free response) and C3 (466 near-complete haplotype assemblies
+reference-free response) and C3 (465 near-complete assemblies
 as the substrate that finally makes the assembly problem tractable
 across populations).
 
@@ -336,14 +336,14 @@ demonstrated that haplotype-resolved diverse assemblies could be
 organised into a population reference @Liao2023.
 
 This sequence of advances is the technical bridge to C1–C3 of the
-present manuscript. The 466 HPRC v2 near-complete haplotype assemblies
+present manuscript. The 465 near-complete assemblies
 are the operational endpoint of three decades of subtelomeric structural
 biology: each arm is now a sequenced haplotype rather than an inferred
 FISH signal, each haplotype is part of a population-scale collection
 rather than a single reference, and each subtelomere can be aligned
 all-to-all without imposing chromosomal partitioning. Part I of this
 synthesis ends here, at the moment in 2022 when reading every
-subtelomere in 233 individuals became practical. Parts II–IV pick up the
+subtelomere in 232 individuals became practical. Parts II–IV pick up the
 conceptual, mechanistic and methodological histories that turn that data
 into the manuscript’s claims.
 
@@ -382,7 +382,7 @@ recovering the out-of-Africa topology from cross-arm-affinity Fst
 Adam 2022 @Adam2022, Nurk 2022 @Nurk2022 and Liao 2023 @Liao2023 made it
 possible to #emph[measure] PHRs at sequence resolution across many
 haplotypes — which is the technical premise of C2 (implicit pangenome
-graph) and C3 (466 haplotypes).
+graph) and C3 (465 near-complete assemblies).
 
 The PHR concept is also bounded by alternatives. Bailey, Gu and
 Eichler’s "recent segmental duplications" framework @Bailey2002, updated
@@ -585,7 +585,7 @@ chr15q, chr19p, chr16q, chr7p) and found chr16q enriched in African
 populations. Andrea’s chapter 01 §"f7501 (L78442) direct alignment
 validation" reproduces this #emph[quantitatively] at population scale:
 chr3q (91.8%), chr19p (90.5%), chr15q (85.6%) confirmed #emph[fixed]
-across the 466-haplotype dataset; chr16q AFR-enriched at p=6.6e-27 (70%
+across the 465-assembly dataset; chr16q AFR-enriched at p=6.6e-27 (70%
 AFR carriers vs \<10% non-AFR); novel SAS-enriched chr2q (p=6.8e-11),
 AMR-enriched chr6p (p=7.0e-04), and three additional AFR-enriched arms
 (chr8p, chr16p, chr9q). Chapter 03 then reports that 62.1% of 5,023 OR4F
@@ -935,8 +935,8 @@ The HPRC literature is the dataset substrate. Nurk 2022 @Nurk2022
 (T2T-CHM13) closed the reference-genome side; Liao 2023 @Liao2023 is the
 HPRC v1 draft pangenome (47 individuals, 94 haplotypes); HPRC v2
 (forthcoming, preprinting per lead-author clarification) extends this to
-233 individuals × 2 haplotypes = 465 plus CHM13 = 466
-haplotype-equivalent units in the present manuscript. The technical
+232 individuals × 2 haplotypes = 464 plus CHM13 = 465
+near-complete assemblies in the present manuscript. The technical
 story is straightforward: hifiasm @Cheng2021 and Verkko @Rautiainen2023
 deliver haplotype-resolved assemblies; pggb @Garrison2024pggb / odgi
 @Heumos2024 / IMPG (in submission) deliver the pangenome-graph
@@ -948,8 +948,8 @@ population variables; this is the single technical advance that makes C5
 across human ancestries) possible.
 
 The methodological hand-off from topic 10 → topic 11 → topic 12 is the
-architecture of the present paper’s Methods: pangenome graph ingests 466
-haplotypes; community detection partitions them; pedigree analysis tests
+architecture of the present paper’s Methods: pangenome graph ingests 465
+near-complete assemblies; community detection partitions them; pedigree analysis tests
 whether the partition predicts inheritance; population-genetics analysis
 tests whether the partition tracks ancestry. Each branch supplies a
 different #emph[kind] of validation. The pangenome graph supplies
@@ -979,8 +979,8 @@ pangenome graph; \~12% pairwise sampling) reframes the standard wfmash +
 pggb + odgi pipeline as a graph object and supplies an Erdős-Rényi
 connectivity argument; the #emph[concept] is established in
 @Eizenga2020@Computational2018 and the #emph[implementation] is
-established in @Garrison2018@Garrison2024pggb@Heumos2024. C3 (466
-near-complete haplotype assemblies) is direct continuation of @Liao2023
+established in @Garrison2018@Garrison2024pggb@Heumos2024. C3 (465
+near-complete assemblies) is direct continuation of @Liao2023
 using HPRC v2; the dataset itself is the new contribution.
 
 C4 (extended interchromosomal homology at nearly all subtelomeres
@@ -1003,7 +1003,7 @@ names "neighbour-joining trees" but Andrea’s analysis runs Leiden +
 UPGMA with 12-of-15-community agreement (chapter 01); the named clades
 all map to communities, so this is editorial rather than analytical. The
 novel contribution is #emph[quantitative] (population-scale community
-structure of 41 arms across 466 haplotypes — chapter 12 novel
+structure of 41 arms across 465 near-complete assemblies — chapter 12 novel
 contribution \#1) and #emph[cladistic resolution] (named clades that the
 reference-only era could not assign confidently).
 
@@ -1069,7 +1069,7 @@ A short list, in priority order:
 
 + #strong[Population-scale community structure] (chapter 01). 41 arms in
   15 arm-level Leiden communities and 50 sequence-level communities
-  across 466 haplotypes, the first population-scale quantification of
+  across 465 near-complete assemblies, the first population-scale quantification of
   the patchwork model.
 
 + #strong[Two-domain Flint/Mefford model confirmed at pangenome scale]
@@ -1153,7 +1153,7 @@ The Guarracino & Garrison subtelomere manuscript stands at the
 convergence of three decades of subtelomeric biology, six layers of
 mechanism (concerted-evolution machinery, NAHR, gene conversion, BIR,
 segmental duplication, the meiotic bouquet, pangenome representation),
-and two new empirical access points (HPRC v2 466-haplotype pangenome
+and two new empirical access points (HPRC v2 465-assembly pangenome
 graph; T2T multigenerational pedigrees). Its single most-novel
 contribution is the pedigree evidence in chapter 14: subtelomeric
 exchange among non-homologous chromosome ends is #emph[currently
@@ -2140,7 +2140,7 @@ upgrades.
   Per `REWRITE_PLAN.md` TASK-10 / TASK-11. The argument is in
   `CROSSWALK §7b`.
 - #strong[C2 / C3 dataset count.] Andrea reports 465 throughout; the
-  abstract reports 466. Resolve canonically as 466 = 233 individuals × 2
+  abstract reports 466. Resolve canonically as 465 near-complete assemblies = 232 individuals × 2
   haplotypes + CHM13 reference (per `CROSSWALK §7c`).
 - #strong[C8 — "concerted evolution" loose-sense framing.] The
   Discussion paragraph should explicitly state the loose-sense usage and

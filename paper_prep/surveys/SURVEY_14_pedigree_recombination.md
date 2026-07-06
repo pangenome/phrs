@@ -175,7 +175,7 @@ Driven by the *immediate* left and right neighbour patches within the same flank
 - **`complex`** — none of the above.
 
 ### 4.5 Leiden community validation
-Each patch is cross-referenced against the 15 arm-level Leiden communities from the HPRCv2 1 Mb subtelomere similarity graph (`hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv`, 41 arms; 233 samples / 465 haplotypes upstream). A patch is `within_community` iff `Leiden(query_arm) == Leiden(ref_arm)`. Only `within_community` patches are reported in 14.md; `cross_community` and `unknown` patches are filtered out but kept in `all_pedigrees_patches.tsv`.
+Each patch is cross-referenced against the 15 arm-level Leiden communities from the HPRCv2 1 Mb subtelomere similarity graph (`hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv`, 41 arms; 232 individuals / 465 near-complete assemblies upstream). A patch is `within_community` iff `Leiden(query_arm) == Leiden(ref_arm)`. Only `within_community` patches are reported in 14.md; `cross_community` and `unknown` patches are filtered out but kept in `all_pedigrees_patches.tsv`.
 
 ### 4.6 Cross-assembler validation (CEPH1463 only)
 Same parent + same `{chr_a, chr_b}` pair detected by *both* hifiasm and verkko in *at least one child each*, within the *same* Leiden community. This collapses 324 hifiasm + 359 verkko within-community patches to **11 robust parent features** (table §1.6).

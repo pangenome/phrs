@@ -96,9 +96,9 @@ Apply this rubric to every section-review task.
    defensible take-home.
 
 9. Prefer exact headline numbers where stable.
-   Use 466 near-complete haplotype assemblies when describing the HPRC v2 plus
-   CHM13-scale dataset in the abstract-level framing, and use 465 HPRC v2
-   haplotypes plus CHM13 when describing the arm-flank census. Use 3.51 Mb in
+   Use 465 near-complete assemblies when describing the HPRC v2 plus
+   CHM13-scale dataset in the abstract-level framing, and use 464 HPRC v2
+   haplotypes plus CHM13 (= 465 near-complete assemblies) when describing the arm-flank census. Use 3.51 Mb in
    Results and figure legends; 3.5 Mb is acceptable only in broad abstract or
    concluding prose.
 
@@ -281,7 +281,7 @@ that must be coordinated.
   `ABSTRACT_nature.md:9`.
 - Review questions: Does the Results section explain the implicit pangenome
   graph at the right level, or does it import too much Methods detail? Are the
-  465 HPRC haplotypes plus CHM13 and 466-assembly framings consistent?
+  464 HPRC haplotypes plus CHM13 and 465-near-complete-assembly framings consistent?
 - Expected deliverable: A technical-voice memo specifying which sentences are
   essential for the Results claim and which should be left to Methods.
 
@@ -370,7 +370,7 @@ that must be coordinated.
 | --- | --- | --- | --- |
 | PHR term | Use "pseudo-homolog region (PHR)" on first definition, then "PHR". In broad prose, "subtelomeric PHRs" is preferred. | Do not alternate with "pseudohomologous region" unless quoting or harmonizing historical literature. | Current definition is `submission/paper.tex:129` to `submission/paper.tex:131`; keywords use "pseudo-homolog region" at `submission/paper.tex:56`. |
 | Interchromosomal spelling | Prefer "interchromosomal" as the paper-wide adjective. Use "inter-chromosomal" only if the journal style or an existing compound construction requires it. | Mixed spelling within abstract/body/legends. | Current mixed forms appear at `submission/paper.tex:53`, `submission/paper.tex:103`, `submission/paper.tex:164`, `submission/paper.tex:296`, and `submission/paper.tex:363`. |
-| 466 vs 465 | Use "466 near-complete haplotype assemblies" for abstract-level HPRC v2 plus CHM13 scale. Use "465 HPRC v2 haplotypes plus CHM13" for the arm-flank census and figure legends. | Do not imply 466 HPRC haplotypes if CHM13 is the extra anchor; check "233 HPRC v2 v1.1 individuals" wording. | Active abstract uses 466 at `submission/paper.tex:53`; Results and Methods use 465 plus CHM13 at `submission/paper.tex:111` and `submission/paper.tex:415` to `submission/paper.tex:418`. |
+| assembly count | Use "465 near-complete assemblies" for abstract-level HPRC v2 plus CHM13 scale. Use "464 HPRC v2 haplotypes plus CHM13" (= 465 near-complete assemblies) for the arm-flank census and figure legends. | Do not imply 465 HPRC haplotypes; CHM13 is the extra anchor (464 HPRC haplotypes + CHM13 = 465 near-complete assemblies); check "232 HPRC v2 v1.1 individuals" wording. | Abstract should read 465 at `submission/paper.tex:53`; Results and Methods use 464 HPRC haplotypes plus CHM13 at `submission/paper.tex:111` and `submission/paper.tex:415` to `submission/paper.tex:418`. |
 | 3.51 Mb | Use 3.51 Mb in Results and legends; 3.5 Mb is acceptable in abstract/conclusion as a rounded reader-facing value. | Do not mix 3.5, 3.51, and 3.510 within the same section unless the precision difference is intentional. | Results: `submission/paper.tex:149`; Fig. 1 legend: `submission/paper.tex:306`; abstract and close: `submission/paper.tex:53`, `submission/paper.tex:250`. |
 | Community language | "Sequence-similarity communities", "arm-level communities", "Leiden communities", or "community block structure". | "Phylogeny" without scare quotes or qualification; "clade" where it implies species-like descent of chromosome arms. | Manuscript correctly qualifies ordering at `submission/paper.tex:171` to `submission/paper.tex:173`; Fig. 2 legend uses "phylogeny" in quotes at `submission/paper.tex:323` to `submission/paper.tex:324`. |
 | Direct observe vs suggest | "We observe patch patterns"; "the pedigree provides direct evidence consistent with ongoing exchange"; "suggests ongoing exchange" for the biological conclusion. | "We directly observe interchromosomal exchange" if used without the assembly-artifact caveat. | Abstract `submission/paper.tex:53` is stronger than body caution at `submission/paper.tex:240` to `submission/paper.tex:243` and transcript caution at `Session7-PopulationGenomics.en.srt:1335` to `Session7-PopulationGenomics.en.srt:1357`. |

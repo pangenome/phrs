@@ -29,7 +29,7 @@ Section-by-section skeleton that T3 (`write-nature-article`) will expand into pr
 
 Numerical anchors used throughout (reconciled — see § *Number reconciliation* at end):
 
-- **233** HPRC v2 individuals → **465** haplotype assemblies + **CHM13** reference (= **466** haplotype-equivalent units)
+- **232** HPRC v2 individuals → **464** haplotype assemblies + **CHM13** reference (= **465** near-complete assemblies)
 - **18,827** telomere-anchored 500 kb flanks across **48** arms
 - **15,668** PHRs (83.2 % of flanks) on **41 of 48** signal-bearing arms
 - **15** arm-level Leiden communities (silhouette 0.347, k=15) / **50** sequence-level Leiden communities (modularity 0.97, k=75/res 0.8)
@@ -53,7 +53,7 @@ Recommendation: keep option 1 — it is the PPTX title, both abstract drafts use
 ## Abstract bullets (~200 words to expand from these 7)
 
 1. **Background / gap.** Human subtelomeres are evolutionarily dynamic and structurally complex, but interchromosomal sequence relationships have resisted systematic analysis owing to assembly incompleteness and reference-bias in alignment. (Citations: `MeffordTrask2002`, `Riethman2004`, `Linardopoulou2005`, `BaileyEichler2006`.)
-2. **Approach (sample + method).** Using **465** near-complete haplotype assemblies from HPRC v2 plus CHM13 (**466** total), we build an *implicit pangenome graph* — the all-vs-all PAF set produced by wfmash sampled at ~**12 %** of pairwise combinations (~230× above the Erdős–Rényi connectivity threshold), and queried via IMPG transitive closure — without chromosomal partitioning. (`hprc_hprcv2_2025`, `Garrison2024pggb`, `pangenome_graphs_impg_GarrisonGuarracino2023`, `pangenome_graphs_impg_GuarracinoHeumos2022`.)
+2. **Approach (sample + method).** Using **465** near-complete assemblies from HPRC v2 (232 individuals) and CHM13, we build an *implicit pangenome graph* — the all-vs-all PAF set produced by wfmash sampled at ~**12 %** of pairwise combinations (~230× above the Erdős–Rényi connectivity threshold), and queried via IMPG transitive closure — without chromosomal partitioning. (`hprc_hprcv2_2025`, `Garrison2024pggb`, `pangenome_graphs_impg_GarrisonGuarracino2023`, `pangenome_graphs_impg_GuarracinoHeumos2022`.)
 3. **Landscape.** We map **18,827** telomere-anchored 500 kb flanks → **15,668** PHRs (median 105 kb) across **41 of 48** chromosome arms, comparable in scale to canonical PAR2. (`Rouyer1986`, `sexchrompars_acquaviva2020`.)
 4. **Cladistics.** A neighbour-joining tree of arm-level Jaccard distances recovers PAR1, PAR2, the acrocentric short arms, the **10p–18p** clade, a tight **{22q,21q,19q,1q,13q,17q}** q-arm clade, and **4q–10q DUX4** with wide copy-number diversity — all six clades match the Leiden k = 15 partition (UPGMA agreement 14/15). (`MeffordTrask2002`, `Linardopoulou2005`, `dux4_d4z4_fshd_lemmers2010worldwide`, `acrocentric_Altemose2022`.)
 5. **Population-genetic signature.** Allele-vs-paralog Wilcoxon, two-domain Spearman gradient (39/48 arms), Hudson F_ST and an out-of-Africa UPGMA tree resolve subtelomeric clustering across five human superpopulations. (`Flint1997`, `Ambrosini2007`, `subtel_popgen_anderson2008`, `subtel_popgen_bhatia2013`, `subtel_popgen_hudson1992`.)
@@ -70,7 +70,7 @@ Recommendation: keep option 1 — it is the PPTX title, both abstract drafts use
 
 **Claim(s):**
 - Human subtelomeres are dynamic, segmentally duplicated, and the classical example of inter-chromosomal sequence sharing (PAR1, PAR2, acrocentric rDNA short arms, D4Z4/FSHD).
-- Prior population-scale work has been limited by reference incompleteness and by per-chromosome alignment frames; the HPRC v2 near-T2T pangenome of 233 individuals provides the substrate to revisit the question without chromosomal partitioning.
+- Prior population-scale work has been limited by reference incompleteness and by per-chromosome alignment frames; the HPRC v2 near-T2T pangenome of 232 individuals provides the substrate to revisit the question without chromosomal partitioning.
 - This paper is the subtelomeric companion to the HPRC v2 main publication.
 
 **Evidence:** `end-to-end-report/report/01_pipeline.md` introduction; PPTX slides 1–2 (`paper_prep/synthesis/PPTX_OUTLINE.md`); SURVEY_FRAMING_cytogenetic_fish.md; topic_01_cytogenetic_foundations.md; topic_02_subtelomere_structure.md.
@@ -276,7 +276,7 @@ Recommendation: keep option 1 — it is the PPTX title, both abstract drafts use
 
 Subheadings (Nature Methods style, brief + ~1-line content):
 
-1. **Sample selection and reference frame.** 233 HPRC v2 v1.1 individuals → 465 haplotype assemblies (~3 Gb each) + CHM13v2.0 reference (466 total). Per-superpop: AFR 67, EAS 52, AMR 44, SAS 37, EUR 33. (Cite `hprc_hprcv2_2025`, `Nurk2022`.)
+1. **Sample selection and reference frame.** 232 HPRC v2 v1.1 individuals → 464 haplotype assemblies (~3 Gb each) + CHM13v2.0 reference (465 near-complete assemblies total). Per-superpop: AFR 67, EAS 52, AMR 44, SAS 37, EUR 32. (Cite `hprc_hprcv2_2025`, `Nurk2022`.)
 2. **Telomere-anchored 500 kb flank extraction.** 18,827 flanks across 48 arms; arms with < 1 Mb contig length excluded; per-arm flank counts in ED1b; pq-classification table at `pq-classification/contig_classifications.tsv`.
 3. **wfmash all-vs-all alignment.** `wfmash v0.23.0-41 -p 95 -t 48 --quiet`; each flank serves as target in turn. (Cite `Guarracino2023`.)
 4. **Implicit pangenome graph + IMPG transitive closure.** All-vs-all PAFs are the implicit graph; IMPG `query -x` computes reachability. Justification of "no chromosomal partitioning": sampling rate ≈ 12 % ≫ Erdős–Rényi threshold p* = log(n)/n ≈ 5.2 × 10⁻⁴ for n = 18,827, ≈ 230× margin. (Cite `pangenome_graphs_impg_GarrisonGuarracino2023`, `pangenome_graphs_impg_GuarracinoHeumos2022`, `pangenome_graphs_impg_IMPG2023`, `pangenome_graphs_impg_Hickey2024`.)
@@ -319,7 +319,7 @@ Verified via `grep -F '@' paper_prep/synthesis/REFERENCES_v3.bib | sed 's/^@[^{]
 
 1. **NJ tree vs Leiden + UPGMA (resolved).** PPTX slides 5–12 describe Louvain / community detection + UPGMA only; both abstracts (BoG + Nature) name "neighbour-joining trees". Outline uses NJ as headline (matches abstract; `nj_tree_arms/` exists on disk), Leiden + UPGMA as supporting; CROSSWALK §2 C5 reconciles.
 2. **PPTX slide 38 says "all-to-all alignment of 465 × 3 billion bp implies a 2 septillion cell matrix" (treats as full all-to-all)** vs both abstracts which say ~12 % pairwise sampling. CROSSWALK §7b reconciles: the all-vs-all framing is the *target*; wfmash's k-mer prefiltering realises ~12 %; Erdős–Rényi connectivity makes the 12 % sampling sufficient. Outline P2 + Methods §4 both state this.
-3. **PPTX slide 42 says "11.6 % with 466 haplotypes" vs both abstracts and outline say 12 % / 465 + CHM13.** Numerical agreement (11.6 % ≈ 12 %); 466 vs 465 is the CHM13-inclusion convention. Methods §1 nails the convention.
+3. **PPTX slide 42 says "11.6 % with 466 haplotypes" vs both abstracts and outline say 12 % / 464 HPRC haplotypes + CHM13.** Numerical agreement (11.6 % ≈ 12 %); the canonical count is 465 near-complete assemblies (464 HPRC haplotypes plus CHM13). Methods §1 nails the convention.
 4. **PPTX slide 22 comment from Erik Garrison flags "need metric for the degree of similarity within communities vs between … degree of contact intensity".** Outline P7 (Fig 3a/b/c) delivers this: B/W ratios, per-arm-pair Spearman, the 14-test forest plot. Resolved.
 5. **PPTX slide 26 comment from Erik Garrison flags "we need to check if the untangling is actually too conservative, and if this means we have a whole phr that swapped".** Outline P9 frames 538 patches as an HQ + within-community *lower bound*. The 80-pp gap between WashU (92 %) and CEPH1463 (12–13 %) within-Leiden rate is reported as evidence that the filter is conservative against fragmentation noise, not against true exchange. **Open follow-up (not blocking outline):** quantify whether any single PHR was wholly swapped between PAN027 and PAN028 — requires a length-of-swapped-PHR-block analysis on the existing patches.tsv files; not currently in the figure set.
 6. **PPTX slides 19 + 31 mention mouse and CHM13 Hi-C 3D MDS in supplementary** (extended-data territory). Outline uses ED5 + ED8 only for these; mouse is in P10 / Fig 4d. Consistent.
@@ -329,15 +329,15 @@ Verified via `grep -F '@' paper_prep/synthesis/REFERENCES_v3.bib | sed 's/^@[^{]
 
 1. **"comparable in scale to PAR2" (P3 / abstract).** No side-by-side PAR2 length comparison panel exists; abstract draws the analogy but the PHR length distribution panel (ED1c) does not overlay PAR2's ~334 kb anchor. **Recommend:** T3 add the numeric comparison in prose (median PHR 105 kb vs PAR2 ~334 kb), or T3 + downstream task adds a small inset / annotation to ED1c.
 2. **"~12 % pairwise sampling" derivation from on-disk PAFs.** Per CROSSWALK §7b, this number must be derived from the on-disk PAFs (#evaluated pairs / C(18,827, 2)). The figure 12 % is in both abstracts; the on-disk-derivation step is not yet committed to a TSV. **Recommend:** T3 either inserts a placeholder "≈ 12 % (recomputed from PAF set)" and flags the gap, or a follow-up `wg add` task computes the exact realised rate.
-3. **"Andrea uses 465; abstract uses 466"** (CROSSWALK §2 C3). Outline resolves: 466 = 233 × 2 + CHM13. Methods §1 nails the convention; numerical reconciliation table immediately below.
+3. **"Andrea uses 465; abstract now uses 465"** (CROSSWALK §2 C3). Outline resolves: 465 = 232 × 2 + CHM13. Methods §1 nails the convention; numerical reconciliation table immediately below.
 
 ### Number reconciliation (single source of truth for prose)
 
 | Quantity | Value used in outline | Source of disagreement |
 |---|---|---|
-| Individuals | 233 | consistent across PPTX, BoG abstract, Nature abstract, CROSSWALK, fig captions |
-| HPRC haplotypes | 465 | consistent (Andrea report, fig captions, CROSSWALK) |
-| With-reference total | 466 (= 465 + CHM13) | Nature abstract uses 466; PPTX slide 42 also uses 466; Andrea's report uses 465. Methods §1 reconciles. |
+| Individuals | 232 | consistent across BoG abstract, Nature abstract, CROSSWALK, fig captions |
+| HPRC haplotypes | 464 | 232 individuals × 2 (Andrea report, fig captions, CROSSWALK) |
+| With-reference total | 465 near-complete assemblies (= 464 + CHM13) | Nature abstract uses 465; Andrea's report uses 465; PPTX slide 42 still shows the stale 466. Methods §1 reconciles. |
 | Telomere-anchored flanks | 18,827 | consistent |
 | PHRs | 15,668 | consistent (ED1d notes 15,669 → 15,668 after chr18q chimera removal) |
 | Signal-bearing arms | 41 / 48 | consistent |

@@ -13,7 +13,7 @@ This paper is the third in a series establishing pseudo-homologous regions (PHRs
 
 **Paper 2** (de Lima, Guarracino et al. 2025, Nature 647:952-961): "The formation and propagation of human Robertsonian chromosomes." Generated T2T assemblies of three Robertsonian chromosomes (rob(14;21), two rob(13;14)). Confirmed all three break within SST1, exactly in the predicted PHR. The chr14 SST1 inversion — unique to humans among great apes — is the structural basis. PRDM9 motif enrichment makes SST1 permissive to meiotic recombination. Accompanied by a News & Views: "A common chromosome fusion in humans explained."
 
-**Paper 3** (this work): Generalizes PHRs genome-wide using HPRCv2 (233 samples, 465 haplotypes). Shows that 41 of 48 chromosome arms share subtelomeric sequence at >=95% identity with non-homologous chromosomes, organized into 15 communities of preferential exchange. PARs (pseudoautosomal regions) are two of those 15 communities. Validates community structure with 3D nuclear organization data across 4 technologies (Hi-C, Pore-C, CiFi, Dip-C), 3 cell types (lymphoblastoid, retinal epithelium, sperm), and in mouse meiosis.
+**Paper 3** (this work): Generalizes PHRs genome-wide using HPRCv2 (232 individuals, 465 near-complete assemblies). Shows that 41 of 48 chromosome arms share subtelomeric sequence at >=95% identity with non-homologous chromosomes, organized into 15 communities of preferential exchange. PARs (pseudoautosomal regions) are two of those 15 communities. Validates community structure with 3D nuclear organization data across 4 technologies (Hi-C, Pore-C, CiFi, Dip-C), 3 cell types (lymphoblastoid, retinal epithelium, sperm), and in mouse meiosis.
 
 The trajectory — discover, prove, generalize — is clean and Nature editors value this kind of arc.
 
@@ -88,7 +88,7 @@ The implication: the conditions that cause the most common chromosomal rearrange
 Based on analysis of how TADs, A/B compartments, segmental duplications, the T2T genome, and the HPRC pangenome were introduced:
 
 1. **A new organizational principle** — not just "subtelomeres are repetitive" but "subtelomeres form a structured community system of inter-chromosomal pseudo-homology"
-2. **Universality** — 41 of 48 arms, 4 technologies, 3 cell types, 2 species, 233 individuals
+2. **Universality** — 41 of 48 arms, 4 technologies, 3 cell types, 2 species, 232 individuals
 3. **Functional consequences** — FSHD, Robertsonian translocations, and the uncharted clinical territory of 13 other communities
 4. **A simple framework readers carry away** — "PARs are the special case; PHRs are the general case"
 
@@ -96,7 +96,7 @@ Based on analysis of how TADs, A/B compartments, segmental duplications, the T2T
 
 | Prior work | What they had | What this paper adds |
 |---|---|---|
-| Mefford & Trask 2002 (NRG) | Qualitative "patchwork" model, single genome | Population-scale (233 samples), community structure |
+| Mefford & Trask 2002 (NRG) | Qualitative "patchwork" model, single genome | Population-scale (232 individuals), community structure |
 | Linardopoulou et al. 2005 (Nature) | "Hot spots" label, single genome | 15 discrete communities, not just "hot" |
 | Ambrosini et al. 2007 | 11 duplicon blocks, bimodal identity | All blocks mapped to communities, population validation |
 | Young/Stong 2020 (PLoS Genet) | Optical mapping, 154 genomes | Sequence resolution, pangenome graph, community detection |
@@ -192,7 +192,7 @@ For Nature format (~3,000 words main text + methods + extended data):
 
 ### Opening paragraph
 
-> Pseudoautosomal regions, where non-homologous sex chromosomes share sequence and undergo obligate meiotic crossover, are a foundational concept in human genetics with direct consequences for variant calling, inheritance modeling, and clinical interpretation. We recently showed that analogous pseudo-homologous regions (PHRs) on the short arms of acrocentric chromosomes mediate recombination between non-homologous autosomes, predicting the breakpoints of Robertsonian translocations — a prediction subsequently confirmed by telomere-to-telomere assembly of three Robertsonian chromosomes. Here, using 465 haplotype-resolved assemblies from the Human Pangenome Reference Consortium, we show that PHRs are a genome-wide feature of human subtelomeres. Forty-one of 48 chromosome arms share sequence at >=95% identity with non-homologous chromosomes, organized into 15 communities of preferential exchange — of which PARs are two. These communities are reflected in 3D nuclear co-localization across four proximity technologies, three cell types, and in mouse meiosis, establishing subtelomeric pseudo-homology as a pervasive system of inter-chromosomal organization with implications for genome stability, structural variant interpretation, and disease.
+> Pseudoautosomal regions, where non-homologous sex chromosomes share sequence and undergo obligate meiotic crossover, are a foundational concept in human genetics with direct consequences for variant calling, inheritance modeling, and clinical interpretation. We recently showed that analogous pseudo-homologous regions (PHRs) on the short arms of acrocentric chromosomes mediate recombination between non-homologous autosomes, predicting the breakpoints of Robertsonian translocations — a prediction subsequently confirmed by telomere-to-telomere assembly of three Robertsonian chromosomes. Here, using 465 near-complete assemblies from the Human Pangenome Reference Consortium and CHM13, we show that PHRs are a genome-wide feature of human subtelomeres. Forty-one of 48 chromosome arms share sequence at >=95% identity with non-homologous chromosomes, organized into 15 communities of preferential exchange — of which PARs are two. These communities are reflected in 3D nuclear co-localization across four proximity technologies, three cell types, and in mouse meiosis, establishing subtelomeric pseudo-homology as a pervasive system of inter-chromosomal organization with implications for genome stability, structural variant interpretation, and disease.
 
 ### Figure plan
 
