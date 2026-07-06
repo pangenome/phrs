@@ -117,5 +117,6 @@ For each comparison, the directory contains SVG, PDF, and PNG renders for:
 - `*.whole_genome_homologous_context_ribbon.*`: colored winners over light gray
   homologous context.
 
-The conversion status files record `rsvg-convert version 2.54.5`. The PNGs are
-3000 by 900 pixels.
+The conversion status files record `rsvg-convert version 2.54.5`. The SVG
+viewBox is 3600 by 840 pixels, and the manuscript-facing PNG exports are 7200
+by 1680 pixels.

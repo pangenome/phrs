@@ -1,5 +1,5 @@
 metric	value
-source	/home/guarracino/git/phrs/data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz
+source	data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz
 homolog_layer_definition	grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table
 homolog_min_identity	0.95
 homolog_min_bp	10000

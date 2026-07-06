@@ -1,5 +1,5 @@
 metric	value
-source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027mat_vs_PAN010_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+source	paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN027mat_vs_PAN010_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
 end_to_end_merge_gap_bp	0
 inter_beats_same_segments_2kb	1036
 inter_beats_same_end_to_end_runs	660

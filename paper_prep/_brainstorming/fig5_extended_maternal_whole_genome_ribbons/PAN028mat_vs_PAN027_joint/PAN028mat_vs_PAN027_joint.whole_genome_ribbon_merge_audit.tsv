@@ -1,5 +1,5 @@
 layer	metric	value
-interchrom	source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN028mat_vs_PAN027_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+interchrom	source	paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN028mat_vs_PAN027_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
 interchrom	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
 interchrom	end_to_end_merge_gap_bp	0
 interchrom	raw_segments_2kb	4290
@@ -23,7 +23,7 @@ interchrom	drawn_query_span_longer_than_bp_runs	0
 interchrom	drawn_max_query_span_bp	104000
 interchrom	drawn_max_donor_span_bp	103991
 interchrom	drawn_max_windows_per_run	52
-homolog	source	/moosefs/erikg/phrs/paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN028mat_vs_PAN027_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
+homolog	source	paper_prep/_brainstorming/fig5_pre_impg_depth_filtered_similarity/outputs/PAN028mat_vs_PAN027_joint.sweepga_f32.10to10.query_2000bp.predepth_class_winners.impg_similarity.tsv.gz
 homolog	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
 homolog	end_to_end_merge_gap_bp	0
 homolog	raw_segments_2kb	165026

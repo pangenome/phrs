@@ -61,9 +61,10 @@ LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 
 PAGE_W = 3600
 PAGE_H = 840
-TRACK_X0 = 560
-TRACK_W = 2900
+TRACK_X0 = 850
+TRACK_W = 2580
 TRACK_H = 28
+TRACK_LABEL_X = TRACK_X0 - 36
 Y_H1 = 115
 Y_QUERY = 345
 Y_H2 = 555
@@ -266,6 +267,13 @@ def target_meta(seq: str) -> tuple[str, str]:
     if match is None:
         return "NA", chrom_name(seq)
     return match.group("hap"), match.group("chrom")
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.resolve().relative_to(ROOT.resolve()))
+    except ValueError:
+        return str(path)
 
 
 def read_query_fai(path: Path) -> tuple[dict[str, str], dict[str, int]]:
@@ -758,7 +766,7 @@ def write_summary(path: Path, runs: list[Run], all_runs: list[Run], segments: li
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
-        writer.writerow({"metric": "source", "value": str(source)})
+        writer.writerow({"metric": "source", "value": display_path(source)})
         writer.writerow({"metric": "end_to_end_merge_gap_bp", "value": str(CONTIGUOUS_MERGE_GAP_BP)})
         writer.writerow({"metric": "inter_beats_same_segments_2kb", "value": str(len(segments))})
         writer.writerow({"metric": "inter_beats_same_end_to_end_runs", "value": str(len(all_runs))})
@@ -787,7 +795,7 @@ def write_homolog_summary(
         fields = ["metric", "value"]
         writer = csv.DictWriter(handle, delimiter="\t", fieldnames=fields, lineterminator="\n")
         writer.writeheader()
-        writer.writerow({"metric": "source", "value": str(source)})
+        writer.writerow({"metric": "source", "value": display_path(source)})
         writer.writerow({"metric": "homolog_layer_definition", "value": "grouped same_chrom father-child donor intervals drawn to child intervals from the 10:10 IMPG class-winner table"})
         writer.writerow({"metric": "homolog_min_identity", "value": str(HOMOLOG_MIN_IDENTITY)})
         writer.writerow({"metric": "homolog_min_bp", "value": str(HOMOLOG_MIN_BP)})
@@ -824,7 +832,7 @@ def write_merge_audit(
         span_audit = span_audit_metrics(runs)
         drawn_span_audit = span_audit_metrics(drawn_runs)
         values = {
-            "source": str(source),
+            "source": display_path(source),
             "merge_rule": "same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction",
             "end_to_end_merge_gap_bp": str(CONTIGUOUS_MERGE_GAP_BP),
             "raw_segments_2kb": str(audit["raw_segments_2kb"]),
@@ -860,7 +868,7 @@ def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: f
 
 
 def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
-    svg.text(TRACK_X0 - 26, y + TRACK_H - 2, layout.label, 30, "700", TEXT, "end")
+    svg.text(TRACK_LABEL_X, y + TRACK_H - 2, layout.label, 30, "700", TEXT, "end")
     for idx, chrom in enumerate(CHROM_ORDER):
         if chrom not in layout.lengths:
             continue
@@ -888,7 +896,7 @@ def draw_chromosome_boundary_bars(svg: SVG, layout: GenomeLayout, y: float) -> N
         xs.append(x_for(layout, last_chrom, layout.lengths[last_chrom]))
 
     for x in xs:
-        svg.line(x, y - 4, x, y + TRACK_H + 4, CHROM_BORDER, 1.0, 0.9)
+        svg.line(x, y - 7, x, y + TRACK_H + 7, CHROM_BORDER, 1.8, 1.0)
 
 
 def draw_chromosome_labels(svg: SVG, layout: GenomeLayout, y: float) -> None:
@@ -1171,7 +1179,7 @@ def convert_one(svg_path: Path) -> str | None:
     if rsvg is None:
         return None
     subprocess.run([rsvg, "-f", "pdf", "-o", str(svg_path.with_suffix(".pdf")), str(svg_path)], check=True)
-    subprocess.run([rsvg, "-f", "png", "-o", str(svg_path.with_suffix(".png")), str(svg_path)], check=True)
+    subprocess.run([rsvg, "-f", "png", "-z", "2", "-o", str(svg_path.with_suffix(".png")), str(svg_path)], check=True)
     return subprocess.run([rsvg, "--version"], check=True, text=True, capture_output=True).stdout.strip()
 
 

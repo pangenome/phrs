@@ -1,9 +1,14 @@
 # Manuscript Promotion Decision
 
-Decision: do not expand `submission/paper.tex` or copy these maternal PNGs into
-`submission/fig/ExtendedDataFigures` in this commit.
+Historical decision: do not expand `submission/paper.tex` or copy these
+maternal PNGs into `submission/fig/ExtendedDataFigures` in the original draft
+commit.
 
-Rationale:
+Superseding manuscript integration: the homologous-context maternal PNGs are
+now promoted as Extended Data Fig. 2 panels in `submission/paper.tex` and copied
+to `submission/fig/ExtendedDataFigures`.
+
+Original rationale:
 
 - The active submission currently defines a single Extended Data figure,
   `fig:ed1`, for sequence-to-3D contact replicates.
@@ -35,4 +40,5 @@ Current candidate figure assets:
 - `PAN028mat_vs_PAN027_joint/PAN028mat_vs_PAN027_joint.whole_genome_ribbon.png`
 - `PAN028mat_vs_PAN027_joint/PAN028mat_vs_PAN027_joint.whole_genome_homologous_context_ribbon.png`
 
-The PDF and SVG siblings are present beside each PNG.
+The PDF and SVG siblings are present beside each PNG. The current manuscript PNG
+exports are 7200 by 1680 pixels from a 3600 by 840 SVG viewBox.

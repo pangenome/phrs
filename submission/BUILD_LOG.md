@@ -2,6 +2,33 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after Fig. 5 / ED2 render refresh
+
+Date: 2026-07-06
+
+Command:
+
+```
+cd submission
+make clean && make
+```
+
+Environment note: this local build used the Guix TeX Live tree with constrained
+`TEXINPUTS`, `BIBINPUTS`, `BSTINPUTS`, `TEXFORMATS`, and font-map variables so
+that `jnl.cls` loads the intended Natbib configuration.
+
+Result: `make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+grep -c 'undefined' paper.log  # -> 0
+ls -lh paper.pdf               # -> 7.5M, 26 pages
+```
+
+**PASS** -- refreshed Fig. 5 and Extended Data Fig. 2 PNGs compile with no
+undefined references/citations in the final `paper.log`.
+
 ## Successful build after Supplementary Table 1 updates
 
 Date: 2026-07-05

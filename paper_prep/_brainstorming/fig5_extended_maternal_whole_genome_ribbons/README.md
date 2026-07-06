@@ -9,8 +9,9 @@ whole-genome recombination ribbon view. The renders use the validated maternal
 - `PAN028mat_vs_PAN027_joint`: child maternal haplotype compared with mother
   PAN027.
 
-These are candidate Extended Data figure assets, not yet promoted into
-`submission/paper.tex`. See `PROMOTION_DECISION.md` for the manuscript decision.
+These are the source renders for the promoted Extended Data Fig. 2 manuscript
+assets. The homologous-context PNGs are copied into
+`submission/fig/ExtendedDataFigures`.
 
 ## Build
 
@@ -118,12 +119,12 @@ both SVGs. Otherwise the conversion status records that SVG-only output was
 produced.
 
 Both rendered comparisons converted successfully with `rsvg-convert version
-2.54.5`; the PNGs are 3000 by 900 pixels.
+2.54.5`; the SVG viewBox is 3600 by 840 pixels and the exported PNGs are
+7200 by 1680 pixels.
 
 ## Companion notes
 
 - `caption.md` contains a draft Extended Data caption for manual promotion.
 - `METHOD_NOTES.md` contains manuscript-ready methods text.
-- `PROMOTION_DECISION.md` records why these assets remain in
-  `paper_prep/_brainstorming` for now instead of being copied into
-  `submission/fig/ExtendedDataFigures`.
+- `PROMOTION_DECISION.md` records the earlier pre-promotion decision and the
+  later superseding manuscript promotion.

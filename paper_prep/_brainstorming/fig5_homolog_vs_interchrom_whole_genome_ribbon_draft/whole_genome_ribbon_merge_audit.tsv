@@ -1,5 +1,5 @@
 layer	metric	value
-interchrom	source	/home/guarracino/git/phrs/data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz
+interchrom	source	data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz
 interchrom	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
 interchrom	end_to_end_merge_gap_bp	0
 interchrom	raw_segments_2kb	1778
@@ -23,7 +23,7 @@ interchrom	drawn_query_span_longer_than_bp_runs	0
 interchrom	drawn_max_query_span_bp	92000
 interchrom	drawn_max_donor_span_bp	92003
 interchrom	drawn_max_windows_per_run	46
-homolog	source	/home/guarracino/git/phrs/data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz
+homolog	source	data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz
 homolog	merge_rule	same query_seq/donor_seq with query-adjacent and donor-adjacent endpoints in a consistent donor direction
 homolog	end_to_end_merge_gap_bp	0
 homolog	raw_segments_2kb	174123
