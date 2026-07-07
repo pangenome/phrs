@@ -227,8 +227,8 @@ Why should pseudo-homolog regions persist at 41 of the 48 arms?
 In human contact-map data, aggregate contact at PHR coordinates increases with
 PHR sequence similarity.
 We measured this per inter-chromosomal PHR pair within a single genome and
-without community labels in HG002 Pore-C (Fig.~\ref{fig:fig4}A; descriptive
-pointwise Spearman $\rho = 0.381$, $n = 2{,}830$), with the same direction in
+without community labels in HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise
+Spearman $\rho = 0.381$, $n = 2{,}830$), with the same direction in
 CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
 Because highly similar non-homologous PHR tracts cannot be assigned uniquely by
 a mapping-quality threshold, we interpret PHR-window contacts as aggregate
@@ -254,7 +254,7 @@ are used at leptotene, zygotene, pachytene and diplotene
 Subtelomeric sequence similarity is positively correlated with contact across
 all four stages, and the per-PHR-pair correlation is strongest at the zygotene
 bouquet, when telomeres cluster at the nuclear envelope, and lowest at diplotene
-(descriptive pointwise Spearman $\rho = 0.419$, 0.614, 0.576 and 0.245 at
+(pointwise Spearman $\rho = 0.419$, 0.614, 0.576 and 0.245 at
 leptotene, zygotene, pachytene and diplotene, all $n = 1{,}135$;
 Fig.~\ref{fig:fig4}C).
 
@@ -421,7 +421,7 @@ Group for generating and interpreting these data.
     the PHRs' exact coordinates, summed over the 50 kbp bin-pairs the
     two PHRs span and divided by that bin-pair count, so longer PHRs are not counted
     more (log scale, zero-contact pairs at the axis floor). Contact rises with
-    similarity (descriptive pointwise Spearman
+    similarity (pointwise Spearman
     $\rho = 0.381$, $n = 2{,}830$; line, linear fit).
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
@@ -436,7 +436,7 @@ Group for generating and interpreting these data.
     contacts over 1 Mb flanks). Left, one dot per inter-chromosomal mouse PHR
     sequence pair: zygotene contact (per-bin-pair length-normalised as in (A),
     log) rises with PHR Jaccard similarity. Right, the same per-PHR-pair
-    descriptive Spearman statistic across leptotene, zygotene, pachytene and
+    Spearman statistic across leptotene, zygotene, pachytene and
     diplotene, strongest at the zygotene bouquet ($\rho = 0.614$) and lowest at
     diplotene ($\rho = 0.245$).}
   \label{fig:fig4}
@@ -594,8 +594,8 @@ not read-level truth sets.
 The adjacent 100 kb centromere-ward non-PHR flank analyses provide the principal
 control against broad MAPQ0-driven inflation; in HG002 Hi-C, the flanks show
 $B/W = 0.002$ compared with $0.027$ in PHR windows.
-Pointwise Spearman correlations are reported as descriptive effect sizes
-because PHR-pair observations share chromosome arms, PHRs, matrix rows/columns
+Pointwise Spearman correlations are reported as effect sizes, not significance
+tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows/columns
 and read-placement histories.
 Matrix-level inference used row+column Mantel/permutation tests; finite
 permutation floors are reported when no permutation exceeds the observed
@@ -657,7 +657,7 @@ At 20 kb resolution (1 Mb flank) the per-PHR-pair Spearman correlation is
 strongest at zygotene and lowest at diplotene ($\rho = 0.419$, 0.614, 0.576 and
 0.245 respectively, all $n = 1{,}135$; Fig.~\ref{fig:fig4}C); at coarser 50 kb
 resolution the per-stage correlations flatten ($\rho = 0.37$--0.43).
-These are reported as descriptive point estimates without a formal
+These are reported as point estimates without a formal
 stage-contrast test.
 \texttt{vegan::mantel} cross-check within $\pm 0.02$ \cite{Zuo2021}; the Python
 and R implementations are included in the public analysis-code repository.
@@ -767,8 +767,8 @@ the pedigree within-community fraction (observed $p < 10^{-4}$).
     a single genome; \emph{x}, pangenome-graph Jaccard similarity; \emph{y}, mean
     3D contact per 50 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
     log scale, zero-contact pairs at the axis floor; line, linear fit).
-    Contact rises with similarity in every panel, reported as descriptive
-    pointwise Spearman effect sizes:
+    Contact rises with similarity in every panel, reported as pointwise
+    Spearman effect sizes:
     CHM13 Hi-C (a second genome; $\rho = 0.716$, $n = 652$), HG002 Hi-C (same
     genome as Fig.~\ref{fig:fig4}A, different assay; $\rho = 0.662$,
     $n = 2{,}544$), and HG002 CiFi ($\rho = 0.191$, $n = 2{,}757$; CiFi is the
