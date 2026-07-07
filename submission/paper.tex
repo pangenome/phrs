@@ -62,10 +62,10 @@ within a continuum of sharing that extends across many other arms. Human and mou
 chromosome-contact maps show preferential proximity between sequence-similar
 ends. In mouse meiosis this proximity is strongest at the zygotene bouquet, when
 telomeres cluster at the nuclear envelope; in human data it persists even in the
-adjacent flanks, which lack the shared sequence used to define the pairs. A whole-genome comparison in
-a three-generation pedigree assembled end to end recovers the known Xp/Yp PAR1
-exchange and identifies putative non-homologous subtelomeric exchange patches
-within the same sequence communities.
+adjacent flanks, which lack the shared sequence used to define the pairs. In a three-generation pedigree assembled end to end, a
+whole-genome comparison recovers the known Xp/Yp PAR1 exchange and identifies
+putative non-homologous subtelomeric exchange patches within the same sequence
+communities.
 These results generalize the known cases of subtelomeric exchange into a
 near-ubiquitous population-scale architecture and establish recurrent ectopic
 exchange as a genome-wide force in the concerted evolution of human chromosome
@@ -96,9 +96,9 @@ and PAR1 carries the obligate male sex-chromosome crossover
 \cite{Rouyer1986,sexchrompars_bellott2024}; the ribosomal-DNA-bearing
 acrocentric short arms recombine in the nucleolus and underlie recurrent
 Robertsonian translocations
-\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}; the disease-permissive
-4q35 D4Z4 configuration is homologous to the 10q26 array but is the
-disease-associated locus in facioscapulohumeral dystrophy and is reactivated in
+\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}; the
+4q35 D4Z4 macrosatellite, homologous to the 10q26 array, is the causal
+locus in facioscapulohumeral dystrophy and is reactivated in
 diverse cancers
 \cite{dux4_d4z4_fshd_lemmers2010worldwide,dux4_cancer_Chew2019}; and unbalanced
 subtelomeric rearrangements are a recurrent cause of intellectual disability
@@ -107,13 +107,13 @@ Yet this picture rested on locus-specific and reference-limited evidence:
 fluorescence in situ
 hybridization, BAC and half-YAC clones, and monochromosomal hybrids in a handful
 of genomes \cite{Mefford2001,Riethman2004,Ambrosini2007}, because no reference
-assembly reached the telomeres \cite{Nurk2022} and chromosome-by-chromosome
-alignment hid sharing between chromosomes \cite{Liao2023}.
+assembly reached the telomeres \cite{Nurk2022} and analyzing each chromosome
+separately hid the sharing between them \cite{Liao2023}.
 The unresolved question was therefore not whether inter-chromosomal
 subtelomeric exchange occurs, but its population-scale extent, variation and
 organization across complete chromosome ends.
 
-Two advances now make a complete, population-scale view possible: the
+Two advances now make this view possible: the
 telomere-to-telomere CHM13 assembly resolved one human genome end to end
 \cite{Nurk2022}, and the second release of the Human Pangenome Reference
 Consortium (HPRC v2) provides near-complete, haplotype-resolved assemblies for
@@ -122,8 +122,8 @@ At the same time, pangenome analysis of heterologous acrocentric chromosomes
 and complete assemblies of human Robertsonian chromosomes showed that the
 best-known case of subtelomeric exchange could be resolved sequence by sequence
 \cite{Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}; here we ask
-whether that acrocentric result is one case of a genome-wide architecture.
-We revisit subtelomeric architecture without chromosomal partitioning, and ask
+whether that acrocentric result is one instance of a genome-wide pattern.
+Revisiting subtelomeric organization without chromosomal partitioning, we pose
 three questions the cytogenetic era could pose but not resolve: how extensive is
 inter-chromosomal subtelomeric sharing across all 48 chromosome arms; how is it
 organized into sequence communities; and does sequence similarity predict both
@@ -133,15 +133,15 @@ patch patterns within the same communities.
 \subsection*{Implicit pangenome graphs of subtelomeres}
 
 We treat every haplotype as its own reference.
-From 232 HPRC v2 individuals we used both haplotype assemblies each together
-with CHM13v2.0, for 465 near-complete assemblies; we
+From 232 HPRC v2 individuals we used both haplotype assemblies together
+with CHM13v2.0, for 465 near-complete genomes; we
 extracted 18,827 telomere-anchored 500 kb flanks across the 48
 chromosome arms, and aligned them all-against-all with wfmash at 95\% minimum
 identity \cite{Guarracino2023}, without restricting alignment to homologous
 chromosomes.
 A pangenome graph and the set of alignments that define it are equivalent
 representations of the same object \cite{Garrison2024pggb}, so we treat the
-resulting alignments as an implicit pangenome graph and query it through their
+resulting alignments as an implicit pangenome graph and query them through their
 transitive closure, without ever building the graph
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
 Exhaustive all-against-all comparison is intractable, of order $10^{24}$
@@ -174,7 +174,7 @@ Fig.~\ref{fig:fig1}B), the upper bound set by the 500 kb flank window rather
 than by biology.
 Excluding the acrocentric short arms and the pseudoautosomal regions, these PHRs
 total 3.51 Mb of subtelomeric sequence, comparable in scale to PAR2 (the median
-PHR is 31\% of PAR2's length) and a substantial amount of subtelomeric sequence
+PHR is 31\% of PAR2's length)
 \cite{sexchrompars_bellott2024}.
 
 \subsection*{Communities of subtelomeric PHRs}
@@ -199,8 +199,8 @@ and colleagues \cite{Linardopoulou2005}, and the 4q/10q D4Z4 pair
 Beyond these discrete communities, the same matrix shows a weaker q-arm
 enrichment that does not resolve into a separate community (22q, 21q, 19q, 1q,
 13q and 17q).
-Average-linkage UPGMA provides a secondary display and method comparison on the
-same matrix, but we do not interpret the ordering as an evolutionary tree.
+Average-linkage UPGMA provides a secondary display and method comparison, but we
+do not interpret the ordering as an evolutionary tree.
 
 \subsection*{Architecture of representative communities}
 
@@ -216,9 +216,9 @@ copies on 10p and as a single copy on 18p (Fig.~\ref{fig:fig3}B)
 Community C11 (5q/6q) is built on the OR4F olfactory-receptor family and its
 pseudogenes (Fig.~\ref{fig:fig3}C).
 More broadly, subtelomeric gene content is dominated by pseudogenes and
-non-coding RNAs, with olfactory-receptor genes and subtelomeric pseudogene
-duplicons, rather than community-specific protein-coding genes, defining the
-communities \cite{Ambrosini2007}; within-community arm pairs are overwhelmingly
+non-coding RNAs. What defines the communities is olfactory-receptor genes and
+subtelomeric pseudogene duplicons, not community-specific protein-coding genes
+\cite{Ambrosini2007}. Within-community arm pairs are overwhelmingly
 of the same orientation (only 17 of 75 pair a p-arm with a q-arm).
 
 \subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
@@ -313,8 +313,7 @@ population-scale extension of the cytogenetically defined subtelomeric loci
 that anchor it, shaped and maintained by recurrent ectopic exchange
 \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
 Which way the sequence--proximity link runs is still open: whether shared
-sequence drives co-localisation, or enforced proximity generates shared
-sequence. The mechanism is likewise unresolved, split among conversion,
+sequence drives co-localisation, or enforced proximity generates it. The mechanism is likewise unresolved, split among conversion,
 crossover-associated repair and larger exchange patterns.
 Our human three-dimensional data are somatic rather than germline, with the
 meiotic-stage measurement supplied only by mouse.
@@ -344,11 +343,11 @@ Group for generating and interpreting these data.
     distinct partner chromosomes a window aligns to elsewhere in the pangenome
     (0 to 11+), with a region track (centromere, PAR, PHR, terminal repeat);
     insets give per-partner counts at representative loci. Telomere-anchored
-    high-identity blocks mark inter-chromosomal sharing at chromosome ends, and the
+    high-identity blocks recur at nearly every end, and the
     acrocentrics and PARs appear as positive controls.
-    \textbf{(B)} PHR length distribution by chromosome end, p-arms and q-arms
-    separately, colored by the number of PHRs per 10 kb length bin
-    (pseudo-log scale) across the terminal 500 kb, with length measured from the
+    \textbf{(B)} PHR length distribution across the terminal 500 kb, shown
+    separately for p-arms and q-arms and coloured by the number of PHRs per 10 kb
+    length bin (pseudo-log scale). Length is measured from the
     telomere (0 kb = telomere-proximal; q-arms flipped so both panels read
     telomere$\to$centromere). Non-acrocentric, non-PAR
     PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
@@ -370,9 +369,9 @@ Group for generating and interpreting these data.
     are linked across non-homologous chromosomes rather than partitioned by
     chromosome, yet the communities occupy distinct regions of the layout.
     \textbf{(B)} Arm-level Jaccard similarity heatmap ($41 \times 41$), shown
-    twice. \emph{Left}, ordered by an average-linkage UPGMA dendrogram used as a
-    display order for similar subtelomeric PHR profiles (p-arms red, q-arms
-    blue), showing locally dense blocks on a broader similarity continuum.
+    twice. \emph{Left}, ordered by an average-linkage UPGMA dendrogram that
+    places arms with similar subtelomeric PHR profiles adjacent (p-arms red,
+    q-arms blue), showing locally dense blocks on a broader similarity continuum.
     \emph{Right}, the same matrix ordered by the 15-community Leiden arm-level
     partition, with community colour bands. The blocks recover the known cases
     shown here: PAR1, PAR2, the acrocentric p-arms, 10p/18p and the 4q/10q DUX4
@@ -454,8 +453,8 @@ Group for generating and interpreting these data.
     assembled lengths; thin black bars mark chromosome boundaries. Light-gray
     ribbons show same-chromosome father-child homologous chains ($\geq 10$ kb,
     identity $\geq 0.95$). Colored ribbons show 2 kb query-space windows,
-    grouped into $\geq 10$ kb runs, where the best PAN011 non-homologous father
-    match beats the best same-chromosome or homologous father match in the same
+    grouped into $\geq 10$ kb runs, where the best non-homologous PAN011 match
+    beats the best same-chromosome or homologous match in the same
     IMPG scan. The male Xp/Yp PAR1 signal is an internal positive control for
     obligate sex-chromosome recombination. The chr5q/chr1p and chr9q/chr3q
     ribbons are putative autosomal PHR-exchange candidates; PHR and community
@@ -475,10 +474,9 @@ Group for generating and interpreting these data.
 
 \subsection*{Sample selection and reference frame}
 
-232 HPRC v2 individuals contributed haplotype-resolved assemblies, and
-CHM13v2.0 was added as the closed-reference anchor.
-The arm-flank census uses 465 near-complete assemblies: two haplotype
-assemblies for each of the 232 HPRC v2 individuals plus the haploid CHM13 anchor.
+232 HPRC v2 individuals contributed two haplotype-resolved assemblies each;
+with the haploid CHM13v2.0 closed-reference anchor this gives the 465-assembly
+arm-flank census.
 Superpopulation labels were assigned at the HPRC individual level
 \cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}.
 
@@ -606,11 +604,11 @@ contact matrices \cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cif
 The pointwise Spearman correlations take each inter-chromosomal PHR sequence
 pair as a point, correlating its pangenome-graph Jaccard with its
 length-normalised Hi-C/Pore-C contact at the pair's exact coordinates within one
-genome: HG002 Pore-C in Fig.~\ref{fig:fig4}A ($\rho = 0.381$, $n = 2{,}830$) and,
-as replicates in Extended Data Fig.~\ref{fig:ed1}, CHM13 Hi-C ($\rho = 0.716$,
-$n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2{,}544$) and HG002 CiFi
-($\rho = 0.191$, $n = 2{,}757$; the sparsest assay, hence the weakest signal);
-all at 50 kbp via \texttt{sequence\_hic\_correlation.py}.
+genome, all at 50 kbp via \texttt{sequence\_hic\_correlation.py}.
+The primary comparison is HG002 Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.381$,
+$n = 2{,}830$); the replicates in Extended Data Fig.~\ref{fig:ed1} are CHM13 Hi-C
+($\rho = 0.716$, $n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2{,}544$) and HG002
+CiFi ($\rho = 0.191$, $n = 2{,}757$; the sparsest assay, hence the weakest signal).
 The community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}B ($B/W = 0.056$,
 between/within contact) is at 50 kb.
 
@@ -622,10 +620,6 @@ at the deposited mapping stage.
 We re-aligned all Hi-C, Pore-C, CiFi and Dip-C data from raw FASTQ against the
 corresponding T2T reference (CHM13v2.0 or matched HPRC v2 haplotype) with
 multi-mappers retained.
-The re-alignment workflows and command lines are included in the public
-analysis-code repository.
-Deposited processed files generated with default MAPQ filters do not preserve
-the inter-arm signal.
 
 \subsection*{Exclusion controls (multi-resolution Mantel walk)}
 
@@ -800,9 +794,9 @@ the pedigree within-community fraction (observed $p < 10^{-4}$).
     assembled length. Light-gray ribbons show same-chromosome maternal
     homologous chains ($\geq 10$ kb, identity $\geq 0.95$). Colored ribbons show
     grouped 2 kb query windows in which the best non-homologous maternal match
-    beats the best same-chromosome homologous match after the required
-    SweepGA/FastGA f32 raw PAF was reduced by \texttt{sweepga --num-mappings
-    10:10 --scaffold-jump 0 --scoring ani} before IMPG similarity.
+    beats the best same-chromosome homologous match. Before the IMPG similarity
+    step the raw SweepGA/FastGA f32 PAF was filtered with \texttt{sweepga
+    --num-mappings 10:10 --scaffold-jump 0 --scoring ani}.
     \textbf{(A)} PAN027 maternal haplotype compared with the joint PAN010 mother
     target. The drawn high-confidence non-homologous runs are
     acrocentric-acrocentric. \textbf{(B)} PAN028 maternal haplotype compared
