@@ -53,13 +53,15 @@ shared among non-homologous chromosome ends and to undergo ectopic exchange
 However, incomplete reference assemblies and chromosome-partitioned analyses
 have prevented a population-scale view of the extent and organization of this
 system \cite{Nurk2022,Liao2023,hprc_hprcv2_2025}. Here we show, using 465
-near-complete human assemblies and chromosome-unrestricted pangenome analysis,
+near-complete human assemblies and reference-free, all-vs-all
+chromosome-unrestricted pangenome analysis,
 that high-identity pseudo-homologous regions occur on 41 of 48 chromosome arms.
 They form structured sequence communities in which established exchange systems
 appear as local peaks within a broader continuum. Human and mouse
 chromosome-contact maps show preferential proximity between sequence-similar
-ends, and in human data this relationship persists even in the adjacent flanks,
-which lack the homology used to define the pairs. A whole-genome comparison in
+ends; in mouse meiosis this proximity is strongest at the zygotene bouquet, when
+telomeres cluster at the nuclear envelope, and in human data it persists even in
+the adjacent flanks, which lack the homology used to define the pairs. A whole-genome comparison in
 a three-generation pedigree assembled end to end recovers PAR1 as a positive
 control and identifies putative non-homologous subtelomeric exchange patches
 within the same sequence communities.
@@ -416,8 +418,8 @@ Group for generating and interpreting these data.
     pseudo-homolog regions (PHRs) within a single genome, so both axes derive
     from the same sample; \emph{x}, Jaccard sequence similarity of the two PHRs
     from the pangenome graph; \emph{y}, their length-normalised 3D contact at
-    the PHRs' exact coordinates --- contact summed over the 50 kbp bin-pairs the
-    two PHRs span, divided by that bin-pair count, so longer PHRs are not counted
+    the PHRs' exact coordinates, summed over the 50 kbp bin-pairs the
+    two PHRs span and divided by that bin-pair count, so longer PHRs are not counted
     more (log scale, zero-contact pairs at the axis floor). Contact rises with
     similarity (descriptive pointwise Spearman
     $\rho = 0.381$, $n = 2{,}830$; line, linear fit).
