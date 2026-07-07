@@ -4,10 +4,8 @@ This directory contains maternal companions for the Fig. 5 whole-genome
 recombination ribbon view. The renders use the validated maternal
 10:10 IMPG class-winner outputs from `fig5-ed-maternal-10to10-impg-monitor`:
 
-- `PAN027mat_vs_PAN010_joint`: child maternal haplotype compared with mother
-  PAN010.
-- `PAN028mat_vs_PAN027_joint`: child maternal haplotype compared with mother
-  PAN027.
+- `PAN027mat_vs_PAN010_joint`: child maternal haplotype compared with PAN010.
+- `PAN028mat_vs_PAN027_joint`: child maternal haplotype compared with PAN027.
 
 These are the source renders for the maternal Fig. 5C-D panels. The
 homologous-context PNGs are also copied into
@@ -77,8 +75,9 @@ Fig. 5 whole-genome ribbon draft:
 
 - Chromosomes are concatenated in chromosome order with actual
   chromosome-length scaling within each genome track.
-- The upper and lower tracks are the two mother donor haplotypes; the middle
-  track is the child query haplotype.
+- The upper and lower tracks are the two parent haplotypes (`h1` and `h2`);
+  the middle track is the maternal meiotic product inherited by the child/query
+  haplotype.
 - Colored ribbons are drawn from adjacent 2 kb query windows only when the
   interchromosomal/non-homologous class winner beats the best homologous
   same-chromosome class winner for that window.
@@ -97,6 +96,14 @@ Fig. 5 whole-genome ribbon draft:
 
 The merge audits for both comparisons confirm zero absorbed query or donor
 endpoint gaps in the interchromosomal and homologous layers.
+
+Label provenance: the source FASTA manifest reliably maps the child/query
+records to maternal haplotypes (`PAN027#1` and `PAN028#1`). The joint parent
+targets retain source haplotype numbers after collapsing (`PAN010#joint#h1`,
+`PAN010#joint#h2`, `PAN027#joint#h1`, and `PAN027#joint#h2`), but the available
+manifest does not establish paternal/maternal origin for these displayed parent
+tracks. The parent labels therefore intentionally remain `PAN010 h1`,
+`PAN010 h2`, `PAN027 h1`, and `PAN027 h2`.
 
 ## Current metrics
 

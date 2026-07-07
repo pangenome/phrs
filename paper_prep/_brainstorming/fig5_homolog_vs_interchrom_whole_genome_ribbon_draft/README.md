@@ -16,9 +16,10 @@ needed); the script falls back to the moosefs sources, or override on the CLI:
 
 Lane layout:
 
-- top genome: PAN011 father donor haplotype 1
-- middle genome: PAN027 paternal haplotype child query
-- lower genome: PAN011 father donor haplotype 2
+- top genome: PAN011 h1
+- middle genome: PAN027 paternal haplotype, the meiotic product inherited by
+  the child/query haplotype
+- lower genome: PAN011 h2
 - chromosomes are concatenated in chromosome order with actual chromosome-length
   scaling within each genome track
 - colored ribbons show adjacent 2 kb query windows where the best interchromosomal IMPG
@@ -31,9 +32,17 @@ Regenerate:
 ```bash
 # python3 (stdlib) reads the vendored data/ inputs; rsvg-convert (librsvg, via
 # guix) is needed for PDF/PNG, otherwise it writes SVG only. The wrapper passes
-# the published track labels (PAN011 father h1 / PAN027 pat child / PAN011 father h2).
+# the published short track labels (PAN011 h1 / PAN027 paternal / PAN011 h2).
 bash paper_prep/_brainstorming/fig5_homolog_vs_interchrom_whole_genome_ribbon_draft/scripts/make_whole_genome_ribbon_draft.sh
 ```
+
+Label provenance: the source FASTA manifest reliably maps the child/query
+records for this panel (`PAN027#2`) to the paternal haplotype, but the displayed
+PAN011 parent target records are only represented as recovered source haplotype
+numbers after joint-target collapsing (`PAN011#joint#h1_chr*` and
+`PAN011#joint#h2_chr*`). Because the available manifest does not establish a
+parental-origin mapping for PAN011 h1/h2, the parent tracks intentionally remain
+`PAN011 h1` and `PAN011 h2` rather than paternal/maternal labels.
 
 Note: the committed SVG/PDF/PNG were rendered by an earlier version of the label
 logic; re-running the current script reproduces the same ribbons/coordinates but

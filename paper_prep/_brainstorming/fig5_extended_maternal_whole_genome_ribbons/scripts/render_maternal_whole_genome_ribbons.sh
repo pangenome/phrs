@@ -14,9 +14,9 @@ python3 "$PLOTTER" \
   --query-fai "$FAI_DIR/PAN027mat_vs_PAN010_joint.query.fa.fai" \
   --target-fai "$FAI_DIR/PAN027mat_vs_PAN010_joint.target.fa.fai" \
   --output-dir "$OUT_DIR/PAN027mat_vs_PAN010_joint" \
-  --query-label "PAN027 maternal child" \
-  --target-h1-label "PAN010 mother h1" \
-  --target-h2-label "PAN010 mother h2" \
+  --query-label "PAN027 maternal" \
+  --target-h1-label "PAN010 h1" \
+  --target-h2-label "PAN010 h2" \
   --layer-label "mother-child" \
   --panel-label "C"
 
@@ -26,8 +26,8 @@ python3 "$PLOTTER" \
   --query-fai "$FAI_DIR/PAN028mat_vs_PAN027_joint.query.fa.fai" \
   --target-fai "$FAI_DIR/PAN028mat_vs_PAN027_joint.target.fa.fai" \
   --output-dir "$OUT_DIR/PAN028mat_vs_PAN027_joint" \
-  --query-label "PAN028 maternal child" \
-  --target-h1-label "PAN027 mother h1" \
-  --target-h2-label "PAN027 mother h2" \
+  --query-label "PAN028 maternal" \
+  --target-h1-label "PAN027 h1" \
+  --target-h2-label "PAN027 h2" \
   --layer-label "mother-child" \
   --panel-label "D"

@@ -61,10 +61,10 @@ LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 
 PAGE_W = 3600
 PAGE_H = 840
-TRACK_X0 = 620
-TRACK_W = 2920
+TRACK_X0 = 500
+TRACK_W = 3040
 TRACK_H = 28
-TRACK_LABEL_X = TRACK_X0 - 28
+TRACK_LABEL_X = TRACK_X0 - 24
 Y_H1 = 115
 Y_QUERY = 345
 Y_H2 = 555
@@ -271,8 +271,13 @@ def target_meta(seq: str) -> tuple[str, str]:
 
 
 def display_path(path: Path) -> str:
+    resolved = path.resolve()
     try:
-        return str(path.resolve().relative_to(ROOT.resolve()))
+        return str(resolved.relative_to(ROOT.resolve()))
+    except ValueError:
+        pass
+    try:
+        return str(resolved.relative_to(Path("/moosefs/erikg/phrs")))
     except ValueError:
         return str(path)
 
@@ -1265,9 +1270,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-fai", type=Path, default=DEFAULT_TARGET_FAI)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUT_DIR)
     parser.add_argument("--output-prefix", default=None)
-    parser.add_argument("--query-label", default="PAN027 paternal child query")
-    parser.add_argument("--target-h1-label", default="PAN011 father donor h1")
-    parser.add_argument("--target-h2-label", default="PAN011 father donor h2")
+    parser.add_argument("--query-label", default="PAN027 paternal")
+    parser.add_argument("--target-h1-label", default="PAN011 h1")
+    parser.add_argument("--target-h2-label", default="PAN011 h2")
     parser.add_argument("--layer-label", default="father-child")
     parser.add_argument("--panel-label", default="B")
     return parser.parse_args()
