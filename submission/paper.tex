@@ -28,7 +28,7 @@
 %          a HG002 Pore-C all-points scatter; b Pore-C community matrix; c mouse bouquet
 %   Fig 5  Whole-genome pedigree-resolved subtelomeric exchange  (deck slides 24,26)
 % Extended Data: ED1 = 3-panel replicate of Fig 4a across genomes/assays (CHM13
-% Hi-C, HG002 Hi-C, HG002 CiFi), all 50 kbp all-points. Maternal
+% Hi-C, HG002 Hi-C, HG002 CiFi), all 20 kbp all-points. Maternal
 % whole-genome pedigree recombination companion scans are folded into Fig 5C-D.
 % The mouse meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
 % Figure-generation workflows are provided in the public analysis-code repository.
@@ -228,14 +228,14 @@ In human contact-map data, aggregate contact at PHR coordinates increases with
 PHR sequence similarity.
 We measured this per inter-chromosomal PHR pair within a single genome and
 without community labels in HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise
-Spearman $\rho = 0.381$, $n = 2{,}830$), with the same direction in
+Spearman $\rho = 0.376$, $n = 2{,}830$), with the same direction in
 CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
 Because highly similar non-homologous PHR tracts cannot be assigned uniquely by
 a mapping-quality threshold, we interpret PHR-window contacts as aggregate
 coordinate-level measurements.
 The adjacent 100 kb centromere-ward non-PHR flanks provide the key mapping
 control: in HG002 Hi-C they show stronger within-community enrichment than the
-PHR windows themselves ($B/W = 0.002$ versus $0.027$, a 13-fold lower B/W ratio),
+PHR windows themselves ($B/W = 0.0013$ versus $0.028$, a 21-fold lower B/W ratio),
 although the flanks do not contain the shared sequence used to define PHR
 pairs.
 Ordering a Pore-C contact matrix by sequence community shows the same community
@@ -422,18 +422,18 @@ Genomics.
     pseudo-homolog regions (PHRs) within a single genome, so both axes derive
     from the same sample; \emph{x}, Jaccard sequence similarity of the two PHRs
     from the pangenome graph; \emph{y}, their length-normalised 3D contact at
-    the PHRs' exact coordinates, summed over the 50 kbp bin-pairs the
+    the PHRs' exact coordinates, summed over the 20 kbp bin-pairs the
     two PHRs span and divided by that bin-pair count, so longer PHRs are not counted
     more (log scale, zero-contact pairs at the axis floor). Contact rises with
     similarity (pointwise Spearman
-    $\rho = 0.381$, $n = 2{,}830$; line, linear fit).
+    $\rho = 0.376$, $n = 2{,}830$; line, linear fit).
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
     \textbf{(B)} HG002 Pore-C contact matrix ordered by sequence community after
     observed/expected inter-chromosomal normalisation; within-community contacts
-    are enriched ($B/W = 0.056$, between/within). The adjacent 100 kb
+    are enriched ($B/W = 0.054$, between/within). The adjacent 100 kb
     centromere-ward non-PHR flanks show an even lower ratio in HG002 Hi-C
-    ($B/W = 0.002$ versus $0.027$ in PHR windows).
+    ($B/W = 0.0013$ versus $0.028$ in PHR windows).
     Matrix-level inference used row+column Mantel/permutation tests in Methods.
     \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
     T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp
@@ -597,7 +597,7 @@ PHR-internal contacts are therefore aggregate coordinate-level measurements and
 not read-level truth sets.
 The adjacent 100 kb centromere-ward non-PHR flank analyses provide the principal
 control against broad MAPQ0-driven inflation; in HG002 Hi-C, the flanks show
-$B/W = 0.002$ compared with $0.027$ in PHR windows.
+$B/W = 0.0013$ compared with $0.028$ in PHR windows.
 Pointwise Spearman correlations are reported as effect sizes, not significance
 tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows/columns
 and read-placement histories.
@@ -609,13 +609,13 @@ contact matrices \cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cif
 The pointwise Spearman correlations take each inter-chromosomal PHR sequence
 pair as a point, correlating its pangenome-graph Jaccard with its
 length-normalised Hi-C/Pore-C contact at the pair's exact coordinates within one
-genome, all at 50 kbp via \texttt{sequence\_hic\_correlation.py}.
-The primary comparison is HG002 Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.381$,
+genome, all at 20 kbp via \texttt{sequence\_hic\_correlation.py}.
+The primary comparison is HG002 Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.376$,
 $n = 2{,}830$); the replicates in Extended Data Fig.~\ref{fig:ed1} are CHM13 Hi-C
-($\rho = 0.716$, $n = 652$), HG002 Hi-C ($\rho = 0.662$, $n = 2{,}544$) and HG002
-CiFi ($\rho = 0.191$, $n = 2{,}757$; the sparsest assay, hence the weakest signal).
-The community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}B ($B/W = 0.056$,
-between/within contact) is at 50 kb.
+($\rho = 0.742$, $n = 688$), HG002 Hi-C ($\rho = 0.616$, $n = 2{,}413$) and HG002
+CiFi ($\rho = 0.196$, $n = 2{,}757$; the sparsest assay, hence the weakest signal).
+The community-ordered Pore-C matrix of Fig.~\ref{fig:fig4}B ($B/W = 0.054$,
+between/within contact) is at 20 kb.
 
 \subsection*{Reproducibility from deposited data}
 
@@ -632,8 +632,8 @@ Five exclusion sets (no acrocentric p-arms, no sex chromosomes, no acrocentric
 p plus sex, no all-acrocentric plus sex, no strongest community) applied at all
 five mcool resolutions.
 The resulting Mantel $\rho$ trajectory rises with confound removal: HG002
-$0.66 \to 0.79$, HG02148 $0.15 \to 0.72$, CHM13 $0.66 \to 0.85$, NA19036
-$0.27 \to 0.78$
+$0.65 \to 0.77$, HG02148 $0.16 \to 0.79$, CHM13 $0.72 \to 0.85$, NA19036
+$0.28 \to 0.83$
 \cite{hic3d_alavattam2019,hic3d_wolff2018,hic3d_deshpande2022}.
 
 \subsection*{Single-cell 3D}
@@ -659,8 +659,7 @@ Subtelomeric sequence similarity was positively correlated with
 inter-chromosomal contact across leptotene, zygotene, pachytene and diplotene.
 At 20 kb resolution (1 Mb flank) the per-PHR-pair Spearman correlation is
 strongest at zygotene and lowest at diplotene ($\rho = 0.419$, 0.614, 0.576 and
-0.245 respectively, all $n = 1{,}135$; Fig.~\ref{fig:fig4}C); at coarser 50 kb
-resolution the per-stage correlations flatten ($\rho = 0.37$--0.43).
+0.245 respectively, all $n = 1{,}135$; Fig.~\ref{fig:fig4}C).
 These are reported as point estimates without a formal
 stage-contrast test.
 \texttt{vegan::mantel} cross-check within $\pm 0.02$ \cite{Zuo2021}; the Python
@@ -769,13 +768,13 @@ the pedigree within-community fraction (observed $p < 10^{-4}$).
     contact assays.} Three companions to Fig.~\ref{fig:fig4}A, by the same
     all-points method (each dot is one inter-chromosomal PHR sequence pair within
     a single genome; \emph{x}, pangenome-graph Jaccard similarity; \emph{y}, mean
-    3D contact per 50 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
+    3D contact per 20 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
     log scale, zero-contact pairs at the axis floor; line, linear fit).
     Contact rises with similarity in every panel, reported as pointwise
     Spearman effect sizes:
-    CHM13 Hi-C (a second genome; $\rho = 0.716$, $n = 652$), HG002 Hi-C (same
-    genome as Fig.~\ref{fig:fig4}A, different assay; $\rho = 0.662$,
-    $n = 2{,}544$), and HG002 CiFi ($\rho = 0.191$, $n = 2{,}757$; CiFi is the
+    CHM13 Hi-C (a second genome; $\rho = 0.742$, $n = 688$), HG002 Hi-C (same
+    genome as Fig.~\ref{fig:fig4}A, different assay; $\rho = 0.616$,
+    $n = 2{,}413$), and HG002 CiFi ($\rho = 0.196$, $n = 2{,}757$; CiFi is the
     sparsest assay, $\sim$90\% of pairs zero-contact, hence the weakest
     directionally concordant signal).}
   \label{fig:ed1}

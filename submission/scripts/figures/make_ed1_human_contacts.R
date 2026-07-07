@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # Extended Data Fig. 1 -- replication of the Fig 4a sequence<->3D coupling across
-# additional human contact assays and a second genome, all at 50 kbp, all-points
+# additional human contact assays and a second genome, all at 20 kbp, all-points
 # (one dot per inter-chromosomal PHR sequence pair; single-sample, no averaging):
 #   panel 1  CHM13 Hi-C        (second genome, Hi-C)
 #   panel 2  HG002 Hi-C        (same genome as Fig 4a Pore-C, different assay)
@@ -9,9 +9,9 @@
 # Base R only. Paths resolve from the script's location, so run from anywhere:
 #   Rscript submission/scripts/figures/make_ed1_human_contacts.R
 # Input  (override dir with DATA_DIR=...):
-#   data/human_CHM13_hic_50000bp_seqlevel.tsv
-#   data/human_HG002_hic_50000bp_seqlevel.tsv
-#   data/human_HG002_cifi_50000bp_seqlevel.tsv
+#   data/human_CHM13_hic_20000bp_seqlevel.tsv
+#   data/human_HG002_hic_20000bp_seqlevel.tsv
+#   data/human_HG002_cifi_20000bp_seqlevel.tsv
 # Outputs (override dir with OUT_DIR=...):
 #   submission/fig/ExtendedDataFigures/ED_Fig1_human_contacts.{png,pdf}
 
@@ -26,11 +26,11 @@ dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 fmt_rho <- function(x) formatC(x, format = "f", digits = 3)
 
 sources <- list(
-  list(dataset = "CHM13 Hi-C", path = file.path(data_dir, "human_CHM13_hic_50000bp_seqlevel.tsv"),
+  list(dataset = "CHM13 Hi-C", path = file.path(data_dir, "human_CHM13_hic_20000bp_seqlevel.tsv"),
        color = "#b64b2a"),
-  list(dataset = "HG002 Hi-C", path = file.path(data_dir, "human_HG002_hic_50000bp_seqlevel.tsv"),
+  list(dataset = "HG002 Hi-C", path = file.path(data_dir, "human_HG002_hic_20000bp_seqlevel.tsv"),
        color = "#2a6fb6"),
-  list(dataset = "HG002 CiFi", path = file.path(data_dir, "human_HG002_cifi_50000bp_seqlevel.tsv"),
+  list(dataset = "HG002 CiFi", path = file.path(data_dir, "human_HG002_cifi_20000bp_seqlevel.tsv"),
        color = "#7a4fb6")
 )
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # Main Figure 4a -- HG002 Pore-C: one dot per inter-chromosomal PHR sequence pair
-# (single-sample: HG002's own PHRs vs its own contact), 50 kbp.
+# (single-sample: HG002's own PHRs vs its own contact), 20 kbp.
 # x = PHR-pair Jaccard similarity; y = length-normalized 3D contact (log).
 # CHM13 Hi-C is now the companion Extended Data figure (make_ed1_chm13_hic.R);
 # the full 2-panel HG002+CHM13 version is kept in
@@ -8,7 +8,7 @@
 # Base R only. Paths resolve from the script's location, so run from anywhere:
 #   Rscript submission/scripts/figures/make_fig4a_human_scatter.R
 # Input  (override dir with DATA_DIR=...):
-#   data/human_HG002_porec_50000bp_seqlevel.tsv
+#   data/human_HG002_porec_20000bp_seqlevel.tsv
 #   columns: ... chr_a arm_a chr_b arm_b ... jaccard hic_contact_raw hic_contact_norm hic_bins
 # Outputs (override dir with OUT_DIR=...):
 #   submission/fig/MainFigures/Fig4a_human_scatter.{png,pdf}
@@ -26,8 +26,8 @@ dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 fmt_rho <- function(x) formatC(x, format = "f", digits = 3)
 
 sources <- list(
-  list(dataset = "HG002 Pore-C 50 kbp",
-       path = file.path(data_dir, "human_HG002_porec_50000bp_seqlevel.tsv"),
+  list(dataset = "HG002 Pore-C 20 kbp",
+       path = file.path(data_dir, "human_HG002_porec_20000bp_seqlevel.tsv"),
        color = "#007a78")
 )
 
