@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7200" height="320" viewBox="0 0 7200 320">
+<style>text{font-family:Arial,Helvetica,sans-serif;dominant-baseline:alphabetic}</style>
+<rect x="0" y="0" width="7200" height="320" fill="#ffffff"/>
+<text x="620.0" y="100.0" font-size="62" font-weight="700" fill="#5f6368" text-anchor="start">Ribbon classes</text>
+<rect x="1500" y="66" width="70" height="54" fill="#b8bdc3" opacity="0.9"/>
+<text x="1596.0" y="113.0" font-size="54" font-weight="400" fill="#202124" text-anchor="start">same chromosome</text>
+<rect x="3000" y="66" width="70" height="54" fill="#7f7f7f" opacity="0.9"/>
+<text x="3096.0" y="113.0" font-size="54" font-weight="400" fill="#202124" text-anchor="start">acrocentric</text>
+<rect x="4500" y="66" width="70" height="54" fill="#E7298A" opacity="0.9"/>
+<text x="4596.0" y="113.0" font-size="54" font-weight="400" fill="#202124" text-anchor="start">PAR1</text>
+<rect x="1500" y="192" width="70" height="54" fill="#2C7FB8" opacity="0.9"/>
+<text x="1596.0" y="239.0" font-size="54" font-weight="400" fill="#202124" text-anchor="start">chr5q/chr1p</text>
+<rect x="3000" y="192" width="70" height="54" fill="#E26D0A" opacity="0.9"/>
+<text x="3096.0" y="239.0" font-size="54" font-weight="400" fill="#202124" text-anchor="start">chr9q/chr3q</text>
+<rect x="4500" y="192" width="70" height="54" fill="#969696" opacity="0.9"/>
+<text x="4596.0" y="239.0" font-size="54" font-weight="400" fill="#202124" text-anchor="start">other non-homologous</text>
+</svg>

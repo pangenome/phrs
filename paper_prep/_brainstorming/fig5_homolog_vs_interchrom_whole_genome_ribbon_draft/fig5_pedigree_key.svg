@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7200" height="610" viewBox="0 0 7200 610">
+<style>text{font-family:Arial,Helvetica,sans-serif;dominant-baseline:alphabetic}</style>
+<rect x="0" y="0" width="7200" height="610" fill="#ffffff"/>
+<text x="80.0" y="132.0" font-size="118" font-weight="700" fill="#202124" text-anchor="start">A</text>
+<text x="270.0" y="96.0" font-size="78" font-weight="700" fill="#202124" text-anchor="start">Pedigree comparisons</text>
+<rect x="1108" y="178" width="144" height="144" fill="#ffffff" stroke="#202124" stroke-width="9"/>
+<circle cx="2350" cy="250" r="72" fill="#ffffff" stroke="#202124" stroke-width="9"/>
+<line x1="1252.0" y1="250.0" x2="2278.0" y2="250.0" stroke="#202124" stroke-width="6.0" opacity="1.00"/>
+<line x1="1765.0" y1="250.0" x2="1765.0" y2="383.0" stroke="#202124" stroke-width="6.0" opacity="1.00"/>
+<circle cx="1765" cy="455" r="72" fill="#ffffff" stroke="#202124" stroke-width="9"/>
+<line x1="1765.0" y1="383.0" x2="1765.0" y2="383.0" stroke="#202124" stroke-width="6.0" opacity="1.00"/>
+<circle cx="3600" cy="455" r="72" fill="#ffffff" stroke="#202124" stroke-width="9"/>
+<line x1="1837.0" y1="455.0" x2="3528.0" y2="455.0" stroke="#202124" stroke-width="6.0" opacity="1.00"/>
+<text x="1180.0" y="408.0" font-size="48" font-weight="700" fill="#202124" text-anchor="middle">PAN011 father</text>
+<text x="2350.0" y="408.0" font-size="48" font-weight="700" fill="#202124" text-anchor="middle">PAN010 mother</text>
+<text x="1765.0" y="613.0" font-size="48" font-weight="700" fill="#202124" text-anchor="middle">PAN027</text>
+<text x="3600.0" y="613.0" font-size="48" font-weight="700" fill="#202124" text-anchor="middle">PAN028</text>
+<text x="4550.0" y="188.0" font-size="52" font-weight="700" fill="#202124" text-anchor="start">B  PAN027 paternal haplotype vs PAN011 father</text>
+<text x="4550.0" y="305.0" font-size="52" font-weight="700" fill="#202124" text-anchor="start">C  PAN027 maternal haplotype vs PAN010 mother</text>
+<text x="4550.0" y="422.0" font-size="52" font-weight="700" fill="#202124" text-anchor="start">D  PAN028 maternal haplotype vs PAN027 mother</text>
+<rect x="4478" y="145" width="34" height="34" fill="#E26D0A" opacity="0.95"/>
+<rect x="4478" y="262" width="34" height="34" fill="#7f7f7f" opacity="0.95"/>
+<rect x="4478" y="379" width="34" height="34" fill="#2C7FB8" opacity="0.95"/>
+<line x1="0.0" y1="588.0" x2="7200.0" y2="588.0" stroke="#d9dde1" stroke-width="3.0" opacity="1.00"/>
+</svg>

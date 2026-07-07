@@ -1,11 +1,11 @@
-# Method Notes: Maternal Extended Data Fig. 5 Candidates
+# Method Notes: Maternal Fig. 5 Candidates
 
-These notes document the exact maternal whole-genome ribbon workflow for manual
-manuscript promotion.
+These notes document the exact maternal whole-genome ribbon workflow for
+Fig. 5C-D.
 
 ## Alignment pre-filter and IMPG scan
 
-The maternal Extended Data candidates use existing raw SweepGA/FastGA f32
+The maternal Fig. 5 candidates use existing raw SweepGA/FastGA f32
 many:many PAFs. Before any IMPG similarity calculation, each raw PAF was reduced
 with the required SweepGA pre-filter:
 

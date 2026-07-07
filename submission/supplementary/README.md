@@ -4,7 +4,8 @@
 `submission/scripts/figures/make_supp_table1_pedigree_runs.py`.
 
 The table lists the displayed pedigree non-homologous/PHR-exchange runs and
-representative acrocentric context runs used for Fig. 5 and Extended Data Fig. 2.
+representative acrocentric context runs used for Fig. 5, including the maternal
+companion panels folded into Fig. 5C-D.
 Run coordinates are 0-based half-open intervals in the assembly-native query and
 donor sequences. The CHM13 columns report the corresponding arm-level PHR
 annotations from `data/chm13.phrs.bed`; they are not exact liftovers of the

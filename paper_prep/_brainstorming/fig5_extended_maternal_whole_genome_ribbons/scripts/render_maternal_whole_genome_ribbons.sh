@@ -17,7 +17,8 @@ python3 "$PLOTTER" \
   --query-label "PAN027 maternal child" \
   --target-h1-label "PAN010 mother h1" \
   --target-h2-label "PAN010 mother h2" \
-  --layer-label "mother-child"
+  --layer-label "mother-child" \
+  --panel-label "C"
 
 python3 "$PLOTTER" \
   --comparison-id PAN028mat_vs_PAN027_joint \
@@ -28,4 +29,5 @@ python3 "$PLOTTER" \
   --query-label "PAN028 maternal child" \
   --target-h1-label "PAN027 mother h1" \
   --target-h2-label "PAN027 mother h2" \
-  --layer-label "mother-child"
+  --layer-label "mother-child" \
+  --panel-label "D"

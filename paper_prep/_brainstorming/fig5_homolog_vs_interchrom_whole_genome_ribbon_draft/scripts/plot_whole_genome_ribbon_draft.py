@@ -61,10 +61,10 @@ LOC_RE = re.compile(r"^(?P<seq>.+):(?P<start>[0-9]+)-(?P<end>[0-9]+)$")
 
 PAGE_W = 3600
 PAGE_H = 840
-TRACK_X0 = 850
-TRACK_W = 2580
+TRACK_X0 = 620
+TRACK_W = 2920
 TRACK_H = 28
-TRACK_LABEL_X = TRACK_X0 - 36
+TRACK_LABEL_X = TRACK_X0 - 28
 Y_H1 = 115
 Y_QUERY = 345
 Y_H2 = 555
@@ -75,7 +75,7 @@ FOOTNOTE_Y1 = 955
 FOOTNOTE_Y2 = 990
 TEXT = "#202124"
 MUTED = "#5f6368"
-FONT_SCALE = 1.9   # global multiplier on every text size (bump to enlarge fonts)
+FONT_SCALE = 1.55  # global multiplier on every text size (bump to enlarge fonts)
 GRID = "#e8eaed"
 CHROM_BORDER = "#111111"
 HOMOLOG_COLOR = "#b8bdc3"
@@ -171,6 +171,7 @@ class RenderConfig:
     target_h1_label: str
     target_h2_label: str
     layer_label: str
+    panel_label: str
     svg_out: Path
     homolog_svg_out: Path
     runs_out: Path
@@ -868,7 +869,7 @@ def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: f
 
 
 def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
-    svg.text(TRACK_LABEL_X, y + TRACK_H - 2, layout.label, 30, "700", TEXT, "end")
+    svg.text(TRACK_LABEL_X, y + TRACK_H - 2, layout.label, 24, "700", TEXT, "end")
     for idx, chrom in enumerate(CHROM_ORDER):
         if chrom not in layout.lengths:
             continue
@@ -919,6 +920,11 @@ def draw_all_chromosome_track_overlays(svg: SVG, query_layout: GenomeLayout, hap
     draw_chromosome_track_overlay(svg, hap1_layout, Y_H1)
     draw_chromosome_track_overlay(svg, query_layout, Y_QUERY)
     draw_chromosome_track_overlay(svg, hap2_layout, Y_H2)
+
+
+def draw_panel_label(svg: SVG, config: RenderConfig) -> None:
+    if config.panel_label:
+        svg.text(40, 66, config.panel_label, 58, "700", TEXT, "start")
 
 
 def ribbon_opacity(category: str) -> float:
@@ -1075,6 +1081,7 @@ def render(
 
     draw_callouts(svg, runs, query_layout)
     draw_all_chromosome_track_overlays(svg, query_layout, hap1_layout, hap2_layout)
+    draw_panel_label(svg, config)
     draw_legend(svg, runs)
 
     total_bp = sum(run.bp for run in runs)
@@ -1151,6 +1158,7 @@ def render_homolog_context(
 
     draw_callouts(svg, inter_runs, query_layout)
     draw_all_chromosome_track_overlays(svg, query_layout, hap1_layout, hap2_layout)
+    draw_panel_label(svg, config)
     draw_homolog_legend(svg, inter_runs, homolog_runs)
 
     svg.write(config.homolog_svg_out)
@@ -1231,6 +1239,7 @@ def build_config(args: argparse.Namespace) -> RenderConfig:
         target_h1_label=args.target_h1_label,
         target_h2_label=args.target_h2_label,
         layer_label=args.layer_label,
+        panel_label=args.panel_label,
         svg_out=svg_out,
         homolog_svg_out=homolog_svg_out,
         runs_out=runs_out,
@@ -1260,6 +1269,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-h1-label", default="PAN011 father donor h1")
     parser.add_argument("--target-h2-label", default="PAN011 father donor h2")
     parser.add_argument("--layer-label", default="father-child")
+    parser.add_argument("--panel-label", default="B")
     return parser.parse_args()
 
 

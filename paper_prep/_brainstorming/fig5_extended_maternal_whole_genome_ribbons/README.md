@@ -1,7 +1,7 @@
-# Maternal Extended Data Fig. 5 whole-genome ribbons
+# Maternal Fig. 5 whole-genome ribbons
 
-This directory contains draft Extended Data companions for the Fig. 5
-whole-genome recombination ribbon view. The renders use the validated maternal
+This directory contains maternal companions for the Fig. 5 whole-genome
+recombination ribbon view. The renders use the validated maternal
 10:10 IMPG class-winner outputs from `fig5-ed-maternal-10to10-impg-monitor`:
 
 - `PAN027mat_vs_PAN010_joint`: child maternal haplotype compared with mother
@@ -9,9 +9,11 @@ whole-genome recombination ribbon view. The renders use the validated maternal
 - `PAN028mat_vs_PAN027_joint`: child maternal haplotype compared with mother
   PAN027.
 
-These are the source renders for the promoted Extended Data Fig. 2 manuscript
-assets. The homologous-context PNGs are copied into
-`submission/fig/ExtendedDataFigures`.
+These are the source renders for the maternal Fig. 5C-D panels. The
+homologous-context PNGs are also copied into
+`submission/fig/ExtendedDataFigures` as retained source assets, while the
+manuscript-facing Fig. 5 uses the combined PNG in
+`submission/fig/MainFigures/Fig5_whole_genome_recombination.png`.
 
 ## Build
 
@@ -124,7 +126,7 @@ Both rendered comparisons converted successfully with `rsvg-convert version
 
 ## Companion notes
 
-- `caption.md` contains a draft Extended Data caption for manual promotion.
+- `caption.md` contains the source caption note for the Fig. 5C-D maternal panels.
 - `METHOD_NOTES.md` contains manuscript-ready methods text.
-- `PROMOTION_DECISION.md` records the earlier pre-promotion decision and the
-  later superseding manuscript promotion.
+- `PROMOTION_DECISION.md` records the decision to fold the maternal panels into
+  the main Fig. 5 manuscript figure.

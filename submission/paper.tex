@@ -28,9 +28,9 @@
 %          a HG002 Pore-C all-points scatter; b Pore-C community matrix; c mouse bouquet
 %   Fig 5  Whole-genome pedigree-resolved subtelomeric exchange  (deck slides 24,26)
 % Extended Data: ED1 = 3-panel replicate of Fig 4a across genomes/assays (CHM13
-% Hi-C, HG002 Hi-C, HG002 CiFi), all 50 kbp all-points. ED2 = maternal
-% whole-genome pedigree recombination companion scans for Fig 5. The mouse
-% meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
+% Hi-C, HG002 Hi-C, HG002 CiFi), all 50 kbp all-points. Maternal
+% whole-genome pedigree recombination companion scans are folded into Fig 5C-D.
+% The mouse meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
 % Figure-generation workflows are provided in the public analysis-code repository.
 % ============================================================================
 
@@ -286,7 +286,7 @@ PAN027 and PAN028 transmissions provides companion context rather than a second
 primary claim: PAN027 maternal windows resolve only the expected
 acrocentric-acrocentric class, while PAN028 maternal windows are again dominated
 by acrocentric-acrocentric sharing, with one additional chr5/chr1 candidate
-visible in the same display framework (Extended Data Fig.~\ref{fig:ed2}).
+visible in the same display framework (Fig.~\ref{fig:fig5}C,D).
 
 The two autosomal candidates differ in support. An independent aligner (wfmash)
 reproduces the chr9q/chr3q donor at the same chr3q subtelomeric locus at
@@ -446,22 +446,23 @@ Group for generating and interpreting these data.
   \centering
   \makebox[\linewidth][c]{%
     \includegraphics[width=\linewidth]{fig/MainFigures/Fig5_whole_genome_recombination.png}}
-  \caption{\textbf{Whole-genome pedigree view of putative subtelomeric exchange in a paternal transmission.}
-    PAN027 inherited the paternal query haplotype shown in the middle track from
-    PAN011; the upper and lower tracks show the two PAN011 father haplotypes.
-    Chromosomes are concatenated in native chromosome order and scaled by their
-    assembled lengths; thin black bars mark chromosome boundaries. Light-gray
-    ribbons show same-chromosome father-child homologous chains ($\geq 10$ kb,
-    identity $\geq 0.95$). Colored ribbons show 2 kb query-space windows,
-    grouped into $\geq 10$ kb runs, where the best non-homologous PAN011 match
-    beats the best same-chromosome or homologous match in the same
-    IMPG scan. The male Xp/Yp PAR1 signal is an internal positive control for
-    obligate sex-chromosome recombination. The chr5q/chr1p and chr9q/chr3q
-    ribbons are putative autosomal PHR-exchange candidates; PHR and community
-    labels were assigned only after calling, and the highlighted pairs fall in
-    the expected population arm-community/Jaccard groups (Xp/Yp C15,
-    chr5q/chr1p C11, chr9q/chr3q C3). Acrocentric p-arm matches are also
-    recovered, as expected from known acrocentric homology.}
+  \caption{\textbf{Whole-genome pedigree views of putative subtelomeric exchange.}
+    \textbf{(A)} Pedigree relationships and the three transmissions shown.
+    \textbf{(B)} PAN027 paternal haplotype compared with the two PAN011 father
+    haplotypes. \textbf{(C)} PAN027 maternal haplotype compared with the two
+    PAN010 mother haplotypes. \textbf{(D)} PAN028 maternal haplotype compared
+    with the two PAN027 mother haplotypes. In each ribbon panel, chromosomes are
+    concatenated in native order and scaled by assembled length; the middle
+    track is the child query haplotype and the upper and lower tracks are the
+    two parental haplotypes. Light-gray ribbons show same-chromosome homologous
+    chains, while colored ribbons show runs where the best non-homologous
+    parental match beats the same-chromosome or homologous match in the same
+    IMPG scan. The paternal panel recovers the Xp/Yp PAR1 positive control for
+    obligate male sex-chromosome recombination and two putative autosomal
+    PHR-exchange candidates, chr5q/chr1p and chr9q/chr3q. The maternal panels
+    provide matched display context and are dominated by expected
+    acrocentric-acrocentric sharing, with one additional chr5/chr1 candidate in
+    the PAN028 maternal transmission.}
   \label{fig:fig5}
 \end{figure}
 
@@ -663,7 +664,7 @@ and R implementations are included in the public analysis-code repository.
 
 \subsection*{Pedigree direct-alignment windows}
 
-For Fig.~\ref{fig:fig5}, the PAN027 paternal haplotype was used as query against
+For Fig.~\ref{fig:fig5}B, the PAN027 paternal haplotype was used as query against
 a joint two-haplotype PAN011 father target \cite{Cechova2025}. We started from
 an existing SweepGA/FastGA raw PAF generated with frequency threshold 32,
 many:many mappings and no scaffold jumps, then filtered it with sweepga 0.1.1
@@ -692,7 +693,7 @@ PAN027-versus-PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on
 chr3q at $>$99.8\% identity over the same coordinates, but placed the chr5q
 window on chr5 with no chr1 donor above threshold, so only chr9q/chr3q is
 concordant across aligners.
-For Extended Data Fig.~\ref{fig:ed2}, the same direct-alignment workflow,
+For Fig.~\ref{fig:fig5}C,D, the same direct-alignment workflow,
 thresholds and display rules were applied to two maternal comparisons:
 PAN027 maternal haplotype against the joint PAN010 mother target, and PAN028
 maternal haplotype against the joint PAN027 mother target. These companion scans
@@ -727,8 +728,7 @@ The repository includes the canonical CHM13-coordinate PHR BED used for
 arm-level annotations (\texttt{data/chm13.phrs.bed}), the compact pedigree audit
 table at
 \url{submission/supplementary/Supplementary_Table_1_pedigree_runs.tsv}, and the
-figure-generation inputs for Fig.~\ref{fig:fig5} and Extended Data
-Fig.~\ref{fig:ed2}.
+figure-generation inputs for Fig.~\ref{fig:fig5}.
 The public repository includes re-alignment workflows and command lines for
 Hi-C, Pore-C, CiFi and Dip-C. These workflows start from the cited public
 raw-read datasets; deposited processed files generated with default MAPQ
@@ -777,45 +777,14 @@ the pedigree within-community fraction (observed $p < 10^{-4}$).
   \label{fig:ed1}
 \end{figure}
 
-\begin{figure}[p!]
-  \centering
-  \textbf{A}\par
-  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig2a_PAN027_maternal_recombination.png}
-  \vspace{0.75em}
-
-  \textbf{B}\par
-  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig2b_PAN028_maternal_recombination.png}
-  \caption{\textbf{Maternal whole-genome homologous-competition scans companion
-    to Fig.~\ref{fig:fig5}.} The same direct-alignment and IMPG class-winner
-    procedure used for the paternal Fig.~\ref{fig:fig5} scan was applied to two
-    maternal transmissions. In each panel, the middle track is the child query
-    haplotype and the upper and lower tracks are the two maternal donor
-    haplotypes, with chromosomes concatenated in native order and scaled by
-    assembled length. Light-gray ribbons show same-chromosome maternal
-    homologous chains ($\geq 10$ kb, identity $\geq 0.95$). Colored ribbons show
-    grouped 2 kb query windows in which the best non-homologous maternal match
-    beats the best same-chromosome homologous match. Before the IMPG similarity
-    step the raw SweepGA/FastGA f32 PAF was filtered with \texttt{sweepga
-    --num-mappings 10:10 --scaffold-jump 0 --scoring ani}.
-    \textbf{(A)} PAN027 maternal haplotype compared with the joint PAN010 mother
-    target. The drawn high-confidence non-homologous runs are
-    acrocentric-acrocentric. \textbf{(B)} PAN028 maternal haplotype compared
-    with the joint PAN027 mother target. The display is dominated by
-    acrocentric-acrocentric runs, with one chr5/chr1 candidate and one
-    acrocentric-other run. These panels provide maternal-transmission context
-    for the Fig.~\ref{fig:fig5} paternal candidate calls rather than additional
-    breakpoint-resolved event calls.}
-  \label{fig:ed2}
-\end{figure}
-
 \clearpage
 \section{Supplementary Table Legends}
 
 \noindent\textbf{Supplementary Table 1. Displayed pedigree non-homologous runs
 and PHR annotations.}
 Tab-delimited audit table for the Fig.~\ref{fig:fig5} paternal
-homologous-competition scan and the companion maternal scans in Extended Data
-Fig.~\ref{fig:ed2}. Rows include the PAR1 positive-control runs, the paternal
+homologous-competition scan and the companion maternal scans in
+Fig.~\ref{fig:fig5}C,D. Rows include the PAR1 positive-control runs, the paternal
 chr5q/chr1p and chr9q/chr3q candidate runs, representative acrocentric context
 runs, and the displayed maternal companion candidates. Query and donor intervals
 are 0-based half-open coordinates in the assembly-native haplotype sequences.
