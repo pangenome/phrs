@@ -147,7 +147,7 @@ transitive closure, without ever building the graph
 Exhaustive all-against-all comparison is intractable, of order $10^{24}$
 base-pair comparisons. Pairwise flank alignments, however, are highly redundant
 at this sample size, and a sample suffices: wfmash evaluates 11.6\% of flank
-pairs, roughly $230\times$ the Erd\H{o}s and R\'{e}nyi threshold for a single
+pairs, roughly $222\times$ the Erd\H{o}s and R\'{e}nyi threshold for a single
 connected component, so transitive closure recovers essentially every
 subtelomere.
 As a quality control, querying any reference window recovers nearly all other
@@ -273,7 +273,7 @@ Against a background of same-chromosome father-child inheritance, the
 whole-genome scan also highlights two short putative autosomal PHR exchanges,
 chr5q/chr1p and chr9q/chr3q, in which the best non-homologous father match
 beats the same-chromosome or homologous father match across adjacent windows.
-These segments are modest in length (20--40 kb for the autosomal calls, and
+These segments are modest in length (20--28 kb for the autosomal calls, and
 138 kb total for PAR1) and lie within independently defined PHR/PAR intervals.
 PHR and community labels were assigned only after calling; the highlighted pairs
 fall in the expected arm-level sequence-similarity communities and show
@@ -513,7 +513,7 @@ exhaustive all-vs-all alignment.
 The all-vs-all PAF set is the implicit pangenome graph; IMPG \texttt{query -x}
 computes reachability
 \cite{pangenome_graphs_impg_IMPG2023}.
-Realised sampling rate 11.6\% (12\% rounded) sits $230\times$ above the
+Realised sampling rate 11.6\% (12\% rounded) sits $222\times$ above the
 Erd\H{o}s and R\'{e}nyi connectivity threshold
 $p^{*} = \log(n)/n = 5.2 \times 10^{-4}$ for $n = 18827$, justifying the
 absence of chromosomal partitioning.
@@ -628,8 +628,8 @@ Five exclusion sets (no acrocentric p-arms, no sex chromosomes, no acrocentric
 p plus sex, no all-acrocentric plus sex, no strongest community) applied at all
 five mcool resolutions.
 The resulting Mantel $\rho$ trajectory rises with confound removal: HG002
-$0.66 \to 0.80$, HG02148 $0.15 \to 0.72$, CHM13 $0.66 \to 0.85$, NA19036
-$0.27 \to 0.79$
+$0.66 \to 0.79$, HG02148 $0.15 \to 0.72$, CHM13 $0.66 \to 0.85$, NA19036
+$0.27 \to 0.78$
 \cite{hic3d_alavattam2019,hic3d_wolff2018,hic3d_deshpande2022}.
 
 \subsection*{Single-cell 3D}
