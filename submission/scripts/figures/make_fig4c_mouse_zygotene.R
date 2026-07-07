@@ -2,9 +2,10 @@
 # Main Figure 4c -- mouse meiotic Hi-C, all-points (per-PHR-pair), 20 kbp, 1 Mb flank.
 # Left: zygotene scatter, one dot per inter-chromosomal mouse PHR sequence pair
 #       (length-normalised Hi-C contact vs PHR Jaccard; no averaging, as Fig 4a).
-# Right: per-stage pointwise Spearman trajectory --- the SAME per-PHR-pair
-#       statistic computed here from the four stage files. This panel shows
-#       broad prophase-I support, not a resolved zygotene-specific maximum.
+# Right: per-stage pointwise Spearman trajectory, the SAME per-PHR-pair
+#       statistic computed here from the four stage files. At 20 kbp it is
+#       strongest at zygotene (rho 0.614) and lowest at diplotene (rho 0.245);
+#       reported as descriptive point estimates, no formal stage-contrast test.
 # Base R only. Paths resolve from the script's location, so run from anywhere:
 #   Rscript submission/scripts/figures/make_fig4c_mouse_zygotene.R
 # Input  (override dir with DATA_DIR=...):

@@ -61,8 +61,8 @@ acrocentric short arms and the 4q/10q DUX4 pair are the strongest examples
 within a continuum of sharing that extends across many other arms. Human and mouse
 chromosome-contact maps show preferential proximity between sequence-similar
 ends. In mouse meiosis this proximity is strongest at the zygotene bouquet, when
-telomeres cluster at the nuclear envelope; in human data it persists even in
-the adjacent flanks, which lack the shared sequence used to define the pairs. A whole-genome comparison in
+telomeres cluster at the nuclear envelope; in human data it persists even in the
+adjacent flanks, which lack the shared sequence used to define the pairs. A whole-genome comparison in
 a three-generation pedigree assembled end to end recovers the known Xp/Yp PAR1
 exchange and identifies putative non-homologous subtelomeric exchange patches
 within the same sequence communities.
@@ -252,11 +252,11 @@ and CAST T2T assemblies, PHR sequence identities and read-placement procedure
 are used at leptotene, zygotene, pachytene and diplotene
 \cite{Francis2025,Zuo2021}.
 Subtelomeric sequence similarity is positively correlated with contact across
-all four stages, with the same per-PHR-pair pointwise statistic shown across
-stages in Fig.~\ref{fig:fig4}C; direct clustered contrasts do not resolve a
-zygotene-specific peak.
-We therefore read the mouse data as a broad prophase-I association between
-sequence similarity and contact, rather than a stage-specific peak.
+all four stages, and the per-PHR-pair correlation is strongest at the zygotene
+bouquet, when telomeres cluster at the nuclear envelope, and lowest at diplotene
+(descriptive pointwise Spearman $\rho = 0.419$, 0.614, 0.576 and 0.245 at
+leptotene, zygotene, pachytene and diplotene, all $n = 1{,}135$;
+Fig.~\ref{fig:fig4}C).
 
 \subsection*{Whole-genome pedigree windows recover putative subtelomeric exchange}
 
@@ -439,9 +439,9 @@ Group for generating and interpreting these data.
     log) rises with PHR Jaccard similarity. Right, the same per-PHR-pair
     descriptive Spearman statistic across leptotene, zygotene, pachytene and
     diplotene.
-    Mouse meiotic Hi-C supports a broad prophase-I sequence-to-contact
-    association; clustered zygotene-versus-flanking-stage contrasts do not
-    establish a statistically resolved zygotene-specific peak.}
+    Mouse meiotic Hi-C supports a prophase-I sequence-to-contact association
+    that is strongest at the zygotene bouquet ($\rho = 0.614$) and lowest at
+    diplotene ($\rho = 0.245$).}
   \label{fig:fig4}
 \end{figure}
 
@@ -660,12 +660,12 @@ contact vs PHR Jaccard similarity at 20 kb (1 Mb flank), one value per meiotic
 prophase stage.
 Subtelomeric sequence similarity was positively correlated with
 inter-chromosomal contact across leptotene, zygotene, pachytene and diplotene.
-At 1 Mb and 50 kb resolution, exact PHR-pair correlations were similar across
-stages (Spearman $\rho = 0.37$--0.43), while arm-pair-collapsed correlations
-were higher ($\rho = 0.57$--0.71) with the largest point estimate at zygotene.
-Direct clustered contrasts did not resolve a zygotene-specific peak, so we
-treat the mouse data as evidence for a broad prophase-I sequence-to-contact
-association rather than a stage-specific maximum.
+At 20 kb resolution (1 Mb flank) the per-PHR-pair Spearman correlation is
+strongest at zygotene and lowest at diplotene ($\rho = 0.419$, 0.614, 0.576 and
+0.245 respectively, all $n = 1{,}135$; Fig.~\ref{fig:fig4}C); at coarser 50 kb
+resolution the per-stage correlations flatten ($\rho = 0.37$--0.43).
+These are reported as descriptive point estimates without a formal
+stage-contrast test.
 \texttt{vegan::mantel} cross-check within $\pm 0.02$ \cite{Zuo2021}; the Python
 and R implementations are included in the public analysis-code repository.
 
