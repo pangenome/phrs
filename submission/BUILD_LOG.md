@@ -2,6 +2,33 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after funding acknowledgement update
+
+Date: 2026-07-07
+
+Command:
+
+```
+cd submission
+make clean && make
+```
+
+Environment note: this local build used the Guix TeX Live tree with constrained
+`TEXINPUTS`, `BIBINPUTS`, `BSTINPUTS`, `TEXFORMATS`, and font-map variables so
+that `jnl.cls` loads the intended Natbib configuration.
+
+Result: `make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+grep -c 'undefined' paper.log  # -> 0
+ls -lh paper.pdf               # -> 8.2M, 25 pages
+```
+
+**PASS** -- funding and computational-resource acknowledgements compile with no
+undefined references/citations in the final `paper.log`.
+
 ## Successful build after merged Fig. 5 pedigree ribbon update
 
 Date: 2026-07-07
