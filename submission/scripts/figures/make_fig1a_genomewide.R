@@ -246,7 +246,10 @@ if (!is.null(bed_regions)) {
     filter(!is.na(chromosome)) %>%
     mutate(chromosome = factor(chromosome, levels = karyogram_chrom_levels)) %>%
     filter(!is.na(chromosome)) %>%
-    mutate(chrom_y = as.numeric(chromosome))
+    mutate(chrom_y = as.numeric(chromosome),
+           # pad tiny regions (PAR/PHR are <1 Mb) to a minimum drawn width
+           pad = pmax(0, (2.0 - (end_mbp - start_mbp)) / 2),
+           xs  = pmax(0, start_mbp - pad), xe = end_mbp + pad)
 }
 
 # --- G-band ideogram (CHM13 cytobands) --------------------------------------
@@ -596,7 +599,7 @@ p_inset3 <- ggplot(inset3_filtered,
 n_chr_inset1 <- length(chroms_with_signal_ordered)   # chr4q
 n_chr_inset2 <- length(chroms_with_signal2_ordered)  # chr1
 total_chr <- n_chr_inset1 + n_chr_inset2
-available_height <- 0.85
+available_height <- 0.89
 gap <- 0.02
 chr4_extra <- 0.03
 inset1_height <- available_height * n_chr_inset1 / total_chr - gap / 2 + chr4_extra
@@ -606,7 +609,7 @@ cat("Inset chr4q: ", n_chr_inset1, "chroms, height =", round(inset1_height, 3), 
 cat("Inset chr1:  ", n_chr_inset2, "chroms, height =", round(inset2_height, 3), "\n")
 
 # Right column (chr1 top, chr4q bottom): narrower than before, moved right
-right_left <- 0.79
+right_left <- 0.78
 right_right <- 0.97
 
 # Vertical base offset for all three insets (lower = further down)
@@ -617,7 +620,7 @@ inset3_yshift <- 0.10    # push the acrocentric (chr14 p-arm) inset lower
 # Inset3 (chr13): placed to the LEFT of the right column, centered vertically
 # between inset1 (top) and inset2 (bottom)
 n_chr_inset3 <- length(chroms_with_signal3_ordered)
-inset3_height <- 0.40
+inset3_height <- 0.46
 inset3_top <- inset_base_y + inset1_height + gap / 2 + inset3_height / 2 - inset3_yshift
 inset3_bottom <- inset3_top - inset3_height
 
@@ -631,7 +634,7 @@ p_karyogram_count_with_inset <- p_karyogram_count_main +
                 bottom = inset_base_y,
                 top = inset_base_y + inset1_height) +
   inset_element(p_inset3,
-                left = 0.59, right = 0.77,
+                left = 0.57, right = 0.755,
                 bottom = inset3_bottom, top = inset3_top)
 
 # Sequential-gradient variant (not used for the manuscript figure) -> scratch.
@@ -681,7 +684,7 @@ p_karyogram_count_rainbow <- ggplot(karyogram_data) +
   # G-band ideogram as a track above each chromosome bar
   geom_rect(data = bands,
             aes(xmin = start_mbp, xmax = end_mbp,
-                ymin = chrom_y + 0.14, ymax = chrom_y + 0.46, fill = gieStain),
+                ymin = chrom_y + 0.02, ymax = chrom_y + 0.40, fill = gieStain),
             inherit.aes = FALSE) +
   scale_fill_manual(values = gie_cols, guide = "none") +
   new_scale_fill()
@@ -689,21 +692,20 @@ p_karyogram_count_rainbow <- ggplot(karyogram_data) +
 if (!is.null(bed_karyogram)) {
   p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
     geom_rect(data = bed_karyogram,
-              aes(xmin = start_mbp, xmax = end_mbp,
-                  ymin = chrom_y - 0.44, ymax = chrom_y + 0.12,
+              aes(xmin = xs, xmax = xe,
+                  ymin = chrom_y - 0.40, ymax = chrom_y - 0.28,
                   fill = name),
-              inherit.aes = FALSE, alpha = 0.6) +
+              inherit.aes = FALSE) +
     scale_fill_manual(values = bed_colors, name = "Region",
-                      guide = guide_legend(override.aes = list(alpha = 1),
-                                           keywidth = unit(0.5, "cm"),
+                      guide = guide_legend(keywidth = unit(0.5, "cm"),
                                            keyheight = unit(0.5, "cm"))) +
     new_scale_fill()
 }
 
 p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
   geom_rect(aes(xmin = start_mbp, xmax = end_mbp,
-                ymin = as.numeric(chromosome) - 0.42,
-                ymax = as.numeric(chromosome) + 0.10,
+                ymin = as.numeric(chromosome) - 0.24,
+                ymax = as.numeric(chromosome) - 0.02,
                 fill = count_bin),
             linewidth = 0) +
   scale_fill_manual(values = count_rainbow, name = "# other\nchromosomes",
@@ -763,7 +765,7 @@ p_karyogram_count_rainbow_with_inset <- p_karyogram_count_rainbow_main +
                 bottom = inset_base_y,
                 top = inset_base_y + inset1_height) +
   inset_element(p_inset3,
-                left = 0.59, right = 0.77,
+                left = 0.57, right = 0.755,
                 bottom = inset3_bottom, top = inset3_top)
 
 # Manuscript Figure 1a (viridis, chr1/chr14/chr10 insets).
