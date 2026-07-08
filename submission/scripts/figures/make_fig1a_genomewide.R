@@ -252,19 +252,6 @@ if (!is.null(bed_regions)) {
            xs  = pmax(0, start_mbp - pad), xe = end_mbp + pad)
 }
 
-# --- G-band ideogram (CHM13 cytobands) --------------------------------------
-gie_cols <- c(gneg = "#f4f4f4", gpos25 = "#cfcfcf", gpos50 = "#9e9e9e",
-              gpos75 = "#6b6b6b", gpos100 = "#383838", acen = "#c9636b",
-              gvar = "#b3b3b3", stalk = "#8fa0c4")
-bands <- read_tsv(file.path(root, "data/chm13v2.0_cytobands_allchrs.bed"),
-                  col_names = c("chromosome", "start", "end", "band", "gieStain"),
-                  col_types = cols(.default = "c", start = "d", end = "d")) %>%
-  filter(chromosome %in% c(paste0("chr", 1:22), "chrX", "chrY")) %>%
-  mutate(chromosome = factor(chromosome, levels = karyogram_chrom_levels),
-         chrom_y   = as.numeric(chromosome),
-         start_mbp = start / 1e6, end_mbp = end / 1e6,
-         gieStain  = factor(gieStain, levels = names(gie_cols)))
-
 
 
 # --- Plot 1: Karyogram colored by number of inter-chromosomal mappings ---
@@ -315,10 +302,10 @@ p_karyogram_count <- p_karyogram_count +
   ) +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 12, face = "bold"),
-    axis.text.x = element_text(size = 11),
-    axis.title = element_text(size = 13),
-    plot.caption = element_text(size = 9, hjust = 1, color = "gray40"),
+    axis.text.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 13),
+    axis.title = element_text(size = 15),
+    plot.caption = element_text(size = 11, hjust = 1, color = "gray40"),
     plot.margin = margin(26, 2, 2, 2, "pt"),
     panel.grid.major.y = element_blank(),
     panel.grid.minor = element_blank(),
@@ -326,8 +313,8 @@ p_karyogram_count <- p_karyogram_count +
     legend.position = "right",
     legend.key.height = unit(1.2, "cm"),
     legend.key.width = unit(0.6, "cm"),
-    legend.title = element_text(size = 14, face = "bold"),
-    legend.text = element_text(size = 12),
+    legend.title = element_text(size = 16, face = "bold"),
+    legend.text = element_text(size = 14),
     legend.spacing.y = unit(0.3, "cm")
   )
 
@@ -396,7 +383,7 @@ p_inset <- ggplot(inset_heatmap_filtered,
   geom_tile(width = tile_w * 1.05, height = 1) +
   geom_text(data = inset_heatmap_filtered %>% filter(haplo_count > 0),
             aes(label = haplo_count, color = text_color),
-            size = 2.5, show.legend = FALSE) +
+            size = 2.9, show.legend = FALSE) +
   scale_color_identity() +
   scale_fill_gradientn(
     colors = c("white", "#deebf7", "#9ecae1", "#4292c6", "#08306b"),
@@ -411,16 +398,16 @@ p_inset <- ggplot(inset_heatmap_filtered,
                       "\u2013", round(i1_hi, 1), " Mbp")) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(size = 9),
-    axis.text.y = element_text(size = 9),
-    axis.title.x = element_text(size = 9),
-    plot.title = element_text(size = 11, face = "bold", hjust = 0.5),
+    axis.text.x = element_text(size = 11),
+    axis.text.y = element_text(size = 11),
+    axis.title.x = element_text(size = 11),
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
     panel.grid = element_blank(),
     panel.border = element_rect(color = "black", fill = NA, linewidth = 0.6),
     plot.background = element_rect(fill = "transparent", color = NA),
     plot.margin = margin(3, 5, 3, 5, "pt"),
-    legend.title = element_text(size = 9, face = "bold"),
-    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 11, face = "bold"),
+    legend.text = element_text(size = 10),
     legend.position = "left",
     legend.justification = c(0, 0.5),  # vertically centered
     legend.key.height = unit(0.5, "cm"),
@@ -487,7 +474,7 @@ p_inset2 <- ggplot(inset2_filtered,
   geom_tile(width = tile_w2 * 1.05, height = 1) +
   geom_text(data = inset2_filtered %>% filter(haplo_count > 0),
             aes(label = haplo_count, color = text_color),
-            size = 2.5, show.legend = FALSE) +
+            size = 2.9, show.legend = FALSE) +
   scale_color_identity() +
   scale_fill_gradientn(
     colors = c("white", "#deebf7", "#9ecae1", "#4292c6", "#08306b"),
@@ -501,16 +488,16 @@ p_inset2 <- ggplot(inset2_filtered,
        title = paste0("chr5 end  ", round(i2_lo, 1), "\u2013", round(i2_hi, 1), " Mbp")) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(size = 9),
-    axis.text.y = element_text(size = 9),
-    axis.title.x = element_text(size = 9),
-    plot.title = element_text(size = 11, face = "bold", hjust = 0.5),
+    axis.text.x = element_text(size = 11),
+    axis.text.y = element_text(size = 11),
+    axis.title.x = element_text(size = 11),
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
     panel.grid = element_blank(),
     panel.border = element_rect(color = "black", fill = NA, linewidth = 0.6),
     plot.background = element_rect(fill = "transparent", color = NA),
     plot.margin = margin(3, 5, 3, 5, "pt"),
-    legend.title = element_text(size = 9, face = "bold"),
-    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 11, face = "bold"),
+    legend.text = element_text(size = 10),
     legend.position = "left",
     legend.justification = c(0, 0.5),  # vertically centered
     legend.key.height = unit(0.5, "cm"),
@@ -582,10 +569,10 @@ p_inset3 <- ggplot(inset3_filtered,
        title = paste0(acro_chr, " p arm  ", round(i3_lo, 1), "\u2013", round(i3_hi, 1), " Mbp")) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(size = 9),
-    axis.text.y = element_text(size = 9),
-    axis.title.x = element_text(size = 9),
-    plot.title = element_text(size = 11, face = "bold", hjust = 0.5),
+    axis.text.x = element_text(size = 11),
+    axis.text.y = element_text(size = 11),
+    axis.title.x = element_text(size = 11),
+    plot.title = element_text(size = 13, face = "bold", hjust = 0.5),
     panel.grid = element_blank(),
     panel.border = element_rect(color = "black", fill = NA, linewidth = 0.6),
     plot.background = element_rect(fill = "transparent", color = NA),
@@ -680,14 +667,7 @@ count_rainbow <- setNames(
   count_labels
 )
 
-p_karyogram_count_rainbow <- ggplot(karyogram_data) +
-  # G-band ideogram as a track above each chromosome bar
-  geom_rect(data = bands,
-            aes(xmin = start_mbp, xmax = end_mbp,
-                ymin = chrom_y + 0.13, ymax = chrom_y + 0.40, fill = gieStain),
-            inherit.aes = FALSE) +
-  scale_fill_manual(values = gie_cols, guide = "none") +
-  new_scale_fill()
+p_karyogram_count_rainbow <- ggplot(karyogram_data)
 
 if (!is.null(bed_karyogram)) {
   p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
@@ -705,7 +685,7 @@ if (!is.null(bed_karyogram)) {
 p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
   geom_rect(aes(xmin = start_mbp, xmax = end_mbp,
                 ymin = as.numeric(chromosome) - 0.25,
-                ymax = as.numeric(chromosome) + 0.09,
+                ymax = as.numeric(chromosome) + 0.38,
                 fill = count_bin),
             linewidth = 0) +
   scale_fill_manual(values = count_rainbow, name = "# other\nchromosomes",
@@ -725,17 +705,17 @@ p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
   ) +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 12, face = "bold"),
-    axis.text.x = element_text(size = 11),
-    axis.title = element_text(size = 13),
-    plot.caption = element_text(size = 9, hjust = 1, color = "gray40"),
+    axis.text.y = element_text(size = 14, face = "bold"),
+    axis.text.x = element_text(size = 13),
+    axis.title = element_text(size = 15),
+    plot.caption = element_text(size = 11, hjust = 1, color = "gray40"),
     plot.margin = margin(26, 2, 2, 2, "pt"),
     panel.grid.major.y = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_line(color = "gray90", linewidth = 0.15),
     legend.position = "right",
-    legend.title = element_text(size = 14, face = "bold"),
-    legend.text = element_text(size = 12),
+    legend.title = element_text(size = 16, face = "bold"),
+    legend.text = element_text(size = 14),
     legend.spacing.y = unit(0.3, "cm")
   )
 

@@ -109,8 +109,9 @@ if (!mono) {
   leg     <- c(present_named, if ("NA" %in% present) "no community")
   leg_col <- c(pal[present_named], if ("NA" %in% present) pal[["NA"]])
   usr <- par("usr")
-  d <- 0.04 * (usr[4] - usr[3])   # equal physical inset (asp=1) from left and top
-  lgd <- legend(x = usr[1] + d, y = usr[4] - d, xjust = 0, yjust = 1,
+  d <- 0.04 * (usr[4] - usr[3])   # physical inset from the top edge
+  # shifted right of the left edge to leave room for the overpic panel letter "A"
+  lgd <- legend(x = usr[1] + d + 0.06 * (usr[2] - usr[1]), y = usr[4] - d, xjust = 0, yjust = 1,
          legend = leg, col = leg_col, pch = 16, pt.cex = 1.7,
          ncol = 2, bty = "n", cex = 1.25, text.col = "#1f1f1f", title = "Community")
 

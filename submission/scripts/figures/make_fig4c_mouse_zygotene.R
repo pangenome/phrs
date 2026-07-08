@@ -50,9 +50,22 @@ d   <- dl[["zygo"]]
 ct  <- cts[["zygo"]]
 rho <- unname(ct$estimate); n <- nrow(d)
 
+# the four-stage meiotic scheme is a vendored standalone figure (telomere bouquet
+# at zygotene, chiasmata at diplotene); embed it under the stage trajectory.
+draw_meiosis <- function() {
+  img <- png::readPNG(file.path(out_dir, "Fig4d_meiosis_stages.png"))
+  asp <- dim(img)[1] / dim(img)[2]                # image height/width
+  plot(NA, xlim = c(0, 1), ylim = c(0, 1), axes = FALSE, xlab = "", ylab = "",
+       xaxs = "i", yaxs = "i")
+  pin <- par("pin"); pasp <- pin[2] / pin[1]      # panel height/width (inches)
+  imgH <- asp / pasp                              # image height in y-units if it fills width
+  if (imgH <= 1) { yb <- (1 - imgH) / 2; rasterImage(img, 0, yb, 1, yb + imgH) }
+  else { imgW <- pasp / asp; xb <- (1 - imgW) / 2; rasterImage(img, xb, 0, xb + imgW, 1) }
+}
+
 draw <- function() {
-  par(mfrow = c(1, 2), mar = c(5.6, 5.8, 1.4, 1.0), mgp = c(3.6, 1.0, 0),
-      family = "sans")
+  layout(matrix(c(1, 1, 2, 3), nrow = 2), widths = c(1, 1), heights = c(1.7, 1))
+  par(mar = c(5.6, 5.8, 1.4, 1.0), mgp = c(3.6, 1.0, 0), family = "sans")
 
   # left: all-points zygotene scatter (no title; inset stats bottom-right as in 4a)
   x <- d$jaccard; y <- d$hic_contact_norm
@@ -78,20 +91,25 @@ draw <- function() {
   legend("topleft", legend = "y axis: log scale; 0 shown at floor", bty = "n",
          cex = 1.1, text.col = "black", text.font = 3, inset = c(-0.04, -0.01))
 
-  # right: per-stage trajectory (same per-PHR-pair Spearman statistic; no title)
+  # top-right: per-stage trajectory (half height, full x axis restored)
+  par(mar = c(4.8, 5.8, 1.2, 1.0))
   yl <- range(stages$rho)
   plot(seq_len(nrow(stages)), stages$rho, type = "b", pch = 21,
        bg = "#1f77b4",
        col = "#111111", lwd = 1.4, cex = 2.1, xaxt = "n",
        xlim = c(0.55, nrow(stages) + 0.45),
        ylim = c(yl[1] - 0.06, yl[2] + 0.07),
-       xlab = "Meiotic prophase stage", ylab = "Per-pair Spearman rho",
+       xlab = "Meiotic prophase stage", ylab = "Spearman rho",
        main = "", cex.lab = 1.55, cex.axis = 1.4)
   axis(1, at = seq_len(nrow(stages)), labels = FALSE)
   mtext(unname(stage_keys[levels(stages$stage)]), side = 1,
-        at = seq_len(nrow(stages)), line = 0.9, cex = 1.05)
+        at = seq_len(nrow(stages)), line = 0.9, cex = 1.0)
   text(seq_len(nrow(stages)), stages$rho + 0.030,
        sprintf("%.3f", stages$rho), cex = 1.2, xpd = NA)
+
+  # bottom-right: four-stage meiotic scheme, embedded under the trajectory
+  par(mar = c(0.5, 2.2, 0.4, 1.2))
+  draw_meiosis()
 }
 
 png(file.path(out_dir, "Fig4c_mouse_zygotene.png"),

@@ -136,10 +136,10 @@ draw_stage <- function(cx, cy, R, label, kind) {
     telos <- draw_diplo(cx, cy, R)
   }
   points(telos, pch=21, bg=telo_col, col="white", cex=1.35, lwd=0.55)
-  text(cx, cy - R*1.44, label, cex=1.95, font=2, col="#222222")
+  text(cx, cy - R*1.44, label, cex=2.6, font=2, col="#222222")
   if (highlight) {
-    text(cx - R*0.62, cy + R*0.93, "bouquet", cex=1.6, font=2, col=telo_col, adj=c(1, 0.5))
-    text(cx + R*0.26, cy + R*1.24, "centrosome", cex=1.6, col="#555b62", adj=c(0, 0.5))
+    text(cx - R*0.62, cy + R*0.93, "bouquet", cex=2.1, font=2, col=telo_col, adj=c(1, 0.5))
+    text(cx + R*0.26, cy + R*1.24, "centrosome", cex=2.1, col="#555b62", adj=c(0, 0.5))
   }
 }
 
@@ -152,12 +152,12 @@ draw <- function() {
   draw_stage(xs[2], cy, R, "zygotene",  "zygo")
   draw_stage(xs[3], cy, R, "pachytene", "pachy")
   draw_stage(xs[4], cy, R, "diplotene", "diplo")
-  legend(x=19.25, y=1.15, xjust=0.5, yjust=0.5, horiz=TRUE, bty="n", pch=c(21,4),
+  legend(x=25.6, y=0.85, xjust=0.5, yjust=0.5, horiz=TRUE, bty="n", pch=c(21,4),
          pt.bg=c(telo_col,NA), col=c("white",chia_col), pt.cex=c(1.5,1.0), pt.lwd=c(0.6,1.3),
-         legend=c("telomere (subtelomeric PHRs)","chiasma"), cex=1.55, text.col="#222222")
+         legend=c("telomere (subtelomeric PHRs)","chiasma"), cex=2.0, text.col="#222222")
 }
 
-png(file.path(out_dir, "meiosis_stages.png"), width=2400, height=771, res=200, type="cairo")
+png(file.path(out_dir, "Fig4d_meiosis_stages.png"), width=2400, height=771, res=200, type="cairo")
 draw(); dev.off()
-pdf(file.path(out_dir, "meiosis_stages.pdf"), width=12, height=3.85); draw(); dev.off()
-cat("wrote ", file.path(out_dir, "meiosis_stages.{png,pdf}"), "\n", sep="")
+pdf(file.path(out_dir, "Fig4d_meiosis_stages.pdf"), width=12, height=3.85); draw(); dev.off()
+cat("wrote ", file.path(out_dir, "Fig4d_meiosis_stages.{png,pdf}"), "\n", sep="")

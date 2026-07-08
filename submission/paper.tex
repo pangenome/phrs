@@ -345,8 +345,8 @@ Genomics.
     \put(0.5,39){\textbf{\large\sffamily B}}\end{overpic}
   \caption{\textbf{Genome-wide subtelomeric sharing and PHR extent.}
     \textbf{(A)} Interchromosomal sequence sharing across 465 near-complete assemblies
-    (232 HPRC v2 individuals and CHM13). Each chromosome is drawn as a Giemsa-band
-    ideogram (CHM13 cytobands) above a track of 100 kb windows coloured by the
+    (232 HPRC v2 individuals and CHM13). Each chromosome is drawn as a track of
+    100 kb windows coloured by the
     number of distinct partner chromosomes a window aligns to elsewhere in the
     pangenome (0 to 11+), together with a region track (centromere, PAR, PHR,
     terminal repeat); insets give per-partner haplotype counts at three
@@ -366,10 +366,10 @@ Genomics.
 
 \begin{figure}[h!]
   \centering
-  \makebox[\linewidth][l]{\textbf{A}}\\[1pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig2a_pggb_layout.png}\\[6pt]
-  \makebox[\linewidth][l]{\textbf{B}}\\[1pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig2bc_jaccard.pdf}
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig2a_pggb_layout.png}%
+    \put(0.5,39){\textbf{\large\sffamily A}}\end{overpic}\\[4pt]
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig2bc_jaccard.pdf}%
+    \put(0.5,40){\textbf{\large\sffamily B}}\end{overpic}
   \caption{\textbf{Pangenome similarity structure and communities.}
     \textbf{(A)} PGGB/odgi 2D layout of the all-subtelomere PHR graph (727,156
     layout nodes; main connected component), each node colored by the arm-level
@@ -456,15 +456,28 @@ Genomics.
 
 \begin{figure}[h!]
   \centering
-  \makebox[\linewidth][c]{%
-    \includegraphics[width=\linewidth]{fig/MainFigures/Fig5_whole_genome_recombination.png}}
+  \newcommand{\fivesw}[1]{\textcolor[HTML]{#1}{\rule[-0.2ex]{2.2ex}{1.9ex}}}%
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5A_pedigree.pdf}%
+    \put(0.4,4.5){\textbf{\large\sffamily A}}\end{overpic}\\[1pt]
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5B_paternal.pdf}%
+    \put(0.4,13.5){\textbf{\large\sffamily B}}\end{overpic}\\[3pt]
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5C_maternal.pdf}%
+    \put(0.4,13.5){\textbf{\large\sffamily C}}\end{overpic}\\[3pt]
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5D_pan028.pdf}%
+    \put(0.4,13.5){\textbf{\large\sffamily D}}\end{overpic}\\[-6pt]
+  {\footnotesize\sffamily\textbf{Ribbon classes}\quad
+    \fivesw{b8bdc3}~same chromosome\quad
+    \fivesw{6f6f6f}~acrocentric\quad
+    \fivesw{E7298A}~PAR1\quad
+    \fivesw{1F77B4}~chr5q/chr1p\quad
+    \fivesw{D95F02}~chr9q/chr3q}
   \caption{\textbf{Whole-genome pedigree views of putative subtelomeric exchange.}
     \textbf{(A)} Pedigree relationships and the three transmissions shown.
     \textbf{(B)} PAN027 paternal haplotype compared with the two PAN011 father
     haplotypes. \textbf{(C)} PAN027 maternal haplotype compared with the two
     PAN010 mother haplotypes. \textbf{(D)} PAN028 maternal haplotype compared
     with the two PAN027 mother haplotypes. In each ribbon panel, chromosomes are
-    concatenated in native order and scaled by assembled length; the middle
+    concatenated in order and scaled by their length; the middle
     track is the meiotic product inherited by the child/query haplotype, and
     the upper and lower tracks are the two parental haplotypes being compared.
     Light-gray ribbons show same-chromosome homologous chains, while colored
