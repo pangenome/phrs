@@ -48,7 +48,7 @@ mono <- any(args == "--mono")
 mono_color <- if (mono) { v <- val("--mono", "#111111"); if (grepl("^--", v)) "#111111" else v } else NA_character_
 
 point_alpha <- if (mono) 0.30 else 0.65
-point_cex   <- if (mono) 0.12 else 0.30
+point_cex   <- if (mono) 0.12 else 0.42
 background  <- "white"
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
@@ -86,10 +86,21 @@ if (!mono) {
 plot_x <- lay$Y; plot_y <- lay$X   # rotate as in the published panel
 
 png_path <- file.path(out_dir, out_name)
-png(png_path, width = 1920, height = 1080, res = 144, bg = background, type = "cairo")
+png(png_path, width = 1920, height = 820, res = 144, bg = background, type = "cairo")
 par(mar = c(0.18, 0.18, 0.18, 0.18), xaxs = "i", yaxs = "i", family = "sans")
 plot(plot_x, plot_y, pch = 16, cex = point_cex, col = col_vec,
      axes = FALSE, ann = FALSE, asp = 1)
+
+# Surface the labelled communities by redrawing them last, on top of the larger
+# communities that share their layout positions and otherwise occlude them
+# (C15/PAR1 is tiny -> enlarge its points so the specks are visible).
+if (!mono) {
+  for (cc in c("C11", "C2", "C15")) {
+    s <- which(lay$community == cc)
+    points(plot_x[s], plot_y[s], pch = 16,
+           cex = point_cex * if (cc == "C15") 1.8 else 1.0, col = pal[[cc]])
+  }
+}
 
 if (!mono) {
   present <- levs[levs %in% as.character(unique(lay$community))]
@@ -97,8 +108,74 @@ if (!mono) {
   present_named <- present_named[order(as.integer(sub("^C", "", present_named)))]
   leg     <- c(present_named, if ("NA" %in% present) "no community")
   leg_col <- c(pal[present_named], if ("NA" %in% present) pal[["NA"]])
-  legend("topleft", legend = leg, col = leg_col, pch = 16, pt.cex = 1.1,
-         ncol = 2, bty = "n", cex = 0.8, text.col = "#1f1f1f", title = "Community")
+  usr <- par("usr")
+  d <- 0.04 * (usr[4] - usr[3])   # equal physical inset (asp=1) from left and top
+  lgd <- legend(x = usr[1] + d, y = usr[4] - d, xjust = 0, yjust = 1,
+         legend = leg, col = leg_col, pch = 16, pt.cex = 1.7,
+         ncol = 2, bty = "n", cex = 1.25, text.col = "#1f1f1f", title = "Community")
+
+  # Gene/feature labels (cf. Fig 3): each is auto-placed in the nearest OPEN
+  # pocket around a same-colour node -- a spot whose text box hits no graph
+  # points and does not collide with the legend or another label.
+  hx <- 0.0028 * (usr[2] - usr[1]); hy <- 0.0028 * (usr[4] - usr[3])
+  cexL <- 1.05
+  darken <- function(col, f = 0.7) {
+    v <- grDevices::col2rgb(col)[, 1] * f
+    grDevices::rgb(v[1], v[2], v[3], maxColorValue = 255)
+  }
+  # anchor = a point in the community's own-colour-dominant region
+  # pref = preferred direction for the label (radians; 0=right, pi/2=up, pi=left, -pi/2=down)
+  anchors <- list(
+    C1  = list(g = "DUX4 / D4Z4", at = c(152932,  88490), pref = -pi / 2),
+    C11 = list(g = "OR4F",        at = c(180061, 153159), fixed = c(205000, 156500)),
+    C2  = list(g = "TUBB8B",      at = c(218888,  92437)),
+    C7  = list(g = "rDNA (acro)", at = c(300000, 108000), pref = -pi / 2),
+    C14 = list(g = "PAR2",        at = c( 55000,  42000), pref = pi),
+    C15 = list(g = "PAR1 (SHOX)", at = c(121000,  62000), pref = pi))
+  box_overlap <- function(b, bs) {
+    for (o in bs) if (b[1] < o[3] && b[3] > o[1] && b[2] < o[4] && b[4] > o[2]) return(TRUE)
+    FALSE
+  }
+  boxes <- list(c(lgd$rect$left, lgd$rect$top - lgd$rect$h,
+                  lgd$rect$left + lgd$rect$w, lgd$rect$top))   # legend box
+  for (cc in names(anchors)) {
+    info <- anchors[[cc]]; colc <- darken(pal[[cc]])
+    sel <- which(lay$community == cc)
+    j   <- sel[which.min((plot_x[sel] - info$at[1])^2 + (plot_y[sel] - info$at[2])^2)]
+    ax <- plot_x[j]; ay <- plot_y[j]
+    # measure the box for the BOLD text actually drawn, plus a small clearance ring
+    pad <- 0.7 * strheight(info$g, cex = cexL, font = 2)
+    w <- strwidth(info$g, cex = cexL, font = 2) + 2 * pad
+    h <- strheight(info$g, cex = cexL, font = 2) + 2 * pad
+    R <- 0.40 * (usr[2] - usr[1])
+    loc <- which(abs(plot_x - ax) < R + w & abs(plot_y - ay) < R + h)
+    lpx <- plot_x[loc]; lpy <- plot_y[loc]
+    base <- seq(0, 2 * pi, length.out = 37)[-1]
+    ang  <- if (is.null(info$pref)) base
+            else base[order(abs(((base - info$pref + pi) %% (2 * pi)) - pi))]
+    place <- c(ax, ay)
+    if (!is.null(info$fixed)) {
+      place <- info$fixed
+    } else for (r in seq(0.55 * h + 0.2 * w, R, length.out = 34)) {
+      hit <- FALSE
+      for (a in ang) {
+        cx <- ax + r * cos(a); cy <- ay + r * sin(a)
+        b  <- c(cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+        if (b[1] < usr[1] || b[3] > usr[2] || b[2] < usr[3] || b[4] > usr[4]) next
+        if (any(lpx > b[1] & lpx < b[3] & lpy > b[2] & lpy < b[4])) next
+        if (box_overlap(b, boxes)) next
+        place <- c(cx, cy); hit <- TRUE; break
+      }
+      if (hit) break
+    }
+    lx <- place[1]; ly <- place[2]
+    boxes[[length(boxes) + 1]] <- c(lx - w / 2, ly - h / 2, lx + w / 2, ly + h / 2)
+    segments(ax, ay, lx, ly, col = "black", lwd = 1.1)
+    points(ax, ay, pch = 16, cex = 0.9, col = "black")
+    for (dx in c(-hx, hx)) for (dy in c(-hy, hy))
+      text(lx + dx, ly + dy, info$g, col = "white", font = 2, cex = cexL)
+    text(lx, ly, info$g, col = "black", font = 2, cex = cexL)
+  }
 }
 invisible(dev.off())
 
