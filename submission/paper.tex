@@ -391,12 +391,15 @@ Genomics.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig3a_C1_chr4q.png}\\[1pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig3a_C1_chr10q.png}\\[5pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig3b_C2_chr10p.png}\\[1pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig3b_C2_chr18p.png}\\[5pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig3c_C11_chr5q.png}\\[1pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig3c_C11_chr6q.png}
+  \makebox[\linewidth][r]{\begin{overpic}[width=0.96\linewidth]{fig/MainFigures/Fig3a_C1_chr4q.png}%
+    \put(-4,13){\textbf{\large\sffamily A}}\end{overpic}}\\[1pt]
+  \makebox[\linewidth][r]{\includegraphics[width=0.96\linewidth]{fig/MainFigures/Fig3a_C1_chr10q.png}}\\[5pt]
+  \makebox[\linewidth][r]{\begin{overpic}[width=0.96\linewidth]{fig/MainFigures/Fig3b_C2_chr10p.png}%
+    \put(-4,11){\textbf{\large\sffamily B}}\end{overpic}}\\[1pt]
+  \makebox[\linewidth][r]{\includegraphics[width=0.96\linewidth]{fig/MainFigures/Fig3b_C2_chr18p.png}}\\[5pt]
+  \makebox[\linewidth][r]{\begin{overpic}[width=0.96\linewidth]{fig/MainFigures/Fig3c_C11_chr5q.png}%
+    \put(-4,49){\textbf{\large\sffamily C}}\end{overpic}}\\[1pt]
+  \makebox[\linewidth][r]{\includegraphics[width=0.96\linewidth]{fig/MainFigures/Fig3c_C11_chr6q.png}}
   \caption{\textbf{Architecture of representative communities.}
     Sequence-level views (CHM13 coordinates, with PHR-BED, GC\%, segmental
     duplications and gene models) of three communities, so the duplicon content
