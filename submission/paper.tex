@@ -339,8 +339,10 @@ Genomics.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig1a_genomewide.pdf}\\[4pt]
-  \includegraphics[width=\linewidth]{fig/MainFigures/Fig1b_lengths.pdf}
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig1a_genomewide.pdf}%
+    \put(0.5,50){\textbf{\large\sffamily A}}\end{overpic}\\[4pt]
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig1b_lengths.pdf}%
+    \put(0.5,39){\textbf{\large\sffamily B}}\end{overpic}
   \caption{\textbf{Genome-wide subtelomeric sharing and PHR extent.}
     \textbf{(A)} Interchromosomal sequence sharing across 465 near-complete assemblies
     (232 HPRC v2 individuals and CHM13). Each chromosome is drawn as a Giemsa-band
@@ -353,11 +355,10 @@ Genomics.
     pair). Telomere-anchored
     high-identity blocks recur at nearly every end, and the
     acrocentrics and PARs appear as positive controls.
-    \textbf{(B)} PHR length distribution across the terminal 500 kb, shown
-    separately for p-arms and q-arms and coloured by the number of PHRs per 10 kb
-    length bin (pseudo-log scale). Length is measured from the
-    telomere (0 kb = telomere-proximal; q-arms flipped so both panels read
-    telomere$\to$centromere). Non-acrocentric, non-PAR
+    \textbf{(B)} Distribution of PHR lengths, shown separately for p-arms and
+    q-arms and coloured by the number of PHRs per 10 kb length bin (pseudo-log
+    scale); each PHR is a telomere-anchored flank, so its length is how far the
+    shared sequence extends inward. Non-acrocentric, non-PAR
     PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
     reflects the input flank size, not biology).}
   \label{fig:fig1}

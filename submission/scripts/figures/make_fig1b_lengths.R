@@ -25,7 +25,7 @@ dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 search_window_kbp <- 500
 binwidth_kbp <- 10
-q_panel_gap_kbp <- 82
+q_panel_gap_kbp <- 118
 q_panel_start_kbp <- search_window_kbp + q_panel_gap_kbp
 axis_end_kbp <- q_panel_start_kbp + search_window_kbp
 
@@ -87,7 +87,7 @@ make_arm_bins <- function(valid, binwidth) {
   counts$arm_n <- arm_n[match(counts$arm_label, all_arms)]
   counts$within_arm_pct <- ifelse(counts$arm_n > 0, 100 * counts$count / counts$arm_n, NA_real_)
   counts$display_x_kbp <- ifelse(counts$arm == "q",
-    q_panel_start_kbp + (search_window_kbp - counts$bin_mid_kbp), counts$bin_mid_kbp)
+    q_panel_start_kbp + counts$bin_mid_kbp, counts$bin_mid_kbp)
   counts
 }
 
@@ -112,7 +112,7 @@ panel_labels <- data.frame(
 x_breaks_p <- seq(0, search_window_kbp, by = 100)
 x_breaks_q <- q_panel_start_kbp + seq(0, search_window_kbp, by = 100)
 x_breaks <- c(x_breaks_p, x_breaks_q)
-x_labels <- c(as.character(x_breaks_p), as.character(rev(x_breaks_p)))
+x_labels <- c(as.character(x_breaks_p), as.character(x_breaks_p))
 
 theme_heatstrip_slide <- function(base_size = 16) {
   theme_minimal(base_size = base_size) +
@@ -124,15 +124,18 @@ theme_heatstrip_slide <- function(base_size = 16) {
       axis.text.x = element_text(size = base_size - 3, colour = "#222222"),
       axis.text.y = element_text(size = base_size - 3, colour = "#222222"),
       panel.grid = element_blank(),
-      legend.position = "bottom",
+      legend.position = c(0.5, 0.46),
+      legend.direction = "vertical",
+      legend.background = element_rect(fill = "white", colour = NA),
+      legend.margin = margin(3, 6, 4, 6),
       legend.title = element_text(size = base_size - 3, colour = "#222222"),
       legend.text = element_text(size = base_size - 4, colour = "#222222"),
-      plot.margin = margin(26, 80, 10, 80))
+      plot.margin = margin(26, 22, 10, 22))
 }
 
 p_heatstrip <- ggplot(arm_bins_10kbp, aes(x = display_x_kbp, y = chrom_index, fill = count)) +
   annotate("rect", xmin = search_window_kbp, xmax = q_panel_start_kbp, ymin = -Inf, ymax = Inf, fill = "white") +
-  geom_tile(width = binwidth_kbp * 0.96, height = 0.82, colour = "#F0F2F4", linewidth = 0.06) +
+  geom_tile(width = binwidth_kbp * 0.98, height = 0.94, colour = "#F0F2F4", linewidth = 0.06) +
   geom_rect(data = zero_labels, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
             inherit.aes = FALSE, fill = "#F4B6B0", colour = NA) +
   geom_vline(xintercept = c(search_window_kbp, q_panel_start_kbp), colour = "black", linewidth = 0.5) +
@@ -141,9 +144,6 @@ p_heatstrip <- ggplot(arm_bins_10kbp, aes(x = display_x_kbp, y = chrom_index, fi
             inherit.aes = FALSE, size = 4.1, colour = "#7B241C") +
   geom_text(data = panel_labels, aes(x = x, y = y, label = label),
             inherit.aes = FALSE, fontface = "bold", size = 8.2, colour = "#222222") +
-  annotate("text", x = c(-14, axis_end_kbp + 14), y = length(chroms) + 1.55,
-           label = c("← p telomere", "q telomere →"), hjust = c(1, 0), vjust = 0.5,
-           size = 4.1, colour = "#555555") +
   scale_fill_gradientn("Number of\nPHRs",
     colours = c("#FFFFFF", "#DBEAF6", "#9ECAE1", "#4292C6", "#08519C"), na.value = "#F3F3F3",
     trans = scales::pseudo_log_trans(base = 10),
@@ -154,12 +154,13 @@ p_heatstrip <- ggplot(arm_bins_10kbp, aes(x = display_x_kbp, y = chrom_index, fi
   scale_y_reverse("Chromosome", breaks = seq_along(chroms), labels = chroms,
     limits = c(length(chroms) + 0.78, -0.72), oob = scales::oob_keep,
     expand = expansion(mult = c(0, 0))) +
-  guides(fill = guide_colourbar(barwidth = unit(3.0, "in"), barheight = unit(0.13, "in"))) +
+  guides(fill = guide_colourbar(barwidth = unit(0.16, "in"), barheight = unit(2.1, "in"),
+                                title.position = "top", title.hjust = 0.5)) +
   coord_cartesian(clip = "off") +
   theme_heatstrip_slide()
 
-ggsave(file.path(out_dir, "Fig1b_lengths.png"), p_heatstrip, width = 12.8, height = 7.2, dpi = 240, bg = "white")
-ggsave(file.path(out_dir, "Fig1b_lengths.pdf"), p_heatstrip, width = 12.8, height = 7.2, bg = "white")
+ggsave(file.path(out_dir, "Fig1b_lengths.png"), p_heatstrip, width = 12.8, height = 5.4, dpi = 240, bg = "white")
+ggsave(file.path(out_dir, "Fig1b_lengths.pdf"), p_heatstrip, width = 12.8, height = 5.4, bg = "white")
 
 cat("wrote ", file.path(out_dir, "Fig1b_lengths.pdf"), "\n", sep = "")
 cat(fmt_int(sum(arm_counts > 0)), "/48 ends with called intervals; zero-signal: ",

@@ -319,7 +319,7 @@ p_karyogram_count <- p_karyogram_count +
     axis.text.x = element_text(size = 11),
     axis.title = element_text(size = 13),
     plot.caption = element_text(size = 9, hjust = 1, color = "gray40"),
-    plot.margin = margin(2, 2, 2, 2, "pt"),
+    plot.margin = margin(26, 2, 2, 2, "pt"),
     panel.grid.major.y = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_line(color = "gray90", linewidth = 0.15),
@@ -641,7 +641,7 @@ p_karyogram_count_with_inset <- p_karyogram_count_main +
 ggsave(
   filename = file.path(tempdir(), "p_interchrom_karyogram_count_inset.png"),
   plot = p_karyogram_count_with_inset,
-  width = 16, height = 7, dpi = dpi, units = "in", bg = "white"
+  width = 16, height = 8.5, dpi = dpi, units = "in", bg = "white"
 )
 
 
@@ -684,7 +684,7 @@ p_karyogram_count_rainbow <- ggplot(karyogram_data) +
   # G-band ideogram as a track above each chromosome bar
   geom_rect(data = bands,
             aes(xmin = start_mbp, xmax = end_mbp,
-                ymin = chrom_y + 0.02, ymax = chrom_y + 0.40, fill = gieStain),
+                ymin = chrom_y + 0.13, ymax = chrom_y + 0.40, fill = gieStain),
             inherit.aes = FALSE) +
   scale_fill_manual(values = gie_cols, guide = "none") +
   new_scale_fill()
@@ -704,8 +704,8 @@ if (!is.null(bed_karyogram)) {
 
 p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
   geom_rect(aes(xmin = start_mbp, xmax = end_mbp,
-                ymin = as.numeric(chromosome) - 0.24,
-                ymax = as.numeric(chromosome) - 0.02,
+                ymin = as.numeric(chromosome) - 0.25,
+                ymax = as.numeric(chromosome) + 0.09,
                 fill = count_bin),
             linewidth = 0) +
   scale_fill_manual(values = count_rainbow, name = "# other\nchromosomes",
@@ -729,7 +729,7 @@ p_karyogram_count_rainbow <- p_karyogram_count_rainbow +
     axis.text.x = element_text(size = 11),
     axis.title = element_text(size = 13),
     plot.caption = element_text(size = 9, hjust = 1, color = "gray40"),
-    plot.margin = margin(2, 2, 2, 2, "pt"),
+    plot.margin = margin(26, 2, 2, 2, "pt"),
     panel.grid.major.y = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_line(color = "gray90", linewidth = 0.15),
@@ -772,13 +772,13 @@ p_karyogram_count_rainbow_with_inset <- p_karyogram_count_rainbow_main +
 ggsave(
   filename = file.path(out_dir, "Fig1a_genomewide.png"),
   plot = p_karyogram_count_rainbow_with_inset,
-  width = 16, height = 7, dpi = dpi, units = "in", bg = "white"
+  width = 16, height = 8.5, dpi = dpi, units = "in", bg = "white"
 )
 cat("Saved ", file.path(out_dir, "Fig1a_genomewide.png"), "\n")
 ggsave(
   filename = file.path(out_dir, "Fig1a_genomewide.pdf"),
   plot = p_karyogram_count_rainbow_with_inset,
-  width = 16, height = 7, units = "in", bg = "white",
+  width = 16, height = 8.5, units = "in", bg = "white",
   device = cairo_pdf
 )
 cat("Saved ", file.path(out_dir, "Fig1a_genomewide.pdf"), "\n")
