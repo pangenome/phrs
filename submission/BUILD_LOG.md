@@ -2,6 +2,40 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after bibliography/reference hygiene update
+
+Date: 2026-07-09
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd submission && make clean && make'
+```
+
+Environment note: the default shell's TeX tree is incomplete on this machine
+(`geometry.sty` missing), so validation ran in the same Guix TeX environment
+already used by other recent submission builds in this repo.
+
+Result: `make clean && make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+cd submission && grep -c 'undefined' paper.log  # -> 0
+cd submission && ls -lh paper.pdf               # -> 17M, 29 pages rendered
+```
+
+Reference-hygiene scope:
+
+- Corrected DOI/metadata for the CiFi, sperm 3D-genome, mouse T2T, complete
+  recombination maps, scNanoHi-C2, and HPRC Release 2 references.
+- Confirmed the existing Chew `658--671.e7` pages and Altemose `eabl4178`
+  article identifier were already correct.
+
+**PASS** -- the manuscript rebuilds successfully after the bibliography updates,
+the final `paper.log` has no `undefined` references/citations, and the active
+submission bibliography reflects the verified publisher/PubMed metadata.
+
 ## Successful build after appended HPRC banner author roster
 
 Date: 2026-07-09
