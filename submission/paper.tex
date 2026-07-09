@@ -372,7 +372,7 @@ Genomics.
     scale); each PHR is a telomere-anchored flank, so its length is how far the
     shared sequence extends inward. Non-acrocentric, non-PAR
     PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
-    reflects the input flank size, not biology).}
+    reflects the input flank size).}
   \label{fig:fig1}
 \end{figure}
 
@@ -581,7 +581,9 @@ Hi-C, Pore-C and CiFi were reprocessed from raw reads
 against the corresponding T2T reference (CHM13v2.0 or the matched HPRC v2
 haplotype) with multi-mappers retained, because the default mapping-quality
 filter ($\geq 30$) of deposited maps masks the high-identity, signal-bearing
-subtelomeric sequence at the mapping stage. Because no mapping-quality filter is
+subtelomeric sequence at the mapping stage. Pore-C (NlaIII) and CiFi (DpnII) were
+processed with pore-c-py, minimap2 and pairtools, and Hi-C with HiC-Pro and
+Bowtie2, binning contacts with cooler. Because no mapping-quality filter is
 applied, a molecule mapping equally well to several paralogous ends contributes
 to each of them, so PHR-internal contacts are aggregate coordinate-level
 measurements rather than uniquely assigned read-level contacts. Contact matrices
