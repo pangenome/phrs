@@ -2,6 +2,44 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after HPRC author and ORCID metadata update
+
+Date: 2026-07-09
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd submission && make clean && make'
+```
+
+Result: `make clean && make` completed successfully and wrote `paper.pdf`.
+
+Author/ORCID mechanism:
+
+- `submission/jnl.cls` has no ORCID-specific author macro.
+- The manuscript therefore uses the class-supported `\presentaddresstxt{ORCID iDs}`
+  plus `\presentaddress{...}` note block, with `\href{https://orcid.org/<id>}{<id>}`
+  links for Andrea Guarracino, Angela Gyamfi, and Erik Garrison.
+- This keeps the ORCID identifiers in the title-page metadata area without
+  inventing unsupported author markup or changing the existing author-email
+  handling in `jnl.cls`.
+
+Validation checks:
+
+```
+grep -c 'undefined' submission/paper.log  # -> 0
+/gnu/store/l0xdjpkvvw70zz6cz7nkxwzk3h40pynz-poppler-22.09.0/bin/pdftotext -f 1 -l 1 submission/paper.pdf - | sed -n '1,20p'
+```
+
+Observed title-page text includes:
+
+- `Andrea Guarracino1,2*, Angela Gyamfi1,3, Human Pangenome Reference Consortium and Erik Garrison1*`
+- `ORCID iDs: Andrea Guarracino, 0000-0001-9744-131X; Angela Gyamfi, 0009-0009-7534-1137; Erik Garrison, 0000-0003-3821-631X.`
+
+**PASS** -- clean manuscript build succeeds in the Guix TeX environment, the
+title page shows the HPRC middle author and all three ORCID identifiers, and
+the final `paper.log` has no undefined references/citations.
+
 ## Successful build after wording consistency cleanup
 
 Date: 2026-07-09
@@ -27,7 +65,6 @@ ls -lh paper.pdf               # -> 17M, 24 pages
 
 **PASS** -- the wording-consistency cleanup compiles with no undefined
 references/citations in the final `paper.log`.
-
 ## Successful build after exchange-system language restoration
 
 Date: 2026-07-09
