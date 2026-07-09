@@ -313,7 +313,7 @@ long-read single-gamete recombination maps \cite{Halldorsson2019,palsson2025reco
 
 Inter-chromosomal subtelomeric sequence sharing coincides with preferential
 three-dimensional proximity and with putative recombination between subtelomeric
-regions on non-homologous chromosomes. Together these point to a self-reinforcing
+regions on non-homologous chromosomes. Together, these point to a self-reinforcing
 loop. Shared sequence tracks three-dimensional proximity. Proximity at the meiotic bouquet creates the
 opportunity for ectopic recombination between non-homologous chromosomes, and
 that recombination in turn generates new shared sequence that enters the
@@ -327,8 +327,9 @@ sequence drives co-localization, or enforced proximity generates it. The mechani
 crossover-associated repair and larger exchange patterns.
 Our human three-dimensional data are somatic rather than germline, with the
 meiotic-stage measurement supplied only by mouse.
-Resolving both will require germline-stage contact maps and long-read
-recombination maps in trios \cite{palsson2025recomb,Logsdon2024}; even so, the
+Resolving both will require germline-stage contact maps, long-read
+recombination maps, and complete trio assemblies
+\cite{palsson2025recomb,Cechova2025}; even so, the
 pattern already provides a population-scale counterpart, at complete-genome
 resolution, to relationships first inferred from cytogenetics decades ago.
 
@@ -519,7 +520,7 @@ individuals plus CHM13v2.0, for 465 near-complete assemblies, with
 superpopulation labels assigned at the HPRC individual level
 \cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}. Two exclusions were applied.
 First, GRCh38 contigs and the CHM13v2.0 Y chromosome (masked PAR1) were excluded
-from flank extraction because they lack usable telomere ends for the 500 kb
+from flank extraction because they lack telomere ends suitable for the 500 kb
 flank definition. Second, the chr18q flank of NA18982 haplotype 1
 (contig JBKABS010000018.1) was excluded as a scaffolding chimera: in the
 all-against-all wfmash alignments its first 83.37 Mb map to chr18 and a terminal
@@ -549,7 +550,7 @@ We built a pangenome graph of the 15,668 PHR sequences with pggb at 95\% identit
 and computed all-pairs Jaccard similarity with odgi, giving a $15{,}668 \times
 15{,}668$ matrix
 \cite{Garrison2024pggb,pangenome_graphs_impg_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
-The single connected component was laid out with odgi and rendered in R
+The main connected component was laid out with odgi and rendered in R
 (Fig.~\ref{fig:fig2}A), each node colored by the dominant arm-level Leiden
 community of the PHR paths crossing it. The arm-level distance matrix is the mean
 pairwise Jaccard distance between PHR sequences within each arm pair. From it, arm-level
@@ -564,8 +565,8 @@ For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA); cutting it into 14 clusters gave
 a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. We also evaluated an exploratory neighbor-joining and
-PHR-resampling analysis used in earlier drafts, which resamples rows of a
+phylogenetic model. As a sensitivity analysis, we evaluated a PHR-resampling
+control that resamples rows of a
 collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
 surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees.
 Because it does not resample the full 15,668-sequence Jaccard matrix, it is not
@@ -648,8 +649,8 @@ rule and drawing chains of at least 10 kb. PHR and community labels were assigne
 after calling and were not used to select the windows.
 
 As an independent check, the two autosomal candidates were re-examined in a
-whole-genome wfmash v0.23.0 alignment at 95\% identity of the same PAN027
-versus PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on chr3q at
+whole-genome wfmash v0.23.0 alignment of the same PAN027 versus PAN011
+haplotypes at 95\% identity. wfmash reproduced the chr9q/chr3q donor on chr3q at
 $>$99.8\% identity over the same coordinates but placed the chr5q window on chr5
 with no chr1 donor above threshold, so only chr9q/chr3q is concordant across
 aligners.
