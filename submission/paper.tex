@@ -267,7 +267,7 @@ two-haplotype target from the transmitting father, PAN011
 IMPG-similarity windows (Fig.~\ref{fig:fig5}).
 This pedigree is uniquely suited to this test because it is, to our knowledge,
 the only multigenerational human pedigree in which all three generations have
-truly complete telomere-to-telomere assemblies, making transmission-resolved
+complete telomere-to-telomere assemblies, making transmission-resolved
 subtelomeric comparison possible at chromosome ends where incomplete assemblies
 usually fail.
 This male transmission is a useful positive-control setting because
@@ -308,6 +308,8 @@ PHR-exchange candidates compatible with recombination, not breakpoint-resolved e
 calls. Follow-up work should test transmission of the implicated chromosome
 ends in descendant haplotypes and apply orthogonal assays such as FISH or
 long-read single-gamete recombination maps \cite{Halldorsson2019,palsson2025recomb}.
+
+\subsection*{Discussion}
 
 Together, these observations suggest a self-reinforcing loop. Shared sequence
 tracks three-dimensional proximity. Proximity at the meiotic bouquet creates the
@@ -528,7 +530,7 @@ the 48 arms.
 
 \subsection*{Alignment, implicit pangenome graph and PHR detection}
 
-We aligned all flanks all-against-all with wfmash (v0.23.0) at 95\% minimum
+We aligned all flanks all-against-all with wfmash v0.23.0 at 95\% minimum
 identity, each flank serving in turn as the target \cite{Guarracino2023}, and
 treated the resulting alignment set as an implicit pangenome graph whose
 reachability we computed by transitive closure with IMPG
@@ -549,25 +551,19 @@ and computed all-pairs Jaccard similarity with odgi, giving a $15{,}668 \times
 The single connected component was laid out with odgi and rendered in R
 (Fig.~\ref{fig:fig2}A), each node colored by the dominant arm-level Leiden
 community of the PHR paths crossing it. The arm-level distance matrix is the mean
-pairwise sequence-level Jaccard distance within each arm pair. From it, arm-level
+pairwise Jaccard distance between PHR sequences within each arm pair. From it, arm-level
 communities were inferred after converting distances to graph weights
 $w_{ij} = \exp(-d_{ij} / \mathrm{median}(d))$ and scanning Leiden resolution from
 0.1 to 3.0; we selected the maximum-silhouette partition, 15 communities at
 resolution 1.16, and the same community count held across resolutions 1.13--1.18.
-Sequence-level communities were inferred from a k-nearest-neighbor graph on the
-15,668-sequence distance matrix; the reported 50-community partition used
-$k_{\mathrm{NN}} = 75$ at resolution 0.8, while the unconstrained modularity
-maximum gave a finer 148-community partition. These scans probe resolution
-dependence on fixed similarity matrices and are not a sample-resampling stability
-analysis.
 
-\subsection*{Hierarchical clustering and resampling audit}
+\subsection*{Hierarchical clustering and resampling controls}
 
 For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA); cutting it into 14 clusters gave
 a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. We further audited an exploratory neighbor-joining and
+phylogenetic model. We also evaluated an exploratory neighbor-joining and
 PHR-resampling analysis used in earlier drafts, which resamples rows of a
 collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
 surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees.
@@ -587,8 +583,8 @@ subtelomeric sequence at the mapping stage. Because no mapping-quality filter is
 applied, a molecule mapping equally well to several paralogous ends contributes
 to each of them, so PHR-internal contacts are aggregate coordinate-level
 measurements rather than uniquely assigned read-level contacts. Contact matrices
-were generated at 5, 10, 20, 50 and 100 kb, in a per-haplotype mode that keeps
-maternal and paternal contigs as separate arms.
+were generated at 5, 10, 20, 50 and 100 kb, with maternal and paternal contigs
+kept as separate arms.
 
 Pointwise Spearman correlations are reported as effect sizes, not significance
 tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows and
@@ -599,7 +595,7 @@ coordinates within a single genome, at 20 kb. The primary comparison is HG002
 Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.376$, $n = 2{,}830$); the replicates in
 Extended Data Fig.~\ref{fig:ed1} are CHM13 Hi-C ($\rho = 0.742$, $n = 688$), HG002
 Hi-C ($\rho = 0.616$, $n = 2{,}413$) and HG002 CiFi ($\rho = 0.196$,
-$n = 2{,}757$; the sparsest assay, hence the weakest signal).
+$n = 2{,}757$; the sparsest assay, consistent with the weakest effect size).
 
 The adjacent 100 kb centromere-ward non-PHR flanks are the principal control
 against mapping-quality-zero inflation: in HG002 Hi-C they give $B/W = 0.0013$
@@ -649,7 +645,7 @@ rule and drawing chains of at least 10 kb. PHR and community labels were assigne
 after calling and were not used to select the windows.
 
 As an independent check, the two autosomal candidates were re-examined in a
-whole-genome wfmash alignment (v0.23.0, 95\% identity) of the same PAN027
+whole-genome wfmash v0.23.0 alignment at 95\% identity of the same PAN027
 versus PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on chr3q at
 $>$99.8\% identity over the same coordinates but placed the chr5q window on chr5
 with no chr1 donor above threshold, so only chr9q/chr3q is concordant across
@@ -666,13 +662,12 @@ the pedigree-specific haplotype assemblies.
 
 \subsection*{Software versions}
 
-Pangenome graph construction used PGGB v0.7.4 (498c5d7), which bundles wfmash
-v0.23.0 (MashMap v3.5.0), seqwish v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix
-v0.2.1 and vg v1.62.0. Flank all-against-all and pedigree whole-genome alignment used wfmash v0.23.0,
-with sweepga 0.1.1 and impg 0.4.1 for whole-genome mapping and interval
-projection. Arm-level (Leiden
-$k{=}15$) and sequence-level (Leiden $k{=}50$) communities were called with the
-Leiden algorithm in R (igraph). Chromosome-contact processing ran under Python
+Pangenome graph construction used PGGB v0.7.4, commit 498c5d7, with wfmash
+v0.23.0, seqwish v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix
+v0.2.1 and vg v1.62.0. Flank all-against-all and pedigree whole-genome alignment
+used wfmash v0.23.0, with sweepga 0.1.1 and impg 0.4.1 for whole-genome mapping
+and interval projection. Arm-level communities were called with the Leiden
+algorithm in R (igraph). Chromosome-contact processing ran under Python
 3.12.12 (numpy 1.26.4, pandas 3.0.0, scipy 1.17.0): Pore-C with pore-c-py 2.1.5
 (NlaIII), minimap2 2.30, pairtools 1.1.3, cooler 0.10.4 and samtools 1.23; CiFi
 with the same pore-c-py toolchain (DpnII); Hi-C with HiC-Pro 3.0.0 and Bowtie2
@@ -684,7 +679,7 @@ used R with the packages ape, vegan and cluster.
 
 Analysis code, manuscript source, figure-generation scripts, and figure input
 files are available at \url{https://github.com/pangenome/phrs}, including the
-canonical CHM13-coordinate PHR annotations, the pedigree audit table
+CHM13-coordinate PHR annotations, the pedigree table
 (Supplementary Table~1), the figure-generation inputs for Fig.~\ref{fig:fig5}, and
 re-alignment workflows and command lines for Hi-C, Pore-C and CiFi. HPRC v2
 assemblies, CHM13v2.0, the WashU pedigree assemblies, the CEPH1463 assemblies, and
@@ -716,8 +711,8 @@ filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
     CHM13 Hi-C (a second genome; $\rho = 0.742$, $n = 688$), HG002 Hi-C (same
     genome as Fig.~\ref{fig:fig4}A, different assay; $\rho = 0.616$,
     $n = 2{,}413$), and HG002 CiFi ($\rho = 0.196$, $n = 2{,}757$; CiFi is the
-    sparsest assay, $\sim$90\% of pairs zero-contact, hence the weakest
-    directionally concordant signal).}
+    sparsest assay, $\sim$90\% of pairs zero-contact, consistent with the weakest
+    effect size).}
   \label{fig:ed1}
 \end{figure}
 
@@ -726,22 +721,22 @@ filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
 
 \noindent\textbf{Supplementary Table 1. Displayed pedigree non-homologous runs
 and PHR annotations.}
-Tab-delimited audit table for the Fig.~\ref{fig:fig5} paternal
+Tab-delimited table for the Fig.~\ref{fig:fig5} paternal
 homologous-competition scan and the companion maternal scans in
 Fig.~\ref{fig:fig5}C,D. Rows include the PAR1 positive-control runs, the paternal
 chr5q/chr1p and chr9q/chr3q candidate runs, representative acrocentric context
 runs, and the displayed maternal companion candidates. Query and donor intervals
 are 0-based half-open coordinates in the assembly-native haplotype sequences.
 The CHM13 PHR columns report the implicated arm-level intervals; they are not
-exact liftovers of the pedigree-specific haplotype intervals.
-
-\bigskip
-\noindent Key columns are shown below; the complete 17-column audit table
+exact liftovers of the pedigree-specific haplotype intervals. Key columns are
+shown below; the complete 17-column table
 (assembly-native and CHM13 PHR-BED intervals, per-window counts, source tables
 and notes) is provided as a tab-delimited supplementary file. Panel B/C/D
 correspond to the Fig.~\ref{fig:fig5} ribbon panels; id$_{\mathrm{NH}}$ is the
 mean non-homologous-winner identity and $\Delta$id its margin over the
 same-chromosome competitor.
+
+\medskip
 
 {\centering\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.25}
 \begin{tabular}{@{}c l p{2.35cm} r r r c@{}}
