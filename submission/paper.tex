@@ -188,7 +188,7 @@ arm-level similarity matrix.
 The matrix is structured rather than uniform: it contains locally dense blocks
 embedded in a broader continuum of lower inter-community similarity
 (Fig.~\ref{fig:fig2}B, left).
-Leiden community detection on this fixed arm-level matrix partitions the 41
+Leiden community detection on this arm-level matrix partitions the 41
 signal-bearing arms into 15 arm-level communities (Fig.~\ref{fig:fig2}B,
 right).
 The communities recover every previously described case of inter-chromosomal
@@ -288,10 +288,10 @@ Exact assembly-native intervals, identities, same-chromosome competitor scores,
 PHR/community annotations and corresponding arm-level CHM13 PHR BED intervals
 are provided in Supplementary Table~1.
 Applying the same whole-genome homologous-competition scan to the maternal
-PAN027 and PAN028 transmissions provides companion context rather than a second
+PAN027 and PAN028 transmissions provides matched context rather than a second
 primary claim: PAN027 maternal windows resolve only the expected
 acrocentric-acrocentric class, while PAN028 maternal windows are again dominated
-by acrocentric-acrocentric sharing, with one displayed chr21p/chr4p context row
+by acrocentric-acrocentric sharing, with one displayed chr21p/chr4p context run
 and one additional chr5/chr1 candidate visible in the same display framework
 (Fig.~\ref{fig:fig5}C,D).
 
@@ -301,11 +301,11 @@ $>$99.8\% identity, so this exchange is concordant across methods; the
 chr5q/chr1p signal exceeds its same-chromosome match by only a narrow identity
 margin and is not recovered by wfmash, which maps the window to chr5, making it
 a weaker, aligner-dependent candidate. Manual comparison with the WashU
-pedigree recombination annotation agrees that this paternal transmission has no
+pedigree recombination annotation indicates that this paternal transmission has no
 ordinary chr3 crossover (M. Cechova and T. Marschall, personal communication),
 so the chr9q/chr3q signal is not explained by a standard homologous chr3
 recombination event. We therefore interpret these patterns as putative
-recombination-compatible PHR-exchange candidates, not breakpoint-resolved event
+PHR-exchange candidates compatible with recombination, not breakpoint-resolved event
 calls. Follow-up work should test transmission of the implicated chromosome
 ends in descendant haplotypes and apply orthogonal assays such as FISH or
 long-read single-gamete recombination maps \cite{Halldorsson2019,palsson2025recomb}.
@@ -326,8 +326,8 @@ Our human three-dimensional data are somatic rather than germline, with the
 meiotic-stage measurement supplied only by mouse.
 Resolving both will require germline-stage contact maps and long-read
 recombination maps in trios \cite{palsson2025recomb,Logsdon2024}; even so, the
-pattern is already a population-scale complete-genome counterpart to
-relationships first inferred from cytogenetics decades ago.
+pattern already provides a population-scale counterpart, at complete-genome
+resolution, to relationships first inferred from cytogenetics decades ago.
 
 \subsection*{Acknowledgments}
 
@@ -498,7 +498,7 @@ Genomics.
     PHR-exchange candidates, chr5q/chr1p and chr9q/chr3q. The maternal panels
     provide matched display context and are dominated by expected
     acrocentric-acrocentric sharing, with one displayed chr21p/chr4p context
-    row and one additional chr5/chr1 candidate in the PAN028 maternal
+    run and one additional chr5/chr1 candidate in the PAN028 maternal
     transmission.}
   \label{fig:fig5}
 \end{figure}
@@ -512,13 +512,13 @@ Genomics.
 
 \subsection*{Samples, exclusions and flank extraction}
 
-232 HPRC v2 individuals contributed two haplotype-resolved assemblies each; with
-the haploid CHM13v2.0 reference anchor this gives 465 near-complete
-assemblies, with superpopulation labels assigned at the HPRC individual level
+The dataset comprised 464 haplotype-resolved HPRC v2 assemblies from 232
+individuals plus CHM13v2.0, for 465 near-complete assemblies, with
+superpopulation labels assigned at the HPRC individual level
 \cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}. Two exclusions were applied.
 First, GRCh38 contigs and the CHM13v2.0 Y chromosome (masked PAR1) were excluded
-from flank extraction because they carry no telomeres compatible with the
-anchored 500 kb extraction. Second, the chr18q flank of NA18982 haplotype 1
+from flank extraction because they lack usable telomere ends for the 500 kb
+flank definition. Second, the chr18q flank of NA18982 haplotype 1
 (contig JBKABS010000018.1) was excluded as a scaffolding chimera: in the
 all-against-all wfmash alignments its first 83.37 Mb map to chr18 and a terminal
 966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns. No
@@ -533,12 +533,13 @@ We aligned all flanks all-against-all with wfmash (v0.23.0) at 95\% minimum
 identity, each flank serving in turn as the target \cite{Guarracino2023}, and
 treated the resulting alignment set as an implicit pangenome graph whose
 reachability we computed by transitive closure with IMPG
-\cite{pangenome_graphs_impg_IMPG2023}. Every flank is compared against every
-other in a full all-against-all, without restricting to homologous chromosomes,
-so the transitive closure recovers subtelomere sharing genome-wide. PHRs were called from a sliding-window scan of the
-transitive closure, requiring at least 95\% identity, at least five alignments to
-each of at least two other chromosomes, and a minimum aligned length of 3 kb per
-called region; this gave 15,668 PHRs (83.2\% of flanks) on 41 of the 48 arms.
+\cite{pangenome_graphs_impg_IMPG2023}. Every flank was compared against every
+other without restricting to homologous chromosomes,
+so the transitive closure recovers subtelomere sharing genome-wide. PHRs were
+called from a sliding-window scan of the transitive closure, requiring at least
+95\% identity, at least five alignments to each of at least two other
+chromosomes, and a minimum aligned length of 3 kb per called region; this gave
+15,668 PHRs (83.2\% of flanks) on 41 of the 48 arms.
 
 \subsection*{Pangenome graph, similarity and community detection}
 
@@ -572,9 +573,9 @@ PHR-resampling analysis used in earlier drafts, which resamples rows of a
 collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
 surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees.
 Because it does not resample the full 15,668-sequence Jaccard matrix, it is not
-used as evidence for the Leiden communities or for a hard q-arm partition; under
-this chromosome-granular surrogate the illustrative six-arm q-neighborhood has
-low support, so we treat the q-arm pattern as an enriched neighborhood in the
+used as evidence for the Leiden communities or for a discrete q-arm partition;
+under this chromosome-level surrogate, the six-arm q-neighborhood has low
+support, so we treat the q-arm pattern as an enriched neighborhood in the
 similarity matrix rather than a bootstrap-supported grouping.
 
 \subsection*{Hi-C, Pore-C and CiFi pipeline}
@@ -586,9 +587,9 @@ filter ($\geq 30$) of deposited maps masks the high-identity, signal-bearing
 subtelomeric sequence at the mapping stage. Because no mapping-quality filter is
 applied, a molecule mapping equally well to several paralogous ends contributes
 to each of them, so PHR-internal contacts are aggregate coordinate-level
-measurements rather than read-level truth sets. Contact matrices were generated
-at 5, 10, 20, 50 and 100 kb, in a per-haplotype mode that keeps maternal and
-paternal contigs as separate arms.
+measurements rather than uniquely assigned read-level contacts. Contact matrices
+were generated at 5, 10, 20, 50 and 100 kb, in a per-haplotype mode that keeps
+maternal and paternal contigs as separate arms.
 
 Pointwise Spearman correlations are reported as effect sizes, not significance
 tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows and
@@ -690,15 +691,15 @@ and cluster.
 
 \subsection*{Data and code availability}
 
-Analysis code, manuscript source, figure-generation scripts, and vendored figure
-inputs are available at \url{https://github.com/pangenome/phrs}, including the
+Analysis code, manuscript source, figure-generation scripts, and figure input
+files are available at \url{https://github.com/pangenome/phrs}, including the
 canonical CHM13-coordinate PHR annotations, the pedigree audit table
 (Supplementary Table~1), the figure-generation inputs for Fig.~\ref{fig:fig5}, and
 re-alignment workflows and command lines for Hi-C, Pore-C, CiFi and Dip-C. HPRC v2
 assemblies, CHM13v2.0, the WashU pedigree assemblies, the CEPH1463 assemblies, and
 the published 3D-genome datasets are available from their cited public releases
 and accessions. The re-alignment workflows start from the cited public raw-read
-datasets; deposited processed files generated with default mapping-quality
+datasets; deposited processed files produced with default mapping-quality
 filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
 
 \bibliography{bibliography}
