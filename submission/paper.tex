@@ -667,7 +667,7 @@ rule and drawing chains of at least 10 kb. PHR and community labels were assigne
 after calling and were not used to select the windows.
 
 As an independent check, the two autosomal candidates were re-examined in a
-whole-genome wfmash alignment (v0.24.2, 95\% identity) of the same PAN027
+whole-genome wfmash alignment (v0.23.0, 95\% identity) of the same PAN027
 versus PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on chr3q at
 $>$99.8\% identity over the same coordinates but placed the chr5q window on chr5
 with no chr1 donor above threshold, so only chr9q/chr3q is concordant across
@@ -684,10 +684,18 @@ the pedigree-specific haplotype assemblies.
 
 \subsection*{Software versions}
 
-wfmash v0.23.0 (flank alignment) and v0.24.2 (pedigree cross-check); sweepga
-0.1.1; impg 0.4.1; pggb and odgi (bundled versions);
-samtools, bedtools and bgzip; hicexplorer 3.7.4; and the R packages ape, vegan
-and cluster.
+Pangenome graph construction used PGGB v0.7.4 (498c5d7), which bundles wfmash
+v0.23.0 (MashMap v3.5.0), seqwish v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix
+v0.2.1 and vg v1.62.0. Flank all-against-all and pedigree whole-genome alignment used wfmash v0.23.0,
+with sweepga 0.1.1 and impg 0.4.1 for whole-genome mapping and interval
+projection. Arm-level (Leiden
+$k{=}15$) and sequence-level (Leiden $k{=}50$) communities were called with the
+Leiden algorithm in R (igraph). Chromosome-contact processing ran under Python
+3.12.12 (numpy 1.26.4, pandas 3.0.0, scipy 1.17.0): Pore-C with pore-c-py 2.1.5,
+minimap2 2.30, pairtools 1.1.3, cooler 0.10.4 and samtools 1.23; Hi-C with
+HiCExplorer 3.7.4. General sequence utilities were samtools and bgzip 1.23,
+bedtools 2.31.1, seqkit 2.5.0 and gffread 0.12.7. Statistical and figure analysis
+used R with the packages ape, vegan and cluster.
 
 \subsection*{Data and code availability}
 
