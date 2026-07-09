@@ -2,6 +2,47 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after appended HPRC banner author roster
+
+Date: 2026-07-09
+
+Source document endpoint:
+
+```
+https://docs.google.com/document/d/1WErVl9Tq-7jh3Y3GnJwZfkHFr16gWBBb_vDpfEW4I6g/export?format=txt
+```
+
+Command:
+
+```
+cd submission
+make clean && make
+```
+
+Formatting choice:
+
+- Appended a standalone end section titled `HPRC Banner Author` immediately
+  before `\end{document}`, preserving the manuscript front matter.
+- Rendered the exported HPRC v2 roster as a single-file LaTeX block with
+  author affiliation markers in `\textsuperscript{...}` and affiliations as
+  numbered paragraphs, preserving the source numbering and order.
+- Escaped LaTeX specials and converted accented names/affiliations to
+  LaTeX-safe forms for `pdflatex`.
+
+Validation checks:
+
+```
+grep -c 'undefined' submission/paper.log
+pdftotext submission/paper.pdf - | rg "HPRC Banner Author|Human Pangenome Reference Consortium Version 2 Authors|Andrea Guarracino|Erik Garrison|Department of Genetics, Genomics and Informatics"
+```
+
+Result: `make clean && make` completed successfully and wrote `paper.pdf`.
+
+**PASS** -- the appendix-style HPRC banner-author section compiles, preserves
+the Google Doc author order plus numeric affiliation markers, includes the full
+affiliation list and funding statement, and leaves the manuscript front matter
+otherwise unchanged.
+
 ## Successful build after HPRC author and ORCID metadata update
 
 Date: 2026-07-09
