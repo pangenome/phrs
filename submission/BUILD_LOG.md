@@ -2,6 +2,35 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after WashU pedigree validation-context update
+
+Date: 2026-07-09
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd submission && make clean && make'
+```
+
+Result: `make clean && make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+cd submission && grep -c 'undefined' paper.log  # -> 0
+cd submission && ls -lh paper.pdf               # -> 17M, 29 pages rendered
+```
+
+Observed results:
+
+- The Results pedigree section now states why the WashU pedigree is uniquely
+  suited to this validation: all three generations have truly complete
+  telomere-to-telomere assemblies, enabling transmission-resolved subtelomeric
+  comparison at chromosome ends where incomplete assemblies usually fail.
+
+**PASS** -- the manuscript rebuilds successfully after clarifying the WashU
+pedigree validation context.
+
 ## Successful build after abstract and acknowledgments cleanup
 
 Date: 2026-07-09
