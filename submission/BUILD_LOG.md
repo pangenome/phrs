@@ -2,6 +2,39 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after abstract and acknowledgments cleanup
+
+Date: 2026-07-09
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd submission && make clean && make'
+```
+
+Result: `make clean && make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+cd submission && grep -c 'undefined' paper.log  # -> 0
+rg -n "HPRC Pangenomes Working|\\subsection\\*\\{Limitations\\}|shared among non-homologous chromosome ends|putative non-homologous subtelomeric exchange patches" submission/paper.tex
+```
+
+Observed results:
+
+- The final `paper.log` has no undefined references/citations.
+- The abstract now says duplicated sequence is shared among the ends of
+  non-homologous chromosomes, describes proximity between subtelomeres with
+  similar sequences, and uses a single `, while` clause for the PAR1 positive
+  control.
+- The standalone Methods `Limitations` subsection was removed.
+- The acknowledgments now credit the Human Pangenome Reference Consortium
+  broadly for HPRC v2 assemblies and associated data resources.
+
+**PASS** -- the manuscript rebuilds successfully after the abstract,
+acknowledgments and limitations cleanup.
+
 ## Successful build after bibliography/reference hygiene update
 
 Date: 2026-07-09

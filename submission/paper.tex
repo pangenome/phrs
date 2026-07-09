@@ -51,7 +51,7 @@
 
 \abstract{
 Human subtelomeres have long been known to contain duplicated sequence
-shared among non-homologous chromosome ends and to undergo ectopic exchange
+shared among the ends of non-homologous chromosomes and to undergo ectopic exchange
 \cite{MeffordTrask2002,Flint1997,Linardopoulou2005,Brown1990,Wilkie1991,Trask1991}.
 However, incomplete reference assemblies and chromosome-by-chromosome analyses
 have prevented a population-scale view of the extent and organization of this
@@ -61,13 +61,14 @@ chromosome end against every other, and find that high-identity
 pseudo-homolog regions occur on 41 of 48 chromosome arms.
 They form structured sequence communities in which previously recognized
 exchange systems appear as local peaks within a broader continuum. Human and mouse
-chromosome-contact maps show preferential proximity between sequence-similar
-ends. In mouse meiosis this proximity is strongest at the zygotene bouquet, when
+chromosome-contact maps show preferential proximity between subtelomeres with
+similar sequences. In mouse meiosis this proximity is strongest at the zygotene bouquet, when
 telomeres cluster at the nuclear envelope; in human data it persists even in the
 adjacent flanks, which lack the shared sequence used to define the pairs. In a three-generation pedigree assembled end to end, a
-whole-genome comparison recovers the known Xp/Yp PAR1 exchange and identifies
-putative non-homologous subtelomeric exchange patches within the same sequence
-communities.
+whole-genome comparison identifies putative recombination between subtelomeric
+regions on non-homologous chromosomes that matches the community organization of
+the subtelomeres, while the same analysis recovers the obligate Xp/Yp PAR1
+recombination in the male germline.
 These results generalize known subtelomeric exchange systems into a
 near-ubiquitous population-scale architecture and establish recurrent ectopic
 exchange as a genome-wide force in the concerted evolution of human chromosome
@@ -327,8 +328,10 @@ relationships first inferred from cytogenetics decades ago.
 
 We thank Heather Mefford for foundational cytogenetic work on subtelomeric
 homology and for discussion, and Rob Williams, Pjotr Prins and Vincenza Colonna
-(University of Tennessee Health Science Center) and the HPRC Pangenomes Working
-Group for generating and interpreting these data. Garrison and Guarracino are
+(University of Tennessee Health Science Center) for discussion and interpretation.
+We acknowledge the Human Pangenome Reference Consortium for producing the HPRC
+v2 assemblies and associated data resources that made this analysis possible.
+Garrison and Guarracino are
 funded by NSF PPoSS Award \#2118709; NIH R01HG013618; NIH U01HG013760; NIH
 U01DA057530; NIH U41HG010972; and NIH R01HG01317. Computational resources for
 this work were supported by the UTHSC Center for Integrative and Translational
@@ -692,21 +695,6 @@ the published 3D-genome datasets are available from their cited public releases
 and accessions. The re-alignment workflows start from the cited public raw-read
 datasets; deposited processed files generated with default mapping-quality
 filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
-
-\subsection*{Limitations}
-
-(i) Bulk Hi-C is somatic LCL, not germline meiotic; (ii) no genome-wide LAD or
-Lamin B1 ChIP-seq in matched germline cell types; (iii) a PHR-level comparison
-of Lalli 2025 T2T-CHM13 short-read cM/Mb estimates with our cross-arm affinity
-metric shows an apparent anti-correlation only before filtering and collapses
-after seven low-callability acrocentric/PAR arms are excluded; (iv) genome-wide
-recovery of sharing rests on the chosen 95\% identity threshold; (v)
-flank size truncation at 500 kb may underestimate PHR length; (vi) Hi-C N is
-small (six individuals) and confidence intervals are correspondingly wide.
-Confidence intervals on all headline correlations are reported where supported
-by the completed analyses, together with the Monte Carlo permutation null for
-the fraction of displayed pedigree donor/query pairs that fall within the same
-sequence community (observed $p < 10^{-4}$).
 
 \bibliography{bibliography}
 
