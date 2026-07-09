@@ -139,6 +139,58 @@ grep -c 'undefined' submission/paper.log  # -> 0
 
 Observed title-page text includes:
 
+## Final pre-bioRxiv cleanup integration build
+
+Date: 2026-07-09
+
+Commit:
+
+```
+e057bbf
+```
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd /moosefs/erikg/phrs/submission && make clean && make'
+```
+
+Environment note:
+
+- A direct `cd submission && make clean && make` attempt in the ambient shell
+  failed on this machine because the default TeX tree is incomplete
+  (`geometry.sty` missing). The successful final validation therefore used the
+  project's established Guix TeX environment while still running the required
+  `make clean && make` inside `submission/`.
+
+Targeted audit summary:
+
+- `rg -n "658--6717|s41467-025-58889-x|s41588-025-02358-1" submission/bibliography.bib`
+  returned no matches.
+- `rg -n "coloured|colour|normalisation|normalised|neighbour|analysed" submission/paper.tex`
+  returned no matches.
+- `rg -n "pseudo-homologous|pseudohomologous|pseudo homologous|465 genomes|PAN027-versus-|Sall" submission/paper.tex`
+  returned no matches.
+- `submission/paper.tex` retains `pseudo-homolog region (PHR)` at its intended
+  definition site, lists `Human Pangenome Reference Consortium` before Erik in
+  the author block, includes Andrea/Angela/Erik ORCID iDs, and points readers
+  to `https://github.com/pangenome/phrs`.
+
+Validation checks:
+
+```
+cd /moosefs/erikg/phrs/submission && grep -c 'undefined' paper.log  # -> 0
+cd /moosefs/erikg/phrs/submission && ls -lh paper.pdf
+```
+
+Result: `make clean && make` completed successfully in the Guix shell and wrote
+`submission/paper.pdf` (29 pages).
+
+**PASS** -- the dependency-task fixes are present on `main`, the final targeted
+audits are clean, the rebuilt manuscript has zero undefined
+references/citations in the final `paper.log`, and the generated PDF is ready
+for review upload.
+
 - `Andrea Guarracino1,2*, Angela Gyamfi1,3, Human Pangenome Reference Consortium and Erik Garrison1*`
 - `ORCID iDs: Andrea Guarracino, 0000-0001-9744-131X; Angela Gyamfi, 0009-0009-7534-1137; Erik Garrison, 0000-0003-3821-631X.`
 
