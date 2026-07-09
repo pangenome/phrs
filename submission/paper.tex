@@ -557,13 +557,13 @@ $w_{ij} = \exp(-d_{ij} / \mathrm{median}(d))$ and scanning Leiden resolution fro
 0.1 to 3.0; we selected the maximum-silhouette partition, 15 communities at
 resolution 1.16, and the same community count held across resolutions 1.13--1.18.
 
-\subsection*{Hierarchical clustering and resampling checks}
+\subsection*{Hierarchical clustering and resampling controls}
 
 For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA); cutting it into 14 clusters gave
 a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. We further examined an exploratory neighbor-joining and
+phylogenetic model. We also evaluated an exploratory neighbor-joining and
 PHR-resampling analysis used in earlier drafts, which resamples rows of a
 collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
 surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees.
@@ -679,7 +679,7 @@ used R with the packages ape, vegan and cluster.
 
 Analysis code, manuscript source, figure-generation scripts, and figure input
 files are available at \url{https://github.com/pangenome/phrs}, including the
-canonical CHM13-coordinate PHR annotations, the pedigree run table
+CHM13-coordinate PHR annotations, the pedigree table
 (Supplementary Table~1), the figure-generation inputs for Fig.~\ref{fig:fig5}, and
 re-alignment workflows and command lines for Hi-C, Pore-C and CiFi. HPRC v2
 assemblies, CHM13v2.0, the WashU pedigree assemblies, the CEPH1463 assemblies, and
