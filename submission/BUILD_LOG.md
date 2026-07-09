@@ -36,6 +36,37 @@ Reference-hygiene scope:
 the final `paper.log` has no `undefined` references/citations, and the active
 submission bibliography reflects the verified publisher/PubMed metadata.
 
+## Successful build after pseudo-homolog terminology standardization
+
+Date: 2026-07-09
+
+Command:
+
+```
+guix shell texlive texlive-bin -- sh -lc 'cd submission && make clean && make'
+```
+
+Result: `make clean && make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+rg -n "pseudo-homologous|pseudohomologous|pseudo homologous" submission/paper.tex
+rg -n "pseudo-homolog region" submission/paper.tex
+cd submission && grep -c 'undefined' paper.log
+```
+
+Observed results:
+
+- `rg -n "pseudo-homologous|pseudohomologous|pseudo homologous" submission/paper.tex` returned no matches.
+- `rg -n "pseudo-homolog region" submission/paper.tex` returned the four intended manuscript uses at lines 61, 156, 226, and 432.
+- `grep -c 'undefined' paper.log` returned `0` on the final build log.
+
+**PASS** -- the manuscript now standardizes the formal PHR expansion as
+`pseudo-homolog region`, including abstract, definition, results prose, and
+caption text, and the Guix LaTeX build completes with no undefined
+references/citations.
+
 ## Successful build after appended HPRC banner author roster
 
 Date: 2026-07-09
