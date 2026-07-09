@@ -144,12 +144,10 @@ representations of the same object \cite{Garrison2024pggb}, so we treat the
 resulting alignments as an implicit pangenome graph and query them through their
 transitive closure, without ever building the graph
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
-Exhaustive all-against-all comparison is intractable, of order $10^{24}$
-base-pair comparisons. Pairwise flank alignments, however, are highly redundant
-at this sample size, and a sample suffices: wfmash evaluates 11.6\% of flank
-pairs, roughly $222\times$ the Erd\H{o}s and R\'{e}nyi threshold for a single
-connected component, so transitive closure recovers essentially every
-subtelomere.
+Comparing every base against every other would be intractable, of order
+$10^{24}$ base-pair comparisons, so we instead aligned the 18,827 flanks
+all-against-all and queried the alignments through their transitive closure,
+which recovers essentially every subtelomere.
 As a quality control, querying any reference window recovers nearly all other
 haplotypes across the genome, with the expected exceptions of ribosomal DNA, the
 centromeres and the sex chromosomes.
@@ -374,9 +372,10 @@ Genomics.
     \textbf{(A)} PGGB/odgi 2D layout of the all-subtelomere PHR graph (727,156
     layout nodes; main connected component), each node colored by the arm-level
     Leiden community of the PHR paths crossing it (same community palette as
-    panel B). All 15,668 PHR flanks fall into a single component, so subtelomeres
-    are linked across non-homologous chromosomes rather than partitioned by
-    chromosome, yet the communities occupy distinct regions of the layout.
+    panel B). Essentially all PHR flanks (15,654 of 15,668) fall into a single
+    component, so subtelomeres are linked across non-homologous chromosomes
+    rather than partitioned by chromosome, yet the communities occupy distinct
+    regions of the layout.
     \textbf{(B)} Arm-level Jaccard similarity heatmap ($41 \times 41$), shown
     twice. \emph{Left}, ordered by an average-linkage UPGMA dendrogram that
     places arms with similar subtelomeric PHR profiles adjacent (p-arms red,
@@ -522,16 +521,12 @@ We aligned all flanks all-against-all with wfmash (v0.23.0) at 95\% minimum
 identity, each flank serving in turn as the target \cite{Guarracino2023}, and
 treated the resulting alignment set as an implicit pangenome graph whose
 reachability we computed by transitive closure with IMPG
-\cite{pangenome_graphs_impg_IMPG2023}. Pairwise flank alignments are highly
-redundant at this sample size, so transitive closure of the sampled fraction
-recovers effectively the same sequence graph as exhaustive all-against-all
-alignment: the realised sampling rate of 11.6\% sits $222\times$ above the
-Erd\H{o}s and R\'{e}nyi connectivity threshold $p^{*} = \log(n)/n = 5.2 \times
-10^{-4}$ for $n = 18{,}827$, which justifies comparing chromosome ends without
-chromosomal partitioning. PHRs were called from a sliding-window scan of the
+\cite{pangenome_graphs_impg_IMPG2023}. Every flank is compared against every
+other in a full all-against-all, without restricting to homologous chromosomes,
+so the transitive closure recovers subtelomere sharing genome-wide. PHRs were called from a sliding-window scan of the
 transitive closure, requiring at least 95\% identity, at least five alignments to
-each of at least two other chromosomes, and at least 3 kb of aligned sequence per
-window; this gave 15,668 PHRs (83.2\% of flanks) on 41 of the 48 arms.
+each of at least two other chromosomes, and a minimum aligned length of 3 kb per
+called region; this gave 15,668 PHRs (83.2\% of flanks) on 41 of the 48 arms.
 
 \subsection*{Pangenome graph, similarity and community detection}
 
@@ -576,11 +571,12 @@ Hi-C, Pore-C, CiFi, Dip-C and sperm scHi-C were reprocessed from raw reads
 against the corresponding T2T reference (CHM13v2.0 or the matched HPRC v2
 haplotype) with multi-mappers retained, because the default mapping-quality
 filter ($\geq 30$) of deposited maps masks the high-identity, signal-bearing
-subtelomeric sequence at the mapping stage. Each multi-mapped molecule
-contributes a single primary placement, so PHR-internal contacts are aggregate
-coordinate-level measurements rather than read-level truth sets. Contact matrices
-were generated at 5, 10, 20, 50 and 100 kb, in a per-haplotype mode that keeps
-maternal and paternal contigs as separate arms.
+subtelomeric sequence at the mapping stage. Because no mapping-quality filter is
+applied, a molecule mapping equally well to several paralogous ends contributes
+to each of them, so PHR-internal contacts are aggregate coordinate-level
+measurements rather than read-level truth sets. Contact matrices were generated
+at 5, 10, 20, 50 and 100 kb, in a per-haplotype mode that keeps maternal and
+paternal contigs as separate arms.
 
 Pointwise Spearman correlations are reported as effect sizes, not significance
 tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows and
@@ -675,7 +671,8 @@ liftovers of the pedigree-specific haplotype assemblies.
 
 \subsection*{Software versions}
 
-wfmash v0.24.2; sweepga 0.1.1; impg 0.4.1; pggb and odgi (bundled versions);
+wfmash v0.23.0 (flank alignment) and v0.24.2 (pedigree cross-check); sweepga
+0.1.1; impg 0.4.1; pggb and odgi (bundled versions);
 samtools, bedtools and bgzip; hicexplorer 3.7.4; and the R packages ape, vegan
 and cluster.
 
@@ -698,9 +695,8 @@ filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
 Lamin B1 ChIP-seq in matched germline cell types; (iii) a PHR-level comparison
 of Lalli 2025 T2T-CHM13 short-read cM/Mb estimates with our cross-arm affinity
 metric shows an apparent anti-correlation only before filtering and collapses
-after seven low-callability acrocentric/PAR arms are excluded; (iv) the 12\%
-wfmash sampling rate is justified by Erd\H{o}s
-and R\'{e}nyi connectivity but rests on the chosen 95\% identity threshold; (v)
+after seven low-callability acrocentric/PAR arms are excluded; (iv) genome-wide
+recovery of sharing rests on the chosen 95\% identity threshold; (v)
 flank size truncation at 500 kb may underestimate PHR length; (vi) Hi-C N is
 small (six individuals) and confidence intervals are correspondingly wide.
 Confidence intervals on all headline correlations are reported where supported
