@@ -1360,28 +1360,60 @@ FUNCTION {do.pages}
   if$
 }
 
+FUNCTION {literal.page.check}
+{ 't :=
+  t empty$
+    { #0 }
+    { t #1 #1 substring$ is.num not
+        { #1 }
+        { #0 'tmp :=
+          { t empty$ not
+            tmp not
+            and
+          }
+          { t #1 #1 substring$ "." =
+              { #1 'tmp := }
+              { t #2 global.max$ substring$ 't := }
+            if$
+          }
+          while$
+          tmp
+        }
+      if$
+    }
+  if$
+}
+
 
 FUNCTION {format.pages}
 { pages empty$
     { "" }
-    { pages multi.page.check
-        {type$ "article" =
-          {""}
-          {"cnd" is.in.list
-             {"p. "}
-             {"pp. "}
-            if$ 
-          } 
-         if$	
-          pages do.pages *
+    { pages literal.page.check
+        { type$ "article" =
+            { "" }
+            { "p. " }
+          if$
+          pages "fpage" make.tag *
         }
-        {type$ "article" =
-          {""}
-          {"p. "} 
-         if$	
-          pages clearpage "fpage" make.tag *
+        { pages multi.page.check
+            {type$ "article" =
+              {""}
+              {"cnd" is.in.list
+                 {"p. "}
+                 {"pp. "}
+                if$
+              }
+             if$
+              pages do.pages *
+            }
+            {type$ "article" =
+              {""}
+              {"p. "}
+             if$
+              pages clearpage "fpage" make.tag *
+            }
+          if$
         }
-
       if$
     }
   if$
@@ -3155,7 +3187,5 @@ FUNCTION {export.xml}{
 %%EXECUTE {begin.bmcxmlcomment}
 %%ITERATE {export.xml}
 %%EXECUTE {end.bmcxmlcomment}
-
-
 
 

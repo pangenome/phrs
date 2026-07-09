@@ -147,10 +147,11 @@ representations of the same object \cite{Garrison2024pggb}, so we treat the
 resulting alignments as an implicit pangenome graph and query them through their
 transitive closure, without ever building the graph
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
-Comparing every base against every other would be intractable, of order
-$10^{24}$ base-pair comparisons, so we instead aligned the 18,827 flanks
-all-against-all and queried the alignments through their transitive closure,
-which recovers essentially every subtelomere.
+An all-base comparison across the full 465-assembly dataset would be
+intractable, of order $10^{24}$ base-pair comparisons; restricting the
+analysis to telomere-anchored flanks reduced the problem to the
+18,827-flank all-against-all, which we queried through transitive closure to
+recover essentially every subtelomere.
 As a quality control, querying any reference window recovers nearly all other
 haplotypes across the genome, with the expected exceptions of ribosomal DNA, the
 centromeres and the sex chromosomes.
@@ -320,7 +321,7 @@ population-scale extension of the cytogenetically defined subtelomeric exchange 
 that anchor it, shaped and maintained by recurrent ectopic exchange
 \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
 Which way the sequence--proximity link runs is still open: whether shared
-sequence drives co-localisation, or enforced proximity generates it. The mechanism is likewise unresolved, split among conversion,
+sequence drives co-localization, or enforced proximity generates it. The mechanism is likewise unresolved, split among conversion,
 crossover-associated repair and larger exchange patterns.
 Our human three-dimensional data are somatic rather than germline, with the
 meiotic-stage measurement supplied only by mouse.
@@ -649,7 +650,7 @@ For Fig.~\ref{fig:fig5}B we used the PAN027 paternal haplotype as query against 
 joint two-haplotype target from the transmitting father, PAN011
 \cite{Cechova2025}. Starting from a whole-genome SweepGA/FastGA alignment
 (frequency threshold 32, many-to-many mappings, no scaffold jumps), we filtered
-to 10:10 mapping classes and summarised the query in non-overlapping 2 kb
+to 10:10 mapping classes and summarized the query in non-overlapping 2 kb
 windows, excluding centromeric windows, windows without alignment support, and
 windows with inter-chromosomal alignment depth above 100. For each retained
 window we computed IMPG similarity (partial-order alignment, no merge,
@@ -658,9 +659,9 @@ homologous father match and the best non-homologous father match. A window was
 assigned to the non-homologous class only when the non-homologous match was the
 most similar. Adjacent windows were joined into a run only when the query and
 donor intervals abutted end to end on the same donor chromosome, haplotype and
-sequence, with no gap-tolerant or transitive merge. Coloured runs are
+sequence, with no gap-tolerant or transitive merge. Colored runs are
 non-homologous runs of at least 10 kb with mean inter-chromosomal identity at
-least 0.95. The grey inheritance background was drawn from the same table,
+least 0.95. The gray inheritance background was drawn from the same table,
 joining same-chromosome father-child rows of at least 0.95 identity by the same
 rule and drawing chains of at least 10 kb. PHR and community labels were assigned
 after calling and were not used to select the windows.
