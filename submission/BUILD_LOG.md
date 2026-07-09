@@ -2,6 +2,32 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after wording consistency cleanup
+
+Date: 2026-07-09
+
+Command:
+
+```
+guix shell texlive texlive-bin -- sh -lc 'cd submission && make clean && make'
+```
+
+Environment note: the default shell's TeX tree was incomplete, so this build
+ran inside a Guix shell that provided the full `texlive` + `texlive-bin`
+package set used by `make`.
+
+Result: `make` completed successfully and wrote `paper.pdf`.
+
+Validation checks:
+
+```
+grep -c 'undefined' paper.log  # -> 0
+ls -lh paper.pdf               # -> 17M, 24 pages
+```
+
+**PASS** -- the wording-consistency cleanup compiles with no undefined
+references/citations in the final `paper.log`.
+
 ## Successful build after exchange-system language restoration
 
 Date: 2026-07-09

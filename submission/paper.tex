@@ -133,7 +133,7 @@ patch patterns within the same communities.
 
 We treat every haplotype as its own reference.
 From 232 HPRC v2 individuals we used both haplotype assemblies together
-with CHM13v2.0, for 465 near-complete genomes; we
+with CHM13v2.0, for 465 near-complete assemblies; we
 extracted 18,827 telomere-anchored 500 kb flanks across the 48
 chromosome arms, and aligned them all-against-all with wfmash at 95\% minimum
 identity \cite{Guarracino2023}, without restricting alignment to homologous
@@ -150,8 +150,8 @@ which recovers essentially every subtelomere.
 As a quality control, querying any reference window recovers nearly all other
 haplotypes across the genome, with the expected exceptions of ribosomal DNA, the
 centromeres and the sex chromosomes.
-We define a pseudo-homolog region (PHR) as a flank window whose transitive
-closure reaches at least five segments on at least two other chromosomes at
+We define a pseudo-homologous region (PHR) as a flank window whose transitive
+closure reaches at least five segments on each of at least two other chromosomes at
 $\geq 95\%$ identity.
 This yields 15,668 PHRs on 41 of the 48 arms; the remaining 7 arms (chr2\_p,
 chr3\_p, chr5\_p, chr8\_q, chr11\_q, chr14\_q, chr18\_q) carry no detectable
@@ -160,7 +160,7 @@ inter-chromosomal sharing.
 \subsection*{Genome-wide subtelomeric sharing}
 
 A genome-wide survey reveals telomere-anchored, high-identity blocks at nearly
-every chromosome end (Fig.~\ref{fig:fig1}A), each window coloured by the number
+every chromosome end (Fig.~\ref{fig:fig1}A), each window colored by the number
 of other chromosomes it aligns to elsewhere in the pangenome.
 The acrocentric short arms and the pseudoautosomal regions appear as expected
 positive controls, but the same signal recurs at almost every other chromosome
@@ -220,7 +220,7 @@ of the same orientation (only 17 of 75 pair a p-arm with a q-arm).
 
 \subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
 
-Why should pseudo-homolog regions persist at 41 of the 48 arms?
+Why should pseudo-homologous regions persist at 41 of the 48 arms?
 In human contact-map data, aggregate contact at PHR coordinates increases with
 PHR sequence similarity.
 We measured this per inter-chromosomal PHR pair within a single genome and
@@ -242,7 +242,7 @@ Here and below $B/W$ denotes mean between-community contact divided by mean
 within-community contact, so lower values indicate stronger within-community
 proximity.
 The same within-community enrichment holds across the other contact maps we
-reanalysed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
+reanalyzed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
 and 20-cell single-sperm scHi-C \cite{Xu2025}.
 Mouse meiotic Hi-C provides a stage-resolved prophase-I comparison: the same B6
 and CAST T2T assemblies, PHR sequence identities and read-placement procedure
@@ -282,8 +282,9 @@ Applying the same whole-genome homologous-competition scan to the maternal
 PAN027 and PAN028 transmissions provides companion context rather than a second
 primary claim: PAN027 maternal windows resolve only the expected
 acrocentric-acrocentric class, while PAN028 maternal windows are again dominated
-by acrocentric-acrocentric sharing, with one additional chr5/chr1 candidate
-visible in the same display framework (Fig.~\ref{fig:fig5}C,D).
+by acrocentric-acrocentric sharing, with one displayed chr21p/chr4p
+acro--other context row and one additional chr5/chr1 candidate visible in the
+same display framework (Fig.~\ref{fig:fig5}C,D).
 
 The two autosomal candidates differ in support. An independent aligner (wfmash)
 reproduces the chr9q/chr3q donor at the same chr3q subtelomeric locus at
@@ -343,7 +344,7 @@ Genomics.
   \caption{\textbf{Genome-wide subtelomeric sharing and PHR extent.}
     \textbf{(A)} Interchromosomal sequence sharing across 465 near-complete assemblies
     (232 HPRC v2 individuals and CHM13). Each chromosome is drawn as a track of
-    100 kb windows coloured by the
+    100 kb windows colored by the
     number of distinct partner chromosomes a window aligns to elsewhere in the
     pangenome (0 to 11+), together with a region track (centromere, PAR, PHR,
     terminal repeat); insets give per-partner haplotype counts at three
@@ -353,7 +354,7 @@ Genomics.
     high-identity blocks recur at nearly every end, and the
     acrocentrics and PARs appear as positive controls.
     \textbf{(B)} Distribution of PHR lengths, shown separately for p-arms and
-    q-arms and coloured by the number of PHRs per 10 kb length bin (pseudo-log
+    q-arms and colored by the number of PHRs per 10 kb length bin (pseudo-log
     scale); each PHR is a telomere-anchored flank, so its length is how far the
     shared sequence extends inward. Non-acrocentric, non-PAR
     PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
@@ -380,7 +381,7 @@ Genomics.
     places arms with similar subtelomeric PHR profiles adjacent (p-arms red,
     q-arms blue), showing locally dense blocks on a broader similarity continuum.
     \emph{Right}, the same matrix ordered by the 15-community Leiden arm-level
-    partition, with community colour bands. The blocks recover the known exchange systems
+    partition, with community color bands. The blocks recover the known exchange systems
     shown here: PAR1, PAR2, the acrocentric p-arms, 10p/18p and the 4q/10q DUX4
     pair, and show an enriched q-arm neighborhood exemplified by 22q, 21q, 19q,
     1q, 13q and 17q.}
@@ -425,9 +426,9 @@ Genomics.
   \caption{\textbf{Sequence similarity tracks three-dimensional proximity.}
     \textbf{(A)} Aggregate contact at PHR coordinates increases with sequence
     similarity in HG002 Pore-C. Each dot is one inter-chromosomal pair of
-    pseudo-homolog regions (PHRs) within a single genome, so both axes derive
+    pseudo-homologous regions (PHRs) within a single genome, so both axes derive
     from the same sample; \emph{x}, Jaccard sequence similarity of the two PHRs
-    from the pangenome graph; \emph{y}, their length-normalised 3D contact at
+    from the pangenome graph; \emph{y}, their length-normalized 3D contact at
     the PHRs' exact coordinates, summed over the 20 kbp bin-pairs the
     two PHRs span and divided by that bin-pair count, so longer PHRs are not counted
     more (log scale, zero-contact pairs at the axis floor). Contact rises with
@@ -436,7 +437,7 @@ Genomics.
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
     \textbf{(B)} HG002 Pore-C contact matrix ordered by sequence community after
-    observed/expected inter-chromosomal normalisation; within-community contacts
+    observed/expected inter-chromosomal normalization; within-community contacts
     are enriched ($B/W = 0.054$, between/within). The adjacent 100 kb
     centromere-ward non-PHR flanks show an even lower ratio in HG002 Hi-C
     ($B/W = 0.0013$ versus $0.028$ in PHR windows).
@@ -444,7 +445,7 @@ Genomics.
     \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
     T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp
     contacts over 1 Mb flanks). Left, one dot per inter-chromosomal mouse PHR
-    sequence pair: zygotene contact (per-bin-pair length-normalised as in (A),
+    sequence pair: zygotene contact (per-bin-pair length-normalized as in (A),
     log) rises with PHR Jaccard similarity. Right, the same per-PHR-pair
     Spearman statistic across leptotene, zygotene, pachytene and
     diplotene, strongest at the zygotene bouquet ($\rho = 0.614$) and lowest at
@@ -485,8 +486,9 @@ Genomics.
     obligate male sex-chromosome recombination and two putative autosomal
     PHR-exchange candidates, chr5q/chr1p and chr9q/chr3q. The maternal panels
     provide matched display context and are dominated by expected
-    acrocentric-acrocentric sharing, with one additional chr5/chr1 candidate in
-    the PAN028 maternal transmission.}
+    acrocentric-acrocentric sharing, with one displayed chr21p/chr4p
+    acro--other context row and one additional chr5/chr1 candidate in the
+    PAN028 maternal transmission.}
   \label{fig:fig5}
 \end{figure}
 
@@ -501,7 +503,7 @@ Genomics.
 
 232 HPRC v2 individuals contributed two haplotype-resolved assemblies each; with
 the haploid CHM13v2.0 closed-reference anchor this gives 465 near-complete
-genomes, with superpopulation labels assigned at the HPRC individual level
+assemblies, with superpopulation labels assigned at the HPRC individual level
 \cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}. Two exclusions were applied.
 First, GRCh38 contigs and the CHM13v2.0 Y chromosome (masked PAR1) were excluded
 from flank extraction because they carry no telomeres compatible with the
@@ -534,14 +536,14 @@ and computed all-pairs Jaccard similarity with odgi, giving a $15{,}668 \times
 15{,}668$ matrix
 \cite{Garrison2024pggb,pangenome_graphs_impg_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
 The single connected component was laid out with odgi and rendered in R
-(Fig.~\ref{fig:fig2}A), each node coloured by the dominant arm-level Leiden
+(Fig.~\ref{fig:fig2}A), each node colored by the dominant arm-level Leiden
 community of the PHR paths crossing it. The arm-level distance matrix is the mean
 pairwise sequence-level Jaccard distance within each arm pair. From it, arm-level
 communities were inferred after converting distances to graph weights
 $w_{ij} = \exp(-d_{ij} / \mathrm{median}(d))$ and scanning Leiden resolution from
 0.1 to 3.0; we selected the maximum-silhouette partition, 15 communities at
 resolution 1.16, and the same community count held across resolutions 1.13--1.18.
-Sequence-level communities were inferred from a k-nearest-neighbour graph on the
+Sequence-level communities were inferred from a k-nearest-neighbor graph on the
 15,668-sequence distance matrix; the reported 50-community partition used
 $k_{\mathrm{NN}} = 75$ at resolution 0.8, while the unconstrained modularity
 maximum gave a finer 148-community partition. These scans probe resolution
@@ -554,14 +556,14 @@ For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA); cutting it into 14 clusters gave
 a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. We further audited an exploratory neighbour-joining and
+phylogenetic model. We further audited an exploratory neighbor-joining and
 PHR-resampling analysis used in earlier drafts, which resamples rows of a
 collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
-surrogate distance matrix, and recomputes neighbour-joining and UPGMA trees.
+surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees.
 Because it does not resample the full 15,668-sequence Jaccard matrix, it is not
 used as evidence for the Leiden communities or for a hard q-arm partition; under
-this chromosome-granular surrogate the illustrative six-arm q-neighbourhood has
-low support, so we treat the q-arm pattern as an enriched neighbourhood in the
+this chromosome-granular surrogate the illustrative six-arm q-neighborhood has
+low support, so we treat the q-arm pattern as an enriched neighborhood in the
 similarity matrix rather than a bootstrap-supported grouping.
 
 \subsection*{Hi-C, Pore-C and CiFi pipeline}
@@ -581,7 +583,7 @@ Pointwise Spearman correlations are reported as effect sizes, not significance
 tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows and
 columns, and read-placement histories. Each correlation takes one
 inter-chromosomal PHR sequence pair as a point and relates its pangenome-graph
-Jaccard similarity to its length-normalised contact at the pair's exact
+Jaccard similarity to its length-normalized contact at the pair's exact
 coordinates within a single genome, at 20 kb. The primary comparison is HG002
 Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.376$, $n = 2{,}830$); the replicates in
 Extended Data Fig.~\ref{fig:ed1} are CHM13 Hi-C ($\rho = 0.742$, $n = 688$), HG002
@@ -591,7 +593,7 @@ $n = 2{,}757$; the sparsest assay, hence the weakest signal).
 The adjacent 100 kb centromere-ward non-PHR flanks are the principal control
 against mapping-quality-zero inflation: in HG002 Hi-C they give $B/W = 0.0013$
 against $0.028$ in the PHR windows. Community-ordered contact matrices used
-observed/expected inter-chromosomal normalisation
+observed/expected inter-chromosomal normalization
 \cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}; the
 community-ordered Pore-C matrix (Fig.~\ref{fig:fig4}B; $B/W = 0.054$) is at 20 kb.
 Matrix-level inference used row-and-column Mantel and permutation tests, with
@@ -622,7 +624,7 @@ assemblies \cite{Francis2025}. Telomere-anchored flanks were extracted and PHRs
 called de novo, with a 1, 2 and 4 Mb window sweep (30 of 49 mouse PHRs saturate
 the 1 Mb window) and a two-community arm-level partition. For each meiotic
 prophase stage we computed the per-PHR-pair Spearman correlation between
-length-normalised contact and PHR Jaccard similarity at 20 kb over 1 Mb flanks.
+length-normalized contact and PHR Jaccard similarity at 20 kb over 1 Mb flanks.
 Subtelomeric similarity was positively correlated with inter-chromosomal contact
 at all four stages, strongest at zygotene and lowest at diplotene
 ($\rho = 0.419$, 0.614, 0.576 and 0.245 at leptotene, zygotene, pachytene and
@@ -653,8 +655,8 @@ rule and drawing chains of at least 10 kb. PHR and community labels were assigne
 after calling and were not used to select the windows.
 
 As an independent check, the two autosomal candidates were re-examined in a
-whole-genome wfmash alignment (v0.24.2, 95\% identity) of the same PAN027-versus-
-PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on chr3q at
+whole-genome wfmash alignment (v0.24.2, 95\% identity) of the same PAN027
+versus PAN011 haplotypes. wfmash reproduced the chr9q/chr3q donor on chr3q at
 $>$99.8\% identity over the same coordinates but placed the chr5q window on chr5
 with no chr1 donor above threshold, so only chr9q/chr3q is concordant across
 aligners.
@@ -700,7 +702,8 @@ flank size truncation at 500 kb may underestimate PHR length; (vi) Hi-C N is
 small (six individuals) and confidence intervals are correspondingly wide.
 Confidence intervals on all headline correlations are reported where supported
 by the completed analyses, together with the Monte Carlo permutation null for
-the pedigree within-community fraction (observed $p < 10^{-4}$).
+the fraction of displayed pedigree donor/query pairs that fall within the same
+sequence community (observed $p < 10^{-4}$).
 
 \bibliography{bibliography}
 
