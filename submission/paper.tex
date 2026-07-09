@@ -245,9 +245,8 @@ block structure after observed/expected inter-chromosomal normalization
 Here and below $B/W$ denotes mean between-community contact divided by mean
 within-community contact, so lower values indicate stronger within-community
 proximity.
-The same within-community enrichment holds across the other contact maps we
-reanalyzed: CiFi in HG002 \cite{hic3d_cifi2025}, Dip-C in GM12878 \cite{Tan2018}
-and 20-cell single-sperm scHi-C \cite{Xu2025}.
+The same within-community enrichment holds in the HG002 CiFi contact map
+\cite{hic3d_cifi2025}.
 Mouse meiotic Hi-C provides a stage-resolved prophase-I comparison: the same B6
 and CAST T2T assemblies, PHR sequence identities and read-placement procedure
 are used at leptotene, zygotene, pachytene and diplotene
@@ -580,7 +579,7 @@ similarity matrix rather than a bootstrap-supported grouping.
 
 \subsection*{Hi-C, Pore-C and CiFi pipeline}
 
-Hi-C, Pore-C, CiFi, Dip-C and sperm scHi-C were reprocessed from raw reads
+Hi-C, Pore-C and CiFi were reprocessed from raw reads
 against the corresponding T2T reference (CHM13v2.0 or the matched HPRC v2
 haplotype) with multi-mappers retained, because the default mapping-quality
 filter ($\geq 30$) of deposited maps masks the high-identity, signal-bearing
@@ -611,23 +610,6 @@ community-ordered Pore-C matrix (Fig.~\ref{fig:fig4}B; $B/W = 0.054$) is at 20 k
 Matrix-level inference used row-and-column Mantel and permutation tests, with
 finite permutation floors reported when no permutation exceeded the observed
 statistic.
-
-\subsection*{Exclusion controls and single-cell 3D}
-
-Five exclusion sets (no acrocentric p-arms; no sex chromosomes; no acrocentric p
-plus sex; no all-acrocentric plus sex; no strongest community) were applied at
-all five contact-matrix resolutions, and the resulting Mantel $\rho$ trajectory
-rises with confound removal: HG002 $0.65 \to 0.77$, HG02148 $0.16 \to 0.79$,
-CHM13 $0.72 \to 0.85$ and NA19036 $0.28 \to 0.83$
-\cite{hic3d_alavattam2019,hic3d_wolff2018,hic3d_deshpande2022}. For single-cell
-3D we used Dip-C in 16 GM12878 cells \cite{Tan2018} (17 raw cells; cell 12
-excluded as a duplicate of cell 10 by shared SRR7226706 long-insert library)
-remapped to T2T-CHM13v2.0, and sperm scHi-C in 20 cells
-\cite{Xu2025,hic3d_scnanoHiC2023,hic3d_scnanoHiC2_2025,hic3d_kitamura2025}. Two
-negative controls accompany these: a PBMC Dip-C control of 18 cells from the
-public Dip-C dataset \cite{Tan2018}, with PHR coordinates projected from CHM13 to
-hg19 via impg, giving a within/between distance ratio of 0.983 ($p = 0.305$); and
-an $S_{\mathrm{all}}$ control pooling the 7 zero-signal arms.
 
 \subsection*{Mouse pipeline}
 
@@ -703,7 +685,7 @@ Analysis code, manuscript source, figure-generation scripts, and figure input
 files are available at \url{https://github.com/pangenome/phrs}, including the
 canonical CHM13-coordinate PHR annotations, the pedigree audit table
 (Supplementary Table~1), the figure-generation inputs for Fig.~\ref{fig:fig5}, and
-re-alignment workflows and command lines for Hi-C, Pore-C, CiFi and Dip-C. HPRC v2
+re-alignment workflows and command lines for Hi-C, Pore-C and CiFi. HPRC v2
 assemblies, CHM13v2.0, the WashU pedigree assemblies, the CEPH1463 assemblies, and
 the published 3D-genome datasets are available from their cited public releases
 and accessions. The re-alignment workflows start from the cited public raw-read
