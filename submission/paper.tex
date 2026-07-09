@@ -70,7 +70,7 @@ subtelomeric regions on non-homologous chromosomes that matches this community
 organization, while recovering the obligate Xp/Yp PAR1 recombination in the male
 germline.
 These results generalize known subtelomeric exchange systems into a
-near-ubiquitous architecture and establish recurrent ectopic exchange as a
+near-ubiquitous architecture and support recurrent ectopic exchange as a
 genome-wide force in the concerted evolution of human chromosome ends.
 }
 
@@ -294,20 +294,25 @@ by acrocentric-acrocentric sharing, with one displayed chr21p/chr4p context run
 and one additional chr5/chr1 candidate visible in the same display framework
 (Fig.~\ref{fig:fig5}C,D).
 
-The two autosomal candidates differ in support. An independent aligner (wfmash)
-reproduces the chr9q/chr3q donor at the same chr3q subtelomeric locus at
-$>$99.8\% identity, so this exchange is concordant across methods; the
-chr5q/chr1p signal exceeds its same-chromosome match by only a narrow identity
-margin and is not recovered by wfmash, which maps the window to chr5, making it
-a weaker, aligner-dependent candidate. Manual comparison with the WashU
-pedigree recombination annotation indicates that this paternal transmission has no
-ordinary chr3 crossover (M. Cechova and T. Marschall, personal communication),
-so the chr9q/chr3q signal is not explained by a standard homologous chr3
-recombination event. We therefore interpret these patterns as putative
-PHR-exchange candidates compatible with recombination, not breakpoint-resolved event
-calls. Follow-up work should test transmission of the implicated chromosome
-ends in descendant haplotypes and apply orthogonal assays such as FISH or
-long-read single-gamete recombination maps \cite{Halldorsson2019,palsson2025recomb}.
+The two autosomal candidates differ in support, but their primary evidence is
+the implicit-graph homologous-competition scan rather than concordance with a
+single pairwise aligner. This distinction matters because short, highly similar
+subtelomeric patches are difficult targets for whole-genome aligners, and
+standard recombination maps usually infer crossovers from reference-positioned
+markers rather than from sequence-resolved graph neighborhoods. As an
+independent sensitivity check, wfmash reproduces the chr9q/chr3q donor at the
+same chr3q subtelomeric locus at $>$99.8\% identity, while the chr5q/chr1p
+signal has a narrower identity margin and is not recovered by wfmash above the
+same threshold. Manual comparison with the WashU pedigree recombination
+annotation indicates that this paternal transmission has no ordinary chr3
+crossover (M. Cechova and T. Marschall, personal communication), so the
+chr9q/chr3q signal is not explained by a standard homologous chr3 recombination
+event. We therefore interpret these patterns as putative PHR-exchange
+candidates compatible with recombination, not breakpoint-resolved event calls
+or aligner-defined truth sets. Follow-up work should test transmission of the
+implicated chromosome ends in descendant haplotypes and apply orthogonal assays
+such as FISH or long-read single-gamete recombination maps
+\cite{Halldorsson2019,palsson2025recomb}.
 
 \subsection*{Discussion}
 
@@ -648,12 +653,12 @@ joining same-chromosome father-child rows of at least 0.95 identity by the same
 rule and drawing chains of at least 10 kb. PHR and community labels were assigned
 after calling and were not used to select the windows.
 
-As an independent check, the two autosomal candidates were re-examined in a
-whole-genome wfmash v0.23.0 alignment of the same PAN027 versus PAN011
-haplotypes at 95\% identity. wfmash reproduced the chr9q/chr3q donor on chr3q at
-$>$99.8\% identity over the same coordinates but placed the chr5q window on chr5
-with no chr1 donor above threshold, so only chr9q/chr3q is concordant across
-aligners.
+As an independent sensitivity check, the two autosomal candidates were
+re-examined in a whole-genome wfmash v0.23.0 alignment of the same PAN027 versus
+PAN011 haplotypes at 95\% identity. This check was not used as a calling
+criterion. wfmash reproduced the chr9q/chr3q donor on chr3q at $>$99.8\%
+identity over the same coordinates but placed the chr5q window on chr5 with no
+chr1 donor above threshold.
 
 For Fig.~\ref{fig:fig5}C,D we applied the same workflow, thresholds and display
 rules to two maternal comparisons: the PAN027 maternal haplotype against the
