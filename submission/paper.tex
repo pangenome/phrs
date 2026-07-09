@@ -557,13 +557,13 @@ $w_{ij} = \exp(-d_{ij} / \mathrm{median}(d))$ and scanning Leiden resolution fro
 0.1 to 3.0; we selected the maximum-silhouette partition, 15 communities at
 resolution 1.16, and the same community count held across resolutions 1.13--1.18.
 
-\subsection*{Hierarchical clustering and resampling controls}
+\subsection*{Hierarchical clustering and resampling checks}
 
 For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA); cutting it into 14 clusters gave
 a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. We also evaluated an exploratory neighbor-joining and
+phylogenetic model. We further examined an exploratory neighbor-joining and
 PHR-resampling analysis used in earlier drafts, which resamples rows of a
 collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
 surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees.
@@ -679,7 +679,7 @@ used R with the packages ape, vegan and cluster.
 
 Analysis code, manuscript source, figure-generation scripts, and figure input
 files are available at \url{https://github.com/pangenome/phrs}, including the
-CHM13-coordinate PHR annotations, the pedigree table
+canonical CHM13-coordinate PHR annotations, the pedigree run table
 (Supplementary Table~1), the figure-generation inputs for Fig.~\ref{fig:fig5}, and
 re-alignment workflows and command lines for Hi-C, Pore-C and CiFi. HPRC v2
 assemblies, CHM13v2.0, the WashU pedigree assemblies, the CEPH1463 assemblies, and
@@ -721,22 +721,18 @@ filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
 
 \noindent\textbf{Supplementary Table 1. Displayed pedigree non-homologous runs
 and PHR annotations.}
-Tab-delimited table for the Fig.~\ref{fig:fig5} paternal
-homologous-competition scan and the companion maternal scans in
-Fig.~\ref{fig:fig5}C,D. Rows include the PAR1 positive-control runs, the paternal
-chr5q/chr1p and chr9q/chr3q candidate runs, representative acrocentric context
-runs, and the displayed maternal companion candidates. Query and donor intervals
-are 0-based half-open coordinates in the assembly-native haplotype sequences.
-The CHM13 PHR columns report the implicated arm-level intervals; they are not
-exact liftovers of the pedigree-specific haplotype intervals. Key columns are
-shown below; the complete 17-column table
-(assembly-native and CHM13 PHR-BED intervals, per-window counts, source tables
-and notes) is provided as a tab-delimited supplementary file. Panel B/C/D
-correspond to the Fig.~\ref{fig:fig5} ribbon panels; id$_{\mathrm{NH}}$ is the
-mean non-homologous-winner identity and $\Delta$id its margin over the
-same-chromosome competitor.
+Runs from the Fig.~\ref{fig:fig5} homologous-competition scan: the paternal
+comparison (panel B) and the two maternal comparisons (panels C, D). Rows cover
+the PAR1 positive controls, the chr5q/chr1p and chr9q/chr3q candidate exchanges,
+representative acrocentric-context runs, and the maternal companion candidates.
+Query and donor intervals are 0-based half-open coordinates in the
+assembly-native haplotype sequences; the CHM13 PHR-BED columns give the
+implicated arm-level intervals, not exact liftovers. Key columns are shown below
+(id$_{\mathrm{NH}}$, mean non-homologous-winner identity; $\Delta$id, its margin
+over the same-chromosome competitor); the full 17-column table, adding per-window
+counts, source tables and notes, is provided as a tab-delimited file.
 
-\medskip
+\vspace{1.5em}
 
 {\centering\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.25}
 \begin{tabular}{@{}c l p{2.35cm} r r r c@{}}
