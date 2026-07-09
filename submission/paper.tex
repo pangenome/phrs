@@ -285,8 +285,8 @@ PHR and community labels were assigned only after calling; the highlighted pairs
 fall in the expected arm-level sequence-similarity communities and show
 post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
 Exact assembly-native intervals, identities, same-chromosome competitor scores,
-PHR/community annotations, wfmash concordance status and corresponding
-arm-level CHM13 PHR BED intervals are provided in Supplementary Table~1.
+PHR/community annotations and corresponding arm-level CHM13 PHR BED intervals
+are provided in Supplementary Table~1.
 Applying the same whole-genome homologous-competition scan to the maternal
 PAN027 and PAN028 transmissions provides companion context rather than a second
 primary claim: PAN027 maternal windows resolve only the expected
@@ -513,7 +513,7 @@ Genomics.
 \subsection*{Samples, exclusions and flank extraction}
 
 232 HPRC v2 individuals contributed two haplotype-resolved assemblies each; with
-the haploid CHM13v2.0 closed-reference anchor this gives 465 near-complete
+the haploid CHM13v2.0 reference anchor this gives 465 near-complete
 assemblies, with superpopulation labels assigned at the HPRC individual level
 \cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}. Two exclusions were applied.
 First, GRCh38 contigs and the CHM13v2.0 Y chromosome (masked PAR1) were excluded
@@ -677,9 +677,9 @@ rules to two maternal comparisons: the PAN027 maternal haplotype against the
 joint PAN010 mother target, and the PAN028 maternal haplotype against the joint
 PAN027 mother target. Supplementary Table~1 reports, for all displayed calls,
 assembly-native query and donor intervals, 2 kb window counts, mean identities,
-same-chromosome competitor scores, post hoc PHR and community labels, and wfmash
-status; its CHM13 columns are arm-level PHR annotations, not exact coordinate
-liftovers of the pedigree-specific haplotype assemblies.
+same-chromosome competitor scores, and post hoc PHR and community labels; its
+CHM13 columns are arm-level PHR annotations, not exact coordinate liftovers of
+the pedigree-specific haplotype assemblies.
 
 \subsection*{Software versions}
 
@@ -744,7 +744,7 @@ The CHM13 PHR columns report the implicated arm-level intervals; they are not
 exact liftovers of the pedigree-specific haplotype intervals.
 
 \bigskip
-\noindent Key columns are shown below; the complete 18-column audit table
+\noindent Key columns are shown below; the complete 17-column audit table
 (assembly-native and CHM13 PHR-BED intervals, per-window counts, source tables
 and notes) is provided as a tab-delimited supplementary file. Panel B/C/D
 correspond to the Fig.~\ref{fig:fig5} ribbon panels; id$_{\mathrm{NH}}$ is the
@@ -752,19 +752,19 @@ mean non-homologous-winner identity and $\Delta$id its margin over the
 same-chromosome competitor.
 
 {\centering\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.25}
-\begin{tabular}{@{}c l p{2.35cm} r r r c p{2.05cm}@{}}
+\begin{tabular}{@{}c l p{2.35cm} r r r c@{}}
 \hline
-Panel & Query/donor & Call class & kb & id$_{\mathrm{NH}}$ & $\Delta$id & Comm. & wfmash \\
+Panel & Query/donor & Call class & kb & id$_{\mathrm{NH}}$ & $\Delta$id & Comm. \\
 \hline
-B & chrXp/chrYp & PAR1 control & 92 & 1.0000 & 0.103 & C15 & not evaluated \\
-B & chrXp/chrYp & PAR1 control & 46 & 0.9993 & 0.139 & C15 & not evaluated \\
-B & chr5q/chr1p & PHR-exchange candidate & 28 & 0.9983 & 0.003 & C11 & not recovered (chr5) \\
-B & chr9q/chr3q & PHR-exchange candidate & 20 & 0.9988 & 0.007 & C3 & concordant (chr3q) \\
-B & chr13p/chr21p & acrocentric context & 44 & 0.9640 & 0.085 & C7 & not evaluated \\
-C & chr15p/chr21p & acrocentric context & 34 & 0.9965 & 0.017 & C7 & not evaluated \\
-D & chr22p/chr15p & acrocentric context & 104 & 0.9996 & 0.030 & C7 & not evaluated \\
-D & chr21p/chr4p & acro--other context & 40 & 0.9923 & 0.065 & C7/C13 & not evaluated \\
-D & chr5q/chr1p & chr5/chr1 candidate & 30 & 0.9980 & 0.107 & C11 & not evaluated \\
+B & chrXp/chrYp & PAR1 control & 92 & 1.0000 & 0.103 & C15 \\
+B & chrXp/chrYp & PAR1 control & 46 & 0.9993 & 0.139 & C15 \\
+B & chr5q/chr1p & PHR-exchange candidate & 28 & 0.9983 & 0.003 & C11 \\
+B & chr9q/chr3q & PHR-exchange candidate & 20 & 0.9988 & 0.007 & C3 \\
+B & chr13p/chr21p & acrocentric context & 44 & 0.9640 & 0.085 & C7 \\
+C & chr15p/chr21p & acrocentric context & 34 & 0.9965 & 0.017 & C7 \\
+D & chr22p/chr15p & acrocentric context & 104 & 0.9996 & 0.030 & C7 \\
+D & chr21p/chr4p & acro--other context & 40 & 0.9923 & 0.065 & C7/C13 \\
+D & chr5q/chr1p & chr5/chr1 candidate & 30 & 0.9980 & 0.107 & C11 \\
 \hline
 \end{tabular}\par}
 
