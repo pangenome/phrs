@@ -138,45 +138,40 @@ Does sequence similarity predict both three-dimensional proximity in the
 nucleus and compatible pedigree-resolved patch patterns within the same
 communities?
 
-\subsection*{Implicit pangenome graphs of subtelomeres}
+\subsection*{A whole-genome survey reveals subtelomeric sharing}
 
-We treat every haplotype as its own reference.
-From 232 HPRC v2 individuals we used both haplotype assemblies together
-with CHM13v2.0, for 465 near-complete assemblies; we
-extracted 18,827 telomere-anchored 500 kb flanks across the 48
-chromosome arms, and aligned them all-against-all with wfmash at 95\% minimum
-identity \cite{Guarracino2023}, without restricting alignment to homologous
-chromosomes.
-A pangenome graph and the set of alignments that define it are equivalent
-representations of the same object \cite{Garrison2024pggb}, so we treat the
-resulting alignments as an implicit pangenome graph and query them through their
-transitive closure, without initially building the graph
+We first asked where inter-chromosomal sequence sharing occurs without
+preselecting chromosome ends. We used wfmash to align 25,272 sampled ordered
+pairs from a 466-sequence whole-genome set comprising 464 HPRC v2
+haplotypes, CHM13v2.0 and GRCh38 (11.6\% of the possible ordered pairs)
+\cite{Guarracino2023}. The sample size was selected well above the modeled
+connectivity threshold for the assembly-pair network. We indexed these
+alignments as an implicit pangenome graph and queried non-overlapping 100 kb
+CHM13 windows through transitive alignment paths
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
-An all-base comparison across the full 465-assembly dataset would be
-intractable, of order $10^{24}$ base-pair comparisons; restricting the
-analysis to telomere-anchored flanks reduced the problem to the
-18,827-flank all-against-all, which we queried through transitive closure to
-recover essentially every subtelomere.
-As a quality control, querying any reference window recovers nearly all other
-haplotypes across the genome, with the expected exceptions of ribosomal DNA, the
-centromeres and the sex chromosomes.
-We define a pseudo-homolog region (PHR) as a flank window whose transitive
-closure reaches at least five segments on each of at least two other chromosomes at
-$\geq 95\%$ identity.
+The resulting genome-wide map reveals high-identity inter-chromosomal sharing
+concentrated at chromosome ends (Fig.~\ref{fig:fig1}A). The acrocentric short
+arms and pseudoautosomal regions appear as expected positive controls, but the
+same pattern recurs at most other chromosome ends.
+
+To delimit these regions, we used \texttt{seqtk telo} to identify terminal
+telomeric repeat tracts and extracted the adjacent 500 kb of inward sequence
+from 465 near-complete assemblies, giving 18,827 flanks across the 48
+chromosome arms. We then performed a separate, complete all-against-all flank
+alignment with wfmash at 95\% minimum identity, without restricting comparisons
+to homologous chromosomes. We indexed this flank-specific alignment set with
+IMPG and queried consecutive windows from each telomere inward. We define a
+pseudo-homolog region (PHR) as a telomere-anchored interval containing windows
+with at least five directly aligned segments from each of at least two other
+chromosomes at $\geq 95\%$ identity.
 This yields 15,668 PHRs on 41 of the 48 arms; the remaining 7 arms (chr2\_p,
 chr3\_p, chr5\_p, chr8\_q, chr11\_q, chr14\_q, chr18\_q) carry no detectable
 inter-chromosomal sharing.
 
-\subsection*{Genome-wide subtelomeric sharing}
+\subsection*{PHRs span tens to hundreds of kilobases}
 
-A genome-wide survey reveals telomere-anchored, high-identity blocks at nearly
-every chromosome end (Fig.~\ref{fig:fig1}A), each window colored by the number
-of other chromosomes it aligns to elsewhere in the pangenome.
-The acrocentric short arms and the pseudoautosomal regions appear as expected
-positive controls, but the same signal recurs at almost every other chromosome
-end.
 Walking inward from each telomere until inter-chromosomal similarity disappears,
-the PHRs span tens to hundreds of kilobases (median 105 kb, mean 144 kb;
+the called PHRs span tens to hundreds of kilobases (median 105 kb, mean 144 kb;
 Fig.~\ref{fig:fig1}B), the upper bound set by the 500 kb flank window rather
 than by biology.
 Excluding the acrocentric short arms and the pseudoautosomal regions, these PHRs
@@ -186,8 +181,9 @@ order of magnitude as PAR2 (the median PHR is 31\% of PAR2's length)
 
 \subsection*{Communities of subtelomeric PHRs}
 
-Read directly, the implicit graph of all 15,668 PHRs forms a single connected
-component (Fig.~\ref{fig:fig2}A) that is too tangled to interpret node by node.
+The explicit PGGB graph built from all 15,668 PHR sequences forms a single main
+connected component (Fig.~\ref{fig:fig2}A) that is too tangled to interpret
+node by node.
 We therefore measured pangenome similarity between chromosome ends as the
 Jaccard overlap of the graph nodes they traverse, and reduced the result to an
 arm-level similarity matrix.
@@ -415,11 +411,12 @@ Genomics.
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig1b_lengths.pdf}%
     \put(0.5,39){\textbf{\large\sffamily B}}\end{overpic}
   \caption{\textbf{Genome-wide subtelomeric sharing and PHR extent.}
-    \textbf{(A)} Interchromosomal sequence sharing across 465 near-complete assemblies
-    (232 HPRC v2 individuals and CHM13). Each chromosome is drawn as a track of
-    100 kb windows colored by the
-    number of distinct partner chromosomes a window aligns to elsewhere in the
-    pangenome (0 to 11+), together with a region track (centromere, PAR, PHR,
+    \textbf{(A)} Interchromosomal sequence sharing in a whole-genome alignment
+    set comprising 464 HPRC v2 haplotypes, CHM13 and GRCh38. The implicit graph
+    was built from 25,272 sampled ordered assembly pairs. Each CHM13
+    chromosome is drawn as a track of 100 kb windows colored by the number of
+    distinct partner chromosomes reached elsewhere in the pangenome (0 to 11+),
+    together with a region track (centromere, PAR, PHR,
     terminal repeat); insets give per-partner haplotype counts at three
     representative telomere-proximal loci: the chr5 q-end (which shares with chr6
     and chr1), the chr21 acrocentric p-arm, and the chr10 q-end (the 4q/10q DUX4
@@ -428,8 +425,8 @@ Genomics.
     acrocentrics and PARs appear as positive controls.
     \textbf{(B)} Distribution of PHR lengths, shown separately for p-arms and
     q-arms and colored by the number of PHRs per 10 kb length bin (pseudo-log
-    scale); each PHR is a telomere-anchored flank, so its length is how far the
-    shared sequence extends inward. Non-acrocentric, non-PAR
+    scale); each PHR is a telomere-anchored interval, so its length is how far
+    the shared sequence extends inward. Non-acrocentric, non-PAR
     PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
     reflects the input flank size).}
   \label{fig:fig1}
@@ -572,6 +569,21 @@ Genomics.
 
 \setcounter{figure}{0}
 
+\subsection*{Whole-genome implicit pangenome survey}
+
+The whole-genome survey used 464 HPRC v2 haplotype assemblies together with
+CHM13v2.0 and GRCh38, for 466 input sequences. We used wfmash v0.23.0
+(\texttt{-p 95 -P inf}) to align 25,272 sampled ordered target--query
+pairs, representing 11.6\% of the $466^{2}$ possible ordered pairs
+\cite{Guarracino2023}. The sample size was selected using an Erd\H{o}s--R\'{e}nyi
+connectivity model and lay well above the modeled threshold for a connected
+assembly-pair network. The resulting pairwise alignments were indexed with IMPG
+v0.4.1. For Fig.~\ref{fig:fig1}A, non-overlapping 100 kb windows spanning CHM13
+were queried through at most five transitive alignment hops at a minimum
+estimated identity of 98\%; for each window we summarized the distinct
+chromosome origins and mean identity of the sequences reached
+\cite{pangenome_graphs_impg_IMPG2023}.
+
 \subsection*{Samples, exclusions and flank extraction}
 
 The dataset comprised 464 haplotype-resolved HPRC v2 assemblies from 232
@@ -582,31 +594,34 @@ First, GRCh38 contigs and the CHM13v2.0 Y chromosome (masked PAR1) were excluded
 from flank extraction because they lack telomere ends suitable for the 500 kb
 flank definition. Second, the chr18q flank of NA18982 haplotype 1
 (contig JBKABS010000018.1) was excluded as a scaffolding chimera: in the
-all-against-all wfmash alignments its first 83.37 Mb map to chr18 and a terminal
+whole-genome wfmash alignments its first 83.37 Mb map to chr18 and a terminal
 966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns. No
-further haplotype-level exclusions were applied. From each retained haplotype
-assembly we then extracted the terminal 500 kb of every contig at least 1 Mb long
-that was classified as p- or q-arm telomere-bearing, giving 18,827 flanks across
-the 48 arms.
+further haplotype-level exclusions were applied. We identified terminal repeat
+tracts with \texttt{seqtk telo} and, from each retained haplotype assembly,
+extracted the 500 kb immediately internal to each tract on every contig at least
+1 Mb long that was classified as p- or q-arm telomere-bearing. The telomeric
+repeat tract itself was removed, giving 18,827 flanks across the 48 arms.
 
 \subsection*{Alignment, implicit pangenome graph and PHR detection}
 
-We aligned all flanks all-against-all with wfmash v0.23.0 at 95\% minimum
-identity, each flank serving in turn as the target \cite{Guarracino2023}, and
-treated the resulting alignment set as an implicit pangenome graph whose
-reachability we computed by transitive closure with IMPG
-\cite{pangenome_graphs_impg_IMPG2023}. Every flank was compared against every
-other without restricting to homologous chromosomes,
-so the transitive closure recovers subtelomere sharing genome-wide. PHRs were
-called from a sliding-window scan of the transitive closure, requiring at least
-95\% identity, at least five alignments to each of at least two other
-chromosomes, and a minimum aligned length of 3 kb per called region; this gave
-15,668 PHRs (83.2\% of flanks) on 41 of the 48 arms.
+We aligned the complete flank collection all-against-all with wfmash v0.23.0 at
+95\% minimum identity, each of the 18,827 flanks serving in turn as the target
+against the full collection \cite{Guarracino2023}. Every flank was therefore
+compared with every other without restricting comparisons to homologous
+chromosomes. We indexed this pairwise alignment set with IMPG v0.4.1 for direct
+interval queries \cite{pangenome_graphs_impg_IMPG2023}. Starting at each
+telomere, we queried 5 kb windows in 5 kb steps, stopping after four consecutive
+windows failed the detection criteria. A window passed when the direct IMPG
+query returned at least five alignments from each of at least two other
+chromosomes at a minimum identity of 95\% and minimum output length of 3 kb.
+The resulting telomere-anchored intervals defined 15,668 PHRs (83.2\% of
+flanks) on 41 of the 48 arms.
 
 \subsection*{Pangenome graph, similarity and community detection}
 
-We built a pangenome graph of the 15,668 PHR sequences with pggb at 95\% identity
-and computed all-pairs Jaccard similarity with odgi, giving a $15{,}668 \times
+We extracted the 15,668 called PHR intervals and supplied those sequences as the
+input to pggb at 95\% identity. We computed all-pairs Jaccard similarity from
+the resulting explicit graph with odgi, giving a $15{,}668 \times
 15{,}668$ matrix
 \cite{Garrison2024pggb,pangenome_graphs_impg_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
 The main connected component was laid out with odgi and rendered in R
@@ -727,9 +742,10 @@ coordinate liftovers of the pedigree-specific haplotype assemblies.
 
 Pangenome graph construction used PGGB v0.7.4, commit 498c5d7, with wfmash
 v0.23.0, seqwish v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix
-v0.2.1 and vg v1.62.0. Flank all-against-all and pedigree whole-genome alignment
-used wfmash v0.23.0, with sweepga 0.1.1 and impg 0.4.1 for whole-genome mapping
-and interval projection. Arm-level communities were called with the Leiden
+v0.2.1 and vg v1.62.0. The whole-genome survey, flank all-against-all and
+pedigree whole-genome alignment used wfmash v0.23.0, with seqtk 1.4-r130 for
+telomere calls and sweepga 0.1.1 and impg 0.4.1 for whole-genome mapping and
+interval projection. Arm-level communities were called with the Leiden
 algorithm in R (igraph). Chromosome-contact processing ran under Python
 3.12.12 (numpy 1.26.4, pandas 3.0.0, scipy 1.17.0): Pore-C with pore-c-py 2.1.5
 (NlaIII), minimap2 2.30, pairtools 1.1.3, cooler 0.10.4 and samtools 1.23; CiFi
