@@ -393,7 +393,7 @@ ls -lh paper.pdf               # -> 7.5M, 26 pages
 **PASS** -- refreshed Fig. 5 and maternal companion PNGs compile with no
 undefined references/citations in the final `paper.log`.
 
-## Successful build after Supplementary Table 1 updates
+## Successful build after pedigree supporting-material updates
 
 Date: 2026-07-05
 
@@ -618,3 +618,25 @@ The LaTeX command `\S` (section symbol) causes an "Incomplete \iffalse" error
 in the jnl.cls + multibib + natbib combination at this TeX installation.
 Replaced with `\textsection` which renders identically (§) and compiles
 without error. The text content is unchanged.
+
+## Successful build after repository supporting-material table update
+
+Date: 2026-07-10
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd submission && make'
+guix shell texlive texlive-bin -- bash -lc 'cd submission && pdflatex -interaction=nonstopmode -halt-on-error paper'
+```
+
+Validation checks:
+
+```
+awk 'BEGIN{c=0}/undefined/{c++}END{print c}' paper.log  # -> 0
+rg 'Label\(s\) may have changed|Rerun to get cross-references|undefined references|undefined citations|Citation.*undefined|Reference.*undefined' paper.log  # -> no matches
+ls -lh paper.pdf  # -> 4.3M, 27 pages
+```
+
+PASS -- manuscript compiles with the pedigree table cited only as repository
+supporting material.

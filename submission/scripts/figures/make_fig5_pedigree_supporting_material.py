@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the compact audit table for pedigree PHR-exchange runs."""
+"""Build the supporting-material table for pedigree PHR-exchange runs."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "submission/supplementary/Supplementary_Table_1_pedigree_runs.tsv"
+OUT = ROOT / "submission/supporting_material/Fig5_pedigree_supporting_material.tsv"
 
 PATERNAL_SUMMARY = (
     ROOT

@@ -285,7 +285,7 @@ fall in the expected arm-level sequence-similarity communities and show
 post hoc Jaccard support (Xp/Yp C15, chr5q/chr1p C11, chr9q/chr3q C3).
 Exact assembly-native intervals, identities, same-chromosome competitor scores,
 PHR/community annotations and corresponding arm-level CHM13 PHR BED intervals
-are provided in Supplementary Table~1.
+are provided in the GitHub supporting-material table.
 Applying the same whole-genome homologous-competition scan to the maternal
 PAN027 and PAN028 transmissions provides matched context rather than a second
 primary claim: PAN027 maternal windows resolve only the expected
@@ -663,11 +663,11 @@ chr1 donor above threshold.
 For Fig.~\ref{fig:fig5}C,D we applied the same workflow, thresholds and display
 rules to two maternal comparisons: the PAN027 maternal haplotype against the
 joint PAN010 mother target, and the PAN028 maternal haplotype against the joint
-PAN027 mother target. Supplementary Table~1 reports, for all displayed calls,
-assembly-native query and donor intervals, 2 kb window counts, mean identities,
-same-chromosome competitor scores, and post hoc PHR and community labels; its
-CHM13 columns are arm-level PHR annotations, not exact coordinate liftovers of
-the pedigree-specific haplotype assemblies.
+PAN027 mother target. The GitHub supporting-material table reports, for all
+displayed calls, assembly-native query and donor intervals, 2 kb window counts,
+mean identities, same-chromosome competitor scores, and post hoc PHR and
+community labels; its CHM13 columns are arm-level PHR annotations, not exact
+coordinate liftovers of the pedigree-specific haplotype assemblies.
 
 \subsection*{Software versions}
 
@@ -688,14 +688,16 @@ used R with the packages ape, vegan and cluster.
 
 Analysis code, manuscript source, figure-generation scripts, and figure input
 files are available at \url{https://github.com/pangenome/phrs}, including the
-CHM13-coordinate PHR annotations, the pedigree table
-(Supplementary Table~1), the figure-generation inputs for Fig.~\ref{fig:fig5}, and
-re-alignment workflows and command lines for Hi-C, Pore-C and CiFi. HPRC v2
-assemblies, CHM13v2.0, the WashU pedigree assemblies, the CEPH1463 assemblies, and
-the published 3D-genome datasets are available from their cited public releases
-and accessions. The re-alignment workflows start from the cited public raw-read
-datasets; deposited processed files produced with default mapping-quality
-filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
+CHM13-coordinate PHR annotations, the Fig.~\ref{fig:fig5} pedigree
+supporting-material table
+(\url{https://github.com/pangenome/phrs/blob/main/submission/supporting_material/Fig5_pedigree_supporting_material.tsv}),
+the figure-generation inputs for Fig.~\ref{fig:fig5}, and re-alignment workflows
+and command lines for Hi-C, Pore-C and CiFi. HPRC v2 assemblies, CHM13v2.0, the
+WashU pedigree assemblies, the CEPH1463 assemblies, and the published 3D-genome
+datasets are available from their cited public releases and accessions. The
+re-alignment workflows start from the cited public raw-read datasets; deposited
+processed files produced with default mapping-quality filters ($\geq 30$) are
+insufficient to reproduce the inter-arm signal.
 
 \bibliography{bibliography}
 
@@ -726,40 +728,6 @@ filters ($\geq 30$) are insufficient to reproduce the inter-arm signal.
 \end{figure}
 
 \clearpage
-\section{Supplementary Table Legends}
-
-\noindent\textbf{Supplementary Table 1. Displayed pedigree non-homologous runs
-and PHR annotations.}
-Runs from the Fig.~\ref{fig:fig5} homologous-competition scan: the paternal
-comparison (panel B) and the two maternal comparisons (panels C, D). Rows cover
-the PAR1 positive controls, the chr5q/chr1p and chr9q/chr3q candidate exchanges,
-representative acrocentric-context runs, and the maternal companion candidates.
-Query and donor intervals are 0-based half-open coordinates in the
-assembly-native haplotype sequences; the CHM13 PHR-BED columns give the
-implicated arm-level intervals, not exact liftovers. Key columns are shown below
-(id$_{\mathrm{NH}}$, mean non-homologous-winner identity; $\Delta$id, its margin
-over the same-chromosome competitor); the full 17-column table, adding per-window
-counts, source tables and notes, is provided as a tab-delimited file.
-
-\vspace{1.5em}
-
-{\centering\scriptsize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.25}
-\begin{tabular}{@{}c l p{2.35cm} r r r c@{}}
-\hline
-Panel & Query/donor & Call class & kb & id$_{\mathrm{NH}}$ & $\Delta$id & Comm. \\
-\hline
-B & chrXp/chrYp & PAR1 control & 92 & 1.0000 & 0.103 & C15 \\
-B & chrXp/chrYp & PAR1 control & 46 & 0.9993 & 0.139 & C15 \\
-B & chr5q/chr1p & PHR-exchange candidate & 28 & 0.9983 & 0.003 & C11 \\
-B & chr9q/chr3q & PHR-exchange candidate & 20 & 0.9988 & 0.007 & C3 \\
-B & chr13p/chr21p & acrocentric context & 44 & 0.9640 & 0.085 & C7 \\
-C & chr15p/chr21p & acrocentric context & 34 & 0.9965 & 0.017 & C7 \\
-D & chr22p/chr15p & acrocentric context & 104 & 0.9996 & 0.030 & C7 \\
-D & chr21p/chr4p & acro--other context & 40 & 0.9923 & 0.065 & C7/C13 \\
-D & chr5q/chr1p & chr5/chr1 candidate & 30 & 0.9980 & 0.107 & C11 \\
-\hline
-\end{tabular}\par}
-
 \clearpage
 \section*{Human Pangenome Reference Consortium v2 author list}
 {\small
