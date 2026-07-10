@@ -8,6 +8,10 @@ arms, 15 arm-level / 50 sequence-level communities), plus 3D-genome validation
 (Hi-C, Pore-C, CiFi, Dip-C, sperm sc, RPE-1, mouse meiosis). Outputs are a
 14-section analysis report, paper figures, and slide decks.
 
+This is a purely computational bioinformatics study and survey of existing
+human pangenome and chromosome-contact datasets. It involves no experimental
+manipulation, pathogen work, or other biosafety-relevant activity.
+
 GitHub: `https://github.com/pangenome/phrs`.
 
 ## Where data lives
