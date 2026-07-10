@@ -96,44 +96,47 @@ sequence having arisen from duplications specific to the human lineage
 This ectopic exchange has well-known consequences at particular chromosome ends.
 The pseudoautosomal regions PAR1 and PAR2 are shared by the sex chromosomes,
 and PAR1 carries the obligate male sex-chromosome crossover
-\cite{Rouyer1986,sexchrompars_bellott2024}; the ribosomal-DNA-bearing
-acrocentric short arms are organized around the nucleolus, recombine, and
-underlie recurrent
-Robertsonian translocations
-\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}; the
-4q35 D4Z4 macrosatellite, homologous to the 10q26 array, is the causal
-locus in facioscapulohumeral dystrophy and is reactivated in
-diverse cancers
-\cite{dux4_d4z4_fshd_lemmers2010worldwide,dux4_cancer_Chew2019}; and unbalanced
-subtelomeric rearrangements are a recurrent cause of intellectual disability
+\cite{Rouyer1986,sexchrompars_bellott2024}.
+The ribosomal-DNA-bearing acrocentric short arms are organized around the
+nucleolus, recombine, and underlie recurrent Robertsonian translocations
+\cite{acrocentric_Altemose2022,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025,acrocentric_Guarracino2025ape}.
+The 4q35 D4Z4 macrosatellite, homologous to the 10q26 array, is the causal
+locus in facioscapulohumeral dystrophy and is reactivated in diverse cancers
+\cite{dux4_d4z4_fshd_lemmers2010worldwide,dux4_cancer_Chew2019}.
+Unbalanced subtelomeric rearrangements are a recurrent cause of intellectual
+disability
 \cite{MeffordTrask2002}.
-Yet this picture rested on locus-specific and reference-limited evidence:
-fluorescence in situ
-hybridization, BAC and half-YAC clones, and monochromosomal hybrids in a handful
-of genomes \cite{Mefford2001,Riethman2004,Ambrosini2007}, because no reference
-assembly reached the telomeres \cite{Nurk2022} and analyzing each chromosome
-separately hid the sharing between them \cite{Liao2023}.
-The unresolved question was therefore not whether inter-chromosomal
-subtelomeric exchange occurs, but its population-scale extent, variation and
-organization across complete chromosome ends.
+Yet the broader picture remained assembled from heterogeneous and often
+locus-focused evidence, including fluorescence in situ hybridization, BAC and
+half-YAC clones, monochromosomal hybrids, and later complete-assembly analyses
+of particular chromosome classes or genomes
+\cite{Mefford2001,Riethman2004,Ambrosini2007,Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}.
+The unresolved question was not whether inter-chromosomal subtelomeric exchange
+occurs, but whether it could be mapped uniformly across complete chromosome
+ends in a large haplotype-resolved cohort.
 
-Two advances now make this view possible: the
-telomere-to-telomere CHM13 assembly resolved one human genome end to end
-\cite{Nurk2022}, and the second release of the Human Pangenome Reference
-Consortium (HPRC v2) provides near-complete, haplotype-resolved assemblies for
-232 individuals from five superpopulations \cite{hprc_hprcv2_2025}.
-At the same time, pangenome analysis of heterologous acrocentric chromosomes
-and complete assemblies of human Robertsonian chromosomes showed that the
-best-characterized subtelomeric exchange system could be resolved sequence by sequence
-\cite{Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}; here we ask
-whether that acrocentric result is one instance of a genome-wide pattern.
+Two advances now make this view possible.
+The telomere-to-telomere CHM13 assembly resolved one human genome end to end
+\cite{Nurk2022}.
+The second release of the Human Pangenome Reference Consortium (HPRC v2)
+provides near-complete, haplotype-resolved assemblies for 232 individuals from
+five superpopulations \cite{hprc_hprcv2_2025}.
+Building on implicit pangenome graph methods developed through HPRC analyses of
+heterologous acrocentric chromosomes and through complete assemblies of human
+Robertsonian chromosomes
+\cite{Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}, we extend
+reference-free homology analysis from individual exchange systems to all
+chromosome ends across the cohort.
+Here we ask whether the acrocentric result is one instance of a genome-wide
+pattern.
 Revisiting subtelomeric organization without chromosomal partitioning, we pose
-three questions the cytogenetic era could consider but not resolve: how
-extensive is
-inter-chromosomal subtelomeric sharing across all 48 chromosome arms; how is it
-organized into sequence communities; and does sequence similarity predict both
-three-dimensional proximity in the nucleus and compatible pedigree-resolved
-patch patterns within the same communities.
+three questions the cytogenetic era could consider but not resolve.
+How extensive is inter-chromosomal subtelomeric sharing across all 48
+chromosome arms?
+How is it organized into sequence communities?
+Does sequence similarity predict both three-dimensional proximity in the
+nucleus and compatible pedigree-resolved patch patterns within the same
+communities?
 
 \subsection*{Implicit pangenome graphs of subtelomeres}
 
@@ -147,7 +150,7 @@ chromosomes.
 A pangenome graph and the set of alignments that define it are equivalent
 representations of the same object \cite{Garrison2024pggb}, so we treat the
 resulting alignments as an implicit pangenome graph and query them through their
-transitive closure, without ever building the graph
+transitive closure, without initially building the graph
 \cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
 An all-base comparison across the full 465-assembly dataset would be
 intractable, of order $10^{24}$ base-pair comparisons; restricting the
