@@ -75,3 +75,48 @@ The benchmark establishes computational feasibility only. Reportable inference
 still requires the input checks, minimum candidate counts, placement/calibration
 gates, Monte Carlo decision intervals, and independent recount specified in
 `STATISTICAL_SPEC.md`.
+
+## Cluster execution record
+
+Slurm was inspected on 2026-07-13 with:
+
+```bash
+sinfo -o '%P|%a|%l|%D|%c|%m|%G'
+squeue -u "$USER" -o '%.18i %.12P %.24j %.8T %.10M %.4D %R'
+```
+
+The default `workers` partition was up with seven 48-CPU nodes and at least
+386,641 MiB per node; no user jobs were queued. `slurm_benchmark.sbatch`
+requests one CPU, 8 GiB, and 30 minutes. `slurm_final_run.sbatch` requests one
+CPU, 16 GiB, and 24 hours, and makes mode, master seed, 99,999/999,999
+permutation target, 1,000-draw batch size, frozen argument file, and output path
+explicit. Both capture job-ID-qualified logs and portable shell timing; `sacct`
+supplies scheduler-side peak-memory accounting.
+
+The committed 500-draw result is intentionally a 6.5-second login-node
+microbenchmark. Any longer benchmark, calibration, or final permutation run
+must use the Slurm scripts. Record completed resource accounting with:
+
+```bash
+sacct -j JOBID --format=JobID,State,Elapsed,AllocCPUS,ReqMem,MaxRSS,ExitCode
+```
+
+The Slurm workflow was exercised with the same 500-draw workload. Job `1753787`
+failed in two seconds (`ExitCode=127`) because `/usr/bin/time` is absent on the
+worker image; no analysis ran. The scripts were repaired to use portable Bash
+`time -p`. The corrected submission was:
+
+```bash
+ROOT=$(git rev-parse --show-toplevel)
+sbatch --export=ALL,REPO_ROOT="$ROOT",BENCH_PERMUTATIONS=500,\
+BENCH_TERMS=15000,ANNOTATIONS_PER_LOCUS=12,MASTER_SEED=2026071301,\
+BENCH_OUTPUT=/tmp/chm13-cn-benchmark-agent3103.json slurm_benchmark.sbatch
+```
+
+Job `1753789` completed on `octopus08` in 13 seconds with one allocated CPU,
+8 GiB requested memory, and `ExitCode=0`. The engine measured 6.472 seconds for
+generation (77.26 permutations/s), 0.607 seconds for the complete 15,000-term
+maxT kernel, and 175.5 MiB process peak RSS. Slurm accounting on this cluster
+did not populate `MaxRSS`, so the engine's `resource.getrusage` value is retained
+alongside the scheduler request. The maxT checksum exactly matched the local run
+(`3508.971059802647`), confirming deterministic numerical output across hosts.

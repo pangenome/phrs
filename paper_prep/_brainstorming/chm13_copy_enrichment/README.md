@@ -175,4 +175,50 @@ guix shell python python-numpy -- python3 benchmark_COPY_engine.py \
 ```
 
 See `BENCHMARK_REPORT.md` for measured throughput, memory, disk projections,
-and the selected final permutation count.
+the selected final permutation count, and the validated Slurm result in
+`benchmark_results_slurm.json`.
+
+## Slurm execution
+
+Do not run final permutations or substantial calibration/benchmark workloads on
+the login node. Create the log directory (it is already tracked), then submit a
+cluster benchmark from this directory:
+
+```bash
+ROOT=$(git rev-parse --show-toplevel)
+sbatch --export=ALL,REPO_ROOT="$ROOT",BENCH_PERMUTATIONS=5000,\
+BENCH_TERMS=15000,ANNOTATIONS_PER_LOCUS=12,MASTER_SEED=2026071301,\
+BENCH_OUTPUT="$PWD/benchmark_results.slurm.json" slurm_benchmark.sbatch
+```
+
+For a final run, construct a frozen argument file with exactly one CLI argument
+per line. It can contain any number of collection pairs and optional maps:
+
+```text
+--terms
+GO_BP=/absolute/frozen/go_bp.tsv.gz
+--terms
+GO_MF=/absolute/frozen/go_mf.tsv.gz
+--family-map
+/absolute/frozen/families.tsv.gz
+--identity-map
+/absolute/frozen/identity_clusters.tsv.gz
+```
+
+Submit the primary run (change mode/seed/output for each sensitivity):
+
+```bash
+ROOT=$(git rev-parse --show-toplevel)
+sbatch --export=ALL,REPO_ROOT="$ROOT",MODE=primary,MASTER_SEED=2026071301,\
+PERMUTATIONS=99999,BATCH_SIZE=1000,OUTPUT_DIR=/absolute/runs/primary,\
+ARGS_FILE=/absolute/frozen/primary.args slurm_final_run.sbatch
+```
+
+Both scripts request one CPU because the reference engine is deliberately
+single-threaded, and they record the Slurm job ID, host, seed, permutation count,
+batch size, shell timing, stdout, and stderr. Inspect a job
+with `squeue -j JOBID`; after completion, retain accounting with:
+
+```bash
+sacct -j JOBID --format=JobID,State,Elapsed,AllocCPUS,ReqMem,MaxRSS,ExitCode
+```
