@@ -56,6 +56,19 @@ LOC124900618	IDCLUSTER_001
 Missing group assignments become locus-specific singleton groups. They are
 never combined into one missing-value group.
 
+The committed annotation build uses a stricter coordinate-anchored `copy_id`,
+whereas the engine's analysis table uses the GFF `locus_id`.  Generate (or
+verify) the lossless one-to-one bridge before a run:
+
+```bash
+python3 prepare_engine_terms.py
+```
+
+The six deterministic files under `engine_terms/` retain `locus_id`, `copy_id`,
+and `frozen_source`. `engine_terms/MANIFEST.json` records the exact coordinate
+join, source/output checksums, row counts, and GO namespace split.  Use these
+files as named collections; do not pass `outputs/copy_to_term.tsv.gz` directly.
+
 ## Primary run
 
 Use a new output directory and provide the prespecified seed explicitly:
@@ -222,3 +235,23 @@ with `squeue -j JOBID`; after completion, retain accounting with:
 ```bash
 sacct -j JOBID --format=JobID,State,Elapsed,AllocCPUS,ReqMem,MaxRSS,ExitCode
 ```
+
+## Independent validation
+
+`validate_engine_run.py` is a black-box validator: it does not import the
+engine.  It expands every saved placement, brute-force joins physical loci,
+checks all cached arrays, and independently recalculates empirical tails, BH,
+collection maxT, and global maxT.  Frozen trace columns are required by default:
+
+```bash
+guix shell python python-numpy -- \
+  python3 validate_engine_run.py /absolute/completed/run \
+  --output /absolute/completed/run/independent_validation.json
+```
+
+The chunked synthetic calibration is submitted with
+`slurm_calibration.sbatch`; `slurm_calibration_combine.sbatch` must be submitted
+with an `afterok` dependency on the array.  It evaluates the prespecified exact
+sampler, Type-I, BH, maxT, zero-denominator, constraint, planted-power, and
+historical weighted-hypergeometric failure-control gates.  See
+`VALIDATION_REPORT.md` and `calibration_results/` for the validated invocation.
