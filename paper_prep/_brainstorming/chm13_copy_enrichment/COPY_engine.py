@@ -1510,6 +1510,7 @@ def immutable_configuration(args: argparse.Namespace, files: Mapping[str, Path],
         "mask_enumeration_limit": args.mask_enumeration_limit,
         "mask_policy": "frozen_bed" if args.mask is not None else "empty",
         "pilot_allowed": bool(args.allow_pilot),
+        "driver_diagnostics_deferred": bool(args.skip_driver_diagnostics),
         "collections": [{"name": name, "path": str(path.resolve()), "sha256": sha256_file(path),
                          "bytes": path.stat().st_size} for name, path in collections],
         "inputs": checksums,
@@ -1622,12 +1623,18 @@ def run(args: argparse.Namespace) -> None:
 
     observed_midpoint = calculate_stats(genome, collections,
                                         placed_intervals(observed_placements(blocks), arms), "midpoint")
-    summaries, group_counts = driver_rows(results, observed_midpoint,
-                                          {item.name: item for item in collections}, genome,
-                                          family_groups, identity_groups)
-    leave_rows, leave_flags = leave_one_diagnostics(
-        output, manifest, results, genome, arms, blocks,
-        {item.name: item for item in collections}, family_groups, identity_groups)
+    if args.skip_driver_diagnostics:
+        # Large final runs may finalize the prespecified driver analysis in a
+        # separate, exact cached-subtraction pass. This switch does not alter
+        # placement generation, cached null arrays, or term inference.
+        summaries, group_counts, leave_rows, leave_flags = [], [], [], {}
+    else:
+        summaries, group_counts = driver_rows(results, observed_midpoint,
+                                              {item.name: item for item in collections}, genome,
+                                              family_groups, identity_groups)
+        leave_rows, leave_flags = leave_one_diagnostics(
+            output, manifest, results, genome, arms, blocks,
+            {item.name: item for item in collections}, family_groups, identity_groups)
     for summary in summaries:
         key = (str(summary["collection"]), str(summary["term_id"]))
         values = leave_flags.get(key, {})
@@ -1711,6 +1718,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--mask-enumeration-limit", type=int, default=10_000_000)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--skip-driver-diagnostics", action="store_true",
+                        help="write empty driver tables for exact separate finalization")
     parser.add_argument("--allow-pilot", action="store_true",
                         help="permit <99,999 permutations; outputs are marked non-reportable")
     return parser
