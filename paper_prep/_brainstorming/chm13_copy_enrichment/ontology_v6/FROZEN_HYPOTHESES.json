@@ -1,0 +1,44 @@
+{
+  "audited_release_manifest_sha256": "60d9cf48ebbfe50d7b938302a8d24317c716f1a6fa755bd397afc21cc38bcbf3",
+  "catalog_bytes": 610333,
+  "catalog_path": "FROZEN_HYPOTHESES.tsv.gz",
+  "catalog_sha256": "9125a02140d9d2226c804095af89708556521b495f3fc9d4d2fd9a76c6725e47",
+  "created_utc": "2026-07-16T12:56:37.449386+00:00",
+  "family_definition": "collection combining separately identified direct and ancestor hypotheses",
+  "freeze_input_basenames": [
+    "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+    "SOURCE_TERMS.tsv.gz",
+    "chm13v2.0_cytobands_allchrs.bed"
+  ],
+  "freeze_inputs": {
+    "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz": "1c026142fdc608399486e476c9218644bccde96e5bc830133d117cc53127e943",
+    "SOURCE_TERMS.tsv.gz": "5f980e84e867114d20e27d4aa298ea623b555de25be7a839c3ace7cba630d4b9",
+    "chm13v2.0_cytobands_allchrs.bed": "09c7fa3ca3e222ebaabbecedc3086aa2543999824c0966f96b0c3f31c1126ea2"
+  },
+  "gate_sha256": "eb71ef2f9c46c77ae677661895f00be973a97cd2cee54ba768990365c477b603",
+  "gate_status": "PASS",
+  "git_commit": "c575a57e10a3260941a00a49d74277f97ebfe27e",
+  "hypothesis_count": 31235,
+  "multiplicity_family_sizes": {
+    "GO_BP": 19181,
+    "GO_CC": 2677,
+    "GO_MF": 6261,
+    "Reactome": 3116
+  },
+  "physical_copy_term_edges_opened": false,
+  "relation_counts": {
+    "GO_BP|ancestor": 7994,
+    "GO_BP|direct": 11187,
+    "GO_CC|ancestor": 734,
+    "GO_CC|direct": 1943,
+    "GO_MF|ancestor": 1411,
+    "GO_MF|direct": 4850,
+    "Reactome|ancestor": 841,
+    "Reactome|direct": 2275
+  },
+  "schema_version": "chm13-physical-copy-ontology-v6.0",
+  "status": "FROZEN_BEFORE_TARGET_TERM_RECOUNT",
+  "target_bed_opened": false,
+  "target_filter": "none",
+  "target_membership_columns_opened": false
+}
