@@ -1,0 +1,151 @@
+{
+  "checks": [
+    {
+      "check": "raw_loci",
+      "expected": 61312,
+      "observed": 61312,
+      "passed": true
+    },
+    {
+      "check": "unique_copy_ids",
+      "expected": 61312,
+      "observed": 61312,
+      "passed": true
+    },
+    {
+      "check": "assignment_rows",
+      "expected": 61312,
+      "observed": 61312,
+      "passed": true
+    },
+    {
+      "check": "evidence_rows",
+      "expected": 61312,
+      "observed": 61312,
+      "passed": true
+    },
+    {
+      "check": "all_physical_cn_one",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "check": "summed_physical_cn",
+      "expected": 61312,
+      "observed": 61312,
+      "passed": true
+    },
+    {
+      "check": "coordinate_strand_coincident_extra_rows_retained",
+      "expected": 12,
+      "observed": 12,
+      "passed": true
+    },
+    {
+      "check": "phr_midpoint_cn",
+      "expected": 402,
+      "observed": 402,
+      "passed": true
+    },
+    {
+      "check": "phr_any_overlap_cn",
+      "expected": 412,
+      "observed": 412,
+      "passed": true
+    },
+    {
+      "check": "one_evidence_hash_per_copy",
+      "expected": 61312,
+      "observed": 61312,
+      "passed": true
+    },
+    {
+      "check": "nonself_sources_have_typed_evidence",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "check": "ineligible_rows_have_no_source",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "check": "ambiguous_rows_fail_closed",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "check": "source_freeze_precedes_phr_join",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "check": "edge_count_matches_copy_closure",
+      "expected": 2929709,
+      "observed": 2929709,
+      "passed": true
+    },
+    {
+      "check": "named_DUX4_DUX4L_status",
+      "expected": "PASS",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "named_DDX11L_status",
+      "expected": "PASS",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "named_TUBB8_status",
+      "expected": "PASS",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "named_OR4F_status",
+      "expected": "PASS",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "named_WASH_status",
+      "expected": "PASS",
+      "observed": "PASS",
+      "passed": true
+    },
+    {
+      "check": "DUX4_every_direct_and_ancestor_term_has_65_copy_burden",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    }
+  ],
+  "coordinate_reuse_rows_retained": 12,
+  "enrichment_run": false,
+  "mapping_version": "6.0.0-genomewide-source-map",
+  "ontology_eligible_copies": 31966,
+  "ontology_ineligible_copies": 29346,
+  "phr_join_stage": "after_source_assignment_freeze",
+  "physical_copy_term_edges": 2929709,
+  "physical_loci": 61312,
+  "scope": "copy_to_ontology_mapping_only_no_enrichment",
+  "source_assignment_freeze_sha256": "fd23bc49f02a6e32dfffbbdca53195371283c24b32b8db7c51cdefee9cbd9015",
+  "source_assignment_frozen_before_phr_open": true,
+  "source_dispositions": {
+    "AMBIGUOUS_FAIL_CLOSED": 45,
+    "EXACT_SELF": 20405,
+    "EXPLICIT_RELATED_FUNCTIONAL_GENE": 11561,
+    "TYPE_ONLY": 890,
+    "UNRESOLVED": 4,
+    "UNSUPPORTED_FAIL_CLOSED": 28407
+  },
+  "source_terms": 1686727,
+  "status": "PASS"
+}

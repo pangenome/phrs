@@ -1,0 +1,4 @@
+scope	physical_rows	physical_copy_cn	own_annotation_identity_cn	ontology_eligible_rows	ontology_eligible_cn	ontology_ineligible_cn	direct_term_edge_cn	closure_term_edge_cn
+genome	61312	61312	60430	31966	31966	29346	626048	2929709
+phr_midpoint	402	402	402	187	187	215	3633	16763
+phr_any_overlap	412	412	412	193	193	219	3831	17579

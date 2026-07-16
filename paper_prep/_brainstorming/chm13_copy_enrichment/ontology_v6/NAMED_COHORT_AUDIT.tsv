@@ -1,0 +1,6 @@
+cohort	genome_physical_copies	phr_physical_copies	phr_ontology_contributors	phr_unresolved_physical_copies	functional_source_ids	functional_source_symbols	direct_term_edge_burden	closure_term_edge_burden	expected_genome_copies	expected_phr_copies	expected_phr_contributors	status
+DUX4_DUX4L	107	68	65	3	NCBIGene:100288687	DUX4	1235	5395	107	68	65	PASS
+DDX11L	12	10	10	0	NCBIGene:1663	DDX11	440	1850	12	10	10	PASS
+TUBB8	16	7	2	5	NCBIGene:260334|NCBIGene:347688	TUBB8|TUBB8B	82	329	16	7	2	PASS
+OR4F	15	11	4	7	NCBIGene:26683|NCBIGene:729759|NCBIGene:79501|NCBIGene:81099	OR4F17|OR4F29|OR4F3|OR4F5	30	152	15	11	4	PASS
+WASH	18	9	9	0	NCBIGene:100287171	WASHC1	225	1206	18	9	9	PASS
