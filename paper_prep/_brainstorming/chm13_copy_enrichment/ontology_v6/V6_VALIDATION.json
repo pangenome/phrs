@@ -1,0 +1,1418 @@
+{
+  "adversarial_fixture": {
+    "coordinate_rows": 8,
+    "status": "PASS",
+    "unique_family": 1,
+    "unique_gene": 1,
+    "unique_source": 1,
+    "weighted_physical_cn": 10
+  },
+  "checks": [
+    {
+      "critical": true,
+      "evidence": "INPUT_MANIFEST.tsv",
+      "expected": "all 14 frozen raw/evidence inputs exact",
+      "name": "input_manifest_exact_bytes",
+      "observed": "all exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "INPUT_MANIFEST.tsv",
+      "expected": "only phr_bed is post-freeze",
+      "name": "target_join_after_source_freeze",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "INPUT_MANIFEST.tsv",
+      "expected": 14,
+      "name": "input_manifest_roles_unique",
+      "observed": 14,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "PRE_RUN_V6_GATE.json",
+      "expected": "PASS, authorized, pre-inference, independent",
+      "name": "pre_run_gate_authorizes_exact_release",
+      "observed": {
+        "enrichment_authorized": true,
+        "enrichment_run": false,
+        "production_builder_imported": false,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "PRE_RUN_V6_AUDITED_RELEASE.sha256.tsv",
+      "expected": "60d9cf48ebbfe50d7b938302a8d24317c716f1a6fa755bd397afc21cc38bcbf3",
+      "name": "pre_run_gate_manifest_digest",
+      "observed": "60d9cf48ebbfe50d7b938302a8d24317c716f1a6fa755bd397afc21cc38bcbf3",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "PRE_RUN_V6_AUDITED_RELEASE.sha256.tsv",
+      "expected": "all audited source-map files exact",
+      "name": "audited_source_release_checksums",
+      "observed": "all exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "results/release/RELEASE_SHA256.tsv",
+      "expected": "all 22 released artifacts exact",
+      "name": "release_artifact_checksums",
+      "observed": "all exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "chm13v2.0_RefSeq_Liftoff_v5.2.gff3.gz",
+      "expected": {
+        "coordinate_coincident_extras": 12,
+        "raw_loci": 61312
+      },
+      "name": "raw_physical_locus_count_and_coordinate_retention",
+      "observed": {
+        "coordinate_coincident_extras": 12,
+        "raw_loci": 61312
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw GFF + GENOMEWIDE_SOURCE_ASSIGNMENTS + COPY_SOURCE_EVIDENCE",
+      "expected": 61312,
+      "name": "raw_assignment_evidence_bijection",
+      "observed": {
+        "assignments": 61312,
+        "evidence": 61312,
+        "id_sets_equal": true,
+        "raw": 61312
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw GFF versus source assignments",
+      "expected": "61,312 exact raw gene rows",
+      "name": "all_raw_loci_retained_with_exact_coordinates",
+      "observed": "all exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "expected": 61312,
+      "name": "physical_copy_cn_complete_positive",
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "61,312 assignment rows",
+      "expected": true,
+      "name": "all_assignment_row_hashes_reconstructed",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "61,312 evidence rows",
+      "expected": true,
+      "name": "all_copy_evidence_hashes_reconstructed",
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": "every admitted source has exact evidence; all failures emit no source",
+      "name": "copy_evidence_assignment_routes_exact",
+      "observed": "all 61,312 exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "sum physical_copy_cn over admissible routes",
+      "expected": 31966,
+      "name": "eligible_copy_cn",
+      "observed": 31966,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "frozen copy evidence dispositions",
+      "expected": {
+        "ambiguous": 45,
+        "directed": 11561,
+        "exact_self": 20405,
+        "unsupported": 28407
+      },
+      "name": "source_route_gate_counts",
+      "observed": {
+        "ambiguous": 45,
+        "directed": 11561,
+        "exact_self": 20405,
+        "unsupported": 28407
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "ncbi_gene_group_2026-07-16.tsv.gz",
+      "expected": "11,561 exact directed human-human relations",
+      "name": "all_nonself_sources_have_raw_directed_evidence",
+      "observed": 11561,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "REAL_SOURCE_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": 168,
+      "name": "remediated_pilot_evidence_reconciled",
+      "observed": {
+        "mismatches": [],
+        "overrides": 168,
+        "rows": 168
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "synthetic 7xCN1 + 1xCN3 fixture",
+      "expected": {
+        "coordinate_rows": 8,
+        "unique_source_gene_family": 1,
+        "weighted_physical_cn": 10
+      },
+      "name": "n_copy_adversarial_fixture_rejects_collapse",
+      "observed": {
+        "coordinate_rows": 8,
+        "unique_family": 1,
+        "unique_gene": 1,
+        "unique_source": 1,
+        "weighted_physical_cn": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw PHR BED + raw assignment coordinates",
+      "expected": {
+        "intervals": 37,
+        "midpoint_cn": 402,
+        "overlap_cn": 412
+      },
+      "name": "phr_membership_reconstructed",
+      "observed": {
+        "intervals": 37,
+        "midpoint_cn": 402,
+        "overlap_cn": 412
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw named loci + independent PHR midpoint membership",
+      "expected": {
+        "DDX11L": [
+          12,
+          10,
+          10
+        ],
+        "DUX4_DUX4L": [
+          107,
+          68,
+          65
+        ],
+        "OR4F": [
+          15,
+          11,
+          4
+        ],
+        "TUBB8": [
+          16,
+          7,
+          2
+        ],
+        "WASH": [
+          18,
+          9,
+          9
+        ]
+      },
+      "name": "named_cohort_physical_cn_recounts",
+      "observed": {
+        "DDX11L": {
+          "eligible": 10,
+          "genome": 12,
+          "phr": 10
+        },
+        "DUX4_DUX4L": {
+          "eligible": 65,
+          "genome": 107,
+          "phr": 68
+        },
+        "OR4F": {
+          "eligible": 4,
+          "genome": 15,
+          "phr": 11
+        },
+        "TUBB8": {
+          "eligible": 2,
+          "genome": 16,
+          "phr": 7
+        },
+        "WASH": {
+          "eligible": 9,
+          "genome": 18,
+          "phr": 9
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "NAMED_COHORT_AUDIT.tsv",
+      "expected": "five PASS rows",
+      "name": "named_cohort_audit_artifact_exact",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "expected": "one symbol per admitted source",
+      "name": "functional_source_symbols_consistent",
+      "observed": "all consistent",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw gene2go + GO OBO + Reactome relations/all-level map",
+      "expected": 1686727,
+      "name": "raw_direct_and_ancestor_source_terms_exact",
+      "observed": {
+        "eligible_without_terms": [],
+        "extra_row": null,
+        "mismatches": [],
+        "rows": 1686727
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw ontology closure versus assignments",
+      "expected": "all 61,312 direct/closure counts exact",
+      "name": "every_copy_term_count_reconstructed",
+      "observed": "all exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "sum physical_copy_cn over independently rebuilt source-term edges",
+      "expected": {
+        "all": 2929709,
+        "direct": 626048,
+        "midpoint": 16763,
+        "overlap": 17579
+      },
+      "name": "physical_copy_term_edge_cn",
+      "observed": {
+        "all": 2929709,
+        "direct": 626048,
+        "midpoint": 16763,
+        "overlap": 17579
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "NAMED_COHORT_TERM_BURDENS.tsv.gz",
+      "expected": 1391,
+      "name": "all_named_cohort_term_burdens_reconstructed",
+      "observed": {
+        "expected": 1391,
+        "mismatches": [],
+        "release": 1391
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "MAPPING_COVERAGE.tsv",
+      "expected": 148,
+      "name": "mapping_coverage_all_aggregations_reconstructed",
+      "observed": {
+        "mismatches": [],
+        "rebuilt": 148,
+        "release": 148
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw source-term matrix before PHR join",
+      "expected": 31235,
+      "name": "target_blind_hypothesis_catalog_reconstructed",
+      "observed": {
+        "mismatches": [],
+        "rebuilt": 31235,
+        "release": 31235,
+        "target_blind_header": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "FROZEN_HYPOTHESES.json",
+      "expected": "catalog frozen before target/edge access with three exact inputs",
+      "name": "hypothesis_freeze_manifest_target_blind_and_exact",
+      "observed": {
+        "freeze_inputs_exact": true,
+        "physical_edges_opened": false,
+        "status": "FROZEN_BEFORE_TARGET_TERM_RECOUNT",
+        "target_bed_opened": false,
+        "target_columns_opened": false
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "FROZEN_HYPOTHESES.tsv.gz",
+      "expected": {
+        "GO_BP": 19181,
+        "GO_CC": 2677,
+        "GO_MF": 6261,
+        "Reactome": 3116
+      },
+      "name": "multiplicity_family_sizes",
+      "observed": {
+        "GO_BP": 19181,
+        "GO_CC": 2677,
+        "GO_MF": 6261,
+        "Reactome": 3116
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "MULTIPLICITY_FAMILIES.tsv",
+      "expected": "four collection families plus global exact",
+      "name": "multiplicity_ordered_hashes_reconstructed",
+      "observed": "PASS",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "independent raw-locus/source-term/PHR recount",
+      "expected": "31,235 hypotheses x two assignments",
+      "name": "every_observed_term_is_sum_physical_cn",
+      "observed": {
+        "mismatches": [],
+        "rows": 62470,
+        "unique": 62470
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "EXACT_TERM_CONTRIBUTORS.tsv.gz",
+      "expected": 17579,
+      "name": "exact_contributor_rows_reconstructed",
+      "observed": {
+        "mismatches": [],
+        "rebuilt": 17579,
+        "release": 17579
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "chm13v2.0_cytobands_allchrs.bed vs analysis_ready arm summary",
+      "expected": "48 cytoband-derived arms",
+      "name": "arm_geometry_reconstructed_from_cytobands",
+      "observed": 48,
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "raw PHR BED + cytobands + CANDIDATE_SPACES.tsv",
+      "expected": "37 blocks, stratum 0, 250,000--497,500 exact starts",
+      "name": "same_arm_terminal_stratum_candidate_geometry",
+      "observed": {
+        "blocks": 37,
+        "candidate_max": 497500,
+        "candidate_min": 250000
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "seed 2026071301, PCG64DXSM child [0], NULL_PLACEMENT_MANIFEST.tsv",
+      "expected": "100/100 exact gzip and canonical hashes plus final RNG state",
+      "name": "all_99999_joint_placements_regenerated",
+      "observed": {
+        "batches": 100,
+        "mismatches": [],
+        "replicates": 99999,
+        "rng_state_match": true
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "regenerated placements + fixed genomic physical-copy/source-term matrix",
+      "expected": "7 representative terms x 2 assignments exact",
+      "name": "representative_null_counts_reconstructed",
+      "observed": {
+        "DDX11L": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        },
+        "DUX4_DUX4L": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        },
+        "OR4F": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        },
+        "TUBB8": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        },
+        "WASH": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        },
+        "leading_exocyst": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        },
+        "negative_metal_binding": {
+          "midpoint": "PASS",
+          "overlap": "PASS"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "TERM_RESULTS.tsv.gz",
+      "expected": "62,470 rows exact using independent R qbeta",
+      "name": "complete_plus_one_cp_maxT_arithmetic",
+      "observed": {
+        "maxT_order_and_nesting": true,
+        "mismatches": []
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "TERM_RESULTS.tsv.gz",
+      "expected": "BH/BY and BH sequential bounds exact in 8 assignment families",
+      "name": "complete_bh_by_interval_adjustments",
+      "observed": "all exact",
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "98.75% sequential intervals + STAGE_DECISION.json",
+      "expected": {
+        "CERTIFIED_NONPASS": 31092,
+        "CERTIFIED_PASS": 143,
+        "extension_candidates": 0,
+        "unresolved": 0
+      },
+      "name": "uncertainty_and_stopping_decisions_recalculated",
+      "observed": {
+        "CERTIFIED_NONPASS": 31092,
+        "CERTIFIED_PASS": 143,
+        "decision_mismatches": [],
+        "extension_candidates": 0,
+        "maxT_unresolved": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "COMPUTATIONAL_PROVENANCE.json + RUN_MANIFEST.tsv",
+      "expected": "seed 2026071301; child [0]; PCG64DXSM; 99,999; physical CN",
+      "name": "seed_rng_and_fixed_matrix_provenance",
+      "observed": {
+        "bit_generator": "PCG64DXSM",
+        "permutations": 99999,
+        "seed": 2026071301,
+        "spawn_key": [
+          0
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "COMPUTATIONAL_PROVENANCE.json + Git objects",
+      "expected": "array and release engines resolve at recorded Git commits",
+      "name": "versioned_engine_and_manifest_checksums",
+      "observed": {
+        "array_engine_sha256": "2c57923dbe1201bc472f71395e35f84442a943ddb6ba1ac5fa8d7db3825dc37a",
+        "array_manifest_sha256": "08ac13ba843346312763f541c2d61043c1716ff1f1302029a6387a1dd8433d9d",
+        "release_engine_sha256": "ecf1c26205d6f28d2f87aa5939b7eadec149e4e26db50ca8f27d30f0168eec82"
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "INPUT_CHECKSUMS.tsv + Git object history",
+      "expected": "10 immutable inputs current-exact plus historical engine blob exact",
+      "name": "frozen_inference_input_checksums_versioned",
+      "observed": {
+        "failures": [],
+        "historical_engine_commit": "9053dd520e73783d1b1c5480157dd5d9d8306ea8",
+        "rows": 11
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "TRANSIENT_COUNT_ARRAYS.tsv; representative columns regenerated independently",
+      "expected": "200 files, two assignments, 99,999 columns each",
+      "name": "transient_count_array_inventory_complete",
+      "observed": {
+        "payloads_present": 0,
+        "rows": 200
+      },
+      "status": "PASS"
+    },
+    {
+      "critical": true,
+      "evidence": "live sacct + SLURM_COMPLETION.json + SLURM_JOBS.tsv",
+      "expected": "jobs 1761733/4/5 COMPLETED 0:0 with exact logs",
+      "name": "slurm_jobs_live_complete_and_logs_exact",
+      "observed": {
+        "live": {
+          "1761733": [
+            "COMPLETED",
+            "0:0"
+          ],
+          "1761733.batch": [
+            "COMPLETED",
+            "0:0"
+          ],
+          "1761734": [
+            "COMPLETED",
+            "0:0"
+          ],
+          "1761734.batch": [
+            "COMPLETED",
+            "0:0"
+          ],
+          "1761735": [
+            "COMPLETED",
+            "0:0"
+          ],
+          "1761735.batch": [
+            "COMPLETED",
+            "0:0"
+          ]
+        },
+        "log_checksums": true,
+        "recorded_completion": "COMPLETE"
+      },
+      "status": "PASS"
+    }
+  ],
+  "checks_failed": 0,
+  "checks_passed": 46,
+  "checks_total": 46,
+  "claims": {
+    "descriptive": {
+      "named_physical_burdens": {
+        "DDX11L": 10,
+        "DUX4_DUX4L": 65,
+        "OR4F": 4,
+        "TUBB8": 2,
+        "WASH": 9
+      },
+      "representative_term_rows": [
+        {
+          "bh_q": 0.575373023255814,
+          "cohort": "DUX4_DUX4L",
+          "cohort_phr_ontology_contributor_cn": 65,
+          "global_maxT_p": 0.98807,
+          "observed": 65,
+          "raw_p": 0.00751,
+          "status": "CERTIFIED_NONPASS",
+          "term_key": [
+            "Reactome",
+            "direct",
+            "R-HSA-9819196"
+          ],
+          "term_name": "Zygotic genome activation (ZGA)"
+        },
+        {
+          "bh_q": 0.001098421052631579,
+          "cohort": "DDX11L",
+          "cohort_phr_ontology_contributor_cn": 10,
+          "global_maxT_p": 1e-05,
+          "observed": 10,
+          "raw_p": 1e-05,
+          "status": "CERTIFIED_PASS",
+          "term_key": [
+            "GO_MF",
+            "direct",
+            "GO:0003678"
+          ],
+          "term_name": "DNA helicase activity"
+        },
+        {
+          "bh_q": 0.0013320138888888889,
+          "cohort": "TUBB8",
+          "cohort_phr_ontology_contributor_cn": 2,
+          "global_maxT_p": 0.59552,
+          "observed": 28,
+          "raw_p": 1e-05,
+          "status": "CERTIFIED_NONPASS",
+          "term_key": [
+            "GO_BP",
+            "ancestor",
+            "GO:0006996"
+          ],
+          "term_name": "organelle organization"
+        },
+        {
+          "bh_q": 1.0,
+          "cohort": "OR4F",
+          "cohort_phr_ontology_contributor_cn": 4,
+          "global_maxT_p": 0.99992,
+          "observed": 7,
+          "raw_p": 0.03425,
+          "status": "CERTIFIED_NONPASS",
+          "term_key": [
+            "Reactome",
+            "direct",
+            "R-HSA-9752946"
+          ],
+          "term_name": "Expression and translocation of olfactory receptors"
+        },
+        {
+          "bh_q": 0.0004867272727272728,
+          "cohort": "WASH",
+          "cohort_phr_ontology_contributor_cn": 9,
+          "global_maxT_p": 1e-05,
+          "observed": 10,
+          "raw_p": 1e-05,
+          "status": "CERTIFIED_PASS",
+          "term_key": [
+            "GO_CC",
+            "direct",
+            "GO:0071203"
+          ],
+          "term_name": "WASH complex"
+        }
+      ],
+      "statement": "Named copy burdens remain coordinate descriptions unless their exact frozen term row is certified."
+    },
+    "supported": {
+      "counts_by_collection_relation": {
+        "GO_BP|ancestor": 63,
+        "GO_BP|direct": 25,
+        "GO_CC|ancestor": 9,
+        "GO_CC|direct": 13,
+        "GO_MF|ancestor": 10,
+        "GO_MF|direct": 20,
+        "Reactome|ancestor": 2,
+        "Reactome|direct": 1
+      },
+      "definition": "term rows with 98.75% BH and global-maxT upper bounds <= 0.05",
+      "scope": "CHM13 regional physical-copy enrichment only; contributors may be named copies but families are not hypotheses",
+      "term_count": 143
+    },
+    "unresolved": {
+      "items": [],
+      "term_count": 0
+    },
+    "unsupported": [
+      "Any unique-gene, unique-source, or gene-family collapse as the tested statistic.",
+      "A DUX, DDX11L, TUBB8, OR4F, or WASH family-level hypothesis not present in the frozen catalog.",
+      "Causal functional coordination, expression, or chromosome-contact mechanisms.",
+      "Extrapolation from CHM13 regional copies to population prevalence or the human pangenome.",
+      "Terms or biological systems selected after inspecting PHR membership."
+    ]
+  },
+  "coordinate_coincident_extra_rows_retained": 12,
+  "copy_number_semantics_pass": true,
+  "failed_check_names": [],
+  "gate_status": "PASS",
+  "hypotheses": 31235,
+  "inference_arithmetic": {
+    "arithmetic_mismatches": [],
+    "decision_mismatches": [],
+    "maxT_order_and_nesting": true,
+    "q_mismatches": [],
+    "selective_extension_candidates": 0,
+    "status_counts": {
+      "CERTIFIED_NONPASS": 31092,
+      "CERTIFIED_PASS": 143
+    }
+  },
+  "inference_valid": true,
+  "mapping_gate_pass": true,
+  "matrix": {
+    "direct_physical_copy_term_edge_cn": 626048,
+    "phr_midpoint_edge_cn": 16763,
+    "phr_overlap_edge_cn": 17579,
+    "physical_copy_term_edge_cn": 2929709,
+    "source_term_rows": 1686727
+  },
+  "named_cohorts": {
+    "DDX11L": {
+      "eligible": 10,
+      "genome": 12,
+      "phr": 10
+    },
+    "DUX4_DUX4L": {
+      "eligible": 65,
+      "genome": 107,
+      "phr": 68
+    },
+    "OR4F": {
+      "eligible": 4,
+      "genome": 15,
+      "phr": 11
+    },
+    "TUBB8": {
+      "eligible": 2,
+      "genome": 16,
+      "phr": 7
+    },
+    "WASH": {
+      "eligible": 9,
+      "genome": 18,
+      "phr": 9
+    }
+  },
+  "ontology_eligible_physical_copy_cn": 31966,
+  "phr_any_overlap_physical_copy_cn": 412,
+  "phr_midpoint_physical_copy_cn": 402,
+  "physical_copy_cn": 61312,
+  "placement": {
+    "batch_count": 100,
+    "canonical_hash_matches": 100,
+    "final_rng_state_sha256": "d75f28768ec8e98a7d653ccff5c38074219376b86f01646df9c578ff5406fd40",
+    "gzip_hash_matches": 100,
+    "initial_rng_state_sha256": "1be5ab691be4bf5e61b83a8d3837f84057e1038f76a07b352c5d9291462f2c0c",
+    "replicates": 99999,
+    "status": "PASS"
+  },
+  "production_mapping_or_inference_code_imported": false,
+  "provenance": {
+    "array_engine_sha256": "2c57923dbe1201bc472f71395e35f84442a943ddb6ba1ac5fa8d7db3825dc37a",
+    "array_git_commit": "63dd2d751a055b860226754158fab220e07663ba",
+    "bit_generator": "PCG64DXSM",
+    "frozen_input_engine_git_commit": "9053dd520e73783d1b1c5480157dd5d9d8306ea8",
+    "permutations": 99999,
+    "placement_regeneration": {
+      "batch_count": 100,
+      "canonical_hash_matches": 100,
+      "final_rng_state_sha256": "d75f28768ec8e98a7d653ccff5c38074219376b86f01646df9c578ff5406fd40",
+      "gzip_hash_matches": 100,
+      "initial_rng_state_sha256": "1be5ab691be4bf5e61b83a8d3837f84057e1038f76a07b352c5d9291462f2c0c",
+      "replicates": 99999,
+      "status": "PASS"
+    },
+    "release_engine_sha256": "ecf1c26205d6f28d2f87aa5939b7eadec149e4e26db50ca8f27d30f0168eec82",
+    "release_git_commit": "689a51db0cc4179fdca664a7c9a5e10734792303",
+    "seed": 2026071301,
+    "slurm_jobs": {
+      "finalizer": {
+        "exit_code": "0:0",
+        "job_id": "1761734",
+        "state": "COMPLETED"
+      },
+      "initial": {
+        "exit_code": "0:0",
+        "job_id": "1761733",
+        "state": "COMPLETED"
+      },
+      "targeted": {
+        "exit_code": "0:0",
+        "job_id": "1761735",
+        "state": "COMPLETED"
+      }
+    },
+    "spawn_key": [
+      0
+    ],
+    "transient_inventory_rows": 200,
+    "transient_payloads_committed": false
+  },
+  "qualified_pass": false,
+  "raw_physical_loci": 61312,
+  "representative_null_recounts": {
+    "DDX11L": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "0": 73049,
+            "1": 24252,
+            "2": 2562,
+            "3": 132,
+            "4": 4
+          },
+          "null_max": 4,
+          "null_mean": 0.2978829788297883,
+          "null_median": 0.0,
+          "null_q025": 0.0,
+          "null_q975": 2.0,
+          "observed_physical_copy_burden": 10,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 18.680867613652563
+        },
+        "overlap": {
+          "histogram": {
+            "0": 70886,
+            "1": 25753,
+            "2": 3163,
+            "3": 190,
+            "4": 7
+          },
+          "null_max": 4,
+          "null_mean": 0.32677326773267734,
+          "null_median": 0.0,
+          "null_q025": 0.0,
+          "null_q975": 2.0,
+          "observed_physical_copy_burden": 10,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 17.766697329786545
+        }
+      },
+      "key": [
+        "GO_MF",
+        "direct",
+        "GO:0003678"
+      ],
+      "source_count": 44
+    },
+    "DUX4_DUX4L": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "0": 36303,
+            "1": 7948,
+            "10": 1164,
+            "11": 1067,
+            "12": 1150,
+            "13": 1183,
+            "14": 1195,
+            "15": 1206,
+            "16": 1150,
+            "17": 1197,
+            "18": 1209,
+            "19": 1150,
+            "2": 1054,
+            "20": 1169,
+            "21": 1244,
+            "22": 1167,
+            "23": 1259,
+            "24": 1697,
+            "25": 1380,
+            "26": 1263,
+            "27": 1256,
+            "28": 1199,
+            "29": 1298,
+            "3": 1083,
+            "30": 1186,
+            "31": 1239,
+            "32": 5230,
+            "33": 3209,
+            "34": 3882,
+            "35": 290,
+            "36": 300,
+            "37": 329,
+            "38": 326,
+            "39": 321,
+            "4": 1067,
+            "40": 309,
+            "41": 276,
+            "42": 271,
+            "43": 275,
+            "44": 279,
+            "45": 262,
+            "46": 258,
+            "47": 226,
+            "48": 248,
+            "49": 226,
+            "5": 1155,
+            "50": 237,
+            "51": 245,
+            "52": 209,
+            "53": 212,
+            "54": 184,
+            "55": 191,
+            "56": 186,
+            "57": 243,
+            "58": 227,
+            "59": 165,
+            "6": 1092,
+            "60": 165,
+            "61": 146,
+            "62": 127,
+            "63": 154,
+            "64": 138,
+            "65": 284,
+            "66": 466,
+            "7": 1074,
+            "8": 1074,
+            "9": 1025
+          },
+          "null_max": 66,
+          "null_mean": 14.044820448204481,
+          "null_median": 7.0,
+          "null_q025": 0.0,
+          "null_q975": 54.0,
+          "observed_physical_copy_burden": 65,
+          "raw_exceedances": 750,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 3.1472703416809606
+        },
+        "overlap": {
+          "histogram": {
+            "0": 36112,
+            "1": 7945,
+            "10": 1167,
+            "11": 1058,
+            "12": 1109,
+            "13": 1172,
+            "14": 1182,
+            "15": 1220,
+            "16": 1188,
+            "17": 1167,
+            "18": 1199,
+            "19": 1165,
+            "2": 1007,
+            "20": 1144,
+            "21": 1233,
+            "22": 1240,
+            "23": 1228,
+            "24": 1670,
+            "25": 1340,
+            "26": 1259,
+            "27": 1276,
+            "28": 1234,
+            "29": 1252,
+            "3": 1090,
+            "30": 1230,
+            "31": 1212,
+            "32": 5307,
+            "33": 2295,
+            "34": 4910,
+            "35": 295,
+            "36": 308,
+            "37": 305,
+            "38": 325,
+            "39": 331,
+            "4": 1087,
+            "40": 303,
+            "41": 291,
+            "42": 293,
+            "43": 256,
+            "44": 290,
+            "45": 256,
+            "46": 245,
+            "47": 265,
+            "48": 222,
+            "49": 243,
+            "5": 1134,
+            "50": 235,
+            "51": 237,
+            "52": 228,
+            "53": 214,
+            "54": 195,
+            "55": 186,
+            "56": 186,
+            "57": 224,
+            "58": 252,
+            "59": 169,
+            "6": 1111,
+            "60": 169,
+            "61": 150,
+            "62": 138,
+            "63": 139,
+            "64": 141,
+            "65": 203,
+            "66": 592,
+            "7": 1041,
+            "8": 1066,
+            "9": 1063
+          },
+          "null_max": 66,
+          "null_mean": 14.168171681716817,
+          "null_median": 7.0,
+          "null_q025": 0.0,
+          "null_q975": 55.0,
+          "observed_physical_copy_burden": 65,
+          "raw_exceedances": 795,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 3.1230728593932167
+        }
+      },
+      "key": [
+        "Reactome",
+        "direct",
+        "R-HSA-9819196"
+      ],
+      "source_count": 17
+    },
+    "OR4F": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "0": 2646,
+            "1": 11807,
+            "10": 45,
+            "11": 5,
+            "2": 21884,
+            "3": 22739,
+            "4": 19404,
+            "5": 12124,
+            "6": 5971,
+            "7": 2455,
+            "8": 733,
+            "9": 186
+          },
+          "null_max": 11,
+          "null_mean": 3.2308523085230854,
+          "null_median": 3.0,
+          "null_q025": 0.0,
+          "null_q975": 7.0,
+          "observed_physical_copy_burden": 7,
+          "raw_exceedances": 3424,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 2.2684140524560745
+        },
+        "overlap": {
+          "histogram": {
+            "0": 1572,
+            "1": 8986,
+            "10": 63,
+            "11": 11,
+            "12": 2,
+            "2": 19379,
+            "3": 22593,
+            "4": 20747,
+            "5": 14204,
+            "6": 7631,
+            "7": 3336,
+            "8": 1150,
+            "9": 325
+          },
+          "null_max": 12,
+          "null_mean": 3.5157251572515724,
+          "null_median": 3.0,
+          "null_q025": 1.0,
+          "null_q975": 7.0,
+          "observed_physical_copy_burden": 7,
+          "raw_exceedances": 4887,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 2.057004282259664
+        }
+      },
+      "key": [
+        "Reactome",
+        "direct",
+        "R-HSA-9752946"
+      ],
+      "source_count": 384
+    },
+    "TUBB8": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "10": 5490,
+            "11": 8440,
+            "12": 11357,
+            "13": 13039,
+            "14": 13559,
+            "15": 12842,
+            "16": 10457,
+            "17": 7912,
+            "18": 5234,
+            "19": 3130,
+            "20": 1668,
+            "21": 824,
+            "22": 361,
+            "23": 121,
+            "24": 44,
+            "25": 15,
+            "26": 7,
+            "27": 1,
+            "4": 11,
+            "5": 58,
+            "6": 157,
+            "7": 639,
+            "8": 1545,
+            "9": 3088
+          },
+          "null_max": 27,
+          "null_mean": 14.00429004290043,
+          "null_median": 14.0,
+          "null_q025": 9.0,
+          "null_q975": 20.0,
+          "observed_physical_copy_burden": 28,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 4.854894503555104
+        },
+        "overlap": {
+          "histogram": {
+            "10": 1423,
+            "11": 2818,
+            "12": 4792,
+            "13": 7403,
+            "14": 9777,
+            "15": 12017,
+            "16": 12948,
+            "17": 12578,
+            "18": 11116,
+            "19": 8754,
+            "20": 6468,
+            "21": 4080,
+            "22": 2508,
+            "23": 1288,
+            "24": 614,
+            "25": 282,
+            "26": 99,
+            "27": 46,
+            "28": 11,
+            "30": 1,
+            "5": 1,
+            "6": 15,
+            "7": 67,
+            "8": 270,
+            "9": 623
+          },
+          "null_max": 30,
+          "null_mean": 16.37639376393764,
+          "null_median": 16.0,
+          "null_q025": 11.0,
+          "null_q975": 22.0,
+          "observed_physical_copy_burden": 29,
+          "raw_exceedances": 1,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 4.137048317085748
+        }
+      },
+      "key": [
+        "GO_BP",
+        "ancestor",
+        "GO:0006996"
+      ],
+      "source_count": 2923
+    },
+    "WASH": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "0": 59289,
+            "1": 32715,
+            "2": 7073,
+            "3": 859,
+            "4": 60,
+            "5": 3
+          },
+          "null_max": 5,
+          "null_mean": 0.4969349693496935,
+          "null_median": 0.0,
+          "null_q025": 0.0,
+          "null_q975": 2.0,
+          "observed_physical_copy_burden": 10,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 14.13957585164386
+        },
+        "overlap": {
+          "histogram": {
+            "0": 50666,
+            "1": 36533,
+            "2": 10741,
+            "3": 1856,
+            "4": 197,
+            "5": 6
+          },
+          "null_max": 5,
+          "null_mean": 0.6440164401644016,
+          "null_median": 0.0,
+          "null_q025": 0.0,
+          "null_q975": 2.0,
+          "observed_physical_copy_burden": 10,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 12.27263878845963
+        }
+      },
+      "key": [
+        "GO_CC",
+        "direct",
+        "GO:0071203"
+      ],
+      "source_count": 13
+    },
+    "leading_exocyst": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "0": 59289,
+            "1": 32715,
+            "2": 7073,
+            "3": 859,
+            "4": 60,
+            "5": 3
+          },
+          "null_max": 5,
+          "null_mean": 0.4969349693496935,
+          "null_median": 0.0,
+          "null_q025": 0.0,
+          "null_q975": 2.0,
+          "observed_physical_copy_burden": 10,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 14.13957585164386
+        },
+        "overlap": {
+          "histogram": {
+            "0": 50666,
+            "1": 36533,
+            "2": 10741,
+            "3": 1856,
+            "4": 197,
+            "5": 6
+          },
+          "null_max": 5,
+          "null_mean": 0.6440164401644016,
+          "null_median": 0.0,
+          "null_q025": 0.0,
+          "null_q975": 2.0,
+          "observed_physical_copy_burden": 10,
+          "raw_exceedances": 0,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": 12.27263878845963
+        }
+      },
+      "key": [
+        "GO_CC",
+        "direct",
+        "GO:0000145"
+      ],
+      "source_count": 17
+    },
+    "negative_metal_binding": {
+      "assignments": {
+        "midpoint": {
+          "histogram": {
+            "0": 1,
+            "1": 15,
+            "10": 14632,
+            "11": 11107,
+            "12": 7487,
+            "13": 4242,
+            "14": 2238,
+            "15": 1179,
+            "16": 596,
+            "17": 252,
+            "18": 102,
+            "19": 34,
+            "2": 111,
+            "20": 7,
+            "21": 2,
+            "3": 474,
+            "4": 1723,
+            "5": 4158,
+            "6": 8070,
+            "7": 12211,
+            "8": 15305,
+            "9": 16053
+          },
+          "null_max": 21,
+          "null_mean": 9.091520915209152,
+          "null_median": 9.0,
+          "null_q025": 5.0,
+          "null_q975": 14.0,
+          "observed_physical_copy_burden": 1,
+          "raw_exceedances": 99998,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": -3.249605554317145
+        },
+        "overlap": {
+          "histogram": {
+            "10": 12399,
+            "11": 14967,
+            "12": 15408,
+            "13": 13905,
+            "14": 10619,
+            "15": 6903,
+            "16": 4209,
+            "17": 2283,
+            "18": 1173,
+            "19": 534,
+            "20": 250,
+            "21": 117,
+            "22": 37,
+            "23": 4,
+            "24": 3,
+            "25": 1,
+            "3": 7,
+            "4": 56,
+            "5": 236,
+            "6": 815,
+            "7": 2367,
+            "8": 5004,
+            "9": 8702
+          },
+          "null_max": 25,
+          "null_mean": 11.93619936199362,
+          "null_median": 12.0,
+          "null_q025": 7.0,
+          "null_q975": 17.0,
+          "observed_physical_copy_burden": 1,
+          "raw_exceedances": 99999,
+          "raw_permutations": 99999,
+          "status": "PASS",
+          "z_observed": -4.229789593395483
+        }
+      },
+      "key": [
+        "GO_MF",
+        "ancestor",
+        "GO:0046872"
+      ],
+      "source_count": 1880
+    }
+  },
+  "schema_version": "chm13-physical-copy-ontology-v6.0-independent-validation-v1",
+  "status": "PASS",
+  "strict_pass": true,
+  "term_result_rows": 62470,
+  "validated_utc": "2026-07-16T14:31:24.492127+00:00"
+}
