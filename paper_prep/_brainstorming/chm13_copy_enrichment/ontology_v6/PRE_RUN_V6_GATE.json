@@ -1,0 +1,972 @@
+{
+  "artifacts": {
+    "audited_release_digests": "PRE_RUN_V6_AUDITED_RELEASE.sha256.tsv",
+    "check_evidence": "PRE_RUN_V6_GATE_EVIDENCE.tsv",
+    "coverage_by_route_and_biotype": "PRE_RUN_V6_MAPPING_COVERAGE.tsv",
+    "report": "PRE_RUN_V6_GATE.md",
+    "validation": "PRE_RUN_V6_GATE.json"
+  },
+  "audited_release_manifest_sha256": "60d9cf48ebbfe50d7b938302a8d24317c716f1a6fa755bd397afc21cc38bcbf3",
+  "authorization_condition": "PASS for the exact audited release digests only",
+  "checks": [
+    {
+      "check": "input_manifest_roles",
+      "evidence": "ontology_v6/INPUT_MANIFEST.tsv",
+      "expected": [
+        "go_basic",
+        "hgnc",
+        "hgnc_withdrawn",
+        "ncbi_gene2go",
+        "ncbi_gene_group",
+        "ncbi_gene_info",
+        "phr_bed",
+        "raw_chm13_gff",
+        "reactome_ncbi",
+        "reactome_pathways",
+        "reactome_relations",
+        "remediated_pilot_evidence",
+        "remediated_pilot_manifest",
+        "source_manifest"
+      ],
+      "observed": [
+        "go_basic",
+        "hgnc",
+        "hgnc_withdrawn",
+        "ncbi_gene2go",
+        "ncbi_gene_group",
+        "ncbi_gene_info",
+        "phr_bed",
+        "raw_chm13_gff",
+        "reactome_ncbi",
+        "reactome_pathways",
+        "reactome_relations",
+        "remediated_pilot_evidence",
+        "remediated_pilot_manifest",
+        "source_manifest"
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "phr_declared_post_source_freeze",
+      "evidence": "INPUT_MANIFEST.tsv: phr_bed",
+      "expected": "after_source_freeze_target_join",
+      "observed": "after_source_freeze_target_join",
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_go_basic",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/go-basic_2026-06-15.obo.gz",
+      "expected": "3cf228f87644713c651c567d7377dda217219eaa0a17b1f4a47cb9df5d892613",
+      "observed": "3cf228f87644713c651c567d7377dda217219eaa0a17b1f4a47cb9df5d892613",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_go_basic",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/go-basic_2026-06-15.obo.gz",
+      "expected": 4471158,
+      "observed": 4471158,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_hgnc",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/hgnc_complete_set_2026-07-10.tsv.gz",
+      "expected": "ab7513f056606920e096be5fca5f0894178c696bd99742a61726a24cb8fd075b",
+      "observed": "ab7513f056606920e096be5fca5f0894178c696bd99742a61726a24cb8fd075b",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_hgnc",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/hgnc_complete_set_2026-07-10.tsv.gz",
+      "expected": 4042131,
+      "observed": 4042131,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_hgnc_withdrawn",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/hgnc_withdrawn_2026-07-10.tsv.gz",
+      "expected": "efeb938b55197fd75bc68429ed85698d08bce8be076047f1cc7eccfd850b6c18",
+      "observed": "efeb938b55197fd75bc68429ed85698d08bce8be076047f1cc7eccfd850b6c18",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_hgnc_withdrawn",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/hgnc_withdrawn_2026-07-10.tsv.gz",
+      "expected": 58683,
+      "observed": 58683,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_ncbi_gene2go",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/ncbi_gene2go_human_2026-07-13.tsv.gz",
+      "expected": "0ee1f6a9ea42d983c744929acfbe994106036b13724feccae57fdec0ffa9368f",
+      "observed": "0ee1f6a9ea42d983c744929acfbe994106036b13724feccae57fdec0ffa9368f",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_ncbi_gene2go",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/ncbi_gene2go_human_2026-07-13.tsv.gz",
+      "expected": 5145709,
+      "observed": 5145709,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_ncbi_gene_group",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/ncbi_gene_group_2026-07-16.tsv.gz",
+      "expected": "bccef72f2cbf5df532ce73e335f2bd7ade3c3b3f38724516407adbb714d08811",
+      "observed": "bccef72f2cbf5df532ce73e335f2bd7ade3c3b3f38724516407adbb714d08811",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_ncbi_gene_group",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/ncbi_gene_group_2026-07-16.tsv.gz",
+      "expected": 296789,
+      "observed": 296789,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_ncbi_gene_info",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/ncbi_homo_sapiens_gene_info_2026-07-16.tsv.gz",
+      "expected": "1c0a432dc99ad051e67938774d276d525aae0a9426d70f384d54c9ecee6a7ba2",
+      "observed": "1c0a432dc99ad051e67938774d276d525aae0a9426d70f384d54c9ecee6a7ba2",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_ncbi_gene_info",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/ncbi_homo_sapiens_gene_info_2026-07-16.tsv.gz",
+      "expected": 5169906,
+      "observed": 5169906,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_raw_chm13_gff",
+      "evidence": "data/chm13v2.0_RefSeq_Liftoff_v5.2.gff3.gz",
+      "expected": "a1c8e61cb4e60a3af3a18599b7d5551a72a1b0317bdffad42ae7fa36e73da968",
+      "observed": "a1c8e61cb4e60a3af3a18599b7d5551a72a1b0317bdffad42ae7fa36e73da968",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_raw_chm13_gff",
+      "evidence": "data/chm13v2.0_RefSeq_Liftoff_v5.2.gff3.gz",
+      "expected": 56368414,
+      "observed": 56368414,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_reactome_ncbi",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/reactome_v96_ncbi_human_all_levels.tsv.gz",
+      "expected": "bf83cc620df5ab6e1d23507f352dc9266afdd8523981779d7f836ffeb8058e81",
+      "observed": "bf83cc620df5ab6e1d23507f352dc9266afdd8523981779d7f836ffeb8058e81",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_reactome_ncbi",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/reactome_v96_ncbi_human_all_levels.tsv.gz",
+      "expected": 1831028,
+      "observed": 1831028,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_reactome_pathways",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/reactome_v96_human_pathways.tsv.gz",
+      "expected": "ca4cb536a92c64523f91c84a34759af839adba02908f2598ddbe2303d4337810",
+      "observed": "ca4cb536a92c64523f91c84a34759af839adba02908f2598ddbe2303d4337810",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_reactome_pathways",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/reactome_v96_human_pathways.tsv.gz",
+      "expected": 49301,
+      "observed": 49301,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_reactome_relations",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/reactome_v96_human_pathway_relations.tsv.gz",
+      "expected": "134c0f79d2c3ee5ab3a0ebaf34f267112da24af741f10927ca14b5dd16908af9",
+      "observed": "134c0f79d2c3ee5ab3a0ebaf34f267112da24af741f10927ca14b5dd16908af9",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_reactome_relations",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/reactome_v96_human_pathway_relations.tsv.gz",
+      "expected": 14237,
+      "observed": 14237,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_remediated_pilot_evidence",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/ontology_v5/real_source_pilot/REAL_SOURCE_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": "1e73435aa82d852e315b09f782502245fef7a3a9f51fc1ce100ac30ec20980a0",
+      "observed": "1e73435aa82d852e315b09f782502245fef7a3a9f51fc1ce100ac30ec20980a0",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_remediated_pilot_evidence",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/ontology_v5/real_source_pilot/REAL_SOURCE_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": 11364,
+      "observed": 11364,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_remediated_pilot_manifest",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/ontology_v5/real_source_pilot/REAL_SOURCE_PILOT_OUTPUTS.sha256.tsv",
+      "expected": "8e96d87a57877e554a09563406f00f45afcf799bf7be6229caaaaa1f6105cdf4",
+      "observed": "8e96d87a57877e554a09563406f00f45afcf799bf7be6229caaaaa1f6105cdf4",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_remediated_pilot_manifest",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/ontology_v5/real_source_pilot/REAL_SOURCE_PILOT_OUTPUTS.sha256.tsv",
+      "expected": 1241,
+      "observed": 1241,
+      "status": "PASS"
+    },
+    {
+      "check": "input_sha256_source_manifest",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/SOURCE_MANIFEST.tsv",
+      "expected": "11e430822b03b049e4bd31f52993290e39447ecc188d4ea6882a4ccbe08cd869",
+      "observed": "11e430822b03b049e4bd31f52993290e39447ecc188d4ea6882a4ccbe08cd869",
+      "status": "PASS"
+    },
+    {
+      "check": "input_bytes_source_manifest",
+      "evidence": "paper_prep/_brainstorming/chm13_copy_enrichment/sources/SOURCE_MANIFEST.tsv",
+      "expected": 5748,
+      "observed": 5748,
+      "status": "PASS"
+    },
+    {
+      "check": "raw_physical_loci",
+      "evidence": "raw CHM13v2.0 GFF3 gene features",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "raw_unique_copy_ids",
+      "evidence": "coordinate+strand+GFF feature identity",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "coordinate_coincident_extra_rows_retained",
+      "evidence": "gff_id keeps coordinate-coincident gene records distinct",
+      "expected": 12,
+      "observed": 12,
+      "status": "PASS"
+    },
+    {
+      "check": "independent_own_annotation_identity_count",
+      "evidence": "raw stable identifiers plus frozen exact registry bridges",
+      "expected": 60430,
+      "observed": 60430,
+      "status": "PASS"
+    },
+    {
+      "check": "assignment_rows",
+      "evidence": "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "assignment_unique_copy_ids",
+      "evidence": "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "evidence_rows",
+      "evidence": "COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "evidence_unique_copy_ids",
+      "evidence": "COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "assignment_raw_copy_bijection",
+      "evidence": "raw GFF3 versus source assignments; 61,312 exact copy IDs",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "evidence_raw_copy_bijection",
+      "evidence": "raw GFF3 versus copy-source evidence; 61,312 exact copy IDs",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "all_assignment_hashes_reconstructed",
+      "evidence": "61,312 assignment_record_sha256 values",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "all_copy_evidence_hashes_reconstructed",
+      "evidence": "61,312 evidence_record_sha256 values",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "summed_physical_copy_cn",
+      "evidence": "GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "remediated_pilot_rows_reconciled",
+      "evidence": "REAL_SOURCE_COPY_SOURCE_EVIDENCE.tsv.gz; 168 exact copy IDs",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "remediated_pilot_row_count",
+      "evidence": "REAL_SOURCE_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "expected": 168,
+      "observed": 168,
+      "status": "PASS"
+    },
+    {
+      "check": "all_nonself_sources_have_exact_directed_evidence",
+      "evidence": "raw human-human Related functional gene pairs",
+      "expected": 11561,
+      "observed": 11561,
+      "status": "PASS"
+    },
+    {
+      "check": "ambiguous_rows_emit_no_source",
+      "evidence": "independent source adjudication",
+      "expected": 45,
+      "observed": 45,
+      "status": "PASS"
+    },
+    {
+      "check": "termless_or_unsupported_rows_emit_no_source",
+      "evidence": "term-bearing source set reconstructed from raw ontology assertions",
+      "expected": 28407,
+      "observed": 28407,
+      "status": "PASS"
+    },
+    {
+      "check": "name_family_alias_sequence_routes_admitted",
+      "evidence": "only exact self or exact directed relation is admissible",
+      "expected": 0,
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_file_count",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": 3,
+      "observed": 3,
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_stage_GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "evidence": "no PHR-derived field is permitted",
+      "expected": "source_assignment_before_target",
+      "observed": "source_assignment_before_target",
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_sha256_GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": "1c026142fdc608399486e476c9218644bccde96e5bc830133d117cc53127e943",
+      "observed": "1c026142fdc608399486e476c9218644bccde96e5bc830133d117cc53127e943",
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_bytes_GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": 9355912,
+      "observed": 9355912,
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_stage_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "evidence": "no PHR-derived field is permitted",
+      "expected": "source_assignment_before_target",
+      "observed": "source_assignment_before_target",
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_sha256_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": "36c82dd9f73f50b01113db2da691f6f3ccab4927952d3688d1c31b28150d319f",
+      "observed": "36c82dd9f73f50b01113db2da691f6f3ccab4927952d3688d1c31b28150d319f",
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_bytes_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": 4339464,
+      "observed": 4339464,
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_stage_SOURCE_TERMS.tsv.gz",
+      "evidence": "no PHR-derived field is permitted",
+      "expected": "source_assignment_before_target",
+      "observed": "source_assignment_before_target",
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_sha256_SOURCE_TERMS.tsv.gz",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": "5f980e84e867114d20e27d4aa298ea623b555de25be7a839c3ace7cba630d4b9",
+      "observed": "5f980e84e867114d20e27d4aa298ea623b555de25be7a839c3ace7cba630d4b9",
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_bytes_SOURCE_TERMS.tsv.gz",
+      "evidence": "SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "expected": 27990797,
+      "observed": 27990797,
+      "status": "PASS"
+    },
+    {
+      "check": "source_freeze_composite_sha256",
+      "evidence": "three source-only frozen artifacts",
+      "expected": "fd23bc49f02a6e32dfffbbdca53195371283c24b32b8db7c51cdefee9cbd9015",
+      "observed": "fd23bc49f02a6e32dfffbbdca53195371283c24b32b8db7c51cdefee9cbd9015",
+      "status": "PASS"
+    },
+    {
+      "check": "phr_bed_sha256_after_source_validation",
+      "evidence": "PHR opened after source adjudication",
+      "expected": "03cc73f049e9625d131137d8ab7fbc5f52833c2aade52b9b6635d5a874b55cb9",
+      "observed": "03cc73f049e9625d131137d8ab7fbc5f52833c2aade52b9b6635d5a874b55cb9",
+      "status": "PASS"
+    },
+    {
+      "check": "phr_interval_rows_reconciled",
+      "evidence": "all non-comment BED rows",
+      "expected": 37,
+      "observed": 37,
+      "status": "PASS"
+    },
+    {
+      "check": "target_map_rows",
+      "evidence": "GENOMEWIDE_SOURCE_MAP.tsv.gz",
+      "expected": 61312,
+      "observed": 61312,
+      "status": "PASS"
+    },
+    {
+      "check": "all_phr_midpoint_memberships_reconstructed",
+      "evidence": "raw GFF3 midpoint versus raw PHR BED",
+      "expected": 402,
+      "observed": 402,
+      "status": "PASS"
+    },
+    {
+      "check": "all_phr_overlap_memberships_reconstructed",
+      "evidence": "raw GFF3 interval overlap versus raw PHR BED",
+      "expected": 412,
+      "observed": 412,
+      "status": "PASS"
+    },
+    {
+      "check": "source_terms_reconstructed",
+      "evidence": "raw GO/gene2go and Reactome snapshots",
+      "expected": 1686727,
+      "observed": 1686727,
+      "status": "PASS"
+    },
+    {
+      "check": "term_burden_rows_reconstructed",
+      "evidence": "one copy-weighted burden per source term",
+      "expected": 1686727,
+      "observed": 1686727,
+      "status": "PASS"
+    },
+    {
+      "check": "repeated_source_burdens_use_copy_counts",
+      "evidence": "burden equals physical assignment count, never unique source count",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "physical_ontology_contributors_reconstructed",
+      "evidence": "EXACT_CONTRIBUTORS.tsv.gz",
+      "expected": 31966,
+      "observed": 31966,
+      "status": "PASS"
+    },
+    {
+      "check": "physical_copy_term_edges_reconstructed",
+      "evidence": "one edge per eligible physical copy/source term",
+      "expected": 2929709,
+      "observed": 2929709,
+      "status": "PASS"
+    },
+    {
+      "check": "physical_copy_term_edge_cn",
+      "evidence": "no repeated source contributor collapsed",
+      "expected": 2929709,
+      "observed": 2929709,
+      "status": "PASS"
+    },
+    {
+      "check": "named_cohorts_equal_remediated_pilot_universe",
+      "evidence": "five raw-name cohorts and pilot contain the same 168 copy IDs",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "named_DUX4_DUX4L_reviewed_counts",
+      "evidence": "raw GFF/PHR plus remediated copy-source evidence",
+      "expected": [
+        107,
+        68,
+        65
+      ],
+      "observed": [
+        107,
+        68,
+        65
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "named_DDX11L_reviewed_counts",
+      "evidence": "raw GFF/PHR plus remediated copy-source evidence",
+      "expected": [
+        12,
+        10,
+        10
+      ],
+      "observed": [
+        12,
+        10,
+        10
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "named_TUBB8_reviewed_counts",
+      "evidence": "raw GFF/PHR plus remediated copy-source evidence",
+      "expected": [
+        16,
+        7,
+        2
+      ],
+      "observed": [
+        16,
+        7,
+        2
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "named_OR4F_reviewed_counts",
+      "evidence": "raw GFF/PHR plus remediated copy-source evidence",
+      "expected": [
+        15,
+        11,
+        4
+      ],
+      "observed": [
+        15,
+        11,
+        4
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "named_WASH_reviewed_counts",
+      "evidence": "raw GFF/PHR plus remediated copy-source evidence",
+      "expected": [
+        18,
+        9,
+        9
+      ],
+      "observed": [
+        18,
+        9,
+        9
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "named_audit_row_count",
+      "evidence": "NAMED_COHORT_AUDIT.tsv",
+      "expected": 5,
+      "observed": 5,
+      "status": "PASS"
+    },
+    {
+      "check": "DUX4_each_direct_and_ancestor_term_burden",
+      "evidence": "65 coordinate-distinct reviewed PHR contributors",
+      "expected": [
+        65
+      ],
+      "observed": [
+        65
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "DDX11_each_direct_and_ancestor_term_burden",
+      "evidence": "10 coordinate-distinct reviewed PHR contributors",
+      "expected": [
+        10
+      ],
+      "observed": [
+        10
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "WASHC1_each_direct_and_ancestor_term_burden",
+      "evidence": "9 coordinate-distinct reviewed PHR contributors",
+      "expected": [
+        9
+      ],
+      "observed": [
+        9
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "named_term_burden_rows_reconstructed",
+      "evidence": "NAMED_COHORT_TERM_BURDENS.tsv.gz",
+      "expected": 1391,
+      "observed": 1391,
+      "status": "PASS"
+    },
+    {
+      "check": "mapping_coverage_row_count",
+      "evidence": "genome, PHR midpoint, PHR any-overlap",
+      "expected": 3,
+      "observed": 3,
+      "status": "PASS"
+    },
+    {
+      "check": "total_and_phr_route_biotype_coverage_reconstructed",
+      "evidence": "PRE_RUN_V6_MAPPING_COVERAGE.tsv",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "36c82dd9f73f50b01113db2da691f6f3ccab4927952d3688d1c31b28150d319f",
+      "observed": "36c82dd9f73f50b01113db2da691f6f3ccab4927952d3688d1c31b28150d319f",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_COPY_SOURCE_EVIDENCE.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 4339464,
+      "observed": 4339464,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_EXACT_CONTRIBUTORS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "2881cd9f26643239c1792347f557ce74ab9a58c04dfc4cb0f1753c61158567e0",
+      "observed": "2881cd9f26643239c1792347f557ce74ab9a58c04dfc4cb0f1753c61158567e0",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_EXACT_CONTRIBUTORS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 1366591,
+      "observed": 1366591,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "1c026142fdc608399486e476c9218644bccde96e5bc830133d117cc53127e943",
+      "observed": "1c026142fdc608399486e476c9218644bccde96e5bc830133d117cc53127e943",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_GENOMEWIDE_SOURCE_ASSIGNMENTS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 9355912,
+      "observed": 9355912,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_GENOMEWIDE_SOURCE_MAP.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "b4e5eac770afce707774c7f324cfb9cbd6eb4d59200ef82898e853fc454afffb",
+      "observed": "b4e5eac770afce707774c7f324cfb9cbd6eb4d59200ef82898e853fc454afffb",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_GENOMEWIDE_SOURCE_MAP.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 9360422,
+      "observed": 9360422,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_GENOMEWIDE_SOURCE_MAP_REPORT.md",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "5dfe803c9ac493773c8cf861399ebd83537053222bd8a4dad25010f5c450a456",
+      "observed": "5dfe803c9ac493773c8cf861399ebd83537053222bd8a4dad25010f5c450a456",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_GENOMEWIDE_SOURCE_MAP_REPORT.md",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 3576,
+      "observed": 3576,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_GENOMEWIDE_SOURCE_MAP_VALIDATION.json",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "a9aa865f8d977a4c36d71df3693ae0d5925b54c94d2fb69685a2acebb628793e",
+      "observed": "a9aa865f8d977a4c36d71df3693ae0d5925b54c94d2fb69685a2acebb628793e",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_GENOMEWIDE_SOURCE_MAP_VALIDATION.json",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 3461,
+      "observed": 3461,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_INPUT_MANIFEST.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "0ebc68c2f9a3969fbe985e9e2486da55c2b77a5f0a21bcc64d8d0059dbb22404",
+      "observed": "0ebc68c2f9a3969fbe985e9e2486da55c2b77a5f0a21bcc64d8d0059dbb22404",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_INPUT_MANIFEST.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 3832,
+      "observed": 3832,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_MAPPING_COVERAGE.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "8353f7561ba23ef09ecef9f7dc516514aaaba46db9d668f2eb3522b034a482c8",
+      "observed": "8353f7561ba23ef09ecef9f7dc516514aaaba46db9d668f2eb3522b034a482c8",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_MAPPING_COVERAGE.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 329,
+      "observed": 329,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_NAMED_COHORT_AUDIT.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "fb853f59dc75c084b45ed532cedef7b944126b74e5559b6c15a627c64b739759",
+      "observed": "fb853f59dc75c084b45ed532cedef7b944126b74e5559b6c15a627c64b739759",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_NAMED_COHORT_AUDIT.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 675,
+      "observed": 675,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_NAMED_COHORT_TERM_BURDENS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "698007fd0928c091e92ba680a17be0a1e3ba08492c2477fcd2dfabc5faef2aa0",
+      "observed": "698007fd0928c091e92ba680a17be0a1e3ba08492c2477fcd2dfabc5faef2aa0",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_NAMED_COHORT_TERM_BURDENS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 12295,
+      "observed": 12295,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_PHYSICAL_COPY_TERM_EDGES.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "b6c03aed0066f40575da96dc1aa047088a637a8efd26d2dd84e1460cc2d1b0c0",
+      "observed": "b6c03aed0066f40575da96dc1aa047088a637a8efd26d2dd84e1460cc2d1b0c0",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_PHYSICAL_COPY_TERM_EDGES.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 46221785,
+      "observed": 46221785,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "af2798daafcaf5f75a5a97ba4cb2c48316f4049bc662d610fe9c380140f33ee0",
+      "observed": "af2798daafcaf5f75a5a97ba4cb2c48316f4049bc662d610fe9c380140f33ee0",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_SOURCE_ASSIGNMENT_FREEZE.sha256.tsv",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 556,
+      "observed": 556,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_SOURCE_TERMS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "5f980e84e867114d20e27d4aa298ea623b555de25be7a839c3ace7cba630d4b9",
+      "observed": "5f980e84e867114d20e27d4aa298ea623b555de25be7a839c3ace7cba630d4b9",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_SOURCE_TERMS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 27990797,
+      "observed": 27990797,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_TERM_BURDENS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "4af1f1517326a9892ed99d935db9a6837f879f9ec98551c0e00a5a49d3a4633e",
+      "observed": "4af1f1517326a9892ed99d935db9a6837f879f9ec98551c0e00a5a49d3a4633e",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_TERM_BURDENS.tsv.gz",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 15719615,
+      "observed": 15719615,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_build_genomewide_source_map.py",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "5d15bfa43779f239e6ce13f3391135122270ad48c87141cf611248eb787c3e06",
+      "observed": "5d15bfa43779f239e6ce13f3391135122270ad48c87141cf611248eb787c3e06",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_build_genomewide_source_map.py",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 61604,
+      "observed": 61604,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_check_genomewide_source_map.py",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "2819fcda316922e150a237f469de5e485a753501348a5163c88419928c1aab2d",
+      "observed": "2819fcda316922e150a237f469de5e485a753501348a5163c88419928c1aab2d",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_check_genomewide_source_map.py",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 17911,
+      "observed": 17911,
+      "status": "PASS"
+    },
+    {
+      "check": "release_sha256_test_genomewide_source_map.py",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": "57d471fd876b407929196883d24e2c265801217cb8b5d651f731fe5fe7676ecb",
+      "observed": "57d471fd876b407929196883d24e2c265801217cb8b5d651f731fe5fe7676ecb",
+      "status": "PASS"
+    },
+    {
+      "check": "release_bytes_test_genomewide_source_map.py",
+      "evidence": "OUTPUT_MANIFEST.sha256.tsv",
+      "expected": 5207,
+      "observed": 5207,
+      "status": "PASS"
+    },
+    {
+      "check": "production_builder_imported",
+      "evidence": "standalone parser and reconstruction; no production module import",
+      "expected": false,
+      "observed": false,
+      "status": "PASS"
+    },
+    {
+      "check": "enrichment_run",
+      "evidence": "gate writes mapping evidence only",
+      "expected": false,
+      "observed": false,
+      "status": "PASS"
+    }
+  ],
+  "coordinate_coincident_extra_rows_retained": 12,
+  "direct_physical_copy_term_edges": 626048,
+  "enrichment_authorized": true,
+  "enrichment_run": false,
+  "exact_directed_nonself_copies": 11561,
+  "gate_version": "6.0.0-independent-pre-inference-gate",
+  "named_cohort_term_burden_rows": 1391,
+  "named_cohorts": {
+    "DDX11L": {
+      "genome_physical_copies": 12,
+      "phr_ontology_contributors": 10,
+      "phr_physical_copies": 10
+    },
+    "DUX4_DUX4L": {
+      "genome_physical_copies": 107,
+      "phr_ontology_contributors": 65,
+      "phr_physical_copies": 68
+    },
+    "OR4F": {
+      "genome_physical_copies": 15,
+      "phr_ontology_contributors": 4,
+      "phr_physical_copies": 11
+    },
+    "TUBB8": {
+      "genome_physical_copies": 16,
+      "phr_ontology_contributors": 2,
+      "phr_physical_copies": 7
+    },
+    "WASH": {
+      "genome_physical_copies": 18,
+      "phr_ontology_contributors": 9,
+      "phr_physical_copies": 9
+    }
+  },
+  "ontology_eligible_copies": 31966,
+  "ontology_ineligible_copies": 29346,
+  "own_annotation_identity_copies": 60430,
+  "phr_any_overlap_copies": 412,
+  "phr_bed_sha256": "03cc73f049e9625d131137d8ab7fbc5f52833c2aade52b9b6635d5a874b55cb9",
+  "phr_interval_rows": 37,
+  "phr_midpoint_copies": 402,
+  "phr_midpoint_copy_term_edges": 16763,
+  "physical_copy_cn": 61312,
+  "physical_copy_term_edges": 2929709,
+  "physical_loci": 61312,
+  "production_builder_imported": false,
+  "scope": "independent_copy_to_ontology_reconstruction_no_enrichment",
+  "source_assignment_freeze_sha256": "fd23bc49f02a6e32dfffbbdca53195371283c24b32b8db7c51cdefee9cbd9015",
+  "source_terms": 1686727,
+  "status": "PASS",
+  "term_burden_rows": 1686727
+}
