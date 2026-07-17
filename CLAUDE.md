@@ -173,6 +173,20 @@ are external inputs.
   `data/chm13.phrs.no_acro.bed`, `data/CHM13-HG002.sub-telo-phrs.bed` (all
   repo-root input data now lives under `data/`).
 
+## Large analysis artifacts
+
+Be conservative about committing generated analysis tables, especially
+`*.tsv`, `*.tsv.gz`, `*.csv`, large JSON ledgers, Slurm outputs and scratch
+release directories under `paper_prep/_brainstorming/`. These files are not
+forbidden, but they should be committed only when they are intentional
+paper-facing results, compact validation summaries, figure inputs, or curated
+reproducibility manifests. Intermediate, redundant, failed, exploratory or
+rerunnable enrichment outputs should stay on `/moosefs` and be referenced by
+path plus checksum in a small manifest/report instead of being added to Git.
+Before committing a generated table larger than a few megabytes, check its
+size and whether a smaller final table, script, or checksum manifest would
+serve the manuscript record better.
+
 ## Commit convention
 
 Commits originate from workgraph worker agents. Messages look like
