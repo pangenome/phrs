@@ -61,7 +61,7 @@ class CommunityAttributionTests(unittest.TestCase):
         prohibited = {"p_value", "p_exact_upper", "bh_q_within_collection", "by_q_within_collection",
                       "holm_p_global", "bonferroni_p_global", "primary_support", "sensitivity_support"}
         for name in ("FUNCTIONAL_CLASS_DEFINITIONS.tsv", "COMMUNITY_FUNCTIONAL_CLASSES.tsv",
-                     "FUNCTIONAL_CLASS_COMMUNITY_SUMMARY.tsv"):
+                     "FUNCTIONAL_CLASS_COMMUNITY_SUMMARY.tsv", "ARM_FUNCTIONAL_CLASS_PROJECTION.tsv"):
             rows = read_tsv(self.generated / name)
             self.assertTrue(rows)
             self.assertFalse(prohibited & set(rows[0]), name)
@@ -75,6 +75,25 @@ class CommunityAttributionTests(unittest.TestCase):
                        row["community_ontology_eligible_phr_copy_burden"] == "0"}
         self.assertEqual(zero_burden, {"C4", "C10", "C13"})
 
+    def test_arm_projection_contains_all_chromosome_arms(self) -> None:
+        rows = read_tsv(self.generated / "ARM_FUNCTIONAL_CLASS_PROJECTION.tsv")
+        self.assertGreater(len(rows), 48)
+        labels = {row["chrom_arm_label"] for row in rows}
+        expected = {f"{chrom}{arm}" for chrom in list(map(str, range(1, 23))) + ["X", "Y"] for arm in ("p", "q")}
+        self.assertEqual(labels, expected)
+        no_signal = {row["chrom_arm_label"] for row in rows if row["row_type"] == "NO_SIGNAL_ARM"}
+        self.assertEqual(no_signal, {"2p", "3p", "5p", "8q", "11q", "14q", "18q"})
+        c1_arms = {(row["chrom_arm_label"], row["community"], row["display_label"], row["class_unique_coordinate_copy_burden"])
+                   for row in rows if row["class_id"] == "DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE"}
+        self.assertEqual(c1_arms, {
+            ("4q", "C1", "DUX4 / ZGA / transcription / nuclear envelope / cell cycle", "33"),
+            ("10q", "C1", "DUX4 / ZGA / transcription / nuclear envelope / cell cycle", "32"),
+        })
+        report = (self.generated / "COMMUNITY_FUNCTIONAL_ATTRIBUTION_REPORT.md").read_text(encoding="utf-8")
+        self.assertIn("## Chromosome-arm flashcards", report)
+        self.assertIn("**4q** — C1", report)
+        self.assertIn("**2p** — NO_SIGNAL_ARM", report)
+
     def test_committed_release_is_reproducible(self) -> None:
         names = (
             "COMMUNITY_EXACT_TERM_ATTRIBUTION.tsv",
@@ -82,6 +101,7 @@ class CommunityAttributionTests(unittest.TestCase):
             "FUNCTIONAL_CLASS_DEFINITIONS.tsv",
             "COMMUNITY_FUNCTIONAL_CLASSES.tsv",
             "FUNCTIONAL_CLASS_COMMUNITY_SUMMARY.tsv",
+            "ARM_FUNCTIONAL_CLASS_PROJECTION.tsv",
             "COMMUNITY_FUNCTIONAL_ATTRIBUTION_REPORT.md",
             "COMMUNITY_FUNCTIONAL_ATTRIBUTION_VALIDATION.json",
             "OUTPUT_MANIFEST.sha256.tsv",

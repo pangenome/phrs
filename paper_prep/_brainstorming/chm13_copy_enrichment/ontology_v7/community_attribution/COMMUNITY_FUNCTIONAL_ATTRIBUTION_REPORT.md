@@ -23,6 +23,59 @@ C1 is the cleanest mapping: all DUX4-source contributors fall in C1, tying that 
 
 WBP1L-source copies robustly carry exact CXCL12/CXCR4 signaling rows. The supported exact term `protein localization to perinuclear region of cytoplasm` has a SEPTIN14 contributor signature, so it remains in the SEPTIN14 class rather than being conflated with WBP1L/CXCL12 signaling.
 
+## Chromosome-arm flashcards
+
+`ARM_FUNCTIONAL_CLASS_PROJECTION.tsv` gives the same view as a 48-arm table. Each note below links the chromosome arm back to its arm-level PHR community and lists the copy-number-bearing enriched display classes present on that arm. Arms outside the 41 signal-bearing arm set are explicit `NO_SIGNAL_ARM` rows.
+
+- **1p** — C11 (1p, 5q, 6q, 8p); 7 ontology-eligible PHR copies, 7 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P13, SEPTIN14P22); WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP7, WBP1LP9); 3 supported copies are outside the six display classes.
+- **1q** — C6 (1q, 13q, 17q, 19q, 21q, 22q); 1 ontology-eligible PHR copy, 1 supported copy: RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP25)
+- **2p** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **2q** — C12 (2q, 20p); 4 ontology-eligible PHR copies, 4 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P2, SEPTIN14P22); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP88); 1 supported copy is outside the six display classes.
+- **3p** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **3q** — C3 (3q, 7p, 9q, 11p, 16q, 19p); 10 ontology-eligible PHR copies, 10 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P22, SEPTIN14P3); WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP8, WBP1LP9); DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L8); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH8P); 4 supported copies are outside the six display classes.
+- **4p** — C13 (4p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **4q** — C1 (4q, 10q); 38 ontology-eligible PHR copies, 38 supported copies: DUX4 / ZGA / transcription / nuclear envelope / cell cycle (33 copies; sources DUX4; genes DUX4, DUX4L1, DUX4L2, +6 more); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP84); 4 supported copies are outside the six display classes.
+- **5p** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **5q** — C11 (1p, 5q, 6q, 8p); 8 ontology-eligible PHR copies, 8 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P22, SEPTIN14P5); WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP4, WBP1LP9); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP45); 3 supported copies are outside the six display classes.
+- **6p** — C5 (6p, 9p, 12p, 20q); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **6q** — C11 (1p, 5q, 6q, 8p); 2 ontology-eligible PHR copies, 2 supported copies: WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP12, WBP1LP9)
+- **7p** — C3 (3q, 7p, 9q, 11p, 16q, 19p); 4 ontology-eligible PHR copies, 4 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P18, SEPTIN14P22); 2 supported copies are outside the six display classes.
+- **7q** — C4 (7q, 12q); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **8p** — C11 (1p, 5q, 6q, 8p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **8q** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **9p** — C5 (6p, 9p, 12p, 20q); 2 ontology-eligible PHR copies, 2 supported copies: DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L5); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASHC1)
+- **9q** — C3 (3q, 7p, 9q, 11p, 16q, 19p); 6 ontology-eligible PHR copies, 6 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P13, SEPTIN14P22); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP47); 3 supported copies are outside the six display classes.
+- **10p** — C2 (10p, 18p); 1 ontology-eligible PHR copy, 1 supported copy: no predefined enriched display class; 1 supported copy is unclassified in this display scheme.
+- **10q** — C1 (4q, 10q); 37 ontology-eligible PHR copies, 37 supported copies: DUX4 / ZGA / transcription / nuclear envelope / cell cycle (32 copies; sources DUX4; genes DUX4L10, DUX4L11, DUX4L12, +9 more); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP60); 4 supported copies are outside the six display classes.
+- **11p** — C3 (3q, 7p, 9q, 11p, 16q, 19p); 11 ontology-eligible PHR copies, 10 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P11, SEPTIN14P22); WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP10, WBP1LP9); DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L17); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes LOC100996442); 4 supported copies are outside the six display classes.
+- **11q** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **12p** — C5 (6p, 9p, 12p, 20q); 2 ontology-eligible PHR copies, 2 supported copies: DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L8); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH8P)
+- **12q** — C4 (7q, 12q); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **13p** — C7 (13p, 14p, 15p, 21p, 22p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **13q** — C6 (1q, 13q, 17q, 19q, 21q, 22q); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **14p** — C7 (13p, 14p, 15p, 21p, 22p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **14q** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **15p** — C7 (13p, 14p, 15p, 21p, 22p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **15q** — C8 (15q); 4 ontology-eligible PHR copies, 4 supported copies: WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP5, WBP1LP9); DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L9); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH3P)
+- **16p** — C9 (16p); 3 ontology-eligible PHR copies, 3 supported copies: DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L10); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH4P); 1 supported copy is outside the six display classes.
+- **16q** — C3 (3q, 7p, 9q, 11p, 16q, 19p); 5 ontology-eligible PHR copies, 5 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P16, SEPTIN14P22); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP24); 2 supported copies are outside the six display classes.
+- **17p** — C10 (17p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **17q** — C6 (1q, 13q, 17q, 19q, 21q, 22q); 1 ontology-eligible PHR copy, 1 supported copy: RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP87)
+- **18p** — C2 (10p, 18p); 2 ontology-eligible PHR copies, 2 supported copies: no predefined enriched display class; 2 supported copies are unclassified in this display scheme.
+- **18q** — NO_SIGNAL_ARM; 0 ontology-eligible PHR copies, 0 supported copies: not in a signal-bearing PHR community; no enriched display class is projected here.
+- **19p** — C3 (3q, 7p, 9q, 11p, 16q, 19p); 10 ontology-eligible PHR copies, 10 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14; genes SEPTIN14P19, SEPTIN14P22); WBP1L / CXCL12 signaling (2 copies; sources WBP1L; genes WBP1LP11, WBP1LP9); DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L1); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH5P); 4 supported copies are outside the six display classes.
+- **19q** — C6 (1q, 13q, 17q, 19q, 21q, 22q); 1 ontology-eligible PHR copy, 1 supported copy: RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP79)
+- **20p** — C12 (2q, 20p); 4 ontology-eligible PHR copies, 4 supported copies: DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L9); RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP21); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH5P); 1 supported copy is outside the six display classes.
+- **20q** — C5 (6p, 9p, 12p, 20q); 6 ontology-eligible PHR copies, 6 supported copies: SEPTIN14 / septin / cytokinesis (2 copies; sources SEPTIN14, SEPTIN14P20; genes SEPTIN14P20, SEPTIN14P22); DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L5); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH7P); 2 supported copies are outside the six display classes.
+- **21p** — C7 (13p, 14p, 15p, 21p, 22p); 2 ontology-eligible PHR copies, 2 supported copies: no predefined enriched display class; 2 supported copies are unclassified in this display scheme.
+- **21q** — C6 (1q, 13q, 17q, 19q, 21q, 22q); 1 ontology-eligible PHR copy, 1 supported copy: RPL23A / ribosomal / nucleolar (1 copy; sources RPL23A; genes RPL23AP4)
+- **22p** — C7 (13p, 14p, 15p, 21p, 22p); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **22q** — C6 (1q, 13q, 17q, 19q, 21q, 22q); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **Xp** — C15 (Xp, Yp); 6 ontology-eligible PHR copies, 6 supported copies: no predefined enriched display class; 6 supported copies are unclassified in this display scheme.
+- **Xq** — C14 (Xq, Yq); 9 ontology-eligible PHR copies, 9 supported copies: DDX11 / helicase / chromosome (1 copy; sources DDX11; genes DDX11L16); WASH / endosomal actin / exocyst (1 copy; sources WASHC1; genes WASH6P); 7 supported copies are outside the six display classes.
+- **Yp** — C15 (Xp, Yp); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+- **Yq** — C14 (Xq, Yq); 0 ontology-eligible PHR copies, 0 supported copies: no ontology-supported copy in the six display classes.
+
 ## Community synopsis
 
 The repeated contributor-row burden below is supplied only as an audit of annotation incidence; because one copy can contribute to many related direct and ancestor terms, it is ontology-redundant. Unique-copy burden is the interpretable physical-copy summary.

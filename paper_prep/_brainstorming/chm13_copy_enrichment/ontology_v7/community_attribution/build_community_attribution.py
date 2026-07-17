@@ -165,6 +165,18 @@ CLASS_COMMUNITY_FIELDS = (
     "representative_exact_terms_json", "interpretation", "summary_role",
 )
 
+ARM_CLASS_FIELDS = (
+    "schema_version", "analysis_layer", "row_type", "chromosome", "arm", "chrom_arm", "chrom_arm_label",
+    "arm_sort_index", "community", "community_order", "community_arms",
+    "arm_ontology_eligible_phr_copy_burden", "arm_supported_term_contributor_row_burden",
+    "arm_unique_supported_coordinate_copy_burden", "class_id", "display_label", "class_rank_in_arm",
+    "dominant_functional_class_flag", "class_unique_coordinate_copy_burden",
+    "class_fraction_of_arm_eligible_burden", "class_fraction_of_all_class_copies",
+    "functional_source_ids_json", "functional_source_symbols_json", "gene_names_json", "copy_ids_json",
+    "representative_exact_terms_json", "unclassified_supported_coordinate_copy_burden",
+    "ontology_redundancy_warning", "summary_role",
+)
+
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
     opener = gzip.open if path.suffix == ".gz" else open
@@ -205,6 +217,31 @@ def representative_json(keys: Iterable[TermKey], terms: Mapping[TermKey, Mapping
             "term_name": row["term_name"],
         })
     return json.dumps(records, ensure_ascii=False, separators=(",", ":"))
+
+
+def chromosome_sort_value(chromosome: str) -> int:
+    label = chromosome[3:] if chromosome.startswith("chr") else chromosome
+    if label == "X":
+        return 23
+    if label == "Y":
+        return 24
+    return int(label)
+
+
+def chromosome_arms() -> list[str]:
+    chromosomes = [f"chr{index}" for index in range(1, 23)] + ["chrX", "chrY"]
+    return [f"{chromosome}_{arm}" for chromosome in chromosomes for arm in ("p", "q")]
+
+
+def arm_sort_index(chrom_arm: str) -> int:
+    chromosome, arm = chrom_arm.rsplit("_", 1)
+    return (chromosome_sort_value(chromosome) - 1) * 2 + (1 if arm == "p" else 2)
+
+
+def arm_label(chrom_arm: str) -> str:
+    chromosome, arm = chrom_arm.rsplit("_", 1)
+    label = chromosome[3:] if chromosome.startswith("chr") else chromosome
+    return f"{label}{arm}"
 
 
 def load_community_metadata() -> tuple[dict[str, str], dict[str, int], dict[str, list[str]]]:
@@ -518,14 +555,127 @@ def build_class_outputs(primary_terms: Mapping[TermKey, Mapping[str, str]], cont
                                                                     row.get("class_rank_in_community", 9999), row.get("class_id", ""))), summaries
 
 
+def build_arm_projection(primary_terms: Mapping[TermKey, Mapping[str, str]], contributors: Sequence[Mapping[str, str]],
+                         arm_to_community: Mapping[str, str], community_order: Mapping[str, int],
+                         community_arms: Mapping[str, list[str]]) -> list[dict[str, object]]:
+    primary_rows = [row for row in contributors if row["v7_midpoint_partition"] == "PHR" and term_key(row) in primary_terms]
+    all_midpoint = unique_copy_records(row for row in contributors if row["v7_midpoint_partition"] == "PHR")
+    supported_copies = unique_copy_records(primary_rows)
+    eligible_by_arm = Counter(row["_arm"] for row in all_midpoint.values())
+    supported_by_arm = Counter(row["_arm"] for row in supported_copies.values())
+    redundant_by_arm = Counter()
+    for row in primary_rows:
+        redundant_by_arm[row["_arm"]] += int(row["physical_copy_cn"])
+
+    rows_by_arm: dict[str, list[dict[str, object]]] = defaultdict(list)
+    class_copy_ids_by_arm: dict[str, set[str]] = defaultdict(set)
+    for spec in CLASS_SPECS:
+        source_symbols = set(spec["source_symbols"])
+        class_rows = [row for row in primary_rows if row["functional_source_symbol"] in source_symbols]
+        class_copies = unique_copy_records(class_rows)
+        class_total = sum(int(row["physical_copy_cn"]) for row in class_copies.values())
+        grouped: dict[str, list[Mapping[str, str]]] = defaultdict(list)
+        for row in class_copies.values():
+            grouped[row["_arm"]].append(row)
+        rep_json = representative_json(spec["representatives"], primary_terms)
+        for chrom_arm, rows in grouped.items():
+            chromosome, arm = chrom_arm.rsplit("_", 1)
+            community = arm_to_community.get(chrom_arm, "NO_SIGNAL_ARM")
+            eligible = eligible_by_arm[chrom_arm]
+            burden = sum(int(row["physical_copy_cn"]) for row in rows)
+            class_copy_ids_by_arm[chrom_arm].update(row["copy_id"] for row in rows)
+            rows_by_arm[chrom_arm].append({
+                "schema_version": SCHEMA_VERSION,
+                "analysis_layer": "HEADLINE_PRIMARY_MIDPOINT",
+                "row_type": "FUNCTIONAL_CLASS",
+                "chromosome": chromosome,
+                "arm": arm,
+                "chrom_arm": chrom_arm,
+                "chrom_arm_label": arm_label(chrom_arm),
+                "arm_sort_index": arm_sort_index(chrom_arm),
+                "community": community,
+                "community_order": community_order.get(community, 9999),
+                "community_arms": "|".join(community_arms.get(community, [])),
+                "arm_ontology_eligible_phr_copy_burden": eligible,
+                "arm_supported_term_contributor_row_burden": redundant_by_arm[chrom_arm],
+                "arm_unique_supported_coordinate_copy_burden": supported_by_arm[chrom_arm],
+                "class_id": spec["class_id"],
+                "display_label": spec["display_label"],
+                "class_unique_coordinate_copy_burden": burden,
+                "class_fraction_of_arm_eligible_burden": burden / eligible if eligible else "",
+                "class_fraction_of_all_class_copies": burden / class_total if class_total else "",
+                "functional_source_ids_json": json_list(row["functional_source_id"] for row in rows),
+                "functional_source_symbols_json": json_list(row["functional_source_symbol"] for row in rows),
+                "gene_names_json": json_list(row["gene_name"] for row in rows),
+                "copy_ids_json": json_list(row["copy_id"] for row in rows),
+                "representative_exact_terms_json": rep_json,
+                "ontology_redundancy_warning": REDUNDANCY_WARNING,
+                "summary_role": POST_INFERENCE_ROLE,
+            })
+
+    output = []
+    for chrom_arm in chromosome_arms():
+        arm_rows = rows_by_arm.get(chrom_arm, [])
+        ranked_burdens = sorted({int(row["class_unique_coordinate_copy_burden"]) for row in arm_rows}, reverse=True)
+        for row in sorted(arm_rows, key=lambda item: (-int(item["class_unique_coordinate_copy_burden"]), item["class_id"])):
+            burden = int(row["class_unique_coordinate_copy_burden"])
+            row["class_rank_in_arm"] = ranked_burdens.index(burden) + 1
+            row["dominant_functional_class_flag"] = int(burden == ranked_burdens[0])
+            row["unclassified_supported_coordinate_copy_burden"] = (
+                supported_by_arm[chrom_arm] - len(class_copy_ids_by_arm[chrom_arm])
+            )
+            output.append(row)
+        if not arm_rows:
+            chromosome, arm = chrom_arm.rsplit("_", 1)
+            community = arm_to_community.get(chrom_arm, "NO_SIGNAL_ARM")
+            output.append({
+                "schema_version": SCHEMA_VERSION,
+                "analysis_layer": "HEADLINE_PRIMARY_MIDPOINT",
+                "row_type": "ARM_TOTAL_NO_DEFINED_CLASS" if chrom_arm in arm_to_community else "NO_SIGNAL_ARM",
+                "chromosome": chromosome,
+                "arm": arm,
+                "chrom_arm": chrom_arm,
+                "chrom_arm_label": arm_label(chrom_arm),
+                "arm_sort_index": arm_sort_index(chrom_arm),
+                "community": community,
+                "community_order": community_order.get(community, 9999),
+                "community_arms": "|".join(community_arms.get(community, [])),
+                "arm_ontology_eligible_phr_copy_burden": eligible_by_arm[chrom_arm],
+                "arm_supported_term_contributor_row_burden": redundant_by_arm[chrom_arm],
+                "arm_unique_supported_coordinate_copy_burden": supported_by_arm[chrom_arm],
+                "unclassified_supported_coordinate_copy_burden": supported_by_arm[chrom_arm],
+                "ontology_redundancy_warning": REDUNDANCY_WARNING,
+                "summary_role": POST_INFERENCE_ROLE,
+            })
+    return sorted(output, key=lambda row: (int(row["arm_sort_index"]), row.get("class_rank_in_arm", 9999), row.get("class_id", "")))
+
+
 def format_term_names(rep_json: str, limit: int = 3) -> str:
     terms = json.loads(rep_json)
     return "; ".join(f"{row['term_name']} ({row['term_id']}, {row['relation']})" for row in terms[:limit])
 
 
+def format_arm_collection(chrom_arms: str) -> str:
+    if not chrom_arms:
+        return "none"
+    arms = [value for value in chrom_arms.split("|") if value]
+    return ", ".join(arm_label(arm) for arm in sorted(arms, key=arm_sort_index))
+
+
+def summarize_json_values(json_text: str, limit: int = 4) -> str:
+    values = json.loads(json_text) if json_text else []
+    if len(values) <= limit:
+        return ", ".join(values)
+    return f"{', '.join(values[:limit])}, +{len(values) - limit} more"
+
+
+def copy_word(count: int) -> str:
+    return "copy" if count == 1 else "copies"
+
+
 def build_report(primary_terms: Mapping[TermKey, Mapping[str, str]], source_rows: Sequence[Mapping[str, object]],
                  class_rows: Sequence[Mapping[str, object]], class_summaries: Sequence[Mapping[str, object]],
-                 community_order: Mapping[str, int]) -> str:
+                 arm_rows: Sequence[Mapping[str, object]], community_order: Mapping[str, int]) -> str:
     source_by_community: dict[str, list[Mapping[str, object]]] = defaultdict(list)
     for row in source_rows:
         source_by_community[str(row["community"])].append(row)
@@ -533,6 +683,9 @@ def build_report(primary_terms: Mapping[TermKey, Mapping[str, str]], source_rows
     for row in class_rows:
         if row["row_type"] == "FUNCTIONAL_CLASS":
             classes_by_community[str(row["community"])].append(row)
+    arm_rows_by_arm: dict[str, list[Mapping[str, object]]] = defaultdict(list)
+    for row in arm_rows:
+        arm_rows_by_arm[str(row["chrom_arm"])].append(row)
 
     totals_by_community = {str(row["community"]): row for row in class_rows}
     communities = sorted(totals_by_community, key=lambda value: (community_order.get(value, 9999), value))
@@ -570,6 +723,50 @@ def build_report(primary_terms: Mapping[TermKey, Mapping[str, str]], source_rows
         "WBP1L-source copies robustly carry exact CXCL12/CXCR4 signaling rows. The supported exact term `protein "
         "localization to perinuclear region of cytoplasm` has a SEPTIN14 contributor signature, so it remains in the "
         "SEPTIN14 class rather than being conflated with WBP1L/CXCL12 signaling.", "",
+        "## Chromosome-arm flashcards", "",
+        "`ARM_FUNCTIONAL_CLASS_PROJECTION.tsv` gives the same view as a 48-arm table. Each note below links the "
+        "chromosome arm back to its arm-level PHR community and lists the copy-number-bearing enriched display classes "
+        "present on that arm. Arms outside the 41 signal-bearing arm set are explicit `NO_SIGNAL_ARM` rows.", "",
+    ])
+    for chrom_arm in chromosome_arms():
+        rows = arm_rows_by_arm[chrom_arm]
+        first = rows[0]
+        label = first["chrom_arm_label"]
+        community = first["community"]
+        community_arms = format_arm_collection(str(first["community_arms"]))
+        eligible = int(first["arm_ontology_eligible_phr_copy_burden"])
+        supported = int(first["arm_unique_supported_coordinate_copy_burden"])
+        if first["row_type"] == "NO_SIGNAL_ARM":
+            detail = "not in a signal-bearing PHR community; no enriched display class is projected here."
+        else:
+            class_bits = []
+            for row in rows:
+                if row["row_type"] != "FUNCTIONAL_CLASS":
+                    continue
+                burden = int(row["class_unique_coordinate_copy_burden"])
+                sources = summarize_json_values(str(row["functional_source_symbols_json"]), limit=3)
+                genes = summarize_json_values(str(row["gene_names_json"]), limit=3)
+                class_bits.append(f"{row['display_label']} ({burden} {copy_word(burden)}; sources {sources}; genes {genes})")
+            if class_bits:
+                unclassified = int(first["unclassified_supported_coordinate_copy_burden"])
+                detail = "; ".join(class_bits)
+                if unclassified:
+                    verb = "is" if unclassified == 1 else "are"
+                    detail += f"; {unclassified} supported {copy_word(unclassified)} {verb} outside the six display classes."
+            elif supported:
+                verb = "is" if supported == 1 else "are"
+                detail = f"no predefined enriched display class; {supported} supported {copy_word(supported)} {verb} unclassified in this display scheme."
+            else:
+                detail = "no ontology-supported copy in the six display classes."
+        community_suffix = "" if community == "NO_SIGNAL_ARM" else f" ({community_arms})"
+        lines.append(
+            f"- **{label}** — {community}"
+            f"{community_suffix}; "
+            f"{eligible} ontology-eligible PHR {copy_word(eligible)}, {supported} supported {copy_word(supported)}: {detail}"
+        )
+
+    lines.extend([
+        "",
         "## Community synopsis", "",
         "The repeated contributor-row burden below is supplied only as an audit of annotation incidence; because one "
         "copy can contribute to many related direct and ancestor terms, it is ontology-redundant. Unique-copy burden "
@@ -614,8 +811,9 @@ def validate_outputs(output: Path, upstream_validation: Mapping[str, object],
                      primary_terms: Mapping[TermKey, Mapping[str, str]], sensitivity_terms: Mapping[TermKey, Mapping[str, str]],
                      contributors: Sequence[Mapping[str, str]], exact_rows: Sequence[Mapping[str, object]],
                      source_rows: Sequence[Mapping[str, object]], definitions: Sequence[Mapping[str, object]],
-                     class_rows: Sequence[Mapping[str, object]], upstream_community_rows: Sequence[Mapping[str, str]],
-                     expected_communities: set[str], report: str) -> dict[str, object]:
+                     class_rows: Sequence[Mapping[str, object]], class_summaries: Sequence[Mapping[str, object]],
+                     arm_rows: Sequence[Mapping[str, object]], upstream_community_rows: Sequence[Mapping[str, str]],
+                     expected_communities: set[str], arm_to_community: Mapping[str, str], report: str) -> dict[str, object]:
     checks = []
 
     def check(name: str, passed: bool, evidence: object) -> None:
@@ -676,6 +874,9 @@ def validate_outputs(output: Path, upstream_validation: Mapping[str, object],
     check("functional_classes_create_no_p_values_or_support_decisions", not (prohibited & class_fields) and all(
         row["statistical_status"] == "DISPLAY_ONLY_NO_NEW_P_VALUE_V7_DECISIONS_UNCHANGED" for row in definitions),
         {"prohibited_fields_present": sorted(prohibited & class_fields), "classes": len(definitions)})
+    arm_fields = set(ARM_CLASS_FIELDS)
+    check("arm_projection_creates_no_p_values_or_support_decisions", not (prohibited & arm_fields),
+          {"prohibited_fields_present": sorted(prohibited & arm_fields)})
     check("all_required_functional_classes_grounded_in_primary_terms_and_copies", len(definitions) == len(CLASS_SPECS) and all(
         row["definition_status"] == "PRIMARY_SUPPORTED" and int(row["primary_supported_unique_copy_burden"]) > 0 and
         len(json.loads(str(row["representative_exact_terms_json"]))) > 0 for row in definitions),
@@ -683,6 +884,27 @@ def validate_outputs(output: Path, upstream_validation: Mapping[str, object],
     covered_communities = {row["community"] for row in class_rows}
     check("every_k15_community_has_a_summary_row_including_zero_burdens", covered_communities == expected_communities,
           {"communities": sorted(covered_communities)})
+    expected_arms = set(chromosome_arms())
+    covered_arms = {str(row["chrom_arm"]) for row in arm_rows}
+    check("arm_projection_contains_all_48_chromosome_arms", covered_arms == expected_arms,
+          {"arms": sorted(covered_arms, key=arm_sort_index), "missing": sorted(expected_arms - covered_arms, key=arm_sort_index)})
+    no_signal_arms = {arm for arm in expected_arms if arm not in arm_to_community}
+    projected_no_signal = {str(row["chrom_arm"]) for row in arm_rows if row["row_type"] == "NO_SIGNAL_ARM"}
+    check("arm_projection_marks_all_no_signal_arms_explicitly", projected_no_signal == no_signal_arms,
+          {"no_signal_arms": sorted(projected_no_signal, key=arm_sort_index)})
+    class_arm_burden = Counter()
+    arm_copy_counts_ok = True
+    for row in arm_rows:
+        if row["row_type"] == "FUNCTIONAL_CLASS":
+            copy_ids = json.loads(str(row["copy_ids_json"]))
+            burden = int(row["class_unique_coordinate_copy_burden"])
+            class_arm_burden[str(row["class_id"])] += burden
+            arm_copy_counts_ok = arm_copy_counts_ok and len(copy_ids) == burden
+    class_summary_burden = {str(row["class_id"]): int(row["total_unique_coordinate_copy_burden"]) for row in class_summaries}
+    check("arm_projection_class_burdens_sum_to_class_totals", class_arm_burden == class_summary_burden,
+          {"arm_class_burdens": dict(class_arm_burden), "class_totals": class_summary_burden})
+    check("arm_projection_retains_atomic_coordinate_copies", arm_copy_counts_ok,
+          "each class arm row has JSON copy count equal to class_unique_coordinate_copy_burden")
     required_statements = ("post-inference attribution", "Ontology rows are redundant", "post-inference display summaries only")
     check("report_states_inference_and_redundancy_boundaries", all(statement in report for statement in required_statements),
           {"required_statements": list(required_statements)})
@@ -721,6 +943,7 @@ def write_manifest(output: Path) -> None:
         "FUNCTIONAL_CLASS_DEFINITIONS.tsv",
         "COMMUNITY_FUNCTIONAL_CLASSES.tsv",
         "FUNCTIONAL_CLASS_COMMUNITY_SUMMARY.tsv",
+        "ARM_FUNCTIONAL_CLASS_PROJECTION.tsv",
         "COMMUNITY_FUNCTIONAL_ATTRIBUTION_REPORT.md",
         "COMMUNITY_FUNCTIONAL_ATTRIBUTION_VALIDATION.json",
         "build_community_attribution.py",
@@ -752,17 +975,19 @@ def generate(output: Path = HERE) -> dict[str, object]:
                                      row["collection"], row["relation"], row["term_id"], row["community_order"], row["community"]))
     source_rows = build_source_summary(primary_terms, contributors, community_order, community_arms)
     definitions, class_rows, class_summaries = build_class_outputs(primary_terms, contributors, community_order, community_arms)
-    report = build_report(primary_terms, source_rows, class_rows, class_summaries, community_order)
+    arm_rows = build_arm_projection(primary_terms, contributors, arm_to_community, community_order, community_arms)
+    report = build_report(primary_terms, source_rows, class_rows, class_summaries, arm_rows, community_order)
 
     write_tsv(output / "COMMUNITY_EXACT_TERM_ATTRIBUTION.tsv", EXACT_ATTRIBUTION_FIELDS, exact_rows)
     write_tsv(output / "COMMUNITY_SOURCE_COPY_SUMMARY.tsv", SOURCE_SUMMARY_FIELDS, source_rows)
     write_tsv(output / "FUNCTIONAL_CLASS_DEFINITIONS.tsv", CLASS_DEFINITION_FIELDS, definitions)
     write_tsv(output / "COMMUNITY_FUNCTIONAL_CLASSES.tsv", COMMUNITY_CLASS_FIELDS, class_rows)
     write_tsv(output / "FUNCTIONAL_CLASS_COMMUNITY_SUMMARY.tsv", CLASS_COMMUNITY_FIELDS, class_summaries)
+    write_tsv(output / "ARM_FUNCTIONAL_CLASS_PROJECTION.tsv", ARM_CLASS_FIELDS, arm_rows)
     (output / "COMMUNITY_FUNCTIONAL_ATTRIBUTION_REPORT.md").write_text(report, encoding="utf-8")
     validation = validate_outputs(output, upstream_validation, primary_terms, sensitivity_terms, contributors,
-                                  exact_rows, source_rows, definitions, class_rows, upstream_community_rows,
-                                  set(community_arms), report)
+                                  exact_rows, source_rows, definitions, class_rows, class_summaries, arm_rows,
+                                  upstream_community_rows, set(community_arms), arm_to_community, report)
     (output / "COMMUNITY_FUNCTIONAL_ATTRIBUTION_VALIDATION.json").write_text(
         json.dumps(validation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     write_manifest(output)

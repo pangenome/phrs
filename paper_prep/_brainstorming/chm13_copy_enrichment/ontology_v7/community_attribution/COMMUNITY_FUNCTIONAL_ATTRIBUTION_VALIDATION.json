@@ -72,6 +72,13 @@
       "status": "PASS"
     },
     {
+      "check": "arm_projection_creates_no_p_values_or_support_decisions",
+      "evidence": {
+        "prohibited_fields_present": []
+      },
+      "status": "PASS"
+    },
+    {
       "check": "all_required_functional_classes_grounded_in_primary_terms_and_copies",
       "evidence": {
         "classes": [
@@ -109,6 +116,105 @@
       "status": "PASS"
     },
     {
+      "check": "arm_projection_contains_all_48_chromosome_arms",
+      "evidence": {
+        "arms": [
+          "chr1_p",
+          "chr1_q",
+          "chr2_p",
+          "chr2_q",
+          "chr3_p",
+          "chr3_q",
+          "chr4_p",
+          "chr4_q",
+          "chr5_p",
+          "chr5_q",
+          "chr6_p",
+          "chr6_q",
+          "chr7_p",
+          "chr7_q",
+          "chr8_p",
+          "chr8_q",
+          "chr9_p",
+          "chr9_q",
+          "chr10_p",
+          "chr10_q",
+          "chr11_p",
+          "chr11_q",
+          "chr12_p",
+          "chr12_q",
+          "chr13_p",
+          "chr13_q",
+          "chr14_p",
+          "chr14_q",
+          "chr15_p",
+          "chr15_q",
+          "chr16_p",
+          "chr16_q",
+          "chr17_p",
+          "chr17_q",
+          "chr18_p",
+          "chr18_q",
+          "chr19_p",
+          "chr19_q",
+          "chr20_p",
+          "chr20_q",
+          "chr21_p",
+          "chr21_q",
+          "chr22_p",
+          "chr22_q",
+          "chrX_p",
+          "chrX_q",
+          "chrY_p",
+          "chrY_q"
+        ],
+        "missing": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "arm_projection_marks_all_no_signal_arms_explicitly",
+      "evidence": {
+        "no_signal_arms": [
+          "chr2_p",
+          "chr3_p",
+          "chr5_p",
+          "chr8_q",
+          "chr11_q",
+          "chr14_q",
+          "chr18_q"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "arm_projection_class_burdens_sum_to_class_totals",
+      "evidence": {
+        "arm_class_burdens": {
+          "DDX11_HELICASE_CHROMOSOME": 10,
+          "DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE": 65,
+          "RPL23A_RIBOSOMAL_NUCLEOLAR": 11,
+          "SEPTIN14_SEPTIN_CYTOKINESIS": 20,
+          "WASH_ENDOSOMAL_ACTIN_EXOCYST": 10,
+          "WBP1L_CXCL12_SIGNALING": 14
+        },
+        "class_totals": {
+          "DDX11_HELICASE_CHROMOSOME": 10,
+          "DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE": 65,
+          "RPL23A_RIBOSOMAL_NUCLEOLAR": 11,
+          "SEPTIN14_SEPTIN_CYTOKINESIS": 20,
+          "WASH_ENDOSOMAL_ACTIN_EXOCYST": 10,
+          "WBP1L_CXCL12_SIGNALING": 14
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "arm_projection_retains_atomic_coordinate_copies",
+      "evidence": "each class arm row has JSON copy count equal to class_unique_coordinate_copy_burden",
+      "status": "PASS"
+    },
+    {
       "check": "report_states_inference_and_redundancy_boundaries",
       "evidence": {
         "required_statements": [
@@ -125,8 +231,8 @@
       "status": "PASS"
     }
   ],
-  "checks_passed": 14,
-  "checks_total": 14,
+  "checks_passed": 19,
+  "checks_total": 19,
   "dominant_community_threshold": 0.5,
   "errors": [],
   "ontology_redundancy_warning": "Ontology contributor rows are redundant annotations, not independent biological systems; unique coordinate-copy burden is the nonredundant display unit.",
