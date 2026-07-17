@@ -1,0 +1,3 @@
+schema_version	assignment	raw_physical_copy_rows	raw_physical_copy_cn	ontology_eligible_rows	ontology_eligible_cn	ontology_ineligible_cn	phr_raw_physical_copy_cn	phr_ontology_eligible_cn	phr_ontology_ineligible_cn	nonphr_ontology_eligible_cn	partition_sum_cn	phr_nonphr_intersection_cn	functional_source_ids_in_eligible_universe	all_coordinate_copy_cn_equal_one	background_definition	status
+chm13-physical-copy-ontology-v7.0	midpoint	61312	61312	31966	31966	29346	402	187	215	31779	31966	0	20225	1	EXACT_COMPLETE_NONPHR_SET_COMPLEMENT_NO_SAMPLING	PASS
+chm13-physical-copy-ontology-v7.0	overlap	61312	61312	31966	31966	29346	412	193	219	31773	31966	0	20225	1	EXACT_COMPLETE_NONPHR_SET_COMPLEMENT_NO_SAMPLING	PASS

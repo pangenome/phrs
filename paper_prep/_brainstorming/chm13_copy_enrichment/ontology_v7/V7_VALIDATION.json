@@ -1,0 +1,275 @@
+{
+  "checks": [
+    {
+      "check": "inherited_v6_frozen_objects",
+      "evidence": {
+        "errors": [],
+        "status": "PASS",
+        "v6_copy_edges_sha256": "b6c03aed0066f40575da96dc1aa047088a637a8efd26d2dd84e1460cc2d1b0c0",
+        "v6_copy_map_sha256": "b4e5eac770afce707774c7f324cfb9cbd6eb4d59200ef82898e853fc454afffb",
+        "v6_exact_contributors_sha256": "f4d65ac44610e5d78215635c9f9191460fc1147a0eb38dc90b8b3e42b0d06d30",
+        "v6_hypothesis_catalog_sha256": "9125a02140d9d2226c804095af89708556521b495f3fc9d4d2fd9a76c6725e47",
+        "v6_hypothesis_count": 31235
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "all_frozen_hypotheses_tested_twice",
+      "evidence": {
+        "hypotheses": 31235,
+        "results": 62470
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "paired_assignments_complete",
+      "evidence": {
+        "midpoint": 31235,
+        "overlap": 31235
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "exact_frozen_hypothesis_keys",
+      "evidence": {
+        "actual": 62470,
+        "expected": 62470
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "zero_phr_burdens_retained",
+      "evidence": "zero rows present in both assignments",
+      "status": "PASS"
+    },
+    {
+      "check": "all_term_2x2_tables_partition",
+      "evidence": "a+b=K; c+d=N-K; a+c=M for every row",
+      "status": "PASS"
+    },
+    {
+      "check": "eligible_universe_constant",
+      "evidence": 31966,
+      "status": "PASS"
+    },
+    {
+      "check": "phr_nonphr_exact_complement",
+      "evidence": [
+        {
+          "all_coordinate_copy_cn_equal_one": "1",
+          "assignment": "midpoint",
+          "background_definition": "EXACT_COMPLETE_NONPHR_SET_COMPLEMENT_NO_SAMPLING",
+          "functional_source_ids_in_eligible_universe": "20225",
+          "nonphr_ontology_eligible_cn": "31779",
+          "ontology_eligible_cn": "31966",
+          "ontology_eligible_rows": "31966",
+          "ontology_ineligible_cn": "29346",
+          "partition_sum_cn": "31966",
+          "phr_nonphr_intersection_cn": "0",
+          "phr_ontology_eligible_cn": "187",
+          "phr_ontology_ineligible_cn": "215",
+          "phr_raw_physical_copy_cn": "402",
+          "raw_physical_copy_cn": "61312",
+          "raw_physical_copy_rows": "61312",
+          "schema_version": "chm13-physical-copy-ontology-v7.0",
+          "status": "PASS"
+        },
+        {
+          "all_coordinate_copy_cn_equal_one": "1",
+          "assignment": "overlap",
+          "background_definition": "EXACT_COMPLETE_NONPHR_SET_COMPLEMENT_NO_SAMPLING",
+          "functional_source_ids_in_eligible_universe": "20225",
+          "nonphr_ontology_eligible_cn": "31773",
+          "ontology_eligible_cn": "31966",
+          "ontology_eligible_rows": "31966",
+          "ontology_ineligible_cn": "29346",
+          "partition_sum_cn": "31966",
+          "phr_nonphr_intersection_cn": "0",
+          "phr_ontology_eligible_cn": "193",
+          "phr_ontology_ineligible_cn": "219",
+          "phr_raw_physical_copy_cn": "412",
+          "raw_physical_copy_cn": "61312",
+          "raw_physical_copy_rows": "61312",
+          "schema_version": "chm13-physical-copy-ontology-v7.0",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "no_phr_contributor_marked_background",
+      "evidence": "V7 partition statuses agree with both frozen membership columns",
+      "status": "PASS"
+    },
+    {
+      "check": "exact_contributor_recount_matches_every_a_T",
+      "evidence": {
+        "ledger_rows": 17579,
+        "term_assignment_rows": 62470
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "coordinate_copies_not_source_collapsed",
+      "evidence": [
+        {
+          "all_coordinate_copy_cn_equal_one": "1",
+          "audit_role": "POST_INFERENCE_NAMED_COHORT_COPY_SEMANTICS_NOT_HYPOTHESIS",
+          "cohort": "DUX4_DUX4L",
+          "coordinate_copy_semantics_status": "PASS",
+          "coordinate_copy_units_minus_source_count": "72",
+          "forbidden_source_collapsed_genome_count": "1",
+          "functional_source_count": "1",
+          "functional_source_ids": "NCBIGene:100288687",
+          "genome_coordinate_copy_cn": "107",
+          "genome_ontology_eligible_copy_cn": "73",
+          "largest_single_source_coordinate_copy_cn": "73",
+          "midpoint_nonphr_ontology_eligible_copy_cn": "8",
+          "midpoint_phr_coordinate_copy_cn": "68",
+          "midpoint_phr_ontology_eligible_copy_cn": "65",
+          "overlap_nonphr_ontology_eligible_copy_cn": "8",
+          "overlap_phr_coordinate_copy_cn": "68",
+          "overlap_phr_ontology_eligible_copy_cn": "65",
+          "schema_version": "chm13-physical-copy-ontology-v7.0",
+          "status": "PASS"
+        },
+        {
+          "all_coordinate_copy_cn_equal_one": "1",
+          "audit_role": "POST_INFERENCE_NAMED_COHORT_COPY_SEMANTICS_NOT_HYPOTHESIS",
+          "cohort": "DDX11L",
+          "coordinate_copy_semantics_status": "PASS",
+          "coordinate_copy_units_minus_source_count": "10",
+          "forbidden_source_collapsed_genome_count": "1",
+          "functional_source_count": "1",
+          "functional_source_ids": "NCBIGene:1663",
+          "genome_coordinate_copy_cn": "12",
+          "genome_ontology_eligible_copy_cn": "11",
+          "largest_single_source_coordinate_copy_cn": "11",
+          "midpoint_nonphr_ontology_eligible_copy_cn": "1",
+          "midpoint_phr_coordinate_copy_cn": "10",
+          "midpoint_phr_ontology_eligible_copy_cn": "10",
+          "overlap_nonphr_ontology_eligible_copy_cn": "1",
+          "overlap_phr_coordinate_copy_cn": "10",
+          "overlap_phr_ontology_eligible_copy_cn": "10",
+          "schema_version": "chm13-physical-copy-ontology-v7.0",
+          "status": "PASS"
+        },
+        {
+          "all_coordinate_copy_cn_equal_one": "1",
+          "audit_role": "POST_INFERENCE_NAMED_COHORT_COPY_SEMANTICS_NOT_HYPOTHESIS",
+          "cohort": "WASH",
+          "coordinate_copy_semantics_status": "PASS",
+          "coordinate_copy_units_minus_source_count": "9",
+          "forbidden_source_collapsed_genome_count": "6",
+          "functional_source_count": "6",
+          "functional_source_ids": "NCBIGene:100287171|NCBIGene:23325|NCBIGene:253725|NCBIGene:387680|NCBIGene:51019|NCBIGene:9897",
+          "genome_coordinate_copy_cn": "18",
+          "genome_ontology_eligible_copy_cn": "15",
+          "largest_single_source_coordinate_copy_cn": "10",
+          "midpoint_nonphr_ontology_eligible_copy_cn": "6",
+          "midpoint_phr_coordinate_copy_cn": "9",
+          "midpoint_phr_ontology_eligible_copy_cn": "9",
+          "overlap_nonphr_ontology_eligible_copy_cn": "6",
+          "overlap_phr_coordinate_copy_cn": "9",
+          "overlap_phr_ontology_eligible_copy_cn": "9",
+          "schema_version": "chm13-physical-copy-ontology-v7.0",
+          "status": "PASS"
+        },
+        {
+          "all_coordinate_copy_cn_equal_one": "1",
+          "audit_role": "POST_INFERENCE_NAMED_COHORT_COPY_SEMANTICS_NOT_HYPOTHESIS",
+          "cohort": "RPL23A",
+          "coordinate_copy_semantics_status": "PASS",
+          "coordinate_copy_units_minus_source_count": "92",
+          "forbidden_source_collapsed_genome_count": "1",
+          "functional_source_count": "1",
+          "functional_source_ids": "NCBIGene:6147",
+          "genome_coordinate_copy_cn": "94",
+          "genome_ontology_eligible_copy_cn": "93",
+          "largest_single_source_coordinate_copy_cn": "93",
+          "midpoint_nonphr_ontology_eligible_copy_cn": "82",
+          "midpoint_phr_coordinate_copy_cn": "11",
+          "midpoint_phr_ontology_eligible_copy_cn": "11",
+          "overlap_nonphr_ontology_eligible_copy_cn": "80",
+          "overlap_phr_coordinate_copy_cn": "13",
+          "overlap_phr_ontology_eligible_copy_cn": "13",
+          "schema_version": "chm13-physical-copy-ontology-v7.0",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "all_named_cohort_audits_pass",
+      "evidence": {
+        "cohorts": [
+          "DUX4_DUX4L",
+          "DDX11L",
+          "TUBB8",
+          "OR4F",
+          "WASH",
+          "RPL23A"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "no_stochastic_or_placement_runtime_path",
+      "evidence": {
+        "forbidden_runtime_imports_found": [],
+        "forbidden_stochastic_calls_found": [],
+        "primary_background_operation": "exact_boolean_set_complement",
+        "primary_inference_function": "infer_term_results",
+        "rng_seed_or_state": "NONE",
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "multiplicity_complete",
+      "evidence": "BH/BY within collection and Holm/Bonferroni global populated for every row",
+      "status": "PASS"
+    },
+    {
+      "check": "prespecified_primary_rule_recomputed",
+      "evidence": "midpoint AND within_collection_BH<=0.05 AND global_Holm<=0.05",
+      "status": "PASS"
+    },
+    {
+      "check": "community_summary_post_inference_only",
+      "evidence": {
+        "hypothesis_source": "FROZEN_HYPOTHESES.tsv.gz",
+        "summary_rows": 2553
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "post_inference_community_sums_match_supported_terms",
+      "evidence": {
+        "community_rows": 2553,
+        "supported_term_rows": 420
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "contributor_ledger_inherited_and_statused",
+      "evidence": 17579,
+      "status": "PASS"
+    }
+  ],
+  "checks_passed": 18,
+  "checks_total": 18,
+  "errors": [],
+  "manuscript_interpretation_boundary": "annotation-bearing CHM13 physical-copy burden only; not expression, activity, dosage, retained pseudogene function, or population prevalence",
+  "primary_support_rule": "midpoint AND within_collection_BH<=0.05 AND global_Holm<=0.05",
+  "schema_version": "chm13-physical-copy-ontology-v7.0",
+  "stage_order": [
+    "1_VALIDATE_FROZEN_INPUTS_AND_PARTITION",
+    "2_COMPLETE_TERM_LEVEL_INFERENCE",
+    "3_COMPLETE_MULTIPLICITY_AND_DECISIONS",
+    "4_CONTRIBUTOR_AND_MAPPING_AUDITS",
+    "5_POST_INFERENCE_COMMUNITY_SOURCE_SUMMARY",
+    "6_RELEASE_VALIDATION_AND_REPORT"
+  ],
+  "status": "PASS"
+}
