@@ -1,0 +1,138 @@
+{
+  "checks": [
+    {
+      "check": "v7_validation_input_status",
+      "evidence": {
+        "checks": 18,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "every_primary_term_community_burden_sums_to_a_T",
+      "evidence": {
+        "primary_supported_terms": 209
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "every_sensitivity_term_community_burden_sums_to_a_T",
+      "evidence": {
+        "overlap_supported_terms": 211
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "exact_attribution_reconciles_to_upstream_v7_community_summary",
+      "evidence": {
+        "regenerated_rows": 2553,
+        "upstream_rows": 2553
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "headline_contains_only_primary_supported_midpoint_rows",
+      "evidence": {
+        "headline_rows": 1241
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "overlap_rows_explicitly_labeled_sensitivity",
+      "evidence": {
+        "sensitivity_rows": 1312
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "dominant_term_community_flags_mechanical",
+      "evidence": {
+        "threshold": 0.5
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "exact_attribution_retains_atomic_coordinate_copies",
+      "evidence": "coordinate_copy_count == JSON copy list length == physical-copy burden for every row",
+      "status": "PASS"
+    },
+    {
+      "check": "community_source_summaries_reproducible_from_exact_contributors",
+      "evidence": {
+        "community_source_rows": 65
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "functional_classes_create_no_p_values_or_support_decisions",
+      "evidence": {
+        "classes": 6,
+        "prohibited_fields_present": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "all_required_functional_classes_grounded_in_primary_terms_and_copies",
+      "evidence": {
+        "classes": [
+          "DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE",
+          "WASH_ENDOSOMAL_ACTIN_EXOCYST",
+          "DDX11_HELICASE_CHROMOSOME",
+          "RPL23A_RIBOSOMAL_NUCLEOLAR",
+          "SEPTIN14_SEPTIN_CYTOKINESIS",
+          "WBP1L_CXCL12_SIGNALING"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "every_k15_community_has_a_summary_row_including_zero_burdens",
+      "evidence": {
+        "communities": [
+          "C1",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "C6",
+          "C7",
+          "C8",
+          "C9"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "report_states_inference_and_redundancy_boundaries",
+      "evidence": {
+        "required_statements": [
+          "post-inference attribution",
+          "Ontology rows are redundant",
+          "post-inference display summaries only"
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "broad_immune_and_olfactory_not_headline_supported",
+      "evidence": "no matching exact primary-supported term names",
+      "status": "PASS"
+    }
+  ],
+  "checks_passed": 14,
+  "checks_total": 14,
+  "dominant_community_threshold": 0.5,
+  "errors": [],
+  "ontology_redundancy_warning": "Ontology contributor rows are redundant annotations, not independent biological systems; unique coordinate-copy burden is the nonredundant display unit.",
+  "overlap_sensitivity_supported_exact_terms": 211,
+  "primary_supported_exact_terms": 209,
+  "schema_version": "chm13-physical-copy-ontology-v7-community-attribution-v1.0",
+  "statistical_boundary": "POST_INFERENCE_ATTRIBUTION_ONLY_NO_NEW_TESTS",
+  "status": "PASS"
+}
