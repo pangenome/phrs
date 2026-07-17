@@ -9,7 +9,7 @@ is preserved in the private backup repository:
 
 Backup main at the time of surgery:
 
-`73087d3 docs: caution large analysis artifacts`
+`347821a docs: archive bulky enrichment artifacts`
 
 The cleaned `main` keeps the paper-facing V7 copy-number-aware ontology layer,
 community attribution, functional-component heatmap artifacts and the compact
