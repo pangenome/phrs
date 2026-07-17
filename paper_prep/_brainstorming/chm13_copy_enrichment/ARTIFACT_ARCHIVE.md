@@ -7,9 +7,8 @@ is preserved in the private backup repository:
 
 `git@github.com:ekg/phrs-backup.git`
 
-Backup main at the time of surgery:
-
-`347821a docs: archive bulky enrichment artifacts`
+Backup `main` was synchronized through the archive-manifest commits immediately
+before surgery.
 
 The cleaned `main` keeps the paper-facing V7 copy-number-aware ontology layer,
 community attribution, functional-component heatmap artifacts and the compact
