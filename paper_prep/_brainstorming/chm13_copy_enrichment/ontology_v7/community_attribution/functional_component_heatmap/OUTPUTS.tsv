@@ -1,0 +1,10 @@
+output	description
+functional_component_arm_heatmap.community_order.pdf	Six display-class heatmap, community-blocked chromosome-end order
+functional_component_arm_heatmap.community_order.png	PNG companion to community-blocked heatmap
+functional_component_arm_heatmap.nj_order.pdf	Six display-class heatmap, NJ tree chromosome-end order
+functional_component_arm_heatmap.nj_order.png	PNG companion to NJ-order heatmap
+functional_component_arm_heatmap.review_pages.pdf	Two-page review PDF containing both heatmap orderings
+functional_component_arm_matrix.tsv	Long matrix behind the six display-class heatmaps
+functional_component_arm_orderings.tsv	Chromosome-end orderings and source notes
+exact_supported_term_arm_matrix.tsv.gz	Full 209 exact supported-term by chromosome-end copy-count matrix
+exact_supported_term_copy_pattern_summary.tsv	Audit showing how many exact terms share identical arm-copy patterns

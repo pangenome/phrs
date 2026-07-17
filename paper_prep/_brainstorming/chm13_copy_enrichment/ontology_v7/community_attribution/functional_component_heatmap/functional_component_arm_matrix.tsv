@@ -1,0 +1,289 @@
+class_id	display_label	full_display_label	chrom_arm	chrom_arm_label	community	copy_burden
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr10_p	10p	C2	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr10_q	10q	C1	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr11_p	11p	C3	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr11_q	11q	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr12_p	12p	C5	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr12_q	12q	C4	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr13_p	13p	C7	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr13_q	13q	C6	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr14_p	14p	C7	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr14_q	14q	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr15_p	15p	C7	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr15_q	15q	C8	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr16_p	16p	C9	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr16_q	16q	C3	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr17_p	17p	C10	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr17_q	17q	C6	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr18_p	18p	C2	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr18_q	18q	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr19_p	19p	C3	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr19_q	19q	C6	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr1_p	1p	C11	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr1_q	1q	C6	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr20_p	20p	C12	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr20_q	20q	C5	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr21_p	21p	C7	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr21_q	21q	C6	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr22_p	22p	C7	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr22_q	22q	C6	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr2_p	2p	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr2_q	2q	C12	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr3_p	3p	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr3_q	3q	C3	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr4_p	4p	C13	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr4_q	4q	C1	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr5_p	5p	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr5_q	5q	C11	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr6_p	6p	C5	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr6_q	6q	C11	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr7_p	7p	C3	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr7_q	7q	C4	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr8_p	8p	C11	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr8_q	8q	NO_SIGNAL_ARM	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr9_p	9p	C5	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chr9_q	9q	C3	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chrX_p	Xp	C15	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chrX_q	Xq	C14	1
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chrY_p	Yp	C15	0
+DDX11_HELICASE_CHROMOSOME	DDX11 / helicase	DDX11 / helicase / chromosome	chrY_q	Yq	C14	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr10_p	10p	C2	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr10_q	10q	C1	32
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr11_p	11p	C3	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr11_q	11q	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr12_p	12p	C5	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr12_q	12q	C4	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr13_p	13p	C7	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr13_q	13q	C6	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr14_p	14p	C7	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr14_q	14q	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr15_p	15p	C7	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr15_q	15q	C8	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr16_p	16p	C9	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr16_q	16q	C3	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr17_p	17p	C10	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr17_q	17q	C6	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr18_p	18p	C2	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr18_q	18q	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr19_p	19p	C3	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr19_q	19q	C6	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr1_p	1p	C11	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr1_q	1q	C6	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr20_p	20p	C12	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr20_q	20q	C5	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr21_p	21p	C7	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr21_q	21q	C6	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr22_p	22p	C7	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr22_q	22q	C6	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr2_p	2p	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr2_q	2q	C12	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr3_p	3p	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr3_q	3q	C3	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr4_p	4p	C13	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr4_q	4q	C1	33
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr5_p	5p	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr5_q	5q	C11	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr6_p	6p	C5	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr6_q	6q	C11	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr7_p	7p	C3	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr7_q	7q	C4	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr8_p	8p	C11	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr8_q	8q	NO_SIGNAL_ARM	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr9_p	9p	C5	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chr9_q	9q	C3	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chrX_p	Xp	C15	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chrX_q	Xq	C14	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chrY_p	Yp	C15	0
+DUX4_ZGA_TRANSCRIPTION_NUCLEAR_ENVELOPE_CELL_CYCLE	DUX4 / ZGA	DUX4 / ZGA / transcription / nuclear envelope / cell cycle	chrY_q	Yq	C14	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr10_p	10p	C2	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr10_q	10q	C1	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr11_p	11p	C3	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr11_q	11q	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr12_p	12p	C5	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr12_q	12q	C4	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr13_p	13p	C7	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr13_q	13q	C6	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr14_p	14p	C7	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr14_q	14q	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr15_p	15p	C7	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr15_q	15q	C8	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr16_p	16p	C9	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr16_q	16q	C3	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr17_p	17p	C10	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr17_q	17q	C6	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr18_p	18p	C2	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr18_q	18q	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr19_p	19p	C3	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr19_q	19q	C6	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr1_p	1p	C11	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr1_q	1q	C6	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr20_p	20p	C12	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr20_q	20q	C5	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr21_p	21p	C7	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr21_q	21q	C6	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr22_p	22p	C7	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr22_q	22q	C6	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr2_p	2p	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr2_q	2q	C12	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr3_p	3p	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr3_q	3q	C3	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr4_p	4p	C13	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr4_q	4q	C1	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr5_p	5p	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr5_q	5q	C11	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr6_p	6p	C5	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr6_q	6q	C11	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr7_p	7p	C3	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr7_q	7q	C4	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr8_p	8p	C11	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr8_q	8q	NO_SIGNAL_ARM	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr9_p	9p	C5	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chr9_q	9q	C3	1
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chrX_p	Xp	C15	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chrX_q	Xq	C14	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chrY_p	Yp	C15	0
+RPL23A_RIBOSOMAL_NUCLEOLAR	RPL23A / nucleolar	RPL23A / ribosomal / nucleolar	chrY_q	Yq	C14	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr10_p	10p	C2	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr10_q	10q	C1	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr11_p	11p	C3	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr11_q	11q	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr12_p	12p	C5	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr12_q	12q	C4	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr13_p	13p	C7	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr13_q	13q	C6	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr14_p	14p	C7	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr14_q	14q	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr15_p	15p	C7	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr15_q	15q	C8	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr16_p	16p	C9	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr16_q	16q	C3	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr17_p	17p	C10	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr17_q	17q	C6	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr18_p	18p	C2	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr18_q	18q	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr19_p	19p	C3	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr19_q	19q	C6	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr1_p	1p	C11	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr1_q	1q	C6	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr20_p	20p	C12	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr20_q	20q	C5	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr21_p	21p	C7	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr21_q	21q	C6	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr22_p	22p	C7	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr22_q	22q	C6	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr2_p	2p	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr2_q	2q	C12	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr3_p	3p	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr3_q	3q	C3	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr4_p	4p	C13	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr4_q	4q	C1	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr5_p	5p	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr5_q	5q	C11	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr6_p	6p	C5	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr6_q	6q	C11	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr7_p	7p	C3	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr7_q	7q	C4	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr8_p	8p	C11	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr8_q	8q	NO_SIGNAL_ARM	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr9_p	9p	C5	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chr9_q	9q	C3	2
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chrX_p	Xp	C15	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chrX_q	Xq	C14	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chrY_p	Yp	C15	0
+SEPTIN14_SEPTIN_CYTOKINESIS	SEPTIN14 / cytokinesis	SEPTIN14 / septin / cytokinesis	chrY_q	Yq	C14	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr10_p	10p	C2	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr10_q	10q	C1	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr11_p	11p	C3	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr11_q	11q	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr12_p	12p	C5	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr12_q	12q	C4	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr13_p	13p	C7	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr13_q	13q	C6	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr14_p	14p	C7	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr14_q	14q	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr15_p	15p	C7	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr15_q	15q	C8	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr16_p	16p	C9	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr16_q	16q	C3	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr17_p	17p	C10	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr17_q	17q	C6	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr18_p	18p	C2	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr18_q	18q	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr19_p	19p	C3	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr19_q	19q	C6	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr1_p	1p	C11	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr1_q	1q	C6	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr20_p	20p	C12	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr20_q	20q	C5	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr21_p	21p	C7	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr21_q	21q	C6	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr22_p	22p	C7	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr22_q	22q	C6	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr2_p	2p	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr2_q	2q	C12	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr3_p	3p	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr3_q	3q	C3	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr4_p	4p	C13	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr4_q	4q	C1	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr5_p	5p	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr5_q	5q	C11	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr6_p	6p	C5	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr6_q	6q	C11	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr7_p	7p	C3	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr7_q	7q	C4	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr8_p	8p	C11	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr8_q	8q	NO_SIGNAL_ARM	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr9_p	9p	C5	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chr9_q	9q	C3	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chrX_p	Xp	C15	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chrX_q	Xq	C14	1
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chrY_p	Yp	C15	0
+WASH_ENDOSOMAL_ACTIN_EXOCYST	WASH / endosomal actin	WASH / endosomal actin / exocyst	chrY_q	Yq	C14	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr10_p	10p	C2	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr10_q	10q	C1	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr11_p	11p	C3	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr11_q	11q	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr12_p	12p	C5	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr12_q	12q	C4	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr13_p	13p	C7	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr13_q	13q	C6	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr14_p	14p	C7	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr14_q	14q	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr15_p	15p	C7	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr15_q	15q	C8	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr16_p	16p	C9	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr16_q	16q	C3	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr17_p	17p	C10	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr17_q	17q	C6	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr18_p	18p	C2	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr18_q	18q	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr19_p	19p	C3	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr19_q	19q	C6	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr1_p	1p	C11	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr1_q	1q	C6	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr20_p	20p	C12	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr20_q	20q	C5	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr21_p	21p	C7	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr21_q	21q	C6	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr22_p	22p	C7	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr22_q	22q	C6	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr2_p	2p	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr2_q	2q	C12	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr3_p	3p	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr3_q	3q	C3	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr4_p	4p	C13	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr4_q	4q	C1	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr5_p	5p	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr5_q	5q	C11	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr6_p	6p	C5	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr6_q	6q	C11	2
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr7_p	7p	C3	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr7_q	7q	C4	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr8_p	8p	C11	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr8_q	8q	NO_SIGNAL_ARM	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr9_p	9p	C5	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chr9_q	9q	C3	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chrX_p	Xp	C15	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chrX_q	Xq	C14	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chrY_p	Yp	C15	0
+WBP1L_CXCL12_SIGNALING	WBP1L / CXCL12	WBP1L / CXCL12 signaling	chrY_q	Yq	C14	0

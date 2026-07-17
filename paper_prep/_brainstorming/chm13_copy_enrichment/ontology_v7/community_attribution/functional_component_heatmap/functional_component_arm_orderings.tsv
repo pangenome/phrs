@@ -1,0 +1,97 @@
+chrom_arm	ordering	position	chrom_arm_label	community	ordering_source
+chr10_q	community_order	1	10q	C1	Community order: C1-C15, tree order within each community
+chr4_q	community_order	2	4q	C1	Community order: C1-C15, tree order within each community
+chr10_p	community_order	3	10p	C2	Community order: C1-C15, tree order within each community
+chr18_p	community_order	4	18p	C2	Community order: C1-C15, tree order within each community
+chr19_p	community_order	5	19p	C3	Community order: C1-C15, tree order within each community
+chr3_q	community_order	6	3q	C3	Community order: C1-C15, tree order within each community
+chr11_p	community_order	7	11p	C3	Community order: C1-C15, tree order within each community
+chr16_q	community_order	8	16q	C3	Community order: C1-C15, tree order within each community
+chr7_p	community_order	9	7p	C3	Community order: C1-C15, tree order within each community
+chr9_q	community_order	10	9q	C3	Community order: C1-C15, tree order within each community
+chr12_q	community_order	11	12q	C4	Community order: C1-C15, tree order within each community
+chr7_q	community_order	12	7q	C4	Community order: C1-C15, tree order within each community
+chr20_q	community_order	13	20q	C5	Community order: C1-C15, tree order within each community
+chr6_p	community_order	14	6p	C5	Community order: C1-C15, tree order within each community
+chr12_p	community_order	15	12p	C5	Community order: C1-C15, tree order within each community
+chr9_p	community_order	16	9p	C5	Community order: C1-C15, tree order within each community
+chr21_q	community_order	17	21q	C6	Community order: C1-C15, tree order within each community
+chr22_q	community_order	18	22q	C6	Community order: C1-C15, tree order within each community
+chr19_q	community_order	19	19q	C6	Community order: C1-C15, tree order within each community
+chr1_q	community_order	20	1q	C6	Community order: C1-C15, tree order within each community
+chr13_q	community_order	21	13q	C6	Community order: C1-C15, tree order within each community
+chr17_q	community_order	22	17q	C6	Community order: C1-C15, tree order within each community
+chr15_p	community_order	23	15p	C7	Community order: C1-C15, tree order within each community
+chr22_p	community_order	24	22p	C7	Community order: C1-C15, tree order within each community
+chr14_p	community_order	25	14p	C7	Community order: C1-C15, tree order within each community
+chr21_p	community_order	26	21p	C7	Community order: C1-C15, tree order within each community
+chr13_p	community_order	27	13p	C7	Community order: C1-C15, tree order within each community
+chr15_q	community_order	28	15q	C8	Community order: C1-C15, tree order within each community
+chr16_p	community_order	29	16p	C9	Community order: C1-C15, tree order within each community
+chr17_p	community_order	30	17p	C10	Community order: C1-C15, tree order within each community
+chr5_q	community_order	31	5q	C11	Community order: C1-C15, tree order within each community
+chr6_q	community_order	32	6q	C11	Community order: C1-C15, tree order within each community
+chr8_p	community_order	33	8p	C11	Community order: C1-C15, tree order within each community
+chr1_p	community_order	34	1p	C11	Community order: C1-C15, tree order within each community
+chr2_q	community_order	35	2q	C12	Community order: C1-C15, tree order within each community
+chr20_p	community_order	36	20p	C12	Community order: C1-C15, tree order within each community
+chr4_p	community_order	37	4p	C13	Community order: C1-C15, tree order within each community
+chrX_q	community_order	38	Xq	C14	Community order: C1-C15, tree order within each community
+chrY_q	community_order	39	Yq	C14	Community order: C1-C15, tree order within each community
+chrX_p	community_order	40	Xp	C15	Community order: C1-C15, tree order within each community
+chrY_p	community_order	41	Yp	C15	Community order: C1-C15, tree order within each community
+chr2_p	community_order	42	2p	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr3_p	community_order	43	3p	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr5_p	community_order	44	5p	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr8_q	community_order	45	8q	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr11_q	community_order	46	11q	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr14_q	community_order	47	14q	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr18_q	community_order	48	18q	NO_SIGNAL_ARM	Community order: C1-C15, tree order within each community
+chr17_p	nj_order	1	17p	C10	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr19_p	nj_order	2	19p	C3	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr3_q	nj_order	3	3q	C3	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr15_q	nj_order	4	15q	C8	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr11_p	nj_order	5	11p	C3	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr16_q	nj_order	6	16q	C3	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr7_p	nj_order	7	7p	C3	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr9_q	nj_order	8	9q	C3	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr5_q	nj_order	9	5q	C11	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr6_q	nj_order	10	6q	C11	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr8_p	nj_order	11	8p	C11	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr1_p	nj_order	12	1p	C11	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr2_q	nj_order	13	2q	C12	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr20_p	nj_order	14	20p	C12	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr20_q	nj_order	15	20q	C5	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr6_p	nj_order	16	6p	C5	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr12_p	nj_order	17	12p	C5	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr9_p	nj_order	18	9p	C5	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr16_p	nj_order	19	16p	C9	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr10_p	nj_order	20	10p	C2	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr18_p	nj_order	21	18p	C2	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chrX_p	nj_order	22	Xp	C15	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chrY_p	nj_order	23	Yp	C15	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chrX_q	nj_order	24	Xq	C14	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chrY_q	nj_order	25	Yq	C14	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr12_q	nj_order	26	12q	C4	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr7_q	nj_order	27	7q	C4	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr21_q	nj_order	28	21q	C6	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr22_q	nj_order	29	22q	C6	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr19_q	nj_order	30	19q	C6	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr1_q	nj_order	31	1q	C6	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr13_q	nj_order	32	13q	C6	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr17_q	nj_order	33	17q	C6	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr10_q	nj_order	34	10q	C1	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr4_q	nj_order	35	4q	C1	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr4_p	nj_order	36	4p	C13	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr15_p	nj_order	37	15p	C7	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr22_p	nj_order	38	22p	C7	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr14_p	nj_order	39	14p	C7	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr21_p	nj_order	40	21p	C7	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr13_p	nj_order	41	13p	C7	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr2_p	nj_order	42	2p	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr3_p	nj_order	43	3p	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr5_p	nj_order	44	5p	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr8_q	nj_order	45	8q	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr11_q	nj_order	46	11q	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr14_q	nj_order	47	14q	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
+chr18_q	nj_order	48	18q	NO_SIGNAL_ARM	NJ Newick tip order from paper_prep/figures/nj_tree_arms/nj_tree.newick
