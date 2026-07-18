@@ -237,9 +237,7 @@ in CHM13. Gene copies within PHRs were compared with all annotated gene copies
 elsewhere in the genome, with each duplicated copy counted separately rather
 than collapsed by gene name or family. The analysis
 identified 209 significantly enriched terms spanning biological processes,
-molecular functions, cellular components and Reactome pathways. Assigning genes
-to PHRs by any overlap rather than by their midpoint gave a nearly identical
-result, with 211 enriched terms.
+molecular functions, cellular components and Reactome pathways.
 
 The enrichments fall into several functional systems whose distributions differ
 markedly across the PHR communities (Extended Data Fig.~\ref{fig:ed2}). The most
@@ -711,12 +709,10 @@ classified as PHR or non-PHR.
 
 A gene copy entered the enrichment analysis if it had at least one direct or
 ancestral GO or Reactome assignment, defining a fixed universe of $N=31{,}966$
-copies. In the primary analysis, a gene was assigned to a PHR when its GFF3
-midpoint intersected the CHM13 PHR BED; assignment by any overlap provided a
-boundary sensitivity analysis. Every eligible gene copy occurred exactly once,
-either within a PHR or in the complete non-PHR remainder of the genome. The
-primary comparison therefore contained $K=187$ PHR copies and $N-K=31{,}779$
-non-PHR copies; the overlap sensitivity contained 193 and 31,773, respectively.
+copies. A gene was assigned to a PHR when its GFF3 midpoint intersected the
+CHM13 PHR BED. Every eligible gene copy occurred exactly once, either within a
+PHR or in the complete non-PHR remainder of the genome. The comparison therefore
+contained $K=187$ PHR copies and $N-K=31{,}779$ non-PHR copies.
 Another 215 of the 402 gene copies with midpoints in PHRs could not be assigned
 confidently to an ontology term and were retained as a coverage limitation. We
 used the complete genome-wide non-PHR complement as the background, without
