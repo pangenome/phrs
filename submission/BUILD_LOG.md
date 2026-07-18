@@ -2,6 +2,73 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Independent V7 integration audit
+
+Date: 2026-07-18
+
+Audited base commit: `bc15ef7` (`feat: integrate-v7-copy (agent-3243)`)
+
+The V7 manuscript integration was independently traced to the frozen V6
+physical-copy source map, the V7 exact-term ledger and validation JSON, and the
+post-inference community-attribution tables. No corrective manuscript edit was
+required. The independent checks confirmed:
+
+- 61,312 coordinate-distinct physical records, 31,966 ontology-eligible
+  records, and the complete eligible non-PHR set complement as the primary
+  background;
+- 402 raw midpoint PHR records, partitioned as 187 eligible PHR versus 31,779
+  eligible non-PHR copies, with 193 versus 31,773 in the any-overlap boundary
+  sensitivity;
+- all 31,235 frozen exact hypotheses under each assignment, with internally
+  complete `a_T+b_T=K`, `c_T+d_T=N-K` and `a_T+c_T=M_T` tables;
+- 209 primary midpoint supports (120 GO BP, 37 GO CC, 45 GO MF and 7 Reactome;
+  119 ancestor and 90 direct) and 211 overlap-sensitivity supports;
+- 186 of 187 eligible midpoint PHR copies contributing to at least one
+  primary-supported exact term;
+- exact agreement of the 209-row supporting term table with the corresponding
+  field-preserving `TERM_RESULTS.tsv.gz` subset, and exact agreement of the
+  288-row supporting arm table with the canonical six-class-by-48-arm matrix
+  and community ordering;
+- class totals and distributions of 65 DUX4 copies in C1; 10 coextensive WASH
+  and DDX11 copies across C3/C5/C8/C9/C12/C14; 20 SEPTIN14 copies across
+  C3/C5/C11/C12 (12 in C3); 14 WBP1L copies across C3/C8/C11; and 11 RPL23A
+  copies across C1/C3/C6/C11/C12;
+- no broad immune or olfactory name among primary-supported exact midpoint
+  terms, and no source/family collapse, placement/permutation inference,
+  display-class inference, expression/activity claim or CHM13-to-population
+  extrapolation in the manuscript integration;
+- official GO citation metadata and the stated GO snapshot dates, the official
+  Reactome 2024 database citation, and the Reactome V96 release date of 1 April
+  2026; and
+- byte identity of `AGENTS.md` and `CLAUDE.md`, with ED1/ED2 and the restored
+  V7 Results--Methods--Discussion state documented consistently.
+
+The committed ED2 PDF is byte-identical to the community-ordered source
+(`55e114f3a9979df6a236742dbc872aea57b51e1bcca8034087bc88724d3f04f1`).
+The supporting-table SHA-256 values are
+`e0c6678d34ba1bc8c7c577f6afb3652c8e00a3302ca8647f9617e0112d3c8e17`
+(exact terms) and
+`cd8c945758e06b555f344469c1baeb9da2d1b776fde7b2f9276f1c4dbcfbdc97`
+(arm matrix).
+
+All 10 V7 inference and community-attribution unit tests passed after the
+checksum-pinned archived V6 release inputs were restored for the test only;
+the bulky inputs were removed again afterward. A clean required build passed:
+
+```
+guix shell texlive texlive-bin -- bash -lc "cd submission && make clean && make"
+```
+
+The final `paper.log` contained zero case-insensitive `undefined` matches and
+zero rerun warnings, and the build wrote a 31-page PDF. Rendered pages 4
+(Results), 15--16 (Methods) and 27 (ED2) were inspected at 144 dpi. The V7 text,
+equations, community-ordered heatmap, labels and complete ED2 legend showed no
+clipping or layout failure. Build products were cleaned after inspection and
+are not part of the validation commit.
+
+**PASS** -- all independent V7 evidence, interpretation, supporting-material,
+figure, citation, test and clean-build gates passed.
+
 ## Successful build after V7 copy-number ontology integration
 
 Date: 2026-07-18
