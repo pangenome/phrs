@@ -123,22 +123,24 @@ hairball on top, tree-ordered + community-ordered Jaccard heatmaps side-by-side
 below (6,10,12); Fig3 browser views, each pair stacked — C1 4q/10q DUX4
 (14), C2 10p/18p TUBB8B (15), C11 5q/6q OR4F (16); Fig4 sequence-vs-3D scatter +
 Pore-C community heatmap (21,22); Fig5 WashU pedigree untangle (24/26).
-Extended Data is a SINGLE figure: ED1 = mouse meiotic Hi-C (slide 20),
-`fig/ExtendedDataFigures/ED_Fig1_mouse_zygotene.png`. Only `fig:ed1` (mouse) and
-`fig:fig1..fig5` exist — do not re-add `\ref{fig:ed2..}`.
+Extended Data includes ED1 = human sequence-to-3D contact replicates and ED2 =
+the CHM13 V7 copy-number-aware functional-component heatmap across chromosome
+ends. The active labels are `fig:ed1`, `fig:ed2`, and `fig:fig1..fig5`; ED2 is
+`fig/ExtendedDataFigures/ED_Fig2_copy_number_ontology_heatmap.pdf`.
 Writing follows Guarracino et al. 2023 (the Nature acrocentric-recombination
 paper, `~/Downloads/papers/RecombAcroChro_*.pdf`): short bold results-section
 headers (`\subsection*{...}` inside the body), a measured "we find / we
 observe" cadence, single-paragraph abstract. To keep the draft consistent with
 the talk, reviewer-era analyses without a figure (within-community
-heterogeneity, popgen/FST, the 14-test 3D forest + controls, CEPH1463, RPE-1,
-gene enrichment) were CUT from the body AND the corresponding Methods
-subsections; recover from git history if a reviewer asks.
-ASSET STATUS: `fig/MainFigures/Fig*.png` (and the ED1 mouse png) are
-slide-derived placeholders, some with speaker-note annotations baked in;
-publication-quality vector versions must be regenerated from
-`paper_prep/figures/`. The original `fig/ExtendedDataFigures/ED_Fig1-7.pdf` are
-no longer referenced by `paper.tex`.
+heterogeneity, popgen/FST, the 14-test 3D forest + controls, CEPH1463 and RPE-1)
+were CUT from the body AND the corresponding Methods subsections; recover from
+git history if a reviewer asks. The final validated V7 physical-copy ontology
+enrichment is intentionally restored across Results, Methods and Discussion,
+with ED2 and compact supporting tables.
+ASSET STATUS: main-figure PNG placeholders that remain slide-derived may include
+speaker-note annotations and should be regenerated from `paper_prep/figures/`.
+The active ED1 and ED2 PDFs are analysis-rendered submission assets; the old
+multi-figure Extended Data set is no longer referenced by `paper.tex`.
 
 ## Figures (R / Python)
 

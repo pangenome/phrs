@@ -2,6 +2,45 @@
 
 Compile and validation log for `submission/paper.tex`.
 
+## Successful build after V7 copy-number ontology integration
+
+Date: 2026-07-18
+
+Command:
+
+```
+guix shell texlive texlive-bin -- bash -lc 'cd submission && make clean && make'
+```
+
+Result: `make clean && make` completed successfully and wrote a 31-page
+`paper.pdf`.
+
+Validation checks:
+
+```
+cd submission && grep -ci 'undefined' paper.log  # -> 0
+python3 -m unittest -v \
+  paper_prep/_brainstorming/chm13_copy_enrichment/ontology_v7/test_v7_copy_enrichment.py \
+  paper_prep/_brainstorming/chm13_copy_enrichment/ontology_v7/community_attribution/test_community_attribution.py
+```
+
+Observed results:
+
+- All 10 V7 inference and community-attribution tests passed after restoring
+  their archived frozen V6 source-map inputs for the test run; those bulky
+  inputs were removed again after validation.
+- The compact supporting tables contain exactly 209 supported exact term rows
+  and 288 six-class-by-48-arm matrix rows. Repeated generation produced
+  identical SHA-256 hashes (`e0c6678d34ba1bc8c7c577f6afb3652c8e00a3302ca8647f9617e0112d3c8e17`
+  and `cd8c945758e06b555f344469c1baeb9da2d1b776fde7b2f9276f1c4dbcfbdc97`).
+- The committed ED2 PDF is byte-identical to the validated community-ordered
+  source (`55e114f3a9979df6a236742dbc872aea57b51e1bcca8034087bc88724d3f04f1`).
+- Extended Data Fig. 2 and its complete legend render together on page 27.
+- The final `paper.log` contains no undefined references or citations.
+
+**PASS** -- the V7 physical-copy Results, Methods, Discussion, ED2, supporting
+tables and data-availability links build as one coherent manuscript addition.
+
 ## Successful build after WashU pedigree validation-context update
 
 Date: 2026-07-09

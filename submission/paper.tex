@@ -29,7 +29,8 @@
 %          a HG002 Pore-C all-points scatter; b Pore-C community matrix; c mouse bouquet
 %   Fig 5  Whole-genome pedigree-resolved subtelomeric exchange  (deck slides 24,26)
 % Extended Data: ED1 = 3-panel replicate of Fig 4a across genomes/assays (CHM13
-% Hi-C, HG002 Hi-C, HG002 CiFi), all 20 kbp all-points. Maternal
+% Hi-C, HG002 Hi-C, HG002 CiFi), all 20 kbp all-points; ED2 = CHM13
+% copy-number-aware functional components across chromosome ends. Maternal
 % whole-genome pedigree recombination companion scans are folded into Fig 5C-D.
 % The mouse meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
 % Figure-generation workflows are provided in the public analysis-code repository.
@@ -227,6 +228,37 @@ two q-arms, compared with 400 of 820 (49\%) among all possible pairs of the
 41 signal-bearing arms. PHR sharing is therefore constrained by chromosome-arm
 context rather than distributed indiscriminately among chromosome ends.
 
+\subsection*{PHRs concentrate annotation-bearing physical copies}
+
+We next asked whether the PHR compartment carries an excess of
+annotation-bearing physical copies, counting each coordinate-distinct
+CHM13v2.0 RefSeq/Liftoff GFF3 gene record as one copy rather than collapsing
+records by gene name, family or functional source. The primary analysis
+compared all 187 ontology-eligible midpoint PHR copies with the complete set of
+31,779 eligible non-PHR copies (total eligible universe $N=31{,}966$). Of 402
+raw midpoint PHR copies, 215 were ontology-ineligible under the fail-closed
+mapping and remained a coverage limitation. Across all 31,235 target-blind frozen exact
+(collection, direct-or-ancestor relation, term) rows, a one-sided exact
+finite-population test with within-collection Benjamini--Hochberg and global
+Holm correction supported 209 midpoint rows: 120 GO biological-process, 45 GO
+molecular-function, 37 GO cellular-component and 7 Reactome rows; 90 were
+direct assertions and 119 were ancestor rows. The any-overlap boundary
+sensitivity (193 PHR and 31,773 non-PHR eligible copies) supported 211 rows.
+
+The supported rows resolve into a mosaic of high-copy private and smaller
+distributed components (Extended Data Fig.~\ref{fig:ed2}). The clearest private
+component comprises 65 DUX4-source copies, all on the C1 4q/10q ends, carrying
+ZGA, transcription-regulatory, nuclear-envelope and cell-cycle annotations.
+WASH/endosomal-actin/exocyst and DDX11/helicase/chromosome components each
+comprise the same 10-copy distribution across six communities. A 20-copy
+SEPTIN14/septin/cytokinesis component spans C3, C5, C11 and C12, with 12 copies
+in C3; 14 WBP1L/CXCL12-signaling copies span C3, C8 and C11; and 11
+RPL23A/ribosomal/nucleolar copies span five communities. These six classes are
+readable post-inference summaries of redundant exact ontology rows, not new
+hypotheses or six independent biological systems. No broad immune or olfactory
+term met the exact midpoint support rule. The 209 exact rows and the six-class
+chromosome-end matrix are provided in the GitHub supporting-material tables.
+
 \subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
 
 Why should pseudo-homolog regions persist at 41 of the 48 arms?
@@ -347,16 +379,23 @@ self-reinforcing process: proximity at the meiotic bouquet creates opportunities
 for ectopic recombination, and exchange generates new shared sequence that enters
 the population and can reinforce proximity at subsequent meioses.
 
-PHRs also include duplicated gene families involved in olfaction, immune
-signaling, early development and cytoskeletal organization. We have not tested
-whether these functional classes are enriched across the complete PHR catalogue,
-and the representative communities examined here cannot establish such
-enrichment. Their recurrent presence nevertheless raises the possibility that
-this exchange compartment provides a distributed copy pool in which gene
-families can undergo rapid copy-number turnover, gene conversion and copy-specific
-divergence \cite{Linardopoulou2005,Ambrosini2007}. Such an architecture increases
-the mutational target available to gene families that tolerate or exploit
-variation in dosage and sequence.
+The physical-copy analysis further shows that this exchange compartment
+concentrates multiple annotation-bearing copies relative to the complete
+ontology-eligible non-PHR complement of CHM13. A high-copy, C1-private
+DUX4-associated cassette and smaller WASH/DDX11, SEPTIN14, WBP1L and RPL23A
+modules distributed across communities fit the sequence-level picture of
+chromosome ends as mosaics of partially overlapping components. Together they
+form a genomic reservoir of partially redundant sequence: concerted exchange
+can retain or homogenize some copies while leaving others available for
+copy-specific divergence and turnover \cite{Linardopoulou2005,Ambrosini2007}.
+Repeated copies could therefore provide mutational and recombinational substrate
+for innovation while other copies persist, potentially coupling sequence
+robustness or stability with evolvability. This is a biological implication and
+hypothesis, not evidence of expression, protein activity, dosage effects,
+functional pseudogene retention, buffering, fitness, selection, independence of
+adjacent copies or population-wide prevalence. The analysis is a single-genome
+CHM13 measurement of annotation-bearing physical-copy burden, and the redundant
+GO hierarchy must not be read as 209 independent biological systems.
 
 The repetitive and inter-chromosomal nature of PHRs has made them difficult to
 represent using conventional genomic analyses. Pipelines built around unique
@@ -625,6 +664,73 @@ same-orientation (p--p or q--q) or cross-orientation (p--q) and compared the
 within-community counts with the corresponding counts across all
 $\binom{41}{2}=820$ possible pairs of signal-bearing arms.
 
+\subsection*{CHM13 physical-copy ontology burden}
+
+We constructed the ontology source map from 61,312 CHM13v2.0 RefSeq/Liftoff
+v5.2 GFF3 gene records. Each GFF3 record was retained as one physical-copy
+unit; coordinate-coincident records also remained separate, as did records
+sharing a gene name, family, locus family or duplicated segment. Before opening the PHR BED,
+we froze one source assignment and its evidence for every record. An exact
+stable identifier could use only its own functional annotation; a non-self
+record could inherit a source only through a unique, explicitly directed human
+NCBI Gene ``Related functional gene'' relation. Ambiguous exact identifiers,
+type-only records, unresolved records and unsupported records failed closed and
+emitted no ontology edge. This separated physical-copy identity from functional
+source identity and prevented gene-family or source-level collapse.
+
+NCBI Gene registry and directed relationship snapshots were dated 16 July
+2026. Direct GO assertions came from the NCBI human gene2go snapshot dated 13
+July 2026 and were propagated through the go-basic release dated 15 June 2026;
+Reactome human direct assertions and recorded pathway ancestors came from
+release 96 (1 April 2026)
+\cite{GeneOntologyAshburner2000,GeneOntologyConsortium2026,Reactome2024}.
+Direct and ancestor rows remained separate. The source map and 31,235 exact
+$(\mathrm{collection},\mathrm{relation},\mathrm{term\ ID})$ hypotheses were
+target-blind and checksum-frozen before PHR status was joined.
+
+Ontology eligibility required at least one frozen direct-or-ancestor edge and
+defined a fixed universe of $N=31{,}966$ coordinate copies. The primary PHR
+assignment placed a copy in PHR when its GFF3 midpoint intersected the CHM13 PHR
+BED; any overlap defined the paired boundary sensitivity. For each assignment,
+every eligible copy occurred exactly once either in PHR or in its complete
+non-PHR set complement. Thus the primary partition was $K=187$ PHR and
+$N-K=31{,}779$ non-PHR copies, and the overlap partition was 193 and 31,773.
+The source map contained 402 raw midpoint PHR copies, of which 215 were
+ontology-ineligible and retained in the coverage audit rather than entering the
+eligible test universe. The background was not sampled, permuted, spatially
+placed or matched to other subtelomeres.
+
+For every frozen term $T$, $a_T$ was the number of eligible PHR copies carrying
+$T$, $b_T=K-a_T$ the eligible PHR copies not carrying it, $c_T$ the non-PHR
+copies carrying it, and $d_T=(N-K)-c_T$ the non-PHR copies not carrying it;
+$M_T=a_T+c_T$ was the genome-wide eligible burden. We calculated the exact
+one-sided upper tail
+$P[X\geq a_T]$ for $X\sim\mathrm{Hypergeometric}(N,M_T,K)$ over this fully
+enumerated fixed population. The hypergeometric distribution is the exact
+finite-population calculation here and does not treat copies as independently
+sampled biological replicates. Effect summaries comprised PHR and non-PHR copy
+fractions, their unsmoothed fold enrichment and odds ratio with explicit zero
+states, Haldane--Anscombe-smoothed fold and odds ratio after adding 0.5 to all
+four cells, and observed-minus-expected PHR copy burden.
+
+We applied Benjamini--Hochberg correction within each of GO biological process,
+GO molecular function, GO cellular component and Reactome across all direct and
+ancestor rows, and Holm correction globally across all 31,235 rows. Primary
+support required midpoint assignment, within-collection BH $q\leq0.05$ and
+global Holm-adjusted $P\leq0.05$. The overlap analysis was a sensitivity and
+could not create primary support. Only after exact decisions were fixed did we
+project contributor copies to the 15 arm communities and form six readable
+source-defined display classes for Extended Data Fig.~\ref{fig:ed2}; this
+projection introduced no new hypotheses, $P$ values or support calls.
+
+Reproducibility checks validated the inherited source-map and hypothesis
+checksums, complete PHR/non-PHR partitions, all $2\times2$ tables, contributor
+recounts, multiplicity families, coordinate-copy semantics, deterministic
+ordering and the absence of stochastic or placement inference. The retained V7
+engine, validation JSON, community-attribution workflow and unit tests are in
+the analysis repository. The two compact ED2 tables are regenerated without
+new inference by \texttt{submission/scripts/make\_ed2\_supporting\_material.py}.
+
 \subsection*{Hierarchical clustering and resampling controls}
 
 For display and method comparison we also ordered the arm-level matrix by
@@ -753,6 +859,12 @@ files are available at \url{https://github.com/pangenome/phrs}, including the
 CHM13-coordinate PHR annotations, the Fig.~\ref{fig:fig5} pedigree
 supporting-material table
 (\url{https://github.com/pangenome/phrs/blob/main/submission/supporting_material/Fig5_pedigree_supporting_material.tsv}),
+the 209 primary-supported exact ontology rows
+(\url{https://github.com/pangenome/phrs/blob/main/submission/supporting_material/ED_Fig2_supported_ontology_terms.tsv}),
+the ED2 six-class chromosome-end physical-copy matrix
+(\url{https://github.com/pangenome/phrs/blob/main/submission/supporting_material/ED_Fig2_arm_functional_components.tsv}),
+and their deterministic generator
+(\url{https://github.com/pangenome/phrs/blob/main/submission/scripts/make_ed2_supporting_material.py}),
 the figure-generation inputs for Fig.~\ref{fig:fig5}, and re-alignment workflows
 and command lines for Hi-C, Pore-C and CiFi. HPRC v2 assemblies, CHM13v2.0, the
 WashU pedigree assemblies, the CEPH1463 assemblies, and the published 3D-genome
@@ -790,6 +902,31 @@ insufficient to reproduce the inter-arm signal.
 \end{figure}
 
 \clearpage
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig2_copy_number_ontology_heatmap.pdf}
+  \caption{\textbf{Copy-number-aware functional-component burden across
+    chromosome ends.} Heatmap of coordinate-distinct CHM13 midpoint PHR
+    physical copies carrying each of six post-inference V7 display classes.
+    Columns are chromosome ends. The 41 signal-bearing arms are grouped by
+    arm-level PHR community C1--C15 and ordered within each community by the
+    subtelomeric-similarity tree; the seven no-signal arms are appended at right
+    in grey. Cell values are physical PHR copy counts, not collapsed gene or
+    functional-source identities and not counts of redundant GO/Reactome rows.
+    The six rows summarize exact primary-supported ontology terms after
+    inference---DUX4/ZGA/transcription/nuclear-envelope/cell-cycle,
+    WASH/endosomal-actin/exocyst, DDX11/helicase/chromosome,
+    SEPTIN14/septin/cytokinesis, WBP1L/CXCL12 signaling and
+    RPL23A/ribosomal/nucleolar---and add no hypotheses, tests, $P$ values or
+    support decisions. DUX4/ZGA burden is concentrated in the C1 4q/10q system,
+    whereas the other components recur across selected communities, revealing
+    partially overlapping subtelomeric cassettes rather than wholesale
+    homogenization of chromosome ends. Exact term statistics and the plotted
+    arm-by-class matrix are supplied in the two ED2 GitHub supporting-material
+    tables.}
+  \label{fig:ed2}
+\end{figure}
+
 \clearpage
 \subsection*{Human Pangenome Reference Consortium}
 {\small
