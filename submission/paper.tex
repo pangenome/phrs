@@ -228,40 +228,43 @@ two q-arms, compared with 400 of 820 (49\%) among all possible pairs of the
 41 signal-bearing arms. PHR sharing is therefore constrained by chromosome-arm
 context rather than distributed indiscriminately among chromosome ends.
 
-\subsection*{Functional enrichment within subtelomeric PHRs}
+\subsection*{Functional systems enriched within subtelomeric PHRs}
 
 To investigate the functional significance of the PHR compartment, we
 performed a copy-number-aware enrichment analysis of Gene Ontology (GO) and
-Reactome annotations in CHM13. We compared gene copies within PHRs with all
-annotated gene copies elsewhere in the genome. Each genomic copy was counted
-separately rather than collapsing duplicated genes by name or family, because
-the expansion of a gene from one copy to many is itself part of the signal we
-sought to measure. CHM13 contains 402 annotated gene copies whose midpoint lies
-within a PHR; 187 could be confidently assigned to at least one GO or Reactome
-term and were compared with 31,779 annotated gene copies outside PHRs. After
-correction for multiple testing, 209 terms were significantly enriched: 120 GO
-biological-process, 45 GO molecular-function, 37 GO cellular-component and 7
-Reactome terms. Assigning genes to PHRs by any overlap rather than by their
-midpoint gave a nearly identical result, with 211 enriched terms.
+Reactome annotations in CHM13. Gene copies within PHRs were compared with all
+annotated gene copies elsewhere in the genome, with each duplicated copy
+counted separately rather than collapsed by gene name or family. The analysis
+identified 209 significantly enriched terms spanning biological processes,
+molecular functions, cellular components and Reactome pathways. Assigning genes
+to PHRs by any overlap rather than by their midpoint gave a nearly identical
+result, with 211 enriched terms.
 
-The enriched functions reveal a mosaic of locally expanded and broadly shared
-gene modules (Extended Data Fig.~\ref{fig:ed2}). Sixty-five DUX4-associated
-copies, all in the C1 4q/10q system, contribute annotations related to zygotic
-genome activation, transcriptional regulation, the nuclear envelope and the
-cell cycle. WASH-associated endosomal-actin and exocyst functions and
-DDX11-associated helicase and chromosome functions each occur in 10 copies
-distributed across six PHR communities. SEPTIN14-associated septin and
-cytokinesis functions occur in 20 copies across C3, C5, C11 and C12, including
-12 copies in C3. WBP1L/CXCL12 signaling functions occur in 14 copies across C3,
-C8 and C11, whereas RPL23A-associated ribosomal and nucleolar functions occur in
-11 copies across five communities. Thus, different chromosome ends share
-overlapping subsets of functional material rather than a uniform complement of
-genes. Because GO terms overlap hierarchically, Extended Data Fig.~\ref{fig:ed2}
-groups the enriched terms into six interpretable functional classes for
-display; these classes summarize the result and are not separate statistical
-tests. Broad immune and olfactory-receptor categories were not significantly
-enriched. The complete results and chromosome-end counts are provided in the
-GitHub supporting-material tables.
+The enrichments fall into several functional systems whose distributions differ
+markedly across the PHR communities (Extended Data Fig.~\ref{fig:ed2}). The most
+spatially restricted system is associated with DUX4: functions related to
+zygotic genome activation, transcriptional regulation, the nuclear envelope and
+the cell cycle are concentrated in the C1 exchange network linking 4q and 10q.
+By contrast, functions involved in intracellular organization and chromosome
+dynamics are distributed across multiple communities. These include
+WASH-associated endosomal actin and exocyst activity, DDX11-associated helicase
+and chromosome-maintenance functions, and SEPTIN14-associated septin and
+cytokinesis functions. Signaling functions associated with WBP1L/CXCL12 and
+ribosomal and nucleolar functions associated with RPL23A are also shared among
+several otherwise distinct communities.
+
+Extended Data Fig.~\ref{fig:ed2} maps these systems across chromosome ends and
+shows that PHRs do not carry a uniform functional repertoire. Instead, each
+community contains a different combination of partially overlapping modules:
+some are highly amplified within a single exchange network, whereas others
+recur across multiple communities. This functional mosaic parallels the
+underlying sequence-sharing graph and suggests that inter-chromosomal exchange
+redistributes discrete blocks of gene content rather than homogenizing entire
+chromosome ends. The six displayed functional classes summarize overlapping
+hierarchical GO terms and are not separate statistical tests. Broad immune and
+olfactory-receptor categories were not significantly enriched. The complete
+term-level results and chromosome-end counts are provided in the GitHub
+supporting-material tables.
 
 \subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
 
