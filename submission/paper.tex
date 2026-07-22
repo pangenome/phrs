@@ -143,10 +143,10 @@ communities?
 \subsection*{A whole-genome survey reveals subtelomeric sharing}
 
 We first asked where inter-chromosomal sequence sharing occurs without
-preselecting chromosome ends. We used wfmash to align 25,272 sampled ordered
-pairs from a 466-sequence whole-genome set comprising 464 HPRC v2
-haplotypes, CHM13v2.0 and GRCh38 (11.6\% of the possible ordered pairs)
-\cite{Guarracino2023}. The sample size was selected well above the modeled
+preselecting chromosome ends. We used wfmash~\cite{wfmash} to align 25,272 sampled
+ordered pairs from a 466-sequence whole-genome set comprising 464 HPRC v2
+haplotypes, CHM13v2.0 and GRCh38 (11.6\% of the possible ordered pairs).
+The sample size was selected well above the modeled
 connectivity threshold for the assembly-pair network. We indexed these
 alignments as an implicit pangenome graph and queried non-overlapping 100 kb
 CHM13 windows through transitive alignment paths
@@ -612,10 +612,10 @@ Genomics.
 \subsection*{Whole-genome implicit pangenome survey}
 
 The whole-genome survey used 464 HPRC v2 haplotype assemblies together with
-CHM13v2.0 and GRCh38, for 466 input sequences. We used wfmash v0.23.0
+CHM13v2.0 and GRCh38, for 466 input sequences. We used wfmash v0.23.0~\cite{wfmash}
 (\texttt{-p 95 -P inf}) to align 25,272 sampled ordered target--query
-pairs, representing 11.6\% of the $466^{2}$ possible ordered pairs
-\cite{Guarracino2023}. The sample size was selected using an Erd\H{o}s--R\'{e}nyi
+pairs, representing 11.6\% of the $466^{2}$ possible ordered pairs.
+The sample size was selected using an Erd\H{o}s--R\'{e}nyi
 connectivity model and lay well above the modeled threshold for a connected
 assembly-pair network. The resulting pairwise alignments were indexed with IMPG
 v0.4.1. For Fig.~\ref{fig:fig1}A, non-overlapping 100 kb windows spanning CHM13
@@ -644,9 +644,9 @@ repeat tract itself was removed, giving 18,827 flanks across the 48 arms.
 
 \subsection*{Alignment, implicit pangenome graph and PHR detection}
 
-We aligned the complete flank collection all-against-all with wfmash v0.23.0 at
-95\% minimum identity, each of the 18,827 flanks serving in turn as the target
-against the full collection \cite{Guarracino2023}. Every flank was therefore
+We aligned the complete flank collection all-against-all with wfmash
+v0.23.0~\cite{wfmash} at 95\% minimum identity, each of the 18,827 flanks serving
+in turn as the target against the full collection. Every flank was therefore
 compared with every other without restricting comparisons to homologous
 chromosomes. We indexed this pairwise alignment set with IMPG v0.4.1 for direct
 interval queries \cite{pangenome_graphs_impg_IMPG2023}. Starting at each
