@@ -58,7 +58,7 @@ have prevented a population-scale view of the extent and organization of
 subtelomeric exchange \cite{Nurk2022,Liao2023,hprc_hprcv2_2025}.
 Here we apply a reference-free pangenome approach to 465 near-complete human
 assemblies, comparing every chromosome end against every other, and find that
-high-identity pseudo-homolog regions occur on 41 of 48 chromosome arms.
+high-identity pseudo-homolog regions~\cite{Guarracino2023} occur on 41 of 48 chromosome arms.
 These regions form structured sequence communities containing recurrent,
 copy-number-enriched functional gene modules associated with chromosome dynamics,
 intracellular organization and germ-cell development.
@@ -124,12 +124,12 @@ The telomere-to-telomere CHM13 assembly resolved one human genome end to end
 The second release of the Human Pangenome Reference Consortium (HPRC v2)
 provides near-complete, haplotype-resolved assemblies for 232 individuals from
 five superpopulations \cite{hprc_hprcv2_2025}.
-Building on pangenome graph methods developed through HPRC analyses of
-heterologous acrocentric chromosomes and through complete assemblies of human
-Robertsonian chromosomes
-\cite{Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}, we extend
-reference-free homology analysis from individual exchange systems to all
-chromosome ends across the cohort.
+HPRC analyses of heterologous acrocentric chromosomes and complete assemblies
+of human Robertsonian chromosomes established that their short arms recombine
+through shared pseudo-homolog regions (PHRs)
+\cite{Guarracino2023,acrocentric_rdna_robertsonian_deLima2025}. Building on those
+pangenome graph methods, we extend reference-free homology analysis from these
+individual exchange systems to all chromosome ends across the cohort.
 Here we ask whether the acrocentric result is one instance of a genome-wide
 pattern.
 Revisiting subtelomeric organization without chromosomal partitioning, we pose
@@ -163,8 +163,8 @@ from 465 near-complete assemblies, giving 18,827 flanks across the 48
 chromosome arms. We then performed a separate, complete all-against-all flank
 alignment with wfmash at 95\% minimum identity, without restricting comparisons
 to homologous chromosomes. We indexed this flank-specific alignment set with
-IMPG and queried consecutive windows from each telomere inward. We define a
-pseudo-homolog region (PHR) as a telomere-anchored interval containing windows
+IMPG and queried consecutive windows from each telomere inward. We define a PHR here as a telomere-anchored interval containing
+windows
 with at least five directly aligned segments from each of at least two
 chromosomes, including its own, at $\geq 95\%$ identity.
 This yields 15,668 PHRs on 41 of the 48 arms; the remaining 7 arms (chr2p,
