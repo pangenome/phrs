@@ -142,26 +142,27 @@ between members of the same communities in pedigrees?
 \subsection*{A whole-genome survey reveals subtelomeric sharing}
 
 We first asked where inter-chromosomal sequence sharing occurs without
-preselecting chromosome ends. We used wfmash~\cite{wfmash} to align 25,272 sampled
+preselecting chromosome ends. We aligned 25,272 sampled
 ordered pairs from a 466-sequence whole-genome set comprising 464 HPRC v2
 haplotypes, CHM13v2.0 and GRCh38 (11.6\% of the possible ordered pairs).
 The sample size was selected well above the modeled
 connectivity threshold for the assembly-pair network. We indexed these
 alignments as an implicit pangenome graph and queried non-overlapping 100 kb
 CHM13 windows through transitive alignment paths
-\cite{pangenome_graphs_impg_GarrisonGuarracino2023,pangenome_graphs_impg_IMPG2023}.
+\cite{pangenome_graphs_impg_IMPG2023}.
 The resulting genome-wide map reveals high-identity inter-chromosomal sharing
 concentrated at chromosome ends (Fig.~\ref{fig:fig1}A). The acrocentric short
 arms and pseudoautosomal regions appear as expected positive controls, but the
 same pattern recurs at most other chromosome ends.
 
-To delimit these regions, we used \texttt{seqtk telo} to identify terminal
+To delimit these regions, we identified terminal
 telomeric repeat tracts and extracted the adjacent 500 kb of inward sequence
 from 465 near-complete assemblies, giving 18,827 flanks across the 48
 chromosome arms. We then performed a separate, complete all-against-all flank
-alignment with wfmash at 95\% minimum identity, without restricting comparisons
-to homologous chromosomes. We indexed this flank-specific alignment set with
-IMPG and queried consecutive windows from each telomere inward. We define a PHR here as a telomere-anchored interval containing
+alignment at 95\% minimum identity, without restricting comparisons
+to homologous chromosomes. We indexed this flank-specific alignment set as an
+implicit pangenome graph~\cite{pangenome_graphs_impg_IMPG2023}
+and queried consecutive windows from each telomere inward. We define a PHR here as a telomere-anchored interval containing
 windows
 with at least five directly aligned segments from each of at least two
 chromosomes, including its own, at $\geq 95\%$ identity.
@@ -636,7 +637,7 @@ flank definition. Second, the chr18q flank of NA18982 haplotype 1
 whole-genome wfmash alignments its first 83.37 Mb map to chr18 and a terminal
 966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns. No
 further haplotype-level exclusions were applied. We identified terminal repeat
-tracts with \texttt{seqtk telo} and, from each retained haplotype assembly,
+tracts with \texttt{seqtk telo}~\cite{seqtk} and, from each retained haplotype assembly,
 extracted the 500 kb immediately internal to each tract on every contig at least
 1 Mb long that was classified as p- or q-arm telomere-bearing. The telomeric
 repeat tract itself was removed, giving 18,827 flanks across the 48 arms.
