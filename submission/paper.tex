@@ -272,10 +272,11 @@ chromosome ends.
 \subsection*{Three-dimensional proximity of sequence-similar subtelomeres}
 
 Why should pseudo-homolog regions persist at 41 of the 48 arms?
-In human contact-map data, aggregate contact at PHR coordinates increases with
-PHR sequence similarity.
-We measured this per inter-chromosomal PHR pair within a single genome and
-without community labels in HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise
+If persistence involves spatial proximity, subtelomeres that share more sequence
+should lie closer together in the nucleus. In human contact maps, we find that
+aggregate contact at PHR coordinates increases with PHR sequence similarity.
+We measured this per inter-chromosomal PHR pair within a single genome in
+HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise
 Spearman $\rho = 0.376$, $n = 2{,}830$), with the same direction in
 CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
 Because highly similar non-homologous PHR tracts cannot be assigned uniquely by
@@ -786,7 +787,8 @@ tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows an
 columns, and read-placement histories. Each correlation takes one
 inter-chromosomal PHR sequence pair as a point and relates its pangenome-graph
 Jaccard similarity to its length-normalized contact at the pair's exact
-coordinates within a single genome, at 20 kb. The primary comparison is HG002
+coordinates within a single genome, at 20 kb, independently of the community
+partition, so the correlation cannot be an artifact of the community grouping. The primary comparison is HG002
 Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.376$, $n = 2{,}830$); the replicates in
 Extended Data Fig.~\ref{fig:ed1} are CHM13 Hi-C ($\rho = 0.742$, $n = 688$), HG002
 Hi-C ($\rho = 0.616$, $n = 2{,}413$) and HG002 CiFi ($\rho = 0.196$,
