@@ -90,6 +90,7 @@ COLORS = {
     "PAR_XY": "#E7298A",
     "chr5_chr1_candidate": "#1F77B4",
     "chr9_chr3_candidate": "#D95F02",
+    "chr21_chr4_candidate": "#2CA02C",
     "acro_acro": "#6f6f6f",
     "acro_other": "#9e9e9e",
     "other_nonacro": "#2C7FB8",
@@ -153,6 +154,8 @@ class Run:
             return "chr5_chr1_candidate"
         if self.query_chrom == "chr9" and self.target_chrom == "chr3":
             return "chr9_chr3_candidate"
+        if {self.query_chrom, self.target_chrom} == {"chr21", "chr4"}:
+            return "chr21_chr4_candidate"
         if self.query_chrom in ACRO and self.target_chrom in ACRO:
             return "acro_acro"
         if self.query_chrom in ACRO or self.target_chrom in ACRO:
@@ -658,7 +661,7 @@ def high_confidence_runs(runs: list[Run]) -> list[Run]:
     return sorted(
         out,
         key=lambda r: (
-            {"acro_acro": 0, "acro_other": 1, "other_nonacro": 2, "chr5_chr1_candidate": 3, "chr9_chr3_candidate": 4, "PAR_XY": 5}[r.category],
+            {"acro_acro": 0, "acro_other": 1, "other_nonacro": 2, "chr5_chr1_candidate": 3, "chr9_chr3_candidate": 4, "chr21_chr4_candidate": 5, "PAR_XY": 6}[r.category],
             r.bp,
         ),
     )
@@ -933,7 +936,7 @@ def draw_panel_label(svg: SVG, config: RenderConfig) -> None:
 
 
 def ribbon_opacity(category: str) -> float:
-    if category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"}:
+    if category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate", "chr21_chr4_candidate"}:
         return 0.75
     if category == "acro_acro":
         return 0.34
@@ -957,12 +960,14 @@ def label_text(run: Run) -> str:
         return "chr5q ~ chr1p"
     if run.category == "chr9_chr3_candidate":
         return "chr9q ~ chr3q"
+    if run.category == "chr21_chr4_candidate":
+        return "chr21p ~ chr4p"
     return f"{run.query_chrom} ~ {run.target_chrom}"
 
 
 def draw_callouts(svg: SVG, runs: list[Run], query_layout: GenomeLayout) -> None:
     selected: list[Run] = []
-    for category in ("PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"):
+    for category in ("PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate", "chr21_chr4_candidate"):
         rows = [run for run in runs if run.category == category]
         rows = sorted(rows, key=lambda r: -r.bp)
         selected.extend(rows[:1])
@@ -997,6 +1002,7 @@ def draw_legend(svg: SVG, runs: list[Run]) -> None:
         ("PAR_XY", "PAR1 positive control"),
         ("chr5_chr1_candidate", "chr5q/chr1p candidate"),
         ("chr9_chr3_candidate", "chr9q/chr3q candidate"),
+        ("chr21_chr4_candidate", "chr21p/chr4p candidate"),
         ("acro_acro", "acrocentric"),
         ("acro_other", "acro-other"),
         ("other_nonacro", "other"),
@@ -1030,6 +1036,7 @@ def draw_homolog_legend(svg: SVG, runs: list[Run], homolog_runs: list[Run]) -> N
         ("PAR_XY", "PAR1"),
         ("chr5_chr1_candidate", "chr5q/chr1p"),
         ("chr9_chr3_candidate", "chr9q/chr3q"),
+        ("chr21_chr4_candidate", "chr21p/chr4p"),
     ]:
         count = sum(1 for run in runs if run.category == category)
         if count == 0:
@@ -1080,7 +1087,7 @@ def render(
         color = COLORS[run.category]
         qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, INTERCHROM_RIBBON_MIN_W)
         dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, INTERCHROM_RIBBON_MIN_W)
-        emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.55
+        emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate", "chr21_chr4_candidate"} else 0.55
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.88 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.88 * emph)
 
@@ -1147,7 +1154,7 @@ def render_homolog_context(
         color = COLORS[run.category]
         donor_edge_y, child_edge_y = ribbon_y_for(target_y[run.donor_haplotype], Y_QUERY)
         d = ribbon_path(dx0, dx1, donor_edge_y, qx0, qx1, child_edge_y)
-        opacity = 0.82 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.48
+        opacity = 0.82 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate", "chr21_chr4_candidate"} else 0.48
         svg.path(d, color, "none", 0, opacity)
 
     for run in inter_runs:
@@ -1157,7 +1164,7 @@ def render_homolog_context(
         color = COLORS[run.category]
         qx0, qx1 = interval_x_with_min_width(query_layout, run.query_chrom, run.query_start, run.query_end, INTERCHROM_RIBBON_MIN_W)
         dx0, dx1 = interval_x_with_min_width(target_layout_obj, run.target_chrom, run.donor_start, run.donor_end, INTERCHROM_RIBBON_MIN_W)
-        emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate"} else 0.65
+        emph = 1.0 if run.category in {"PAR_XY", "chr5_chr1_candidate", "chr9_chr3_candidate", "chr21_chr4_candidate"} else 0.65
         draw_interval(svg, qx0, qx1, Y_QUERY, color, 0.95 * emph)
         draw_interval(svg, dx0, dx1, target_y[run.donor_haplotype], color, 0.95 * emph)
 

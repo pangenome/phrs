@@ -306,39 +306,34 @@ at the nuclear envelope, and lowest at diplotene.
 
 \subsection*{Whole-genome pedigree windows recover putative subtelomeric exchange}
 
-To ask whether recent exchange can leave pedigree-resolved patterns compatible
-with PHR sharing, we compared the PAN027 paternal haplotype with a joint
-two-haplotype target from the transmitting father, PAN011
-\cite{Cechova2025}, using whole-genome alignment followed by 2 kb
-similarity windows (Fig.~\ref{fig:fig5}).
-This pedigree is uniquely suited to this test because it is, to our knowledge,
-the only multigenerational human pedigree in which all three generations have
-complete telomere-to-telomere assemblies, making transmission-resolved
-subtelomeric comparison possible at chromosome ends where incomplete assemblies
-usually fail.
-This male transmission is a useful positive-control setting because
+To look for recent exchange within a single family, we traced transmission
+through the WashU pedigree \cite{Cechova2025}, to our knowledge the only one with
+complete telomere-to-telomere assemblies in all three generations, which makes
+transmission-resolved subtelomeric comparison possible at chromosome ends where
+incomplete assemblies usually fail. We compared the chromosomes a
+daughter inherited from her father against both of his haplotypes by
+whole-genome alignment (Methods, Fig.~\ref{fig:fig5}).
+This father-to-daughter transmission is a useful positive-control setting because
 recombination is biased toward chromosome ends in the male germline
 \cite{Bherer2017}, and the same procedure recovers PAR1 sharing between Xp and
 Yp, the obligate site of male sex-chromosome recombination.
-Against a background of same-chromosome father-child inheritance, the
-whole-genome scan also highlights two short putative autosomal PHR exchanges,
-chr5q/chr1p and chr9q/chr3q, in which the best non-homologous father match
-beats the same-chromosome or homologous father match across adjacent windows.
-These segments are modest in length (20--28 kb for the autosomal calls, and
-138 kb total for PAR1) and lie within independently defined PHR/PAR intervals.
-PHR and community labels were assigned only after calling; the highlighted pairs
-fall in the expected arm-level sequence-similarity communities and show
-post hoc Jaccard support (Xp/Yp community C15, chr5q/chr1p community C11, chr9q/chr3q community C3).
-Exact assembly-native intervals, identities, same-chromosome competitor scores,
-PHR/community annotations and corresponding arm-level CHM13 PHR BED intervals
-are provided in the GitHub supporting-material table.
-Applying the same whole-genome homologous-competition scan to the maternal
-PAN027 and PAN028 transmissions provides matched context rather than a second
-primary claim: PAN027 maternal windows resolve only the expected
-acrocentric-acrocentric class, while PAN028 maternal windows are again dominated
-by acrocentric-acrocentric sharing, with one displayed chr21p/chr4p context run
-and one additional chr5/chr1 candidate visible in the same display framework
-(Fig.~\ref{fig:fig5}C,D).
+Almost everywhere, each of the daughter's chromosomes matches the same
+chromosome in her father. However, the whole-genome scan
+highlights two putative autosomal PHR exchanges, chr5q/chr1p and
+chr9q/chr3q, where a subtelomere's best match is instead a non-homologous father
+chromosome.
+The two autosomal segments are short, 20--28 kb, compared with 138 kb for the
+PAR1 control. The exchanges were called without using the community structure,
+yet each pair falls in the community expected from the survey (Xp/Yp in C15,
+chr5q/chr1p in C11, chr9q/chr3q in C3).
+We also ran the same scan on two further transmissions, the chromosomes the
+daughter inherited from her mother and the chromosomes the granddaughter
+inherited from that same daughter. The
+daughter's maternal side shows only the expected acrocentric-acrocentric sharing
+(Fig.~\ref{fig:fig5}C), while the granddaughter's is again dominated by
+acrocentric-acrocentric sharing, with two further highlighted candidates,
+the subtelomeric chr5q/chr1p and a chr21p/chr4p run whose chr4 partner is
+pericentromeric rather than subtelomeric (Fig.~\ref{fig:fig5}D).
 
 The two autosomal candidates differ in support, but their primary evidence is
 the implicit-graph homologous-competition scan rather than concordance with a
@@ -573,17 +568,19 @@ Genomics.
     \put(0.4,13.5){\textbf{\large\sffamily C}}\end{overpic}\\[3pt]
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5D_pan028.png}%
     \put(0.4,13.5){\textbf{\large\sffamily D}}\end{overpic}\\[-6pt]
-  {\footnotesize\sffamily\textbf{Ribbon classes}\quad
+  {\footnotesize\sffamily\textbf{Match type}\quad
     \fivesw{b8bdc3}~same chromosome\quad
     \fivesw{6f6f6f}~acrocentric\quad
     \fivesw{E7298A}~PAR1\quad
-    \fivesw{1F77B4}~chr5q/chr1p\quad
-    \fivesw{D95F02}~chr9q/chr3q}
+    \fivesw{1F77B4}~5q/1p\quad
+    \fivesw{D95F02}~9q/3q\quad
+    \fivesw{2CA02C}~21p/4p}
   \caption{\textbf{Whole-genome pedigree views of putative subtelomeric exchange.}
-    \textbf{(A)} Pedigree relationships and the three transmissions shown.
-    \textbf{(B)} PAN027 paternal haplotype compared with the two PAN011 father
-    haplotypes. \textbf{(C)} PAN027 maternal haplotype compared with the two
-    PAN010 mother haplotypes. \textbf{(D)} PAN028 maternal haplotype compared
+    \textbf{(A)} Pedigree relationships and the three transmissions shown
+    (the daughter PAN027, her father PAN011, her mother PAN010 and the
+    granddaughter PAN028). \textbf{(B)} PAN027 paternal haplotype compared with the two PAN011
+    father haplotypes. \textbf{(C)} PAN027 maternal haplotype compared with the
+    two PAN010 mother haplotypes. \textbf{(D)} PAN028 maternal haplotype compared
     with the two PAN027 mother haplotypes. In each ribbon panel, chromosomes are
     concatenated in order and scaled by their length; the middle
     track is the meiotic product inherited by the child/query haplotype, and
@@ -595,9 +592,9 @@ Genomics.
     obligate male sex-chromosome recombination and two putative autosomal
     PHR-exchange candidates, chr5q/chr1p and chr9q/chr3q. The maternal panels
     provide matched display context and are dominated by expected
-    acrocentric-acrocentric sharing, with one displayed chr21p/chr4p context
-    run and one additional chr5/chr1 candidate in the PAN028 maternal
-    transmission.}
+    acrocentric-acrocentric sharing, with a subtelomeric chr5q/chr1p candidate
+    and a chr21p/chr4p run (pericentromeric on chr4) highlighted in the PAN028
+    maternal transmission.}
   \label{fig:fig5}
 \end{figure}
 
