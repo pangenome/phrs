@@ -143,10 +143,10 @@ between members of the same communities in pedigrees?
 
 We first asked where inter-chromosomal sequence sharing occurs without
 preselecting chromosome ends. We aligned 25,272 sampled
-ordered pairs from a 466-sequence whole-genome set comprising 464 HPRC v2
-haplotypes, CHM13v2.0 and GRCh38 (11.6\% of the possible ordered pairs).
+ordered pairs (11.6\% of all possible) from a 466-sequence whole-genome set
+comprising 464 HPRC v2 haplotypes plus CHM13v2.0 and GRCh38.
 The sample size was selected well above the modeled
-connectivity threshold for the assembly-pair network. We indexed these
+connectivity threshold for the assembly-pair network (Methods). We indexed these
 alignments as an implicit pangenome graph and queried non-overlapping 100 kb
 CHM13 windows through transitive alignment paths
 \cite{pangenome_graphs_impg_IMPG2023}.
@@ -156,9 +156,10 @@ arms and pseudoautosomal regions appear as expected positive controls, but the
 same pattern recurs at most other chromosome ends.
 
 To delimit these regions, we identified terminal
-telomeric repeat tracts and extracted the adjacent 500 kb of inward sequence
-from 465 near-complete assemblies, giving 18,827 flanks across the 48
-chromosome arms. We then performed a separate, complete all-against-all flank
+telomeric repeat tracts and extracted the 500 kb flank immediately inward from
+each telomere in 465 near-complete assemblies (excluding GRCh38, which lacks the
+complete telomere ends needed for flank extraction), giving 18,827 flanks across
+the 48 chromosome arms. We then performed a separate, complete all-against-all flank
 alignment at 95\% minimum identity, without restricting comparisons
 to homologous chromosomes. We indexed this flank-specific alignment set as an
 implicit pangenome graph~\cite{pangenome_graphs_impg_IMPG2023}
