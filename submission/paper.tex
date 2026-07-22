@@ -183,7 +183,8 @@ order of magnitude as PAR2 (the median PHR is 31\% of PAR2's length)
 
 \subsection*{Communities of subtelomeric PHRs}
 
-The explicit PGGB graph built from all 15,668 PHR sequences forms a single main
+The explicit unbiased pangenome graph~\cite{Garrison2024pggb,pangenome_graphs_unbiased_GarrisonGuarracino2023}
+built from all 15,668 PHR sequences forms a single main
 connected component (Fig.~\ref{fig:fig2}A) that is too tangled to interpret
 node by node.
 We therefore measured pangenome similarity between chromosome ends as the
@@ -192,7 +193,7 @@ arm-level similarity matrix.
 The matrix is structured rather than uniform: it contains locally dense blocks
 embedded in a broader continuum of lower inter-community similarity
 (Fig.~\ref{fig:fig2}B, left).
-Leiden community detection on this arm-level matrix partitions the 41
+Leiden community detection~\cite{leiden_traag2019} on this arm-level matrix partitions the 41
 signal-bearing arms into 15 arm-level communities (Fig.~\ref{fig:fig2}B,
 right).
 The communities recover every previously described case of inter-chromosomal
