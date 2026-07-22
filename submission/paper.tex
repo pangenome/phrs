@@ -293,16 +293,16 @@ block structure after observed/expected inter-chromosomal normalization
 (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
 The same within-community enrichment holds in the HG002 CiFi contact map
 \cite{hic3d_cifi2025}.
-Mouse meiotic Hi-C provides a stage-resolved prophase-I comparison: the same B6
-and CAST T2T assemblies, PHR sequence identities and read-placement procedure
-are used at leptotene, zygotene, pachytene and diplotene
-\cite{Francis2025,Zuo2021}.
+Mouse meiotic Hi-C from a B6 $\times$ CAST F1 hybrid, mapped to the B6 and CAST
+T2T assemblies, provides a stage-resolved comparison across prophase I. The
+same assemblies, PHR sequence identities and read-placement
+procedure are used at all four stages (leptotene, zygotene, pachytene and
+diplotene), so only the meiotic stage differs \cite{Francis2025,Zuo2021}.
 Subtelomeric sequence similarity is positively correlated with contact across
-all four stages, and the per-PHR-pair correlation is strongest at the zygotene
-bouquet, when telomeres cluster at the nuclear envelope, and lowest at diplotene
-(pointwise Spearman $\rho = 0.419$, 0.614, 0.576 and 0.245 at
-leptotene, zygotene, pachytene and diplotene, all $n = 1{,}135$;
-Fig.~\ref{fig:fig4}C).
+all four stages (pointwise Spearman $\rho = 0.419$, 0.614, 0.576 and 0.245 at
+leptotene, zygotene, pachytene and diplotene; all $n = 1{,}135$;
+Fig.~\ref{fig:fig4}C), strongest at the zygotene bouquet, when telomeres cluster
+at the nuclear envelope, and lowest at diplotene.
 
 \subsection*{Whole-genome pedigree windows recover putative subtelomeric exchange}
 
@@ -807,7 +807,10 @@ statistic.
 We repeated the entire pipeline on a non-human mammal, using the B6 and CAST T2T
 assemblies \cite{Francis2025}. Telomere-anchored flanks were extracted and PHRs
 called de novo, with a 1, 2 and 4 Mb window sweep (30 of 49 mouse PHRs saturate
-the 1 Mb window) and a two-community arm-level partition. For each meiotic
+the 1 Mb window) and a two-community arm-level partition. The stage-resolved
+meiotic Hi-C is from a B6 $\times$ CAST F1 hybrid \cite{Zuo2021}, with reads
+phased into paternal (B6) and maternal (CAST) haplotypes, mapped to the diploid
+B6+CAST reference and treated as separate physical chromosomes. For each meiotic
 prophase stage we computed the per-PHR-pair Spearman correlation between
 length-normalized contact and PHR Jaccard similarity at 20 kb over 1 Mb flanks.
 Subtelomeric similarity was positively correlated with inter-chromosomal contact
@@ -815,7 +818,7 @@ at all four stages, strongest at zygotene and lowest at diplotene
 ($\rho = 0.419$, 0.614, 0.576 and 0.245 at leptotene, zygotene, pachytene and
 diplotene; all $n = 1{,}135$; Fig.~\ref{fig:fig4}C). These are point estimates
 without a formal stage-contrast test; a Mantel cross-check agreed to within
-$\pm 0.02$ \cite{Zuo2021}.
+$\pm 0.02$.
 
 \subsection*{Pedigree direct-alignment windows}
 
