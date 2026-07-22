@@ -279,17 +279,15 @@ We measured this per inter-chromosomal PHR pair within a single genome in
 HG002 Pore-C (Fig.~\ref{fig:fig4}A; pointwise
 Spearman $\rho = 0.376$, $n = 2{,}830$), with the same direction in
 CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
-Because highly similar non-homologous PHR tracts cannot be assigned uniquely by
-a mapping-quality threshold, we interpret PHR-window contacts as aggregate
-coordinate-level measurements.
-Here and below $B/W$ denotes mean between-community contact divided by mean
-within-community contact, so lower values indicate stronger within-community
-proximity.
-The adjacent 100 kb centromere-ward non-PHR flanks provide the key mapping
-control: in HG002 Hi-C they show stronger within-community enrichment than the
-PHR windows themselves ($B/W = 0.0013$ versus $0.028$, a 21-fold lower B/W ratio),
-although the flanks do not contain the shared sequence used to define PHR
-pairs.
+Because near-identical PHRs on non-homologous chromosomes cannot be told apart by
+read mapping, we interpret contact at a PHR window as an aggregate over its
+near-identical copies rather than reads uniquely assigned to a single PHR.
+The 100 kb of unique sequence immediately centromere-ward of each PHR, the
+non-PHR flanks, map unambiguously and so provide the key control for this
+multi-mapping concern. In HG002 Hi-C, their mean between- over within-community
+contact ratio ($B/W$; lower means stronger) is 0.0013 versus 0.028 in the PHR
+windows, a 21-fold stronger within-community enrichment, although the flanks do
+not contain the shared sequence used to define PHR pairs.
 Ordering a Pore-C contact matrix by sequence community shows the same community
 block structure after observed/expected inter-chromosomal normalization
 (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
