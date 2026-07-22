@@ -181,14 +181,14 @@ order of magnitude as PAR2 (the median PHR is 31\% of PAR2's length)
 
 \subsection*{Communities of subtelomeric PHRs}
 
-The explicit unbiased pangenome graph~\cite{Garrison2024pggb,pangenome_graphs_unbiased_GarrisonGuarracino2023}
-built from all 15,668 PHR sequences forms a single main
-connected component (Fig.~\ref{fig:fig2}A) that is too tangled to interpret
-node by node.
+The explicit pangenome graph~\cite{Garrison2024pggb,pangenome_graphs_unbiased_GarrisonGuarracino2023}
+built from all 15,668 PHR sequences forms a large main
+connected component (Fig.~\ref{fig:fig2}A) that contains 15,654 of them (99.9\%)
+and is too tangled to interpret node by node.
 We therefore measured pangenome similarity between chromosome ends as the
 Jaccard overlap of the graph nodes they traverse, and reduced the result to an
 arm-level similarity matrix.
-The matrix is structured rather than uniform: it contains locally dense blocks
+The matrix is not uniform: locally dense blocks of high similarity are
 embedded in a broader continuum of lower inter-community similarity
 (Fig.~\ref{fig:fig2}B, left).
 Leiden community detection~\cite{leiden_traag2019} on this arm-level matrix partitions the 41
@@ -203,8 +203,9 @@ and colleagues \cite{Linardopoulou2005}, and the 4q/10q D4Z4 pair
 Beyond these discrete communities, the same matrix shows a weaker q-arm
 enrichment that does not resolve into a separate community (22q, 21q, 19q, 1q,
 13q and 17q).
-Average-linkage UPGMA provides a secondary display and method comparison, but we
-do not interpret the ordering as an evolutionary tree.
+Average-linkage UPGMA provides an alternative display and method comparison
+(Fig.~\ref{fig:fig2}B, left), but we do not interpret the ordering as an
+evolutionary tree.
 
 \subsection*{Architecture of representative communities}
 
