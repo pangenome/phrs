@@ -105,7 +105,7 @@ draw <- function() {
   axis(1, at = seq_len(nrow(stages)), labels = FALSE)
   mtext(unname(stage_keys[levels(stages$stage)]), side = 1,
         at = seq_len(nrow(stages)), line = 0.9, cex = 1.3)
-  text(seq_len(nrow(stages)), stages$rho + 0.065,
+  text(seq_len(nrow(stages)) + c(0, 0, 0, 0.16), stages$rho + 0.068,
        sprintf("%.3f", stages$rho), cex = 1.5, xpd = NA)
 
   # bottom-right: four-stage meiotic scheme, embedded under the trajectory
