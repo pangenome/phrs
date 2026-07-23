@@ -441,23 +441,19 @@ Genomics.
     \put(0.5,39){\textbf{\large\sffamily B}}\end{overpic}
   \caption{\textbf{Genome-wide subtelomeric sharing and PHR extent.}
     \textbf{(A)} Interchromosomal sequence sharing in a whole-genome alignment
-    set comprising 464 HPRC v2 haplotypes, CHM13 and GRCh38. The implicit graph
-    was built from 25,272 sampled ordered assembly pairs. Each CHM13
+    set comprising 464 HPRC v2 haplotypes, CHM13 and GRCh38. Each CHM13
     chromosome is drawn as a track of 100 kb windows colored by the number of
     distinct partner chromosomes reached elsewhere in the pangenome (0 to 11+),
     together with a region track (centromere, PAR, PHR,
     terminal repeat); insets give per-partner haplotype counts at three
     representative telomere-proximal loci: the chr5 q-end (which shares with chr6
     and chr1), the chr21 acrocentric p-arm, and the chr10 q-end (the 4q/10q DUX4
-    pair). Telomere-anchored
-    high-identity blocks recur at nearly every end, and the
-    acrocentrics and PARs appear as positive controls.
+    pair).
     \textbf{(B)} Distribution of PHR lengths, shown separately for p-arms and
     q-arms and colored by the number of PHRs per 10 kb length bin (pseudo-log
     scale); each PHR is a telomere-anchored interval, so its length is how far
-    the shared sequence extends inward. Non-acrocentric, non-PAR
-    PHRs total 3.510 Mb (median 105 kb, mean 144 kb; saturation at 500 kb
-    reflects the input flank size).}
+    the shared sequence extends inward. Saturation at 500 kb reflects the input
+    flank size.}
   \label{fig:fig1}
 \end{figure}
 
@@ -468,22 +464,16 @@ Genomics.
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig2bc_jaccard.pdf}%
     \put(0.5,40){\textbf{\large\sffamily B}}\end{overpic}
   \caption{\textbf{Pangenome similarity structure and communities.}
-    \textbf{(A)} PGGB/odgi 2D layout of the all-subtelomere PHR graph (727,156
-    layout nodes; main connected component), each node colored by the arm-level
-    Leiden community of the PHR paths crossing it (same community palette as
-    panel B). Essentially all PHR flanks (15,654 of 15,668) fall into a single
-    component, so subtelomeres are linked across non-homologous chromosomes
-    rather than partitioned by chromosome, yet the communities occupy distinct
-    regions of the layout.
+    \textbf{(A)} 2D layout of the all-subtelomere PHR graph (main connected
+    component), each node colored by the arm-level community of the PHR paths
+    crossing it (same community palette as panel B); the communities occupy
+    distinct regions of the layout.
     \textbf{(B)} Arm-level Jaccard similarity heatmap ($41 \times 41$), shown
-    twice. \emph{Left}, ordered by an average-linkage UPGMA dendrogram that
+    twice. \emph{Left}, ordered by an average-linkage dendrogram that
     places arms with similar subtelomeric PHR profiles adjacent (p-arms red,
     q-arms blue), showing locally dense blocks on a broader similarity continuum.
-    \emph{Right}, the same matrix ordered by the 15-community Leiden arm-level
-    partition (\textbf{Methods}), with community color bands. The blocks recover the known exchange systems
-    shown here: PAR1, PAR2, the acrocentric p-arms, 10p/18p and the 4q/10q DUX4
-    pair, and show an enriched q-arm neighborhood exemplified by 22q, 21q, 19q,
-    1q, 13q and 17q.}
+    \emph{Right}, the same matrix ordered by the 15 arm-level communities
+    (\textbf{Methods}), with community color bands.}
   \label{fig:fig2}
 \end{figure}
 
@@ -499,7 +489,7 @@ Genomics.
     \put(-4,49){\textbf{\large\sffamily C}}\end{overpic}}\\[1pt]
   \makebox[\linewidth][r]{\includegraphics[width=0.96\linewidth]{fig/MainFigures/Fig3c_C11_chr6q.png}}
   \caption{\textbf{Architecture of representative communities.}
-    Sequence-level views (CHM13 coordinates, with PHR-BED, GC\%, segmental
+    Sequence-level views (CHM13 coordinates, with PHR intervals, GC\%, segmental
     duplications and gene models) of three communities, so the duplicon content
     is legible without a genome browser.
     \textbf{(A)} Community C1 (4q/10q), the D4Z4 macrosatellite and DUX4 retrogene: homologous DUX4L
@@ -524,31 +514,22 @@ Genomics.
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig4c_mouse_zygotene.pdf}%
     \put(1,50){\textbf{\large\sffamily C}}\end{overpic}
   \caption{\textbf{Sequence similarity tracks three-dimensional proximity.}
-    \textbf{(A)} Aggregate contact at PHR coordinates increases with sequence
-    similarity in HG002 Pore-C. Each dot is one inter-chromosomal pair of HG002
+    \textbf{(A)} Each dot is one inter-chromosomal pair of HG002
     pseudo-homolog regions (PHRs); \emph{x}, their Jaccard sequence similarity in
     the pangenome graph; \emph{y}, their length-normalized 3D contact at the
-    PHRs' exact coordinates in the same HG002 Pore-C map, summed over the 20 kbp
-    bin-pairs the two PHRs span and divided by that bin-pair count, so longer PHRs
-    are not counted more (log scale, zero-contact pairs at the axis floor). Contact rises with
-    similarity (pointwise Spearman
-    $\rho = 0.376$, $n = 2{,}830$; line, linear fit).
+    PHRs' exact coordinates in the same HG002 Pore-C map (log scale, zero-contact
+    pairs at the axis floor; line, linear fit).
     Replicates across a second genome and further assays are in Extended Data
     Fig.~\ref{fig:ed1}.
     \textbf{(B)} HG002 Pore-C contact matrix ordered by sequence community after
     observed/expected inter-chromosomal normalization; within-community contacts
-    are enriched ($B/W = 0.054$, between/within). The adjacent 100 kb
-    centromere-ward non-PHR flanks show an even lower ratio in HG002 Hi-C
-    ($B/W = 0.0013$ versus $0.028$ in PHR windows).
-    Matrix-level inference used row+column Mantel/permutation tests (\textbf{Methods}).
+    are enriched ($B/W = 0.054$, between/within).
     \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
-    T2T assemblies, the whole pipeline re-run on a non-human mammal; 20 kbp
-    contacts over 1 Mb flanks). Left, one dot per inter-chromosomal mouse PHR
-    sequence pair: zygotene contact (per-bin-pair length-normalized as in (A),
-    log) rises with PHR Jaccard similarity. Right, the same per-PHR-pair
-    Spearman statistic across leptotene, zygotene, pachytene and
-    diplotene, strongest at the zygotene bouquet ($\rho = 0.614$) and lowest at
-    diplotene ($\rho = 0.245$).}
+    T2T assemblies; 20 kbp contacts over 1 Mb flanks). Left, one dot per
+    inter-chromosomal mouse PHR sequence pair, with zygotene contact
+    (per-bin-pair length-normalized as in (A), log) versus PHR Jaccard similarity.
+    Right, the per-PHR-pair Spearman statistic across leptotene, zygotene,
+    pachytene and diplotene.}
   \label{fig:fig4}
 \end{figure}
 
@@ -580,8 +561,7 @@ Genomics.
     \textbf{(B)} Identity-crossover zoom of the 9q/3q exchange. Along the PAN027
     paternal chr9q subtelomere, the best-match sequence identity to the father's
     own chr9q (grey) drops across the called 20 kb tract (shaded), while the match
-    to the father's chr3q (orange) stays near-identical, the signature of a
-    subtelomeric exchange. \textbf{(C)} PAN027 paternal haplotype compared with
+    to the father's chr3q (orange) stays near-identical. \textbf{(C)} PAN027 paternal haplotype compared with
     the two PAN011 father haplotypes. \textbf{(D)} PAN027 maternal haplotype
     compared with the two PAN010 mother haplotypes. \textbf{(E)} PAN028 maternal
     haplotype compared with the two PAN027 mother haplotypes. In each ribbon panel, chromosomes are
@@ -591,13 +571,7 @@ Genomics.
     Light-gray ribbons show same-chromosome homologous chains, while colored
     ribbons show runs where the best non-homologous
     parental match beats the same-chromosome or homologous match in the same
-    IMPG scan (\textbf{Methods}). The paternal panel recovers the Xp/Yp PAR1 positive control for
-    obligate male sex-chromosome recombination and two putative autosomal
-    PHR-exchange candidates, chr5q/chr1p and chr9q/chr3q. The maternal panels
-    provide matched display context and are dominated by expected
-    acrocentric-acrocentric sharing, with a subtelomeric chr5q/chr1p candidate
-    and a chr21p/chr4p run (pericentromeric on chr4) highlighted in the PAN028
-    maternal transmission.}
+    whole-genome scan (\textbf{Methods}).}
   \label{fig:fig5}
 \end{figure}
 
@@ -939,10 +913,7 @@ insufficient to reproduce the inter-arm signal.
     WASH/endosomal-actin/exocyst, DDX11/helicase/chromosome,
     SEPTIN14/septin/cytokinesis, WBP1L/CXCL12 signaling and
     RPL23A/ribosomal/nucleolar classes. These display classes add no hypotheses
-    or statistical tests. DUX4/ZGA enrichment is concentrated in the community C1 4q/10q
-    system, whereas the other components recur across selected communities,
-    revealing partially overlapping subtelomeric cassettes rather than
-    wholesale homogenization of chromosome ends. Exact term statistics and the
+    or statistical tests. Exact term statistics and the
     plotted arm-by-class matrix are supplied in the two ED2 GitHub
     supporting-material tables.}
   \label{fig:ed2}
