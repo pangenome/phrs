@@ -56,12 +56,12 @@ plot_one <- function(it) {
        bg = adjustcolor(it$src$color, alpha.f = 0.22),
        col = adjustcolor("#1f1f1f", alpha.f = 0.12),
        lwd = 0.25, cex = 0.55, xaxs = "i", xlim = c(0, 1), xaxt = "n", yaxt = "n",
-       xlab = "", ylab = "", main = it$src$dataset, cex.main = 1.7,
-       cex.lab = 1.56, cex.axis = 1.45)
+       xlab = "", ylab = "", main = it$src$dataset, cex.main = 2.2,
+       cex.lab = 1.56, cex.axis = 1.75)
   grid(col = "#e6e6e6", lwd = 0.7)
-  axis(1, at = c(0, 0.2, 0.4, 0.6, 0.8, 1.0), cex.axis = 1.45)
+  axis(1, at = c(0, 0.2, 0.4, 0.6, 0.8, 1.0), cex.axis = 1.75)
   yd <- seq(ceiling(par("usr")[3]), floor(par("usr")[4]))
-  axis(2, at = 10^yd, las = 1, cex.axis = 1.3,
+  axis(2, at = 10^yd, las = 1, cex.axis = 1.75,
        labels = vapply(yd, function(d)
                        if (d >= 0) formatC(10^d, format = "d")
                        else if (d >= -3) formatC(10^d, format = "f", digits = -d)
@@ -71,16 +71,16 @@ plot_one <- function(it) {
     xs <- seq(min(x), max(x), length.out = 100)
     lines(xs, 10 ^ predict(fit, data.frame(x = xs)), col = "#111111", lwd = 1.35)
   }
-  legend("bottomright", inset = c(0.01, 0.05), bty = "n", cex = 1.25,
+  legend("bottomright", inset = c(0.01, 0.05), bty = "n", cex = 1.55,
          text.col = "#222222",
          legend = c(sprintf("n = %s PHR pairs", format(it$n, big.mark = ",")),
-                    sprintf("descriptive pointwise rho = %s",
+                    sprintf("Spearman rho = %s",
                             fmt_rho(it$rho))))
 }
 
 draw <- function() {
   par(mfrow = c(1, 3), oma = c(3.0, 3.0, 0.4, 0.4),
-      mar = c(2.7, 3.4, 2.2, 0.7), mgp = c(2.4, 0.7, 0), family = "sans")
+      mar = c(2.7, 4.7, 2.2, 1.4), mgp = c(2.4, 0.7, 0), family = "sans")
   invisible(lapply(items, plot_one))
   mtext("PHR sequence-pair Jaccard similarity", side = 1, outer = TRUE,
         line = 1.0, cex = 1.5)
@@ -88,9 +88,9 @@ draw <- function() {
 }
 
 png(file.path(out_dir, "ED_Fig1_human_contacts.png"),
-    width = 2400, height = 900, res = 200, type = "cairo"); draw(); dev.off()
+    width = 2700, height = 900, res = 200, type = "cairo"); draw(); dev.off()
 pdf(file.path(out_dir, "ED_Fig1_human_contacts.pdf"),
-    width = 12.0, height = 4.5); draw(); dev.off()
+    width = 13.5, height = 4.5); draw(); dev.off()
 
 for (it in items)
   cat(sprintf("%-12s n=%d  descriptive pointwise rho=%s\n",
