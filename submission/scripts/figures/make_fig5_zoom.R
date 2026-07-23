@@ -24,7 +24,7 @@ TEXT <- "#202124"; GREY <- "#6f6f6f"
 
 cfgs <- list(
   list(id="9q3q", file=pat, qchr="chr9",  lo=136130000, hi=136190000, tlo=136164000, thi=136188000,
-       donor="chr3q", own="chr9",  col="#D95F02", ylo=0.97, xlab="PAN027 paternal chr9q position (Mb)",  tract="9q/3q tract, 20 kb"),
+       donor="PAN011 h2 chr3q", own="PAN011 h2 chr9q",  col="#D95F02", ylo=0.97, xlab="PAN027 paternal chr9q position (Mb)",  tract="9q/3q tract, 20 kb"),
   list(id="5q1p", file=pat, qchr="chr5",  lo=182020000, hi=182100000, tlo=182052000, thi=182080000,
        donor="chr1p", own="chr5",  col="#1F77B4", ylo=0.95, xlab="PAN027 paternal chr5q position (Mb)",  tract="5q/1p tract, 28 kb"),
   list(id="PAR1", file=pat, qchr="chrX",  lo=0,        hi=200000,    tlo=14000,     thi=156000,
