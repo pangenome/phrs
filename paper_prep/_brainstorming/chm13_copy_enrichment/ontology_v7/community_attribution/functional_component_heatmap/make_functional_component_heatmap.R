@@ -276,6 +276,17 @@ plot_one <- function(order_name, order_vec, out_prefix) {
   y_breaks <- seq_along(rev(present_classes))
   y_labels <- unname(class_labels[rev(present_classes)])
 
+  # Invisible layer carrying one real row per copy bin, so every legend key
+  # renders even for bins (3-5, 6-10) that no chromosome end actually reaches.
+  legend_dummy <- data.table(
+    x = 1L, y = 1L,
+    fill_bin = factor(c("0", "1", "2", "3-5", "6-10", ">10"),
+                      levels = c("0", "1", "2", "3-5", "6-10", ">10"))
+  )
+
+  # x-axis tick labels colored by p/q arm, matching the Fig 2b/2c palette.
+  x_label_cols <- ifelse(grepl("_p$", order_vec), "#CC3B38", "#1F5EA8")
+
   p <- ggplot(plot_dt, aes(x = x, y = y)) +
     {if (nrow(no_signal_block) > 0) annotate(
       "rect",
@@ -287,39 +298,61 @@ plot_one <- function(order_name, order_vec, out_prefix) {
       alpha = 0.55
     )} +
     geom_tile(aes(fill = fill_bin), color = "#ffffff", linewidth = 0.35) +
+    geom_tile(data = legend_dummy, aes(x = x, y = y, fill = fill_bin),
+              alpha = 0, inherit.aes = FALSE,
+              show.legend = c(fill = TRUE, colour = FALSE)) +
     geom_text(
-      data = plot_dt[copy_burden > 0],
-      aes(label = text_label, color = text_color),
-      size = 2.5,
-      fontface = "bold",
-      show.legend = FALSE
+      data = plot_dt[copy_burden > 0 & copy_burden <= 5],
+      aes(label = text_label),
+      color = "#1f1f1f", size = 3.9, fontface = "bold", show.legend = FALSE
     ) +
-    scale_color_identity() +
+    geom_text(
+      data = plot_dt[copy_burden > 5],
+      aes(label = text_label),
+      color = "white", size = 3.9, fontface = "bold", show.legend = FALSE
+    ) +
+    geom_point(
+      data = data.table(x = 1, y = 1, arm = factor(c("p", "q"), levels = c("p", "q"))),
+      aes(x = x, y = y, colour = arm), shape = 15,
+      alpha = 0, inherit.aes = FALSE,
+      show.legend = c(fill = FALSE, colour = TRUE)
+    ) +
+    scale_colour_manual(values = c(p = "#CC3B38", q = "#1F5EA8"),
+                        name = NULL, labels = c("p arm", "q arm")) +
     scale_fill_manual(values = fill_values, drop = FALSE, name = "PHR copies") +
     scale_x_continuous(breaks = x_breaks, labels = x_labels, expand = c(0, 0)) +
     scale_y_continuous(breaks = y_breaks, labels = y_labels, expand = c(0, 0)) +
     coord_cartesian(ylim = c(0.5, n_rows + 1.1), clip = "off") +
     labs(
-      title = "Copy-number-aware functional component burden across chromosome ends",
-      subtitle = ordering_labels[[order_name]],
+      title = NULL,
+      subtitle = NULL,
       x = "Chromosome end",
       y = NULL
     ) +
-    theme_minimal(base_size = 9) +
+    theme_minimal(base_size = 14) +
     theme(
       plot.background = element_rect(fill = "white", color = NA),
       panel.background = element_rect(fill = "white", color = NA),
       panel.grid = element_blank(),
-      axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 7),
-      axis.text.y = element_text(size = 8),
-      axis.title.x = element_text(size = 8, margin = margin(t = 6)),
-      plot.title = element_text(face = "bold", size = 11),
-      plot.subtitle = element_text(size = 8),
-      legend.position = "right",
-      legend.title = element_text(size = 8),
-      legend.text = element_text(size = 7),
-      plot.margin = margin(t = 20, r = 10, b = 8, l = 10)
-    )
+      axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 13,
+                                 colour = x_label_cols),
+      axis.text.y = element_text(size = 15),
+      axis.title.x = element_text(size = 16, margin = margin(t = 6)),
+      legend.position = "bottom",
+      legend.key = element_rect(fill = "white", color = NA),
+      legend.key.size = unit(0.6, "cm"),
+      legend.spacing.x = unit(1.4, "cm"),
+      legend.box.spacing = unit(0.1, "cm"),
+      legend.title = element_text(size = 15),
+      legend.text = element_text(size = 14),
+      plot.margin = margin(t = 10, r = 10, b = 8, l = 10)
+    ) +
+    guides(fill = guide_legend(nrow = 1, label.position = "right", order = 1,
+                               override.aes = list(fill = unname(fill_values),
+                                                   alpha = 1,
+                                                   colour = "#cccccc")),
+           colour = guide_legend(nrow = 1, label.position = "right", order = 2,
+                                 override.aes = list(alpha = 1, size = 5)))
 
   if (nrow(blocks) > 0) {
     p <- p +
@@ -336,7 +369,7 @@ plot_one <- function(order_name, order_vec, out_prefix) {
         x = signal_blocks$mid,
         y = n_rows + 0.72,
         label = signal_blocks$community,
-        size = 2.3,
+        size = ifelse(signal_blocks$community %in% c("C10", "C13"), 3.0, 3.7),
         fontface = "bold",
         color = community_palette[signal_blocks$community]
       )
@@ -348,7 +381,7 @@ plot_one <- function(order_name, order_vec, out_prefix) {
         x = no_signal_block$mid,
         y = n_rows + 0.72,
         label = "no PHR signal",
-        size = 2.2,
+        size = 3.5,
         fontface = "bold",
         color = "#737373"
       )
@@ -356,9 +389,9 @@ plot_one <- function(order_name, order_vec, out_prefix) {
 
   pdf_path <- paste0(out_prefix, ".pdf")
   png_path <- paste0(out_prefix, ".png")
-  ggsave(pdf_path, p, width = 12.8, height = 4.6, units = "in",
+  ggsave(pdf_path, p, width = 15.0, height = 5.0, units = "in",
          device = cairo_pdf, bg = "white")
-  ggsave(png_path, p, width = 12.8, height = 4.6, units = "in",
+  ggsave(png_path, p, width = 15.0, height = 5.0, units = "in",
          dpi = 220, bg = "white")
   invisible(p)
 }
