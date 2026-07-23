@@ -627,8 +627,8 @@ query returned at least five alignments from each of at least two
 chromosomes, including its own (so pseudoautosomal Xp/Yp and Xq/Yq, with a
 single partner, are also detected), at a minimum identity of 95\% and minimum
 output length of 3 kb.
-The resulting telomere-anchored intervals defined 15,668 PHRs (83.2\% of
-flanks) on 41 of the 48 arms.
+The resulting telomere-anchored intervals defined the PHRs analyzed here,
+83.2\% of the input flanks.
 
 \subsection*{Pangenome graph, similarity and community detection}
 
@@ -759,17 +759,14 @@ inter-chromosomal PHR sequence pair as a point and relates its pangenome-graph
 Jaccard similarity to its length-normalized contact at the pair's exact
 coordinates within a single genome, at 20 kb, independently of the community
 partition, so the correlation cannot be an artifact of the community grouping. The primary comparison is HG002
-Pore-C (Fig.~\ref{fig:fig4}A; $\rho = 0.376$, $n = 2{,}830$); the replicates in
-Extended Data Fig.~\ref{fig:ed1} are CHM13 Hi-C ($\rho = 0.742$, $n = 688$), HG002
-Hi-C ($\rho = 0.616$, $n = 2{,}413$) and HG002 CiFi ($\rho = 0.196$,
-$n = 2{,}757$; the sparsest assay, consistent with the weakest effect size).
+Pore-C (Fig.~\ref{fig:fig4}A), with replicates across a second genome and further
+assays in Extended Data Fig.~\ref{fig:ed1}.
 
 The adjacent 100 kb centromere-ward non-PHR flanks are the principal control
-against mapping-quality-zero inflation: in HG002 Hi-C they give $B/W = 0.0013$
-against $0.028$ in the PHR windows. Community-ordered contact matrices used
+against mapping-quality-zero inflation. Community-ordered contact matrices used
 observed/expected inter-chromosomal normalization
 \cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}; the
-community-ordered Pore-C matrix (Fig.~\ref{fig:fig4}B; $B/W = 0.054$) is at 20 kb.
+community-ordered Pore-C matrix (Fig.~\ref{fig:fig4}B) is at 20 kb.
 Matrix-level inference used row-and-column Mantel and permutation tests, with
 finite permutation floors reported when no permutation exceeded the observed
 statistic.
@@ -784,13 +781,9 @@ meiotic Hi-C is from a B6 $\times$ CAST F1 hybrid \cite{Zuo2021}, with reads
 phased into paternal (B6) and maternal (CAST) haplotypes, mapped to the diploid
 B6+CAST reference and treated as separate physical chromosomes. For each meiotic
 prophase stage we computed the per-PHR-pair Spearman correlation between
-length-normalized contact and PHR Jaccard similarity at 20 kb over 1 Mb flanks.
-Subtelomeric similarity was positively correlated with inter-chromosomal contact
-at all four stages, strongest at zygotene and lowest at diplotene
-($\rho = 0.419$, 0.614, 0.576 and 0.245 at leptotene, zygotene, pachytene and
-diplotene; all $n = 1{,}135$; Fig.~\ref{fig:fig4}C). These are point estimates
-without a formal stage-contrast test; a Mantel cross-check agreed to within
-$\pm 0.02$.
+length-normalized contact and PHR Jaccard similarity at 20 kb over 1 Mb flanks
+(Fig.~\ref{fig:fig4}C). These are point estimates without a formal stage-contrast
+test; a Mantel cross-check agreed to within $\pm 0.02$.
 
 \subsection*{Pedigree direct-alignment windows}
 
