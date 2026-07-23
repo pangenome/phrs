@@ -877,7 +877,14 @@ def ribbon_path(xa0: float, xa1: float, ya: float, xb0: float, xb1: float, yb: f
 
 
 def draw_genome_track(svg: SVG, layout: GenomeLayout, y: float) -> None:
-    svg.text(TRACK_LABEL_X, y + TRACK_H - 2, layout.label, 24, "700", TEXT, "end")
+    # two-line row label (sample id over haplotype), right-aligned: narrower than a
+    # single line, so a larger font still clears the panel letter added in paper.tex
+    _lab = layout.label.rsplit(" ", 1)
+    if len(_lab) == 2:
+        svg.text(TRACK_LABEL_X, y + 0, _lab[0], 31, "700", TEXT, "end")
+        svg.text(TRACK_LABEL_X, y + 43, _lab[1], 31, "700", TEXT, "end")
+    else:
+        svg.text(TRACK_LABEL_X, y + TRACK_H - 2, layout.label, 31, "700", TEXT, "end")
     for idx, chrom in enumerate(CHROM_ORDER):
         if chrom not in layout.lengths:
             continue
