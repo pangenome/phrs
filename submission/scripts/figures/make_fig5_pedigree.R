@@ -16,7 +16,7 @@ TEXT <- "#202124"
 GG_TS <- function(svg) svg * 1.55 / 11.856
 
 # tight framing window around the pedigree only (data units; y grows downward)
-XLO <- 55; XHI <- 475; YLO <- -4; YHI <- 230
+XLO <- 55; XHI <- 515; YLO <- -14; YHI <- 235
 G1Y <- 60; G2Y <- 130; G3Y <- 200   # three generation rows (compact vertical spacing)
 
 # Faithful WashU trio-of-trios topology (Cechova et al.):
@@ -32,9 +32,9 @@ ped <- data.frame(
   x     = c(PAN011_X, PAN010_X, G1_MX, G2_MX),
   y     = c(G1Y,      G1Y,      G2Y,   G3Y),
   shape = c(22,       21,       21,    21),
-  lab   = c("PAN011", "PAN010", "PAN027", "PAN028"),
+  lab   = c("Father\n(PAN011)", "Mother\n(PAN010)", "Daughter\n(PAN027)", "Granddaughter\n(PAN028)"),
   labx  = c(PAN011_X, PAN010_X, G1_MX + 34, G2_MX + 34),
-  laby  = c(G1Y - 40, G1Y - 40, G2Y, G3Y),
+  laby  = c(G1Y - 48, G1Y - 48, G2Y, G3Y),
   hj    = c(0.5, 0.5, 0, 0))
 # unsampled father of the granddaughter (open square, not sequenced)
 partner <- data.frame(x = UNS_X, y = G2Y)
@@ -53,7 +53,7 @@ p <- ggplot() +
   geom_point(data = ped, aes(x = x, y = y, shape = shape), fill = "white",
              color = "black", size = 9, stroke = 1.4) +
   geom_text(data = ped, aes(x = labx, y = laby, label = lab, hjust = hj),
-            size = GG_TS(30), fontface = "bold", color = TEXT) +
+            size = GG_TS(24), fontface = "bold", color = TEXT, lineheight = 0.85) +
   geom_text(data = partner, aes(x = x, y = y + 42), label = "unsampled",
             size = GG_TS(22), color = "grey45", fontface = "italic") +
   scale_shape_identity() + scale_fill_identity() +
