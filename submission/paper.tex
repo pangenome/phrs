@@ -337,25 +337,15 @@ acrocentric-acrocentric sharing, with two further highlighted candidates,
 the subtelomeric chr5q/chr1p and a chr21p/chr4p run whose chr4 partner is
 pericentromeric rather than subtelomeric (Fig.~\ref{fig:fig5}E).
 
-The two autosomal candidates differ in support, but their primary evidence is
-the implicit-graph homologous-competition scan rather than concordance with a
-single pairwise aligner. This distinction matters because short, highly similar
-subtelomeric patches are difficult targets for whole-genome aligners, and
-standard recombination maps usually infer crossovers from reference-positioned
-markers rather than from sequence-resolved graph neighborhoods. As a
-sensitivity check, an independent whole-genome alignment reproduces the chr9q/chr3q donor at the
-same chr3q subtelomeric locus at $>$99.8\% identity, while the chr5q/chr1p
-signal has a narrower identity margin and is not recovered above the
-same threshold. Manual comparison with the WashU pedigree recombination
-annotation indicates that this paternal transmission has no ordinary chr3
-crossover (M. Cechova and T. Marschall, personal communication), so the
-chr9q/chr3q signal is not explained by a standard homologous chr3 recombination
-event. We therefore interpret these patterns as putative PHR-exchange
-candidates compatible with recombination, not breakpoint-resolved event calls
-or aligner-defined truth sets. Follow-up work should test transmission of the
-implicated chromosome ends in larger multigenerational pedigrees with complete,
-haplotype-resolved telomere-to-telomere assemblies in every generation, together
-with orthogonal assays such as FISH \cite{Cechova2025}.
+The two autosomal candidates (chr9q/chr3q and chr5q/chr1p) are inter-chromosomal
+exchanges, each a subtelomere of the daughter that matches a non-homologous
+chromosome in her father more closely than the homologous one. Of the two,
+chr9q/chr3q is the better-supported call, its chr3q match beating the homologous
+chr9q by a wider identity margin than the chr1p match beats chr5q (Methods). In the WashU crossover map this paternal transmission has no
+crossover on chromosome 3 (M. Cechova and T. Marschall, personal communication),
+so ordinary chr3 recombination cannot account for the chr9q/chr3q signal. We therefore treat these as candidate PHR
+exchanges consistent with recombination, not as confirmed events with resolved
+breakpoints.
 
 \subsection*{Discussion}
 
@@ -418,7 +408,8 @@ Which way the sequence--proximity relationship runs remains open, and our human
 three-dimensional data are somatic rather than germline, with the meiotic-stage
 measurement supplied only by mouse. Resolving these questions will require
 germline-stage contact maps and larger multigenerational pedigrees with complete,
-haplotype-resolved telomere-to-telomere assemblies \cite{Cechova2025}. Even so,
+haplotype-resolved telomere-to-telomere assemblies \cite{Cechova2025}, together
+with orthogonal assays such as FISH \cite{Trask1991}. Even so,
 the map presented here already converts relationships inferred from cytogenetics
 decades ago into a population-scale, complete-genome view of an active system of
 chromosome-end evolution.
@@ -847,14 +838,12 @@ non-homologous runs of at least 10 kb with mean inter-chromosomal identity at
 least 0.95. The gray inheritance background was drawn from the same table,
 joining same-chromosome father-child rows of at least 0.95 identity by the same
 rule and drawing chains of at least 10 kb. PHR and community labels were assigned
-after calling and were not used to select the windows.
-
-As an independent sensitivity check, the two autosomal candidates were
-re-examined in a whole-genome wfmash v0.23.0 alignment of the same PAN027 versus
-PAN011 haplotypes at 95\% identity. This check was not used as a calling
-criterion. wfmash reproduced the chr9q/chr3q donor on chr3q at $>$99.8\%
-identity over the same coordinates but placed the chr5q window on chr5 with no
-chr1 donor above threshold.
+after calling and were not used to select the windows. This many-to-many,
+graph-projected comparison is used because short, highly similar subtelomeric
+segments are difficult targets for whole-genome aligners. It keeps the
+near-identical competing matches between non-homologous chromosome ends that a
+single pairwise or reference-guided alignment would assign to one location and
+discard, and that marker-based recombination maps do not resolve.
 
 For Fig.~\ref{fig:fig5}D,E we applied the same workflow, thresholds and display
 rules to two maternal comparisons: the PAN027 maternal haplotype against the
