@@ -319,7 +319,7 @@ plot_one <- function(order_name, order_vec, out_prefix) {
     ) +
     scale_colour_manual(values = c(p = "#CC3B38", q = "#1F5EA8"),
                         name = NULL, labels = c("p arm", "q arm")) +
-    scale_fill_manual(values = fill_values, drop = FALSE, name = "PHR copies") +
+    scale_fill_manual(values = fill_values, drop = FALSE, name = "Gene copies in PHR") +
     scale_x_continuous(breaks = x_breaks, labels = x_labels, expand = c(0, 0)) +
     scale_y_continuous(breaks = y_breaks, labels = y_labels, expand = c(0, 0)) +
     coord_cartesian(ylim = c(0.5, n_rows + 1.1), clip = "off") +

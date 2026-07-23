@@ -646,70 +646,51 @@ $\binom{41}{2}=820$ possible pairs of PHR-bearing arms.
 
 \subsection*{Copy-number-aware gene ontology enrichment}
 
-We performed the copy-number-aware GO and Reactome enrichment analysis using
-61,312 gene records from the CHM13v2.0 RefSeq/Liftoff v5.2 GFF3 (parsed with gffread 0.12.7). We counted each record as one gene copy. Records at the same coordinates remained separate, as
-did copies sharing a gene name, family, locus family or duplicated segment.
-Thus, a gene represented at 20 genomic positions contributed 20 copies rather
-than one collapsed gene-family entry. Before using the PHR coordinates, we
-assigned a functional source and recorded the supporting evidence for every
-gene copy. An exact stable identifier could use only its own functional
-annotation; a non-self record could inherit a source only through a unique,
-explicitly directed human
-NCBI Gene ``Related functional gene'' relation. Ambiguous exact identifiers,
-type-only records, unresolved records and unsupported records failed closed and
-contributed no ontology terms. This kept the number of genomic gene copies
-separate from the identity of the functional source used to annotate them.
+We counted gene copies from the CHM13v2.0 RefSeq/Liftoff v5.2 annotation
+(61,312 gene records), treating every genomic copy as a separate unit: copies
+sharing a gene name or family were kept distinct, so a gene present at 20
+positions counted as 20 copies rather than one collapsed family entry. Before
+looking at any PHR coordinate, we decided which gene's annotation each copy was
+allowed to carry: a copy used its own annotation, or, if it had none of its own,
+inherited terms only through a single explicitly directed NCBI Gene ``related
+functional gene'' link; copies with ambiguous, type-only or unsupported evidence
+were left unannotated and contributed no terms. This kept the number of genomic
+copies separate from the source used to annotate them.
 
-NCBI Gene registry and directed relationship snapshots were dated 16 July
-2026. Direct GO assertions came from the NCBI human gene2go snapshot dated 13
-July 2026 and were propagated through the go-basic release dated 15 June 2026;
-Reactome human direct assertions and recorded pathway ancestors came from
-release 96 (1 April 2026)
-\cite{GeneOntologyAshburner2000,GeneOntologyConsortium2026,Reactome2024}.
-We tested direct and ancestral annotations separately. The functional
-mappings and 31,235 prespecified combinations of database, annotation level and
-ontology term we defined and checksum-recorded before classifying gene copies as PHR or non-PHR.
+Direct Gene Ontology assignments came from the NCBI human gene2go snapshot of 13
+July 2026, propagated through the go-basic release of 15 June 2026; Reactome
+direct assignments and their parent pathways came from release 96 (1 April
+2026), and the NCBI Gene registry snapshots were dated 16 July 2026
+\cite{GeneOntologyAshburner2000,GeneOntologyConsortium2026,Reactome2024}. We
+tested each copy's directly assigned terms and, separately, the broader parent
+terms above them in the ontology hierarchy, and fixed the full set of 31,235
+database, annotation-level and term combinations before splitting copies into
+PHR and non-PHR, so that no term was chosen after seeing its result.
 
-A gene copy entered the enrichment analysis if it had at least one direct or
-ancestral GO or Reactome assignment, defining a fixed universe of $N=31{,}966$
-copies. We assigned a gene to a PHR when its GFF3 midpoint intersected the CHM13 PHR BED. Every eligible gene copy occurred exactly once, either within a
-PHR or in the complete non-PHR remainder of the genome. The comparison therefore
-contained $K=187$ PHR copies and $N-K=31{,}779$ non-PHR copies.
-Another 215 of the 402 gene copies with midpoints in PHRs could not be assigned
-confidently to an ontology term and we retained them as a coverage limitation. We
-used the complete genome-wide non-PHR complement as the background, without
-sampling, permutation, spatial placement or matching to other subtelomeres.
+A copy entered the analysis if it carried at least one GO or Reactome
+assignment, giving a fixed universe of $N=31{,}966$ copies. We called a gene a
+PHR gene when its annotation midpoint fell inside a CHM13 PHR, which placed
+$K=187$ copies in PHRs and $31{,}779$ outside; a further 215 of the 402 copies
+with midpoints in PHRs had no confident annotation, and we kept them as a
+coverage limitation. The rest of the genome was the background, with no
+sampling, permutation or spatial matching. For each term we compared the number
+of PHR copies carrying it against the genome-wide count with the exact one-sided
+hypergeometric upper tail over this fixed population (size $N$, $K$ PHR copies,
+and the genome-wide count of term-bearing copies), which is the correct
+finite-population test and does not treat copies as independent replicates. We
+report the PHR and non-PHR copy fractions, the fold enrichment and odds ratio
+(both raw and with 0.5 added to each cell, the Haldane--Anscombe correction, so
+a term absent from the background still gives a finite value), and the
+observed-minus-expected PHR copy burden.
 
-For every tested term $T$, $a_T$ was the number of eligible PHR copies carrying
-$T$, $b_T=K-a_T$ the eligible PHR copies not carrying it, $c_T$ the non-PHR
-copies carrying it, and $d_T=(N-K)-c_T$ the non-PHR copies not carrying it;
-$M_T=a_T+c_T$ was the genome-wide eligible burden. We calculated the exact
-one-sided upper tail
-$P[X\geq a_T]$ for $X\sim\mathrm{Hypergeometric}(N,M_T,K)$ over this fully
-enumerated fixed population. The hypergeometric distribution is the exact
-finite-population calculation here and does not treat copies as independently
-sampled biological replicates. Effect summaries comprised PHR and non-PHR copy
-fractions, their unsmoothed fold enrichment and odds ratio with explicit zero
-states, Haldane--Anscombe-smoothed fold and odds ratio after adding 0.5 to all
-four cells, and observed-minus-expected PHR copy burden.
-
-We applied Benjamini--Hochberg correction within each of GO biological process,
-GO molecular function, GO cellular component and Reactome across both direct
-and ancestral annotations, and Holm correction globally across all 31,235
-tests. We considered a term enriched in the primary analysis when its
-within-database BH $q\leq0.05$ and its global Holm-adjusted $P\leq0.05$. We used the overlap analysis only to assess sensitivity to PHR boundaries. After
-completing the enrichment tests, we mapped the contributing gene copies back to
-the 15 arm communities and grouped related terms into six readable functional
-classes for Extended Data Fig.~\ref{fig:ed2}. These classes added no new
-hypotheses or statistical tests.
-
-Reproducibility checks validated the inherited source-map and hypothesis
-checksums, complete PHR/non-PHR partitions, all $2\times2$ tables, contributor
-recounts, multiplicity families, coordinate-copy semantics, deterministic
-ordering and the absence of stochastic or placement inference. The retained V7
-engine, validation JSON, community-attribution workflow and unit tests are in
-the analysis repository. The two compact ED2 tables are regenerated without
-new inference by \texttt{submission/scripts/make\_ed2\_supporting\_material.py}.
+We controlled multiple testing with Benjamini--Hochberg within each of the four
+annotation families (GO biological process, molecular function, cellular
+component, and Reactome) and with Holm across all 31,235 tests, calling a term
+enriched when its within-family $q\leq0.05$ and global Holm-adjusted
+$P\leq0.05$. We used an any-overlap definition of a PHR gene only to check
+sensitivity to PHR boundaries. After the tests were fixed, we mapped the
+contributing copies back to the 15 arm communities and grouped related terms
+into the six functional classes shown in Extended Data Fig.~\ref{fig:ed2}.
 
 \subsection*{Hierarchical clustering and resampling controls}
 
