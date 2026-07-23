@@ -29,7 +29,7 @@
 %          a HG002 Pore-C all-points scatter; b Pore-C community matrix; c mouse bouquet
 %   Fig 5  Whole-genome pedigree-resolved subtelomeric exchange  (deck slides 24,26)
 % Extended Data: ED1 = 3-panel replicate of Fig 4a across genomes/assays (CHM13
-% Hi-C, HG002 Hi-C, HG002 CiFi), all 20 kbp all-points; ED2 = CHM13
+% Hi-C, HG002 Hi-C, HG002 CiFi), all 20 kb all-points; ED2 = CHM13
 % copy-number-aware functional components across chromosome ends. Maternal
 % whole-genome pedigree recombination companion scans are folded into Fig 5C-D.
 % The mouse meiotic-bouquet result is Fig 4c; other reviewer-era analyses remain as text.
@@ -517,13 +517,13 @@ Genomics.
     \textbf{(A)} Each dot is one inter-chromosomal pair of HG002
     pseudo-homolog regions (PHRs); \emph{x}, their Jaccard sequence similarity in
     the pangenome graph; \emph{y}, their length-normalized 3D contact at the
-    PHRs' exact coordinates in the same HG002 Pore-C map (log scale, zero-contact
+    PHRs' exact coordinates in the same HG002 Pore-C map at 20 kb (log scale, zero-contact
     pairs at the axis floor; line, linear fit).
-    \textbf{(B)} HG002 Pore-C contact matrix ordered by sequence community after
+    \textbf{(B)} HG002 Pore-C contact matrix at 20 kb, ordered by sequence community after
     observed/expected inter-chromosomal normalization; within-community contacts
     are enriched ($B/W = 0.054$, between/within).
     \textbf{(C)} Mouse meiotic Hi-C (PHRs established de novo from B6 and CAST
-    T2T assemblies; 20 kbp contacts over 1 Mb flanks). Left, one dot per
+    T2T assemblies; 20 kb contacts over 1 Mb flanks). Left, one dot per
     inter-chromosomal mouse PHR sequence pair, with zygotene contact
     (per-bin-pair length-normalized as in (A), log) versus PHR Jaccard similarity.
     Right, the per-PHR-pair Spearman statistic across leptotene, zygotene,
@@ -582,42 +582,38 @@ Genomics.
 
 \subsection*{Whole-genome implicit pangenome survey}
 
-The whole-genome survey used 464 HPRC v2 haplotype assemblies together with
-CHM13v2.0 and GRCh38, for 466 input sequences. We used wfmash v0.23.0~\cite{wfmash}
-(\texttt{-p 95 -P inf}) to align 25,272 sampled ordered target--query
-pairs, representing 11.6\% of the $466^{2}$ possible ordered pairs.
-The sample size was selected using an Erd\H{o}s--R\'{e}nyi
-connectivity model and lay well above the modeled threshold for a connected
-assembly-pair network. The resulting pairwise alignments were indexed with IMPG
-v0.4.1. For Fig.~\ref{fig:fig1}A, non-overlapping 100 kb windows spanning CHM13
-were queried through at most five transitive alignment hops at a minimum
-estimated identity of 98\%; for each window we summarized the distinct
-chromosome origins and mean identity of the sequences reached
-\cite{pangenome_graphs_impg_IMPG2023}.
-
-\subsection*{Samples, exclusions and flank extraction}
-
 The dataset comprised 464 haplotype-resolved HPRC v2 assemblies from 232
 individuals plus CHM13v2.0, for 465 near-complete assemblies, with
 superpopulation labels assigned at the HPRC individual level
-\cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}. Two exclusions were applied.
-First, GRCh38 contigs and the CHM13v2.0 Y chromosome (masked PAR1) were excluded
-from flank extraction because they lack telomere ends suitable for the 500 kb
-flank definition. Second, the chr18q flank of NA18982 haplotype 1
-(contig JBKABS010000018.1) was excluded as a scaffolding chimera: in the
+\cite{hprc_hprcv2_2025,Nurk2022,logsdon2025hgsvc}. For the whole-genome survey we
+added GRCh38, giving 466 input sequences, and used wfmash v0.23.0~\cite{wfmash}
+(\texttt{-p 95 -P inf}) to align 25,272 sampled ordered target--query
+pairs, representing 11.6\% of the $466^{2}$ possible ordered pairs.
+We set this sample size using the Erd\H{o}s--R\'{e}nyi random-graph model.
+Under that model the network of 466 sequences is connected with near-certainty
+(probability above 99.99\%) once about 3.5\% of the possible pairs are drawn. The 11.6\% sampled here lies well above the threshold and gives an estimated network diameter of 2, so any two sequences are linked through at most one intermediate. We indexed the resulting pairwise alignments with IMPG v0.4.1. For Fig.~\ref{fig:fig1}A, we queried the implicit pangenome graph in
+non-overlapping 100 kb windows spanning CHM13, following at most five transitive
+alignment hops at a minimum estimated identity of 98\%, and summarized for each
+window the distinct chromosome origins and mean identity of the sequences reached
+\cite{pangenome_graphs_impg_IMPG2023}.
+
+\subsection*{Exclusions and flank extraction}
+
+GRCh38 lacks complete subtelomeres and the CHM13v2.0 Y chromosome has its PAR1
+masked, leaving neither with telomere-anchored ends, so we excluded both from
+flank extraction. We also excluded the chr18q flank of NA18982 haplotype 1 (contig JBKABS010000018.1) as a scaffolding chimera, since in the
 whole-genome wfmash alignments its first 83.37 Mb map to chr18 and a terminal
-966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns. No
-further haplotype-level exclusions were applied. We identified terminal repeat
-tracts with \texttt{seqtk} 1.4-r130 (\texttt{telo})~\cite{seqtk} and, from each retained haplotype assembly,
-extracted the 500 kb immediately internal to each tract on every contig at least
-1 Mb long that was classified as p- or q-arm telomere-bearing. The telomeric
-repeat tract itself was removed, giving 18,827 flanks across the 48 arms. Sequence handling used samtools and bgzip 1.23, bedtools 2.31.1 and seqkit 2.5.0.
+966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns. We detected telomeres with \texttt{seqtk} 1.4-r130 (\texttt{telo})~\cite{seqtk} and
+classified each contig at least 1 Mb long by the chromosome arm it spans, its
+p-arm, its q-arm, or both arms when it crosses the centromere. At every
+telomere-bearing end we trimmed the telomeric repeat and kept the 500 kb
+immediately internal to it as the flank, so a centromere-spanning contig yields
+both a p-arm and a q-arm flank. This gave 18,827 flanks across the 48 arms.
 
 \subsection*{Alignment, implicit pangenome graph and PHR detection}
 
-We aligned the complete flank collection all-against-all with wfmash
-v0.23.0~\cite{wfmash} at 95\% minimum identity, each of the 18,827 flanks serving
-in turn as the target against the full collection. Every flank was therefore
+We aligned all the 18,827 flank sequences all-against-all with wfmash
+v0.23.0~\cite{wfmash} at 95\% minimum identity. Every flank was therefore
 compared with every other without restricting comparisons to homologous
 chromosomes. We indexed this pairwise alignment set with IMPG v0.4.1 for direct
 interval queries \cite{pangenome_graphs_impg_IMPG2023}. Starting at each
@@ -627,18 +623,16 @@ query returned at least five alignments from each of at least two
 chromosomes, including its own (so pseudoautosomal Xp/Yp and Xq/Yq, with a
 single partner, are also detected), at a minimum identity of 95\% and minimum
 output length of 3 kb.
-The resulting telomere-anchored intervals defined the PHRs analyzed here,
-83.2\% of the input flanks.
+This defined 15,668 PHRs from the 18,827 flanks (83.2\%).
 
 \subsection*{Pangenome graph, similarity and community detection}
 
 We extracted the 15,668 called PHR intervals and supplied those sequences as the
-input to pggb v0.7.4 (commit 498c5d7, with wfmash v0.23.0, seqwish v0.7.11, smoothxg v0.8.2, GFAffix v0.2.1 and vg v1.62.0) at 95\% identity. We computed all-pairs Jaccard similarity from
-the resulting explicit graph with odgi v0.9.2, giving a $15{,}668 \times
+input to pggb v0.7.4 (commit 498c5d7, with wfmash v0.23.0, seqwish v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix v0.2.1 and vg v1.62.0) at 95\% identity, giving an explicit graph with 477,726 nodes and 786,318 edges. We computed all-pairs Jaccard similarity from this graph with odgi, giving a $15{,}668 \times
 15{,}668$ matrix
 \cite{Garrison2024pggb,pangenome_graphs_impg_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
-The main connected component was laid out with odgi and rendered in R
-(Fig.~\ref{fig:fig2}A), each node colored by the dominant arm-level Leiden
+We computed a 2D layout of the main connected component with odgi and rendered it
+in R (Fig.~\ref{fig:fig2}A), each node colored by the dominant arm-level Leiden
 community of the PHR paths crossing it. The arm-level distance matrix is the mean
 pairwise Jaccard distance between PHR sequences within each arm pair. From it, arm-level
 communities were inferred with the Leiden algorithm (R, igraph) after converting distances to graph weights
@@ -653,8 +647,7 @@ $\binom{41}{2}=820$ possible pairs of PHR-bearing arms.
 \subsection*{Copy-number-aware gene ontology enrichment}
 
 We performed the copy-number-aware GO and Reactome enrichment analysis using
-61,312 gene records from the CHM13v2.0 RefSeq/Liftoff v5.2 GFF3 (parsed with gffread 0.12.7). Each record was
-counted as one gene copy. Records at the same coordinates remained separate, as
+61,312 gene records from the CHM13v2.0 RefSeq/Liftoff v5.2 GFF3 (parsed with gffread 0.12.7). We counted each record as one gene copy. Records at the same coordinates remained separate, as
 did copies sharing a gene name, family, locus family or duplicated segment.
 Thus, a gene represented at 20 genomic positions contributed 20 copies rather
 than one collapsed gene-family entry. Before using the PHR coordinates, we
@@ -673,19 +666,17 @@ July 2026 and were propagated through the go-basic release dated 15 June 2026;
 Reactome human direct assertions and recorded pathway ancestors came from
 release 96 (1 April 2026)
 \cite{GeneOntologyAshburner2000,GeneOntologyConsortium2026,Reactome2024}.
-Direct and ancestral annotations were tested separately. The functional
+We tested direct and ancestral annotations separately. The functional
 mappings and 31,235 prespecified combinations of database, annotation level and
-ontology term were defined and checksum-recorded before gene copies were
-classified as PHR or non-PHR.
+ontology term we defined and checksum-recorded before classifying gene copies as PHR or non-PHR.
 
 A gene copy entered the enrichment analysis if it had at least one direct or
 ancestral GO or Reactome assignment, defining a fixed universe of $N=31{,}966$
-copies. A gene was assigned to a PHR when its GFF3 midpoint intersected the
-CHM13 PHR BED. Every eligible gene copy occurred exactly once, either within a
+copies. We assigned a gene to a PHR when its GFF3 midpoint intersected the CHM13 PHR BED. Every eligible gene copy occurred exactly once, either within a
 PHR or in the complete non-PHR remainder of the genome. The comparison therefore
 contained $K=187$ PHR copies and $N-K=31{,}779$ non-PHR copies.
 Another 215 of the 402 gene copies with midpoints in PHRs could not be assigned
-confidently to an ontology term and were retained as a coverage limitation. We
+confidently to an ontology term and we retained them as a coverage limitation. We
 used the complete genome-wide non-PHR complement as the background, without
 sampling, permutation, spatial placement or matching to other subtelomeres.
 
@@ -706,8 +697,7 @@ We applied Benjamini--Hochberg correction within each of GO biological process,
 GO molecular function, GO cellular component and Reactome across both direct
 and ancestral annotations, and Holm correction globally across all 31,235
 tests. We considered a term enriched in the primary analysis when its
-within-database BH $q\leq0.05$ and its global Holm-adjusted $P\leq0.05$. The
-overlap analysis was used only to assess sensitivity to PHR boundaries. After
+within-database BH $q\leq0.05$ and its global Holm-adjusted $P\leq0.05$. We used the overlap analysis only to assess sensitivity to PHR boundaries. After
 completing the enrichment tests, we mapped the contributing gene copies back to
 the 15 arm communities and grouped related terms into six readable functional
 classes for Extended Data Fig.~\ref{fig:ed2}. These classes added no new
@@ -727,99 +717,64 @@ For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA, R package cluster); cutting it into 14 clusters gave
 a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. As a sensitivity analysis, we evaluated a PHR-resampling
-control that resamples rows of a
-collapsed per-PHR cross-chromosome involvement table, rebuilds an arm-level
-surrogate distance matrix, and recomputes neighbor-joining and UPGMA trees (R package ape).
-Because it does not resample the full 15,668-sequence Jaccard matrix, it is not
-used as evidence for the Leiden communities or for a discrete q-arm partition;
-under this chromosome-level surrogate, the six-arm q-neighborhood has low
-support, so we treat the q-arm pattern as an enriched neighborhood in the
-similarity matrix rather than a bootstrap-supported grouping.
+phylogenetic model. To test whether the six q-arms that cluster together (22q, 21q, 19q, 1q, 13q and
+17q) are a robust group or only a soft enrichment, we bootstrap-resampled the
+PHRs and rebuilt the arm-level trees (R package ape). The cluster rarely
+reappears, so we describe it as an enriched neighborhood in the similarity
+matrix, not a distinct community. This coarse resampling does not reach the full
+15,668-sequence Jaccard matrix and is not used to support the communities
+themselves.
 
 \subsection*{Hi-C, Pore-C and CiFi pipeline}
 
-Hi-C, Pore-C and CiFi were reprocessed from raw reads
+We reprocessed Hi-C, Pore-C and CiFi from raw reads
 against the corresponding T2T reference (CHM13v2.0 or the matched HPRC v2
-haplotype) with multi-mappers retained, because the default mapping-quality
-filter ($\geq 30$) of deposited maps masks the high-identity, signal-bearing
-subtelomeric sequence at the mapping stage. Pore-C (NlaIII) and CiFi (DpnII) were
-processed with pore-c-py 2.1.5, minimap2 2.30 and pairtools 1.1.3, and Hi-C with HiC-Pro 3.0.0 and
-Bowtie2 2.5.3, binning contacts with cooler 0.10.4 and samtools 1.23 under Python 3.12.12 (numpy 1.26.4, pandas 3.0.0, scipy 1.17.0). Because no mapping-quality filter is
-applied, a molecule mapping equally well to several paralogous ends contributes
-to each of them, so PHR-internal contacts are aggregate coordinate-level
-measurements rather than uniquely assigned read-level contacts. Contact matrices
-were generated at 5, 10, 20, 50 and 100 kb, with maternal and paternal contigs
-kept as separate arms.
+haplotype), keeping multi-mapping reads. Standard pipelines apply a
+mapping-quality filter that drops multi-mapping reads, but subtelomeric PHRs are
+so similar across chromosomes that their reads map to several places at once, so
+this filter removes exactly the signal we analyze. We processed Pore-C (NlaIII) and CiFi (DpnII) with pore-c-py 2.1.5, minimap2 2.30 and pairtools 1.1.3, and Hi-C with HiC-Pro 3.0.0 and
+Bowtie2 2.5.3, binning contacts with cooler 0.10.4 and samtools 1.23 under Python 3.12.12 (numpy 1.26.4, pandas 3.0.0, scipy 1.17.0). Because we apply no mapping-quality filter, a read mapping equally well to
+several paralogous ends is kept and placed at one of them at random rather than
+discarded. PHR-internal contacts are therefore aggregate signal over these
+near-identical ends, not reads confidently assigned to a single end. We generated contact matrices at 5, 10, 20, 50 and 100 kb resolution.
 
-Pointwise Spearman correlations are reported as effect sizes, not significance
-tests, because PHR-pair observations share chromosome arms, PHRs, matrix rows and
-columns, and read-placement histories. Each correlation takes one
-inter-chromosomal PHR sequence pair as a point and relates its pangenome-graph
-Jaccard similarity to its length-normalized contact at the pair's exact
-coordinates within a single genome, at 20 kb, independently of the community
-partition, so the correlation cannot be an artifact of the community grouping. The primary comparison is HG002
-Pore-C (Fig.~\ref{fig:fig4}A), with replicates across a second genome and further
-assays in Extended Data Fig.~\ref{fig:ed1}.
+We report each Spearman correlation as a descriptive measure of how strongly
+similarity tracks contact, not a p-value, because the pairs are not independent
+(the same subtelomere recurs in many pairs).
 
-The adjacent 100 kb centromere-ward non-PHR flanks are the principal control
-against mapping-quality-zero inflation. Community-ordered contact matrices used
-observed/expected inter-chromosomal normalization
-\cite{hic3d_dixon2012,hic3d_imakaev2012,Ulahannan2019,hic3d_cifi2025}; the
-community-ordered Pore-C matrix (Fig.~\ref{fig:fig4}B) is at 20 kb.
-Matrix-level inference used row-and-column Mantel and permutation tests (R package vegan), with
-finite permutation floors reported when no permutation exceeded the observed
-statistic.
+Community-ordered contact matrices used observed/expected inter-chromosomal normalization \cite{hic3d_liebermanaiden2009,hic3d_imakaev2012}.
 
 \subsection*{Mouse pipeline}
 
 We repeated the entire pipeline on a non-human mammal, using the B6 and CAST T2T
-assemblies \cite{Francis2025}. Telomere-anchored flanks were extracted and PHRs
-called de novo, with a 1, 2 and 4 Mb window sweep (30 of 49 mouse PHRs saturate
-the 1 Mb window) and a two-community arm-level partition. The stage-resolved
+assemblies \cite{Francis2025}. We extracted telomere-anchored flanks and called PHRs de novo over 1 Mb flanks. The stage-resolved
 meiotic Hi-C is from a B6 $\times$ CAST F1 hybrid \cite{Zuo2021}, with reads
 phased into paternal (B6) and maternal (CAST) haplotypes, mapped to the diploid
-B6+CAST reference and treated as separate physical chromosomes. For each meiotic
+B6+CAST reference. For each meiotic
 prophase stage we computed the per-PHR-pair Spearman correlation between
-length-normalized contact and PHR Jaccard similarity at 20 kb over 1 Mb flanks
-(Fig.~\ref{fig:fig4}C). These are point estimates without a formal stage-contrast
-test; a Mantel cross-check agreed to within $\pm 0.02$.
+length-normalized contact and PHR Jaccard similarity over 1 Mb flanks
+(Fig.~\ref{fig:fig4}C). Each stage gives a single $\rho$ value; we did not test
+whether the differences between stages are statistically significant.
 
 \subsection*{Pedigree direct-alignment windows}
 
-For Fig.~\ref{fig:fig5}C we used the PAN027 paternal haplotype as query against a
-joint two-haplotype target from the transmitting father, PAN011
-\cite{Cechova2025}. Starting from a whole-genome sweepga 0.1.1 (SweepGA/FastGA) alignment
-(frequency threshold 32, many-to-many mappings, no scaffold jumps), we filtered
-to 10:10 mapping classes and summarized the query in non-overlapping 2 kb
-windows, excluding centromeric windows, windows without alignment support, and
-windows with inter-chromosomal alignment depth above 100. For each retained
-window we computed impg 0.4.1 similarity (partial-order alignment, no merge,
-many-to-many mapping, no scaffold jumps) and kept the best same-chromosome or
-homologous father match and the best non-homologous father match. A window was
-assigned to the non-homologous class only when the non-homologous match was the
-most similar. Adjacent windows were joined into a run only when the query and
-donor intervals abutted end to end on the same donor chromosome, haplotype and
-sequence, with no gap-tolerant or transitive merge. Colored runs are
-non-homologous runs of at least 10 kb with mean inter-chromosomal identity at
-least 0.95. The gray inheritance background was drawn from the same table,
-joining same-chromosome father-child rows of at least 0.95 identity by the same
-rule and drawing chains of at least 10 kb. PHR and community labels were assigned
-after calling and were not used to select the windows. This many-to-many,
-graph-projected comparison is used because short, highly similar subtelomeric
-segments are difficult targets for whole-genome aligners. It keeps the
-near-identical competing matches between non-homologous chromosome ends that a
-single pairwise or reference-guided alignment would assign to one location and
-discard, and that marker-based recombination maps do not resolve.
-
-For Fig.~\ref{fig:fig5}D,E we applied the same workflow, thresholds and display
-rules to two maternal comparisons: the PAN027 maternal haplotype against the
-joint PAN010 mother target, and the PAN028 maternal haplotype against the joint
-PAN027 mother target. The GitHub supporting-material table reports, for all
-displayed calls, assembly-native query and donor intervals, 2 kb window counts,
-mean identities, same-chromosome competitor scores, and post hoc PHR and
-community labels; its CHM13 columns are arm-level PHR annotations, not exact
-coordinate liftovers of the pedigree-specific haplotype assemblies.
+For each transmission in Fig.~\ref{fig:fig5}C--E we aligned one child haplotype
+(the query) against the combined two-haplotype assembly of the transmitting
+parent (the target) \cite{Cechova2025}. Starting from a whole-genome sweepga
+0.1.1~\cite{sweepga} alignment (frequency threshold 32, many-to-many mappings,
+no scaffold jumps), we filtered to 10:10 mapping classes and summarized the
+query in non-overlapping 2 kb windows, excluding centromeric windows, windows
+without alignment support, and windows with inter-chromosomal alignment depth
+above 100. For each retained window we computed impg 0.4.1 similarity and kept
+the best same-chromosome or homologous parental match and the best
+non-homologous parental match, assigning the window to the non-homologous class
+only when the non-homologous match was the most similar. We joined two
+neighbouring windows into one run only when their query and donor intervals were
+directly adjacent, touching end to end with no gap, on the same donor
+chromosome, haplotype and sequence; we did not bridge gaps or chain non-adjacent
+windows. We drew runs of at least 10 kb with mean identity at least 0.95, shown
+as the non-homologous (colored) and same-chromosome (gray) runs in
+Fig.~\ref{fig:fig5}C--E.
 
 \subsection*{Data and code availability}
 
@@ -844,7 +799,7 @@ files are available at \url{https://github.com/pangenome/phrs}.
     contact assays.} Three companions to Fig.~\ref{fig:fig4}A, by the same
     all-points method (each dot is one inter-chromosomal PHR sequence pair within
     a single genome; \emph{x}, pangenome-graph Jaccard similarity; \emph{y}, mean
-    3D contact per 20 kbp bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
+    3D contact per 20 kb bin-pair the two PHRs span, as in Fig.~\ref{fig:fig4}A;
     log scale, zero-contact pairs at the axis floor; line, linear fit).
     Contact rises with similarity in every panel, reported as pointwise
     Spearman effect sizes:
