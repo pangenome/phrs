@@ -733,6 +733,15 @@ similarity tracks contact, not a p-value, because the pairs are not independent
 
 Community-ordered contact matrices used observed/expected inter-chromosomal normalization \cite{hic3d_liebermanaiden2009,hic3d_imakaev2012}.
 
+For the community-level contact analysis we classified each inter-chromosomal
+arm pair as within-community or between-community using the arm-level Leiden
+($k=15$) partition, and summarized the contrast as $B/W$, the mean contact of
+between-community pairs divided by the mean contact of within-community pairs
+(so $B/W<1$ indicates stronger within-community contact). As a unique-sequence
+control for multi-mapping we repeated the calculation on the 100 kb immediately
+centromere-ward of each PHR, outside the called PHR; these non-PHR flanks show
+the same within-community enrichment.
+
 \subsection*{Mouse pipeline}
 
 We repeated the entire pipeline on a non-human mammal, using the B6 and CAST T2T
