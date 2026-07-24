@@ -726,6 +726,12 @@ Bowtie2 2.5.3, binning contacts with cooler 0.10.4 and samtools 1.23 under Pytho
 several paralogous ends is kept and placed at one of them at random rather than
 discarded. PHR-internal contacts are therefore aggregate signal over these
 near-identical ends, not reads confidently assigned to a single end. We generated contact matrices at 5, 10, 20, 50 and 100 kb resolution.
+For the per-PHR-pair analyses (Fig.~\ref{fig:fig4}A, Extended Data
+Fig.~\ref{fig:ed1} and Fig.~\ref{fig:fig4}C) we summed the balanced contacts over
+the valid bin-pairs spanning the two PHR windows and divided by the number of
+valid bin-pairs, giving the mean contact per bin-pair. This normalization removes
+differences in contact opportunity caused by different numbers of valid bins, so
+pairs spanning more bins do not automatically have larger total contact.
 
 We report each Spearman correlation as a descriptive measure of how strongly
 similarity tracks contact, not a p-value, because the pairs are not independent
