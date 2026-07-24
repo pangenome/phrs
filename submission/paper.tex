@@ -162,21 +162,15 @@ concentrated at chromosome ends (Fig.~\ref{fig:fig1}A). The acrocentric short
 arms and pseudoautosomal regions appear as expected positive controls, but the
 same pattern recurs at most other chromosome ends.
 
-To delimit these regions, we identified terminal
-telomeric repeat tracts and extracted the 500 kb flank immediately inward from
-each telomere in 465 near-complete assemblies (excluding GRCh38, which lacks the
-complete telomere ends needed for flank extraction), giving 18,827 flanks across
-the 48 chromosome arms. We then performed a separate, complete all-against-all flank
-alignment at 95\% minimum identity, without restricting comparisons
-to homologous chromosomes. We indexed this flank-specific alignment set as an
-implicit pangenome graph~\cite{pangenome_graphs_impg_IMPG2023}
-and queried consecutive windows from each telomere inward. We define a PHR here as a telomere-anchored interval containing
-windows
-with at least five directly aligned segments from each of at least two
-chromosomes, including its own, at $\geq 95\%$ identity.
-This yields 15,668 PHRs on 41 of the 48 arms; the remaining 7 arms (chr2p,
-chr3p, chr5p, chr8q, chr11q, chr14q, chr18q) carry no detectable
-inter-chromosomal sharing.
+Applying this approach to 465 near-complete assemblies, we identified 15,668
+PHRs on 41 of the 48 chromosome arms; the remaining seven arms (chr2p, chr3p,
+chr5p, chr8q, chr11q, chr14q, chr18q) contained no PHR under our detection
+criteria. We extracted the 500 kb flank inward from each telomere and aligned the
+flank set in a separate, complete all-against-all comparison (not the sampled
+whole-genome survey set), without restricting comparisons to homologous
+chromosomes, and called a PHR where consecutive windows each contained at least
+five alignments from each of at least two chromosomes, including the source
+chromosome, at $\geq 95\%$ identity (Methods).
 Walking inward from each telomere until inter-chromosomal similarity disappears,
 the called PHRs span tens to hundreds of kilobases (median 105 kb, mean 144 kb;
 Fig.~\ref{fig:fig1}B), the upper bound set by the 500 kb flank window rather
