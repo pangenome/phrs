@@ -197,14 +197,16 @@ shared sequence is represented by graph nodes and each PHR by a path through
 those nodes. Its main connected component contains 15,654 of the sequences
 (99.9\%) and is too tangled to interpret node by node.
 We therefore measured pangenome similarity between chromosome ends as the
-Jaccard overlap of the graph nodes they traverse, and reduced the result to an
+Jaccard overlap of the graph nodes they traverse (the number of nodes both ends
+traverse divided by the number either traverses), and reduced the result to an
 arm-level similarity matrix.
 The matrix is not uniform: locally dense blocks of high similarity are
 embedded in a broader continuum of lower inter-community similarity
 (Fig.~\ref{fig:fig2}B, left).
-Leiden community detection~\cite{leiden_traag2019} on this arm-level matrix partitions the 41
-PHR-bearing arms into 15 arm-level communities (Fig.~\ref{fig:fig2}B,
-right).
+Leiden community detection~\cite{leiden_traag2019}, which groups a similarity
+network into clusters with stronger within-cluster than between-cluster
+connectivity, partitions the 41 PHR-bearing arms into 15 arm-level communities
+(Fig.~\ref{fig:fig2}B, right).
 The communities recover every previously described case of inter-chromosomal
 subtelomere homology: the two pseudoautosomal pairs Xp/Yp and Xq/Yq
 \cite{sexchrompars_acquaviva2020}, the five acrocentric short arms
@@ -215,13 +217,15 @@ The Leiden partition assigns six q-arms to C6 (22q, 21q, 19q, 1q, 13q and 17q),
 but the corresponding six-arm cluster is weak and rarely recurs in the
 resampling analysis. We therefore interpret C6 cautiously as an enriched q-arm
 neighborhood rather than as a robustly resolved community.
-Average-linkage UPGMA provides an alternative display and method comparison
+Average-linkage hierarchical clustering (UPGMA) provides an alternative display and method comparison
 (Fig.~\ref{fig:fig2}B, left), but we do not interpret the ordering as an
 evolutionary tree.
 
 \subsection*{Architecture of representative communities}
 
-Examined at the sequence level, each community carries a characteristic duplicon
+Examined at the sequence level, the representative communities shown here are
+characterized by duplicons, duplicated blocks of sequence that recur at multiple
+chromosome ends and may contain genes, pseudogenes or non-coding sequence
 (Fig.~\ref{fig:fig3}).
 Community C1 (4q/10q) carries the D4Z4 macrosatellite and its DUX4 retrogene, with
 homologous DUX4L arrays and FRG1/FRG2 paralogues on both ends and copy number
