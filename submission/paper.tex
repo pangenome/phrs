@@ -129,43 +129,9 @@ through shared pseudo-homolog regions (PHRs)
 
 \subsection*{A whole-genome survey reveals subtelomeric sharing}
 
-We first asked where inter-chromosomal sequence sharing occurs without
-preselecting chromosome ends. We aligned 25,272 sampled
-ordered pairs (11.6\% of all possible) from a 466-sequence whole-genome set
-comprising 464 HPRC v2 haplotypes plus CHM13v2.0 and GRCh38.
-The sample size was selected well above the modeled
-connectivity threshold for the assembly-pair network (Methods). We indexed these
-alignments as an implicit pangenome graph and queried non-overlapping 100 kb
-CHM13 windows through transitive alignment paths
-\cite{pangenome_graphs_impg_IMPG2023}.
-The resulting genome-wide map reveals high-identity inter-chromosomal sharing
-concentrated at chromosome ends (Fig.~\ref{fig:fig1}A). The acrocentric short
-arms and pseudoautosomal regions appear as expected positive controls, but the
-same pattern recurs at most other chromosome ends.
+We surveyed inter-chromosomal sequence sharing across the cohort by aligning 25,272 sampled ordered pairs (11.6\% of all possible) from 464 HPRC v2 haplotypes plus CHM13v2.0 and GRCh38. We built an implicit pangenome graph from these alignments, which indexes all pairwise alignments so that any sequence can be queried against every other chromosome end simultaneously through transitive closure without chromosomal partitioning or reference bias. Querying non-overlapping 100 kb CHM13 windows through this graph reveals high-identity inter-chromosomal sharing concentrated at chromosome ends (Fig.~\ref{fig:fig1}A). Acrocentric short arms and pseudoautosomal regions appear as expected positive controls, but the same pattern recurs at most other chromosome ends.
 
-To delimit these regions, we identified terminal
-telomeric repeat tracts and extracted the 500 kb flank immediately inward from
-each telomere in 465 near-complete assemblies (excluding GRCh38, which lacks the
-complete telomere ends needed for flank extraction), giving 18,827 flanks across
-the 48 chromosome arms. We then performed a separate, complete all-against-all flank
-alignment at 95\% minimum identity, without restricting comparisons
-to homologous chromosomes. We indexed this flank-specific alignment set as an
-implicit pangenome graph~\cite{pangenome_graphs_impg_IMPG2023}
-and queried consecutive windows from each telomere inward. We define a PHR here as a telomere-anchored interval containing
-windows
-with at least five directly aligned segments from each of at least two
-chromosomes, including its own, at $\geq 95\%$ identity.
-This yields 15,668 PHRs on 41 of the 48 arms; the remaining 7 arms (chr2p,
-chr3p, chr5p, chr8q, chr11q, chr14q, chr18q) carry no detectable
-inter-chromosomal sharing.
-Walking inward from each telomere until inter-chromosomal similarity disappears,
-the called PHRs span tens to hundreds of kilobases (median 105 kb, mean 144 kb;
-Fig.~\ref{fig:fig1}B), the upper bound set by the 500 kb flank window rather
-than by biology.
-Excluding the acrocentric short arms and the pseudoautosomal regions, these PHRs
-total 3.51 Mb of subtelomeric sequence, with individual PHRs within the same
-order of magnitude as PAR2 (the median PHR is 31\% of PAR2's length)
-\cite{sexchrompars_bellott2024}.
+To delimit these regions, we identified terminal telomeric repeats and extracted the 500 kb flank inward from each telomere in 465 near-complete assemblies (excluding GRCh38), giving 18,827 flanks across 48 arms. A complete all-against-all flank alignment at 95\% minimum identity was indexed as an implicit pangenome graph and queried in consecutive windows from each telomere inward. A PHR is a telomere-anchored interval whose windows contain at least five directly aligned segments from each of at least two chromosomes (including its own) at $\geq 95\%$ identity. This yields 15,668 PHRs on 41 of 48 arms; the remaining 7 arms (chr2p, chr3p, chr5p, chr8q, chr11q, chr14q, chr18q) carry no detectable inter-chromosomal sharing. Walking inward until inter-chromosomal similarity disappears, PHRs span 10--500 kb (median 105 kb, mean 144 kb; Fig.~\ref{fig:fig1}B). Excluding acrocentrics and PARs, PHRs total 3.51 Mb of subtelomeric sequence.
 
 \subsection*{Communities of subtelomeric PHRs}
 
