@@ -699,8 +699,8 @@ into the six functional classes shown in Extended Data Fig.~\ref{fig:ed2}.
 \subsection*{Hierarchical clustering and resampling controls}
 
 For display and method comparison we also ordered the arm-level matrix by
-average-linkage hierarchical clustering (UPGMA, R package cluster); cutting it into 14 clusters gave
-a mean silhouette of 0.342 and exact agreement with 12 of the 15 Leiden
+average-linkage hierarchical clustering (UPGMA) with \texttt{hclust} (R \texttt{stats}); cutting the dendrogram into 14 clusters gave
+a mean silhouette of 0.342 (\texttt{silhouette}, R \texttt{cluster} package) and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
 phylogenetic model. To test whether the six q-arms that cluster together (22q, 21q, 19q, 1q, 13q and
 17q) are a robust group or only a soft enrichment, we bootstrap-resampled the
