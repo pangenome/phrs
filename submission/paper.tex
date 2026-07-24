@@ -592,7 +592,7 @@ added GRCh38, giving 466 input sequences, and used wfmash v0.23.0~\cite{wfmash}
 pairs, representing 11.6\% of the $466^{2}$ possible ordered pairs.
 We set this sample size using the Erd\H{o}s--R\'{e}nyi random-graph model.
 Under that model the network of 466 sequences is connected with near-certainty
-(probability above 99.99\%) once about 3.5\% of the possible pairs are drawn. The 11.6\% sampled here lies well above the threshold and gives an estimated network diameter of 2, so any two sequences are linked through at most one intermediate. We indexed the resulting pairwise alignments with IMPG v0.4.1. For Fig.~\ref{fig:fig1}A, we queried the implicit pangenome graph in
+(probability above 99.99\%) once about 3.5\% of the possible pairs are drawn. The 11.6\% sampled here is well above this connectivity threshold. Because alignment is symmetric, sampling 11.6\% of the ordered pairs connects about 22\% of the unordered sequence pairs, which exceeds the model's diameter-two threshold ($\sqrt{2\ln(466)/466}\approx 16\%$); any two sequences are therefore linked through at most one intermediate. We indexed the resulting pairwise alignments with IMPG v0.4.1. For Fig.~\ref{fig:fig1}A, we queried the implicit pangenome graph in
 non-overlapping 100 kb windows spanning CHM13, following at most five transitive
 alignment hops at a minimum estimated identity of 98\%, and summarized for each
 window the distinct chromosome origins and mean identity of the sequences reached
