@@ -398,8 +398,9 @@ systems to accommodate continuing change in chromosome-end sequence and
 organization. This interpretation remains a hypothesis. Our
 single-genome CHM13 analysis counts gene copies and their annotations, not
 whether they are expressed, functional or dosage-sensitive, and it captures one
-genome rather than the population. The 209 enriched GO terms are also nested and
-overlapping, so they represent far fewer independent biological systems.
+genome rather than the population. The 209 enriched ontology terms (202 GO terms
+and 7 Reactome pathways) are also nested and overlapping, so they represent far
+fewer independent biological systems.
 
 The repetitive and inter-chromosomal nature of PHRs has made them difficult to
 represent using conventional genomic analyses. Approaches that assume unique
@@ -680,11 +681,14 @@ coverage limitation. The rest of the genome was the background, with no
 sampling, permutation or spatial matching. For each term we compared the number
 of PHR copies carrying it against the genome-wide count with the exact one-sided
 hypergeometric upper tail over this fixed population (size $N$, $K$ PHR copies,
-and the genome-wide count of term-bearing copies), which is the correct
-finite-population test and does not treat copies as independent replicates. We
-report the PHR and non-PHR copy fractions, the fold enrichment and odds ratio
-(both raw and with 0.5 added to each cell, the Haldane--Anscombe correction, so
-a term absent from the background still gives a finite value), and the
+and the genome-wide count of term-bearing copies), an exact finite-population
+test of term-bearing physical-copy excess. Because many PHR copies are
+near-identical paralogs from the same amplified family, they are not independent
+biological replicates; the $p$-value quantifies evidence for copy-burden excess,
+not the number of independent functional systems. As the effect size we report
+the PHR and non-PHR copy fractions, the fold enrichment and odds ratio (both raw
+and with 0.5 added to each cell, the Haldane--Anscombe correction, so a term
+absent from the background still gives a finite value), and the
 observed-minus-expected PHR copy burden.
 
 We controlled multiple testing with Benjamini--Hochberg within each of the four
