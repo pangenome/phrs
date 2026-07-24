@@ -601,18 +601,21 @@ window the distinct chromosome origins and mean identity of the sequences reache
 
 GRCh38 lacks complete subtelomeres and the CHM13v2.0 Y chromosome has its PAR1
 masked, leaving neither with telomere-anchored ends, so we excluded both from
-flank extraction. We also excluded the chr18q flank of NA18982 haplotype 1 (contig JBKABS010000018.1) as a scaffolding chimera, since in the
-whole-genome wfmash alignments its first 83.37 Mb map to chr18 and a terminal
-966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns. We detected telomeres with \texttt{seqtk} 1.4-r130 (\texttt{telo})~\cite{seqtk} and
-classified each contig at least 1 Mb long by the chromosome arm it spans, its
-p-arm, its q-arm, or both arms when it crosses the centromere. At every
-telomere-bearing end we trimmed the telomeric repeat and kept the 500 kb
-immediately internal to it as the flank, so a centromere-spanning contig yields
-both a p-arm and a q-arm flank. This gave 18,827 flanks across the 48 arms.
+flank extraction. We detected telomeres with \texttt{seqtk} 1.4-r130
+(\texttt{telo})~\cite{seqtk} and classified each contig at least 1 Mb long by the
+chromosome arm it spans, its p-arm, its q-arm, or both arms when it crosses the
+centromere. At every telomere-bearing end we trimmed the telomeric repeat and
+retained the 500 kb immediately internal to it as the flank, so a
+centromere-spanning contig yields both a p-arm and a q-arm flank, producing
+18,827 candidate flanks across the 48 arms. We then excluded the chr18q flank of
+NA18982 haplotype 1 (contig JBKABS010000018.1) as a scaffolding chimera, since in
+the whole-genome wfmash alignments its first 83.37 Mb map to chr18 and a terminal
+966 kb (83.38--84.35 Mb) map to chrX PAR1, joined across a 100 bp gap of Ns,
+leaving 18,826 flanks for the all-against-all alignment and PHR calling.
 
 \subsection*{Alignment, implicit pangenome graph and PHR detection}
 
-We aligned all the 18,827 flank sequences all-against-all with wfmash
+We aligned all 18,826 flank sequences all-against-all with wfmash
 v0.23.0~\cite{wfmash} at 95\% minimum identity. Every flank was therefore
 compared with every other without restricting comparisons to homologous
 chromosomes. We indexed this pairwise alignment set with IMPG v0.4.1 for direct
@@ -623,7 +626,7 @@ query returned at least five alignments from each of at least two
 chromosomes, including its own (so pseudoautosomal Xp/Yp and Xq/Yq, with a
 single partner, are also detected), at a minimum identity of 95\% and minimum
 output length of 3 kb.
-This defined 15,668 PHRs from the 18,827 flanks (83.2\%).
+This defined 15,668 PHRs from the 18,826 retained flanks (83.2\%).
 
 \subsection*{Pangenome graph, similarity and community detection}
 
