@@ -150,11 +150,13 @@ We first asked where inter-chromosomal sequence sharing occurs without
 preselecting chromosome ends. We aligned 25,272 sampled
 ordered pairs (11.6\% of all possible) from a 466-sequence whole-genome set
 comprising 464 HPRC v2 haplotypes plus CHM13v2.0 and GRCh38.
-The sample size was selected well above the modeled
-connectivity threshold for the assembly-pair network (Methods). We indexed these
-alignments as an implicit pangenome graph and queried non-overlapping 100 kb
-CHM13 windows through transitive alignment paths
-\cite{pangenome_graphs_impg_IMPG2023}.
+The sample lies well above the modeled connectivity threshold for the
+assembly-pair network (Methods), allowing sequence sharing to be recovered
+through transitive paths even when two assemblies were not directly compared. We treated these
+sampled alignments as an implicit pangenome graph: for each non-overlapping
+100 kb CHM13 window we queried the indexed alignments and followed up to five
+alignment hops, so a match could be reached through an intermediate assembly
+(A$\rightarrow$B$\rightarrow$C) \cite{pangenome_graphs_impg_IMPG2023}.
 The resulting genome-wide map reveals high-identity inter-chromosomal sharing
 concentrated at chromosome ends (Fig.~\ref{fig:fig1}A). The acrocentric short
 arms and pseudoautosomal regions appear as expected positive controls, but the
@@ -186,10 +188,14 @@ order of magnitude as PAR2 (the median PHR is 31\% of PAR2's length)
 
 \subsection*{Communities of subtelomeric PHRs}
 
-The explicit pangenome graph~\cite{Garrison2024pggb,pangenome_graphs_unbiased_GarrisonGuarracino2023}
-built from all 15,668 PHR sequences forms a large main
-connected component (Fig.~\ref{fig:fig2}A) that contains 15,654 of them (99.9\%)
-and is too tangled to interpret node by node.
+To measure how much sequence chromosome ends share, we built an explicit
+pangenome graph from all 15,668 PHR sequences
+\cite{Garrison2024pggb,pangenome_graphs_unbiased_GarrisonGuarracino2023}. Unlike
+the implicit alignment graph used for the survey, which follows sampled
+alignments on demand, this graph materializes the aligned sequence structure:
+shared sequence is represented by graph nodes and each PHR by a path through
+those nodes. Its main connected component contains 15,654 of the sequences
+(99.9\%) and is too tangled to interpret node by node.
 We therefore measured pangenome similarity between chromosome ends as the
 Jaccard overlap of the graph nodes they traverse, and reduced the result to an
 arm-level similarity matrix.
