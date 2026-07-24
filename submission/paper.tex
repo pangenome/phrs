@@ -773,7 +773,10 @@ without alignment support, and windows with inter-chromosomal alignment depth
 above 100. For each retained window we computed impg 0.4.1 similarity and kept
 the best same-chromosome or homologous parental match and the best
 non-homologous parental match, assigning the window to the non-homologous class
-only when the non-homologous match was the most similar. We joined two
+only when the non-homologous match was the most similar. The identity margin of
+a called exchange is the amount by which its best non-homologous match exceeds
+the best same-chromosome or homologous match across the tract; a wider margin
+indicates stronger support. We joined two
 neighbouring windows into one run only when their query and donor intervals were
 directly adjacent, touching end to end with no gap, on the same donor
 chromosome, haplotype and sequence; we did not bridge gaps or chain non-adjacent
