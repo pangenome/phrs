@@ -293,8 +293,8 @@ block structure after observed/expected inter-chromosomal normalization
 (Fig.~\ref{fig:fig4}B) \cite{Ulahannan2019}.
 The same within-community enrichment holds in the HG002 CiFi contact map
 \cite{hic3d_cifi2025}.
-Mouse meiotic Hi-C from a B6 $\times$ CAST F1 hybrid, mapped to the B6 and CAST
-T2T assemblies, provides a stage-resolved comparison across prophase I. The
+Mouse meiotic Hi-C from inbred C57BL/6 (B6) spermatocytes, mapped to a combined
+B6 and CAST T2T reference, provides a stage-resolved comparison across prophase I. The
 same assemblies, PHR sequence identities and read-placement
 procedure are used at all four stages (leptotene, zygotene, pachytene and
 diplotene), so only the meiotic stage differs \cite{Francis2025,Zuo2021}.
@@ -729,9 +729,10 @@ Community-ordered contact matrices used observed/expected inter-chromosomal norm
 
 We repeated the entire pipeline on a non-human mammal, using the B6 and CAST T2T
 assemblies \cite{Francis2025}. We extracted telomere-anchored flanks and called PHRs de novo over 1 Mb flanks. The stage-resolved
-meiotic Hi-C is from a B6 $\times$ CAST F1 hybrid \cite{Zuo2021}, with reads
-phased into paternal (B6) and maternal (CAST) haplotypes, mapped to the diploid
-B6+CAST reference. For each meiotic
+meiotic Hi-C is from inbred C57BL/6 (B6) spermatocytes \cite{Zuo2021}. Because
+these mice are inbred and homozygous, the reads are single-haplotype and are not
+phased into parental haplotypes; we mapped them to the combined B6+CAST T2T
+reference, keeping multi-mapping reads exactly as in the human pipeline. For each meiotic
 prophase stage we computed the per-PHR-pair Spearman correlation between
 length-normalized contact and PHR Jaccard similarity over 1 Mb flanks
 (Fig.~\ref{fig:fig4}C). Each stage gives a single $\rho$ value; we did not test
