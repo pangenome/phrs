@@ -160,7 +160,7 @@ alignments on demand, this graph materializes the aligned sequence structure:
 shared sequence is represented by graph nodes and each PHR by a path through
 those nodes. Its main connected component contains 15,654 of the sequences
 (99.9\%) and is too tangled to interpret node by node.
-We therefore measured pangenome similarity between chromosome ends as the length-weighted Jaccard overlap of the graph nodes each traverses, and reduced the result to an arm-level similarity matrix (Methods).
+We therefore measured pangenome similarity between chromosome ends as the Jaccard overlap of the graph nodes each traverses, and reduced the result to an arm-level similarity matrix (Methods).
 The matrix is structured: locally dense blocks of high similarity are
 embedded in a broader continuum of lower inter-community similarity
 (Fig.~\ref{fig:fig2}B, left).
@@ -408,7 +408,7 @@ Genomics.
     component), each node colored by the arm-level community of the PHR paths
     crossing it (same community palette as panel B); the communities occupy
     distinct regions of the layout.
-    \textbf{(B)} Arm-level length-weighted Jaccard similarity heatmap ($41 \times 41$), shown
+    \textbf{(B)} Arm-level Jaccard similarity heatmap ($41 \times 41$), shown
     twice. \emph{Left}, ordered by an average-linkage dendrogram that
     places arms with similar subtelomeric PHR profiles adjacent (p-arms red,
     q-arms blue), showing locally dense blocks on a broader similarity continuum.
@@ -573,7 +573,7 @@ This defined 15,668 PHRs from the 18,826 retained flanks (83.2\%).
 We extracted the 15,668 called PHR intervals and supplied those sequences as the
 input to pggb v0.7.4 (commit 498c5d7, with wfmash v0.23.0, seqwish v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix v0.2.1 and vg v1.62.0) at 95\% identity, giving an explicit graph with 477,726 nodes and 786,318 edges. We computed all-pairs length-weighted Jaccard similarity from this graph with odgi, giving a $15{,}668 \times
 15{,}668$ matrix
-\cite{Garrison2024pggb,pangenome_graphs_impg_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
+\cite{Garrison2024pggb,pangenome_graphs_odgi_GuarracinoHeumos2022,andreace2023pangenome,heumos2024nfcore}.
 We computed a 2D layout of the main connected component with odgi and rendered it
 in R (Fig.~\ref{fig:fig2}A), each node colored by the dominant arm-level Leiden
 community of the PHR paths crossing it. The arm-level distance matrix is the mean
