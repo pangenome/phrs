@@ -47,8 +47,8 @@ PY
   inkscape --export-type=png -w 3600 --export-filename="$OUT/${base}.png" "$cropped"
 }
 
-gen PAN027pat_vs_PAN011_joint "PAN027 paternal" "PAN011 h1" "PAN011 h2" Fig5B_paternal
-gen PAN027mat_vs_PAN010_joint "PAN027 maternal" "PAN010 h1" "PAN010 h2" Fig5C_maternal
-gen PAN028mat_vs_PAN027_joint "PAN028 maternal" "PAN027 h1" "PAN027 h2" Fig5D_pan028
+gen PAN027pat_vs_PAN011_joint "PAN027 paternal" "PAN011 h1" "PAN011 h2" Fig5C_paternal
+gen PAN027mat_vs_PAN010_joint "PAN027 maternal" "PAN010 h1" "PAN010 h2" Fig5D_maternal
+gen PAN028mat_vs_PAN027_joint "PAN028 maternal" "PAN027 h1" "PAN027 h2" Fig5E_pan028
 
 echo "done: $OUT/Fig5{B_paternal,C_maternal,D_pan028}.{pdf,png}"
