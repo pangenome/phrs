@@ -270,6 +270,11 @@ leptotene, zygotene, pachytene and diplotene; all $n = 1{,}135$;
 Fig.~\ref{fig:fig4}C), strongest at the zygotene bouquet---when telomeres transiently cluster
 at the nuclear envelope---and lowest at diplotene, once the bouquet disperses. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
 procedure constant across stages.
+Restricting to inter-chromosomal pairs of the same arm type shows that the
+zygotene peak is a p-arm feature: over pairs of two p-arm PHRs the correlation
+peaks at zygotene (Spearman $\rho = 0.285$, 0.508, 0.323, 0.023; $n = 722$),
+whereas over pairs of two q-arm PHRs it peaks at diplotene
+($\rho = 0.352$, 0.338, 0.406, 0.420; $n = 42$).
 
 \subsection*{Ectopic subtelomeric recombination within a pedigree}
 
@@ -710,8 +715,12 @@ phased into parental haplotypes; we mapped them to the combined B6+CAST T2T
 reference, keeping multi-mapping reads exactly as in the human pipeline. For each meiotic
 prophase stage we computed the per-PHR-pair Spearman correlation between
 length-normalized contact and PHR Jaccard similarity over 1 Mb flanks
-(Fig.~\ref{fig:fig4}C). Each stage gives a single $\rho$ value; we did not test
-whether the differences between stages are statistically significant.
+($n = 1{,}135$ inter-chromosomal pairs per stage; Fig.~\ref{fig:fig4}C). Each
+stage gives a single $\rho$ value; we did not test whether the differences
+between stages are statistically significant.
+We also computed this correlation within each arm class, using only
+inter-chromosomal pairs in which both PHRs lie on p-arms ($n = 722$) or both on
+q-arms ($n = 42$).
 
 \subsection*{Pedigree direct-alignment windows}
 
