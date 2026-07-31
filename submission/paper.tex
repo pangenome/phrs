@@ -293,7 +293,7 @@ daughter's maternal side shows only the expected acrocentric-acrocentric sharing
 acrocentric-acrocentric sharing, with two further highlighted candidates,
 the subtelomeric chr5q/chr1p and a chr21p/chr4p run whose chr4 partner is
 pericentromeric rather than subtelomeric (Fig.~\ref{fig:fig5}E).
-Non-acrocentric subtelomeric exchange is more frequent in paternal than maternal transmissions, the reverse of the genome-wide sex bias in recombination (male less than female) and consistent with the male-specific concentration of recombination at chromosome ends \cite{Bherer2017}. Acrocentric-acrocentric sharing appears in both germlines, consistent with the rDNA exchange system \cite{Guarracino2023}.
+Across these transmissions, the strongest non-acrocentric subtelomeric signal occurred in the paternal comparison, consistent with the male-specific concentration of recombination at chromosome ends \cite{Bherer2017}. Acrocentric-acrocentric sharing appears in both germlines, consistent with the rDNA exchange system \cite{Guarracino2023}.
 
 The two autosomal candidates (chr9q/chr3q and chr5q/chr1p) are inter-chromosomal
 exchanges. Of the two, chr9q/chr3q is the better-supported call: its chr3q match exceeds the homologous chr9q by a wider identity margin than the chr1p match exceeds chr5q (Methods). In the WashU pedigree crossover map this paternal transmission has no
@@ -356,7 +356,7 @@ analysis counts gene copies and their annotations, not whether they are
 expressed, functional or dosage-sensitive, and it captures one genome rather
 than the population.
 
-Which factor initiates the loop---sequence similarity, shared function, or physical proximity---remains unresolved, and the acrocentric example, where rDNA both drives and results from nucleolar clustering, suggests there may be no single starting point. The current evidence has gaps: human contact maps are somatic rather than meiotic, and the meiotic-stage data come only from mouse. Improved evidence may shed light on these questions: germline-stage contact maps and larger multigenerational pedigrees with complete, haplotype-resolved telomere-to-telomere assemblies \cite{Cechova2025}, together with orthogonal assays such as FISH \cite{Trask1991}. By applying reference-free pangenome methods to the 465 assembled haplotypes of HPRC v2, we convert relationships inferred from cytogenetics decades ago into a population-scale view of concerted evolution in human subtelomeres.
+Which factor initiates the loop---sequence similarity, shared function, or physical proximity---remains unresolved, and the acrocentric example, where rDNA both drives and results from nucleolar clustering, suggests there may be no single starting point. The current evidence has gaps: human contact maps are somatic rather than meiotic, and the meiotic-stage data come only from mouse. Improved evidence may shed light on these questions: germline-stage contact maps and larger multigenerational pedigrees with complete, haplotype-resolved telomere-to-telomere assemblies \cite{Cechova2025}, together with orthogonal assays such as FISH \cite{Trask1991}. By applying reference-free pangenome methods to the 465-assembly HPRC v2 panel, we convert relationships inferred from cytogenetics decades ago into a population-scale view of concerted evolution in human subtelomeres.
 
 \subsection*{Acknowledgments}
 
@@ -646,13 +646,13 @@ For display and method comparison we also ordered the arm-level matrix by
 average-linkage hierarchical clustering (UPGMA) with \texttt{hclust} (R \texttt{stats}); cutting the dendrogram into 14 clusters gave
 a mean silhouette of 0.342 (\texttt{silhouette}, R \texttt{cluster} package) and exact agreement with 12 of the 15 Leiden
 communities, and we use this dendrogram as a heatmap ordering, not as a
-phylogenetic model. To test whether the six q-arms that cluster together (22q, 21q, 19q, 1q, 13q and
-17q) are a robust group or only a soft enrichment, we bootstrap-resampled the
-PHRs and rebuilt the arm-level trees (R package ape). The cluster rarely
-reappears, so we describe it as an enriched neighborhood in the similarity
-matrix, not a distinct community. This coarse resampling does not reach the full
-15,668-sequence Jaccard matrix and is not used to support the communities
-themselves.
+phylogenetic model. To assess the sharpness of the C6 boundary, we
+bootstrap-resampled the PHRs and rebuilt the arm-level trees (R package ape).
+The exact six-arm grouping was unstable under this coarse resampling,
+consistent with C6 representing a broad, softly bounded neighborhood in the
+similarity matrix. Because this resampling does not reconstruct the full
+15,668-sequence Jaccard matrix, it is not a test of the Leiden partition
+itself.
 
 \subsection*{Hi-C, Pore-C and CiFi pipeline}
 
