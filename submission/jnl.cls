@@ -1769,7 +1769,7 @@ $\kern\wd\@ne\kern -\@tempdima\left\@firstoftwo#1%
 %%\setvruler[<SCALE>][<INITIAL_COUNT>][<STEP>][<DIGITS>][<MODE>][<ODD_HSHIFT]>][<EVEN_HSHIFT>][<VSHIFT>][<HEIGHT>]
 \def\linenoon{%%\definecolor{blue}{gray}{0}% 
 \def\tiny{\normalsize\color{black}}%
-\setvruler[12bp][1][1][3][1][1.18\textwidth][26pt][-7pt][0.99\textheight]% for even pages: left side; for odd pages: right side;
+\setvruler[12bp][1][1][3][1][26pt][26pt][-7pt][0.99\textheight]% line numbers on the left margin for odd and even pages;
 %%\linkbluecolor
 }%
 \linenoon%
