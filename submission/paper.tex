@@ -270,11 +270,14 @@ leptotene, zygotene, pachytene and diplotene; all $n = 1{,}135$;
 Fig.~\ref{fig:fig4}C), strongest at the zygotene bouquet---when telomeres transiently cluster
 at the nuclear envelope---and lowest at diplotene, once the bouquet disperses. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
 procedure constant across stages.
-Restricting to inter-chromosomal pairs of the same arm type shows that the
-zygotene peak is a p-arm feature: over pairs of two p-arm PHRs the correlation
-peaks at zygotene (Spearman $\rho = 0.285$, 0.508, 0.323, 0.023; $n = 722$),
-whereas over pairs of two q-arm PHRs it peaks at diplotene
-($\rho = 0.352$, 0.338, 0.406, 0.420; $n = 42$).
+In mouse, where detectable PHRs are concentrated on p-arms, the zygotene peak
+is likewise a p-arm feature. Restricting to inter-chromosomal pairs of the same
+arm type, the correlation peaks at zygotene over pairs of two p-arm PHRs
+(Spearman $\rho = 0.285$, 0.508, 0.323, 0.023; $n = 722$), whereas over pairs
+of two q-arm PHRs it peaks at diplotene ($\rho = 0.352$, 0.338, 0.406, 0.420;
+$n = 42$)---though the q-arm subset is small and p-arm windows carry broader
+arm-context effects, so we do not read the arm split as a clean arm-type
+experiment.
 
 \subsection*{Ectopic subtelomeric recombination within a pedigree}
 
@@ -300,8 +303,8 @@ the subtelomeric chr5q/chr1p and a chr21p/chr4p run whose chr4 partner is
 pericentromeric rather than subtelomeric (Fig.~\ref{fig:fig5}E).
 Across these transmissions, the strongest non-acrocentric subtelomeric signal occurred in the paternal comparison, consistent with the male-specific concentration of recombination at chromosome ends \cite{Bherer2017}. Acrocentric-acrocentric sharing appears in both germlines, consistent with the rDNA exchange system \cite{Guarracino2023}.
 
-The two autosomal candidates (chr9q/chr3q and chr5q/chr1p) are inter-chromosomal
-exchanges. Of the two, chr9q/chr3q is the better-supported call: its chr3q match exceeds the homologous chr9q by a wider identity margin than the chr1p match exceeds chr5q (Methods). In the WashU pedigree crossover map this paternal transmission has no
+The two autosomal candidates (chr9q/chr3q and chr5q/chr1p) are consistent with
+inter-chromosomal exchange. Of the two, chr9q/chr3q is the better-supported call: its chr3q match exceeds the homologous chr9q by a wider identity margin than the chr1p match exceeds chr5q (Methods). In the WashU pedigree crossover map this paternal transmission has no
 crossover on chromosome 3 \cite{Cechova2025},
 so ordinary chr3 recombination cannot account for the chr9q/chr3q signal. We therefore treat these as candidate PHR
 exchanges consistent with recombination, not as confirmed events with resolved
@@ -325,7 +328,7 @@ This compartment is also internally organized. Communities assort by arm type,
 giving pronounced p--p and q--q structure whose cause is not yet clear.
 But the broader pattern is consistent with a simple, self-reinforcing model:
 telomere clustering at the meiotic nuclear envelope brings similar ends into
-contact, and proximity favors the ectopic recombination that keeps their
+contact, and proximity may favor ectopic recombination that helps keep their
 sequences homogenized. Shared sequence and shared function then feed back to
 promote co-localization, so that sequence, function and three-dimensional
 proximity continually reinforce one another. The acrocentric short arms show
@@ -338,14 +341,18 @@ This concerted process operates at a characteristic scale. The exchanged blocks
 are on the order of tens to hundreds of kilobases, large enough to carry an intact functional
 module, but small
 enough to leave chromosome identity intact rather than translocating whole
-arms. Copy-number-aware ontology enrichment is the signature of this
-block-scale exchange, and the systems that resolve all map onto chromosome
-inheritance across generations: sister-chromatid cohesion and chromosome
-organization, germ-cell development, and genome reactivation after
-fertilization. Many copies of these
-gene families, spread across chromosome ends, can buffer against the loss of any
-one copy, while recurrent exchange both keeps the copies similar and spawns new
-variants \cite{Linardopoulou2005,Ambrosini2007}. PHRs may therefore provide both
+arms. We used copy-number-aware ontology enrichment as a descriptive way to
+summarize which annotated gene modules are disproportionately represented in
+the PHR compartment. Because duplicated copies are counted separately, these
+results describe annotation burden across physical gene copies rather than
+independent functional systems. The copy-number-aware enrichment pattern
+reflects this block-scale organization, and the systems that resolve all map
+onto chromosome inheritance across generations: sister-chromatid cohesion and
+chromosome organization, germ-cell development, and genome reactivation after
+fertilization. The dispersal of multiple related copies across chromosome ends
+could buffer against loss of any one copy, while recurrent exchange could both
+maintain similarity and generate new variants
+\cite{Linardopoulou2005,Ambrosini2007}. PHRs may therefore provide both
 a stable foundation for chromosome transmission and the flexibility needed for
 germline systems to accommodate continuing change in chromosome-end sequence and
 organization.
