@@ -5,7 +5,20 @@
 %%                                                                 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[pdflatex,mathphys,lineno]{jnl}
+\documentclass[pdflatex,mathphys]{jnl}
+
+% Line numbering for review: use the `lineno` package (numbers every actual
+% typeset line of body text on its own baseline, as a non-disruptive overlay).
+% Do NOT pass the `lineno` *class option* to jnl.cls -- that turns on `vruler`,
+% a fixed-pitch margin ruler that drifts out of sync with the text and produces
+% phantom/blank numbers.
+%
+% Continuous numbering (no `pagewise`): the journal convention. Reviewers and
+% editors cite "line N" as a stable coordinate across the whole manuscript, so
+% numbers must be unique document-wide (Nature, Science, Cell, PLOS, Springer
+% Nature, etc. all require continuous numbering).
+\usepackage[mathlines]{lineno}
+\linenumbers
 
 \usepackage{caption}
 \usepackage{graphicx}
