@@ -191,9 +191,9 @@ serve the manuscript record better.
 
 ## Commit convention
 
-Commits originate from workgraph worker agents. Messages look like
-`feat: <task-slug> (agent-NNN)`. The `(agent-NNN)` suffix is workgraph
-provenance for the graph; keep it.
+Commit messages look like `feat: <task-slug> (agent-NNN)`. The `(agent-NNN)`
+suffix records the agent that produced the change; keep it when it is present,
+but do not use task-tracking tooling to manage work.
 
 This guide is written to both `CLAUDE.md` and `AGENTS.md` and kept in
 lock-step. The two files exist because Claude Code and Codex CLI look for
