@@ -89,11 +89,20 @@ tract's host copy on PAN027's paternal chr5q, i.e. one arrangement seen
 in two meioses because it was transmitted.
 
 Caveats that keep this honest (and are already in the manuscript):
-  - wfmash -p95 does NOT reproduce the chr1p best-match for the G2 window
-    (maps to chr5 only) — CROSS_ALIGNER_VALIDATION.md
+  - ALIGNER PROVENANCE: the chr5q/chr1p highlight is a SWEEPGA 0.1.1 (FastGA
+    f32, 10:10, scaffold-jump 0) -> IMPG 0.4.1 class-winner call — the layer
+    behind the Fig5 whole-genome ribbon panels. The flank-untangle layer
+    (538 patches, report sec.14) is a separate wfmash v0.23.0-41/pggb v0.7.4
+    graph + odgi untangle. Cross-aligner validation (wfmash v0.24.2 -p95,
+    plus direct -p90 tract tests) does NOT reproduce the chr1p best-match
+    (maps the window to chr5) — CROSS_ALIGNER_VALIDATION.md
     (fig5_donor_recipient_ribbon_draft). The manuscript already calls
     chr5q/chr1p the WEAKER, aligner-dependent candidate and chr9q/chr3q
-    the better-supported one.
+    the better-supported one. Nuance: the wfmash/pggb untangle layer does
+    find a small chr1p-derived patch in PAN028's chr5q flank (8,358 bp,
+    flank 437,114-445,472, acros_like) — chr1p material in chr5q is not
+    exclusively a sweepga observation; only the 28/54 kb best-match runs
+    are sweepga-only.
   - The f32 chr1p identities (0.998-1.0) exceed the wfmash chr5q-paternal
     identities (0.977-0.993) in the same region — consistent with drifted
     chr5q copies vs a fresher chr1p source, but needs the multi-way
