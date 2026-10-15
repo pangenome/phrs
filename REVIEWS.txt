@@ -1,12 +1,12 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-15
+Last updated: 2026-10-15 (rev 2: R2 corrected to chr5q/chr1p)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
 (PAN010/PAN011/PAN027/PAN028) at
 https://public.gi.ucsc.edu/~mcechova/pedigree/annotations/v1.1/<PANxxx>/
-(fagger.PANxxx.hifi.bed, flagger.PANxxx.ONT.bed, nucflag.hifi.PANxxx.bed,
+(flagger.PANxxx.hifi.bed, flagger.PANxxx.ONT.bed, nucflag.hifi.PANxxx.bed,
 problematic.PANxxx.bed = union; plus flagger/*.polished.v1.1.{canonical,
 conservative}.bed variants). Primary assemblies (verkko / hifiasm / duplex)
 are also public under https://public.gi.ucsc.edu/~mcechova/pedigree/assemblies/.
@@ -31,8 +31,8 @@ All 538 HQ WashU patches intersected against the problematic union
   - 66/538 (12.3%) touch any problematic region; 49/494 (9.9%) of the
     within-community (primary-evidence) subset.
   - 0/133 gene_conversion_like tracts overlap.
-  - 0 bp overlap for the Fig5B 3q/9q crossover patches, the chrXp/PAR1
-    patches, and the chr13p/21p acro gene-conversion tracts.
+  - 0 bp overlap for the chrXp/PAR1 patches and the chr13p/21p acro
+    gene-conversion tracts.
   - By bp: 14.2% of patch sequence vs 6.7% flank background; the overlap
     that exists is confined to dense acros_like flanks on acrocentric p
     arms (chr13p x21, chr15p/21p/14p x5 each; labels Col/COLLAPSE_OTHER/
@@ -42,84 +42,112 @@ All 538 HQ WashU patches intersected against the problematic union
 => The headline events sit in clean, flagger-negative sequence.
 
 -------------------------------------------------------------------------------
-R2. "The chr3q<->9q ectopic crossover recurs in two generations (PAN027 and
+R2. "The chr5q/chr1p candidate recurs in two generations (PAN027 paternal and
     PAN028); it happens twice, so there must be some problem with it."
 -------------------------------------------------------------------------------
-STATUS: OPEN — under active analysis (do not treat as an artifact yet).
+STATUS: OPEN — but the premise is wrong: the second occurrence is the
+TRANSMITTED copy of the first, not an independent repeat. Evidence below.
+(This is the Fig5 autosomal candidate the reviewer means — NOT chr9q/chr3q;
+see R3 for that one. Fig5E also highlights a chr21p/chr4p run, whose chr4
+partner is pericentromeric, not subtelomeric — lower priority.)
 
-The two observations in question (from all_pedigrees_patches.tsv, both
-crossover_like, both community C3, both flagger/problematic-overlap = 0):
+The two observations (sweepga f32 10:10 class-winner scan, whole-genome):
 
-  G2: PAN027 paternal (hap2) vs PAN011 (father)
-      chr3q flank 345,337-348,751 (3,414 bp), source chr9q:h2 (PAN011),
-      context chr3q:h2 (L) / chr3q:h1 (R), min_score 1.0000
-      asm: PAN027.chr3.paternal:202,393,547-202,396,961
+  G2: PAN027 paternal hap2 vs PAN011 — chr5q 182.052-182.080 Mb (28 kb),
+      best inter-chr match PAN011 chr1 hap2, identity ~0.998 vs ~0.995 for
+      the same-chr (chr5) match (narrow margin, ~0.003). Fig5B/C candidate.
+      Flagger status: the 28 kb tract is flagger/problematic-NEGATIVE.
+      (nearest flagger call: 182.112-182.144 Mb Col,COLLAPSE_OTHER — just
+      distal of the tract)
 
-  G3: PAN028 maternal (hap1) vs PAN027 (mother)
-      chr3q flank 366,221-368,310 (2,089 bp), source chr9q:h2 (PAN027),
-      context chr3q:h2 (L) / chr3q:h1 (R), min_score 0.9701
-      asm: PAN028.chr3.haplotype1:199,599,977-199,602,066
-      (a second, larger chr3q crossover-like patch 262,953-290,922,
-      27,969 bp, source chr7p:h2, min_score 0.9432, also flagger-negative)
+  G3: PAN028 maternal hap1 vs PAN027 — chr5q 182.984-183.038 Mb (~54 kb
+      chr1 h2 run, identities 0.9985-1.0 in f32 windows) plus a tail
+      (183.09-183.11 Mb) that DOES fall inside a flagger Col,MISJOIN region
+      (183.072-183.118583). The main 54 kb run is flagger-negative.
+      Fig5E candidate.
 
-Untangle detail (PAN027_vs_PAN011.e50000.m1000.bed.gz): the G2 tract maps to
-PAN011#2#chr9 (hap2) at identity 1.0, nth.best=1, self.cov~1.27 — i.e. in
-that window the chr9q hap2 match is the BEST target genome-wide, beating
-both of the father's chr3q haplotypes; flanking segments prefer chr3q:h2
-(left) / chr3q:h1 (right). chr3q and chr9q subtelomeres share extensive
-homology (Leiden C3), so long stretches of the chr3q flank also align to
-chr9q:h2 at 0.82-0.999 but with nth.best>1 (chr3 targets win) — only the
-3.4 kb tract is a genome-wide best hit.
+What the sequence data show (wfmash v0.24.2-16-g4a35bfc5, -p 90, direct
+test on the v1.1 polished assemblies, 2026-10-15):
 
-Key observation so far: the two instances are NOT identical.
-  - Different positions in the flank (345,337 vs 366,221 from the q-telomere;
-    different assembly intervals).
-  - Different identity to their respective chr9q:h2 sources (1.0000 vs
-    0.9701). A shared/copy-pasted assembly artifact or a transmitted copy of
-    the same tract would be ~identical to the source; two different
-    tract sequences at slightly different positions is the signature of two
-    INDEPENDENT events at the same subtelomeric hotspot — the opposite of
-    the artifact argument.
+  - PAN028's 56 kb chr5q region (182.984-183.040 Mb) maps to PAN027's
+    PATERNAL chr5q (181.9-182.15 Mb window) in 4 split blocks at
+    97.6-99.3% identity — including a 28.5 kb block at 182.047-182.076 Mb
+    that overlaps the G2 tract interval — and has NO >=90% match to PAN027's
+    paternal chr1p subtelomere (first 1.5 Mb), and none to the maternal
+    chr5q copy either.
+  => PAN028's maternal chr5q subtelomere descends from PAN027's PATERNAL
+     chr5q — i.e. a meiotic crossover near the chr5q telomere in PAN027's
+     germline put paternal subtelomeric sequence on the transmitted chr5,
+     carrying the same standing chr1p-derived tract.
 
-Hypotheses to distinguish (next steps):
-  (a) transmission of a standing rearrangement (PAN028 inherits PAN027's
-      paternal chr3q subtelomere wholesale): predicts the PAN028 tract is
-      the SAME sequence as the PAN027 tract, and untangle of PAN028 vs
-      PAN027 should map it to chr3q:h2 (which contains the older copy), not
-      chr9q:h2.
-  (b) independent recurrent events at a chr3q/9q (C3) hotspot: predicts the
-      two tracts differ (already suggested by the 1.0000 vs 0.9701 scores)
-      and use possibly different chr9q source intervals.
-  (c) assembly artifact: predicts identical tracts/junctions in both
-      assemblies and/or flagger/nucflag signal — currently contradicted by
-      the differing identities, differing positions, and 0 bp problematic
-      overlap for both instances (and by the same argument, a 'switch
-      error' origin — cf. Monika's sw_prone_regions.bed — would need to be
-      checked; note both tracts are flagger-negative but switch-error
-      prone regions are a separate track worth intersecting too).
+Therefore the recurrence is INHERITANCE, which is the expected signature of
+a real transmitted structural feature — not a second independent event and
+not a copy-paste artifact. The "it happens twice" argument inverts: an
+assembly artifact tied to a shared repeat could also light up in both
+scans, but the data show the G3 region is a ~97.7-99.3% match to the G2
+tract's host copy on PAN027's paternal chr5q, i.e. one arrangement seen
+in two meioses because it was transmitted.
 
-Concrete TODO when we come back:
-  1. Extract both tract sequences + 2 kb flanks; align them to each other
-     and to the chr9q:h2 source intervals (PAN011 for G2, PAN027 for G3);
-     compute pairwise identities and junction positions.
-  2. Pull the PAN028_vs_PAN027 untangle rows for chr3q (query PAN028#1
-     chr3 hap1) to check nth.best/self.cov and whether chr3q:h2 ever wins
-     over chr9q:h2 in the tract window (transmission signature).
-  3. Intersect both tract intervals with Monika's sw_prone_regions.bed
-     (switch-error track) in addition to the flagger tracks already done.
-  4. Check whether PAN010/PAN011 chr3q haplotypes also carry chr9q-derived
-     tracts near these positions (i.e. is this a standing polymorphic
-     arrangement in the family rather than two de novo events?).
-  5. If (b) holds, the recurrence argument inverts into a strength: same
-     subtelomeric hotspot, two independent meioses, two generations —
-     direct evidence of an active recurrent exchange process (matches the
-     'ongoing exchange' framing and the CEPH1463 chr12/9 (C5) replication
-     in an unrelated family).
+Caveats that keep this honest (and are already in the manuscript):
+  - wfmash -p95 does NOT reproduce the chr1p best-match for the G2 window
+    (maps to chr5 only) — CROSS_ALIGNER_VALIDATION.md
+    (fig5_donor_recipient_ribbon_draft). The manuscript already calls
+    chr5q/chr1p the WEAKER, aligner-dependent candidate and chr9q/chr3q
+    the better-supported one.
+  - The f32 chr1p identities (0.998-1.0) exceed the wfmash chr5q-paternal
+    identities (0.977-0.993) in the same region — consistent with drifted
+    chr5q copies vs a fresher chr1p source, but needs the multi-way
+    comparison to say anything precise.
 
-Related material already in hand:
-  - Monika's primary assemblies (primary_verkko / primary_hifiasm /
-    primary_duplex) allow a cross-assembler replication of the chr3q<->9q
-    event, same logic as the CEPH hifiasm-vs-verkko intersection.
-  - washu_v131/ on moosefs holds v1.1 and v1.3.1 downloads + rebuild inputs
-    (get_v11.sh, get_v131.sh, run_fig5.sh) if the event needs re-derivation
-    on the current server v1.1 files.
+TODO when we come back:
+  1. Multi-way tract comparison: align the G2 tract + G3 region against
+     PAN011 chr1 h1/h2 subtelomeres, PAN027 chr1 mat/pat, PAN027 chr5q
+     mat/pat, PAN028 chr5q hap1/hap2. Questions: same junction coordinates
+     (=> one event transmitted) or different (=> two events / hotspot)?
+     Tract identity vs each copy to date the exchange.
+  2. Obtain the Cechova 2025 crossover map (supplement) and check whether
+     the PAN027->PAN028 maternal chr5 transmission has a telomere-proximal
+     chr5q crossover — would independently confirm the transmission path
+     that carries the paternal subtelomere into PAN028.
+  3. chr21p/chr4p run (Fig5E): flagger + tract check, lower priority
+     because the chr4 partner is pericentromeric.
+  4. Cross-assembler replication of the chr5q/chr1p candidate on Monika's
+     newly public primary assemblies (primary_verkko / primary_hifiasm /
+     primary_duplex) — same logic as the CEPH hifiasm-vs-verkko
+     intersection; also orthogonal ONT (duplex) read support.
+  5. Note for Methods/Review response: state explicitly that the Fig5E
+     chr5q/chr1p highlight is the transmitted copy of the Fig5B/C
+     candidate once the transmission path is nailed down (item 2).
+
+-------------------------------------------------------------------------------
+R3. (Related) chr9q/chr3q also appears in two transmissions — same argument
+    will come up.
+-------------------------------------------------------------------------------
+STATUS: OPEN — same analysis pattern, apply after/with R2.
+
+The event manifest (fig5_synteny_recombination_schematic/event_manifest.tsv)
+lists BOTH PAN027_chr9q_chr3q (paternal, vs PAN011) and
+PAN028_chr9q_chr3q (maternal, vs PAN027) strict-path candidates. Key facts
+gathered earlier (untangle data):
+
+  G2: PAN027 paternal chr9q window: chr3q primary-donor ~45 kb + chr15q/16q
+      side fragments; flanking chr3q tract maps to PAN011 chr9 hap2 at
+      identity 1.0 (nth.best=1, genome-wide best, self.cov~1.27).
+      (patch: chr3q flank 345,337-348,751, 3,414 bp, min_score 1.0000)
+  G3: PAN028 maternal chr9q window: chr3q donor ~34 kb + chr15q/16q
+      fragments (fig5_followup_transmission_check.py: the implicated
+      chromosome-end classes are retained, chr9q context maps to PAN027
+      paternal hap2 — transmission visible).
+      (patch: chr3q flank 366,221-368,310, 2,089 bp, min_score 0.9701)
+
+The two chr3q tract calls differ (position 345,337 vs 366,221 in flank
+space; identity 1.0000 vs 0.9701) — NOT a duplicated artifact; either
+transmission of a standing tract (then the child's copy should match the
+parent's chr3q:h2 copy best) or an independent recurrent event at the C3
+hotspot (then identities/junctions differ). Same TODO structure as R2
+item 1; both instances flagger/problematic-overlap = 0.
+
+Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
+in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
+BED; the v1.1 assemblies are bgzipped WITH .fai on moosefs
+(washu_v131/assemblies_v11/) — index them in place if writable, or copy.
