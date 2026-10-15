@@ -93,20 +93,41 @@ Caveats that keep this honest (and are already in the manuscript):
     f32, 10:10, scaffold-jump 0) -> IMPG 0.4.1 class-winner call — the layer
     behind the Fig5 whole-genome ribbon panels. The flank-untangle layer
     (538 patches, report sec.14) is a separate wfmash v0.23.0-41/pggb v0.7.4
-    graph + odgi untangle. Cross-aligner validation (wfmash v0.24.2 -p95,
-    plus direct -p90 tract tests) does NOT reproduce the chr1p best-match
-    (maps the window to chr5) — CROSS_ALIGNER_VALIDATION.md
-    (fig5_donor_recipient_ribbon_draft). The manuscript already calls
-    chr5q/chr1p the WEAKER, aligner-dependent candidate and chr9q/chr3q
-    the better-supported one. Nuance: the wfmash/pggb untangle layer does
-    find a small chr1p-derived patch in PAN028's chr5q flank (8,358 bp,
-    flank 437,114-445,472, acros_like) — chr1p material in chr5q is not
-    exclusively a sweepga observation; only the 28/54 kb best-match runs
-    are sweepga-only.
-  - The f32 chr1p identities (0.998-1.0) exceed the wfmash chr5q-paternal
-    identities (0.977-0.993) in the same region — consistent with drifted
-    chr5q copies vs a fresher chr1p source, but needs the multi-way
-    comparison to say anything precise.
+    graph + odgi untangle.
+  - CORRECTED wfmash INTERPRETATION (2026-10-15, direct test): the earlier
+    claim "wfmash does not reproduce chr5q/chr1p" is an artifact of the
+    DEFAULT filter regime, NOT absent homology. The validation package
+    (pedigree_whole_genome_wfmash_p95_updated_bin) ran ONLY literal `-p 95`
+    whole-genome — default 50 kb chunking: the chr5q chunks map 100% to the
+    father's chr5 hap2, so the embedded chr1p homology loses the per-chunk
+    competition and is dropped. Its own `permissive_p95` config
+    (`-p95 -w1k -l1k -n50 -f -M`), designed for short embedded tracts, was
+    NEVER RUN (the README says the decision used only the literal runs).
+    Direct tests on the v1.1 assemblies (2026-10-15):
+      * literal -p95 targeted at the chr5q window DOES recover chr1 hap2:
+        ~50 kb block at 99.1% identity (181.985-182.036 Mb), overlapping the
+        f32 chr1p windows.
+      * permissive config recovers a dense chr1 hap2 chain up to 100%
+        identity (e.g. query 182.025-182.038 Mb -> chr1.h2:100-113 kb at
+        99.7-1.0000), i.e. it fully reproduces the f32 chr1p call.
+      * What remains a genuine, narrow competition: for the 28 kb f32 core
+        (182.052-182.080 Mb) wfmash's best match is the father's chr5 hap2
+        at 100% identity — at a position ~200 kb more proximal (the same
+        module stands in PAN011's chr5q too) — so chr1p-vs-chr5 margins are
+        ~0.1-0.5%. The weak-margin argument stands; the "other aligner
+        disagrees" argument does not.
+  - MANUSCRIPT CONSEQUENCE TO REVISIT: CROSS_ALIGNER_VALIDATION.md and
+    paper.tex currently justify tiering chr5q/chr1p below chr9q/chr3q by
+    wfmash non-reproduction. With the corrected interpretation the
+    justification should shift to (a) the narrow best-match margin and
+    (b) the chr5-at-100% same-haplotype competition, not aligner
+    disagreement. If a formal artifact is wanted, the permissive_p95
+    whole-genome run can be executed via the package's existing
+    submit_wfmash_matrix.sh / run_wfmash_one.sh (parameter_set=permissive_p95).
+  - The f32 chr1p identities (0.998-1.0) vs wfmash chr5q-paternal identities
+    (0.977-0.993) in the same region are both within the standing-module
+    competition described above; needs the multi-way comparison to say
+    anything precise about when the exchange happened.
 
 TODO when we come back:
   1. Multi-way tract comparison: align the G2 tract + G3 region against
