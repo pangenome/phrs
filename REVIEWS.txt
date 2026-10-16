@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 3: R3 base-level tie measurement — chr3q/chr9q patches have no divergence margin)
+Last updated: 2026-10-16 (rev 4: R3 scope correction — chr3q-side internal patches are ties; chr9q terminal blocks are real standing chr3-derived structure, transmitted by ordinary crossover)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -199,19 +199,42 @@ direct sequence extraction; /tmp/flagger_v11/g2_seqs.fa, g3_seqs.fa):
      carry score 1.0 (ranks 1/2/3); at the G3 patch segment chr9q:pat is
      rank 1 at 0.9701 with the chr3 homolog paths scoring below it there,
      but base-level alignment shows chr3q:pat ties 99.8%.
-  => Implication for the argument: a converted tract copied from chr9q
-     would differ from the chr3 homolog at the pre-event divergence between
-     the chr3 and chr9 standing copies; here there IS no such difference —
-     the segment is essentially identical in both chromosomes' standing
-     copies (C3 standing architecture). The chr9q/chr3q "events" at G2 and
-     G3 therefore carry NO sequence evidence of an exchange beyond what
-     standing architecture + ordinary haplotype switching produces, and
-     the "happens twice" critique applies to them with full force: both
-     calls are margin-free rank artifacts of path enumeration among
-     near-identical templates. Any response claiming these as ectopic
-     exchanges must either show a margin (it does not exist at these loci)
-     or reclassify them as standing-architecture/ordinary-crossover
-     loci where inter-chromosomal rank order is unstable.
+
+SCOPE CORRECTION (2026-10-16, later same day): the tie finding above
+applies to the chr3q-side INTERNAL patches only. The chr9q-side
+TERMINAL blocks — the primary Fig5 events ("chr3q primary-donor
+~45 kb" G2 / "~34 kb" G3 per the event manifest) — are a DIFFERENT
+story, and there the structure is real (FastGA on v1.1 assemblies,
+terminal slices of the telomere-first 500 kb windows):
+
+  G2: PAN027 paternal chr9q terminal ~55 kb matches PAN011 chr3q
+      h2 at 99.81% (q 992-60,000) and h1 at 99.63%; the chr9q h2
+      HOMOLOG IS ABSENT beyond ~5 kb (only 97-98% fragments at the
+      very tip). BUT the same structure STANDS IN PAN011: PAN011's own
+      chr9q h2 terminal ~54 kb matches its own chr3q h1/h2 at 99.6%
+      with the chr9 h1 homolog absent beyond ~6 kb. => the G2 terminal
+      block is INHERITED standing architecture, not a de novo exchange.
+  G3: PAN028 chr9q terminal region: the MATERNAL chr9q homolog (the
+      homolog of the transmitted body) is ABSENT beyond ~5 kb (base-
+      level bins: 98.7% in the first 5 kb, then zero). The tip 6-40 kb
+      matches PAN027's PATERNAL chr9q tip colinearly at 99.79%
+      (34,039 bp, offset -1,284) — i.e. a telomere-proximal crossover
+      transmitted the paternal chr9q tip, which is itself the
+      chr3-derived standing block. Per-5 kb bins vs all four PAN027
+      chr3/chr9 windows: best matches 98.3-99.96%, alternating between
+      paternal chr3q, paternal chr9q and maternal chr3q; NOTHING at
+      ~100% — no clean conversion tract datable to the pedigree.
+  => Net: Fig5's chr9q<->chr3q ribbons reflect (a) a real standing
+     chr3-derived terminal arrangement on the paternal chr9q line
+     (present already in PAN011, homolog absent), and (b) ordinary
+     telomere-proximal crossover transmission of that tip into
+     PAN028's chr9q (with the maternal chr9q homolog absent at the tip
+     being the structural signature). NOT two de novo inter-chromosomal
+     exchanges. The "happens twice" critique resolves to transmission
+     here as well, but via real derived structure rather than rank
+     ties. Figures: http://hypervolu.me/~erik/phr/chr9q_terminal_zoom.pdf
+     (terminal 100 kb zoom; the maternal-chr9q-absence box measures
+     ink 0) and chr3q_chr9q_paternal_focal.pdf (updated boxes).
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
