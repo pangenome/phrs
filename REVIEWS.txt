@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 4: R3 scope correction — chr3q-side internal patches are ties; chr9q terminal blocks are real standing chr3-derived structure, transmitted by ordinary crossover)
+Last updated: 2026-10-16 (rev 5: R3 lineage scope — chr3-derived chr9q tip is real ectopic-derived structure but old/population-segregating: PAN010 carries it too, one haplotype per founder)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -235,6 +235,38 @@ terminal slices of the telomere-first 500 kb windows):
      ties. Figures: http://hypervolu.me/~erik/phr/chr9q_terminal_zoom.pdf
      (terminal 100 kb zoom; the maternal-chr9q-absence box measures
      ink 0) and chr3q_chr9q_paternal_focal.pdf (updated boxes).
+
+LINEAGE SCOPE (2026-10-16, rev 5 — PAN010 test): the chr3-derived chr9q
+terminal arrangement is NOT private to the paternal line, and the
+exchange itself predates the family:
+
+  - PAN011: the ~54 kb chr3-derived tip sits on chr9 HAP2 only; his
+    chr9 hap1 tip is a different structure (only ~5 kb 97% fragments
+    vs chr3 + one shared 10.5 kb repeat block).
+  - PAN010 (grandmother, genetically unrelated to the paternal line):
+    her chr9 HAP2 terminal carries the SAME architecture — ~92-98 kb
+    matching her own chr3 at 99.65-99.66% (both chr3 haplotypes), with
+    her chr9 hap1 matching only the first ~21 kb. Her hap1 tip is a
+    different structure. One haplotype each, in BOTH unrelated
+    founders.
+  - The two carriers' derived blocks also match each other
+    (~118 kb sharing between PAN010 chr9:h2 tip and PAN027's paternal
+    chr9q tip), consistent with ONE ancestral arrangement shared by
+    descent (independent recurrence at a hotspot not excluded).
+
+  => Interpretation for the paper: the chr9q terminus IS ectopically
+     derived (chr3q-derived block, chr9 homolog absent at the tip —
+     structural, base-level fact, robust to seg-dup polymorphism), but
+     the exchange is OLD and population-segregating, present on one
+     haplotype in each founder. Within the pedigree everything observed
+     is transmission: PAN011 h2 -> PAN027 paternal chr9q -> PAN028
+     (telomere-proximal crossover). The Fig5 chr9q/chr3q panels should
+     be presented as standing transmitted ectopic-derived architecture
+     — an ancestral subtelomeric exchange — not as de novo pedigree
+     events. This both matches the data and fully defuses the
+     "happens twice" critique: one old exchange, seen in two meioses.
+     Figure: http://hypervolu.me/~erik/phr/chr9q_terminal_zoom.pdf
+     (13 windows incl. PAN010; maternal-homolog-absence box ink 0).
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
