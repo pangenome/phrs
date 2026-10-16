@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 5: R3 lineage scope — chr3-derived chr9q tip is real ectopic-derived structure but old/population-segregating: PAN010 carries it too, one haplotype per founder)
+Last updated: 2026-10-16 (rev 6: R3 absence-call robustness — maternal-chr9q absence at the G3 tip holds in the raw unfiltered PAF; parent-of-origin is filter-depth-independent)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -267,6 +267,19 @@ exchange itself predates the family:
      "happens twice" critique: one old exchange, seen in two meioses.
      Figure: http://hypervolu.me/~erik/phr/chr9q_terminal_zoom.pdf
      (13 windows incl. PAN010; maternal-homolog-absence box ink 0).
+
+ROBUSTNESS OF THE ABSENCE CALL (2026-10-16, rev 6): the G3 tip's lack of
+maternal-chr9q homology is NOT a multi-mapping/filter artifact. In the
+RAW unfiltered FastGA PAF (permissive -f512 seeding, no 10:10 filter, no
+length cutoff), PAN028 chr9q tip vs PAN027 maternal chr9q: the ONLY hits
+are the first ~5.5 kb of the tip mapping at 96-98% to ~25 positions of
+the maternal chr9q terminal 100 kb (a multi-copy subtelomeric repeat);
+zero alignments of ANY length over telomere-first positions ~6-33 kb.
+The paternal chr9q tip matches the same region colinearly at 99.79%
+over 34 kb (offset -1,284). => parent-of-origin structure (maternal
+body + paternal tip crossover) is filter-depth-independent; only the
+block-level chr3-vs-chr9 attribution inside the standing segdup cloud
+is depth-sensitive (near-tie templates).
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
