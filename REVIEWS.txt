@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-15 (rev 2: R2 corrected to chr5q/chr1p)
+Last updated: 2026-10-16 (rev 3: R3 base-level tie measurement — chr3q/chr9q patches have no divergence margin)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -176,6 +176,42 @@ transmission of a standing tract (then the child's copy should match the
 parent's chr3q:h2 copy best) or an independent recurrent event at the C3
 hotspot (then identities/junctions differ). Same TODO structure as R2
 item 1; both instances flagger/problematic-overlap = 0.
+
+BASE-LEVEL TIE MEASUREMENT (2026-10-16, FastGA on the v1.1 assemblies,
+direct sequence extraction; /tmp/flagger_v11/g2_seqs.fa, g3_seqs.fa):
+
+  G2 patch (PAN027 pat chr3q 202,393,616-202,397,030, 3,414 bp) vs:
+      chr3q hap1 (homolog)  100.00% (3338/3338)
+      chr3q hap2 (homolog)  100.00% (3407/3407)
+      chr9q hap2 ("donor")  100.00% (2971/2971; + 445 bp at 99.33%)
+  G3 patch (PAN028 chr3q 199,600,061-199,602,150, 2,089 bp) vs:
+      chr9q pat ("donor")    99.80% (1986/1990)
+      chr3q pat (homolog)     99.80% (1983/1987)
+      chr3q mat (homolog)     98.77% (1932/1956)
+
+  => BOTH tract calls are RANK-ORDERINGS AMONG IDENTICAL OR NEAR-IDENTICAL
+     TEMPLATES, with NO divergence margin for an inter-chromosomal
+     conversion: the homolog matches the patch exactly as well as the
+     inter-chromosomal path the untangle ranked first (G2: literally a
+     three-way 100% tie incl. chr3q hap1 + hap2 + chr9q hap2; G3: 99.8%
+     chr9q:pat vs 99.8% chr3q:pat). The untangle bed confirms the tie at
+     graph level: at the G2 patch segment chr9q:h2/chr3q:h2/chr3q:h1 all
+     carry score 1.0 (ranks 1/2/3); at the G3 patch segment chr9q:pat is
+     rank 1 at 0.9701 with the chr3 homolog paths scoring below it there,
+     but base-level alignment shows chr3q:pat ties 99.8%.
+  => Implication for the argument: a converted tract copied from chr9q
+     would differ from the chr3 homolog at the pre-event divergence between
+     the chr3 and chr9 standing copies; here there IS no such difference —
+     the segment is essentially identical in both chromosomes' standing
+     copies (C3 standing architecture). The chr9q/chr3q "events" at G2 and
+     G3 therefore carry NO sequence evidence of an exchange beyond what
+     standing architecture + ordinary haplotype switching produces, and
+     the "happens twice" critique applies to them with full force: both
+     calls are margin-free rank artifacts of path enumeration among
+     near-identical templates. Any response claiming these as ectopic
+     exchanges must either show a margin (it does not exist at these loci)
+     or reclassify them as standing-architecture/ordinary-crossover
+     loci where inter-chromosomal rank order is unstable.
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
