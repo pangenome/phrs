@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 6: R3 absence-call robustness — maternal-chr9q absence at the G3 tip holds in the raw unfiltered PAF; parent-of-origin is filter-depth-independent)
+Last updated: 2026-10-16 (rev 7: R3 parameter sensitivity — G2 "chr9 absent" claim retracted; chr3q/chr9q terminal region is a ~99.5-99.8% paralogous family, margins flip with windows/seeding; only the G3 maternal-chr9q absence is robust)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -268,18 +268,49 @@ exchange itself predates the family:
      Figure: http://hypervolu.me/~erik/phr/chr9q_terminal_zoom.pdf
      (13 windows incl. PAN010; maternal-homolog-absence box ink 0).
 
-ROBUSTNESS OF THE ABSENCE CALL (2026-10-16, rev 6): the G3 tip's lack of
-maternal-chr9q homology is NOT a multi-mapping/filter artifact. In the
-RAW unfiltered FastGA PAF (permissive -f512 seeding, no 10:10 filter, no
-length cutoff), PAN028 chr9q tip vs PAN027 maternal chr9q: the ONLY hits
-are the first ~5.5 kb of the tip mapping at 96-98% to ~25 positions of
-the maternal chr9q terminal 100 kb (a multi-copy subtelomeric repeat);
-zero alignments of ANY length over telomere-first positions ~6-33 kb.
-The paternal chr9q tip matches the same region colinearly at 99.79%
-over 34 kb (offset -1,284). => parent-of-origin structure (maternal
-body + paternal tip crossover) is filter-depth-independent; only the
-block-level chr3-vs-chr9 attribution inside the standing segdup cloud
-is depth-sensitive (near-tie templates).
+PARAMETER SENSITIVITY — CORRECTION TO rev 5/rev 6 (2026-10-16, rev 7):
+The "chr9 homolog absent at the tip" statement does NOT hold for G2 under
+consistent, sensitive, unfiltered alignment. FastGA -f8192 -s200 -c70 -i0.6
+(high seed frequency, 200 bp minimum alignment, unfiltered) on 60 kb
+telomere-first terminal windows, per-position best identity / coverage of
+the query's terminal 60 kb:
+
+  G2 - PAN027 PATERNAL chr9q terminal 60 kb vs father PAN011:
+      chr3q hap2  100.0% covered, mean id 0.9979
+      chr3q hap1   98.7% covered, mean id 0.9919
+      chr9q hap2   97.7% covered, mean id 0.9945
+      chr9q hap1    7.5% covered, mean id 0.9868
+    => chr3q hap2 wins (99.79% vs 99.45%) but the margin is ~0.34% and the
+       father's own chr9q hap2 still covers 97.7% of the tip at 99.45%.
+       The tip is NOT absent from the 9q; it is a near-tie between chr3q
+       and chr9q hap2 copies. With 500 kb windows the same comparison
+       gives chr9q hap2 100% covered @99.80 vs chr3q hap2 100% @99.84 —
+       a 0.04% margin. Window/seed choice flips the ordering, i.e. the
+       region is a near-identical paralogous chr3q/chr9q terminal family.
+
+  G3 - PAN028 chr9q terminal 60 kb vs mother PAN027:
+      paternal chr9q  100.0% covered, mean id 0.9927
+      maternal chr3q   97.5% covered, mean id 0.9954
+      paternal chr3q   95.6% covered, mean id 0.9929
+      maternal chr9q   11.4% covered, mean id 0.9769
+    => only the MATERNAL-chr9q absence is robust (11.4% at 60 kb windows,
+       10.5% at 500 kb windows); the tip matches the paternal chr9q tip and
+       both chr3q haplotypes about equally (99.3-99.5%).
+
+  CONCLUSION OF THE CORRECTION: identity alone cannot sharply assign the
+  chr3q-vs-chr9q origin of the chr9q terminal region — the copies are a
+  ~99.5-99.8% paralogous family, so "best match" flips with seeding
+  window and filter depth. What is robust: (a) the child's tip does NOT
+  come from the maternal chr9q (10-11% coverage); (b) the daughter's tip
+  does not come from the father's chr9q hap1 (7.5%); (c) the region's
+  chr3q/chr9q distinctions are margin-level throughout. The apparent
+  sharpness of the untangle/sweepGA path switches at these loci is a
+  property of 1:1 path selection among near-ties, not of sharp identity
+  contrast. Unfiltered sensitive plots:
+  http://hypervolu.me/~erik/phr/claim_chr9q_vs_father_unfiltered.pdf
+  http://hypervolu.me/~erik/phr/claim_chr9q_vs_mother_unfiltered.pdf
+  http://hypervolu.me/~erik/phr/chr9q_terminal_zoom_unfiltered.pdf
+  (PAFs: claim60.sens.paf, claim60b.sens.paf, zoom.sens.paf)
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
