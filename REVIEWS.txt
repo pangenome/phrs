@@ -448,15 +448,38 @@ event is WITHDRAWN, for one of two concrete reasons:
       chromosome - and are therefore retracted as uninterpretable
       rather than merely uncertain.
 
-HONEST CAVEAT TO STATE FIRST: even the one retained structure is
-ANCESTRAL, not de novo in this pedigree - the same chr3q-derived chr9q
-terminus stands in DAD.h2.chr9q (99.6% to his own chr3q, chr9 homologue
-absent beyond ~6 kb) and the same kind of block is present in
-MOM.h2.chr9q (~92-98 kb at 99.65% to her own chr3q). So the correct
-summary is: the pedigree TRANSMITS one ancient ectopic-derived
-subtelomeric arrangement and shows one ordinary crossover moving it
-into the next generation; it does not show multiple de novo ectopic
-exchanges.
+TIMELINE, STATED PRECISELY (the distinction that matters):
+  - THE ECTOPIC EXCHANGE IS REAL and is visible INSIDE DAD: his chr9q
+    HAP2 terminus carries chr3q-like sequence (99.6% to his own chr3q
+    over the full terminal 60 kb) while his chr9q HAP1 does NOT (only
+    ~5 kb of 96-97% repeat fragments, nothing beyond). He is therefore
+    HETEROZYGOUS for the module - the structural signature of a
+    chr3q <-> chr9q terminus exchange. It cannot have come from 9q: his
+    own 9q h1 is the negative control.
+  - BUT the exchange predates SELF's meiosis. SELF's paternal chr9q is
+    DAD's hap2 chr9 (99.96% over a 494,137 bp alignment), so SELF
+    INHERITED the module. Nothing is claimed to have recombined at this
+    locus in SELF's meiosis.
+  - AND it is not private to DAD: MOM.h2.chr9q carries the same block
+    (~92-98 kb at 99.65% to her own chr3q). Two unrelated spouses, each
+    heterozygous, same arrangement on one haplotype -> consistent with a
+    segregating polymorphism (an old exchange maintained in the
+    population), matching the standing-architecture/community picture.
+  - CORRECTION TO A COMMON SHORTHAND: "the paternal 9qs do not match" is
+    true only for h1. h2 DOES carry the module - which is exactly why
+    inheritance is possible; if neither paternal 9q carried it, the call
+    would have to be de novo in SELF's meiosis.
+  - So the summary is: one ectopic recombination (real, ancestral,
+    heterozygous in DAD and in MOM) whose product the pedigree TRANSMITS,
+    plus one ordinary crossover (KID.m.chr9q = SELF.p.chr9q at 99.97%)
+    moving the tip into the next generation. Not multiple de novo
+    ectopic exchanges in the pedigree.
+  - NOTE ON MARGINS: inside this paralogous array all copies sit at
+    99.4-99.8% of one another, so "chr3q explains it better than chr9q
+    h2" is a 0.07-0.34% difference - paralogy-level, not
+    transmission-level. The robust evidence is STRUCTURAL (module present
+    on h2 and absent on h1, in both founders), not the identity margin.
+
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
