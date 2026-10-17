@@ -12,8 +12,11 @@ PARTNER=KID's father, unsampled).
 - The chr1p/chr5q signal is ancestral homology, not an event.
 - KID-side candidates are withdrawn: PARTNER is unsampled, and those scans had used
   the paternal chromosome copy anyway.
-- Fig5 is simplified to the ectopic event (A pedigree, B zoom, C paternal scan).
-  Panels D/E retired. 1p/5q relabelled ancestral; 21p/4p dropped.
+- Fig5 is simplified to the ectopic event: A pedigree, B identity-crossover zoom,
+  C paternal scan, and a new **D: pairwise alignments of the sequences involved**
+  (SELF.p.chr9q vs DAD.h2.chr3q / DAD.h2.chr9q / DAD.h1.chr9q). Panels D/E
+  (maternal scan, grandchild scan) retired. 1p/5q relabelled ancestral; 21p/4p
+  dropped.
 - Population-frequency support for the standing arrangement: NOT pursued.
 
 ## Done
@@ -29,12 +32,13 @@ PARTNER=KID's father, unsampled).
 | 7 | Methods: Fig5C--E references reduced to C | same |
 | 8 | Evidence record with all numbers, retractions and revisions rev 1-12 | `REVIEWS.txt` |
 | 9 | Canonical naming + per-chromosome maternal table | `PEDIGREE_NAMING.md` |
+| 10 | New **Fig5D** pairwise-alignment panel built and added to the figure block + caption; asset, box coordinates and generator script committed | `submission/fig/MainFigures/Fig5D_pairwise_9q3q.{pdf,png}`, `Fig5D_highlights.tsv`, `submission/scripts/figures/make_fig5d_pairwise.sh` |
 
 ## Pending
 
-1. **Rebuild Fig5 assets**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
-   regenerating from the correct copies with the new labels (SELF.p, DAD.h1/h2);
-   `Fig5A_pedigree.pdf` should print the nickname/copy scheme.
+1. **Rebuild Fig5B/Fig5C**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
+   regenerating with the new labels (SELF.p, DAD.h1/h2); `Fig5A_pedigree.pdf`
+   should print the nickname/copy scheme. Fig5D (new) is already built.
 2. **Retire or supplement the D/E assets**: `Fig5D_maternal.png`,
    `Fig5E_pan028.png`, and the scripts that produce them
    (`submission/scripts/figures/make_fig5_panels.sh`, `make_fig5_zoom.R`,
