@@ -306,12 +306,12 @@ by coverage, and (c) the untangle/graph context — not from a large
 identity step.
 
 FLAGGER: no flagger evidence against any of these intervals. HiFi-based
-flaggger QC on the v1.1 assemblies is CLEAN at all of them (PAN028
+flagger QC on the v1.1 assemblies is CLEAN at all of them (PAN028
 chr9 haplotype1 has no flagger calls at all; the only HiFi call in the
 neighbourhood is a Dup on PAN011 chr9 h2 133.68-133.74 Mb, i.e. the
 homologue's own terminal duplication, consistent with the region being
 a standing duplication rather than an assembly collapse). The ONT-based
-flaggger "Col" calls that cover the terminal 30-60 kb of these contigs
+flagger "Col" calls that cover the terminal 30-60 kb of these contigs
 are generic: they appear at the terminal region of EVERY chromosome end
 examined in EVERY sample (PAN010/011/027/028, chr1p/chr3q/chr5q/chr9q),
 i.e. they are an ONT-assembly end effect, not information about this
