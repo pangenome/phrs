@@ -189,6 +189,14 @@ Before committing a generated table larger than a few megabytes, check its
 size and whether a smaller final table, script, or checksum manifest would
 serve the manuscript record better.
 
+## Pedigree naming (WashU 3-generation T2T pedigree)
+
+All analyses, figures and file names follow `PEDIGREE_NAMING.md` (focal
+individual = PAN027 = SELF; MOM=PAN010, DAD=PAN011, KID=PAN028,
+PARTNER=PAN028's father, unsampled). Never write bare `hap1`/`hap2` for
+PAN028: its maternal copy is per chromosome (v1.1: hap2 for chr1/3/5/9) and
+must be resolved from sequence before each analysis.
+
 ## Commit convention
 
 Commit messages look like `feat: <task-slug> (agent-NNN)`. The `(agent-NNN)`
