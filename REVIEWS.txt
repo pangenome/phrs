@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 9: pedigree limitation documented - PAN028's father unsampled, child haplotypes not parentally assigned; child-side inheritance narratives withdrawn, G2 result unaffected, child chr5q-tip observation parked). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
+Last updated: 2026-10-16 (rev 10: PARENT-OF-ORIGIN corrected - PAN028 is parentally assigned by the paper (imprinted loci) and differs per chromosome; our earlier child windows used the PATERNAL copy for chr1/3/5/9; child results redone on the correct copy - chr9q tip is a 99.97% transmitted crossover, chr5q/chr1p clean transmission, chr1p-like chr5q tip claim retracted). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -341,36 +341,73 @@ same sensitive unfiltered method (60 kb telomeric windows):
   (chr9q plots: claim_chr9q_vs_father_unfiltered.pdf,
    claim_chr9q_vs_mother_unfiltered.pdf, chr9q_terminal_zoom_unfiltered.pdf)
 
-PEDIGREE LIMITATION - THE CHILD'S FATHER IS NOT IN THE DATA (rev 9).
-Only four assemblies exist: PAN010 h1/h2, PAN011 h1/h2, PAN027 mat/pat,
-PAN028 h1/hap2. PAN028's father was never sequenced. Consequences:
+PARENT-OF-ORIGIN OF PAN028 IS AVAILABLE - AND WE HAD USED THE WRONG COPY
+(rev 10; supersedes the rev 9 "no parental assignment" note, which was
+wrong).
 
-  - PAN027's haplotypes ARE parentally assigned (labeled .maternal /
-    .paternal, both her parents PAN010 + PAN011 are sampled); PAN028's
-    are NOT (plain hap1/hap2). Earlier notes calling PAN028 hap1
-    "maternal" follow the event manifest's phrasing, i.e. an inference,
-    not a verified assignment.
-  - Therefore any child-side (G3) conclusion that depends on which
-    PAN028 haplotype is maternal/paternal is OUT OF SCOPE for this
-    dataset. We explicitly bow out of those rather than assert them.
-  - The G2 results (daughter PAN027 <- father PAN011) are UNAFFECTED:
-    both PAN011 haplotypes are sampled and PAN027's are parentally
-    assigned, so "the daughter's paternal chr9q terminus is chr3q-derived
-    (father's chr3q h2 best explanation; his chr9q h1 excluded)" stands
-    without qualification.
-  - The G3 DIRECT SEQUENCE observation also stands as a statement about
-    PAN028 hap1 alone: its chr9q terminal region is explained by
-    chr3-derived family sequence (~99.3-99.5%) and NOT by PAN027's
-    maternal chr9q (11% coverage) nor by PAN027's chr9q haplotypes at
-    transmission grade. What is withdrawn is the INHERITANCE narrative
-    built on top of it ("arrived on the maternal chromosome via a
-    telomere-proximal crossover in PAN027"), because the maternal
-    assignment of hap1 is unverified without the father.
-  - Reviewer-facing wording: for the child, report the sequence
-    observation and state plainly that the paternal sample is unavailable
-    in this dataset, so parent-of-origin for the child's haplotypes is
-    unresolved. For the daughter (the meiosis with the sampled father),
-    the chr3q-derived chr9q terminus result is fully supported.
+  - The pedigree paper DOES derive parent of origin for PAN028: Cechova
+    et al. 2025 (bioRxiv 10.64898/2025.12.14.693655, PMC12746033) states
+    "We derived the parent of origin for each of the chromosomes in each
+    assembly using imprinted loci, including those scaffolded with HiC
+    (PAN010, PAN011, PAN028)" and "assigned chromosomes to maternal or
+    paternal haplotypes using either parental k-mers (for PAN027) or
+    imprinted, differentially methylated genes" (Fig 1B; Suppl. Fig 1
+    "Parent of origin analysis"). The WashU-pedigree repo
+    (github.com/biomonika/washu-pedigree) carries the result as
+    maternal.PAN028.blocks.bed / paternal.PAN028.blocks.bed.
+  - The assignment DIFFERS PER CHROMOSOME. From those blocks (Mb of
+    maternal-lineage + paternal-lineage blocks per PAN028 haplotype):
+        maternal copy = hap2: chr1, 3, 4, 5, 7, 9, 12, 14, 15, 18, 21,
+                             22, X
+        maternal copy = hap1: chr2, 6, 8, 10, 11, 13, 16, 17, 19, 20
+    Independently confirmed by sequence: on chr9 (1 Mb windows at
+    25/64/103 Mb) PAN028 hap2 matches PAN027 at >=99.9% over 77-100% of
+    the window while hap1 matches ~0%; on chr2 the reverse holds.
+  - CONSEQUENCE: the v1.1 released files for PAN028 are named plain
+    hap1/hap2 (no parent-of-origin), and our earlier child-side windows
+    used hap1 labelled "PAN028#mat" (following an event-manifest
+    phrase). For chr1/3/5/9 that is the PATERNAL copy. Every child-side
+    (G3) number in rev 4-9 was therefore computed on the wrong
+    chromosome copy and is retracted.
+
+REDONE WITH THE CORRECT MATERNAL COPY (PAN028 hap2; sensitive unfiltered
+FastGA -f8192 -s200 -c70 -i0.6, per-position best identity / coverage of
+the terminal 60 kb):
+
+  chr9q - vs PAN027 PATERNAL chr9q  100.0% covered, mean id 0.9997  <- TRANSMITTED
+          vs PAN027 maternal chr9q    9.9% covered, mean id 0.9753  (arm body)
+          vs PAN027 paternal chr3q  100.0% covered, mean id 0.9962
+          vs PAN027 maternal chr3q  100.0% covered, mean id 0.9948
+    => the child's chr9q tip is a near-identical (99.97%) copy of
+       PAN027's PATERNAL chr9q tip: a clean telomere-proximal CROSSOVER
+       in PAN027's meiosis. That tip is itself the chr3-derived standing
+       architecture (G2). The G3 crossover narrative is RESTORED, and it
+       is now supported at transmission-grade identity instead of
+       ~99.3%.
+  chr5q - vs PAN027 MATERNAL chr5q  100.0% covered, mean id 0.9981  <- TRANSMITTED
+          vs PAN027 paternal chr5q   99.5% covered, mean id 0.9852
+          vs chr1p copies           100.0% covered, mean id 0.9774 / 0.9812
+    => clean transmission from the maternal chr5q; NO chr1p event at the
+       child's chr5q terminus. The earlier observation "child chr5q tip
+       is chr1p-like" is RETRACTED - it was the paternal copy.
+  chr1p - vs PAN027 PATERNAL chr1p  100.0% covered, mean id 0.9999  <- TRANSMITTED
+          vs PAN027 maternal chr1p  100.0% covered, mean id 0.9776
+    => clean transmission; no event.
+
+  NET: with the correct copy the child-side picture is clean and
+  consistent - chr9q terminus inherited through a crossover (carrying
+  chr3-derived standing sequence), chr5q and chr1p termini plainly
+  transmitted. The maternal chr5q/chr1p case remains a
+  standard-transmission case (as the mother/grandmother comparison
+  showed: PAN010's own chr5q 99.58% full length vs chr1p 97.9%).
+  Figure: http://hypervolu.me/~erik/phr/child_chr9q_CORRECT_maternal_copy.pdf
+  (PAF: child9q_corrected.paf)
+
+  RULE GOING FORWARD: before any PAN028 comparison, resolve the maternal
+  copy for that chromosome from the table above (or the repo blocks);
+  filenames do not encode it. Same caution applies to PAN010/PAN011
+  (hap1/hap2, assignment also per chromosome), PAN027 is labelled
+  mat/pat but PAN010/PAN011 numbers should be checked the same way.
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
