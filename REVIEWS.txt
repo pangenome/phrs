@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 10: PARENT-OF-ORIGIN corrected - PAN028 is parentally assigned by the paper (imprinted loci) and differs per chromosome; our earlier child windows used the PATERNAL copy for chr1/3/5/9; child results redone on the correct copy - chr9q tip is a 99.97% transmitted crossover, chr5q/chr1p clean transmission, chr1p-like chr5q tip claim retracted). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
+Last updated: 2026-10-16 (rev 11: SINGLE-EVENT statement - one ectopic-derived structure (SELF.p.chr9q <- DAD.h2.chr3q, full trio evidence); all other pedigree 'events' withdrawn as plain transmission or dependent on the unsampled PARTNER. Prior: rev 10: PARENT-OF-ORIGIN corrected - PAN028 is parentally assigned by the paper (imprinted loci) and differs per chromosome; our earlier child windows used the PATERNAL copy for chr1/3/5/9; child results redone on the correct copy - chr9q tip is a 99.97% transmitted crossover, chr5q/chr1p clean transmission, chr1p-like chr5q tip claim retracted). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -408,6 +408,55 @@ the terminal 60 kb):
   filenames do not encode it. Same caution applies to PAN010/PAN011
   (hap1/hap2, assignment also per chromosome), PAN027 is labelled
   mat/pat but PAN010/PAN011 numbers should be checked the same way.
+
+SINGLE-EVENT STATEMENT - WHAT WE CLAIM AND WHAT WE WITHDRAW (rev 11)
+
+We claim ONE ectopic-derived subtelomeric structure in this pedigree, on
+the only chromosome copy where every required chromosome is sequenced:
+
+  RECIPIENT  SELF.p.chr9q  (PAN027 paternal chr9q terminus,
+             telomere-first ~13-57 kb of the last 500 kb;
+             native SELF.p chr9:136.15-136.20 Mb)
+  DONOR      DAD.h2.chr3q  (PAN011 chr3q haplotype2 terminus)
+             99.79-99.84% identity, 100% of the terminal 60 kb covered
+  EXCLUDED   DAD.h1.chr9q  (7.5% covered) and DAD.h1.chr3q (98.7%,
+             lower than h2); SELF's own mat/pat labelling is verified by
+             parental k-mers AND by identity (SELF.p chr3q vs DAD.h1
+             99.98%; SELF.p chr9q vs DAD.h2 99.96%; SELF.m chr5q vs
+             MOM.h1 99.58%). Both of SELF's parents are sequenced, which
+             is why this is the only fully-evidenced call in the family.
+
+Everything else that was previously counted as an additional pedigree
+event is WITHDRAWN, for one of two concrete reasons:
+
+  (1) IT IS PLAIN TRANSMISSION OR STANDING ARCHITECTURE, not an event:
+      - KID.m.chr9q terminus = SELF.p.chr9q at 99.97% (100% covered) ->
+        ordinary telomere-proximal CROSSOVER carrying the already-derived
+        tip; SELF.m.chr9q (the arm body) covers only 9.9% of the tip.
+      - KID.m.chr5q = SELF.m.chr5q 99.81%; KID.m.chr1p = SELF.p.chr1p
+        99.99%; KID.m.chr3q = SELF.p.chr3q 99.70% (chr9q similarity only
+        99.44%, i.e. family resemblance) -> all transmission.
+      - chr5q/chr1p candidate: on the mother's side the chr5q homologue
+        wins cleanly (MOM.h1.chr5q 99.58% full length vs chr1p copies
+        97.9%), and the chr1p-derived module ALSO stands in the
+        grandparents' own chr5q -> standing architecture with a narrow
+        margin, not claimable as an event.
+  (2) IT DEPENDS ON AN UNSAMPLED INDIVIDUAL: anything child-side that
+      would require KID.p cannot be interpreted, because PARTNER
+      (PAN028's father) was never sequenced. The child-side "events"
+      reported in rev 4-9 were computed on KID.p - the PARTNER
+      chromosome - and are therefore retracted as uninterpretable
+      rather than merely uncertain.
+
+HONEST CAVEAT TO STATE FIRST: even the one retained structure is
+ANCESTRAL, not de novo in this pedigree - the same chr3q-derived chr9q
+terminus stands in DAD.h2.chr9q (99.6% to his own chr3q, chr9 homologue
+absent beyond ~6 kb) and the same kind of block is present in
+MOM.h2.chr9q (~92-98 kb at 99.65% to her own chr3q). So the correct
+summary is: the pedigree TRANSMITS one ancient ectopic-derived
+subtelomeric arrangement and shows one ordinary crossover moving it
+into the next generation; it does not show multiple de novo ectopic
+exchanges.
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
