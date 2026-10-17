@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 8: R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
+Last updated: 2026-10-16 (rev 9: pedigree limitation documented - PAN028's father unsampled, child haplotypes not parentally assigned; child-side inheritance narratives withdrawn, G2 result unaffected, child chr5q-tip observation parked). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -327,20 +327,50 @@ same sensitive unfiltered method (60 kb telomeric windows):
     inter-chromosomal exchange. (Contrast: the chr3q/chr9q paralogs are
     ~99.5-99.8% identical, which is exactly why that case needs the
     coverage argument while this one does not.)
-  - OBSERVATION TO FOLLOW UP: the CHILD's chr5q tip (PAN028, maternal
-    copy) is better explained by chr1p (PAN027 chr1p 24-29 kb at 0.980-
-    0.983) than by either parental chr5q tip (15-16 kb at 0.978-0.993) -
-    i.e. in the child the chr5q terminus carries chr1p-like sequence that
-    is longer than the module seen in the parents' chr5q tips. This could
-    be (a) the transmitted module in a rearranged/extended form, or (b) a
-    maternal-germline chr1p->chr5q contribution. Needs the same
-    coverage/ranking treatment plus the flagger check on PAN028 chr5q
-    (HiFi-clean; ONT Col generic at the end).
+  - OBSERVATION, PARKED PENDING THE PATERNAL SAMPLE (see PEDIGREE
+    LIMITATION below): the CHILD's chr5q tip is better explained by chr1p
+    (PAN027 chr1p 24-29 kb at 0.980-0.983) than by either PAN027 chr5q
+    tip (15-16 kb at 0.978-0.993). Whether this is a maternal-line
+    chr1p->chr5q contribution or simply the child's paternal chr5q
+    architecture CANNOT be decided here: PAN028's haplotypes are not
+    parentally assigned (no paternal assembly), so the copy cannot be
+    certified as maternal. Do not claim it for the maternal line.
   Plots: http://hypervolu.me/~erik/phr/maternal_chr5q_tip_vs_PAN010_unfiltered.pdf
          http://hypervolu.me/~erik/phr/child_chr5q_tip_vs_PAN027_unfiltered.pdf
          http://hypervolu.me/~erik/phr/maternal_chr5q_chr1p_60kb_unfiltered.pdf
   (chr9q plots: claim_chr9q_vs_father_unfiltered.pdf,
    claim_chr9q_vs_mother_unfiltered.pdf, chr9q_terminal_zoom_unfiltered.pdf)
+
+PEDIGREE LIMITATION - THE CHILD'S FATHER IS NOT IN THE DATA (rev 9).
+Only four assemblies exist: PAN010 h1/h2, PAN011 h1/h2, PAN027 mat/pat,
+PAN028 h1/hap2. PAN028's father was never sequenced. Consequences:
+
+  - PAN027's haplotypes ARE parentally assigned (labeled .maternal /
+    .paternal, both her parents PAN010 + PAN011 are sampled); PAN028's
+    are NOT (plain hap1/hap2). Earlier notes calling PAN028 hap1
+    "maternal" follow the event manifest's phrasing, i.e. an inference,
+    not a verified assignment.
+  - Therefore any child-side (G3) conclusion that depends on which
+    PAN028 haplotype is maternal/paternal is OUT OF SCOPE for this
+    dataset. We explicitly bow out of those rather than assert them.
+  - The G2 results (daughter PAN027 <- father PAN011) are UNAFFECTED:
+    both PAN011 haplotypes are sampled and PAN027's are parentally
+    assigned, so "the daughter's paternal chr9q terminus is chr3q-derived
+    (father's chr3q h2 best explanation; his chr9q h1 excluded)" stands
+    without qualification.
+  - The G3 DIRECT SEQUENCE observation also stands as a statement about
+    PAN028 hap1 alone: its chr9q terminal region is explained by
+    chr3-derived family sequence (~99.3-99.5%) and NOT by PAN027's
+    maternal chr9q (11% coverage) nor by PAN027's chr9q haplotypes at
+    transmission grade. What is withdrawn is the INHERITANCE narrative
+    built on top of it ("arrived on the maternal chromosome via a
+    telomere-proximal crossover in PAN027"), because the maternal
+    assignment of hap1 is unverified without the father.
+  - Reviewer-facing wording: for the child, report the sequence
+    observation and state plainly that the paternal sample is unavailable
+    in this dataset, so parent-of-origin for the child's haplotypes is
+    unresolved. For the daughter (the meiosis with the sampled father),
+    the chr3q-derived chr9q terminus result is fully supported.
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
