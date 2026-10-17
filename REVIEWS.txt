@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 11: SINGLE-EVENT statement - one ectopic-derived structure (SELF.p.chr9q <- DAD.h2.chr3q, full trio evidence); all other pedigree 'events' withdrawn as plain transmission or dependent on the unsampled PARTNER. Prior: rev 10: PARENT-OF-ORIGIN corrected - PAN028 is parentally assigned by the paper (imprinted loci) and differs per chromosome; our earlier child windows used the PATERNAL copy for chr1/3/5/9; child results redone on the correct copy - chr9q tip is a 99.97% transmitted crossover, chr5q/chr1p clean transmission, chr1p-like chr5q tip claim retracted). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
+Last updated: 2026-10-16 (rev 12: reviewer-response wording agreed - labels misinterpreted (KID hap1/hap2 per chromosome), child-side calls withdrawn as dependent on unsampled PARTNER, chr9q<-chr3q ectopic event retained, chr1p/chr5q ancestral homology, flagger clean. Prior: rev 11: SINGLE-EVENT statement - one ectopic-derived structure (SELF.p.chr9q <- DAD.h2.chr3q, full trio evidence); all other pedigree 'events' withdrawn as plain transmission or dependent on the unsampled PARTNER. Prior: rev 10: PARENT-OF-ORIGIN corrected - PAN028 is parentally assigned by the paper (imprinted loci) and differs per chromosome; our earlier child windows used the PATERNAL copy for chr1/3/5/9; child results redone on the correct copy - chr9q tip is a 99.97% transmitted crossover, chr5q/chr1p clean transmission, chr1p-like chr5q tip claim retracted). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -479,6 +479,53 @@ TIMELINE, STATED PRECISELY (the distinction that matters):
     h2" is a 0.07-0.34% difference - paralogy-level, not
     transmission-level. The robust evidence is STRUCTURAL (module present
     on h2 and absent on h1, in both founders), not the identity margin.
+
+
+REVIEWER RESPONSE - FINAL WORDING (rev 12)
+
+We re-evaluated the evidence and found we had misinterpreted the haplotype
+labels. The v1.1 assemblies for KID (PAN028) are named hap1/hap2 with no
+parent-of-origin, and for chr1/3/5/9 the maternally inherited copy is hap2,
+not hap1; our earlier child-side analyses therefore used the paternal
+chromosome. PARTNER (PAN028's father) is not sequenced, so nothing can be
+concluded about the paternal contribution, and those child-side calls are
+withdrawn. The reviewers' point that this was an artifact is correct - we
+accept it.
+
+What survives re-evaluation, on the one chromosome copy where every required
+genome is sequenced (SELF's paternal chr9q; both of SELF's parents are
+sampled and her mat/pat labels are verified by parental k-mers and by
+identity):
+
+  RULE. For a block of tens of kb, the best match in the parental genome
+  identifies its source. Genome-wide this holds - blocks match the
+  homologous chromosome. The exceptions are PAR1 (obligate X-Y exchange),
+  the acrocentric short arms (error-prone), and this case.
+
+  THE chr9q<->chr3q CASE. SELF.p.chr9q terminus best matches DAD's chr3q
+  (99.79-99.84%, 100% of the terminal 60 kb covered). DAD's chr9q hap1 has
+  nothing there, and his chr9q hap2 matches less well (99.45-99.77%) - it
+  carries a drifted descendant of the same module. The source is therefore
+  3q, not 9q: a chr9q<->chr3q ectopic recombination event. Because DAD is
+  heterozygous (module on his chr9 hap2, absent from his hap1), the event
+  predates his somatic genome, i.e. it occurred in the paternal lineage's
+  germline.
+
+  ASSEMBLY QUALITY. No flagger errors in these regions: HiFi-based flagger
+  QC is clean at every interval; the ONT-based Col calls covering the
+  terminal tens of kb occur at every chromosome end in every sample and are
+  not call-specific.
+
+  THE chr1p/chr5q SIGNAL IS NOT AN EVENT. It is standing/ancestral
+  homology: the chr5q homologue explains the sequence cleanly
+  (MOM.h1.chr5q 99.58% over the full terminal 60 kb vs chr1p copies at
+  97.9%), and the chr1p-derived module is present in both grandparents' own
+  chr5q, so it predates the family.
+
+  NET: one ectopic recombination event in the paternal lineage's germline
+  (chr9q terminus derived from chr3q); the chr1p/chr5q signal is ancestral
+  homology; the child-side candidates are withdrawn as dependent on an
+  unsampled paternal genome. The reviewers were right about the latter.
 
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
