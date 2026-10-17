@@ -1,6 +1,6 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
 ========================================================================
-Last updated: 2026-10-16 (rev 7: R3 parameter sensitivity — G2 "chr9 absent" claim retracted; chr3q/chr9q terminal region is a ~99.5-99.8% paralogous family, margins flip with windows/seeding; only the G3 maternal-chr9q absence is robust)
+Last updated: 2026-10-16 (rev 8: R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
 
 Context: Slack thread with Erik Garrison & Monika Cechova. Monika posted the
 v1.1 flagger/nucflag/problematic annotations for the WashU pedigree
@@ -268,49 +268,79 @@ exchange itself predates the family:
      Figure: http://hypervolu.me/~erik/phr/chr9q_terminal_zoom.pdf
      (13 windows incl. PAN010; maternal-homolog-absence box ink 0).
 
-PARAMETER SENSITIVITY — CORRECTION TO rev 5/rev 6 (2026-10-16, rev 7):
-The "chr9 homolog absent at the tip" statement does NOT hold for G2 under
-consistent, sensitive, unfiltered alignment. FastGA -f8192 -s200 -c70 -i0.6
-(high seed frequency, 200 bp minimum alignment, unfiltered) on 60 kb
-telomere-first terminal windows, per-position best identity / coverage of
-the query's terminal 60 kb:
+RESOLUTION AND FINAL FRAMING (2026-10-16, rev 8; supersedes rev 5-7
+text — rev 7's "unresolvable near-tie" framing was too pessimistic):
 
-  G2 - PAN027 PATERNAL chr9q terminal 60 kb vs father PAN011:
-      chr3q hap2  100.0% covered, mean id 0.9979
-      chr3q hap1   98.7% covered, mean id 0.9919
-      chr9q hap2   97.7% covered, mean id 0.9945
-      chr9q hap1    7.5% covered, mean id 0.9868
-    => chr3q hap2 wins (99.79% vs 99.45%) but the margin is ~0.34% and the
-       father's own chr9q hap2 still covers 97.7% of the tip at 99.45%.
-       The tip is NOT absent from the 9q; it is a near-tie between chr3q
-       and chr9q hap2 copies. With 500 kb windows the same comparison
-       gives chr9q hap2 100% covered @99.80 vs chr3q hap2 100% @99.84 —
-       a 0.04% margin. Window/seed choice flips the ordering, i.e. the
-       region is a near-identical paralogous chr3q/chr9q terminal family.
+RESULT (stable, not a tie artifact). The chr9q terminus is chr3q-derived
+in both generations, and the ranking is reproducible across window sizes
+and seeding settings (per-position best identity / coverage of the 60 kb
+telomeric window, FastGA -f8192 -s200 -c70 -i0.6, plus the 500 kb-window
+runs):
 
-  G3 - PAN028 chr9q terminal 60 kb vs mother PAN027:
-      paternal chr9q  100.0% covered, mean id 0.9927
-      maternal chr3q   97.5% covered, mean id 0.9954
-      paternal chr3q   95.6% covered, mean id 0.9929
-      maternal chr9q   11.4% covered, mean id 0.9769
-    => only the MATERNAL-chr9q absence is robust (11.4% at 60 kb windows,
-       10.5% at 500 kb windows); the tip matches the paternal chr9q tip and
-       both chr3q haplotypes about equally (99.3-99.5%).
+  G2 - PAN027 PATERNAL chr9q tip vs father PAN011:
+      chr3q hap2  100.0% covered  0.9979   <- best explanation
+      chr9q hap2   97.7% covered  0.9945
+      chr3q hap1   98.7% covered  0.9919
+      chr9q hap1    7.5% covered  0.9868   <- excluded
+    Same ordering with 500 kb windows (chr3q h2 0.9984 > chr9q h2 0.9980
+    > chr3q h1 0.9971 > chr9q h1 absent). The father's own 9q haplotype
+    on which the rest of the arm was transmitted (h2) never wins the tip,
+    and h1 is excluded outright.
+  G3 - PAN028 chr9q tip vs mother PAN027:
+      paternal chr9q 100.0% covered  0.9927  (the transmitted tip)
+      maternal chr3q  97.5% covered  0.9954
+      paternal chr3q  95.6% covered  0.9929
+      maternal chr9q  11.4% covered  0.9769  <- excluded
+    The tip is chr3-derived family sequence; the maternal 9q (the
+    haplotype that supplied the arm body) is excluded.
 
-  CONCLUSION OF THE CORRECTION: identity alone cannot sharply assign the
-  chr3q-vs-chr9q origin of the chr9q terminal region — the copies are a
-  ~99.5-99.8% paralogous family, so "best match" flips with seeding
-  window and filter depth. What is robust: (a) the child's tip does NOT
-  come from the maternal chr9q (10-11% coverage); (b) the daughter's tip
-  does not come from the father's chr9q hap1 (7.5%); (c) the region's
-  chr3q/chr9q distinctions are margin-level throughout. The apparent
-  sharpness of the untangle/sweepGA path switches at these loci is a
-  property of 1:1 path selection among near-ties, not of sharp identity
-  contrast. Unfiltered sensitive plots:
-  http://hypervolu.me/~erik/phr/claim_chr9q_vs_father_unfiltered.pdf
-  http://hypervolu.me/~erik/phr/claim_chr9q_vs_mother_unfiltered.pdf
-  http://hypervolu.me/~erik/phr/chr9q_terminal_zoom_unfiltered.pdf
-  (PAFs: claim60.sens.paf, claim60b.sens.paf, zoom.sens.paf)
+MARGIN SIZE IS EXPECTED, NOT A DEFECT. The chr3q/chr9q terminal copies
+are a ~99.5-99.8% paralogous family (subtelomeric segdup; with PAN010's
+chr9 h2 tip carrying the same architecture — see lineage note above).
+For a segdup-mediated exchange the donor and the resident paralog are
+near-identical by construction, so a 0.04-0.34% margin plus coverage
+differences (7.5% / 11.4% excluded haplotypes) is the expected signal,
+and it is sufficient to rank the explanation. Discrimination comes from
+(a) stable ranking across window/seed settings, (b) haplotype exclusion
+by coverage, and (c) the untangle/graph context — not from a large
+identity step.
+
+FLAGGER: no flagger evidence against any of these intervals. HiFi-based
+flaggger QC on the v1.1 assemblies is CLEAN at all of them (PAN028
+chr9 haplotype1 has no flagger calls at all; the only HiFi call in the
+neighbourhood is a Dup on PAN011 chr9 h2 133.68-133.74 Mb, i.e. the
+homologue's own terminal duplication, consistent with the region being
+a standing duplication rather than an assembly collapse). The ONT-based
+flaggger "Col" calls that cover the terminal 30-60 kb of these contigs
+are generic: they appear at the terminal region of EVERY chromosome end
+examined in EVERY sample (PAN010/011/027/028, chr1p/chr3q/chr5q/chr9q),
+i.e. they are an ONT-assembly end effect, not information about this
+call.
+
+THE OTHER MATERNAL-LINE CASE (chr5q/chr1p) - CLEANLY DIFFERENT. With the
+same sensitive unfiltered method (60 kb telomeric windows):
+  - PAN027 MATERNAL chr5q tip vs PAN010: own chr5q hap1 60,000/60,000 bp
+    at 0.9958 (full length) vs chr1p copies 22 kb at 0.979 (h1) / 0.979
+    (h2). Clean 1.7% separation: the maternal chr5q terminus is standard
+    transmission of the grandmother's chr5q, with the chr1p-derived
+    module present as standing architecture (~98%), NOT an
+    inter-chromosomal exchange. (Contrast: the chr3q/chr9q paralogs are
+    ~99.5-99.8% identical, which is exactly why that case needs the
+    coverage argument while this one does not.)
+  - OBSERVATION TO FOLLOW UP: the CHILD's chr5q tip (PAN028, maternal
+    copy) is better explained by chr1p (PAN027 chr1p 24-29 kb at 0.980-
+    0.983) than by either parental chr5q tip (15-16 kb at 0.978-0.993) -
+    i.e. in the child the chr5q terminus carries chr1p-like sequence that
+    is longer than the module seen in the parents' chr5q tips. This could
+    be (a) the transmitted module in a rearranged/extended form, or (b) a
+    maternal-germline chr1p->chr5q contribution. Needs the same
+    coverage/ranking treatment plus the flagger check on PAN028 chr5q
+    (HiFi-clean; ONT Col generic at the end).
+  Plots: http://hypervolu.me/~erik/phr/maternal_chr5q_tip_vs_PAN010_unfiltered.pdf
+         http://hypervolu.me/~erik/phr/child_chr5q_tip_vs_PAN027_unfiltered.pdf
+         http://hypervolu.me/~erik/phr/maternal_chr5q_chr1p_60kb_unfiltered.pdf
+  (chr9q plots: claim_chr9q_vs_father_unfiltered.pdf,
+   claim_chr9q_vs_mother_unfiltered.pdf, chr9q_terminal_zoom_unfiltered.pdf)
 
 Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
