@@ -224,6 +224,18 @@ Corrected in: `RESPONSE_Q1_Q2_DRAFT.md`, `NATURE_DRAFT_v4.md`, `NATURE_DRAFT_v5.
 `figures/fig3/caption.md`, `NATURE_DRAFT_OUTLINE.md`. Left as-is (historical): `NATURE_DRAFT_v2.md`
 (frozen revision) and `REVISION_LOG_v5.md` (log quoting the superseded wording).
 
+### D-PeerQ3 resolved (arm-type asymmetry)
+
+New script `scripts/cladistics/peerq3_arm_type_asymmetry.py` + table, draft in
+`RESPONSE_Q3_DRAFT.md`. Within-community pairs across the 41 arms / 15 communities:
+P-P 19 (exp 14.8, p=0.148), Q-Q 22 (exp 13.5, **p=0.019**), P-Q 17 (exp 29.7,
+**p=0.005 depleted**; 20,000 arm-type permutations with communities fixed).
+Two communities are arm-type pure: **C6 all Q-Q (15 pairs, zero P-Q, p=0.021)** and
+**C7 all P-P (10 pairs, zero P-Q, p=0.048)**; mixing is confined to C3 and C11; C1
+(4q/10q) is Q-Q and C2 (10p/18p) P-P as the concern anticipated.
+Remaining piece: P-Q at **opposite orientation** needs strand information from the arm-arm
+alignment table (Jaccard distance is orientation-free).
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,
