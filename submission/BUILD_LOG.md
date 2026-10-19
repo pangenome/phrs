@@ -773,3 +773,14 @@ bash compile.sh
 the rest. Setting `TEXMF` alone does not work because `TEXMFDBS` in the union's
 `texmf.cnf` is restricted to `!!` union paths, so `TEXINPUTS`/`TEXFONTS`/`TEXFONTMAPS` are
 set explicitly instead.
+
+## Reviewer-response rebuild (rev 13)
+
+Date: 2026-10-19
+
+`bash compile.sh` -> **exit 0**, `grep -c undefined paper.log` = **0**, `paper.pdf` 2.85 MB.
+Changes since rev 12: mouse stage analysis replaced by the arm-level Mantel (rho 0.41/0.58/
+0.63/0.33 at 20 kb, pachytene peak, flat at 50 kb, reported as descriptive); new Methods
+paragraph for the permutation null, Wilson CIs and character-level bootstrap (TIGHT_q and
+4q/10q explicitly not claimed as clades); new Discussion paragraph on the module architecture
+(98.6% same telomere-relative orientation, repertoire 0.83 vs 0.57, order not conserved).

@@ -277,11 +277,15 @@ structure (Fig.~\ref{fig:fig4}B)
 \cite{hic3d_liebermanaiden2009,hic3d_imakaev2012}.
 The same within-community enrichment holds in the HG002 CiFi contact map
 \cite{hic3d_cifi2025}.
-Subtelomeric sequence similarity is positively correlated with contact across
-all four stages of prophase I in mouse spermatocytes (pointwise Spearman $\rho = 0.419$, 0.614, 0.576 and 0.245 at
-leptotene, zygotene, pachytene and diplotene; all $n = 1{,}135$;
-Fig.~\ref{fig:fig4}C), strongest at the zygotene bouquet---when telomeres transiently cluster
-at the nuclear envelope---and lowest at diplotene, once the bouquet disperses. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
+Subtelomeric sequence similarity predicts contact between non-homologous mouse chromosome
+ends at every stage of prophase I (arm-level Mantel $\rho = 0.41$, 0.58, 0.63 and 0.33 at
+leptotene, zygotene, pachytene and diplotene, 20 kb windows; $n = 344$ arm pairs; all
+permutation $p < 10^{-4}$; Fig.~\ref{fig:fig4}C). The correlation rises as chromosomes
+synapse and peaks at pachytene, when the synaptonemal complex is fully assembled, then falls
+at diplotene as it disassembles: sequence similarity translates into ectopic proximity
+precisely during the window in which crossovers form. The stage profile is
+resolution-dependent---at 50 kb windows it is flat ($\rho = 0.29$--0.34)---so we report the
+20 kb profile and treat the stage ordering as descriptive rather than as a tested difference. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
 procedure constant across stages.
 In mouse, where detectable PHRs are concentrated on p-arms, the zygotene peak
 is likewise a p-arm feature. Restricting to inter-chromosomal pairs of the same
@@ -336,7 +340,20 @@ but had not been assembled into a systematic, population-scale view across nearl
 complete human genomes. The HPRC v2 assemblies let us build one, turning scattered
 observations into a sequence-resolved map across 41 chromosome arms, in which the
 pseudoautosomal, acrocentric, 10p/18p and 4q/10q systems stand out as local peaks
-within a broader continuum. The 3.51 Mb of subtelomeric sequence mapped here
+within a broader continuum.
+The shared sequence itself has a consistent internal architecture. Across the 46 arm ends and
+9.6 Gbp of inter-arm alignment in the HPRCv2 all-vs-all maps, 98.6\% of matched base pairs
+sit in the same orientation relative to the telomere (98.4\% for p--q pairs, whose coordinate
+systems run in opposite directions), yet the order in which those modules lie along the arm is
+not conserved: order concordance across shared partners is negligible, and it does not improve
+within communities. What does track community membership is the module repertoire
+(Jaccard 0.83 within versus 0.57 between communities, permutation $p = 5\times10^{-10}$) and
+the length of the shared blocks (median 13.3 versus 9.9 kb). The inverted exceptions are few: the
+arm pairs that are net inverted are built from thousands of small blocks rather than one
+inverted segment. The pattern expected for a compartment maintained by repeated duplication and
+orientation-biased conversion is therefore not a conserved arrangement of a fixed set of
+blocks, but a shared module repertoire laid out in a consistent telomere-to-centromere
+orientation and reassorted freely in between. The 3.51 Mb of subtelomeric sequence mapped here
 traces the routes along which chromosome-end sequence has repeatedly been copied,
 exchanged and homogenized \cite{Dover1982,concerted_evolution_nahr_Hastings2009}.
 
@@ -727,11 +744,12 @@ meiotic Hi-C is from inbred C57BL/6 (B6) spermatocytes \cite{Zuo2021}. Because
 these mice are inbred and homozygous, the reads are single-haplotype and are not
 phased into parental haplotypes; we mapped them to the combined B6+CAST T2T
 reference, keeping multi-mapping reads exactly as in the human pipeline. For each meiotic
-prophase stage we computed the per-PHR-pair Spearman correlation between
-length-normalized contact and PHR Jaccard similarity over 1 Mb flanks
-($n = 1{,}135$ inter-chromosomal pairs per stage; Fig.~\ref{fig:fig4}C). Each
-stage gives a single $\rho$ value; we did not test whether the differences
-between stages are statistically significant.
+prophase stage we aggregated length-normalized contact over PHR pairs to arm-level matrices
+(344 inter-chromosomal arm pairs) and tested the association with the arm-level sequence
+similarity ($1 - $ Jaccard distance) by Mantel test with 10,000 row-and-column permutations,
+which respects the non-independence of PHR pairs sharing an arm. Reported values are for
+20 kb windows; 50 kb windows give a flat profile and are noted as such in the text. The
+permutation null is centred on zero with a 95\% range of $\pm 0.11$.
 We also computed this correlation within each arm class, using only
 inter-chromosomal pairs in which both PHRs lie on p-arms ($n = 722$) or both on
 q-arms ($n = 42$).
@@ -770,6 +788,21 @@ transmitting parent's genome lies on another chromosome (the exceptions being PA
 acrocentric short arms and the chr9q/chr3q terminus reported here). Transmissions are
 presented only where the donor genome is complete: both of PAN027's parents are sequenced,
 whereas PAN028's father is not, so her paternal copy is excluded from the analysis.
+
+\emph{Statistical controls for the pedigree and clustering statistics.} The within-community
+fraction was compared against a permutation null that preserves the per-arm patch-count
+marginals (10,000 permutations), because the expected within-community fraction depends on the
+arm-size distribution and is 0.68 for the published patch set and 0.84 for the corrected set,
+not 0.5; Wilson-score 95\% confidence intervals are reported for the fraction
+(0.918, 95\% CI 0.892--0.939 published; 0.945, 95\% CI 0.914--0.965 corrected). The arm-level
+tree was assessed with a character-level bootstrap: 1,000 replicates resampling the 15,089
+signal-bearing PHRs with replacement, recomputing the arm-level Jaccard matrix and rebuilding
+neighbour-joining and UPGMA trees per replicate. Recovery is 100\% for the Xp/Yp and Xq/Yq
+pairs and for 10p/18p, 54\% (neighbour-joining) to 88\% (UPGMA) for the acrocentric p-arm
+group; the TIGHT\_q and 4q/10q groups are community assignments from the Leiden partition and
+are not monophyletic clades in the arm-level tree, so clade support is not claimed for them.
+$F_{ST}$ carries a block-jackknife 95\% interval and Mantel $\rho$ values carry bootstrap
+intervals.
 
 \emph{Assembly quality control of called intervals.} Each called patch interval was
 intersected with the HiFi-based assembly-QC calls available for these assemblies (flagger).
