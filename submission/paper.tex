@@ -759,8 +759,9 @@ q-arms ($n = 42$).
 For the transmission analysed in Fig.~\ref{fig:fig5}C we aligned one child haplotype
 (the query) against the combined two-haplotype assembly of the transmitting
 parent (the target) \cite{Cechova2025}. Starting from a whole-genome sweepga
-0.1.1~\cite{sweepga} alignment (frequency threshold 32, many-to-many mappings,
-no scaffold jumps), we filtered to 10:10 mapping classes and summarized the
+0.1.1~\cite{sweepga} (commit 02e7ed0d, with its bundled FastGA) alignment (frequency
+threshold 32, many-to-many mappings, no scaffold jumps), we filtered to 10:10 mapping
+classes and summarized the
 query in non-overlapping 2 kb windows, excluding centromeric windows, windows
 without alignment support, and windows with inter-chromosomal alignment depth
 above 100. For each retained window we computed impg 0.4.1 similarity and kept
@@ -769,7 +770,15 @@ non-homologous parental match, assigning the window to the non-homologous class
 only when the non-homologous match was the most similar. The identity margin of
 a called exchange is the amount by which its best non-homologous match exceeds
 the best same-chromosome or homologous match across the tract; a wider margin
-indicates stronger support. We joined two
+indicates stronger support. Where the competing matches are near-identical
+paralogues, the discriminating quantity is which parent haplotype matches at all
+(coverage), not the identity difference; for the chr9q/chr3q terminal call the
+exclusion of the father's other chr9q copy and the full coverage of his chr3q copy
+hold unchanged across frequency thresholds 10, 32, 512 and 8192, so the call does
+not depend on the threshold that was chosen for tractability. Validation analyses
+in this paper (pairwise panels, re-examination of individual tracts) use permissive
+seeding (frequency 512--8192, minimum alignment 200 bp) to retain short and
+repeat-rich matches that the candidate-calling threshold suppresses. We joined two
 neighboring windows into one run only when their query and donor intervals were
 directly adjacent, touching end to end with no gap, on the same donor
 chromosome, haplotype and sequence; we did not bridge gaps or chain non-adjacent

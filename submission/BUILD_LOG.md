@@ -784,3 +784,12 @@ Changes since rev 12: mouse stage analysis replaced by the arm-level Mantel (rho
 paragraph for the permutation null, Wilson CIs and character-level bootstrap (TIGHT_q and
 4q/10q explicitly not claimed as clades); new Discussion paragraph on the module architecture
 (98.6% same telomere-relative orientation, repertoire 0.83 vs 0.57, order not conserved).
+
+## Threshold-sensitivity rebuild (rev 14)
+
+Date: 2026-10-19
+
+`bash compile.sh` -> **exit 0**, `grep -c undefined paper.log` = **0**. Adds the sweepga
+v0.1.1 (commit 02e7ed0d) + bundled-FastGA pin, and the paragraph documenting that the
+chr9q/chr3q call is invariant across frequency thresholds 10/32/512/8192 while the
+validation analyses use permissive seeding.

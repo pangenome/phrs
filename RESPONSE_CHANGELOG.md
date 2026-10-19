@@ -323,6 +323,27 @@ This independently reproduces the 74% wrong-label estimate from the earlier patc
 recheck, now with the real merge logic rather than a per-interval approximation.
 Outputs: `scripts/pedigree/recount/`.
 
+### Threshold sensitivity: the retained call does not depend on the frequency threshold
+
+FastGA `-f` sweep on the chr9q/chr3q terminal call (SELF.p.chr9q terminal 60 kb vs DAD's four
+windows; coverage / mean identity over covered positions, `-s200 -c70 -i0.6`):
+
+| f | chr3q h2 | chr3q h1 | chr9q h2 | chr9q **h1** |
+|---|---|---|---|---|
+| 10 | 99.0% / .9959 | 98.7% / .9956 | 94.4% / .9953 | **7.3%** / .9838 |
+| 32 (published) | 100% / .9950 | 98.7% / .9960 | 97.7% / .9945 | **7.3%** / .9843 |
+| 512 | 100% / .9950 | 98.7% / .9919 | 97.7% / .9944 | **7.3%** / .9843 |
+| 8192 | 100% / .9979 | 98.7% / .9919 | 97.7% / .9945 | **7.5%** / .9868 |
+
+The exclusion of the father's other chr9q copy and the full coverage of his chr3q copy hold
+at every threshold, and identity is a dead heat throughout - which is why coverage, not
+identity, is the discriminating statistic. Frequency 10 is noisier (94-99% coverage);
+permissive seeding only cleans it up. Table: `scripts/pedigree/threshold_sensitivity_9q3q.tsv`.
+
+Methods now also pins the aligner: sweepga v0.1.1 (commit 02e7ed0d) with its bundled FastGA,
+and states the division of labour between the candidate-calling threshold (f32) and the
+permissive validation settings (f512-8192, `-s200`).
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,
