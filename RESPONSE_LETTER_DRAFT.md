@@ -48,6 +48,42 @@ the paternal genome (they fall outside the maternal flank because the haplotypes
 arm length). We state this in Methods and report only the transmissions with complete donor
 genomes.
 
+## Point: assembly-quality QC of the called patches
+
+We re-ran the QC of all 538 WashU patch intervals against the assembly-QC calls for these
+assemblies:
+
+| query class | patches | overlap with a HiFi flagger call | rate |
+|---|---|---|---|
+| acrocentric | 459 | 1 | 0.2% |
+| non-acrocentric | 79 | 0 | 0.0% |
+| all | 538 | 1 | 0.2% |
+
+The previously quoted "66 of 538" figure came from the ONT-based calls, which mark the
+terminal tens of kilobases of every chromosome end in every individual, including arms
+where no patch is called; that overlap is a property of ONT assemblies, not of the calls.
+At HiFi resolution the called intervals are essentially untouched. We now state this in
+Methods with the HiFi/ONT distinction explicit.
+
+## Point: the chr1p/chr5p candidate "recurs, so it must be an artefact"
+
+The recurrence is inheritance of a standing arrangement, not two independent events, and the
+call is not a margin-supported exchange at all:
+
+- On the maternal side the chr5q homologue explains the sequence cleanly: 99.58% identity
+  over the full terminal 60 kb versus 97.9% for the chr1p copies.
+- The chr1p-derived module is present in **both grandparents' own chr5q**, so it predates the
+  family; it is ancestral homology, and we now describe it that way rather than as an
+  exchange candidate.
+- Our earlier claim that a different aligner "did not reproduce" the call was itself an
+  artefact of that aligner's default chunking filter; with permissive parameters the chr1p
+  homology is recovered at 99-100%. We have removed that argument from the manuscript, since
+  the correct reason to downgrade the candidate is the standing-homology comparison, not
+  aligner disagreement.
+
+Net effect on the paper: the chr5q/chr1p candidate is no longer presented as an exchange, so
+the "it happens twice" objection no longer applies to anything we claim.
+
 ## Point: what this does not change
 
 - The genome-wide result - inter-chromosomal subtelomeric sharing organised into
