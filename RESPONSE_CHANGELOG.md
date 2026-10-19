@@ -33,6 +33,7 @@ PARTNER=KID's father, unsampled).
 | 8 | Evidence record with all numbers, retractions and revisions rev 1-12 | `REVIEWS.txt` |
 | 9 | Canonical naming + per-chromosome maternal table | `PEDIGREE_NAMING.md` |
 | 11 | **Fig5B regenerated** with the naming convention: axis `SELF.p.chr9q position (Mb)`, series `DAD.h2.chr3q (source)` and `DAD.h2.chr9q (drifted copy)`, tract shaded 20 kb; the retired KID 21p/4p panel removed from the script | `submission/fig/MainFigures/Fig5B_zoom9q3q.{pdf,png}`, `submission/scripts/figures/make_fig5_zoom.R` |
+| 13 | Methods de-meta-ified: the two emphatic paragraphs ("Inference rule", "Haplotype labelling") replaced by one neutral factual paragraph ("Chromosome-copy assignment"); all reviewer-facing reasoning moved out of the manuscript into `RESPONSE_LETTER_DRAFT.md` | `submission/paper.tex` |
 | 12 | Fig5C ribbon script relabelled (`SELF.p (PAN027 paternal)`, `DAD.h1/h2`) and the maternal/KID gen calls removed; **regeneration blocked here: inkscape is not installed** | `submission/scripts/figures/make_fig5_panels.sh` |
 | 10 | New **Fig5D** pairwise-alignment panel built and added to the figure block + caption; asset, box coordinates and generator script committed | `submission/fig/MainFigures/Fig5D_pairwise_9q3q.{pdf,png}`, `Fig5D_highlights.tsv`, `submission/scripts/figures/make_fig5d_pairwise.sh` |
 

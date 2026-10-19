@@ -759,21 +759,17 @@ windows. We drew runs of at least 10 kb with mean identity at least 0.95, shown
 as the non-homologous (colored) and same-chromosome (gray) runs in
 Fig.~\ref{fig:fig5}C.
 
-\emph{Inference rule.} For a block of tens of kilobases, the most similar sequence
-in the transmitting parent's genome identifies the source of that block. Genome-wide
-this recovers the homologous chromosome. The documented exceptions are PAR1 (the
-obligate site of X--Y exchange), the acrocentric short arms (assembly-error-prone) and
-the chr9q/chr3q terminus reported here.
-
-\emph{Haplotype labelling.} The pedigree assemblies are haplotype-resolved, but the
-parent of origin of each chromosome copy has to be established per chromosome: the
-published assignments for PAN028 were derived from imprinted loci, the released file
-names do not encode them, and they differ between chromosomes. We therefore resolved
-the maternally inherited copy of every analysed chromosome by identity to the mother's
-two haplotypes before comparison. Only transmissions whose donor genome is complete
-are fully supported; both of PAN027's parents are sequenced, whereas PAN028's father is
-unsampled, so no non-homologous assignment on her paternal copy is interpretable and
-those scans are not reported.
+\emph{Chromosome-copy assignment.} Haplotype-resolved assemblies separate the two
+copies of every chromosome but do not record which parent contributed each copy. For this
+pedigree that assignment is per chromosome (for PAN028 it derives from imprinted loci, for
+PAN027 from parental k-mers), and the released file names do not encode it; we therefore
+resolved, chromosome by chromosome, the copy inherited from the transmitting parent by
+identity to that parent's two haplotypes before comparison, and we assign a block of tens
+of kilobases to a non-homologous source only when the most similar sequence in the
+transmitting parent's genome lies on another chromosome (the exceptions being PAR1, the
+acrocentric short arms and the chr9q/chr3q terminus reported here). Transmissions are
+presented only where the donor genome is complete: both of PAN027's parents are sequenced,
+whereas PAN028's father is not, so her paternal copy is excluded from the analysis.
 
 \subsection*{Data and code availability}
 
