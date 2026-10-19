@@ -80,6 +80,43 @@ Consequences:
 The 27.97 kb case is the clean illustration of the whole defect: the same coordinates give
 opposite answers on the two copies, and only the maternal copy is interpretable.
 
+### Recheck of the 228 wrong-label KID patches against the existing untangle output
+
+The PAN028 hap2 flanks are **already present** in
+`PAN028_vs_PAN027.e50000.m1000.bed.gz` (435,332 rows) — the patch table simply only
+extracted the hap1 rows. No new untangle run was needed. Mapping each hap1 patch
+interval to the hap2 flank by telomere-anchored coordinates (the two haplotypes differ
+in arm length, so start-anchored offsets are invalid) and taking the rank-1 untangle row
+at those coordinates:
+
+| outcome on the **correct maternal copy** | count |
+|---|---|
+| homolog wins (rank-1 is same chromosome) — call does not survive | **168** |
+| interval outside the maternal flank (haplotype length difference) — untestable | 54 |
+| **survives** as rank-1 inter-chromosomal | **6** |
+
+The six survivors all have **acrocentric p-arm donors** (chr13p x3, chr22p x2, chr21p x1),
+i.e. the rDNA exchange system, not new subtelomeric events.
+
+### Corrected community statistic — it gets stronger
+
+| set | patches | within Leiden community |
+|---|---|---|
+| as published | 538 | 494 (92%) |
+| SELF-side (labels consistent) | 228 | 222 |
+| KID, label-correct (hap1 = maternal) | 82 | 81 |
+| KID, rechecked survivors on the maternal copy | 6 | 6 (acrocentric) |
+| **corrected total** | **~316** | **~309 (98%)** |
+
+The wrong-copy calls were disproportionately *cross*-community (they describe the
+unsampled father's chromosomes, which need not respect the mother's partition), so
+removing them raises the within-community rate from 92% to **98%** on a cleaner set.
+
+Caveats to carry into the response: 54 intervals are untestable without the paternal
+genome or longer flank windows; the recheck uses rank-1 logic plus telomere-anchored
+mapping rather than a re-run of the upstream merge pipeline, so the definitive numbers
+should come from re-running that pipeline with the per-chromosome copy selection.
+
 ## Pending
 
 1. **Rebuild Fig5B/Fig5C**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
