@@ -299,6 +299,30 @@ See `RESPONSE_STATS_AND_BIB.md` for the letter text. Summary of what was actuall
 - **D-PeerQ2b**: roadmap statement with the required analysis and the numbers that would
   settle it; no analysis this round.
 
+### Authoritative recount with the repo's own merge logic
+
+CORRECTION TO MY EARLIER CLAIM: nothing about the *environment* blocks the recount. Tool
+versions are pinned in Methods (wfmash v0.23.0; pggb v0.7.4 commit 498c5d7 with seqwish
+v0.7.11, smoothxg v0.8.2, odgi v0.9.2, GFAffix v0.2.1, vg v1.62.0) and the untangle BEDs,
+flank fasta and community table are all retained. What was missing is the *code*: the upstream
+script that emitted `all_pedigrees_patches.tsv` was never committed, and the merging script
+that IS in the repo, `scripts/pedigree/untangle_multimap_tracts.py`, hardcoded the same
+hap1-everywhere assumption in its `PAIRINGS` table - so the labelling error had a second home.
+
+FIXED: `--kid-correct-copies` selects PAN028's per-chromosome maternally inherited flank
+(hap2 on chr1,3,4,5,7,9,12,14,15,18,21,22,X; hap1 otherwise). Re-running the repository's own
+merge (both default and 1 kb-bridging settings):
+
+| query copies | SELF-side tracts | KID-side tracts | total |
+|---|---|---|---|
+| published (hap1 everywhere) | 208 + 142 = 350 | **567** | 917 |
+| **corrected per-chromosome** | 208 + 142 = 350 | **155** | 505 |
+
+The KID-side call count falls 73% (567 -> 155) and the SELF side is unchanged, as it must be.
+This independently reproduces the 74% wrong-label estimate from the earlier patch-level
+recheck, now with the real merge logic rather than a per-interval approximation.
+Outputs: `scripts/pedigree/recount/`.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,

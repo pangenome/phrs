@@ -37,6 +37,7 @@ OUT_SUMMARY = REPO_ROOT / "scripts" / "pedigree" / "untangle_multimap_tract_summ
 OUT_DIR = REPO_ROOT / "paper_prep" / "_brainstorming" / "pedigree_multimap_tracts"
 OUT_MD = REPO_ROOT / "paper_prep" / "_brainstorming" / "pedigree_multimap_tracts.md"
 
+KID_CORRECT = [False]   # set by --kid-correct-copies
 CONVERSION_RANGE = (22, 95)
 CROSSOVER_RANGE = (318, 688)
 NEAR_CONVERSION_RANGE = (11, 190)
@@ -47,6 +48,11 @@ PAIRINGS = {
     "PAN027_vs_PAN011": ("PAN027#2", "PAN027 paternal (hap2) vs PAN011 (father)"),
     "PAN028_vs_PAN027": ("PAN028#1", "PAN028 maternal (hap1) vs PAN027 (mother)"),
 }
+
+# PAN028's maternally inherited copy is chromosome-specific: hap2 on these chromosomes,
+# hap1 elsewhere (RESPONSE_CHANGELOG.md, PEDIGREE_NAMING.md). The published patch set used
+# hap1 on every chromosome, which is the paternal copy on the chromosomes listed here.
+KID_MATERNAL_HAP2 = set("1 3 4 5 7 9 12 14 15 18 21 22 X".split())
 
 DEFAULT_RUNS = (
     "m1000_default:1000:4:0.001:0.8:0:arm",
@@ -257,7 +263,16 @@ def load_segments(
             if not line.strip() or line.startswith("#"):
                 continue
             fields = line.rstrip("\n").split("\t")
-            if len(fields) < 10 or not fields[0].startswith(query_prefix):
+            if len(fields) < 10:
+                continue
+            if query_prefix == "PAN028#1" and KID_CORRECT[0]:
+                m = re.match(r"PAN028#(\d)#chr([0-9XY]+)\.", fields[0])
+                if not m:
+                    continue
+                want = "2" if m.group(2) in KID_MATERNAL_HAP2 else "1"
+                if m.group(1) != want:
+                    continue
+            elif not fields[0].startswith(query_prefix):
                 continue
             query_info = parse_path_info(fields[0])
             ref_info = parse_path_info(fields[3])
@@ -820,6 +835,12 @@ ambiguous rather than be forced into a first-best donor.
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--kid-correct-copies",
+        action="store_true",
+        help="take PAN028 query flanks from the per-chromosome maternally inherited copy "
+             "instead of hap1 everywhere (see PEDIGREE_NAMING.md)",
+    )
     parser.add_argument("--untangle-dir", type=Path, default=UNTANGLE_DIR)
     parser.add_argument("--communities", type=Path, default=COMMUNITY_TSV)
     parser.add_argument("--out-tracts", type=Path, default=OUT_TRACTS)
@@ -837,6 +858,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    KID_CORRECT[0] = bool(getattr(args, 'kid_correct_copies', False))
     communities = load_communities(args.communities)
     high_conf_n = read_overall_n(PATCH_SUMMARY_TSV, "overall")
     lower_n1_n = read_overall_n(LOWER_SUMMARY_TSV, "lower_merge_overall")
