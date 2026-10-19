@@ -8,6 +8,9 @@
 # chromosome (interchrom winner). The dip in own-chromosome identity across the
 # called tract, where the donor stays near-identical, is the exchange signal.
 # Reads the vendored 10:10 IMPG class-winner tables.
+# Naming follows PEDIGREE_NAMING.md: PAN027 = SELF (focal), PAN011 = DAD,
+# PAN010 = MOM, PAN028 = KID, KID's father = PARTNER (unsampled). The retired
+# KID-side panel (21p/4p) is not built: it was called on KID's paternal copy.
 
 suppressPackageStartupMessages({library(ggplot2); library(data.table)})
 
@@ -24,13 +27,11 @@ TEXT <- "#202124"; GREY <- "#6f6f6f"
 
 cfgs <- list(
   list(id="9q3q", file=pat, qchr="chr9",  lo=136130000, hi=136190000, tlo=136164000, thi=136188000,
-       donor="PAN011 h2 chr3q", own="PAN011 h2 chr9q",  col="#D95F02", ylo=0.97, xlab="PAN027 paternal chr9q position (Mb)",  tract="9q/3q tract, 20 kb"),
+       donor="DAD.h2.chr3q (source)", own="DAD.h2.chr9q (drifted copy)",  col="#D95F02", ylo=0.97, xlab="SELF.p.chr9q position (Mb)",  tract="9q/3q tract, 20 kb"),
   list(id="5q1p", file=pat, qchr="chr5",  lo=182020000, hi=182100000, tlo=182052000, thi=182080000,
-       donor="chr1p", own="chr5",  col="#1F77B4", ylo=0.95, xlab="PAN027 paternal chr5q position (Mb)",  tract="5q/1p tract, 28 kb"),
+       donor="1p/5q ancestral homology", own="DAD.h1.chr5q (homolog)",  col="#1F77B4", ylo=0.95, xlab="SELF.p.chr5q position (Mb)",  tract="1p/5q ancestral homology, 28 kb"),
   list(id="PAR1", file=pat, qchr="chrX",  lo=0,        hi=200000,    tlo=14000,     thi=156000,
-       donor="chrY",  own="chrX",  col="#E7298A", ylo=0.20, xlab="PAN027 paternal chrX PAR1 position (Mb)", tract="PAR1, 138 kb"),
-  list(id="21p4p", file=p28, qchr="chr21", lo=6240000, hi=6340000,   tlo=6276000,   thi=6316000,
-       donor="chr4p", own="chr21", col="#2CA02C", ylo=0.40, xlab="PAN028 maternal chr21p position (Mb)", tract="21p/4p tract, 40 kb")
+       donor="DAD chrY",  own="DAD chrX",  col="#E7298A", ylo=0.20, xlab="SELF.p.chrX PAR1 position (Mb)", tract="PAR1, 138 kb")
 )
 
 build <- function(cfg) {

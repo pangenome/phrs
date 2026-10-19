@@ -32,6 +32,8 @@ PARTNER=KID's father, unsampled).
 | 7 | Methods: Fig5C--E references reduced to C | same |
 | 8 | Evidence record with all numbers, retractions and revisions rev 1-12 | `REVIEWS.txt` |
 | 9 | Canonical naming + per-chromosome maternal table | `PEDIGREE_NAMING.md` |
+| 11 | **Fig5B regenerated** with the naming convention: axis `SELF.p.chr9q position (Mb)`, series `DAD.h2.chr3q (source)` and `DAD.h2.chr9q (drifted copy)`, tract shaded 20 kb; the retired KID 21p/4p panel removed from the script | `submission/fig/MainFigures/Fig5B_zoom9q3q.{pdf,png}`, `submission/scripts/figures/make_fig5_zoom.R` |
+| 12 | Fig5C ribbon script relabelled (`SELF.p (PAN027 paternal)`, `DAD.h1/h2`) and the maternal/KID gen calls removed; **regeneration blocked here: inkscape is not installed** | `submission/scripts/figures/make_fig5_panels.sh` |
 | 10 | New **Fig5D** pairwise-alignment panel built and added to the figure block + caption; asset, box coordinates and generator script committed | `submission/fig/MainFigures/Fig5D_pairwise_9q3q.{pdf,png}`, `Fig5D_highlights.tsv`, `submission/scripts/figures/make_fig5d_pairwise.sh` |
 
 ## Audit result: PAN028 label exposure (pending item 3, partially done)
@@ -177,9 +179,12 @@ during oogenesis and with the telomere bias of male meiotic recombination."
 
 ## Pending
 
-1. **Rebuild Fig5B/Fig5C**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
-   regenerating with the new labels (SELF.p, DAD.h1/h2); `Fig5A_pedigree.pdf`
-   should print the nickname/copy scheme. Fig5D (new) is already built.
+1. **Fig5C regeneration** (blocked: needs `inkscape`, not installed on this machine) -
+   run `submission/scripts/figures/make_fig5_panels.sh`. Fig5B and Fig5D are done;
+   `Fig5A_pedigree.pdf` should still print the nickname/copy scheme.
+   Optional for Fig5B: split the y-axis so the 1.000 plateau and the 0.993 dip are
+   visually separated (measured: same-chromosome 1.000 outside / 0.9933 inside the
+   tract; chr3q 0.99988 / 0.99937).
 2. **Retire or supplement the D/E assets**: `Fig5D_maternal.png`,
    `Fig5E_pan028.png`, and the scripts that produce them
    (`submission/scripts/figures/make_fig5_panels.sh`, `make_fig5_zoom.R`,

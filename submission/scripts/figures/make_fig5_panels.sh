@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Generate the three Fig5 ribbon panels (B/C/D) as separate cropped PDF+PNG,
+# Generate the Fig5 ribbon panel(s) as separate cropped PDF+PNG,
 # with NO baked-in panel letter and NO per-panel legend (letters + one shared
 # legend are added in paper.tex). Panel A (pedigree) is made by make_fig5_pedigree.R.
 # Needs: python3 (stdlib only) + inkscape. Reads vendored data/ inputs.
@@ -47,8 +47,9 @@ PY
   inkscape --export-type=png -w 3600 --export-filename="$OUT/${base}.png" "$cropped"
 }
 
-gen PAN027pat_vs_PAN011_joint "PAN027 paternal" "PAN011 h1" "PAN011 h2" Fig5C_paternal
-gen PAN027mat_vs_PAN010_joint "PAN027 maternal" "PAN010 h1" "PAN010 h2" Fig5D_maternal
-gen PAN028mat_vs_PAN027_joint "PAN028 maternal" "PAN027 h1" "PAN027 h2" Fig5E_pan028
+gen PAN027pat_vs_PAN011_joint "SELF.p (PAN027 paternal)" "DAD.h1 (PAN011)" "DAD.h2 (PAN011)" Fig5C_paternal
 
-echo "done: $OUT/Fig5{B_paternal,C_maternal,D_pan028}.{pdf,png}"
+# Retired with the label correction: the maternal (PAN027mat_vs_PAN010) and KID
+# (PAN028mat_vs_PAN027) ribbon panels. The KID panel queried hap1, which is the
+# paternal copy on chr1,3,5,9 - see RESPONSE_CHANGELOG.md.
+echo "done: $OUT/Fig5C_paternal.{pdf,png}"
