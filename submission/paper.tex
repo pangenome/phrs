@@ -341,7 +341,8 @@ complete human genomes. The HPRC v2 assemblies let us build one, turning scatter
 observations into a sequence-resolved map across 41 chromosome arms, in which the
 pseudoautosomal, acrocentric, 10p/18p and 4q/10q systems stand out as local peaks
 within a broader continuum.
-The shared sequence itself has a consistent internal architecture. Across the 46 arm ends and
+The shared sequence itself has a consistent internal architecture
+(Extended Data Fig.~\ref{fig:ed3}). Across the 46 arm ends and
 9.6 Gbp of inter-arm alignment in the HPRCv2 all-vs-all maps, 98.6\% of matched base pairs
 sit in the same orientation relative to the telomere (98.4\% for p--q pairs, whose coordinate
 systems run in opposite directions), yet the order in which those modules lie along the arm is
@@ -897,6 +898,27 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     SEPTIN14/septin/cytokinesis, WBP1L/CXCL12 signaling and
     RPL23A/ribosomal/nucleolar classes.}
   \label{fig:ed2}
+\end{figure}
+
+\clearpage
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig3_module_maps.pdf}
+  \caption{\textbf{Subtelomeric module maps and the architecture of shared modules.}
+    Each chromosome end is cut into 25 kb bins and each bin is labelled with the partner arm
+    contributing the most aligned base pairs to it, aggregated across 233 sampled individuals in
+    the HPRCv2 all-vs-all flank alignments; fill colour is that partner's arm-level Leiden
+    community (C1--C15) and tiles at least three bins wide carry the partner arm label. 26 of the
+    46 arm ends receive enough inter-arm alignment to be tiled, and the most frequent top partners
+    are the acrocentric p-arms. The panel makes the architecture visible: modules are reassorted in
+    order but consistent in orientation. Across 764 arm pairs and 9.6 Gbp of inter-arm alignment
+    98.6\% of matched base pairs lie in the same orientation relative to the telomere (P--P
+    97.8\%, Q--Q 100.0\%, P--Q 98.4\%, homolog-versus-homolog pairs excluded; per-pair median
+    100\%, 7 of 764 pairs below 90\%), whereas order concordance across shared partners is
+    negligible and does not improve within communities. Community membership tracks the module
+    repertoire (Jaccard 0.83 within versus 0.57 between, permutation $p = 5\times10^{-10}$) and
+    shared block length (median 13.3 versus 9.9 kb) rather than arrangement.}
+  \label{fig:ed3}
 \end{figure}
 
 \clearpage

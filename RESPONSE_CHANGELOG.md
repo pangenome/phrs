@@ -344,6 +344,15 @@ Methods now also pins the aligner: sweepga v0.1.1 (commit 02e7ed0d) with its bun
 and states the division of labour between the candidate-calling threshold (f32) and the
 permissive validation settings (f512-8192, `-s200`).
 
+### Module map promoted to Extended Data Fig. 3
+
+`paper_prep/figures/ed3_module_maps/` (generator, vendored `module_tiling.tsv`, `sources.tsv`,
+`caption.md`, README explaining the directory name), asset
+`submission/fig/ExtendedDataFigures/ED_Fig3_module_maps.pdf`, referenced as `fig:ed3` from the
+Discussion. NOTE: the legacy `paper_prep/figures/ed3/` directory holds an unrelated superseded
+TAR1/telomere figure; it was accidentally overwritten during this work and restored from git
+before continuing, hence the separate directory.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,

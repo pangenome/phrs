@@ -793,3 +793,12 @@ Date: 2026-10-19
 v0.1.1 (commit 02e7ed0d) + bundled-FastGA pin, and the paragraph documenting that the
 chr9q/chr3q call is invariant across frequency thresholds 10/32/512/8192 while the
 validation analyses use permissive seeding.
+
+## ED3 module maps (rev 15)
+
+Date: 2026-10-19
+
+`bash compile.sh` -> **exit 0**, `grep -c undefined paper.log` = **0**, `paper.pdf` 2.86 MB.
+Adds Extended Data Fig. 3 (`fig:ed3`, asset
+`fig/ExtendedDataFigures/ED_Fig3_module_maps.pdf`) with its generator, sources and caption in
+`paper_prep/figures/ed3_module_maps/`, and references it from the Discussion.
