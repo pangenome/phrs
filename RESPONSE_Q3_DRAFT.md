@@ -43,28 +43,28 @@ type, and cross-type mixing is confined to two specific communities. That is a m
 statement about how subtelomeric sequence identity is distributed among chromosome ends
 rather than about how the clustering was drawn.
 
-**Orientation: done, and the premise does not hold as a general rule.** Jaccard distance is
-orientation-free, so orientation was measured directly: one 100 kb CHM13 arm end per arm,
-aligned all-vs-all with FastGA (`-f8192 -s200 -c70 -i0.6`), strand taken from the PAF and
-converted to telomere-first orientation (flanks are stored in forward chromosome
-coordinates: for P-Q pairs strand '-' is the same telomere-first orientation, for same-type
-pairs strand '+' is; 100 kb BWA-scan of the same arms confirms the P-Q pairs are also absent
-from the high-stringency all-sample alignment table - see note).
+**Orientation: not answerable at this scale - and the first attempt was withdrawn.** Jaccard
+distance is orientation-free, so we measured strand directly (one 100 kb CHM13 arm end per
+arm, all-vs-all with FastGA `-f8192 -s200 -c70 -i0.6`, converted to telomere-first
+orientation). The result was initially tabulated as 8 of 17 P-Q pairs alignable with 6 same
+and 2 opposite, but that tabulation is withdrawn: on inspection every one of those alignments
+is a short (300-2,000 bp, 78-95% identity) scattered repeat match, and **none** is
+telomere-offset matched - 0 of 42 P-Q alignments, 0 bp, have the two arms at the same
+distance from their telomere. Strand on a scattered repeat match says something about which
+paralog copy happened to be hit, not about how two chromosome ends are oriented.
 
-| pair class | alignable (>=1 kb) | same orientation | opposite |
-|---|---|---|---|
-| P-Q within-community | **8 of 17** | **6** | **2** |
-| same-type within-community | 21 | 12 | 9 |
+So the correct statement is narrower than the concern assumes: at 100 kb arm-end scale, the
+similarity between P and Q arms is dispersed repeat matching with no colinear block, so P-Q
+orientation is undefined at that scale. Answering "P-Q at opposite orientation" needs full
+1 Mb arm ends (the scale at which the arm-level Jaccard matrix was computed) and an
+offset-aware block selection, which is a separate analysis. What is established for Q3 is the
+arm-type composition result above, which does not depend on orientation.
 
-So most alignable P-Q pairs are in the *same* orientation, and half of the within-community
-P-Q pairs do not align at this scale at all - their similarity in the arm matrix is
-k-mer/repeat level, which carries no orientation. The two opposite-orientation pairs are
-chr11p/chr16q (100% opposite) and **chr1p/chr5q (74% opposite)**; the latter is the C11 pair
-whose inter-chromosomal relationship we examine in the pedigree section, so the inverted
-arrangement is a property of that specific pair rather than of P-Q relationships generally.
+Previous tabulation retained for the record in `scripts/cladistics/peerq3_orientation.tsv`
+with a header note that it is repeat-level and must not be read as arm-end orientation.
 
-Table: `scripts/cladistics/peerq3_orientation.tsv`; script:
-`scripts/cladistics/peerq3_orientation.py`.
+Tooling: `scripts/cladistics/peerq3_orientation.py` (writes the repeat-level table; the
+offset-matched extension is the missing piece).
 
 Table: `scripts/cladistics/peerq3_arm_type_asymmetry.tsv`; script:
 `scripts/cladistics/peerq3_arm_type_asymmetry.py`.

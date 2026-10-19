@@ -233,12 +233,13 @@ P-P 19 (exp 14.8, p=0.148), Q-Q 22 (exp 13.5, **p=0.019**), P-Q 17 (exp 29.7,
 Two communities are arm-type pure: **C6 all Q-Q (15 pairs, zero P-Q, p=0.021)** and
 **C7 all P-P (10 pairs, zero P-Q, p=0.048)**; mixing is confined to C3 and C11; C1
 (4q/10q) is Q-Q and C2 (10p/18p) P-P as the concern anticipated.
-Orientation half done (`scripts/cladistics/peerq3_orientation.py`): CHM13 100 kb arm ends,
-sensitive all-vs-all, strand converted to telomere-first. **8 of 17 P-Q pairs align >=1 kb,
-6 same orientation and 2 opposite**; same-type pairs 21 alignable, 12 same / 9 opposite. So
-opposite orientation is NOT a general property of P-Q pairs: it holds for chr11p/chr16q
-(100%) and **chr1p/chr5q (74%)** - the C11 pair we study in the pedigree - while the other
-half of the P-Q pairs are k-mer-level only and carry no orientation.
+Orientation half: **WITHDRAWN as measured.** The first pass (CHM13 100 kb arm ends,
+sensitive all-vs-all) gave 8/17 P-Q pairs alignable, 6 same / 2 opposite, but every such
+alignment is a 300-2,000 bp scattered repeat match at 78-95% identity and **none is
+telomere-offset matched** (0 of 42 alignments). Strand on a scattered repeat reflects which
+paralog copy was hit, not arm-end orientation, so the call is retracted. P-Q orientation is
+undefined at 100 kb arm-end scale; it needs 1 Mb arm ends with offset-aware block selection.
+The arm-type composition result (P-Q depleted p=0.005; C6 all-Q, C7 all-P) is unaffected.
 
 ## Pending
 

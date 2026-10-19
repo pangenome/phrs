@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""D-PeerQ3 (orientation half): orientation of within-community arm pairs.
+"""D-PeerQ3 (orientation half) - STATUS: REPEAT-LEVEL ONLY, NOT arm-end orientation.
+
+The table this writes must not be read as arm-end orientation: at 100 kb arm-end scale
+every P-Q alignment is a short scattered repeat match and NONE is telomere-offset
+matched (0 of 42 alignments), so strand here reflects which paralog copy was hit.
+Answering orientation requires 1 Mb arm ends plus offset-aware block selection.
+
+Otherwise: orientation of within-community arm pairs.
 
 Measures, for the CHM13 telomeric 100 kb arm ends, the strand of every alignment
 between arms and reports the fraction of aligned base pairs in the same
