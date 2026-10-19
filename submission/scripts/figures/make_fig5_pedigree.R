@@ -23,7 +23,9 @@ G1Y <- 60; G2Y <- 130; G3Y <- 200   # three generation rows (compact vertical sp
 #   gen-1  PAN011 (grandfather, square)  x  PAN010 (grandmother, circle)
 #   gen-2  their daughter PAN027 (mother, circle)  x  unsampled father (open square)
 #   gen-3  granddaughter PAN028 (circle), child of PAN027 x the unsampled father
-# labels are sample IDs only (roles are given in the caption) to keep the panel compact
+# labels use the project naming (PEDIGREE_NAMING.md): focal individual = PAN027 = SELF,
+# her parents MOM (PAN010) and DAD (PAN011), her daughter KID (PAN028); KID's father is
+# unsampled (PARTNER). Copy-level notation used elsewhere: SELF.m/SELF.p, DAD.h1/DAD.h2.
 PAN011_X <- 205; PAN010_X <- 430; UNS_X <- 100
 G1_MX <- (PAN011_X + PAN010_X) / 2   # gen-1 couple midpoint (descent drops to PAN027)
 G2_MX <- (UNS_X + G1_MX) / 2         # gen-2 couple midpoint (descent drops to PAN028)
@@ -32,7 +34,7 @@ ped <- data.frame(
   x     = c(PAN011_X, PAN010_X, G1_MX, G2_MX),
   y     = c(G1Y,      G1Y,      G2Y,   G3Y),
   shape = c(22,       21,       21,    21),
-  lab   = c("Father\n(PAN011)", "Mother\n(PAN010)", "Daughter\n(PAN027)", "Granddaughter\n(PAN028)"),
+  lab   = c("DAD\n(PAN011)", "MOM\n(PAN010)", "SELF\n(PAN027)", "KID\n(PAN028)"),
   labx  = c(PAN011_X, PAN010_X, G1_MX + 34, G2_MX + 34),
   laby  = c(G1Y - 48, G1Y - 48, G2Y, G3Y),
   hj    = c(0.5, 0.5, 0, 0))
