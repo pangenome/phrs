@@ -33,6 +33,8 @@ PARTNER=KID's father, unsampled).
 | 8 | Evidence record with all numbers, retractions and revisions rev 1-12 | `REVIEWS.txt` |
 | 9 | Canonical naming + per-chromosome maternal table | `PEDIGREE_NAMING.md` |
 | 11 | **Fig5B regenerated** with the naming convention: axis `SELF.p.chr9q position (Mb)`, series `DAD.h2.chr3q (source)` and `DAD.h2.chr9q (drifted copy)`, tract shaded 20 kb; the retired KID 21p/4p panel removed from the script | `submission/fig/MainFigures/Fig5B_zoom9q3q.{pdf,png}`, `submission/scripts/figures/make_fig5_zoom.R` |
+| 15 | Fig5A regenerated with DAD/MOM/SELF/KID labels; Fig5C paternal ribbon regenerated with `SELF.p` / `DAD.h1` / `DAD.h2`; retired maternal+KID panel assets deleted and their 3 supporting-material rows dropped, survivors relabelled | `submission/fig/MainFigures/`, `submission/scripts/figures/`, `submission/supporting_material/Fig5_pedigree_supporting_material.tsv` |
+| 16 | Response letter: flagger-QC point and chr1p/chr5q standing-homology point added; aligner-disagreement argument removed | `RESPONSE_LETTER_DRAFT.md` |
 | 14 | Margin/support table written and a Methods paragraph added: PAR1 = +0.8 pp margin (obligate control); chr9q/chr3q = +0.3 pp margin but heterozygous-donor structure; acrocentric = pattern-based (multi-source NAHR), margin not applicable | `submission/supporting_material/Fig5_margin_table.tsv`, `paper.tex` |
 | 13 | Methods de-meta-ified: the two emphatic paragraphs ("Inference rule", "Haplotype labelling") replaced by one neutral factual paragraph ("Chromosome-copy assignment"); all reviewer-facing reasoning moved out of the manuscript into `RESPONSE_LETTER_DRAFT.md` | `submission/paper.tex` |
 | 12 | Fig5C ribbon script relabelled (`SELF.p (PAN027 paternal)`, `DAD.h1/h2`) and the maternal/KID gen calls removed; **regeneration blocked here: inkscape is not installed** | `submission/scripts/figures/make_fig5_panels.sh` |
@@ -200,12 +202,9 @@ generic end-of-chromosome effect present in every sample."
 
 ## Pending
 
-1. **Fig5C regeneration** (blocked: needs `inkscape`, not installed on this machine) -
-   run `submission/scripts/figures/make_fig5_panels.sh`. Fig5B and Fig5D are done;
-   `Fig5A_pedigree.pdf` should still print the nickname/copy scheme.
-   Optional for Fig5B: split the y-axis so the 1.000 plateau and the 0.993 dip are
-   visually separated (measured: same-chromosome 1.000 outside / 0.9933 inside the
-   tract; chr3q 0.99988 / 0.99937).
+1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,
+   B zoom, C paternal ribbon, D pairwise). Run `bash compile.sh` and inspect the assembled
+   figure; optional for B is a split y-axis so the 1.000 plateau and the 0.993 dip separate.
 2. **Retire or supplement the D/E assets**: `Fig5D_maternal.png`,
    `Fig5E_pan028.png`, and the scripts that produce them
    (`submission/scripts/figures/make_fig5_panels.sh`, `make_fig5_zoom.R`,
