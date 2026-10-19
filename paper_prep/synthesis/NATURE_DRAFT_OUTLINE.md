@@ -175,7 +175,7 @@ Recommendation: keep option 1 — it is the PPTX title, both abstract drafts use
 ### P8: The flanking paradox, negative controls, and a meiotic-bouquet mechanism
 
 **Claim(s):**
-- Unique-sequence flanking regions (100 kb centromere-ward of PHR boundaries) show a **stronger** 3-D community signal than the duplicated PHRs themselves (HG002: PHR B/W 0.027 → flanking 0.0031; ≈ 9× stronger). Multi-mapping does **not** explain the within-community 3-D enrichment.
+- Unique-sequence flanking regions (100 kb centromere-ward of PHR boundaries) show a **stronger** 3-D community signal than the duplicated PHRs themselves (HG002: PHR B/W 0.027 → flanking 0.002 at the same 50 kb; ≈ 13.5× stronger; 10 kb 0.029 → 0.001, ≈ 29×). Multi-mapping does **not** explain the within-community 3-D enrichment.
 - The 7 zero-signal arms, pooled as the `S_all` pseudo-community, are systematically **farther** apart in 3-D (16/16 GM12878 + 20/20 sperm C-community cells have W/B < 1; 0/16 GM12878 and 1/20 sperm S_all cells do — S_all is 11 % / 40 % farther). Clean negative control.
 - Mechanism: telomeres are attached to the nuclear envelope by the MAJIN–TERB2–TERB1 complex; the meiotic bouquet pre-localises subtelomeres at zygotene, providing a structural basis for ectopic exchange between non-homologous chromosomes. D4Z4-CTCF–lamin tethering at chr4q/chr10q (Masny 2004; Ottaviani 2009) instantiates the loop at C1.
 

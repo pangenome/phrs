@@ -200,6 +200,30 @@ every sample and therefore say nothing patch-specific. Methods sentence candidat
 (the acrocentric subclass 1 of 459), and the remaining overlap in the ONT-based calls is a
 generic end-of-chromosome effect present in every sample."
 
+### D-PeerQ1 / D-PeerQ2 response drafted (subagent) + a number fix it surfaced
+
+`paper_prep/synthesis/RESPONSE_Q1_Q2_DRAFT.md` (subagent, reviewed):
+- Q1: the pipeline places each read pair at ONE position, so multi-mapping cannot spread
+  mass; placement error is symmetric with respect to community membership, so it adds noise
+  but no directional enrichment; falsification is the unique-sequence flanking control; the
+  a-fortiori argument (few engaged copies can dilute a signal but cannot manufacture one) is
+  included. Closure experiment correctly specified against the upstream `.allValidPairs`
+  stage, not the binned mcool (mcool carries no per-read MAPQ).
+- Q2: not softened. Framed as a Discussion hypothesis with direct precedent - Liang et al.,
+  Nature 619 (2023), doi:10.1038/s41586-023-06323-x, "Complementary Alu sequences mediate
+  enhancer-promoter selectivity" (repeat-derived RNA determining which enhancer contacts
+  which promoter), plus the aggregate-vs-sparse-participation argument.
+
+NUMBER FIX surfaced by the subagent's audit: the widely quoted "PHR B/W 0.027 -> flanking
+0.0031, 9x" pairs the 50 kb PHR value with the 100 kb flanking value. Report table
+`end-to-end-report/report/05_hic_validation.md` gives HG002 flanking B/W 0.001 (5/10/20 kb),
+0.002 (50 kb), 0.003 (100 kb), and PHR B/W 0.029 (5 kb), 0.029, 0.028, 0.028, 0.027 (50 kb),
+0.021 (100 kb). Resolution-consistent pairs:
+  10 kb: 0.029 -> 0.001 = 29x    50 kb: 0.027 -> 0.002 = 13.5x    100 kb: 0.021 -> 0.003 = 7x
+Corrected in: `RESPONSE_Q1_Q2_DRAFT.md`, `NATURE_DRAFT_v4.md`, `NATURE_DRAFT_v5.md`,
+`figures/fig3/caption.md`, `NATURE_DRAFT_OUTLINE.md`. Left as-is (historical): `NATURE_DRAFT_v2.md`
+(frozen revision) and `REVISION_LOG_v5.md` (log quoting the superseded wording).
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,

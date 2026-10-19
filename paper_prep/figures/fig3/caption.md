@@ -17,7 +17,7 @@ non-sharing arms): 16/16 GM12878 + 20/20 sperm C-cells have W/B < 1; 0/16 +
 (`community_enrichment_16cells_500kb_per_{cell,community_per_cell}.tsv`).
 (**d**) Flanking paradox — paired PHR-50 kb vs flanking-100 kb B/W; flanking
 is stronger though it has no duplicated sequence (HG002 Hi-C: PHR 0.027 →
-flanking 0.0031 ≈ 9×; `SURVEY_07 §1.2` reports 0.002 / 13× by alternate
+flanking 0.002 at the same 50 kb ≈ 13.5× (10 kb 0.029 vs 0.001 ≈ 29×; the previously quoted 0.0031 is the 100 kb flanking value and must not be paired with the 50 kb PHR value); `SURVEY_07 §1.2` reports 0.002 / 13× by alternate
 aggregation). Inset: GM12878 Dip-C flanking particles are more interior than
 non-flanking terminal (radial 0.504 vs 0.556; p = 1.6 × 10⁻³⁵;
 `PHR_III/dipc_flanking_radial.tsv`). HG002 CiFi flanking: NA.
