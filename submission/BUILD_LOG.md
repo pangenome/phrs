@@ -802,3 +802,12 @@ Date: 2026-10-19
 Adds Extended Data Fig. 3 (`fig:ed3`, asset
 `fig/ExtendedDataFigures/ED_Fig3_module_maps.pdf`) with its generator, sources and caption in
 `paper_prep/figures/ed3_module_maps/`, and references it from the Discussion.
+
+## Population structure restored (rev 16)
+
+Date: 2026-10-19
+
+`bash compile.sh` -> **exit 0**, `grep -c undefined paper.log` = **0**. Restores the
+population-differentiation analysis cut in the V7 pass: Results subsection "Communities carry
+ordinary continental population structure" and Methods "Population differentiation", with the
+matched genome-wide baseline comparison (ratios 0.72-1.44, all equivalent).

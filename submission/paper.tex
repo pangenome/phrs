@@ -253,6 +253,20 @@ underlying sequence-sharing communities and suggests that inter-chromosomal exch
 redistributes discrete blocks of gene content rather than homogenizing entire
 chromosome ends.
 
+\subsection*{Communities carry ordinary continental population structure}
+
+If the exchange compartment were a distinct population-genetic entity, cross-arm sequence
+sharing should show population differentiation unlike the rest of the genome. It does not.
+Hudson $F_{ST}$ between AFR and each non-African superpopulation computed on the
+community-restricted arms gives 0.10--0.15 (block-jackknife 95\% CI +0.02 to +0.24 across ten
+arm/community blocks), against matched genome-wide continental values of 0.07--0.15 for the same
+superpopulation labels and the same metric (ratios 0.72--1.44; AFR--EAS +0.153 versus +0.144;
+AFR--EUR +0.108 versus +0.150). Within non-Africa the values are near zero or slightly negative,
+as they are genome-wide. Subtelomeric sharing therefore carries the continental structure
+expected for these populations rather than a subtelomere-specific signature: the compartment is
+population-stratified like the rest of the genome, and exchange has not homogenised it across
+populations.
+
 \subsection*{Subtelomere similarity mirrors physical proximity}
 
 To explore the three-dimensional configuration of these regions, we measured inter-chromosomal contact at PHR coordinates in Hi-C, Pore-C and CiFi maps. These assays quantify contact frequency between genomic regions as a proxy for nuclear proximity. Across all of them, contact between subtelomeres increases with their PHR sequence similarity.
@@ -736,6 +750,21 @@ between-community pairs divided by the mean contact of within-community pairs
 control for multi-mapping we repeated the calculation on the 100 kb immediately
 centromere-ward of each PHR, outside the called PHR; these non-PHR flanks show
 the same within-community enrichment.
+
+\subsection*{Population differentiation}
+
+Hudson $F_{ST}$ was computed per arm and per superpopulation pair from the same allele
+frequencies used for the community analyses, restricted to the ten arm/community blocks that
+carry the signal, and summarised per pair with a block jackknife over arms (10 blocks) giving a
+95\% interval. Subtelomeric values were compared with matched genome-wide continental Hudson
+$F_{ST}$ for the same five superpopulation labels and the same metric (Bhatia et al.\ 2013,
+\emph{Genome Research} 23:1514, Table 1; Patterson et al.\ 2012, \emph{Genetics} 192:1065). The
+comparison is expressed as a difference and a ratio, and each pair is classified as equivalent,
+elevated or depressed with respect to the matched baseline
+(\texttt{scripts/popgen/matched\_fst\_d\_m6.py}). The baseline is the published genome-wide
+expectation for these labels rather than a cohort-internal window sample; sampling matched
+non-subtelomeric autosomal windows from the phased HPRC v2 VCF is the equivalent-length native
+control and is noted as the remaining step.
 
 \subsection*{Mouse pipeline}
 

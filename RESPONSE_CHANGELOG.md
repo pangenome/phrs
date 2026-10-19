@@ -353,6 +353,28 @@ Discussion. NOTE: the legacy `paper_prep/figures/ed3/` directory holds an unrela
 TAR1/telomere figure; it was accidentally overwritten during this work and restored from git
 before continuing, hence the separate directory.
 
+### Population-structure argument RESTORED (D-M6 addressed with a matched baseline)
+
+It had been cut from the submission body in the V7 pass (AGENTS.md: popgen/FST removed from body
+and Methods, "recover from git history if a reviewer asks"). D-M6 is that ask, and the analysis
+machinery already existed: `scripts/popogen/matched_fst_d_m6.py` runs from local files and
+compares subtelomeric Hudson F_ST with matched genome-wide continental values for the same five
+superpopulation labels and the same metric (Bhatia 2013 Table 1; Patterson 2012):
+
+| pair | subtelomeric F_ST (jk95) | matched genome-wide | ratio | verdict |
+|---|---|---|---|---|
+| AFR-AMR | +0.102 [+0.020,+0.184] | +0.071 | 1.44 | equivalent |
+| AFR-EAS | +0.153 [+0.063,+0.242] | +0.144 | 1.06 | equivalent |
+| AFR-EUR | +0.108 [-0.026,+0.242] | +0.150 | 0.72 | equivalent |
+| AFR-SAS | +0.103 [-0.003,+0.210] | +0.110 | 0.94 | equivalent |
+
+Non-AFR pairs are near zero or slightly negative, as genome-wide. Conclusion: subtelomeric
+sharing carries ordinary continental structure, not a subtelomere-specific signature - the
+compartment is population-stratified like the rest of the genome and exchange has not homogenised
+it across populations. Restored as Results subsection "Communities carry ordinary continental
+population structure" plus Methods "Population differentiation", with the remaining step stated
+(cohort-internal window-sampled control from the phased VCF). Build: rev 16, exit 0, 0 undefined.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,
