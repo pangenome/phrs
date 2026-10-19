@@ -6,7 +6,7 @@ pedigrees and across mammals.
 **(a)** WashU 3-generation T2T pedigree (Cechova et al. 2025): per-flank
 `odgi untangle` inter-chromosomal HQ patches for PAN027 mat ← PAN010, PAN027
 pat ← PAN011, PAN028 mat ← PAN027. Coloured by Leiden community of the query
-arm; **494/538 = 92 %** sit in a Leiden community
+arm; **494/538 = 92 %** sit in a Leiden community (arm-membership property; the 228 child-side calls that used the paternal chromosome copy still need re-calling on the per-chromosome maternal copy before this is presented as evidence of transmission)
 (`all_pedigrees_patches.tsv`).
 
 **(b)** CEPH1463 4-generation pedigree (Porubsky et al. 2025): **11**

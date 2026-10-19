@@ -69,6 +69,17 @@ Consequences:
   not automatically invalidated, but the 228 wrong-label calls must be re-run on the
   correct maternal copy before the count is reported as evidence of transmission.
 
+### Headline KID events rechecked on the correct maternal copy
+
+| claim (child-side) | on KID.p (what was queried) | on KID.m (correct copy) | verdict |
+|---|---|---|---|
+| 27,969 bp chr3q -> chr7p, "largest crossover-like event" | SELF chr7p 99.1-99.4% over 100% coverage; SELF chr3q 11-13% covered | **SELF.p.chr3q 99.94% over 100% coverage**; chr7p 96.6% over 88.9% | **retired** — PARTNER's chr3 carries a chr7p-derived segment; on the daughter's maternal copy the region is plain homolog transmission, chr7p losing by 3.3% |
+| 2,089 bp chr3q -> chr9q | (already retracted in rev 10) | SELF.p.chr3q 99.70% vs chr9q 99.44% | **retired** |
+| 8 label-correct crossover-like calls (chr13p -> chr15p/chr21p/chr22p, <=2.7 kb) | n/a (hap1 IS maternal on chr13) | same | **survive** as acrocentric p-arm sharing |
+
+The 27.97 kb case is the clean illustration of the whole defect: the same coordinates give
+opposite answers on the two copies, and only the maternal copy is interpretable.
+
 ## Pending
 
 1. **Rebuild Fig5B/Fig5C**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
