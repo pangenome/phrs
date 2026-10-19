@@ -1,0 +1,4 @@
+arm	partner	n_blocks	total_bp	same_fraction	largest_block_bp	largest_block_telomere_offset
+chr2_q	chr8_p	3832	41697399	0.425	50000	0.900
+chr8_p	chr1_p	2645	33917508	0.000	38338	0.171
+chr8_p	chr2_q	2817	28286375	0.084	36044	0.396

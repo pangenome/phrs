@@ -112,3 +112,35 @@ not of a fixed ancestral arrangement conserved as a unit.
 Caveat to keep: the order test is underpowered (56 same-community pairs) and the apparent
 effect is composition-driven, so we report order as *not conserved* rather than as
 *conserved within communities*.
+
+### Two more layers of the pattern
+
+**Block size.** For every arm/partner pair with >= 20 kb aligned (765 pairs), the individual
+shared blocks are longer when the partner is in the same community: median block 13.3 kb
+versus 9.9 kb, and the same-community pairs contain many more blocks per pair (median 1,919
+versus 318). Caveat: the block count is inflated by the number of sampled individuals
+contributing alignments, so the length difference is the interpretable part.
+
+**Inversion structure of the exceptions.** Only three arm pairs are net-inverted at the
+5 kb-block level (chr8p/chr1p, chr8p/chr2q, chr2q/chr8p). Each is built from thousands of
+small blocks - 2,645 to 3,832 per pair - with the largest single block only 36-50 kb. So the
+chr8p inversion is repeat-family architecture, not one large inverted segment: the arm ends
+share an inverted repeat repertoire rather than a single inverted duplication.
+
+**Module maps.** Cutting each arm end into 25 kb bins and labelling each bin with the partner
+arm contributing the most aligned bp gives a compact picture of the architecture; 26 of the 46
+arm ends receive enough inter-arm alignment to be tiled this way. The most frequent top
+partner arms are acrocentric (chr14p, chr22p), consistent with rDNA-bearing short arms being
+the most promiscuous module donors. Figure:
+`paper_prep/_brainstorming/module_map_architecture/module_map_architecture.pdf`.
+
+### Summary statement of the architecture
+
+> Subtelomeric arm ends share a common module repertoire. Those modules are inserted in a
+> consistent orientation relative to the telomere (98.6% of 9.6 Gbp of inter-arm alignment),
+> yet their order along the arm is not conserved - neither within nor between communities.
+> Community membership is predicted by which modules an arm end carries (repertoire Jaccard
+> 0.83 within versus 0.57 between, p = 5e-10) and by longer shared blocks (13.3 versus
+> 9.9 kb median), not by a conserved arrangement. The inverted exceptions are few and are
+> built from many small blocks, i.e. repeat-family rather than single-rearrangement
+> architecture.

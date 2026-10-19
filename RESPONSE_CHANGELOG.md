@@ -262,6 +262,21 @@ alignments; per-arm partner midpoint profiles; Spearman across shared partners):
   -0.28; n=25: -0.94 vs +0.37). Reported as "order not conserved".
 Combined with orientation (98.6% same): same parts, consistent orientation, arbitrary order.
 
+### Full architectural pattern completed
+
+`scripts/cladistics/arm_module_architecture.py` (+ tiling/blocks/inversions TSVs) and
+`submission/scripts/figures/make_module_map_architecture.R` (module-map figure, 26 arms tiled):
+- BLOCK SIZE: same-community partners have longer shared blocks (median 13.3 kb vs 9.9 kb) and
+  more blocks per pair (1,919 vs 318 median; count confounded by sampled individuals).
+- INVERSIONS: only 3 net-inverted pairs (chr8p/chr1p, chr8p/chr2q, chr2q/chr8p), each built
+  from 2,645-3,832 small blocks with largest block 36-50 kb -> repeat-family inversion, not a
+  single large inverted segment.
+- MODULE MAPS: 25 kb bin tiling; the most frequent top partners are acrocentric (chr14p,
+  chr22p), consistent with rDNA short arms as the most promiscuous module donors.
+Architecture summary: same module repertoire, consistent telomere-relative orientation
+(98.6%), arbitrary order; community membership predicted by repertoire (Jaccard 0.83 vs 0.57,
+p=5e-10) and block length, not arrangement.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,
