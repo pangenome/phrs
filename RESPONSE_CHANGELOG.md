@@ -33,6 +33,7 @@ PARTNER=KID's father, unsampled).
 | 8 | Evidence record with all numbers, retractions and revisions rev 1-12 | `REVIEWS.txt` |
 | 9 | Canonical naming + per-chromosome maternal table | `PEDIGREE_NAMING.md` |
 | 11 | **Fig5B regenerated** with the naming convention: axis `SELF.p.chr9q position (Mb)`, series `DAD.h2.chr3q (source)` and `DAD.h2.chr9q (drifted copy)`, tract shaded 20 kb; the retired KID 21p/4p panel removed from the script | `submission/fig/MainFigures/Fig5B_zoom9q3q.{pdf,png}`, `submission/scripts/figures/make_fig5_zoom.R` |
+| 14 | Margin/support table written and a Methods paragraph added: PAR1 = +0.8 pp margin (obligate control); chr9q/chr3q = +0.3 pp margin but heterozygous-donor structure; acrocentric = pattern-based (multi-source NAHR), margin not applicable | `submission/supporting_material/Fig5_margin_table.tsv`, `paper.tex` |
 | 13 | Methods de-meta-ified: the two emphatic paragraphs ("Inference rule", "Haplotype labelling") replaced by one neutral factual paragraph ("Chromosome-copy assignment"); all reviewer-facing reasoning moved out of the manuscript into `RESPONSE_LETTER_DRAFT.md` | `submission/paper.tex` |
 | 12 | Fig5C ribbon script relabelled (`SELF.p (PAN027 paternal)`, `DAD.h1/h2`) and the maternal/KID gen calls removed; **regeneration blocked here: inkscape is not installed** | `submission/scripts/figures/make_fig5_panels.sh` |
 | 10 | New **Fig5D** pairwise-alignment panel built and added to the figure block + caption; asset, box coordinates and generator script committed | `submission/fig/MainFigures/Fig5D_pairwise_9q3q.{pdf,png}`, `Fig5D_highlights.tsv`, `submission/scripts/figures/make_fig5d_pairwise.sh` |
@@ -222,7 +223,8 @@ generic end-of-chromosome effect present in every sample."
    status is explicit.
 5. **Margin table**: per-event identity margin + alternative-haplotype exclusion for
    every retained call, for Methods/supplement.
-6. **Build verification**: LaTeX is not installed on this machine; `paper.tex` changes
+6. **flagger citation** missing from `bibliography.bib` (mentioned by name only) - add the reference.
+7. **Build verification**: LaTeX is not installed on this machine; `paper.tex` changes
    are unverified by compilation. Run `bash compile.sh` on a machine with
    pdflatex+bibtex and check `grep -c undefined paper.log`.
 7. **Discussion/abstract audit** for "recurrent exchange" phrasing that implies
