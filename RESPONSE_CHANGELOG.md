@@ -251,6 +251,17 @@ paralog copy was hit, not arm-end orientation, so the call is retracted. P-Q ori
 undefined at 100 kb arm-end scale; it needs 1 Mb arm ends with offset-aware block selection.
 The arm-type composition result (P-Q depleted p=0.005; C6 all-Q, C7 all-P) is unaffected.
 
+### Module-order analysis: the architecture is 'same parts, consistent orientation, arbitrary order'
+
+`scripts/cladistics/arm_module_order.py` + `arm_module_order.tsv` (HPRCv2 all-vs-all flank
+alignments; per-arm partner midpoint profiles; Spearman across shared partners):
+- repertoire Jaccard same-community 0.828 vs different 0.571 (p = 4.7e-10) - communities share
+  module content;
+- order concordance same-community +0.209 vs different +0.018 (p = 0.02) but **NOT robust**:
+  stratified by number of shared partners the advantage vanishes and reverses (n=24: -0.27 vs
+  -0.28; n=25: -0.94 vs +0.37). Reported as "order not conserved".
+Combined with orientation (98.6% same): same parts, consistent orientation, arbitrary order.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,

@@ -89,3 +89,26 @@ Scripts: `scripts/cladistics/arm_module_orientation.py` (the result above, write
 
 Table: `scripts/cladistics/peerq3_arm_type_asymmetry.tsv`; script:
 `scripts/cladistics/peerq3_arm_type_asymmetry.py`.
+
+## The architectural pattern, in three layers
+
+Combining the orientation result above with module content and module order gives a layered
+description of what a "community" is, and it is worth stating in the paper rather than only
+in the response.
+
+| layer | how measured | result |
+|---|---|---|
+| **orientation relative to telomere** | per-block strand, telomere-first, homolog pairs excluded | **98.6% of 9.6 Gbp same** across all 764 arm pairs; median pair 100%; only 7/764 below 90% |
+| **module repertoire** (which partners are present) | Jaccard of per-arm partner sets, >=5 kb each | same-community **0.828** vs different-community 0.571 (Mann-Whitney p = 4.7e-10) |
+| **module order** (rank of shared partners along the arm) | Spearman across shared partners | same-community +0.209 vs different +0.018 (p = 0.02) but **not robust**: stratifying by the number of shared partners, the same-community advantage disappears and reverses at n=24-25 |
+
+So the architecture is: **same parts, consistent orientation, arbitrary order.** Communities
+share a module repertoire and every arm end inserts its modules in the same telomere-to-
+centromere direction, but the sequence in which those modules are laid out is labile both
+within and between communities. That is the signature of repeated duplication and
+orientation-biased conversion acting on a shared module set, with rearrangement afterwards -
+not of a fixed ancestral arrangement conserved as a unit.
+
+Caveat to keep: the order test is underpowered (56 same-community pairs) and the apparent
+effect is composition-driven, so we report order as *not conserved* rather than as
+*conserved within communities*.
