@@ -43,10 +43,28 @@ type, and cross-type mixing is confined to two specific communities. That is a m
 statement about how subtelomeric sequence identity is distributed among chromosome ends
 rather than about how the clustering was drawn.
 
-**Not yet done.** The concern also raises P-to-Q pairs at *opposite orientation*. Jaccard
-distance is orientation-free, so strand information must come from the underlying arm-arm
-alignment table (per-pair mapping orientation) rather than from the distance matrix. That
-is a separate pull of the alignment tables and is the remaining piece of this concern.
+**Orientation: done, and the premise does not hold as a general rule.** Jaccard distance is
+orientation-free, so orientation was measured directly: one 100 kb CHM13 arm end per arm,
+aligned all-vs-all with FastGA (`-f8192 -s200 -c70 -i0.6`), strand taken from the PAF and
+converted to telomere-first orientation (flanks are stored in forward chromosome
+coordinates: for P-Q pairs strand '-' is the same telomere-first orientation, for same-type
+pairs strand '+' is; 100 kb BWA-scan of the same arms confirms the P-Q pairs are also absent
+from the high-stringency all-sample alignment table - see note).
+
+| pair class | alignable (>=1 kb) | same orientation | opposite |
+|---|---|---|---|
+| P-Q within-community | **8 of 17** | **6** | **2** |
+| same-type within-community | 21 | 12 | 9 |
+
+So most alignable P-Q pairs are in the *same* orientation, and half of the within-community
+P-Q pairs do not align at this scale at all - their similarity in the arm matrix is
+k-mer/repeat level, which carries no orientation. The two opposite-orientation pairs are
+chr11p/chr16q (100% opposite) and **chr1p/chr5q (74% opposite)**; the latter is the C11 pair
+whose inter-chromosomal relationship we examine in the pedigree section, so the inverted
+arrangement is a property of that specific pair rather than of P-Q relationships generally.
+
+Table: `scripts/cladistics/peerq3_orientation.tsv`; script:
+`scripts/cladistics/peerq3_orientation.py`.
 
 Table: `scripts/cladistics/peerq3_arm_type_asymmetry.tsv`; script:
 `scripts/cladistics/peerq3_arm_type_asymmetry.py`.

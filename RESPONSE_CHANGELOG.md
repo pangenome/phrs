@@ -233,8 +233,12 @@ P-P 19 (exp 14.8, p=0.148), Q-Q 22 (exp 13.5, **p=0.019**), P-Q 17 (exp 29.7,
 Two communities are arm-type pure: **C6 all Q-Q (15 pairs, zero P-Q, p=0.021)** and
 **C7 all P-P (10 pairs, zero P-Q, p=0.048)**; mixing is confined to C3 and C11; C1
 (4q/10q) is Q-Q and C2 (10p/18p) P-P as the concern anticipated.
-Remaining piece: P-Q at **opposite orientation** needs strand information from the arm-arm
-alignment table (Jaccard distance is orientation-free).
+Orientation half done (`scripts/cladistics/peerq3_orientation.py`): CHM13 100 kb arm ends,
+sensitive all-vs-all, strand converted to telomere-first. **8 of 17 P-Q pairs align >=1 kb,
+6 same orientation and 2 opposite**; same-type pairs 21 alignable, 12 same / 9 opposite. So
+opposite orientation is NOT a general property of P-Q pairs: it holds for chr11p/chr16q
+(100%) and **chr1p/chr5q (74%)** - the C11 pair we study in the pedigree - while the other
+half of the P-Q pairs are k-mer-level only and carry no orientation.
 
 ## Pending
 
