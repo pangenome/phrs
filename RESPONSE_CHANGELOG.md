@@ -145,6 +145,36 @@ Caveat to keep: acrocentric short arms are the most error-prone regions, so the
 cross-assembler (hifiasm + verkko) filter in CEPH1463 remains the right guard, alongside
 the pangenome-scale acrocentric communities (C15, C7) as population support.
 
+### Discussion bullet candidate: sex-specific germline architecture (with the literature numbers)
+
+Observation in our data (SELF-side, labels verified): maternal transmission 162/167
+acrocentric-acrocentric; paternal transmission carries PAR1 plus the one chr3q/chr9q
+subtelomeric exchange, with 19 non-acrocentric patches vs 5 on the maternal side.
+
+Literature, with the case counts so the claim is proportionate:
+- De novo Robertsonian translocations form mostly during **oogenesis**; the parental-origin
+  and timing analysis of de novo ROBs (Bandyopadhyay et al., AJHG 2002;71:1456-1462)
+  reports a maternal-origin predominance, with the common rob(13;14) and rob(14;21)
+  among the characterised cases - a cohort of ~30 de novo ROBs, i.e. small.
+- Reciprocally, **de novo reciprocal translocations** arise predominantly in
+  spermatogenesis (Hoeckner et al., Cytogenet Genome Res 2012;136:242-245).
+- Large compendia give the population-scale context: the collaborative European
+  series covers **52,965 amniocenteses** (Ferguson-Smith & Yates, Prenat Diagn
+  1984;4:5-45) and establishes the maternal-age dependence of acrocentric
+  rearrangements; Kovaleva's compendium of ROB carriers with known parental origin
+  reports 37 maternal vs 30 paternal (67 carriers, female-biased carrier sex ratio
+  0.64), so across all carriers the origin ratio is close to parity even though the
+  *de novo* class is oogenic.
+- Acrocentric short arms are the most error-prone regions of the assembly, so the
+  claim should be phrased as an observation in these data plus cross-assembler support
+  (hifiasm + verkko in CEPH1463), not as a definitive rate.
+
+Suggested Discussion sentence: "In this pedigree the asymmetry is sex-specific: the
+paternal transmission carries the obligate Xp/Yp exchange and a single subtelomeric
+ectopic exchange, whereas the maternal transmission carries acrocentric-acrocentric
+exchange - consistent with de novo Robertsonian translocations arising predominantly
+during oogenesis and with the telomere bias of male meiotic recombination."
+
 ## Pending
 
 1. **Rebuild Fig5B/Fig5C**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
