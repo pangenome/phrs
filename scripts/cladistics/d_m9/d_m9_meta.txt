@@ -1,0 +1,11 @@
+d-m9 character bootstrap: B = 1000 (target 1000)
+  valid replicates       : 1000
+  bootstrap runtime      : 133.9 s
+  total runtime (incl I/O): 161.4 s
+  seed                   : 20260518
+  PHR table              : /moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.p95.id95.len.tsv
+  PHR rows used (signal) : 15088
+  arms                   : 41 (from data/hprcv2.1Mb.subtelo.arm_dist_matrix.tsv)
+  Spearman(D_full,D_ref) : 0.312 (off-diagonal)
+
+Per-named-clade support (this analysis vs v5 sensitivity):

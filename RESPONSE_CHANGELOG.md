@@ -277,6 +277,28 @@ Architecture summary: same module repertoire, consistent telomere-relative orien
 (98.6%), arbitrary order; community membership predicted by repertoire (Jaccard 0.83 vs 0.57,
 p=5e-10) and block length, not arrangement.
 
+### Statistical controls and bibliography closed (D-M4, D-M5, D-M9, D-M12, D-Bib, D-PeerQ2b)
+
+See `RESPONSE_STATS_AND_BIB.md` for the letter text. Summary of what was actually run:
+- **D-M4 CLOSED**: 10,000-permutation null preserving per-arm marginals. Published 469/538 =
+  0.872 vs null 0.677 [0.664-0.693]; corrected 293/310 = 0.945 vs null 0.840 [0.832-0.852];
+  both at the 100th percentile, p < 1e-4. `ANALYSIS_D_M4.json`.
+- **D-M5 CLOSED**: arm-level Mantel replaces the non-independent per-pair Spearman.
+  `scripts/hic/mantel_mouse_d_m5.py`: leptotene +0.41/+0.29, zygotene +0.58/+0.34,
+  pachytene +0.63/+0.31, diplotene +0.33/+0.30 (20 kb/50 kb), all p < 1e-4, null 95% +-0.11.
+- **D-M9 DONE and consequential**: character bootstrap B=1000 (`char_bootstrap_d_m9.R`).
+  PAR1 100%, PAR2 100%, P10_18 100%, ACRO_p 54.4% NJ / 87.8% UPGMA; **TIGHT_q and DUX4 are
+  not monophyletic in the full tree** (0% by construction) - the old 100% "sensitivity"
+  number measured partition recovery, not clade monophyly. Manuscript wording for those two
+  groups must be community assignment, not tree support.
+- **D-M12 CLOSED**: CIs in `scripts/ci/results_d_m12.json` for pedigree fraction (published and
+  corrected), F_ST jackknife, Mantel bootstrap, and the new mouse arm-level Mantel.
+- **D-Bib CLOSED**: Vollger2023 is a *different* paper (Science 376:eabj6965) from
+  concerted_evolution_nahr_Vollger2023 (Nature 617:325); Smith1976 already present; Cech2004
+  added to the synthesis bib (already in the submission bib as cech2004chromosomeend).
+- **D-PeerQ2b**: roadmap statement with the required analysis and the numbers that would
+  settle it; no analysis this round.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,

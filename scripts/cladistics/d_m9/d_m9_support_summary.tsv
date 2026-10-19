@@ -1,0 +1,7 @@
+clade	members	monophyletic_NJ_full	monophyletic_UP_full	NJ_char_bootstrap_pct	UP_char_bootstrap_pct	v5_sensitivity_pct
+PAR1	chrX_p,chrY_p	TRUE	TRUE	100	100	100
+PAR2	chrX_q,chrY_q	TRUE	TRUE	100	99.9	100
+ACRO_p	chr13_p,chr14_p,chr15_p,chr21_p,chr22_p	TRUE	TRUE	54.4	87.8	100
+P10_18	chr10_p,chr18_p	TRUE	TRUE	100	100	100
+TIGHT_q	chr22_q,chr21_q,chr19_q,chr1_q,chr13_q,chr17_q	FALSE	FALSE	0	0	100
+DUX4	chr4_q,chr10_q	FALSE	FALSE	0	0	100

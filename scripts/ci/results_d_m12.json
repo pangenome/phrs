@@ -248,5 +248,159 @@
     "ci_lo": 0.6590880917598494,
     "ci_hi": 0.763051605539704,
     "caveat": "non-independent pairs; D-M5 arm-level Mantel CI is preferred"
+  },
+  "pedigree_wilson_corrected": {
+    "k": 293,
+    "n": 310,
+    "phat": 0.9452,
+    "ci95": [
+      0.9139,
+      0.9655
+    ],
+    "method": "Wilson score"
+  },
+  "pedigree_wilson_script_defn": {
+    "k": 469,
+    "n": 538,
+    "phat": 0.8717,
+    "ci95": [
+      0.8408,
+      0.8974
+    ],
+    "method": "Wilson score"
+  },
+  "d_m5_mouse_arm_mantel": {
+    "leptotene_20kb": {
+      "rho": 0.4074,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": 0.0004,
+      "ci95": [
+        -0.1074,
+        0.1059
+      ],
+      "n_arm_pairs": 344
+    },
+    "leptotene_50kb": {
+      "rho": 0.2882,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": -0.0009,
+      "ci95": [
+        -0.1058,
+        0.1048
+      ],
+      "n_arm_pairs": 344
+    },
+    "zygotene_20kb": {
+      "rho": 0.5785,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": -0.0005,
+      "ci95": [
+        -0.1075,
+        0.1067
+      ],
+      "n_arm_pairs": 344
+    },
+    "zygotene_50kb": {
+      "rho": 0.3369,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": -0.0002,
+      "ci95": [
+        -0.105,
+        0.1052
+      ],
+      "n_arm_pairs": 344
+    },
+    "pachytene_20kb": {
+      "rho": 0.6259,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": 0.001,
+      "ci95": [
+        -0.1047,
+        0.1064
+      ],
+      "n_arm_pairs": 344
+    },
+    "pachytene_50kb": {
+      "rho": 0.313,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": -0.0007,
+      "ci95": [
+        -0.1029,
+        0.1034
+      ],
+      "n_arm_pairs": 344
+    },
+    "diplotene_20kb": {
+      "rho": 0.3282,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": 0.0,
+      "ci95": [
+        -0.1048,
+        0.1067
+      ],
+      "n_arm_pairs": 344
+    },
+    "diplotene_50kb": {
+      "rho": 0.3043,
+      "p_perm": 9.999000099990002e-05,
+      "null_mean": 0.0007,
+      "ci95": [
+        -0.1094,
+        0.1084
+      ],
+      "n_arm_pairs": 319
+    }
+  },
+  "d_m4_null": {
+    "published_469_of_538": {
+      "obs": 0.8717,
+      "null_mean": 0.6772,
+      "null_ci95": [
+        0.6636,
+        0.6933
+      ],
+      "p_enrichment": "<1e-4"
+    },
+    "corrected_293_of_310": {
+      "obs": 0.9452,
+      "null_mean": 0.8396,
+      "null_ci95": [
+        0.8323,
+        0.8516
+      ],
+      "p_enrichment": "<1e-4"
+    }
+  },
+  "d_m9_char_bootstrap": {
+    "B": 1000,
+    "clades": {
+      "PAR1": {
+        "NJ": 100.0,
+        "UPGMA": 100.0
+      },
+      "PAR2": {
+        "NJ": 100.0,
+        "UPGMA": 99.9
+      },
+      "P10_18": {
+        "NJ": 100.0,
+        "UPGMA": 100.0
+      },
+      "ACRO_p": {
+        "NJ": 54.4,
+        "UPGMA": 87.8
+      },
+      "TIGHT_q": {
+        "NJ": 0.0,
+        "UPGMA": 0.0,
+        "monophyletic_full_tree": false
+      },
+      "DUX4": {
+        "NJ": 0.0,
+        "UPGMA": 0.0,
+        "monophyletic_full_tree": false
+      }
+    },
+    "note": "TIGHT_q and DUX4 are not monophyletic in the reference NJ/UPGMA tree, so their clade support is 0 by construction; the earlier 'sensitivity' figure measured partition recovery, not clade monophyly."
   }
 }
