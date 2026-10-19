@@ -117,6 +117,34 @@ genome or longer flank windows; the recheck uses rank-1 logic plus telomere-anch
 mapping rather than a re-run of the upstream merge pipeline, so the definitive numbers
 should come from re-running that pipeline with the per-chromosome copy selection.
 
+### The dichotomy that survives (sex-specific germline architecture)
+
+SELF-side patches, split by transmitting parent (labels verified, so these are supported):
+
+| transmission | patches | acro<->acro | non-acrocentric |
+|---|---|---|---|
+| SELF.m <- MOM | 167 | **162 (97%)** | 5 (2.0-4.2 kb gene-conversion/sandwich-like) |
+| SELF.p <- DAD | 61 | 42 | **19** |
+
+The 19 paternal non-acrocentric calls contain exactly the two well-characterised cases:
+chrXp->chrYp (PAR1, obligate) and chr3q->chr9q 3,414 bp crossover_like (the event), plus
+small gene-conversion-like calls and chr9q->chr15q/16q. The 5 maternal non-acrocentric
+calls are 2-4 kb gene-conversion/sandwich-like, including the same chr3q->chr9q pair we
+showed to be base-level ties.
+
+So the pedigree reads as: **paternal line = obligate PAR1 exchange plus one subtelomeric
+ectopic exchange; maternal line = acrocentric-acrocentric exchange** - and nothing else.
+This matches prior expectations in two independent ways: male meiotic recombination is
+telomere-biased, and Robertsonian translocations are overwhelmingly of maternal origin,
+i.e. ectopic recombination between acrocentric short arms arises preferentially in the
+female germline. The acrocentric signature is also the majority of the maternal calls
+(162), not a single lucky event, and recurrent rDNA NAHR is by nature repeated rather
+than one-off, so a single pedigree is a weak constraint here.
+
+Caveat to keep: acrocentric short arms are the most error-prone regions, so the
+cross-assembler (hifiasm + verkko) filter in CEPH1463 remains the right guard, alongside
+the pangenome-scale acrocentric communities (C15, C7) as population support.
+
 ## Pending
 
 1. **Rebuild Fig5B/Fig5C**: `Fig5B_zoom9q3q.pdf` and `Fig5C_paternal.png` need
