@@ -233,7 +233,17 @@ P-P 19 (exp 14.8, p=0.148), Q-Q 22 (exp 13.5, **p=0.019**), P-Q 17 (exp 29.7,
 Two communities are arm-type pure: **C6 all Q-Q (15 pairs, zero P-Q, p=0.021)** and
 **C7 all P-P (10 pairs, zero P-Q, p=0.048)**; mixing is confined to C3 and C11; C1
 (4q/10q) is Q-Q and C2 (10p/18p) P-P as the concern anticipated.
-Orientation half: **WITHDRAWN as measured.** The first pass (CHM13 100 kb arm ends,
+Orientation half: **resolved at the correct scale.** Using the HPRCv2 all-vs-all flank
+alignments (`all-vs-all.1Mb.p95`, 46 CHM13 arm-end PAFs), blocks >=5 kb, homolog-vs-homolog
+excluded: **98.6% of 9.6 Gbp of inter-arm aligned sequence is in the same telomere-relative
+orientation** (764 arm pairs; P-P 97.8%, Q-Q 100.0%, P-Q 98.4%); per-pair MEDIAN is 100% and
+only 7/764 pairs are below 90%. Modules are reassorted in order but inserted in a consistent
+telomere-to-centromere orientation. Exceptions are known inverted-repeat regions: chr8p vs
+chr1p 0.0%, chr8p vs chr2q 5.7%. Direct-repeat bias is what gene conversion/NAHR predicts
+(inverted-repeat exchange gives dicentrics and is selected against).
+Script `scripts/cladistics/arm_module_orientation.py`, table `arm_module_orientation.tsv`.
+
+Superseded: the earlier 100 kb-window pass (WITHDRAWN). The first pass (CHM13 100 kb arm ends,
 sensitive all-vs-all) gave 8/17 P-Q pairs alignable, 6 same / 2 opposite, but every such
 alignment is a 300-2,000 bp scattered repeat match at 78-95% identity and **none is
 telomere-offset matched** (0 of 42 alignments). Strand on a scattered repeat reflects which

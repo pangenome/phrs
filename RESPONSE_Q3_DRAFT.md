@@ -43,28 +43,49 @@ type, and cross-type mixing is confined to two specific communities. That is a m
 statement about how subtelomeric sequence identity is distributed among chromosome ends
 rather than about how the clustering was drawn.
 
-**Orientation: not answerable at this scale - and the first attempt was withdrawn.** Jaccard
-distance is orientation-free, so we measured strand directly (one 100 kb CHM13 arm end per
-arm, all-vs-all with FastGA `-f8192 -s200 -c70 -i0.6`, converted to telomere-first
-orientation). The result was initially tabulated as 8 of 17 P-Q pairs alignable with 6 same
-and 2 opposite, but that tabulation is withdrawn: on inspection every one of those alignments
-is a short (300-2,000 bp, 78-95% identity) scattered repeat match, and **none** is
-telomere-offset matched - 0 of 42 P-Q alignments, 0 bp, have the two arms at the same
-distance from their telomere. Strand on a scattered repeat match says something about which
-paralog copy happened to be hit, not about how two chromosome ends are oriented.
+**Orientation: measured at the scale that answers it, and the answer is 'same, almost
+always'.** The right data are the HPRCv2 all-vs-all alignments of the telomeric 500 kb flanks
+(`all-vs-all.1Mb.p95`, one PAF per CHM13 flank, 46 arm ends). Orientation is scored per
+alignment block - no colinearity or offset matching required, because the question is about
+the modules, not about whole-arm colinearity - with flanks re-oriented telomere-first
+(p-arm telomere at low coordinate, q-arm telomere at high, so strand '+' means same
+orientation for P-P and Q-Q pairs and strand '-' for P-Q pairs). Homolog-vs-homolog pairs are
+excluded, since they are trivially same-orientation.
 
-So the correct statement is narrower than the concern assumes: at 100 kb arm-end scale, the
-similarity between P and Q arms is dispersed repeat matching with no colinear block, so P-Q
-orientation is undefined at that scale. Answering "P-Q at opposite orientation" needs full
-1 Mb arm ends (the scale at which the arm-level Jaccard matrix was computed) and an
-offset-aware block selection, which is a separate analysis. What is established for Q3 is the
-arm-type composition result above, which does not depend on orientation.
+Blocks of >= 5 kb, pairs with >= 20 kb aligned, 764 arm pairs, 9.6 Gbp:
 
-Previous tabulation retained for the record in `scripts/cladistics/peerq3_orientation.tsv`
-with a header note that it is repeat-level and must not be read as arm-end orientation.
+| pair type | arm pairs | same telomere-relative orientation |
+|---|---|---|
+| all | 764 | **98.6%** |
+| P-P | 152 | 97.8% |
+| Q-Q | 228 | **100.0%** |
+| P-Q | 384 | 98.4% |
 
-Tooling: `scripts/cladistics/peerq3_orientation.py` (writes the repeat-level table; the
-offset-matched extension is the missing piece).
+The per-pair distribution is not an average over a mixed bag: the **median pair is 100%**
+same-orientation, the 10th percentile is also 100%, and only 7 of 764 pairs fall below 90%.
+So the shared modules are reassorted in ORDER but are inserted in a consistent
+telomere-to-centromere orientation wherever they land, including between p and q arms, whose
+coordinate systems run in opposite directions.
+
+The exceptions are informative rather than noise - they are the known inverted-repeat
+regions: chr8p versus chr1p (0.0% same, 31.8 Mb) and versus chr2q (5.7%), with chr4q/chr14p
+and chr20p/chr10q the only other pairs below 90%. The classical direct-repeat pairs are
+100% same-orientation: chr4q/chr10q, chr10p/chr18p, chr15p/chr21p, and chr1p/chr5q.
+
+**Mechanistic reading.** A direct (same-orientation) bias is what repeat-mediated exchange
+predicts: gene conversion and NAHR are strongly biased toward direct repeats, while exchange
+between inverted repeats yields dicentric products and is selected against. Order-scrambled
+but orientation-consistent modules are therefore the expected signature of repeated
+duplication plus conversion in these regions, not of arbitrary reshuffling.
+
+An earlier pass on 100 kb single windows produced a differently-signed answer; that pass was
+unreliable (all P-Q alignments there were 300-2,000 bp scattered repeat matches, none
+telomere-offset matched at the arm-flank scale) and is retained only as a cautionary note in
+`peerq3_orientation.tsv`.
+
+Scripts: `scripts/cladistics/arm_module_orientation.py` (the result above, writes
+`arm_module_orientation.tsv`) and `scripts/cladistics/peerq3_orientation.py` (the superseded
+100 kb pass, retained with a warning header).
 
 Table: `scripts/cladistics/peerq3_arm_type_asymmetry.tsv`; script:
 `scripts/cladistics/peerq3_arm_type_asymmetry.py`.
