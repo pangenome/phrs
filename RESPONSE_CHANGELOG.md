@@ -178,6 +178,25 @@ ectopic exchange, whereas the maternal transmission carries acrocentric-acrocent
 exchange - consistent with de novo Robertsonian translocations arising predominantly
 during oogenesis and with the telomere bias of male meiotic recombination."
 
+### Acrocentric caveat — the numbers for Methods
+
+Joining all 538 WashU patches (chromosomal coordinates via the flank map) to the
+**HiFi** flagger calls on the matching contig, at the patch interval:
+
+| query class | patches | flagger overlap | rate |
+|---|---|---|---|
+| acrocentric | 459 | 1 | **0.2%** |
+| non-acrocentric | 79 | 0 | 0.0% |
+| all | 538 | 1 | 0.2% (1.55 Mb acrocentric + 0.46 Mb non-acrocentric clean) |
+
+So at HiFi resolution the patch intervals are essentially untouched by flagger, including
+the acrocentric ones (1/459). The earlier "66/538 touch problematic regions" figure came
+from the ONT-based calls, which mark the terminal tens of kb of every chromosome end in
+every sample and therefore say nothing patch-specific. Methods sentence candidate:
+"Patches were checked against the HiFi-based flagger calls: 1 of 538 overlaps such a call
+(the acrocentric subclass 1 of 459), and the remaining overlap in the ONT-based calls is a
+generic end-of-chromosome effect present in every sample."
+
 ## Pending
 
 1. **Fig5C regeneration** (blocked: needs `inkscape`, not installed on this machine) -
