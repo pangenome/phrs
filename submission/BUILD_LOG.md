@@ -746,3 +746,30 @@ ls -lh paper.pdf  # -> 4.3M, 27 pages
 
 PASS -- manuscript compiles with the pedigree table cited only as repository
 supporting material.
+
+## Pedigree corrections rebuild (rev 12)
+
+Date: 2026-10-19
+
+`bash compile.sh` → **exit 0**, `grep -c undefined paper.log` = **0**, `paper.pdf`
+2.84 MB. Built after the pedigree-section corrections (single ectopic event, chr1p/chr5q
+as ancestral homology, child-side panels retired) and the Fig5 rebuild (A pedigree with
+DAD/MOM/SELF/KID, B zoom with `SELF.p`/`DAD.h2`, C paternal ribbon, D pairwise panel).
+
+Toolchain on this host (no `pdflatex` on PATH, no guix daemon, so the store trees are
+used directly):
+
+```bash
+export PATH=/gnu/store/4n9lsfxfv8cx5d2fmjw830n4v32mwxaz-texlive-union-51265/bin:$PATH
+T=/gnu/store/z643xhn7py31m6i3hg6zqigf6nnsh6y3-texlive-texmf-20210325/share/texmf-dist
+U=/gnu/store/4n9lsfxfv8cx5d2fmjw830n4v32mwxaz-texlive-union-51265/share/texmf-dist
+export TEXINPUTS="$T/tex//:$U/tex//:"
+export TEXFONTS="$T/fonts/tfm//:$T/fonts/type1//:$T/fonts/afm//:$U/fonts/tfm//:$U/fonts/type1//:"
+export TEXFONTMAPS="$T/fonts/map/dvips//:$T/fonts/map/pdftex//:$U/fonts/map/dvips//:$U/fonts/map/pdftex//:"
+bash compile.sh
+```
+
+`multirow.sty` and `eurm10.tfm` live in the 20210325 texmf tree; the union tree provides
+the rest. Setting `TEXMF` alone does not work because `TEXMFDBS` in the union's
+`texmf.cnf` is restricted to `!!` union paths, so `TEXINPUTS`/`TEXFONTS`/`TEXFONTMAPS` are
+set explicitly instead.
