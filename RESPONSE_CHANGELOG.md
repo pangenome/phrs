@@ -386,6 +386,19 @@ differentiation does NOT track sequence sharing (r = +0.07 between block-mean wi
 Jaccard distance and AFR F_ST, n=10), so this is heterogeneity, not a gradient set by exchange
 intensity. Added to the Results subsection; build rev 17, exit 0, 0 undefined.
 
+### Q1 reframed: MAPQ-strict is not a valid control (theory stated)
+
+MAPQ measures sequence discriminability, not read reliability: inside a paralogous region it is
+zero *because* copies are indistinguishable, so MAPQ-strict filtering deletes the windows under
+test rather than cleaning them. The distortion is also directional and bounded: uniform placement
+among k equally-scoring loci attenuates a specific contact by ~1/k per end (~1/k^2 PHR-PHR),
+symmetrically across community classes, so misplacement predicts WEAKER enrichment in duplicated
+windows and makes PHR-window enrichment a lower bound. Observed direction matches dilution:
+B/W 0.027 in PHR windows vs 0.002 in unique flanks (enrichment strongest where multi-mapping is
+impossible); the artefact hypothesis predicts the reverse. The letter no longer promises a
+MAPQ-strict re-run; instead it specifies placement-seed stability (placement is random, so repeat
+the draw) and orthogonal assays (ChIA-PET/Micro-C) as the controls that bear on the question.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,

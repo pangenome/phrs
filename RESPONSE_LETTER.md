@@ -42,11 +42,26 @@ paralogous sequence is removed (10 kb: 0.029 vs 0.001, 29-fold).
 
 There is also an a-fortiori argument. A PHR contains many near-identical copies but only a few
 can be physically engaged in any given contact; sparse participation can *dilute* a signal, it
-cannot *manufacture* one, and only the latter would rescue the artefact hypothesis. For closure
-we have added the MAPQ-strict re-derivation as a specified experiment: contact matrices
-re-derived from the upstream pair files behind the existing mcool objects with MAPQ0 pairs
-dropped, reporting the strict-versus-random placement ratio (mcool alone cannot support this
-filter, because it is post-binning and carries no per-read MAPQ).
+cannot *manufacture* one, and only the latter would rescue the artefact hypothesis.
+
+We do not think a MAPQ-strict re-derivation is a valid control for this question, and we would
+rather say so than offer it. MAPQ measures how well sequence discriminates between copies, not
+how reliable a read is: inside a paralogous region MAPQ is zero *because* the copies are
+indistinguishable, so filtering on MAPQ does not clean those windows, it deletes them, leaving
+an empty matrix over precisely the windows under test. The direction of the distortion is
+moreover known and bounded. Placement among equally-scoring loci is uniform, so a contact
+between two specific loci is attenuated by roughly $1/k$ per end ($1/k^2$ for PHR-PHR contacts);
+the attenuation is symmetric across community classes, so misplacement predicts *weaker*
+enrichment inside duplicated windows and makes PHR-window enrichment a lower bound on the true
+within-community preference. That is the direction we observe: the between/within ratio is 0.027
+in PHR windows and 0.002 in the flanking unique-sequence windows, so enrichment is strongest
+where multi-mapping cannot occur at all. The artefact hypothesis predicts the reverse.
+
+What we can add, and have specified, is the test that does bear on this: because placement is
+random, the draw itself can be repeated. If within-community enrichment is invariant across
+independent placement seeds, the arbitrary choice carries no information about community
+membership. Orthogonal contact assays in the same individual (ChIA-PET or Micro-C) would close
+the question without relying on placement at all.
 
 ## Point 2 — the pedigree "92% within Leiden community" statistic
 
