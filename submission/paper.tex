@@ -78,9 +78,9 @@ concentrated in gene modules associated with chromosome dynamics, intracellular
 organization and germ-cell development.
 Human chromosome-contact maps show preferential proximity between subtelomeres
 with similar sequences, persisting even in adjacent flanks that lack the shared
-sequence used to define each pair. Mouse contact maps show the same preference,
-strongest in meiosis at the zygotene bouquet, when telomeres cluster at the
-nuclear envelope. In a three-generation telomere-to-telomere
+sequence used to define each pair. Mouse contact maps show the same preference:
+the association strengthens as chromosomes synapse and peaks at pachytene, when
+the synaptonemal complex is fully assembled. In a three-generation telomere-to-telomere
 pedigree, whole-genome comparison identifies putative recombination between
 subtelomeric regions on non-homologous chromosomes from the same sequence
 communities, while recovering the obligate X-Y crossover in PAR1, the
@@ -312,8 +312,8 @@ precisely during the window in which crossovers form. The stage profile is
 resolution-dependent---at 50 kb windows it is flat ($\rho = 0.29$--0.34)---so we report the
 20 kb profile and treat the stage ordering as descriptive rather than as a tested difference. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
 procedure constant across stages.
-In mouse, where detectable PHRs are concentrated on p-arms, the zygotene peak
-is likewise a p-arm feature. Restricting to inter-chromosomal pairs of the same
+In mouse, where detectable PHRs are concentrated on p-arms, the per-PHR-pair
+statistic peaks at zygotene for p-arm pairs. Restricting to inter-chromosomal pairs of the same
 arm type, the correlation peaks at zygotene over pairs of two p-arm PHRs
 (Spearman $\rho = 0.285$, 0.508, 0.323, 0.023; $n = 722$), whereas over pairs
 of two q-arm PHRs it peaks at diplotene ($\rho = 0.352$, 0.338, 0.406, 0.420;
@@ -540,7 +540,9 @@ The authors declare no competing interests.
     inter-chromosomal mouse PHR sequence pair, with zygotene contact
     (per-bin-pair length-normalized as in (A), log) versus PHR Jaccard similarity.
     Right, the per-PHR-pair Spearman statistic across leptotene, zygotene,
-    pachytene and diplotene.}
+    pachytene and diplotene (exploratory; the pairs share arms). The arm-level Mantel test on
+    the same data, which respects that non-independence, gives $\rho = 0.41$, 0.58, 0.63 and
+    0.33 across the four stages (Methods), peaking at pachytene.}
   \label{fig:fig4}
 \end{figure}
 
