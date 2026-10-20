@@ -375,6 +375,17 @@ it across populations. Restored as Results subsection "Communities carry ordinar
 population structure" plus Methods "Population differentiation", with the remaining step stated
 (cohort-internal window-sampled control from the phased VCF). Build: rev 16, exit 0, 0 undefined.
 
+### Population differentiation is block-heterogeneous, not a gradient
+
+Per-block AFR-vs-nonAFR F_ST spans -0.08 to +0.35 (s.d. 0.12 over 100 arm x pair estimates):
+C11/chr6q homogenised below genome-wide (-0.08; AFR-EUR -0.25), C1/chr10q and C6/chr22q
+undifferentiated (+0.02, +0.03), C3/chr16q and C15/chrXp as differentiated as any autosomal
+region (+0.35, +0.28). The AFR-EUR/AFR-SAS direction is towards less differentiation but their
+jackknife intervals include the matched baseline, so it is not read as a difference. And
+differentiation does NOT track sequence sharing (r = +0.07 between block-mean within-community
+Jaccard distance and AFR F_ST, n=10), so this is heterogeneity, not a gradient set by exchange
+intensity. Added to the Results subsection; build rev 17, exit 0, 0 undefined.
+
 ## Pending
 
 1. **Build + visual check of Fig5**: all four panels now exist (A pedigree with the naming,
