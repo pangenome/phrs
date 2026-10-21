@@ -779,7 +779,10 @@ elevated or depressed with respect to the matched baseline
 (\texttt{scripts/popgen/matched\_fst\_d\_m6.py}). The baseline is the published genome-wide
 expectation for these labels rather than a cohort-internal window sample; sampling matched
 non-subtelomeric autosomal windows from the phased HPRC v2 VCF is the equivalent-length native
-control and is noted as the remaining step.
+control and is noted as the remaining step. We do not build the population comparison on local-ancestry-deconvolved genotypes: local
+ancestry inference is not validated in duplicated subtelomeric sequence, so the analysis is
+carried out at arm resolution with continental superpopulation labels and the standard Hudson
+estimator, which is the level of resolution these regions support.
 
 \subsection*{Mouse pipeline}
 

@@ -191,11 +191,33 @@ rather than a revision item.
 
 ## Point 11 (M6) — F_ST matched-region control
 
-Acknowledged as not done. The "population-genetic signature" claim has been removed from the main
-text, and the manuscript now states that cross-arm sequences carry population-genetic structure
-consistent with genome-wide patterns rather than a subtelomere-specific one. The matched
-non-subtelomeric control (equivalent-length autosomal windows per superpopulation pair, Hudson
-F_ST, reported as a difference against that baseline) remains the analysis that would settle it.
+Done, and it supports the reviewer's reading. Subtelomeric Hudson F_ST compared with matched
+genome-wide continental values for the same five superpopulation labels and the same estimator
+(Bhatia 2013 Table 1; Patterson 2012), block-jackknife intervals over ten arm/community blocks:
+
+| pair | subtelomeric F_ST (95% jk) | matched genome-wide | ratio | verdict |
+|---|---|---|---|---|
+| AFR–AMR | +0.102 [+0.020, +0.184] | 0.071 | 1.44 | equivalent |
+| AFR–EAS | +0.153 [+0.063, +0.242] | 0.144 | 1.06 | equivalent |
+| AFR–EUR | +0.108 [-0.026, +0.242] | 0.150 | 0.72 | equivalent |
+| AFR–SAS | +0.103 [-0.003, +0.210] | 0.110 | 0.94 | equivalent |
+
+Subtelomeric differentiation is therefore not elevated above the genome-wide baseline, so there
+is no subtelomere-specific population signature — the claim the reviewer objected to has been
+removed from the manuscript and replaced by this comparison. The direction for AFR–EUR and
+AFR–SAS is towards *less* differentiation than genome-wide (ratios 0.72 and 0.94), but the
+jackknife intervals include the matched baseline, so we do not read that as a difference.
+
+We also report the spread the aggregate conceals: per-block AFR-versus-non-African values run
+from -0.08 (C11/chr6q, homogenised below genome-wide) to +0.35 (C3/chr16q, as differentiated as
+any autosomal region; s.d. 0.12 over 100 block x pair estimates). Differentiation does not track
+sequence sharing (r = +0.07 between block-mean within-community Jaccard distance and AFR F_ST),
+so this is heterogeneity, not a gradient set by exchange intensity.
+
+One methodological limit we state explicitly: local-ancestry inference is not validated in
+duplicated subtelomeric sequence, so we deliberately do not build the argument on
+ancestry-deconvolved genotypes. The comparison above uses continental superpopulation labels and
+the standard Hudson estimator at arm resolution, which is the level these regions can support.
 
 ## Point 12 — bibliography
 

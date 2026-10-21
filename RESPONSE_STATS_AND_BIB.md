@@ -82,6 +82,32 @@ Outputs: `scripts/cladistics/d_m9/` (support summary, per-replicate matrices, me
 
 No point estimate in the pedigree or 3D sections is now reported without an interval.
 
+## D-M6 — matched F_ST baseline (now analysed)
+
+Subtelomeric Hudson F_ST against matched genome-wide continental values for the same five
+superpopulation labels and the same estimator (Bhatia 2013 Table 1; Patterson 2012; block
+jackknife over ten arm/community blocks):
+
+| pair | subtelomeric F_ST (95% jk) | matched genome-wide | ratio | verdict |
+|---|---|---|---|---|
+| AFR-AMR | +0.102 [+0.020, +0.184] | 0.071 | 1.44 | equivalent |
+| AFR-EAS | +0.153 [+0.063, +0.242] | 0.144 | 1.06 | equivalent |
+| AFR-EUR | +0.108 [-0.026, +0.242] | 0.150 | 0.72 | equivalent |
+| AFR-SAS | +0.103 [-0.003, +0.210] | 0.110 | 0.94 | equivalent |
+
+No subtelomere-specific signature: differentiation is not elevated above genome-wide. Per-block
+values span -0.08 to +0.35 (s.d. 0.12) and do not correlate with within-community sequence
+sharing (r = +0.07, ten blocks), so the spread is heterogeneity rather than a gradient.
+
+Reproduce offline: `python3 scripts/popgen/matched_fst_from_blocks.py` writes
+`scripts/popgen/matched_fst_d_m6.tsv` from the repository's per-block F_ST table plus the
+published baselines (the upstream `matched_fst_d_m6.py` needs a moosefs table and is the version
+that also computes per-arm contributions).
+
+LIMITATION WE STATE: local-ancestry inference is not validated in duplicated subtelomeric
+sequence, so we do not build any argument on ancestry-deconvolved genotypes; the comparison is
+at arm resolution with continental labels, which is what these regions support.
+
 ## D-Bib — bibliography hygiene
 
 1. **Vollger2023 is not a duplicate.** `Vollger2023` is *Segmental duplications and their
