@@ -779,10 +779,15 @@ elevated or depressed with respect to the matched baseline
 (\texttt{scripts/popgen/matched\_fst\_d\_m6.py}). The baseline is the published genome-wide
 expectation for these labels rather than a cohort-internal window sample; sampling matched
 non-subtelomeric autosomal windows from the phased HPRC v2 VCF is the equivalent-length native
-control and is noted as the remaining step. We do not build the population comparison on local-ancestry-deconvolved genotypes: local
-ancestry inference is not validated in duplicated subtelomeric sequence, so the analysis is
-carried out at arm resolution with continental superpopulation labels and the standard Hudson
-estimator, which is the level of resolution these regions support.
+control and is noted as the remaining step. We do not build the population comparison on local-ancestry-deconvolved genotypes. HPRC
+r2 provides local-ancestry calls (PCLAI) that are released in assembly, CHM13 and GRCh38
+coordinates; in assembly coordinates they cover 83--100\% of the terminal 500 kb of each contig
+we analysed, with window confidence of 885--1000 (lowest at the chr9q end), whereas the same
+annotation projected onto CHM13 retains only about 55\% of a subtelomeric flank because the
+pangenome-specific duplicated portion cannot be hosted there. Ancestry is therefore resolvable
+over most of a flank but not entirely, and the pedigree individuals are not all covered (only
+PAN027 is present in the r2 release), so the comparison is reported at arm resolution with
+continental superpopulation labels and the standard Hudson estimator.
 
 \subsection*{Mouse pipeline}
 
