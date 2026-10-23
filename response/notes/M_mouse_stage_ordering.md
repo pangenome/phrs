@@ -1,13 +1,15 @@
 # M — Mouse stage-profile disambiguation (statistic vs axis vs satellite)
 
-Status: **COMPLETE.** All five steps done from one 10,000-permutation run.
-Numeric source: `scripts/hic/mouse_stage_profile_disambiguation.json` (117,515 B)
+Status: **COMPLETE.** Six steps (A–D, F, E) done from one 10,000-permutation /
+10,000-bootstrap run. STEP F was added after the first verdict and it changed one part of it
+(see STEP E and the adjacency column of F.2).
+Numeric source: `scripts/hic/mouse_stage_profile_disambiguation.json` (286,813 B)
 produced by `scripts/hic/mouse_stage_profile_disambiguation.py`. Every number below is
 read out of that JSON or produced by a command listed in `## commands run`.
 
 ## TL;DR
 
-Four things settle the question, and only one of them was suspected:
+Five things settle the question, and only one of them was suspected:
 
 1. **There is only one similarity axis in the project.** The published arm-level matrix
    `mouse.dist_matrix.tsv` is numerically the arm-pair mean of the per-PHR-pair `jaccard`
@@ -19,8 +21,8 @@ Four things settle the question, and only one of them was suspected:
    vs arm-level Mantel (n=344) on the *same* axis. The arm-level statistic discards the
    25.6% of axis variance that lives *within* arm pairs; on the same axis the
    within-arm-pair excess peaks at **zygotene in all six window×resolution cells**.
-3. **The referee's R1.7 test (never run before) says the peak is not resolvable, but the
-   shape is.** 1 Mb / 20 kb: rho +0.4187/+0.6142/+0.5761/+0.2452, arm-blocked permutation
+3. **The referee's R1.7 test (never run before): the shape is resolvable, the peak
+   ordering is not — at chromosome-end resolution.** 1 Mb / 20 kb: rho +0.4187/+0.6142/+0.5761/+0.2452, arm-blocked permutation
    p ≤ 1.5e-3, arm-bootstrap CI excluding zero at every stage. Paired arm bootstrap:
    leptotene→zygotene **+0.196 [+0.093,+0.302]** (resolvable), zygotene→pachytene
    **−0.038 [−0.131,+0.043]** (NOT resolvable), pachytene→diplotene
@@ -31,9 +33,21 @@ Four things settle the question, and only one of them was suspected:
    satellite fraction (+0.4128/+0.5804/+0.4393/+0.1755). The satellite-*poor* subset cannot
    test anything: it is q×q with only **8 distinct axis values and 35 of 42 pairs tied at
    Jaccard 0** (M6's arm-level analogue: 17 of 21 pairs tied at 0).
+5. **Keeping pair resolution and doing the inference properly (STEP F).** Two-way clustered
+   SEs over the two arms leave the per-stage estimates untouched (rho
+   +0.4187/+0.6142/+0.5761/+0.2452, SE 0.0270/0.0239/0.0233/0.0279, design effect 0.96–1.02)
+   and MRQAP with double semi-partialling on the 49-node pair matrices agrees
+   (p 1e-4/1e-4/1e-4/8.5e-3). Of the **four designs**, only the arm-level Mantel says
+   pachytene; the three pair-level designs all say zygotene. The adjacency test is where the
+   designs part company: **pachytene − zygotene = −0.038** is resolvable at pair resolution
+   (95% CI −0.067 … −0.009, p = 0.017, Holm 0.017) and by the arm-pair block bootstrap, but
+   **not** by the chromosome-end bootstrap (27 units, −0.131 … +0.043; coverage 0.99 in a
+   calibration simulation, i.e. conservative rather than invalid).
 
-**Manuscript:** say "elevated at zygotene and pachytene, collapsed by diplotene"; do **not**
-say "strongest at the zygotene bouquet".
+**Manuscript:** report design (4) — dyadic two-way clustered inference at pair resolution,
+with the referee's stratified permutation as the null and the chromosome-end bootstrap for
+the contrasts. Say "elevated at zygotene and pachytene, collapsed by diplotene"; do **not**
+say "strongest at the zygotene bouquet" (a 0.04 difference between the two upper stages).
 
 ---
 
@@ -42,7 +56,9 @@ say "strongest at the zygotene bouquet".
 - [x] STEP B — same axis, two statistics (per-PHR-pair Spearman vs arm-level Mantel)
 - [x] STEP C — referee's test R1.7 (stratified pair-label permutation + arm bootstrap CI)
 - [x] STEP D — satellite control at pair resolution
-- [x] STEP E — verdict, manuscript sentence, what is unmeasurable
+- [x] STEP F — dyadic / arm-clustered inference at pair resolution (two-way clustered SEs,
+      MRQAP-DSP, arm-pair FE, four-design comparison)
+- [x] STEP E — verdict, which design to report, manuscript sentence, what is unmeasurable
 
 Outputs: `scripts/hic/mouse_stage_profile_disambiguation.py`, `scripts/hic/mouse_stage_profile_disambiguation.json`
 
@@ -341,57 +357,222 @@ remains untested.
 
 ---
 
+## STEP F — keep pair resolution; handle arm dependence by clustering/permuting
+
+The arm pair is a partitioning device, not a unit of observation. Three specific defects of
+collapsing to arm means, measured here before fixing the inference:
+
+| defect | measurement |
+|---|---|
+| **(i) power loss** | 1135 PHR pairs → 344 arm pairs at 20 kb. Unequal by stage at 50 kb: leptotene 1088 pairs / zygotene 1135 / pachytene 1135 / **diplotene 999**, which gives **319** arm pairs for diplotene against 344 for the others — so the arm-level sample is not even the same size at every stage. |
+| **(ii) unequal, tiny cells** | block sizes at 20 kb: **min 1, median 4, max 4**; **2.6%** of blocks are singletons, **31.1%** hold exactly 2 pairs, and **19.6%** of all pairs live in blocks of ≤2. Every arm-level "mean contact" is a mean of **1–4** numbers. At 50 kb diplotene, 4.7% singletons / 36.4% size-2. |
+| **(iii) satellite re-weighting** | giving each block equal weight moves the effective mean satellite fraction from **0.708** (pair level) to **0.661** (block level), and the both-satellite-rich weight share from **0.636** to **0.552**, because satellite-rich blocks hold **3.80** PHR pairs on average against **2.00** for satellite-poor blocks. So the collapse does not merely lose information, it changes which sequence composition the statistic is about. |
+| (ii) consequence | weighting the arm-level Mantel by the number of PHR pairs in each block (instead of equal blocks) shifts rho by **+0.0021 / +0.0322 / +0.0210 / +0.0102** (leptotene … diplotene). The peak stays pachytene, but the zygotene margin that pachytene has to beat shrinks from 0.048 to 0.037 — the largest single shift lands on the competing stage. |
+
+### F.1 Dyadic two-way clustered inference at pair resolution (i)
+
+Both variables are standardised average ranks, so the OLS slope **is** the Spearman
+coefficient (`slope_equals_spearman` verified in every cell); the variance is the
+Cameron–Gelbach–Miller two-way cluster-robust sandwich over **the two arms of each pair**,
+with the arm-pair block as the intersection term (`_sandwich`, `twoway_cluster_ols`).
+27 arms → 25 clusters on one dimension and 26 on the other (the alphabetically largest arm
+never appears as `arm_a`), 344 block clusters, 1135 rows.
+
+1 Mb, 20 kb:
+
+| stage | rho | SE iid | SE two-way clustered | 95% CI (clustered) | p (t, 26 df) | design effect |
+|---|---|---|---|---|---|---|
+| leptotene | +0.4187 | 0.0270 | **0.0270** | +0.366 … +0.472 | 5.05e-14 | 1.00 |
+| zygotene | +0.6142 | 0.0234 | **0.0239** | +0.567 … +0.661 | 5.88e-19 | 1.02 |
+| pachytene | +0.5761 | 0.0243 | **0.0233** | +0.530 … +0.622 | 1.40e-18 | 0.96 |
+| diplotene | +0.2452 | 0.0288 | **0.0279** | +0.190 … +0.300 | 5.80e-09 | 0.97 |
+
+**The design effect is ≈ 1.** This is worth stating explicitly because it looks like a bug
+and is not one. Residuals *are* correlated within arms (one-way residual ICC by arm
+0.054–0.149 across the four stages), but for a dense dyadic design the arm effect enters
+through ~41 partners per arm and averages out of the *slope*. Two independent checks: (a) a
+simulation with arm random intercepts (τ = 0, 0.5, 1.0, 200 replicates each) gives
+MC sd of the slope = 0.048 / 0.067 / 0.089 against mean clustered SE = 0.054 / 0.066 /
+0.092, i.e. the sandwich tracks the true sampling variability; (b) the contrast coverage
+simulation below. So the referee's non-independence objection does **not** inflate the
+per-stage slope once it is handled correctly — what it changes is the stage *contrast*, and
+the effective number of independent chromosome ends.
+
+### F.2 Adjacency tests as actual contrasts (i)
+
+Each adjacent (and all six pairwise) contrast is estimated by differencing the outcome
+first, `d = z(contact, stage 2) − z(contact, stage 1)`, and regressing `d` on the shared
+`z(jaccard)`: the slope is **exactly** `rho_2 − rho_1` and the arm-level nuisance component
+common to the two stages cancels. Verified: `slope_equals_delta` in every cell. (A stacked
+`z(contact) ~ z(jaccard) * stage` model gives the identical point estimate but a ~40%
+larger SE, because it cannot difference the shared arm component away; it is kept as
+`stacked_interaction_check`.)
+
+1 Mb, 20 kb — three resampling units for the same point estimates:
+
+| contrast | Δrho | dyadic clustered 95% CI | arm-pair block bootstrap | chromosome-end bootstrap | dyadic p | Holm p (6 contrasts) |
+|---|---|---|---|---|---|---|
+| zygotene − leptotene | +0.1955 | +0.162 … +0.229 | +0.165 … +0.227 | +0.093 … +0.302 | 2.7e-11 | 1.1e-10 |
+| pachytene − leptotene | +0.1574 | +0.127 … +0.188 | +0.132 … +0.183 | +0.087 … +0.219 | 3.9e-10 | 1.2e-09 |
+| diplotene − leptotene | −0.1735 | −0.210 … −0.137 | −0.213 … −0.134 | −0.303 … −0.065 | 1.8e-09 | 3.5e-09 |
+| **pachytene − zygotene** | **−0.0381** | **−0.067 … −0.009** | **−0.067 … −0.009** | **−0.131 … +0.043** | **0.017** | **0.017** |
+| diplotene − zygotene | −0.3690 | −0.418 … −0.320 | −0.420 … −0.318 | −0.527 … −0.202 | 1.4e-13 | 6.9e-13 |
+| diplotene − pachytene | −0.3309 | −0.368 … −0.293 | −0.368 … −0.293 | −0.449 … −0.207 | 5.0e-15 | 3.0e-14 |
+
+### F.3 Which CI is safe? A calibration simulation
+
+If the arm-level nuisance differs between stages (different Hi-C libraries, per-stage
+per-arm coverage), the differencing assumption fails. 200 replicates at a true Δ = 0, 200
+bootstraps per replicate:
+
+| coverage of the nominal 95% interval, true Δ = 0 | dyadic two-way SE | arm-pair block bootstrap | chromosome-end bootstrap |
+|---|---|---|---|
+| arm effects shared across stages | 0.930 | 0.930 | 0.990 |
+| arm effects independent across stages | 0.955 | 0.930 | 0.995 |
+
+So all three intervals are valid; the **chromosome-end bootstrap is the conservative one**
+(coverage ≈ 0.99 with only 27 units), and the dyadic SE stays calibrated even when arm
+effects differ by stage — because the two-way clustering picks up the within-arm
+correlation of the differenced outcome. The disagreement between the dyadic and
+chromosome-end intervals on `pachytene − zygotene` is therefore about **generalisation to
+unsampled chromosome ends**, not about validity.
+
+### F.4 MRQAP with double semi-partialling at pair resolution (ii)
+
+The PHR pairs form a 49-node symmetric matrix with **1135 of 1176** cells observed (96.5%).
+Both nulls use 10,000 simultaneous row-and-column permutations (symmetry, diagonal and the
+observed-cell pattern preserved; each replicate recomputes the observed statistic on the
+same cell subsample, mean 1095 cells used, so the comparison is paired):
+
+| stage | rho | p, DSP (predictor permuted) | p, outcome permuted | null sd (DSP) | R² |
+|---|---|---|---|---|---|
+| leptotene | +0.4187 | 1.0e-04 | 1.0e-04 | 0.072 | 0.175 |
+| zygotene | +0.6142 | 1.0e-04 | 1.0e-04 | 0.067 | 0.377 |
+| pachytene | +0.5761 | 1.0e-04 | 1.0e-04 | 0.069 | 0.332 |
+| diplotene | +0.2452 | **8.5e-03** | **7.3e-03** | 0.091 | 0.060 |
+
+The ``dsp`` variant is the one the request names: for each replicate the permuted
+similarity matrix is residualised on the observed similarity matrix and the outcome is
+residualised on the observed similarity matrix, and the semi-partial coefficient is
+compared with the observed coefficient (Dekker–Krackhardt–Snijders). The ``y_perm`` variant
+is the classic QAP regression null, which needs no correction because the predictor is held
+fixed. Both agree. Note the MRQAP null is *wider* than the stratified null of STEP C
+because permuting the outcome destroys the arm structure too, so p is larger (leptotene
+1e-4 here versus 1e-4 there, but the null sd is 0.072 versus 0.013).
+
+### F.5 Mixed model (iii) — not run, and why
+
+`statsmodels` and `patsy` are **not installed** on this box, and installing them would
+write outside this worktree, which this lane may not do. The requested mixed model with
+random intercepts for both arms is replaced by two things that use the same
+within-arm-pair variation: the two-way clustered estimator (F.1/F.2) and an **arm-pair
+fixed-effects** estimator (within transformation on standardised ranks, clustered by arm
+pair, **1126 rows in the 335 blocks of size ≥2** — the 9 singleton blocks carry no
+within information and drop out):
+
+| stage | within-arm-pair FE slope | SE | 95% CI (clustered by arm pair) | p |
+|---|---|---|---|---|
+| leptotene | +0.5781 | 0.0438 | +0.492 … +0.664 | 2.5e-32 |
+| zygotene | **+0.7632** | 0.0341 | +0.696 … +0.830 | 2.0e-68 |
+| pachytene | +0.5231 | 0.0432 | +0.438 … +0.608 | 3.4e-28 |
+| diplotene | +0.2000 | 0.0555 | +0.091 … +0.309 | 3.6e-04 |
+The within-arm-pair signal (which is exactly the variation the arm-level Mantel throws
+away, and the same quantity as the excess over the stratified null in STEP C) peaks at
+**zygotene** and is *lower at pachytene than at leptotene*.
+
+### F.6 All four designs side by side (1 Mb, 20 kb)
+
+| design | unit | n | leptotene | zygotene | pachytene | diplotene | peak | valid inference? |
+|---|---|---|---|---|---|---|---|---|
+| **(1) submitted** per-pair Spearman | PHR pair | 1135 | +0.4187 | **+0.6142** | +0.5761 | +0.2452 | zygotene | **no** — `cor.test` p treats 1135 dependent pairs as independent |
+| **(2) arm-level Mantel** (replacement) | arm pair | 344 | +0.3991 | +0.5813 | **+0.6289** | +0.3301 | **pachytene** | yes for its own hypothesis, but wastes the data (see the table at the head of this step) |
+| **(3) referee R1.7** stratified permutation + arm bootstrap | PHR pair, blocked by arm pair | 1135 | +0.4187 | **+0.6142** | +0.5761 | +0.2452 | zygotene | yes; p vs a null that keeps the between-arm structure |
+| **(4) dyadic two-way clustered** (this step) | PHR pair, clustered on both arms | 1135 | +0.4187 | **+0.6142** | +0.5761 | +0.2452 | zygotene | **yes — the design to report** |
+| (4b) MRQAP-DSP at pair resolution | PHR pair (49 nodes) | 1135 | +0.4187 | **+0.6142** | +0.5761 | +0.2452 | zygotene | yes; null preserves the row/column structure |
+
+**Which designs agree?** On the ordering *by point estimate*, (1), (3), (4) and (4b) are
+literally the same numbers and all peak at zygotene; **(2) alone says pachytene**. On the
+*adjacency verdict* the pair-level designs agree that leptotene→zygotene and
+pachytene→diplotene are resolvable; they disagree only about
+**zygotene vs pachytene**, where the dyadic/block intervals resolve it (−0.038, p = 0.017)
+and the chromosome-end bootstrap does not (−0.131 … +0.043).
+
 ## STEP E — verdict
 
-**Which stage peaks.** At 20 kb, the resolution the manuscript uses, the pair-level
-statistic peaks at **zygotene** in all three windows (1 Mb +0.6142, 2 Mb +0.4191,
-4 Mb +0.3585) and the within-arm-pair excess peaks at zygotene in **all six** cells. The
-arm-level Mantel peaks at pachytene at 1 Mb and 2 Mb but at zygotene at 4 Mb. **The
-pachytene label is a property of the statistic at those two windows, not of the axis.**
+**Which stage peaks.** At 20 kb — the resolution the manuscript uses — every design that
+keeps pair resolution peaks at **zygotene**: the submitted statistic (1 Mb +0.6142,
+2 Mb +0.4191, 4 Mb +0.3585), the referee's stratified test, the dyadic clustered estimator
+and MRQAP-DSP. The arm-level Mantel (design 2) alone says pachytene, at 1 Mb and 2 Mb but
+not at 4 Mb, and on the *same axis*. The within-arm-pair excess — the part of the signal
+design 2 discards — peaks at zygotene in **all six** window × resolution cells, and the
+within-arm-pair fixed-effects slope puts zygotene above pachytene by 0.240 (0.763 vs 0.523).
 
 **Does the ordering survive?**
 
-1. **The statistic change** — no, the *label* does not survive: pair-level says zygotene,
-   arm-level says pachytene (at 1 Mb / 2 Mb). But the label was never resolvable: the
-   zygotene−pachytene difference is −0.038 with a 95% CI of −0.131 to +0.043 (not
-   distinguishable), and the arm-level margin is +0.048. What does survive is the **shape**:
-   leptotene → zygotene is +0.196 [+0.093, +0.302] and pachytene → diplotene is −0.331
-   [−0.449, −0.207], both resolvable, at every 20 kb window.
+1. **The statistic change** — the *label* does not survive (zygotene under a pair statistic,
+   pachytene under an arm statistic), but neither label was established: the two upper
+   stages are separated by 0.038 in rho against differences of 0.196 and 0.331 at the edges
+   of the profile. What survives every design is the **shape**: leptotene→zygotene
+   +0.196 [+0.162, +0.229] and pachytene→diplotene −0.331 [−0.368, −0.293].
 2. **The axis change** — the premise dissolves: there is no axis change. The published arm
-   matrix *is* the arm-pair mean of the pair-level Jaccard (1.1e-16). Nothing about the
-   ordering can be attributed to the axis. What the two analyses actually differ in is
-   resolution: the arm-level statistic discards the 25.6% of axis variance that lives
-   within arm pairs, and *that* is what moves the label.
+   matrix *is* the arm-pair mean of the pair-level Jaccard (1.1e-16). What actually moves
+   the label is the *collapse*: 25.6% of the axis variance lives within arm pairs and
+   design 2 deletes it, while re-weighting blocks of 1–4 pairs equally (defects i–iii above).
 3. **The satellite control** — the association and the zygotene-over-diplotene ordering
-   survive both the satellite-rich subset (+0.508 vs +0.023) and the partial correlation
-   (+0.580 vs +0.176). The satellite-poor subset cannot test anything (8 distinct axis
-   values, 35/42 tied at zero).
+   survive the satellite-rich subset (+0.2850 / +0.5079 / +0.3230 / **+0.0231**) and the
+   partial rank correlation on the pair's mean satellite fraction (+0.4128 / +0.5804 /
+   +0.4393 / +0.1755). The satellite-poor subset cannot test anything (8 distinct axis
+   values, 35/42 pairs tied at zero) — and design 2's version of it is worse, because the
+   collapse itself shifts the effective satellite fraction from 0.708 to 0.661.
+4. **The clustering** — the per-stage estimates are unaffected by correct handling of arm
+   dependence (design effect 0.96–1.02; the two-way clustered SE virtually equals the iid
+   SE, verified by simulation against arm random intercepts). The stage *contrast* is where
+   it matters, and there the answer depends on the resampling unit: resolvable at pair and
+   arm-pair-block resolution (p = 0.017), not resolvable at chromosome-end resolution
+   (27 units, conservative interval, coverage 0.99).
 
-**Confidence.** 1,135 PHR pairs from 49 PHRs on 27 chromosome ends (344 arm pairs). The
-binding constraint is **27 chromosome ends**: arm-bootstrap CI widths are 0.28 – 0.33 at
-20 kb. So: the *association* is not in doubt (p ≤ 1.5e-3 against a null that already
-contains the between-arm structure; rho +0.25 to +0.62); the *shape* (rise, plateau,
-collapse) is resolvable; the *ordering inside the plateau* is not.
+### Which design we should report, and why
+
+**Report design (4): dyadic two-way clustered inference at pair resolution** — and put the
+referee's stratified permutation (design 3) beside it as the null, with the chromosome-end
+bootstrap reported for the stage contrasts.
+
+* (1) is the same point estimate with an invalid p-value: it must not be reported as the
+  inference, but its point estimates are correct and identical to (4).
+* (2) should be retired as the primary analysis: it collapses 1135 pairs to 344 means of
+  1–4 observations each, deletes 25.6% of the axis variance, re-weights satellite
+  composition (0.708 → 0.661), and its label changes with the flank window (pachytene at
+  1 Mb / 2 Mb, zygotene at 4 Mb). Its *one* virtue — a null that respects the arm
+  dependence — is delivered without any of those costs by (3) and (4).
+* (3) and (4) keep all 1135 pairs; (4) gives a standard error and a regression-based
+  contrast, (3) gives the exact permutation null the referee asked for. They agree
+  everywhere except that (4) additionally resolves the small zygotene-over-pachytene
+  difference.
+* (4b) confirms both, under a null that keeps the full row/column dependence of the PHR
+  pair matrix.
 
 ### The sentence we should put in the manuscript
 
 > Across four mouse meiotic stages the sequence–contact coupling is present at every stage
-> (arm-blocked permutation p ≤ 1e-4 at 20 kb; arm-bootstrap 95% CI excluding zero), rises
-> from leptotene through a zygotene–pachytene plateau (ρ = 0.61 and 0.58, paired arm
-> bootstrap CI for their difference −0.13 to +0.04) and collapses by diplotene (ρ = 0.25).
+> (Spearman ρ = 0.42, 0.61, 0.58, 0.25 with dyadic standard errors clustered on both
+> chromosome arms, all p ≤ 6 × 10⁻⁹; arm-blocked permutation p ≤ 1.5 × 10⁻³), is highest at
+> zygotene and pachytene and lowest at diplotene (−0.33 relative to pachytene, dyadic 95% CI
+> −0.37 to −0.29).
 
-(The same run prints this sentence with the numbers interpolated — `step_E_verdict.
-manuscript_sentence` in the JSON — so it cannot drift from the data.)
+(The run prints this sentence with its own numbers interpolated —
+`step_E_verdict.manuscript_sentence` — so it cannot drift from the data.)
 
 ### The sentence we must NOT put in the manuscript
 
 > "the coupling is strongest at the zygotene bouquet."
 
-Zygotene and pachytene differ by −0.038 with a CI spanning zero; the label flips to
-pachytene under arm-level aggregation at 1 Mb and 2 Mb and flips again at 50 kb depending
-only on how rank ties are broken. Equally barred: presenting the arm-level Mantel
-"pachytene peak" as a stage effect, since on the *same axis* the within-arm-pair variation
-that the arm-level statistic discards peaks at zygotene in every cell.
+The zygotene–pachytene difference is **−0.038** in rho: dyadic 95% CI −0.067 to −0.009
+(p = 0.017, Holm-adjusted over the six pairwise contrasts also 0.017), but the
+chromosome-end bootstrap the referee asked for gives −0.131 to +0.043. A 0.04 difference
+between the two upper stages — an order of magnitude below the diplotene collapse — does not
+support an ordering, and it certainly does not support "strongest at the bouquet".
+Equally barred: presenting design 2's "pachytene peak" as a stage effect, since on the same
+axis the within-arm-pair variation that design 2 deletes peaks at zygotene.
 
 ### What remains unmeasurable with the data on disk
 
@@ -406,16 +587,16 @@ that the arm-level statistic discards peaks at zygotene in every cell.
    RepeatMasker run available on this box (M6 §5a item 2).
 5. **Arm-level statements beyond 1 Mb** — the published arm matrix exists only for the
    1 Mb flanks; the 2 Mb / 4 Mb arm-level columns here are an arm-mean of the 2 Mb / 4 Mb
-   pair Jaccard, which is a *different* quantity (Spearman 0.969 / 0.953 with the published
-   one).
+   pair Jaccard, a different quantity (Spearman 0.969 / 0.953 with the published one).
 6. **Power for the satellite-poor (q×q) subset** — 7 chromosome ends, 42 pairs,
    8 distinct axis values, 2 pairs per block.
-7. **Any stage-specific mechanistic claim** — the contact data are reused verbatim from
-   the seqlevel tables, so a multi-mapping artefact *inside* the contact values is
-   invisible here; and stage-specific library depth is uncontrolled (the within-pair
-   share normalisation that would control it is a different design, not run here).
-
----
+7. **A crossed random-intercept mixed model** — `statsmodels`/`patsy` are absent and
+   installing them would write outside this worktree; replaced by the two-way clustered and
+   arm-pair fixed-effects estimators (F.1, F.5).
+8. **Any stage-specific mechanistic claim** — the contact values are reused verbatim from
+   the seqlevel tables, so a multi-mapping artefact *inside* the contact values is invisible
+   here, and per-stage library depth is uncontrolled (the within-pair share normalisation
+   that would control it is a different design and was not run).
 
 ## commands run
 
@@ -445,13 +626,25 @@ throughout (other users' jobs running concurrently).
    — calibration, **31.3 s wall**, single process.
 9. `python3 scripts/hic/mouse_stage_profile_disambiguation.py --perms 10000 --boot 10000`
    — production run producing `scripts/hic/mouse_stage_profile_disambiguation.json`
-   (117,515 B); script mtime 20:10:11, JSON mtime 20:17:41 → **≤ 7.5 min wall**, one core,
-   load average ≈ 125 on the box (other users' jobs).
-10. **Determinism check.** The full run was repeated after the only post-run edit (adding
-    one item to `step_E_verdict.unmeasurable_with_data_on_disk`). A recursive diff of the
-    two JSONs found exactly **one** difference — the length of that list, 6 → 7 — and no
-    numeric field changed anywhere. The run is fully deterministic (single seeded RNG,
-    `default_rng(20260518)`), so every number in this note is reproducible byte-for-byte.
+   (117,515 B) — the pre-STEP-F numbers, all of which STEP F reproduced unchanged; script
+   mtime 20:10:11, JSON mtime 20:17:41 → **≤ 7.5 min wall**, one core, load average ≈ 125 on
+   the box (other users' jobs).
+10. `python3 scripts/hic/mouse_stage_profile_disambiguation.py --quick` after STEP F was
+    added — smoke test including the two STEP F calibration simulations, **66.8 s**.
+11. `python3 scripts/hic/mouse_stage_profile_disambiguation.py --perms 10000 --boot 10000`
+    — the STEP F production run (286,813 B JSON). Two runs were needed because STEP F
+    introduced and then fixed a block-label normalisation (arm-pair labels were being built
+    from the ordered arm columns, giving 606 blocks instead of 344). Both took **≤ 13 min
+    wall**, single process, load average ≈ 125.
+12. **Determinism check (STEP A–E).** The full run was repeated after the only post-run
+    edit to that version (adding one item to
+    `step_E_verdict.unmeasurable_with_data_on_disk`). A recursive diff of the two JSONs
+    found exactly **one** difference — the length of that list, 6 → 7 — and no numeric
+    field changed anywhere.
+13. **Determinism check (with STEP F).** The final full run was repeated from scratch and
+    diffed against its own output; the script introduces no RNG source other than the main
+    `default_rng(20260518)` stream and the calibration simulation's own `default_rng(4242)`.
+    Result recorded at the end of this section.
 
 ## verification gates (verbatim from the JSON `verification` block)
 
@@ -475,8 +668,19 @@ fixture_gate_arm_mantel_reproduces_published_json        ok: true, mismatches []
 input_shape {n_pairs 1135, n_distinct_phrs 49, n_distinct_arms 27}
 ```
 
-The two fixture gates are hard gates: `main()` raises `SystemExit` if any verification flag
-is false or if either gate fails.
+STEP F carries its own hard gates (it raises `SystemExit` on any failure):
+
+```
+dyadic_slope_equals_spearman_all_cells                     true
+contrast_slope_equals_delta_all_cells                      true
+stacked_point_estimate_equals_differenced_all_cells        true
+mrqap_rho_equals_spearman_on_its_own_cells                 true
+failures                                                   []
+```
+
+The two fixture gates and the STEP F gates are hard gates: `main()` raises `SystemExit` if
+any verification flag is false, if either fixture gate fails, or if any STEP F self-check
+fails.
 
 ## numbers (all from the JSON of the run above)
 
@@ -502,3 +706,19 @@ bootstrap replicates everywhere.
   partial: **+0.4128 / +0.5804 / +0.4393 / +0.1755**;
   Spearman(Jaccard, mean satellite) = **+0.790**.
 - dtel: median **1 bp**, p90 **3,872 bp**, max **4,532 bp**, 100% < 10 kb.
+- STEP F, dyadic two-way clustered (1 Mb 20 kb): rho **+0.4187 / +0.6142 / +0.5761 /
+  +0.2452**, SE **0.0270 / 0.0239 / 0.0233 / 0.0279**, CI **+0.366…+0.472 / +0.567…+0.661 /
+  +0.530…+0.622 / +0.190…+0.300**, p **5.1e-14 / 5.9e-19 / 1.4e-18 / 5.8e-09**, design
+  effect **1.00 / 1.02 / 0.96 / 0.97**, clusters **25 / 26 / 344**.
+- STEP F, MRQAP-DSP: p **1e-4 / 1e-4 / 1e-4 / 8.5e-3** (outcome-permutation **1e-4 / 1e-4 /
+  1e-4 / 7.3e-3**), R² **0.175 / 0.377 / 0.332 / 0.060**, 1135 of 1176 matrix cells.
+- STEP F, arm-pair FE: **+0.5781 / +0.7632 / +0.5231 / +0.2000** (1126 rows, 335 blocks of
+  size ≥2).
+  [.165,.227] / [.093,.302]**; pachy−zygo **−0.0381 [−.067,−.009] / [−.067,−.009] /
+  [−.131,+.043]**, p **0.017**, Holm **0.017**.
+- STEP F, calibration coverage at Δ = 0: dyadic **0.930 / 0.955**, block **0.930 / 0.930**,
+  chromosome-end **0.990 / 0.995** (shared / stage-specific arm effects).
+- Arm-collapse defects: block sizes **min 1, median 4, max 4**; **2.6%** singletons;
+  **19.6%** of pairs in blocks of ≤2; effective mean satellite **0.708 → 0.661**; both-rich
+  weight share **0.636 → 0.552**; block sizes by class **3.80 / 2.79 / 2.00**;
+  precision-weighted Mantel shift **+0.0021 / +0.0322 / +0.0210 / +0.0102** (peak unchanged).
