@@ -17,6 +17,10 @@ Authority: `PEER_REVIEW.md` (the real Nature referee report). The simulated revi
 - t4 hop-2 (transitive closure) measured (§4.4).
 - t5 independent cross-check with wfmash for one core (§6).
 - t6 TSV written, notes finalised (§7 establishes / does not).
+- t7 parent-supplied IMPG-surface facts incorporated and the remaining gap closed by
+  testing it: no index-consuming subcommand accepts `--index` alone (§8 F8), the analysis
+  is aligner-based enumeration (§8 F9), and the identity-floor sensitivity was measured
+  from the on-disk PAF (§4.6).
 
 ## 1. Question
 
@@ -138,16 +142,16 @@ Headline per core (`-f8192` primary run):
 
 | core | positions | loci | chroms | arms | ident. median (min–max) | core cov. median | ref span | copies (core units) | on community arms / not | hop-2 new positions / arms |
 |---|---|---|---|---|---|---|---|---|---|---|
-| D4Z4_4q | 61 | 1 | 2 | 2 | 0.9937 (0.9900–0.9985) | 1.00 | 220,536 | 14.70 | **61 / 0** | 0 / 0 |
-| DUX4L_10q | 61 | 1 | 2 | 2 | 0.9940 (0.9926–0.9997) | 1.00 | 220,530 | 14.70 | **61 / 0** | 0 / 0 |
-| TUBB8B_18p | 5 | 5 | 3 | 3 | 0.9990 (0.9674–0.9991) | 1.00 | 83,221 | 5.55 | 4 / 1 | 14 / 5 |
-| TUBB8_10p | 6 | 6 | 3 | 3 | 0.9705 (0.9554–0.9709) | 1.00 | 91,658 | 6.11 | 4 / 2 | 18 / 6 |
-| OR4F_5q | 16 | 16 | 12 | 14 | 0.9949 (0.9722–0.9971) | 0.99 | 213,504 | 14.23 | 2 / 14 | 86 / 14 |
-| OR4F_6q | 6 | 6 | 6 | 6 | 0.9961 (0.9883–0.9965) | 1.00 | 100,714 | 6.71 | 2 / 4 | 9 / 5 |
-| SEPTIN14_1p | 18 | 18 | 13 | 13 | 0.9826 (0.9706–0.9976) | 1.00 | 90,890 | 18.18 | 1 / 17 | 21 / 8 |
-| rDNA_13p | 222 | 222 | 5 | 5 | 0.9973 (0.9873–0.9998) | 1.00 | 3,317,612 | 221.17 | **222 / 0** | 7 / 2 |
-| INT_REXO1L_chr8 | 68 | 11 | 1 | 1 | 0.9940 (0.9926–0.9969) | 0.80 | 789,925 | 52.66 | — | 235 / **1** |
-| INT_16p11_2 | 1 | 1 | 1 | 1 | 0.9713 | 0.79 | 23,722 | 1.58 | — | 0 / 0 |
+| D4Z4_4q | 61 | 1 | 2 | 2 | 0.9937 (0.9900–0.9985) | 1.000 | 220,536 | 14.70 | **61 / 0** | 0 / 0 |
+| DUX4L_10q | 61 | 1 | 2 | 2 | 0.9940 (0.9926–0.9997) | 1.000 | 220,530 | 14.70 | **61 / 0** | 0 / 0 |
+| TUBB8B_18p | 5 | 5 | 3 | 3 | 0.9990 (0.9674–0.9991) | 1.000 | 83,221 | 5.55 | 4 / 1 | 14 / 5 |
+| TUBB8_10p | 6 | 6 | 3 | 3 | 0.9705 (0.9554–0.9709) | 1.000 | 91,658 | 6.11 | 4 / 2 | 18 / 6 |
+| OR4F_5q | 16 | 16 | 12 | 14 | 0.9949 (0.9722–0.9971) | 0.872 | 213,504 | 14.23 | 2 / 14 | 86 / 14 |
+| OR4F_6q | 6 | 6 | 6 | 6 | 0.9961 (0.9883–0.9965) | 1.000 | 100,714 | 6.71 | 2 / 4 | 9 / 5 |
+| SEPTIN14_1p | 18 | 18 | 13 | 13 | 0.9826 (0.9706–0.9976) | 1.000 | 90,890 | 18.18 | 1 / 17 | 21 / 8 |
+| rDNA_13p | 222 | 222 | 5 | 5 | 0.9973 (0.9873–0.9998) | 1.000 | 3,317,612 | 221.17 | **222 / 0** | 7 / 2 |
+| INT_REXO1L_chr8 | 68 | 11 | 1 | 1 | 0.9940 (0.9926–0.9969) | 0.799 | 789,925 | 52.66 | — | 235 / **1** |
+| INT_16p11_2 | 1 | 1 | 1 | 1 | 0.9713 | 0.580 | 23,722 | 1.58 | — | 0 / 0 |
 
 ### 4.1 The method recovers the known biology without being told it
 
@@ -190,7 +194,7 @@ Per core, placements on arms of the core's own Leiden community vs all other arm
 | OR4F_6q | C11 | 2 | 4 |
 | SEPTIN14_1p | C11 | **1** | **17** |
 | rDNA_13p | C7 | 222 | 0 |
-| interstitial controls | — | — | 69 (all interstitial) |
+| interstitial controls | — (no arm community) | — | 69/69 on interstitial, non-PHR positions |
 
 So the arm-community partition is strongly reproduced by the two "self-defining" families
 (D4Z4/DUX4L, rDNA) and by TUBB8/TUBB8B, but **individual OR4F and SEPTIN14 cores reach
@@ -210,7 +214,7 @@ caution against reading a community as a family grouping.
 | DUX4L_10q | 0 | 0 | — |
 | TUBB8B_18p | 14 | 5 | 18p:4, 9q:4, 3q:4, 16q:1, 4q:1 |
 | TUBB8_10p | 18 | 6 | 18p:8, 9q:3, 3q:3, 4q:2, 10p:1, 16q:1 |
-| OR4F_5q | 86 | 14 | expands the whole OR4F spread, incl. 5q:7 and 9p:2 (new arms) |
+| OR4F_5q | 86 | 14 | expands the whole OR4F spread; adds 9p (hop-1 had none) and takes 5q from 1 to 7 |
 | OR4F_6q | 9 | 5 | 15q:2, 3q:2, 5q:2, 6q:2, 19p:1 |
 | SEPTIN14_1p | 21 | 8 | 1q:4, Y:4, 1p:3, 11p:2, 19p:2, 20p:2, 4q:2, 7p:2 |
 | rDNA_13p | 7 | 2 | 13p:3, 21p:4 (array-internal extension) |
@@ -225,12 +229,39 @@ needs.
 
 ### 4.5 Seed-frequency sensitivity (`-f1000` vs `-f8192`)
 
-`alt_*` columns in the TSV. `n_positions` is **identical for 9 of 10 cores**. The
-exception is TUBB8B_18p: 4,043 rows at `-f8192` versus 68 at `-f1000`, and after the
-≥50 %-coverage filter both give the same 5 positions — i.e. the difference is entirely the
-short shared sub-repeat hits the coverage filter discards. `alt_n_dropped_short` documents
-this (4,316 vs 2,215). Conclusion: at this threshold the copy-number answer is not driven
-by the FastGA seed-frequency setting.
+`alt_*` columns in the TSV. `n_positions` and `n_arms` are **identical for all 10 cores**
+between `-f8192` and `-f1000`. The only difference is in the raw row count of
+TUBB8B_18p (4,322 rows at `-f8192` vs 71 at `-f1000`) and hence in what the ≥50 %-coverage
+filter discards (`n_dropped_short` 4,316 vs 65): the extra rows at the permissive setting
+are short shared sub-repeat hits that the coverage filter removes, and both settings then
+report the same 5 positions. Conclusion: at this threshold the copy-number answer is not
+driven by the FastGA seed-frequency setting.
+
+### 4.6 What the 95 % identity floor hides (measured, not estimated)
+
+The FastGA PAF was produced with the aligner default `-i0.7`, so alignments down to 70 %
+identity are present on disk and can be re-filtered. Same block (≥1 kb) and core-coverage
+(≥50 %) filters, only the gap-compressed identity floor changed (`n_positions` / `n_arms`):
+
+| core | ≥0.95 | ≥0.90 | ≥0.85 |
+|---|---|---|---|
+| D4Z4_4q | 61 / 2 | 61 / 2 | 61 / 2 |
+| DUX4L_10q | 61 / 2 | 61 / 2 | 61 / 2 |
+| TUBB8B_18p | 5 / 3 | 6 / 4 | 8 / 5 |
+| TUBB8_10p | 6 / 3 | 7 / 4 | 9 / 5 |
+| OR4F_5q | 16 / 14 | 16 / 14 | 16 / 14 |
+| OR4F_6q | 6 / 6 | 6 / 6 | 6 / 6 |
+| SEPTIN14_1p | 18 / 13 | 21 / 14 | 21 / 14 |
+| rDNA_13p | 222 / 5 | 222 / 5 | 222 / 5 |
+| INT_REXO1L_chr8 | 68 / 1 | 68 / 1 | 68 / 1 |
+| INT_16p11_2 | 1 / 1 | 1 / 1 | 1 / 1 |
+
+Six of ten cores are unchanged down to 85 %; the three that move (TUBB8B, TUBB8, SEPTIN14)
+gain 1–3 positions and at most 2 arms. **So the 95 % floor is not the binding constraint in
+this analysis** — the binding constraints are FastGA's seeding (`-f8192 -s500`) and the
+≥50 % core-coverage filter (§3, SEPTIN14 at 15 kb; F7 for the TAF11L experiment). This also
+means the comparison against the index's documented 95 % threshold is like-for-like for
+these cores.
 
 ## 5. Timing and cost (honest)
 
@@ -248,7 +279,7 @@ job was itself memory/IO-bound, not CPU-saturated.
 | `impg query` ×10 cores | as §2.3 | **0.01–0.31 s each** | 4,916 rows total on the primary run (4,322 of them, 88 %, are TUBB8B_18p's short sub-repeat hits, which the coverage filter then drops); max 0.31 s at 156 rows |
 | FastGA hop 2 | same settings, 290 spans / 5.06 Mb query | 226.1 s | 606,735 PAF records, 695 MB PAF |
 | wfmash cross-check | `-p 95 -w 10000 -s 5000 -c 500 -t 32` | 46.2 s | maxRSS 6.18 GB |
-| aggregate | in-memory | 70.9 s, maxRSS 1.25 GB | dominated by parsing the 695 MB hop-2 PAF (606,735 rows) |
+| aggregate | pure Python parse + join (no impg call) | 70.9 s, maxRSS 1.25 GB | dominated by parsing the 695 MB hop-2 PAF (606,735 rows) |
 
 Whole pipeline for the 10 cores, warm reference staging: **≈6.5 min wall on 32 threads**.
 The impg layer itself is essentially free (< 1 s for all 10 cores).
@@ -309,6 +340,9 @@ genome-wide scans). So a genome-wide *core* version is feasible; a genome-wide
    distribution does**: all 8 subtelomeric cores connect to ≥2 chromosomes (median 4,
    max 13) and both interstitial controls connect to exactly **1** chromosome and 1 arm
    (medians: 1 arm / 1 chromosome, versus 4 arms / 4 chromosomes for subtelomeric cores).
+   The interstitial placements are also shorter on the reference side (median locus length
+   44.8 kb for REXO1L, 8.7 kb for 16p11.2) and cover the core less completely (core-coverage
+   median 0.690 across the two controls versus 1.000 for the eight subtelomeric cores).
    With n=2 interstitial controls and no identity/length/copy-number matching, this is a
    suggestive contrast, not a matched-control result.
 
@@ -317,12 +351,14 @@ genome-wide scans). So a genome-wide *core* version is feasible; a genome-wide
    alignment, the ≥95 % gap-compressed identity threshold, the ≥50 % core-coverage filter,
    the 1 kb merge gap, and CHM13 being the only reference. Lower-identity copies
    (90–95 %) are invisible here.
-2. **Index/representation completeness bounds it.** The shipped all-vs-all index is
-   unusable (F1), so the representation was rebuilt from 10 cores only. This is a
-   *query-anchored* enumeration, not an all-vs-all graph, and cross-arm relations that
-   would need a haplotype bridge (i.e. a copy that is <95 % to the core but ≥95 % to an
-   intermediate haplotype) are only partly recovered by hop 2, which uses the reference
-   as its own bridge.
+2. **Index/representation completeness bounds it, and this is aligner-based, not an index
+   query** (F8, F9). The shipped all-vs-all index is unusable, so the representation was
+   rebuilt from 10 cores only. This is a *query-anchored* enumeration, not an all-vs-all
+   graph, and cross-arm relations that would need a haplotype bridge (a copy that is
+   <95 % to the core but ≥95 % to an intermediate haplotype) are only partly recovered by
+   hop 2, which uses the reference as its own bridge. The identity floor itself is not the
+   binding constraint (§4.6: unchanged down to 85 % for 6/10 cores); the binding
+   constraints are FastGA seeding and core-coverage.
 3. **Nothing about which copies are older, and nothing about concerted evolution.** High
    identity between copies is equally explained by recent duplication and by
    homogenisation; this analysis has no outgroup, no haplotype comparison, no polarity. It
@@ -387,6 +423,85 @@ returns `NoSuchKey`. Repeat content per core is therefore not reported (nothing 
   `FastGA: Cannot open post stub file …/cores.post`).
 - `wfmash -s` must be ≤ `-w`; `-s 5000` with the default window (1000) is an immediate
   error, and wfmash needs a `.fai` for the query.
+
+### F7 — a 600 bp-unit gene duplicon is invisible to a 15 kb core
+Before INT_16p11_2 was chosen, `INT_TAF11L_chr5` (chr5:17,430,000-17,445,000, the TAF11L
+array, 600 bp genes at ~3.4 kb spacing) was run through the identical pipeline: 268 PAF
+records, but the largest alignment anywhere was 8,705 bp at 93.5 % identity to
+chr5:17,607,620-17,616,272 (i.e. a non-array paralogue), and **nothing at the array locus
+itself** passed the filters. Recorded because it is a property of the method, not a bug:
+when the duplicon unit is much shorter than the core and the spacers are not conserved, a
+long core cannot enumerate copies. Core length must be matched to unit length (compare the
+SEPTIN14 15 kb vs 5 kb case in §3).
+
+### F8 — IMPG surface probing: no subcommand accepts `--index` alone
+Independently probed (parent-supplied facts plus my own tests), in this order:
+- installed binary `impg 0.5.0`, source tree at `v0.5.0-552-gbe61a4e` (a dev build, not the
+  tag); index magic bytes `IMPGIDX2` (format v2), confirmed with `xxd -l 16`.
+- a pinned `v0.4.1` build is not available: `/home/erikg/impg-v0.4.1` fails at its vendored
+  wfmash-rs `build.rs` cmake step (`gmake: *** [Makefile:136: all] Error 2`), so the older
+  reader cannot be tried.
+- `impg query` requires, in order: an alignment source (`Either --alignment-files or
+  --alignment-list must be provided`), then `-d/--merge-distance is required`, then a target
+  range/bed.
+- `impg stats  -i <index>` → `Either --alignment-files or --alignment-list must be provided`.
+- `impg similarity -i <index> -r …` → `-d/--merge-distance is required`; with `-d 0` →
+  `The 'seqwish' and 'pggb' engines are not yet implemented for the similarity command`;
+  with `--fast` → `Either --alignment-files or --alignment-list must be provided`.
+- `impg partition -i <index> --window-size …` takes neither `-r` nor `-b`
+  (`unexpected argument`), and its only alignment input is `-a`/`--alignment-list`.
+
+Conclusion: **every index-consuming subcommand hard-requires the source alignment files.**
+That is path (b) in the parent's guidance: confirmed, and it is exactly why the shipped
+index cannot be used. The reason is not only "the PAFs are gone" but that the surviving PAF
+sets are *newer* than the index, so even supplying them cannot work (F1).
+
+### F9 — this analysis is aligner-based enumeration, not an index query
+Stated plainly to avoid any misreading of §4: the numbers come from
+`FastGA → (my own small index) → impg query`, i.e. **placements are found by FastGA**, and
+are bounded by FastGA's settings (`-f8192 -c85 -s500 -T32`, plus a ≥95 % gap-compressed
+identity post-filter and a ≥50 % core-coverage filter), not by the shipped index's stated
+95 % threshold and not by its (unusable) all-vs-all graph. §4.6 measures how much the
+identity floor matters: little. Flags differ slightly from the parent's suggestion
+(`-T4 -f8192 -s500 -c70 -i0.6`): `-T32` is FastGA's own hard cap here and was used to keep
+the run short; `-c85` was used with a 95 % post-filter instead of `-c70 -i0.6`, and since
+FastGA's `-i` defaults to 0.7 the more permissive alignments are present on disk anyway,
+which is what makes §4.6 possible. A cross-check against the shipped index was impossible
+for the reasons above; the substitutes are the raw-PAF recount and the independent wfmash
+run in §6.
+
+## 8b. Verification gates (verbatim)
+
+Cheap gates, in the order they were used:
+
+1. **Windowed-read geometry** (`selftest`) — the `.fai` byte arithmetic must land exactly on
+   a known gene start:
+   ```
+   seq CHM13#0#chr10:2489-134754994 chrom chr10 beg 2489
+   chr10:39416+60 = cccaggccATCGTGATGATGGAGTGCCTGGGGTCCCACTTGCCCACCCTTCATTGCTGGT
+   ```
+   (upper-case, i.e. non-soft-masked, and an ORF-start-containing stretch: TUBB8 is at
+   chr10:39,416-69,557 on the minus strand per the Liftoff GFF.)
+2. **Self-placement invariant** — for every core exactly one placement must coincide with
+   the core's own interval (±1 bp); `core_stats` aborts otherwise. Verbatim example row:
+   ```
+   CHM13#0#chr10  35001  50001  TUBB8_10p  0  15000  TUBB8_10p:0-15000  0  +  +  gi:f:1  bi:f:1
+   ```
+   (also fixes the coordinate convention: impg `--original-sequence-coordinates` returns
+   1-based inclusive, i.e. the core written as 0-based half-open 35000-50000 comes back as
+   35001-50001.)
+3. **Known-truth gates** — rDNA_13p lands on 13p/14p/15p/21p/22p and nothing else
+   (222/222 placements on C7 arms); D4Z4_4q and DUX4L_10q are per-arm mirror images
+   (`10q:31;4q:30` vs `10q:30;4q:31`). Both were recovered without being told the answer.
+4. **impg layer vs raw alignments** (cross-check, §6): `fastga-raw-paf` 61 positions
+   `10q:31;4q:30` vs `impg-bedpe` 61 positions `10q:31;4q:30`.
+5. **Independent aligner** (cross-check, §6): wfmash 22 positions, 2 arms.
+6. **Whole-pipeline reproducibility** — a full re-run into a *fresh* work directory
+   (`cores → fastga -f8192 → index → query → hop2 → aggregate`, 442 s wall) produced
+   **byte-identical** hop-1 and hop-2 columns to the reported TSV:
+   ```
+   AGREE: two independent FastGA/impg runs produce identical hop1+hop2 columns
+   ```
 
 ## 9. Reproduction
 
