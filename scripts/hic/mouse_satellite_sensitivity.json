@@ -1,0 +1,2887 @@
+{
+  "item": "R1-M6 mouse p-arm satellite confound",
+  "referee_verbatim": "Mouse chromosomes are acro/telocentric with essentially no short arm, so a 1 Mb telomere-anchored 'p-arm' flank is largely composed of minor and major satellite, which are near-identical between chromosomes, placing these windows at once at the top of the Jaccard axis and at the maximum of the multi-mapping problem.",
+  "inputs": {
+    "flanks": "/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/subtelo_1Mb/mouse_subtelo_1Mb_trimmed.fa.gz",
+    "phr": "/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/subtelo_1Mb/mouse.all-vs-all.p95.id95.len.tsv",
+    "paf": "/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/subtelo_1Mb/all-vs-all.p95",
+    "dist_matrix": "/moosefs/guarracino/HPRCv2/PHR_III/mouse_T2T/similarity_1Mb/mouse.dist_matrix.tsv",
+    "repeat_library": "/moosefs/guarracino/condatools/repeatmasker/4.1.7p1/share/RepeatMasker/Libraries/RepeatMasker.lib",
+    "blastn": "/moosefs/guarracino/condatools/repeatmasker/4.1.7p1/bin/blastn",
+    "bin": 5000,
+    "mantel_functions": "/home/erikg/phrs/scripts/hic/mantel_mouse_d_m5.py",
+    "contact_tables": "data/mouse_<stage>_phr_<res>bp_seqlevel.tsv"
+  },
+  "satellite_annotation": {
+    "label": "major satellite GSAT_MM = Dfam-curated ANNOTATION; minor satellite = PROXY (no Dfam 3.8 family named 'minor satellite' for Mus in this library; MurSAT1+MMSAT4+CENSAT_MC used instead); periodicity detector = PROXY",
+    "families": {
+      "GSAT_MM": 471,
+      "MurSAT1": 120,
+      "MMSAT4": 168,
+      "CENSAT_MC": 59,
+      "SYNREP_MM": 266,
+      "IMPB_01": 2548,
+      "ZP3AR": 212,
+      "CYRA11_Mm": 617
+    },
+    "family_headers": {
+      "GSAT_MM": "GSAT_MM#Satellite @Mus_genus [S:15,55]",
+      "MurSAT1": "MurSAT1#Satellite @Muridae [S:55]",
+      "MMSAT4": "MMSAT4#Satellite @Mus_genus [S:55]",
+      "CENSAT_MC": "CENSAT_MC#Satellite/centromeric @Mus_genus [S:55]",
+      "SYNREP_MM": "SYNREP_MM#Satellite @Mus_genus [S:55]",
+      "IMPB_01": "IMPB_01#Satellite @Mus_musculus [S:55]",
+      "ZP3AR": "ZP3AR#Satellite @Muridae [S:50]",
+      "CYRA11_Mm": "CYRA11_Mm#Satellite/Y-chromosome @Mus_genus [S:50]"
+    },
+    "hit_filters": "blastn length>=100 bp, identity>=75%; bin covered if >=50%",
+    "per_flank": {
+      "B6#1#chr10_parm:8494-1000000": {
+        "length": 991507,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 987814,
+        "sat_frac_union": 0.9927778894472362,
+        "sat_frac_major_GSAT_MM": 0.21733266331658294,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9899497487437185,
+        "frac_bins_sat25": 0.9949748743718593,
+        "proxy_periodic_bin_frac": 0.9899143425109455,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033285305179147806,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr10_qarm:136126214-137106573": {
+        "length": 980360,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 5269,
+        "sat_frac_union": 0.005349238578680204,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.002914720812182741,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005076142131979695,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 149.0,
+        "at_frac": 0.003156729123643174,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr11_parm:10588-1000000": {
+        "length": 989413,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 916383,
+        "sat_frac_union": 0.9256391252200226,
+        "sat_frac_major_GSAT_MM": 0.9245340747149721,
+        "sat_frac_minor_PROXY": 0.0007797979797979799,
+        "frac_bins_sat50": 0.9242424242424242,
+        "frac_bins_sat25": 0.9292929292929293,
+        "proxy_periodic_bin_frac": 0.9241974787070718,
+        "proxy_best_lag_median": 234.0,
+        "at_frac": 0.003202021011882089,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr11_qarm:131708645-132696509": {
+        "length": 987865,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 5376,
+        "sat_frac_union": 0.005430303030303031,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.002911111111111111,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 168.0,
+        "at_frac": 0.0027752227795919647,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr12_parm:8657-1000000": {
+        "length": 991344,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 986481,
+        "sat_frac_union": 0.9914381909547738,
+        "sat_frac_major_GSAT_MM": 0.20869849246231156,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9899497487437185,
+        "frac_bins_sat25": 0.9899497487437185,
+        "proxy_periodic_bin_frac": 0.9949563420971933,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003329138632039132,
+        "agree_bins": 0.9949748743718593
+      },
+      "B6#1#chr12_qarm:121193256-122174414": {
+        "length": 981159,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 3549,
+        "sat_frac_union": 0.0036027031880274877,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.00509601399976966,
+        "proxy_best_lag_median": 154.0,
+        "at_frac": 0.003115232157221417,
+        "agree_bins": 0.9949238578680203
+      },
+      "B6#1#chr13_parm:10860-1000000": {
+        "length": 989141,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 978680,
+        "sat_frac_union": 0.9885656565656565,
+        "sat_frac_major_GSAT_MM": 0.2999363636363636,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.98989898989899,
+        "frac_bins_sat25": 0.9949494949494949,
+        "proxy_periodic_bin_frac": 0.9898902178759146,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003339245721032163,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr13_qarm:128280478-129261571": {
+        "length": 981094,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 2300,
+        "sat_frac_union": 0.0023350253807106597,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.010192703247599109,
+        "proxy_best_lag_median": 135.0,
+        "at_frac": 0.0022369620570878513,
+        "agree_bins": 0.9898477157360406
+      },
+      "B6#1#chr14_parm:13379-1000000": {
+        "length": 986622,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 981477,
+        "sat_frac_union": 0.9913907421938247,
+        "sat_frac_major_GSAT_MM": 0.17296245936554197,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.98989898989899,
+        "frac_bins_sat25": 0.98989898989899,
+        "proxy_periodic_bin_frac": 0.9949322030118931,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003349532263571555,
+        "agree_bins": 0.9949494949494949
+      },
+      "B6#1#chr14_qarm:127273806-128257537": {
+        "length": 983732,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 3524,
+        "sat_frac_union": 0.0035776649746192893,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 165.0,
+        "at_frac": 0.0031563422988940427,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr15_parm:17595-1000000": {
+        "length": 982406,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 968414,
+        "sat_frac_union": 0.9831614213197969,
+        "sat_frac_major_GSAT_MM": 0.2554812182741117,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9796954314720813,
+        "frac_bins_sat25": 0.9898477157360406,
+        "proxy_periodic_bin_frac": 0.9847313636113786,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003352574024803561,
+        "agree_bins": 0.9949238578680203
+      },
+      "B6#1#chr15_qarm:115793491-116778766": {
+        "length": 985276,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 3166,
+        "sat_frac_union": 0.003197979797979798,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0050747201799292785,
+        "proxy_best_lag_median": 158.0,
+        "at_frac": 0.002877986585371905,
+        "agree_bins": 0.9949494949494949
+      },
+      "B6#1#chr16_parm:1696-1000000": {
+        "length": 998305,
+        "n_bins": 200,
+        "n_proxy_bins": 200,
+        "sat_bp_union": 986140,
+        "sat_frac_union": 0.98614,
+        "sat_frac_major_GSAT_MM": 0.285552,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.985,
+        "frac_bins_sat25": 0.985,
+        "proxy_periodic_bin_frac": 0.9899830212209696,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0032952254109215122,
+        "agree_bins": 0.995
+      },
+      "B6#1#chr16_qarm:104498492-105486690": {
+        "length": 988199,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 6677,
+        "sat_frac_union": 0.006744444444444444,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0025535353535353533,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.005059709633383559,
+        "proxy_best_lag_median": 161.0,
+        "at_frac": 0.0028107300241053765,
+        "agree_bins": 0.9949494949494949
+      },
+      "B6#1#chr17_parm:8464-1000000": {
+        "length": 991537,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 980258,
+        "sat_frac_union": 0.9851844158986213,
+        "sat_frac_major_GSAT_MM": 0.29967386313480215,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9849246231155779,
+        "frac_bins_sat25": 0.9899497487437185,
+        "proxy_periodic_bin_frac": 0.9848719714947601,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003317067317000256,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr17_qarm:115046358-116030523": {
+        "length": 984166,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 5504,
+        "sat_frac_union": 0.005587817258883248,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.00286497461928934,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005076142131979695,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 156.0,
+        "at_frac": 0.003104646287540263,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr18_parm:19167-1000000": {
+        "length": 980834,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 958330,
+        "sat_frac_union": 0.9729238578680203,
+        "sat_frac_major_GSAT_MM": 0.9720213197969544,
+        "sat_frac_minor_PROXY": 0.0009025380710659899,
+        "frac_bins_sat50": 0.9695431472081218,
+        "frac_bins_sat25": 0.9746192893401016,
+        "proxy_periodic_bin_frac": 0.9694137845955585,
+        "proxy_best_lag_median": 234.0,
+        "at_frac": 0.0032481525692384713,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr18_qarm:92040999-93026079": {
+        "length": 985081,
+        "n_bins": 198,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 2036,
+        "sat_frac_union": 0.0020565656565656567,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0005707070707070707,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 156.0,
+        "at_frac": 0.003132330129609111,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr19_parm:9560-1000000": {
+        "length": 990441,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 981107,
+        "sat_frac_union": 0.9860371859296483,
+        "sat_frac_major_GSAT_MM": 0.33712261306532665,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9798994974874372,
+        "frac_bins_sat25": 0.9899497487437185,
+        "proxy_periodic_bin_frac": 0.9949517437182023,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033047204752084474,
+        "agree_bins": 0.9849246231155779
+      },
+      "B6#1#chr19_qarm:66670322-67659854": {
+        "length": 989533,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 6681,
+        "sat_frac_union": 0.006748484848484847,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0031676767676767676,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 172.5,
+        "at_frac": 0.0029277049030127637,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr1_parm:16698-1000000": {
+        "length": 983303,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 975637,
+        "sat_frac_union": 0.9904944162436548,
+        "sat_frac_major_GSAT_MM": 0.18081928934010152,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9898477157360406,
+        "frac_bins_sat25": 0.9949238578680203,
+        "proxy_periodic_bin_frac": 0.9949150973809701,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033621530921646445,
+        "agree_bins": 0.9949238578680203
+      },
+      "B6#1#chr1_qarm:205839991-206823741": {
+        "length": 983751,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 4202,
+        "sat_frac_union": 0.0042659898477157366,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 156.0,
+        "at_frac": 0.0029888758795990774,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr2_parm:9287-1000000": {
+        "length": 990714,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 844707,
+        "sat_frac_union": 0.8489516011429697,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8040201005025126,
+        "frac_bins_sat25": 0.9296482412060302,
+        "proxy_periodic_bin_frac": 0.9899062696196884,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.00336430120106363,
+        "agree_bins": 0.8140703517587939
+      },
+      "B6#1#chr2_qarm:191283382-192272350": {
+        "length": 988969,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 2704,
+        "sat_frac_union": 0.002731313131313131,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0007040404040404041,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 189.0,
+        "at_frac": 0.0027445580490103503,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr3_parm:5869-1000000": {
+        "length": 994132,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 986481,
+        "sat_frac_union": 0.9914381909547738,
+        "sat_frac_major_GSAT_MM": 0.25563316582914575,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9899497487437185,
+        "frac_bins_sat25": 0.9899497487437185,
+        "proxy_periodic_bin_frac": 0.99497048681664,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033204239559140067,
+        "agree_bins": 0.9949748743718593
+      },
+      "B6#1#chr3_qarm:173412036-174402191": {
+        "length": 990156,
+        "n_bins": 199,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 3146,
+        "sat_frac_union": 0.0031618090452261304,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.005050505050505051,
+        "proxy_best_lag_median": 141.0,
+        "at_frac": 0.0031136567697173756,
+        "agree_bins": 0.9949494949494949
+      },
+      "B6#1#chr4_parm:16557-1000000": {
+        "length": 983444,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 637697,
+        "sat_frac_union": 0.6474082196949599,
+        "sat_frac_major_GSAT_MM": 0.6429858846695791,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.6395939086294417,
+        "frac_bins_sat25": 0.6548223350253807,
+        "proxy_periodic_bin_frac": 0.588181940201984,
+        "proxy_best_lag_median": 234.0,
+        "at_frac": 0.0030562541623690345,
+        "agree_bins": 0.9390862944162437
+      },
+      "B6#1#chr4_qarm:170597973-171574781": {
+        "length": 976809,
+        "n_bins": 196,
+        "n_proxy_bins": 196,
+        "sat_bp_union": 3187,
+        "sat_frac_union": 0.0032520408163265306,
+        "sat_frac_major_GSAT_MM": 0.0004224489795918368,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.035830955693487675,
+        "proxy_best_lag_median": 159.0,
+        "at_frac": 0.002777515398410664,
+        "agree_bins": 0.9642857142857143
+      },
+      "B6#1#chr5_parm:26102-1000000": {
+        "length": 973899,
+        "n_bins": 195,
+        "n_proxy_bins": 195,
+        "sat_bp_union": 802012,
+        "sat_frac_union": 0.8225764102564103,
+        "sat_frac_major_GSAT_MM": 0.09437025641025641,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.7538461538461538,
+        "frac_bins_sat25": 0.9179487179487179,
+        "proxy_periodic_bin_frac": 0.9897319947961749,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0034222682200684158,
+        "agree_bins": 0.764102564102564
+      },
+      "B6#1#chr5_qarm:157035087-158025336": {
+        "length": 990250,
+        "n_bins": 199,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 4397,
+        "sat_frac_union": 0.004419095477386934,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 155.0,
+        "at_frac": 0.0029277828792980305,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr6_parm:21150-1000000": {
+        "length": 978851,
+        "n_bins": 196,
+        "n_proxy_bins": 196,
+        "sat_bp_union": 971810,
+        "sat_frac_union": 0.9916432686447729,
+        "sat_frac_major_GSAT_MM": 0.3865524523182423,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9897959183673469,
+        "frac_bins_sat25": 0.9897959183673469,
+        "proxy_periodic_bin_frac": 0.9948919702794399,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003348058073622512,
+        "agree_bins": 0.9948979591836735
+      },
+      "B6#1#chr6_qarm:157292541-158280070": {
+        "length": 987530,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 5342,
+        "sat_frac_union": 0.005396067393300594,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0018728350700682717,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005050505050505051,
+        "proxy_periodic_bin_frac": 0.002561947485139692,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.0030084394796547286,
+        "agree_bins": 0.9949494949494949
+      },
+      "B6#1#chr7_parm:8361-1000000": {
+        "length": 991640,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 258380,
+        "sat_frac_union": 0.2596782939085672,
+        "sat_frac_major_GSAT_MM": 0.2586943743105773,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.2562814070351759,
+        "frac_bins_sat25": 0.2613065326633166,
+        "proxy_periodic_bin_frac": 0.7327659231172603,
+        "proxy_best_lag_median": 143.0,
+        "at_frac": 0.0025546483137724846,
+        "agree_bins": 0.5226130653266332
+      },
+      "B6#1#chr7_qarm:156682279-157672004": {
+        "length": 989726,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 4196,
+        "sat_frac_union": 0.004238179509868041,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 160.0,
+        "at_frac": 0.0025387038579007186,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr8_parm:5823-1000000": {
+        "length": 994178,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 986450,
+        "sat_frac_union": 0.9914070351758795,
+        "sat_frac_major_GSAT_MM": 0.23093969849246232,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9899497487437185,
+        "frac_bins_sat25": 0.9899497487437185,
+        "proxy_periodic_bin_frac": 0.9949707195290984,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033245717452637397,
+        "agree_bins": 0.9949748743718593
+      },
+      "B6#1#chr8_qarm:132128322-133120042": {
+        "length": 991721,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 4342,
+        "sat_frac_union": 0.004363819095477387,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.002028140703517588,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 163.0,
+        "at_frac": 0.0030108869359325354,
+        "agree_bins": 1.0
+      },
+      "B6#1#chr9_parm:13986-1000000": {
+        "length": 986015,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 981478,
+        "sat_frac_union": 0.9913919938299247,
+        "sat_frac_major_GSAT_MM": 0.3137364382743693,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.98989898989899,
+        "frac_bins_sat25": 0.98989898989899,
+        "proxy_periodic_bin_frac": 0.994929083228957,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003328047798512705,
+        "agree_bins": 0.9949494949494949
+      },
+      "B6#1#chr9_qarm:139591383-140585766": {
+        "length": 994384,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 7655,
+        "sat_frac_union": 0.007693080365330301,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0023447236180904525,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.33689198538994997,
+        "proxy_best_lag_median": 124.0,
+        "at_frac": 0.002827325498107927,
+        "agree_bins": 0.6633165829145728
+      },
+      "CAST#2#chr10_parm:10195-1000000": {
+        "length": 989806,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 802466,
+        "sat_frac_union": 0.8105717171717172,
+        "sat_frac_major_GSAT_MM": 0.13264949494949496,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.7373737373737373,
+        "frac_bins_sat25": 0.9444444444444444,
+        "proxy_periodic_bin_frac": 0.9646395354241134,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033639537673916596,
+        "agree_bins": 0.7727272727272727
+      },
+      "CAST#2#chr10_qarm:134248168-135239577": {
+        "length": 991410,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 5120,
+        "sat_frac_union": 0.005145728643216081,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0024381909547738696,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005025125628140704,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 166.0,
+        "at_frac": 0.003129576533224418,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr11_parm:12996-1000000": {
+        "length": 987005,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 791120,
+        "sat_frac_union": 0.7991114788785612,
+        "sat_frac_major_GSAT_MM": 0.00010404040404040404,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.7525252525252525,
+        "frac_bins_sat25": 0.8939393939393939,
+        "proxy_periodic_bin_frac": 0.9696050171984945,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033877203941738037,
+        "agree_bins": 0.7828282828282829
+      },
+      "CAST#2#chr11_qarm:128137265-129126137": {
+        "length": 988873,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 5996,
+        "sat_frac_union": 0.006056565656565657,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0027606060606060606,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 172.5,
+        "at_frac": 0.002774569601889518,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr12_parm:11631-1000000": {
+        "length": 988370,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 763701,
+        "sat_frac_union": 0.7714151515151515,
+        "sat_frac_major_GSAT_MM": 0.10812020202020203,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.6919191919191919,
+        "frac_bins_sat25": 0.9090909090909091,
+        "proxy_periodic_bin_frac": 0.9207078320871739,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033453917619490434,
+        "agree_bins": 0.7727272727272727
+      },
+      "CAST#2#chr12_qarm:125810260-126804571": {
+        "length": 994312,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 3226,
+        "sat_frac_union": 0.003242211055276382,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 168.0,
+        "at_frac": 0.003119133585967637,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr13_parm:10968-1000000": {
+        "length": 989033,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 892297,
+        "sat_frac_union": 0.9013101010101009,
+        "sat_frac_major_GSAT_MM": 0.38721414141414146,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8787878787878788,
+        "frac_bins_sat25": 0.9696969696969697,
+        "proxy_periodic_bin_frac": 0.9443901265175176,
+        "proxy_best_lag_median": 146.0,
+        "at_frac": 0.00332135969759647,
+        "agree_bins": 0.9242424242424242
+      },
+      "CAST#2#chr13_qarm:135442194-136434350": {
+        "length": 992157,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 3776,
+        "sat_frac_union": 0.003794974874371859,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.025197624972660575,
+        "proxy_best_lag_median": 141.0,
+        "at_frac": 0.0028542704691336363,
+        "agree_bins": 0.9748743718592965
+      },
+      "CAST#2#chr14_parm:7628-1000000": {
+        "length": 992373,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 899881,
+        "sat_frac_union": 0.9044030150753769,
+        "sat_frac_major_GSAT_MM": 0.2849226130653267,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8844221105527639,
+        "frac_bins_sat25": 0.964824120603015,
+        "proxy_periodic_bin_frac": 0.954654147180546,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033207444070549193,
+        "agree_bins": 0.9296482412060302
+      },
+      "CAST#2#chr14_qarm:133684342-134681012": {
+        "length": 996671,
+        "n_bins": 200,
+        "n_proxy_bins": 200,
+        "sat_bp_union": 3876,
+        "sat_frac_union": 0.003876,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 161.0,
+        "at_frac": 0.0031046152654687457,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr15_parm:11173-1000000": {
+        "length": 988828,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 809763,
+        "sat_frac_union": 0.8179424242424244,
+        "sat_frac_major_GSAT_MM": 0.09453636363636364,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.7525252525252525,
+        "frac_bins_sat25": 0.9343434343434344,
+        "proxy_periodic_bin_frac": 0.954491579930989,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.003368680356069319,
+        "agree_bins": 0.7878787878787878
+      },
+      "CAST#2#chr15_qarm:113211003-114199443": {
+        "length": 988441,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 3262,
+        "sat_frac_union": 0.0032949494949494947,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 162.0,
+        "at_frac": 0.002924623912077481,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr16_parm:3490-1000000": {
+        "length": 996511,
+        "n_bins": 200,
+        "n_proxy_bins": 200,
+        "sat_bp_union": 668892,
+        "sat_frac_union": 0.6688919060225015,
+        "sat_frac_major_GSAT_MM": 0.000103,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.56,
+        "frac_bins_sat25": 0.925,
+        "proxy_periodic_bin_frac": 0.9749124696064569,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.003362030119692607,
+        "agree_bins": 0.585
+      },
+      "CAST#2#chr16_qarm:130770781-131762355": {
+        "length": 991575,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 7255,
+        "sat_frac_union": 0.007291457286432161,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.002813065326633166,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005025125628140704,
+        "proxy_periodic_bin_frac": 0.005042482918589114,
+        "proxy_best_lag_median": 166.0,
+        "at_frac": 0.0027951217650666665,
+        "agree_bins": 0.9949748743718593
+      },
+      "CAST#2#chr17_parm:7806-1000000": {
+        "length": 992195,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 883940,
+        "sat_frac_union": 0.8883819095477388,
+        "sat_frac_major_GSAT_MM": 0.20159195979899497,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8944723618090452,
+        "frac_bins_sat25": 0.964824120603015,
+        "proxy_periodic_bin_frac": 0.9748033400692404,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033413961852662042,
+        "agree_bins": 0.9195979899497487
+      },
+      "CAST#2#chr17_qarm:110525135-111518985": {
+        "length": 993851,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 6392,
+        "sat_frac_union": 0.0064241206030150756,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0028361809045226133,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005025125628140704,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 157.0,
+        "at_frac": 0.003084130146881213,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr18_parm:13226-1000000": {
+        "length": 986775,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 695306,
+        "sat_frac_union": 0.7023292929292928,
+        "sat_frac_major_GSAT_MM": 0.4198969696969697,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.6161616161616161,
+        "frac_bins_sat25": 0.9393939393939394,
+        "proxy_periodic_bin_frac": 0.9576651212282435,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.0033280487960858107,
+        "agree_bins": 0.6414141414141414
+      },
+      "CAST#2#chr18_qarm:90125083-91110454": {
+        "length": 985372,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 2285,
+        "sat_frac_union": 0.0023080808080808077,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0005707070707070707,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 140.5,
+        "at_frac": 0.003137486055392012,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr19_parm:14156-1000000": {
+        "length": 985845,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 907605,
+        "sat_frac_union": 0.9167728288805211,
+        "sat_frac_major_GSAT_MM": 0.610879797979798,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9141414141414141,
+        "frac_bins_sat25": 0.9141414141414141,
+        "proxy_periodic_bin_frac": 0.9179942080144444,
+        "proxy_best_lag_median": 234.0,
+        "at_frac": 0.0032597887757520837,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr19_qarm:70075252-71067746": {
+        "length": 992495,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 5645,
+        "sat_frac_union": 0.005673366834170854,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0027668341708542714,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 177.0,
+        "at_frac": 0.0029188912065200084,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr1_parm:5322-1000000": {
+        "length": 994679,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 975239,
+        "sat_frac_union": 0.9801396295433139,
+        "sat_frac_major_GSAT_MM": 0.43376676522170593,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9748743718592965,
+        "frac_bins_sat25": 0.9798994974874372,
+        "proxy_periodic_bin_frac": 0.9748662633874848,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0032979099779120685,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr1_qarm:218958469-219949097": {
+        "length": 990629,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 5048,
+        "sat_frac_union": 0.005073366834170853,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.00035376884422110553,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.005047298231729538,
+        "proxy_best_lag_median": 164.0,
+        "at_frac": 0.0029712049694876623,
+        "agree_bins": 0.9949748743718593
+      },
+      "CAST#2#chr2_parm:15760-1000000": {
+        "length": 984241,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 965240,
+        "sat_frac_union": 0.9799390862944163,
+        "sat_frac_major_GSAT_MM": 0.4280192893401015,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9746192893401016,
+        "frac_bins_sat25": 0.9796954314720813,
+        "proxy_periodic_bin_frac": 0.9745997169392455,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033317641444519097,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr2_qarm:197105967-198096530": {
+        "length": 990564,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 2852,
+        "sat_frac_union": 0.0028663316582914575,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.000700502512562814,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 178.0,
+        "at_frac": 0.0027282005875176865,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr3_parm:11948-1000000": {
+        "length": 988053,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 901817,
+        "sat_frac_union": 0.9109262626262626,
+        "sat_frac_major_GSAT_MM": 0.44953535353535357,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8888888888888888,
+        "frac_bins_sat25": 0.9595959595959596,
+        "proxy_periodic_bin_frac": 0.9645767990178664,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.0033128513624442932,
+        "agree_bins": 0.9242424242424242
+      },
+      "CAST#2#chr3_qarm:170328605-171314815": {
+        "length": 986211,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 3070,
+        "sat_frac_union": 0.003101010101010101,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 156.0,
+        "at_frac": 0.0031119101282431937,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr4_parm:10930-1000000": {
+        "length": 989071,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 914357,
+        "sat_frac_union": 0.92359246828392,
+        "sat_frac_major_GSAT_MM": 0.4507460036374554,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8939393939393939,
+        "frac_bins_sat25": 0.9848484848484849,
+        "proxy_periodic_bin_frac": 0.9797790047428344,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.003325674582987164,
+        "agree_bins": 0.8939393939393939
+      },
+      "CAST#2#chr4_qarm:156659199-157643117": {
+        "length": 983919,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 2780,
+        "sat_frac_union": 0.002822335025380711,
+        "sat_frac_major_GSAT_MM": 0.0004203045685279188,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.03557203387677238,
+        "proxy_best_lag_median": 153.0,
+        "at_frac": 0.0027530742112489622,
+        "agree_bins": 0.9644670050761421
+      },
+      "CAST#2#chr5_parm:9477-1000000": {
+        "length": 990524,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 904155,
+        "sat_frac_union": 0.9086984924623116,
+        "sat_frac_major_GSAT_MM": 0.36702914572864326,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8894472361809045,
+        "frac_bins_sat25": 0.964824120603015,
+        "proxy_periodic_bin_frac": 0.9646651671236638,
+        "proxy_best_lag_median": 146.0,
+        "at_frac": 0.003308781144821799,
+        "agree_bins": 0.9246231155778895
+      },
+      "CAST#2#chr5_qarm:157407537-158399760": {
+        "length": 992224,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 4481,
+        "sat_frac_union": 0.004503517587939699,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 172.0,
+        "at_frac": 0.002908647795529393,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr6_parm:8870-1000000": {
+        "length": 991131,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 822476,
+        "sat_frac_union": 0.8266090452261307,
+        "sat_frac_major_GSAT_MM": 0.11353567839195981,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.7587939698492462,
+        "frac_bins_sat25": 0.9547738693467337,
+        "proxy_periodic_bin_frac": 0.9646868072938896,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033497085663300574,
+        "agree_bins": 0.7839195979899497
+      },
+      "CAST#2#chr6_qarm:159567601-160556908": {
+        "length": 989308,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 3981,
+        "sat_frac_union": 0.0040208763587593664,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0011653208032038115,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.005054037771856691,
+        "proxy_best_lag_median": 176.5,
+        "at_frac": 0.003008535943642762,
+        "agree_bins": 0.9949494949494949
+      },
+      "CAST#2#chr7_parm:21638-1000000": {
+        "length": 978363,
+        "n_bins": 196,
+        "n_proxy_bins": 196,
+        "sat_bp_union": 661371,
+        "sat_frac_union": 0.6748683224404838,
+        "sat_frac_major_GSAT_MM": 0.00010510204081632653,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.5510204081632653,
+        "frac_bins_sat25": 0.923469387755102,
+        "proxy_periodic_bin_frac": 0.9744471121659343,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.003430469977374952,
+        "agree_bins": 0.576530612244898
+      },
+      "CAST#2#chr7_qarm:144122047-145104698": {
+        "length": 982652,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 3796,
+        "sat_frac_union": 0.0038538071065989847,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 163.0,
+        "at_frac": 0.0025508511454685424,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr8_parm:15503-1000000": {
+        "length": 984498,
+        "n_bins": 197,
+        "n_proxy_bins": 197,
+        "sat_bp_union": 877547,
+        "sat_frac_union": 0.8909104332890195,
+        "sat_frac_major_GSAT_MM": 0.43534495105551707,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.8629441624365483,
+        "frac_bins_sat25": 0.9543147208121827,
+        "proxy_periodic_bin_frac": 0.949212695201006,
+        "proxy_best_lag_median": 176.0,
+        "at_frac": 0.003332229834859381,
+        "agree_bins": 0.9137055837563451
+      },
+      "CAST#2#chr8_qarm:138012418-139004057": {
+        "length": 991640,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 5345,
+        "sat_frac_union": 0.005371859296482412,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0021668341708542716,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.005025125628140704,
+        "proxy_periodic_bin_frac": 0.0,
+        "proxy_best_lag_median": 162.0,
+        "at_frac": 0.003009992683558164,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr9_parm:14431-1000000": {
+        "length": 985570,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 961548,
+        "sat_frac_union": 0.971260606060606,
+        "sat_frac_major_GSAT_MM": 0.00010404040404040404,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9696969696969697,
+        "frac_bins_sat25": 0.9696969696969697,
+        "proxy_periodic_bin_frac": 0.9695607617926683,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033698491445702905,
+        "agree_bins": 1.0
+      },
+      "CAST#2#chr9_qarm:134261928-135252670": {
+        "length": 990743,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 6359,
+        "sat_frac_union": 0.006390868203737396,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0031968983544911644,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.3035529900286956,
+        "proxy_best_lag_median": 127.0,
+        "at_frac": 0.002840637490673273,
+        "agree_bins": 0.6934673366834171
+      },
+      "CAST#2#chrX_parm:12739-1000000": {
+        "length": 987262,
+        "n_bins": 198,
+        "n_proxy_bins": 198,
+        "sat_bp_union": 910428,
+        "sat_frac_union": 0.9196242424242425,
+        "sat_frac_major_GSAT_MM": 0.00010404040404040404,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.9343434343434344,
+        "frac_bins_sat25": 0.9797979797979798,
+        "proxy_periodic_bin_frac": 0.9746774412465992,
+        "proxy_best_lag_median": 120.0,
+        "at_frac": 0.0033810066595874005,
+        "agree_bins": 0.9595959595959596
+      },
+      "CAST#2#chrX_qarm:178480850-179471175": {
+        "length": 990326,
+        "n_bins": 199,
+        "n_proxy_bins": 199,
+        "sat_bp_union": 3684,
+        "sat_frac_union": 0.00370251256281407,
+        "sat_frac_major_GSAT_MM": 0.0,
+        "sat_frac_minor_PROXY": 0.0,
+        "frac_bins_sat50": 0.0,
+        "frac_bins_sat25": 0.0,
+        "proxy_periodic_bin_frac": 0.19690485759234838,
+        "proxy_best_lag_median": 124.0,
+        "at_frac": 0.00251337468764283,
+        "agree_bins": 0.8040201005025126
+      }
+    },
+    "per_arm_sat_frac": {
+      "chr10_p": 0.9017,
+      "chr10_q": 0.0053,
+      "chr11_p": 0.8624,
+      "chr11_q": 0.0057,
+      "chr12_p": 0.8814,
+      "chr13_p": 0.9449,
+      "chr14_p": 0.9479,
+      "chr15_p": 0.9006,
+      "chr16_p": 0.8275,
+      "chr17_p": 0.9368,
+      "chr17_q": 0.0064,
+      "chr18_p": 0.8376,
+      "chr19_p": 0.9514,
+      "chr19_q": 0.0062,
+      "chr1_p": 0.9853,
+      "chr2_p": 0.9144,
+      "chr3_p": 0.9512,
+      "chr4_p": 0.7855,
+      "chr5_p": 0.8656,
+      "chr6_p": 0.9091,
+      "chr7_p": 0.4673,
+      "chr8_p": 0.9412,
+      "chr8_q": 0.0049,
+      "chr9_p": 0.9813,
+      "chr9_q": 0.0077,
+      "chrX_p": 0.9196,
+      "chrX_q": 0.0037
+    },
+    "per_arm_major": {
+      "chr10_p": 0.175,
+      "chr10_q": 0.0,
+      "chr11_p": 0.4623,
+      "chr11_q": 0.0,
+      "chr12_p": 0.1584,
+      "chr13_p": 0.3436,
+      "chr14_p": 0.2289,
+      "chr15_p": 0.175,
+      "chr16_p": 0.1428,
+      "chr17_p": 0.2506,
+      "chr17_q": 0.0,
+      "chr18_p": 0.696,
+      "chr19_p": 0.474,
+      "chr19_q": 0.0,
+      "chr1_p": 0.3073,
+      "chr2_p": 0.214,
+      "chr3_p": 0.3526,
+      "chr4_p": 0.5469,
+      "chr5_p": 0.2307,
+      "chr6_p": 0.25,
+      "chr7_p": 0.1294,
+      "chr8_p": 0.3331,
+      "chr8_q": 0.0,
+      "chr9_p": 0.1569,
+      "chr9_q": 0.0,
+      "chrX_p": 0.0001,
+      "chrX_q": 0.0
+    },
+    "per_arm_minor_proxy": {
+      "chr10_p": 0.0,
+      "chr10_q": 0.0029,
+      "chr11_p": 0.0004,
+      "chr11_q": 0.0028,
+      "chr12_p": 0.0,
+      "chr13_p": 0.0,
+      "chr14_p": 0.0,
+      "chr15_p": 0.0,
+      "chr16_p": 0.0,
+      "chr17_p": 0.0,
+      "chr17_q": 0.0028,
+      "chr18_p": 0.0005,
+      "chr19_p": 0.0,
+      "chr19_q": 0.003,
+      "chr1_p": 0.0,
+      "chr2_p": 0.0,
+      "chr3_p": 0.0,
+      "chr4_p": 0.0,
+      "chr5_p": 0.0,
+      "chr6_p": 0.0,
+      "chr7_p": 0.0,
+      "chr8_p": 0.0,
+      "chr8_q": 0.0021,
+      "chr9_p": 0.0,
+      "chr9_q": 0.0023,
+      "chrX_p": 0.0,
+      "chrX_q": 0.0
+    },
+    "per_chromosome_end_sat_frac": {
+      "B6#1#chr1": {
+        "parm": 0.9905,
+        "qarm": 0.0043
+      },
+      "B6#1#chr10": {
+        "parm": 0.9928,
+        "qarm": 0.0053
+      },
+      "B6#1#chr11": {
+        "parm": 0.9256,
+        "qarm": 0.0054
+      },
+      "B6#1#chr12": {
+        "parm": 0.9914,
+        "qarm": 0.0036
+      },
+      "B6#1#chr13": {
+        "parm": 0.9886,
+        "qarm": 0.0023
+      },
+      "B6#1#chr14": {
+        "parm": 0.9914,
+        "qarm": 0.0036
+      },
+      "B6#1#chr15": {
+        "parm": 0.9832,
+        "qarm": 0.0032
+      },
+      "B6#1#chr16": {
+        "parm": 0.9861,
+        "qarm": 0.0067
+      },
+      "B6#1#chr17": {
+        "parm": 0.9852,
+        "qarm": 0.0056
+      },
+      "B6#1#chr18": {
+        "parm": 0.9729,
+        "qarm": 0.0021
+      },
+      "B6#1#chr19": {
+        "parm": 0.986,
+        "qarm": 0.0067
+      },
+      "B6#1#chr2": {
+        "parm": 0.849,
+        "qarm": 0.0027
+      },
+      "B6#1#chr3": {
+        "parm": 0.9914,
+        "qarm": 0.0032
+      },
+      "B6#1#chr4": {
+        "parm": 0.6474,
+        "qarm": 0.0033
+      },
+      "B6#1#chr5": {
+        "parm": 0.8226,
+        "qarm": 0.0044
+      },
+      "B6#1#chr6": {
+        "parm": 0.9916,
+        "qarm": 0.0054
+      },
+      "B6#1#chr7": {
+        "parm": 0.2597,
+        "qarm": 0.0042
+      },
+      "B6#1#chr8": {
+        "parm": 0.9914,
+        "qarm": 0.0044
+      },
+      "B6#1#chr9": {
+        "parm": 0.9914,
+        "qarm": 0.0077
+      },
+      "CAST#2#chr1": {
+        "parm": 0.9801,
+        "qarm": 0.0051
+      },
+      "CAST#2#chr10": {
+        "parm": 0.8106,
+        "qarm": 0.0051
+      },
+      "CAST#2#chr11": {
+        "parm": 0.7991,
+        "qarm": 0.0061
+      },
+      "CAST#2#chr12": {
+        "parm": 0.7714,
+        "qarm": 0.0032
+      },
+      "CAST#2#chr13": {
+        "parm": 0.9013,
+        "qarm": 0.0038
+      },
+      "CAST#2#chr14": {
+        "parm": 0.9044,
+        "qarm": 0.0039
+      },
+      "CAST#2#chr15": {
+        "parm": 0.8179,
+        "qarm": 0.0033
+      },
+      "CAST#2#chr16": {
+        "parm": 0.6689,
+        "qarm": 0.0073
+      },
+      "CAST#2#chr17": {
+        "parm": 0.8884,
+        "qarm": 0.0064
+      },
+      "CAST#2#chr18": {
+        "parm": 0.7023,
+        "qarm": 0.0023
+      },
+      "CAST#2#chr19": {
+        "parm": 0.9168,
+        "qarm": 0.0057
+      },
+      "CAST#2#chr2": {
+        "parm": 0.9799,
+        "qarm": 0.0029
+      },
+      "CAST#2#chr3": {
+        "parm": 0.9109,
+        "qarm": 0.0031
+      },
+      "CAST#2#chr4": {
+        "parm": 0.9236,
+        "qarm": 0.0028
+      },
+      "CAST#2#chr5": {
+        "parm": 0.9087,
+        "qarm": 0.0045
+      },
+      "CAST#2#chr6": {
+        "parm": 0.8266,
+        "qarm": 0.004
+      },
+      "CAST#2#chr7": {
+        "parm": 0.6749,
+        "qarm": 0.0039
+      },
+      "CAST#2#chr8": {
+        "parm": 0.8909,
+        "qarm": 0.0054
+      },
+      "CAST#2#chr9": {
+        "parm": 0.9713,
+        "qarm": 0.0064
+      },
+      "CAST#2#chrX": {
+        "parm": 0.9196,
+        "qarm": 0.0037
+      }
+    }
+  },
+  "sequence_axis": {
+    "description": "arm-level sequence-sharing Jaccard re-derived from the wfmash all-vs-all PAFs (>=95% identity blocks intersected with the called PHR regions), unmasked and with >=50%-satellite 5 kb bins removed",
+    "validation_vs_published_odgi_jaccard": {
+      "n": 351,
+      "spearman": NaN,
+      "pearson": NaN
+    }
+  },
+  "mantel": {
+    "perms": 200,
+    "baseline_reproduced": {
+      "leptotene_20kb": {
+        "rho": 0.4074,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0043,
+        "ci95": [
+          -0.0895,
+          0.0969
+        ],
+        "boot_ci95_rho": [
+          0.2817,
+          0.4818
+        ],
+        "n_arm_pairs": 344
+      },
+      "leptotene_50kb": {
+        "rho": 0.2882,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0031,
+        "ci95": [
+          -0.0951,
+          0.1183
+        ],
+        "boot_ci95_rho": [
+          0.2255,
+          0.4146
+        ],
+        "n_arm_pairs": 344
+      },
+      "zygotene_20kb": {
+        "rho": 0.5785,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0007,
+        "ci95": [
+          -0.1116,
+          0.0997
+        ],
+        "boot_ci95_rho": [
+          0.4714,
+          0.6488
+        ],
+        "n_arm_pairs": 344
+      },
+      "zygotene_50kb": {
+        "rho": 0.3369,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0011,
+        "ci95": [
+          -0.1053,
+          0.0976
+        ],
+        "boot_ci95_rho": [
+          0.1992,
+          0.4157
+        ],
+        "n_arm_pairs": 344
+      },
+      "pachytene_20kb": {
+        "rho": 0.6259,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0043,
+        "ci95": [
+          -0.1011,
+          0.1149
+        ],
+        "boot_ci95_rho": [
+          0.5297,
+          0.6846
+        ],
+        "n_arm_pairs": 344
+      },
+      "pachytene_50kb": {
+        "rho": 0.313,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0006,
+        "ci95": [
+          -0.0933,
+          0.1114
+        ],
+        "boot_ci95_rho": [
+          0.2471,
+          0.4481
+        ],
+        "n_arm_pairs": 344
+      },
+      "diplotene_20kb": {
+        "rho": 0.3282,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0035,
+        "ci95": [
+          -0.1086,
+          0.1052
+        ],
+        "boot_ci95_rho": [
+          0.2249,
+          0.4078
+        ],
+        "n_arm_pairs": 344
+      },
+      "diplotene_50kb": {
+        "rho": 0.3043,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0095,
+        "ci95": [
+          -0.1163,
+          0.1155
+        ],
+        "boot_ci95_rho": [
+          0.218,
+          0.4218
+        ],
+        "n_arm_pairs": 319
+      }
+    },
+    "stratified": {
+      "leptotene_20kb_sat_low_10": {
+        "rho": 0.5364,
+        "p_perm": 0.024875621890547265,
+        "null_mean": -0.0011,
+        "ci95": [
+          -0.4409,
+          0.49
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.1256,
+          0.7028
+        ],
+        "mean_sat": 0.0065
+      },
+      "leptotene_20kb_sat_high_10": {
+        "rho": 0.4143,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0082,
+        "ci95": [
+          -0.0971,
+          0.1093
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.3139,
+          0.5153
+        ],
+        "mean_sat": 0.9139
+      },
+      "leptotene_20kb_sat_low_25": {
+        "rho": 0.5364,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0058,
+        "ci95": [
+          -0.4142,
+          0.3782
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.1256,
+          0.7028
+        ],
+        "mean_sat": 0.0065
+      },
+      "leptotene_20kb_sat_high_25": {
+        "rho": 0.4143,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0007,
+        "ci95": [
+          -0.1146,
+          0.1011
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.3139,
+          0.5153
+        ],
+        "mean_sat": 0.9139
+      },
+      "leptotene_20kb_sat_low_50": {
+        "rho": 0.5884,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0095,
+        "ci95": [
+          -0.3746,
+          0.3056
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1563,
+          0.7505
+        ],
+        "mean_sat": 0.1217
+      },
+      "leptotene_20kb_sat_high_50": {
+        "rho": 0.4421,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0019,
+        "ci95": [
+          -0.0968,
+          0.1161
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.3276,
+          0.5314
+        ],
+        "mean_sat": 0.9238
+      },
+      "leptotene_20kb_majorSat_low_5": {
+        "rho": 0.3242,
+        "p_perm": 0.03980099502487562,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3851,
+          0.3318
+        ],
+        "boot_ci95_rho": [
+          -0.1137,
+          0.6442
+        ]
+      },
+      "leptotene_20kb_majorSat_high_5": {
+        "rho": 0.3994,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.0987,
+          0.1176
+        ],
+        "boot_ci95_rho": [
+          0.2941,
+          0.4978
+        ]
+      },
+      "leptotene_20kb_axis_maskedSat": {
+        "rho": -0.0542,
+        "p_perm": 0.8557213930348259,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.105,
+          0.1117
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": -0.0542,
+        "p_derived_axis_unmasked": 0.8208955223880597,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "leptotene_50kb_sat_low_10": {
+        "rho": 0.0857,
+        "p_perm": 0.36318407960199006,
+        "null_mean": -0.0034,
+        "ci95": [
+          -0.4401,
+          0.4519
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.2966,
+          0.5521
+        ],
+        "mean_sat": 0.0065
+      },
+      "leptotene_50kb_sat_high_10": {
+        "rho": 0.2585,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0027,
+        "ci95": [
+          -0.1153,
+          0.1025
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.2048,
+          0.4024
+        ],
+        "mean_sat": 0.9139
+      },
+      "leptotene_50kb_sat_low_25": {
+        "rho": 0.0857,
+        "p_perm": 0.4129353233830846,
+        "null_mean": 0.0261,
+        "ci95": [
+          -0.3822,
+          0.4107
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.2966,
+          0.5521
+        ],
+        "mean_sat": 0.0065
+      },
+      "leptotene_50kb_sat_high_25": {
+        "rho": 0.2585,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0011,
+        "ci95": [
+          -0.1068,
+          0.1073
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.2048,
+          0.4024
+        ],
+        "mean_sat": 0.9139
+      },
+      "leptotene_50kb_sat_low_50": {
+        "rho": 0.2868,
+        "p_perm": 0.07462686567164178,
+        "null_mean": -0.0141,
+        "ci95": [
+          -0.4148,
+          0.3667
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          -0.0608,
+          0.6256
+        ],
+        "mean_sat": 0.1217
+      },
+      "leptotene_50kb_sat_high_50": {
+        "rho": 0.3029,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0088,
+        "ci95": [
+          -0.0935,
+          0.1085
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1889,
+          0.4143
+        ],
+        "mean_sat": 0.9238
+      },
+      "leptotene_50kb_majorSat_low_5": {
+        "rho": 0.13,
+        "p_perm": 0.2885572139303483,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3853,
+          0.3562
+        ],
+        "boot_ci95_rho": [
+          -0.1924,
+          0.5169
+        ]
+      },
+      "leptotene_50kb_majorSat_high_5": {
+        "rho": 0.2935,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.0868,
+          0.1236
+        ],
+        "boot_ci95_rho": [
+          0.1982,
+          0.4066
+        ]
+      },
+      "leptotene_50kb_axis_maskedSat": {
+        "rho": -0.0578,
+        "p_perm": 0.8706467661691543,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.1098,
+          0.0906
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": -0.0578,
+        "p_derived_axis_unmasked": 0.8557213930348259,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "zygotene_20kb_sat_low_10": {
+        "rho": 0.539,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.004,
+        "ci95": [
+          -0.4334,
+          0.4156
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.1157,
+          0.7208
+        ],
+        "mean_sat": 0.0065
+      },
+      "zygotene_20kb_sat_high_10": {
+        "rho": 0.6515,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0007,
+        "ci95": [
+          -0.1026,
+          0.1152
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.5669,
+          0.728
+        ],
+        "mean_sat": 0.9139
+      },
+      "zygotene_20kb_sat_low_25": {
+        "rho": 0.539,
+        "p_perm": 0.01990049751243781,
+        "null_mean": -0.0195,
+        "ci95": [
+          -0.4689,
+          0.459
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.1157,
+          0.7208
+        ],
+        "mean_sat": 0.0065
+      },
+      "zygotene_20kb_sat_high_25": {
+        "rho": 0.6515,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0018,
+        "ci95": [
+          -0.1083,
+          0.1128
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.5669,
+          0.728
+        ],
+        "mean_sat": 0.9139
+      },
+      "zygotene_20kb_sat_low_50": {
+        "rho": 0.6409,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0111,
+        "ci95": [
+          -0.3279,
+          0.4336
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1319,
+          0.7531
+        ],
+        "mean_sat": 0.1217
+      },
+      "zygotene_20kb_sat_high_50": {
+        "rho": 0.6713,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0016,
+        "ci95": [
+          -0.0993,
+          0.0867
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.5858,
+          0.7481
+        ],
+        "mean_sat": 0.9238
+      },
+      "zygotene_20kb_majorSat_low_5": {
+        "rho": 0.3504,
+        "p_perm": 0.029850746268656716,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3579,
+          0.3501
+        ],
+        "boot_ci95_rho": [
+          -0.1502,
+          0.615
+        ]
+      },
+      "zygotene_20kb_majorSat_high_5": {
+        "rho": 0.6349,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.0982,
+          0.1259
+        ],
+        "boot_ci95_rho": [
+          0.5518,
+          0.7175
+        ]
+      },
+      "zygotene_20kb_axis_maskedSat": {
+        "rho": 0.0553,
+        "p_perm": 0.15920398009950248,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.0971,
+          0.0952
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": 0.0553,
+        "p_derived_axis_unmasked": 0.22388059701492538,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "zygotene_50kb_sat_low_10": {
+        "rho": 0.3351,
+        "p_perm": 0.06965174129353234,
+        "null_mean": -0.0101,
+        "ci95": [
+          -0.4574,
+          0.4534
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.2159,
+          0.6456
+        ],
+        "mean_sat": 0.0065
+      },
+      "zygotene_50kb_sat_high_10": {
+        "rho": 0.3593,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0012,
+        "ci95": [
+          -0.1049,
+          0.1202
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.279,
+          0.4933
+        ],
+        "mean_sat": 0.9139
+      },
+      "zygotene_50kb_sat_low_25": {
+        "rho": 0.3351,
+        "p_perm": 0.0845771144278607,
+        "null_mean": 0.0203,
+        "ci95": [
+          -0.3844,
+          0.4265
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.2159,
+          0.6456
+        ],
+        "mean_sat": 0.0065
+      },
+      "zygotene_50kb_sat_high_25": {
+        "rho": 0.3593,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0057,
+        "ci95": [
+          -0.1072,
+          0.1008
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.279,
+          0.4933
+        ],
+        "mean_sat": 0.9139
+      },
+      "zygotene_50kb_sat_low_50": {
+        "rho": 0.4756,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0022,
+        "ci95": [
+          -0.3247,
+          0.3233
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          -0.0072,
+          0.6946
+        ],
+        "mean_sat": 0.1217
+      },
+      "zygotene_50kb_sat_high_50": {
+        "rho": 0.4164,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0015,
+        "ci95": [
+          -0.1123,
+          0.1212
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.2825,
+          0.5116
+        ],
+        "mean_sat": 0.9238
+      },
+      "zygotene_50kb_majorSat_low_5": {
+        "rho": 0.2625,
+        "p_perm": 0.06467661691542288,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3775,
+          0.3081
+        ],
+        "boot_ci95_rho": [
+          -0.1429,
+          0.5861
+        ]
+      },
+      "zygotene_50kb_majorSat_high_5": {
+        "rho": 0.3674,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.1332,
+          0.1
+        ],
+        "boot_ci95_rho": [
+          0.2562,
+          0.4665
+        ]
+      },
+      "zygotene_50kb_axis_maskedSat": {
+        "rho": -0.0029,
+        "p_perm": 0.5124378109452736,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.109,
+          0.0997
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": -0.0029,
+        "p_derived_axis_unmasked": 0.5522388059701493,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "pachytene_20kb_sat_low_10": {
+        "rho": 0.4857,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0115,
+        "ci95": [
+          -0.3888,
+          0.4212
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.0849,
+          0.7352
+        ],
+        "mean_sat": 0.0065
+      },
+      "pachytene_20kb_sat_high_10": {
+        "rho": 0.6394,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0029,
+        "ci95": [
+          -0.0987,
+          0.0985
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.5635,
+          0.7233
+        ],
+        "mean_sat": 0.9139
+      },
+      "pachytene_20kb_sat_low_25": {
+        "rho": 0.4857,
+        "p_perm": 0.01990049751243781,
+        "null_mean": -0.0054,
+        "ci95": [
+          -0.4003,
+          0.4006
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.0849,
+          0.7352
+        ],
+        "mean_sat": 0.0065
+      },
+      "pachytene_20kb_sat_high_25": {
+        "rho": 0.6394,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0014,
+        "ci95": [
+          -0.1069,
+          0.0955
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.5635,
+          0.7233
+        ],
+        "mean_sat": 0.9139
+      },
+      "pachytene_20kb_sat_low_50": {
+        "rho": 0.6141,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0196,
+        "ci95": [
+          -0.3692,
+          0.3615
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1508,
+          0.7554
+        ],
+        "mean_sat": 0.1217
+      },
+      "pachytene_20kb_sat_high_50": {
+        "rho": 0.6595,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0031,
+        "ci95": [
+          -0.1118,
+          0.1088
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.5692,
+          0.7274
+        ],
+        "mean_sat": 0.9238
+      },
+      "pachytene_20kb_majorSat_low_5": {
+        "rho": 0.3559,
+        "p_perm": 0.029850746268656716,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3678,
+          0.3519
+        ],
+        "boot_ci95_rho": [
+          -0.0478,
+          0.6564
+        ]
+      },
+      "pachytene_20kb_majorSat_high_5": {
+        "rho": 0.6316,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.1178,
+          0.1013
+        ],
+        "boot_ci95_rho": [
+          0.5454,
+          0.7118
+        ]
+      },
+      "pachytene_20kb_axis_maskedSat": {
+        "rho": 0.0001,
+        "p_perm": 0.43283582089552236,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.103,
+          0.1108
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": 0.0001,
+        "p_derived_axis_unmasked": 0.5373134328358209,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "pachytene_50kb_sat_low_10": {
+        "rho": 0.2429,
+        "p_perm": 0.11940298507462686,
+        "null_mean": -0.0179,
+        "ci95": [
+          -0.3754,
+          0.3896
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.2169,
+          0.6378
+        ],
+        "mean_sat": 0.0065
+      },
+      "pachytene_50kb_sat_high_10": {
+        "rho": 0.2947,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0035,
+        "ci95": [
+          -0.0984,
+          0.1001
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.2349,
+          0.4427
+        ],
+        "mean_sat": 0.9139
+      },
+      "pachytene_50kb_sat_low_25": {
+        "rho": 0.2429,
+        "p_perm": 0.11940298507462686,
+        "null_mean": 0.0051,
+        "ci95": [
+          -0.4041,
+          0.3937
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.2169,
+          0.6378
+        ],
+        "mean_sat": 0.0065
+      },
+      "pachytene_50kb_sat_high_25": {
+        "rho": 0.2947,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0023,
+        "ci95": [
+          -0.1024,
+          0.1011
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.2349,
+          0.4427
+        ],
+        "mean_sat": 0.9139
+      },
+      "pachytene_50kb_sat_low_50": {
+        "rho": 0.3848,
+        "p_perm": 0.029850746268656716,
+        "null_mean": 0.028,
+        "ci95": [
+          -0.2996,
+          0.3603
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.0148,
+          0.6909
+        ],
+        "mean_sat": 0.1217
+      },
+      "pachytene_50kb_sat_high_50": {
+        "rho": 0.3353,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0032,
+        "ci95": [
+          -0.1089,
+          0.1158
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.2386,
+          0.4551
+        ],
+        "mean_sat": 0.9238
+      },
+      "pachytene_50kb_majorSat_low_5": {
+        "rho": 0.2814,
+        "p_perm": 0.0845771144278607,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3346,
+          0.3713
+        ],
+        "boot_ci95_rho": [
+          -0.1513,
+          0.5729
+        ]
+      },
+      "pachytene_50kb_majorSat_high_5": {
+        "rho": 0.3442,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.1208,
+          0.093
+        ],
+        "boot_ci95_rho": [
+          0.2558,
+          0.4579
+        ]
+      },
+      "pachytene_50kb_axis_maskedSat": {
+        "rho": 0.0262,
+        "p_perm": 0.25870646766169153,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.0938,
+          0.1137
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": 0.0262,
+        "p_derived_axis_unmasked": 0.31343283582089554,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "diplotene_20kb_sat_low_10": {
+        "rho": 0.4857,
+        "p_perm": 0.014925373134328358,
+        "null_mean": 0.0175,
+        "ci95": [
+          -0.3512,
+          0.4186
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.1144,
+          0.7356
+        ],
+        "mean_sat": 0.0065
+      },
+      "diplotene_20kb_sat_high_10": {
+        "rho": 0.2775,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.001,
+        "ci95": [
+          -0.1225,
+          0.1222
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.1839,
+          0.3831
+        ],
+        "mean_sat": 0.9139
+      },
+      "diplotene_20kb_sat_low_25": {
+        "rho": 0.4857,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0122,
+        "ci95": [
+          -0.4589,
+          0.3819
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.1144,
+          0.7356
+        ],
+        "mean_sat": 0.0065
+      },
+      "diplotene_20kb_sat_high_25": {
+        "rho": 0.2775,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0017,
+        "ci95": [
+          -0.1212,
+          0.1048
+        ],
+        "n_arm_pairs": 323,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.1839,
+          0.3831
+        ],
+        "mean_sat": 0.9139
+      },
+      "diplotene_20kb_sat_low_50": {
+        "rho": 0.6426,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0238,
+        "ci95": [
+          -0.344,
+          0.4221
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1499,
+          0.7537
+        ],
+        "mean_sat": 0.1217
+      },
+      "diplotene_20kb_sat_high_50": {
+        "rho": 0.2822,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0041,
+        "ci95": [
+          -0.1049,
+          0.1138
+        ],
+        "n_arm_pairs": 316,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1711,
+          0.3755
+        ],
+        "mean_sat": 0.9238
+      },
+      "diplotene_20kb_majorSat_low_5": {
+        "rho": 0.4304,
+        "p_perm": 0.014925373134328358,
+        "n_arm_pairs": 27,
+        "ci95": [
+          -0.3627,
+          0.3996
+        ],
+        "boot_ci95_rho": [
+          -0.0676,
+          0.6068
+        ]
+      },
+      "diplotene_20kb_majorSat_high_5": {
+        "rho": 0.2886,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 317,
+        "ci95": [
+          -0.114,
+          0.0969
+        ],
+        "boot_ci95_rho": [
+          0.1999,
+          0.3987
+        ]
+      },
+      "diplotene_20kb_axis_maskedSat": {
+        "rho": 0.0149,
+        "p_perm": 0.3482587064676617,
+        "n_arm_pairs": 344,
+        "ci95": [
+          -0.1072,
+          0.11
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": 0.0149,
+        "p_derived_axis_unmasked": 0.36318407960199006,
+        "boot_ci95_rho_derived_unmasked": null
+      },
+      "diplotene_50kb_sat_low_10": {
+        "rho": 0.187,
+        "p_perm": 0.263681592039801,
+        "null_mean": 0.0334,
+        "ci95": [
+          -0.3652,
+          0.4522
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          -0.2849,
+          0.5805
+        ],
+        "mean_sat": 0.0065
+      },
+      "diplotene_50kb_sat_high_10": {
+        "rho": 0.2632,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0017,
+        "ci95": [
+          -0.1038,
+          0.1413
+        ],
+        "n_arm_pairs": 298,
+        "threshold": 0.1,
+        "boot_ci95_rho": [
+          0.1736,
+          0.392
+        ],
+        "mean_sat": 0.9124
+      },
+      "diplotene_50kb_sat_low_25": {
+        "rho": 0.187,
+        "p_perm": 0.208955223880597,
+        "null_mean": -0.0003,
+        "ci95": [
+          -0.4339,
+          0.5022
+        ],
+        "n_arm_pairs": 21,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          -0.2849,
+          0.5805
+        ],
+        "mean_sat": 0.0065
+      },
+      "diplotene_50kb_sat_high_25": {
+        "rho": 0.2632,
+        "p_perm": 0.004975124378109453,
+        "null_mean": 0.0011,
+        "ci95": [
+          -0.0843,
+          0.1007
+        ],
+        "n_arm_pairs": 298,
+        "threshold": 0.25,
+        "boot_ci95_rho": [
+          0.1736,
+          0.392
+        ],
+        "mean_sat": 0.9124
+      },
+      "diplotene_50kb_sat_low_50": {
+        "rho": 0.3552,
+        "p_perm": 0.024875621890547265,
+        "null_mean": -0.0007,
+        "ci95": [
+          -0.3189,
+          0.3175
+        ],
+        "n_arm_pairs": 28,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          -0.0378,
+          0.6432
+        ],
+        "mean_sat": 0.1217
+      },
+      "diplotene_50kb_sat_high_50": {
+        "rho": 0.2645,
+        "p_perm": 0.004975124378109453,
+        "null_mean": -0.0011,
+        "ci95": [
+          -0.1192,
+          0.128
+        ],
+        "n_arm_pairs": 291,
+        "threshold": 0.5,
+        "boot_ci95_rho": [
+          0.1732,
+          0.3877
+        ],
+        "mean_sat": 0.9231
+      },
+      "diplotene_50kb_majorSat_low_5": {
+        "rho": 0.187,
+        "p_perm": 0.18407960199004975,
+        "n_arm_pairs": 21,
+        "ci95": [
+          -0.4132,
+          0.4354
+        ],
+        "boot_ci95_rho": [
+          -0.206,
+          0.5714
+        ]
+      },
+      "diplotene_50kb_majorSat_high_5": {
+        "rho": 0.2632,
+        "p_perm": 0.004975124378109453,
+        "n_arm_pairs": 298,
+        "ci95": [
+          -0.1258,
+          0.1052
+        ],
+        "boot_ci95_rho": [
+          0.1745,
+          0.393
+        ]
+      },
+      "diplotene_50kb_axis_maskedSat": {
+        "rho": -0.096,
+        "p_perm": 0.9701492537313433,
+        "n_arm_pairs": 319,
+        "ci95": [
+          -0.0977,
+          0.0993
+        ],
+        "boot_ci95_rho": null,
+        "rho_derived_axis_unmasked": -0.096,
+        "p_derived_axis_unmasked": 0.9601990049751243,
+        "boot_ci95_rho_derived_unmasked": null
+      }
+    },
+    "n_pairs": {
+      "leptotene_20kb": 344,
+      "leptotene_50kb": 344,
+      "zygotene_20kb": 344,
+      "zygotene_50kb": 344,
+      "pachytene_20kb": 344,
+      "pachytene_50kb": 344,
+      "diplotene_20kb": 344,
+      "diplotene_50kb": 319
+    }
+  },
+  "p_vs_q": {
+    "leptotene_20kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.000661,
+        "rho_masked_axis": -0.1522,
+        "p_masked_axis": 0.9850746268656716
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.000566,
+        "rho_masked_axis": -0.038,
+        "p_masked_axis": 0.6766169154228856
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.00091,
+        "rho_masked_axis": 0.1948,
+        "p_masked_axis": 0.1691542288557214
+      },
+      "pp_minus_qq": {
+        "observed": -0.000248,
+        "p_perm_armlabel": 0.29850746268656714,
+        "n_perms": 200
+      }
+    },
+    "leptotene_50kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.003181,
+        "rho_masked_axis": 0.0499,
+        "p_masked_axis": 0.32338308457711445
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.002507,
+        "rho_masked_axis": -0.1417,
+        "p_masked_axis": 0.9154228855721394
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.001926,
+        "rho_masked_axis": 0.0792,
+        "p_masked_axis": 0.36318407960199006
+      },
+      "pp_minus_qq": {
+        "observed": 0.001255,
+        "p_perm_armlabel": 0.35323383084577115,
+        "n_perms": 200
+      }
+    },
+    "zygotene_20kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.000505,
+        "rho_masked_axis": 0.029,
+        "p_masked_axis": 0.40298507462686567
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.000288,
+        "rho_masked_axis": -0.0231,
+        "p_masked_axis": 0.6318407960199005
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.000881,
+        "rho_masked_axis": 0.3039,
+        "p_masked_axis": 0.07462686567164178
+      },
+      "pp_minus_qq": {
+        "observed": -0.000375,
+        "p_perm_armlabel": 0.009950248756218905,
+        "n_perms": 200
+      }
+    },
+    "zygotene_50kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.001316,
+        "rho_masked_axis": -0.0109,
+        "p_masked_axis": 0.5522388059701493
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.001337,
+        "rho_masked_axis": -0.0216,
+        "p_masked_axis": 0.5870646766169154
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.00255,
+        "rho_masked_axis": 0.2221,
+        "p_masked_axis": 0.19402985074626866
+      },
+      "pp_minus_qq": {
+        "observed": -0.001235,
+        "p_perm_armlabel": 0.01990049751243781,
+        "n_perms": 200
+      }
+    },
+    "pachytene_20kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.000618,
+        "rho_masked_axis": 0.011,
+        "p_masked_axis": 0.4427860696517413
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.000362,
+        "rho_masked_axis": -0.0048,
+        "p_masked_axis": 0.4925373134328358
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.000783,
+        "rho_masked_axis": 0.1442,
+        "p_masked_axis": 0.263681592039801
+      },
+      "pp_minus_qq": {
+        "observed": -0.000165,
+        "p_perm_armlabel": 0.22388059701492538,
+        "n_perms": 200
+      }
+    },
+    "pachytene_50kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.002451,
+        "rho_masked_axis": 0.1296,
+        "p_masked_axis": 0.024875621890547265
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.002066,
+        "rho_masked_axis": -0.0588,
+        "p_masked_axis": 0.7761194029850746
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.001812,
+        "rho_masked_axis": 0.1325,
+        "p_masked_axis": 0.373134328358209
+      },
+      "pp_minus_qq": {
+        "observed": 0.000639,
+        "p_perm_armlabel": 0.4975124378109453,
+        "n_perms": 200
+      }
+    },
+    "diplotene_20kb": {
+      "pp": {
+        "n": 190,
+        "mean_contact": 0.001709,
+        "rho_masked_axis": 0.0337,
+        "p_masked_axis": 0.29850746268656714
+      },
+      "pq": {
+        "n": 133,
+        "mean_contact": 0.001052,
+        "rho_masked_axis": 0.0709,
+        "p_masked_axis": 0.20398009950248755
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.000796,
+        "rho_masked_axis": 0.1766,
+        "p_masked_axis": 0.22388059701492538
+      },
+      "pp_minus_qq": {
+        "observed": 0.000913,
+        "p_perm_armlabel": 0.16417910447761194,
+        "n_perms": 200
+      }
+    },
+    "diplotene_50kb": {
+      "pp": {
+        "n": 171,
+        "mean_contact": 0.003843,
+        "rho_masked_axis": 0.0557,
+        "p_masked_axis": 0.22388059701492538
+      },
+      "pq": {
+        "n": 127,
+        "mean_contact": 0.002872,
+        "rho_masked_axis": -0.1459,
+        "p_masked_axis": 0.9303482587064676
+      },
+      "qq": {
+        "n": 21,
+        "mean_contact": 0.001872,
+        "rho_masked_axis": 0.2195,
+        "p_masked_axis": 0.19402985074626866
+      },
+      "pp_minus_qq": {
+        "observed": 0.001971,
+        "p_perm_armlabel": 0.24378109452736318,
+        "n_perms": 200
+      }
+    }
+  },
+  "verdicts": {
+    "peak_stage_20kb_baseline": "pachytene",
+    "peak_stage_50kb_baseline": "zygotene",
+    "peak_stage_20kb_low_sat(both<0.25)": "zygotene",
+    "peak_stage_20kb_high_sat(both>=0.25)": "zygotene",
+    "peak_stage_20kb_masked_axis": "zygotene"
+  },
+  "not_established": [
+    "contact axis is NOT satellite-masked here: re-masking contacts needs the zuo2021_<stage>.mcool per-bin matrices (h5py/cooler absent from system python; 0.3-0.5 Gpixel per stage) plus the paternal/maternal haplotype mapping",
+    "no full RepeatMasker run was possible (RepeatMasker 4.1.7p1 is missing PubRef.pm/FastaDB.pm on this box); only the curated Dfam satellite consensus sequences were used, so non-satellite repeat content is unmeasured",
+    "the published arm-level Jaccard is an odgi pangenome-graph node Jaccard and cannot be recomputed with satellite bins excluded without rebuilding the pggb graph; the masked-axis result uses the re-derived PAF-based Jaccard instead"
+  ]
+}

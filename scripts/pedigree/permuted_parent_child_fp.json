@@ -1,0 +1,657 @@
+{
+  "generated_by": "scripts/pedigree/permuted_parent_child_fp.py",
+  "inputs": {
+    "similarity_table": "data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz",
+    "query_fai": "data/fig5_PAN027pat_vs_PAN011_joint.query.fa.fai",
+    "comparison": "PAN027 paternal (PAN027#2) query vs PAN011 (father, both haplotypes) target"
+  },
+  "parameters": {
+    "window_bp": 2000,
+    "min_window_identity": 0.95,
+    "min_run_windows": 5,
+    "min_run_bp": 10000,
+    "min_run_mean_identity": 0.95,
+    "reps": 10000,
+    "seed_null_A": 20261016,
+    "seed_null_B": 20261017,
+    "marker_chroms": [
+      "PAN027#2#chr9",
+      "PAN027#2#chr5"
+    ],
+    "terminal_bp_for_candidate_derivation": 100000,
+    "p_value_resolution": "1/reps; a reported p_ge_observed of 0.0 means < 1/10000 (no permutation out of 10000 reached the observed value)"
+  },
+  "scan_rule": {
+    "eligible_window": "best interchromosomal parental identity >= min_window_identity AND (no same-chromosome parental match OR interchromosomal identity > same-chromosome identity)",
+    "tract": "adjacent touching eligible windows, single donor chromosome, >= min_run_bp, mean identity >= min_run_mean_identity"
+  },
+  "permutation_audit": {
+    "same_chrom_winner_haplotype_counts": {
+      "PAN011#joint#h1": 68416,
+      "PAN011#joint#h2": 106530
+    },
+    "transmitted_copy_permutation_feasible": false,
+    "why_not": "the class-winner table keeps only the per-window winner of the same_chrom class, i.e. the maximum over the father's two haplotypes; per-haplotype identities are not in this input, so 'which haplotype is the transmitted copy' cannot be swapped. Label shuffling preserving per-chromosome window counts is used instead (referee's stated alternative)."
+  },
+  "per_chromosome_marginals": {
+    "PAN027#2#chr1": {
+      "windows": 12799,
+      "eligible_windows": 413
+    },
+    "PAN027#2#chr10": {
+      "windows": 6493,
+      "eligible_windows": 10
+    },
+    "PAN027#2#chr11": {
+      "windows": 7529,
+      "eligible_windows": 4
+    },
+    "PAN027#2#chr12": {
+      "windows": 6889,
+      "eligible_windows": 11
+    },
+    "PAN027#2#chr13": {
+      "windows": 7832,
+      "eligible_windows": 1514
+    },
+    "PAN027#2#chr14": {
+      "windows": 9363,
+      "eligible_windows": 29
+    },
+    "PAN027#2#chr15": {
+      "windows": 8002,
+      "eligible_windows": 295
+    },
+    "PAN027#2#chr16": {
+      "windows": 3393,
+      "eligible_windows": 3
+    },
+    "PAN027#2#chr17": {
+      "windows": 3071,
+      "eligible_windows": 26
+    },
+    "PAN027#2#chr18": {
+      "windows": 3560,
+      "eligible_windows": 108
+    },
+    "PAN027#2#chr19": {
+      "windows": 2896,
+      "eligible_windows": 3
+    },
+    "PAN027#2#chr2": {
+      "windows": 12676,
+      "eligible_windows": 5
+    },
+    "PAN027#2#chr20": {
+      "windows": 3317,
+      "eligible_windows": 6
+    },
+    "PAN027#2#chr21": {
+      "windows": 4921,
+      "eligible_windows": 513
+    },
+    "PAN027#2#chr22": {
+      "windows": 4575,
+      "eligible_windows": 699
+    },
+    "PAN027#2#chr3": {
+      "windows": 11230,
+      "eligible_windows": 8
+    },
+    "PAN027#2#chr4": {
+      "windows": 11582,
+      "eligible_windows": 4
+    },
+    "PAN027#2#chr5": {
+      "windows": 10022,
+      "eligible_windows": 62
+    },
+    "PAN027#2#chr6": {
+      "windows": 9504,
+      "eligible_windows": 2
+    },
+    "PAN027#2#chr7": {
+      "windows": 8588,
+      "eligible_windows": 6
+    },
+    "PAN027#2#chr8": {
+      "windows": 7294,
+      "eligible_windows": 4
+    },
+    "PAN027#2#chr9": {
+      "windows": 6958,
+      "eligible_windows": 125
+    },
+    "PAN027#2#chrX": {
+      "windows": 15504,
+      "eligible_windows": 91
+    }
+  },
+  "observed": {
+    "n_qualifying_runs_genomewide": 156,
+    "total_run_bp": 3886000,
+    "candidate_intervals": {
+      "PAN027#2#chr9": {
+        "start": 136168000,
+        "end": 136188000,
+        "length_bp": 20000,
+        "donor": "chr3",
+        "mean_identity": 0.998775,
+        "n_windows": 10,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h2_chr3"
+        ],
+        "homolog_absent_windows": 0,
+        "length_rank_among_qualifying_runs": 61,
+        "eligible_windows_inside_interval": 10,
+        "n_qualifying_runs_overlapping": 1,
+        "longest_overlapping_run_bp": 20000
+      },
+      "PAN027#2#chr5": {
+        "start": 182052000,
+        "end": 182080000,
+        "length_bp": 28000,
+        "donor": "chr1",
+        "mean_identity": 0.998267,
+        "n_windows": 14,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h2_chr1"
+        ],
+        "homolog_absent_windows": 0,
+        "length_rank_among_qualifying_runs": 41,
+        "eligible_windows_inside_interval": 14,
+        "n_qualifying_runs_overlapping": 1,
+        "longest_overlapping_run_bp": 28000
+      }
+    },
+    "top_runs_by_length": [
+      {
+        "chrom": "PAN027#2#chr15",
+        "start": 126000,
+        "end": 268000,
+        "length_bp": 142000,
+        "donor": "chr13",
+        "mean_identity": 0.9955,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr13",
+          "PAN011#joint#h2_chr13"
+        ],
+        "homolog_absent_windows": 71
+      },
+      {
+        "chrom": "PAN027#2#chr21",
+        "start": 7450000,
+        "end": 7586000,
+        "length_bp": 136000,
+        "donor": "chr13",
+        "mean_identity": 0.996334,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr13",
+          "PAN011#joint#h2_chr13"
+        ],
+        "homolog_absent_windows": 61
+      },
+      {
+        "chrom": "PAN027#2#chr9",
+        "start": 49074000,
+        "end": 49178000,
+        "length_bp": 104000,
+        "donor": "chr20",
+        "mean_identity": 0.96901,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr20",
+          "PAN011#joint#h2_chr20"
+        ],
+        "homolog_absent_windows": 52
+      },
+      {
+        "chrom": "PAN027#2#chr13",
+        "start": 4724000,
+        "end": 4826000,
+        "length_bp": 102000,
+        "donor": "chr4",
+        "mean_identity": 0.990635,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr4",
+          "PAN011#joint#h2_chr4"
+        ],
+        "homolog_absent_windows": 41
+      },
+      {
+        "chrom": "PAN027#2#chr22",
+        "start": 324000,
+        "end": 426000,
+        "length_bp": 102000,
+        "donor": "chr14",
+        "mean_identity": 0.997438,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr14",
+          "PAN011#joint#h2_chr14"
+        ],
+        "homolog_absent_windows": 33
+      },
+      {
+        "chrom": "PAN027#2#chrX",
+        "start": 10000,
+        "end": 106000,
+        "length_bp": 96000,
+        "donor": "chrY",
+        "mean_identity": 0.999818,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h2_chrY"
+        ],
+        "homolog_absent_windows": 2
+      },
+      {
+        "chrom": "PAN027#2#chr22",
+        "start": 64000,
+        "end": 154000,
+        "length_bp": 90000,
+        "donor": "chr21",
+        "mean_identity": 0.997024,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr21"
+        ],
+        "homolog_absent_windows": 45
+      },
+      {
+        "chrom": "PAN027#2#chr13",
+        "start": 6168000,
+        "end": 6246000,
+        "length_bp": 78000,
+        "donor": "chr21",
+        "mean_identity": 0.998103,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr21",
+          "PAN011#joint#h2_chr21"
+        ],
+        "homolog_absent_windows": 24
+      },
+      {
+        "chrom": "PAN027#2#chr21",
+        "start": 7316000,
+        "end": 7392000,
+        "length_bp": 76000,
+        "donor": "chr13",
+        "mean_identity": 0.983138,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h2_chr13"
+        ],
+        "homolog_absent_windows": 34
+      },
+      {
+        "chrom": "PAN027#2#chr13",
+        "start": 7926000,
+        "end": 8000000,
+        "length_bp": 74000,
+        "donor": "chr21",
+        "mean_identity": 0.997036,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr21",
+          "PAN011#joint#h2_chr21"
+        ],
+        "homolog_absent_windows": 5
+      },
+      {
+        "chrom": "PAN027#2#chr13",
+        "start": 1822000,
+        "end": 1894000,
+        "length_bp": 72000,
+        "donor": "chr14",
+        "mean_identity": 0.997881,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr14"
+        ],
+        "homolog_absent_windows": 34
+      },
+      {
+        "chrom": "PAN027#2#chr1",
+        "start": 131372000,
+        "end": 131430000,
+        "length_bp": 58000,
+        "donor": "chr14",
+        "mean_identity": 0.986832,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr14"
+        ],
+        "homolog_absent_windows": 29
+      },
+      {
+        "chrom": "PAN027#2#chr22",
+        "start": 256000,
+        "end": 312000,
+        "length_bp": 56000,
+        "donor": "chr14",
+        "mean_identity": 0.992718,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr14"
+        ],
+        "homolog_absent_windows": 20
+      },
+      {
+        "chrom": "PAN027#2#chr13",
+        "start": 4828000,
+        "end": 4882000,
+        "length_bp": 54000,
+        "donor": "chr4",
+        "mean_identity": 0.989051,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr4",
+          "PAN011#joint#h2_chr4"
+        ],
+        "homolog_absent_windows": 9
+      },
+      {
+        "chrom": "PAN027#2#chr1",
+        "start": 129900000,
+        "end": 129952000,
+        "length_bp": 52000,
+        "donor": "chr14",
+        "mean_identity": 0.9829,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr14"
+        ],
+        "homolog_absent_windows": 23
+      },
+      {
+        "chrom": "PAN027#2#chr22",
+        "start": 180000,
+        "end": 232000,
+        "length_bp": 52000,
+        "donor": "chr21",
+        "mean_identity": 0.998769,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr21"
+        ],
+        "homolog_absent_windows": 19
+      },
+      {
+        "chrom": "PAN027#2#chr13",
+        "start": 2720000,
+        "end": 2770000,
+        "length_bp": 50000,
+        "donor": "chr21",
+        "mean_identity": 0.9994,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr21"
+        ],
+        "homolog_absent_windows": 25
+      },
+      {
+        "chrom": "PAN027#2#chr21",
+        "start": 6304000,
+        "end": 6352000,
+        "length_bp": 48000,
+        "donor": "chr13",
+        "mean_identity": 0.977773,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h1_chr13",
+          "PAN011#joint#h2_chr13"
+        ],
+        "homolog_absent_windows": 21
+      },
+      {
+        "chrom": "PAN027#2#chrX",
+        "start": 110000,
+        "end": 156000,
+        "length_bp": 46000,
+        "donor": "chrY",
+        "mean_identity": 0.999336,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h2_chrY"
+        ],
+        "homolog_absent_windows": 0
+      },
+      {
+        "chrom": "PAN027#2#chr22",
+        "start": 3098000,
+        "end": 3142000,
+        "length_bp": 44000,
+        "donor": "chr21",
+        "mean_identity": 0.998636,
+        "donor_haplotype_sequences": [
+          "PAN011#joint#h2_chr21"
+        ],
+        "homolog_absent_windows": 22
+      }
+    ]
+  },
+  "null_A_permute_records_within_chromosome": {
+    "description": "per-window record (eligible?, donor, identity) permuted within each query chromosome; per-chromosome window counts, eligible-window counts and donor/identity joint distribution preserved",
+    "S1_total_qualifying_runs": {
+      "observed": 156,
+      "null": {
+        "n": 10000,
+        "mean": 0.0221,
+        "sd": 0.14837,
+        "min": 0,
+        "max": 2,
+        "quantiles": {
+          "0": 0,
+          "0.5": 0,
+          "0.9": 0,
+          "0.95": 0,
+          "0.99": 1,
+          "1": 2
+        }
+      },
+      "reps_reaching_observed": 0,
+      "p_ge_observed": 0.0
+    },
+    "S2_runs_overlapping_candidate": {
+      "PAN027#2#chr9": {
+        "observed": 1,
+        "null": {
+          "n": 10000,
+          "mean": 0.0,
+          "sd": 0.0,
+          "min": 0,
+          "max": 0,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 0,
+            "0.99": 0,
+            "1": 0
+          }
+        },
+        "p_ge_observed": 0.0,
+        "observed_longest_overlap_bp": 20000,
+        "null_longest_overlap_bp": {
+          "n": 10000,
+          "mean": 0.0,
+          "sd": 0.0,
+          "min": 0,
+          "max": 0,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 0,
+            "0.99": 0,
+            "1": 0
+          }
+        }
+      },
+      "PAN027#2#chr5": {
+        "observed": 1,
+        "null": {
+          "n": 10000,
+          "mean": 0.0,
+          "sd": 0.0,
+          "min": 0,
+          "max": 0,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 0,
+            "0.99": 0,
+            "1": 0
+          }
+        },
+        "p_ge_observed": 0.0,
+        "observed_longest_overlap_bp": 28000,
+        "null_longest_overlap_bp": {
+          "n": 10000,
+          "mean": 0.0,
+          "sd": 0.0,
+          "min": 0,
+          "max": 0,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 0,
+            "0.99": 0,
+            "1": 0
+          }
+        }
+      }
+    },
+    "S3_eligible_windows_inside_candidate": {
+      "PAN027#2#chr9": {
+        "observed": 10,
+        "null": {
+          "n": 10000,
+          "mean": 0.1854,
+          "sd": 0.428071,
+          "min": 0,
+          "max": 3,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 1,
+            "0.95": 1,
+            "0.99": 2,
+            "1": 3
+          }
+        },
+        "p_ge_observed": 0.0
+      },
+      "PAN027#2#chr5": {
+        "observed": 14,
+        "null": {
+          "n": 10000,
+          "mean": 0.0812,
+          "sd": 0.285333,
+          "min": 0,
+          "max": 2,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 1,
+            "0.99": 1,
+            "1": 2
+          }
+        },
+        "p_ge_observed": 0.0
+      }
+    }
+  },
+  "null_B_shuffle_donor_labels_within_chromosome": {
+    "description": "eligible/not status and identity fixed at each window; only the donor chromosome label is shuffled among the eligible windows of each query chromosome",
+    "S1_total_qualifying_runs": {
+      "observed": 156,
+      "null": {
+        "n": 10000,
+        "mean": 48.4953,
+        "sd": 5.124315,
+        "min": 32,
+        "max": 69,
+        "quantiles": {
+          "0": 32,
+          "0.5": 48,
+          "0.9": 55,
+          "0.95": 57,
+          "0.99": 61,
+          "1": 69
+        }
+      },
+      "reps_reaching_observed": 0,
+      "p_ge_observed": 0.0
+    },
+    "S2_runs_overlapping_candidate": {
+      "PAN027#2#chr9": {
+        "observed": 1,
+        "null": {
+          "n": 10000,
+          "mean": 0.091,
+          "sd": 0.288318,
+          "min": 0,
+          "max": 2,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 1,
+            "0.99": 1,
+            "1": 2
+          }
+        },
+        "p_ge_observed": 0.0908,
+        "observed_longest_overlap_bp": 20000,
+        "null_longest_overlap_bp": {
+          "n": 10000,
+          "mean": 1015.8,
+          "sd": 3261.29023,
+          "min": 0,
+          "max": 22000,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 0,
+            "0.95": 10000,
+            "0.99": 14000,
+            "1": 22000
+          }
+        }
+      },
+      "PAN027#2#chr5": {
+        "observed": 1,
+        "null": {
+          "n": 10000,
+          "mean": 0.3399,
+          "sd": 0.51283,
+          "min": 0,
+          "max": 3,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 1,
+            "0.95": 1,
+            "0.99": 2,
+            "1": 3
+          }
+        },
+        "p_ge_observed": 0.3207,
+        "observed_longest_overlap_bp": 28000,
+        "null_longest_overlap_bp": {
+          "n": 10000,
+          "mean": 3843.2,
+          "sd": 5795.133486,
+          "min": 0,
+          "max": 32000,
+          "quantiles": {
+            "0": 0,
+            "0.5": 0,
+            "0.9": 12000,
+            "0.95": 14000,
+            "0.99": 18000,
+            "1": 32000
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "A permutation null bounds the false-positive rate only under the null it enforces. It is not an orthogonal assay and cannot distinguish a real inter-chromosomal exchange from any process that produces the same window-level marginals (inherited paralogy, assembly artefact, mapping competition).",
+    "Null A destroys spatial autocorrelation: the observed contiguity of eligible windows and of a single donor is exactly what it removes, so a count far above the null says the tract is not explained by window-level marginals alone, not that it is a real exchange.",
+    "Null B conditions on the observed positions of eligible windows and only tests donor contiguity, so it inherits whatever produced those positions.",
+    "Windows absent from the class-winner table (no alignment at all) are treated as absent windows and break runs; their absence is itself non-random and is preserved rather than permuted.",
+    "estimated.identity in the class-winner table is the IMPG dice/coverage identity (equals dice.similarity to <=1e-6), not a base-level % identity. A 1% margin in this metric is not a 1% base-level divergence margin.",
+    "All permutations are within one parent-child comparison (PAN027 paternal vs PAN011). Permuting which parental haplotype is the transmitted copy is not possible from this input, as documented under permutation_audit."
+  ]
+}
