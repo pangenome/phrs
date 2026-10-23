@@ -1,5 +1,7 @@
 # Lane D progress notes (superpopulation descriptives + editor compliance)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Created: start of resumed lane D (prior attempt killed at 30 min).
 
 ## commands run

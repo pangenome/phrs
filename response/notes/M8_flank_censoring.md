@@ -1,5 +1,7 @@
 # M8 — Referee #1 major point 8: the 500 kb flank right-censors the PHR length distribution
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: **COMPLETE**. Every number below comes from a command run in this task or from a
 named file read in this task. Nothing is estimated. Where an estimate would have been
 needed and no data exist, that is stated.

@@ -1,5 +1,7 @@
 # M — Mouse stage-profile disambiguation (statistic vs axis vs satellite)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: **COMPLETE.** Six steps (A–D, F, E) done from one 10,000-permutation /
 10,000-bootstrap run. STEP F was added after the first verdict and it changed one part of it
 (see STEP E and the adjacency column of F.2).

@@ -1,5 +1,7 @@
 # IMPG transitivity copy-enumeration of core sequences
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: COMPLETE (analysis + numbers below are measured; every number is traceable to a
 command in §9 or to `scripts/cladistics/impg_copy_enumeration.tsv`).
 Author: sxgc.deepseek-flash-writer (child agent).

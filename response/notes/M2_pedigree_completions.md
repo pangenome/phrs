@@ -1,5 +1,7 @@
 # R1-M2 (3 completions) — genome-wide identity margins, permuted parent-child FP rate, contig check
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: three completions delivered as artifacts + measurements. Written 2026-10-16 by
 `deepseek-flash-writer`. All numbers below were produced by the commands shown, on the
 repo-local inputs named. Nothing is estimated or inferred.

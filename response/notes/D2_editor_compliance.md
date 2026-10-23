@@ -1,5 +1,7 @@
 # D2 — Editor compliance draft (text only)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Authority: the editor's letter at the top of `PEER_REVIEW.md` (lines 1–33). Every requirement
 below is quoted or paraphrased from that letter only; nothing here is inferred from a simulated
 review (that file was not opened) or invented.

@@ -1,5 +1,7 @@
 # M1 — Concerted evolution of duplicated families (D4Z4/DUX4L, TUBB8/TUBB8B, OR4F, SEPTIN14)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: COMPLETE (resumed lane A; steps 1-4 done)
 
 **One-paragraph answer.** The per-family material available in the repo

@@ -1,5 +1,7 @@
 # L5 — Data consistency reconciliation + LaTeX patch snippets
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 STATUS: COMPLETE. Four deliverables written; appending log kept in step order.
 
 Scope: I own the data-consistency reconciliation and three LaTeX patch files.

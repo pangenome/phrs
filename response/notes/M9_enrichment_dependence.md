@@ -1,5 +1,7 @@
 # M9 — Referee #1 major point 9: enrichment driven by invisible gene content and one amplified family
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: COMPLETE
 Repo: /home/erikg/phrs (branch: none — no git operations performed)
 Started: (see journal below)

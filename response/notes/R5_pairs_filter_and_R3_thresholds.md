@@ -1,5 +1,7 @@
 # R5 L193–195 (the 2,830 PHR pairs) and R3 major 6 (PHR-call thresholds)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Items: **R5-L193** ("why only 2,830 pairs of 15,668 PHRs") and **R3-M6** ("41 of 48
 arms may depend on the selected thresholds") from `response/POINT_BY_POINT.md`.
 

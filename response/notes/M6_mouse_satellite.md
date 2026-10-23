@@ -1,5 +1,7 @@
 # M6 — Mouse p-arm satellite confound (referee #1, major point 6)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Status: **annotation-level answer complete; contact-axis masking NOT done; and the
 "masked sequence axis" numbers already present in the JSON are VOID (a coordinate-order bug,
 diagnosed below — do not quote them).**

@@ -1,5 +1,7 @@
 # M1c — Duplicon monophyly test (Referee #1 major point 1, in the correct form)
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 **Item.** Referee #1, major point 1. Verbatim: *"Concerted evolution is never tested. It requires that
 paralogous copies at different ends be more similar than their divergence times predict, i.e. actively
 homogenized; high identity alone does not show this, since recent duplication gives the same signature.

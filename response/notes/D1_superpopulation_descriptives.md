@@ -1,5 +1,7 @@
 # D1 — Descriptive summary of PHR length and community membership by superpopulation
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Referee #1, minor point 11. Verbatim (`PEER_REVIEW.md`:97):
 
 > 11. The 232 individuals span five HPRC superpopulations, yet no population-stratified

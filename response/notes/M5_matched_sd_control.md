@@ -1,5 +1,7 @@
 # M5 — specificity control for the sequence→contact association
 
+> Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
+
 Referee #1 major point 5, Referee #3 major point 3. Script: `scripts/hic/matched_sd_control.py`.
 Results: `scripts/hic/matched_sd_control.tsv` (199 rows), `scripts/hic/matched_sd_control.json`.
 
