@@ -1,0 +1,840 @@
+section	stratum	metric	value	note
+censoring	all_flanks	gate_caller_rule_replay_exact	18826/18826	published per-window passes replayed through find-multichr-regions-incremental.py's region rule
+censoring	all_flanks	n_flanks	18826	flanks present in the published call table (the fai has one more, dropped upstream as a scaffolding chimera)
+censoring	all_flanks	n_phrs	15668	
+censoring	all_flanks	n_flanks_no_phr	3158	
+censoring	all_flanks	phr_bp	2252510000	sum of published PHR lengths
+censoring	all_flanks	n_censored_len_eq_500kb	1087	last available window (495-500 kb) passes; the walk was cut by --max 500000
+censoring	all_flanks	censored_share_of_phrs_pct	6.94	
+censoring	all_flanks	censored_bp	543500000	
+censoring	all_flanks	n_near_censored_495_499kb	23	within one 5 kb window of the limit but terminating one window short
+censoring	all_flanks	n_within_one_window_of_limit	1110	censored + near-censored = length >= 495 kb
+censoring	all_flanks	n_reaching_the_boundary	1133	walk attempted the 495-500 kb window
+censoring	all_flanks	n_boundary_unfinished_failure_streak	43	reached the boundary with <4 consecutive failures, so a longer flank could resume them; pending failures 1/2/3 = 23/13/7
+censoring	all_flanks	n_terminated_exactly_at_the_boundary	3	4 consecutive failures completed in the 495-500 kb window
+censoring	parm	n_phrs	7397	
+censoring	parm	n_censored	1082	
+censoring	parm	censored_share_pct	14.63	
+censoring	parm	phr_bp	1319575000	
+censoring	qarm	n_phrs	8271	
+censoring	qarm	n_censored	5	
+censoring	qarm	censored_share_pct	0.06	
+censoring	qarm	phr_bp	932935000	
+censoring	acrocentric_short_arm	n_phrs	763	
+censoring	acrocentric_short_arm	n_censored	717	
+censoring	acrocentric_short_arm	censored_share_pct	93.97	
+censoring	acrocentric_short_arm	phr_bp	377555000	
+censoring	acrocentric_short_arm	share_of_all_censored_pct	65.96	
+censoring	PAR_XY_arm	n_phrs	850	
+censoring	PAR_XY_arm	n_censored	366	
+censoring	PAR_XY_arm	censored_share_pct	43.06	
+censoring	PAR_XY_arm	phr_bp	339240000	
+censoring	PAR_XY_arm	share_of_all_censored_pct	33.67	
+censoring	all_other_arms	n_phrs	14055	
+censoring	all_other_arms	n_censored	4	
+censoring	all_other_arms	censored_share_pct	0.03	
+censoring	all_other_arms	phr_bp	1535715000	
+censoring	all_other_arms	share_of_all_censored_pct	0.37	
+per_arm	1p	n_phrs	438	
+per_arm	1p	n_censored	1	
+per_arm	1p	censored_share_pct	0.23	
+per_arm	1p	phr_bp	127400000	
+per_arm	1p	arm_class	all_other_arms	
+per_arm	1q	n_phrs	445	
+per_arm	1q	n_censored	0	
+per_arm	1q	censored_share_pct	0.00	
+per_arm	1q	phr_bp	7605000	
+per_arm	1q	arm_class	all_other_arms	
+per_arm	2q	n_phrs	450	
+per_arm	2q	n_censored	0	
+per_arm	2q	censored_share_pct	0.00	
+per_arm	2q	phr_bp	56015000	
+per_arm	2q	arm_class	all_other_arms	
+per_arm	3q	n_phrs	436	
+per_arm	3q	n_censored	2	
+per_arm	3q	censored_share_pct	0.46	
+per_arm	3q	phr_bp	109240000	
+per_arm	3q	arm_class	all_other_arms	
+per_arm	4p	n_phrs	448	
+per_arm	4p	n_censored	0	
+per_arm	4p	censored_share_pct	0.00	
+per_arm	4p	phr_bp	27255000	
+per_arm	4p	arm_class	all_other_arms	
+per_arm	4q	n_phrs	357	
+per_arm	4q	n_censored	1	
+per_arm	4q	censored_share_pct	0.28	
+per_arm	4q	phr_bp	58115000	
+per_arm	4q	arm_class	all_other_arms	
+per_arm	5q	n_phrs	447	
+per_arm	5q	n_censored	0	
+per_arm	5q	censored_share_pct	0.00	
+per_arm	5q	phr_bp	86095000	
+per_arm	5q	arm_class	all_other_arms	
+per_arm	6p	n_phrs	417	
+per_arm	6p	n_censored	0	
+per_arm	6p	censored_share_pct	0.00	
+per_arm	6p	phr_bp	50380000	
+per_arm	6p	arm_class	all_other_arms	
+per_arm	6q	n_phrs	440	
+per_arm	6q	n_censored	0	
+per_arm	6q	censored_share_pct	0.00	
+per_arm	6q	phr_bp	62305000	
+per_arm	6q	arm_class	all_other_arms	
+per_arm	7p	n_phrs	438	
+per_arm	7p	n_censored	0	
+per_arm	7p	censored_share_pct	0.00	
+per_arm	7p	phr_bp	80700000	
+per_arm	7p	arm_class	all_other_arms	
+per_arm	7q	n_phrs	446	
+per_arm	7q	n_censored	0	
+per_arm	7q	censored_share_pct	0.00	
+per_arm	7q	phr_bp	13985000	
+per_arm	7q	arm_class	all_other_arms	
+per_arm	8p	n_phrs	458	
+per_arm	8p	n_censored	0	
+per_arm	8p	censored_share_pct	0.00	
+per_arm	8p	phr_bp	58735000	
+per_arm	8p	arm_class	all_other_arms	
+per_arm	9p	n_phrs	448	
+per_arm	9p	n_censored	0	
+per_arm	9p	censored_share_pct	0.00	
+per_arm	9p	phr_bp	19275000	
+per_arm	9p	arm_class	all_other_arms	
+per_arm	9q	n_phrs	450	
+per_arm	9q	n_censored	0	
+per_arm	9q	censored_share_pct	0.00	
+per_arm	9q	phr_bp	117245000	
+per_arm	9q	arm_class	all_other_arms	
+per_arm	10p	n_phrs	443	
+per_arm	10p	n_censored	0	
+per_arm	10p	censored_share_pct	0.00	
+per_arm	10p	phr_bp	31040000	
+per_arm	10p	arm_class	all_other_arms	
+per_arm	10q	n_phrs	357	
+per_arm	10q	n_censored	0	
+per_arm	10q	censored_share_pct	0.00	
+per_arm	10q	phr_bp	50960000	
+per_arm	10q	arm_class	all_other_arms	
+per_arm	11p	n_phrs	448	
+per_arm	11p	n_censored	0	
+per_arm	11p	censored_share_pct	0.00	
+per_arm	11p	phr_bp	84075000	
+per_arm	11p	arm_class	all_other_arms	
+per_arm	12p	n_phrs	454	
+per_arm	12p	n_censored	0	
+per_arm	12p	censored_share_pct	0.00	
+per_arm	12p	phr_bp	31715000	
+per_arm	12p	arm_class	all_other_arms	
+per_arm	12q	n_phrs	449	
+per_arm	12q	n_censored	0	
+per_arm	12q	censored_share_pct	0.00	
+per_arm	12q	phr_bp	10865000	
+per_arm	12q	arm_class	all_other_arms	
+per_arm	13p	n_phrs	76	
+per_arm	13p	n_censored	71	
+per_arm	13p	censored_share_pct	93.42	
+per_arm	13p	phr_bp	37905000	
+per_arm	13p	arm_class	acrocentric_short_arm	
+per_arm	13q	n_phrs	449	
+per_arm	13q	n_censored	0	
+per_arm	13q	censored_share_pct	0.00	
+per_arm	13q	phr_bp	4730000	
+per_arm	13q	arm_class	all_other_arms	
+per_arm	14p	n_phrs	229	
+per_arm	14p	n_censored	207	
+per_arm	14p	censored_share_pct	90.39	
+per_arm	14p	phr_bp	113035000	
+per_arm	14p	arm_class	acrocentric_short_arm	
+per_arm	15p	n_phrs	119	
+per_arm	15p	n_censored	116	
+per_arm	15p	censored_share_pct	97.48	
+per_arm	15p	phr_bp	59145000	
+per_arm	15p	arm_class	acrocentric_short_arm	
+per_arm	15q	n_phrs	449	
+per_arm	15q	n_censored	0	
+per_arm	15q	censored_share_pct	0.00	
+per_arm	15q	phr_bp	54710000	
+per_arm	15q	arm_class	all_other_arms	
+per_arm	16p	n_phrs	442	
+per_arm	16p	n_censored	0	
+per_arm	16p	censored_share_pct	0.00	
+per_arm	16p	phr_bp	35125000	
+per_arm	16p	arm_class	all_other_arms	
+per_arm	16q	n_phrs	449	
+per_arm	16q	n_censored	0	
+per_arm	16q	censored_share_pct	0.00	
+per_arm	16q	phr_bp	66230000	
+per_arm	16q	arm_class	all_other_arms	
+per_arm	17p	n_phrs	448	
+per_arm	17p	n_censored	0	
+per_arm	17p	censored_share_pct	0.00	
+per_arm	17p	phr_bp	20400000	
+per_arm	17p	arm_class	all_other_arms	
+per_arm	17q	n_phrs	451	
+per_arm	17q	n_censored	0	
+per_arm	17q	censored_share_pct	0.00	
+per_arm	17q	phr_bp	20335000	
+per_arm	17q	arm_class	all_other_arms	
+per_arm	18p	n_phrs	446	
+per_arm	18p	n_censored	0	
+per_arm	18p	censored_share_pct	0.00	
+per_arm	18p	phr_bp	45555000	
+per_arm	18p	arm_class	all_other_arms	
+per_arm	19p	n_phrs	434	
+per_arm	19p	n_censored	0	
+per_arm	19p	censored_share_pct	0.00	
+per_arm	19p	phr_bp	84620000	
+per_arm	19p	arm_class	all_other_arms	
+per_arm	19q	n_phrs	457	
+per_arm	19q	n_censored	0	
+per_arm	19q	censored_share_pct	0.00	
+per_arm	19q	phr_bp	9525000	
+per_arm	19q	arm_class	all_other_arms	
+per_arm	20p	n_phrs	453	
+per_arm	20p	n_censored	0	
+per_arm	20p	censored_share_pct	0.00	
+per_arm	20p	phr_bp	49210000	
+per_arm	20p	arm_class	all_other_arms	
+per_arm	20q	n_phrs	409	
+per_arm	20q	n_censored	0	
+per_arm	20q	censored_share_pct	0.00	
+per_arm	20q	phr_bp	43190000	
+per_arm	20q	arm_class	all_other_arms	
+per_arm	21p	n_phrs	116	
+per_arm	21p	n_censored	110	
+per_arm	21p	censored_share_pct	94.83	
+per_arm	21p	phr_bp	56965000	
+per_arm	21p	arm_class	acrocentric_short_arm	
+per_arm	21q	n_phrs	449	
+per_arm	21q	n_censored	0	
+per_arm	21q	censored_share_pct	0.00	
+per_arm	21q	phr_bp	9010000	
+per_arm	21q	arm_class	all_other_arms	
+per_arm	22p	n_phrs	223	
+per_arm	22p	n_censored	213	
+per_arm	22p	censored_share_pct	95.52	
+per_arm	22p	phr_bp	110505000	
+per_arm	22p	arm_class	acrocentric_short_arm	
+per_arm	22q	n_phrs	450	
+per_arm	22q	n_censored	0	
+per_arm	22q	censored_share_pct	0.00	
+per_arm	22q	phr_bp	10070000	
+per_arm	22q	arm_class	all_other_arms	
+per_arm	Xp	n_phrs	327	
+per_arm	Xp	n_censored	281	
+per_arm	Xp	censored_share_pct	85.93	
+per_arm	Xp	phr_bp	152345000	
+per_arm	Xp	arm_class	PAR_XY_arm	
+per_arm	Xq	n_phrs	330	
+per_arm	Xq	n_censored	2	
+per_arm	Xq	censored_share_pct	0.61	
+per_arm	Xq	phr_bp	109345000	
+per_arm	Xq	arm_class	PAR_XY_arm	
+per_arm	Yp	n_phrs	92	
+per_arm	Yp	n_censored	83	
+per_arm	Yp	censored_share_pct	90.22	
+per_arm	Yp	phr_bp	44190000	
+per_arm	Yp	arm_class	PAR_XY_arm	
+per_arm	Yq	n_phrs	101	
+per_arm	Yq	n_censored	0	
+per_arm	Yq	censored_share_pct	0.00	
+per_arm	Yq	phr_bp	33360000	
+per_arm	Yq	arm_class	PAR_XY_arm	
+censoring	all_flanks	n_arms_with_a_censored_phr	11	1p,3q,4q,13p,14p,15p,21p,22p,Xp,Xq,Yp
+censoring	all_flanks	n_arms_with_a_phr	41	
+boundary_signal	n_chrs=2	n_censored_flanks	374	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=3	n_censored_flanks	15	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=4	n_censored_flanks	31	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=5	n_censored_flanks	592	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=6	n_censored_flanks	50	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=7	n_censored_flanks	13	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=8	n_censored_flanks	7	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=9	n_censored_flanks	1	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=10	n_censored_flanks	3	distinct chromosomes in the 495-500 kb window
+boundary_signal	n_chrs=11	n_censored_flanks	1	distinct chromosomes in the 495-500 kb window
+boundary_signal	all_censored	mean_n_chrs_at_boundary	4.02	
+boundary_signal	all_censored	share_at_min_2_chrs_pct	34.41	the bare threshold: 2 chromosomes is the minimum that passes
+continuation	all_other_arms	r_at_400kb_n_alive	10	flanks still passing the window at this depth
+continuation	all_other_arms	r_at_400kb	1.0000	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	all_other_arms	r_at_450kb_n_alive	6	flanks still passing the window at this depth
+continuation	all_other_arms	r_at_450kb	1.0000	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	all_other_arms	r_at_475kb_n_alive	6	flanks still passing the window at this depth
+continuation	all_other_arms	r_at_475kb	0.6667	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	all_other_arms	r_at_490kb_n_alive	4	flanks still passing the window at this depth
+continuation	all_other_arms	r_at_490kb	1.0000	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	acrocentric_short_arm	r_at_400kb_n_alive	751	flanks still passing the window at this depth
+continuation	acrocentric_short_arm	r_at_400kb	0.9987	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	acrocentric_short_arm	r_at_450kb_n_alive	742	flanks still passing the window at this depth
+continuation	acrocentric_short_arm	r_at_450kb	0.9919	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	acrocentric_short_arm	r_at_475kb_n_alive	734	flanks still passing the window at this depth
+continuation	acrocentric_short_arm	r_at_475kb	0.9946	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	acrocentric_short_arm	r_at_490kb_n_alive	723	flanks still passing the window at this depth
+continuation	acrocentric_short_arm	r_at_490kb	0.9917	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	PAR_XY_arm	r_at_400kb_n_alive	392	flanks still passing the window at this depth
+continuation	PAR_XY_arm	r_at_400kb	1.0000	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	PAR_XY_arm	r_at_450kb_n_alive	392	flanks still passing the window at this depth
+continuation	PAR_XY_arm	r_at_450kb	1.0000	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	PAR_XY_arm	r_at_475kb_n_alive	392	flanks still passing the window at this depth
+continuation	PAR_XY_arm	r_at_475kb	1.0000	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	PAR_XY_arm	r_at_490kb_n_alive	383	flanks still passing the window at this depth
+continuation	PAR_XY_arm	r_at_490kb	0.9556	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	ALL	r_at_400kb_n_alive	1153	flanks still passing the window at this depth
+continuation	ALL	r_at_400kb	0.9991	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	ALL	r_at_450kb_n_alive	1140	flanks still passing the window at this depth
+continuation	ALL	r_at_450kb	0.9947	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	ALL	r_at_475kb_n_alive	1132	flanks still passing the window at this depth
+continuation	ALL	r_at_475kb	0.9947	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	ALL	r_at_490kb_n_alive	1110	flanks still passing the window at this depth
+continuation	ALL	r_at_490kb	0.9793	P(pass at d+5kb | pass at d); 1.0 = no sign of termination
+continuation	ALL	naive_constant_hazard_extra_bp	236304	5000*r/(1-r) at the boundary: a stationary-hazard extrapolation, reported only to show that it is NOT used (it answers ~236 kb, an order of magnitude below the measured extension in the survey_extension rows, because the hazard is not stationary and the boundary survivors are a selected subpopulation)
+paper_3.51Mb	CHM13	n_phrs	38	
+paper_3.51Mb	CHM13	phr_bp	6840000	matches the CHM13 row of scripts/cladistics/phr_by_superpopulation.tsv (6.84 Mb)
+paper_3.51Mb	CHM13_excl_acro_p_and_XY	n_phrs	31	acrocentric p-arms (chr13/14/15/21/22 p) and both X arms removed
+paper_3.51Mb	CHM13_excl_acro_p_and_XY	phr_bp	3510000	IDENTICAL to the '3.51 Mb' of submission/paper.tex:163 and :382: 6840000 - 2500000 - 830000 = 3510000
+paper_3.51Mb	CHM13_excl_acro_p_and_XY	n_censored	0	
+paper_3.51Mb	CHM13_excl_acro_p_and_XY	max_phr_length	295000	below the 500 kb ceiling: no constituent PHR of the 3.51 Mb is censored
+paper_3.51Mb	CHM13_censored_ends	n_censored	6	13p,14p,15p,21p,22p,Xp
+label_audit	per_window_table	n_window_rows	521356	
+label_audit	per_window_table	rows_with_a_coordinate_named_pseudo_chromosome	20296	labels like 'chr14:1650-501649' count as a chromosome distinct from chr14 in the published rule (fallback branch of get_self_chr/query_impg_window)
+label_audit	boundary_window	censored_flanks_passing_with_2_chrs	374	
+label_audit	boundary_window	of_those_relying_on_a_pseudo_chromosome	0	0 = the marginal censored ends are genuine two-chromosome systems, so the censoring count does not depend on this labelling quirk
+termination_depth	cohort_length_bin:0kb-50kb	n_phrs	4898	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:50kb-100kb	n_phrs	1801	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:100kb-150kb	n_phrs	3041	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:150kb-200kb	n_phrs	1847	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:200kb-250kb	n_phrs	1404	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:250kb-300kb	n_phrs	683	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:300kb-350kb	n_phrs	834	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:350kb-400kb	n_phrs	6	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:400kb-450kb	n_phrs	11	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:450kb-500kb	n_phrs	56	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	cohort_length_bin:>=500kb (=flank boundary)	n_phrs	1087	Fig 1B's length histogram, one row per 50 kb bin
+termination_depth	1p	n_phrs	438	
+termination_depth	1p	median_length_bp	295000	where similarity terminates
+termination_depth	1p	q1_length_bp	290000	
+termination_depth	1p	q3_length_bp	315000	
+termination_depth	1p	max_length_bp	500000	
+termination_depth	1p	n_reaching_the_boundary	1	no termination observed inside the flank
+termination_depth	1p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	1q	n_phrs	445	
+termination_depth	1q	median_length_bp	15000	where similarity terminates
+termination_depth	1q	q1_length_bp	15000	
+termination_depth	1q	q3_length_bp	20000	
+termination_depth	1q	max_length_bp	40000	
+termination_depth	1q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	1q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	2q	n_phrs	450	
+termination_depth	2q	median_length_bp	120000	where similarity terminates
+termination_depth	2q	q1_length_bp	120000	
+termination_depth	2q	q3_length_bp	120000	
+termination_depth	2q	max_length_bp	480000	
+termination_depth	2q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	2q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	3q	n_phrs	436	
+termination_depth	3q	median_length_bp	250000	where similarity terminates
+termination_depth	3q	q1_length_bp	250000	
+termination_depth	3q	q3_length_bp	250000	
+termination_depth	3q	max_length_bp	500000	
+termination_depth	3q	n_reaching_the_boundary	2	no termination observed inside the flank
+termination_depth	3q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	4p	n_phrs	448	
+termination_depth	4p	median_length_bp	60000	where similarity terminates
+termination_depth	4p	q1_length_bp	60000	
+termination_depth	4p	q3_length_bp	60000	
+termination_depth	4p	max_length_bp	105000	
+termination_depth	4p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	4p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	4q	n_phrs	357	
+termination_depth	4q	median_length_bp	155000	where similarity terminates
+termination_depth	4q	q1_length_bp	130000	
+termination_depth	4q	q3_length_bp	185000	
+termination_depth	4q	max_length_bp	500000	
+termination_depth	4q	n_reaching_the_boundary	1	no termination observed inside the flank
+termination_depth	4q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	5q	n_phrs	447	
+termination_depth	5q	median_length_bp	200000	where similarity terminates
+termination_depth	5q	q1_length_bp	185000	
+termination_depth	5q	q3_length_bp	200000	
+termination_depth	5q	max_length_bp	255000	
+termination_depth	5q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	5q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	6p	n_phrs	417	
+termination_depth	6p	median_length_bp	100000	where similarity terminates
+termination_depth	6p	q1_length_bp	100000	
+termination_depth	6p	q3_length_bp	150000	
+termination_depth	6p	max_length_bp	190000	
+termination_depth	6p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	6p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	6q	n_phrs	440	
+termination_depth	6q	median_length_bp	145000	where similarity terminates
+termination_depth	6q	q1_length_bp	140000	
+termination_depth	6q	q3_length_bp	145000	
+termination_depth	6q	max_length_bp	270000	
+termination_depth	6q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	6q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	7p	n_phrs	438	
+termination_depth	7p	median_length_bp	175000	where similarity terminates
+termination_depth	7p	q1_length_bp	175000	
+termination_depth	7p	q3_length_bp	180000	
+termination_depth	7p	max_length_bp	290000	
+termination_depth	7p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	7p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	7q	n_phrs	446	
+termination_depth	7q	median_length_bp	40000	where similarity terminates
+termination_depth	7q	q1_length_bp	5000	
+termination_depth	7q	q3_length_bp	45000	
+termination_depth	7q	max_length_bp	45000	
+termination_depth	7q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	7q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	8p	n_phrs	458	
+termination_depth	8p	median_length_bp	170000	where similarity terminates
+termination_depth	8p	q1_length_bp	30000	
+termination_depth	8p	q3_length_bp	170000	
+termination_depth	8p	max_length_bp	230000	
+termination_depth	8p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	8p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	9p	n_phrs	448	
+termination_depth	9p	median_length_bp	40000	where similarity terminates
+termination_depth	9p	q1_length_bp	40000	
+termination_depth	9p	q3_length_bp	40000	
+termination_depth	9p	max_length_bp	145000	
+termination_depth	9p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	9p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	9q	n_phrs	450	
+termination_depth	9q	median_length_bp	230000	where similarity terminates
+termination_depth	9q	q1_length_bp	225000	
+termination_depth	9q	q3_length_bp	305000	
+termination_depth	9q	max_length_bp	330000	
+termination_depth	9q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	9q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	10p	n_phrs	443	
+termination_depth	10p	median_length_bp	70000	where similarity terminates
+termination_depth	10p	q1_length_bp	70000	
+termination_depth	10p	q3_length_bp	70000	
+termination_depth	10p	max_length_bp	125000	
+termination_depth	10p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	10p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	10q	n_phrs	357	
+termination_depth	10q	median_length_bp	135000	where similarity terminates
+termination_depth	10q	q1_length_bp	110000	
+termination_depth	10q	q3_length_bp	165000	
+termination_depth	10q	max_length_bp	390000	
+termination_depth	10q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	10q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	11p	n_phrs	448	
+termination_depth	11p	median_length_bp	215000	where similarity terminates
+termination_depth	11p	q1_length_bp	180000	
+termination_depth	11p	q3_length_bp	225000	
+termination_depth	11p	max_length_bp	450000	
+termination_depth	11p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	11p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	12p	n_phrs	454	
+termination_depth	12p	median_length_bp	70000	where similarity terminates
+termination_depth	12p	q1_length_bp	70000	
+termination_depth	12p	q3_length_bp	70000	
+termination_depth	12p	max_length_bp	75000	
+termination_depth	12p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	12p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	12q	n_phrs	449	
+termination_depth	12q	median_length_bp	25000	where similarity terminates
+termination_depth	12q	q1_length_bp	25000	
+termination_depth	12q	q3_length_bp	25000	
+termination_depth	12q	max_length_bp	45000	
+termination_depth	12q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	12q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	13p	n_phrs	76	
+termination_depth	13p	median_length_bp	500000	where similarity terminates
+termination_depth	13p	q1_length_bp	500000	
+termination_depth	13p	q3_length_bp	500000	
+termination_depth	13p	max_length_bp	500000	
+termination_depth	13p	n_reaching_the_boundary	71	no termination observed inside the flank
+termination_depth	13p	n_boundary_unfinished_streak	3	termination test incomplete at the boundary
+termination_depth	13q	n_phrs	449	
+termination_depth	13q	median_length_bp	10000	where similarity terminates
+termination_depth	13q	q1_length_bp	10000	
+termination_depth	13q	q3_length_bp	10000	
+termination_depth	13q	max_length_bp	105000	
+termination_depth	13q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	13q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	14p	n_phrs	229	
+termination_depth	14p	median_length_bp	500000	where similarity terminates
+termination_depth	14p	q1_length_bp	500000	
+termination_depth	14p	q3_length_bp	500000	
+termination_depth	14p	max_length_bp	500000	
+termination_depth	14p	n_reaching_the_boundary	207	no termination observed inside the flank
+termination_depth	14p	n_boundary_unfinished_streak	11	termination test incomplete at the boundary
+termination_depth	15p	n_phrs	119	
+termination_depth	15p	median_length_bp	500000	where similarity terminates
+termination_depth	15p	q1_length_bp	500000	
+termination_depth	15p	q3_length_bp	500000	
+termination_depth	15p	max_length_bp	500000	
+termination_depth	15p	n_reaching_the_boundary	116	no termination observed inside the flank
+termination_depth	15p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	15q	n_phrs	449	
+termination_depth	15q	median_length_bp	125000	where similarity terminates
+termination_depth	15q	q1_length_bp	120000	
+termination_depth	15q	q3_length_bp	125000	
+termination_depth	15q	max_length_bp	200000	
+termination_depth	15q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	15q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	16p	n_phrs	442	
+termination_depth	16p	median_length_bp	25000	where similarity terminates
+termination_depth	16p	q1_length_bp	25000	
+termination_depth	16p	q3_length_bp	200000	
+termination_depth	16p	max_length_bp	410000	
+termination_depth	16p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	16p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	16q	n_phrs	449	
+termination_depth	16q	median_length_bp	155000	where similarity terminates
+termination_depth	16q	q1_length_bp	150000	
+termination_depth	16q	q3_length_bp	160000	
+termination_depth	16q	max_length_bp	280000	
+termination_depth	16q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	16q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	17p	n_phrs	448	
+termination_depth	17p	median_length_bp	45000	where similarity terminates
+termination_depth	17p	q1_length_bp	40000	
+termination_depth	17p	q3_length_bp	50000	
+termination_depth	17p	max_length_bp	160000	
+termination_depth	17p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	17p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	17q	n_phrs	451	
+termination_depth	17q	median_length_bp	45000	where similarity terminates
+termination_depth	17q	q1_length_bp	45000	
+termination_depth	17q	q3_length_bp	45000	
+termination_depth	17q	max_length_bp	60000	
+termination_depth	17q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	17q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	18p	n_phrs	446	
+termination_depth	18p	median_length_bp	100000	where similarity terminates
+termination_depth	18p	q1_length_bp	100000	
+termination_depth	18p	q3_length_bp	105000	
+termination_depth	18p	max_length_bp	265000	
+termination_depth	18p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	18p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	19p	n_phrs	434	
+termination_depth	19p	median_length_bp	205000	where similarity terminates
+termination_depth	19p	q1_length_bp	185000	
+termination_depth	19p	q3_length_bp	210000	
+termination_depth	19p	max_length_bp	275000	
+termination_depth	19p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	19p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	19q	n_phrs	457	
+termination_depth	19q	median_length_bp	20000	where similarity terminates
+termination_depth	19q	q1_length_bp	20000	
+termination_depth	19q	q3_length_bp	20000	
+termination_depth	19q	max_length_bp	25000	
+termination_depth	19q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	19q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	20p	n_phrs	453	
+termination_depth	20p	median_length_bp	100000	where similarity terminates
+termination_depth	20p	q1_length_bp	100000	
+termination_depth	20p	q3_length_bp	135000	
+termination_depth	20p	max_length_bp	195000	
+termination_depth	20p	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	20p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	20q	n_phrs	409	
+termination_depth	20q	median_length_bp	105000	where similarity terminates
+termination_depth	20q	q1_length_bp	105000	
+termination_depth	20q	q3_length_bp	105000	
+termination_depth	20q	max_length_bp	185000	
+termination_depth	20q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	20q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	21p	n_phrs	116	
+termination_depth	21p	median_length_bp	500000	where similarity terminates
+termination_depth	21p	q1_length_bp	500000	
+termination_depth	21p	q3_length_bp	500000	
+termination_depth	21p	max_length_bp	500000	
+termination_depth	21p	n_reaching_the_boundary	110	no termination observed inside the flank
+termination_depth	21p	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	21q	n_phrs	449	
+termination_depth	21q	median_length_bp	20000	where similarity terminates
+termination_depth	21q	q1_length_bp	20000	
+termination_depth	21q	q3_length_bp	20000	
+termination_depth	21q	max_length_bp	50000	
+termination_depth	21q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	21q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	22p	n_phrs	223	
+termination_depth	22p	median_length_bp	500000	where similarity terminates
+termination_depth	22p	q1_length_bp	500000	
+termination_depth	22p	q3_length_bp	500000	
+termination_depth	22p	max_length_bp	500000	
+termination_depth	22p	n_reaching_the_boundary	213	no termination observed inside the flank
+termination_depth	22p	n_boundary_unfinished_streak	3	termination test incomplete at the boundary
+termination_depth	22q	n_phrs	450	
+termination_depth	22q	median_length_bp	20000	where similarity terminates
+termination_depth	22q	q1_length_bp	20000	
+termination_depth	22q	q3_length_bp	25000	
+termination_depth	22q	max_length_bp	25000	
+termination_depth	22q	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	22q	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	Xp	n_phrs	327	
+termination_depth	Xp	median_length_bp	500000	where similarity terminates
+termination_depth	Xp	q1_length_bp	500000	
+termination_depth	Xp	q3_length_bp	500000	
+termination_depth	Xp	max_length_bp	500000	
+termination_depth	Xp	n_reaching_the_boundary	281	no termination observed inside the flank
+termination_depth	Xp	n_boundary_unfinished_streak	22	termination test incomplete at the boundary
+termination_depth	Xq	n_phrs	330	
+termination_depth	Xq	median_length_bp	330000	where similarity terminates
+termination_depth	Xq	q1_length_bp	330000	
+termination_depth	Xq	q3_length_bp	330000	
+termination_depth	Xq	max_length_bp	500000	
+termination_depth	Xq	n_reaching_the_boundary	2	no termination observed inside the flank
+termination_depth	Xq	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+termination_depth	Yp	n_phrs	92	
+termination_depth	Yp	median_length_bp	500000	where similarity terminates
+termination_depth	Yp	q1_length_bp	500000	
+termination_depth	Yp	q3_length_bp	500000	
+termination_depth	Yp	max_length_bp	500000	
+termination_depth	Yp	n_reaching_the_boundary	83	no termination observed inside the flank
+termination_depth	Yp	n_boundary_unfinished_streak	4	termination test incomplete at the boundary
+termination_depth	Yq	n_phrs	101	
+termination_depth	Yq	median_length_bp	330000	where similarity terminates
+termination_depth	Yq	q1_length_bp	330000	
+termination_depth	Yq	q3_length_bp	330000	
+termination_depth	Yq	max_length_bp	335000	
+termination_depth	Yq	n_reaching_the_boundary	0	no termination observed inside the flank
+termination_depth	Yq	n_boundary_unfinished_streak	0	termination test incomplete at the boundary
+chm13_geometry	bed	n_rows	37	data/chm13.phrs.bed, read as-is
+chm13_geometry	bed	bp_sum_as_written	6014981	
+chm13_geometry	bed	n_rows_matching_a_call_phr_within_1bp	30/37	the bed's end coordinate is inclusive in some rows and half-open in others, so a strict comparison is meaningless
+chm13_geometry	bed	n_call_phrs_absent_from_the_bed	8	first few: chr13:2544-502544(parm); chr14:2075-502075(parm); chr15:3258-503258(parm); chr17:1679-46679(parm)
+chm13_geometry	bed	verdict	not a faithful export of the delivered call set	37 bed rows / 6014981 bp as written vs 38 CHM13 PHRs / 6,840,000 bp in the call table, and it omits chr13p, the 500 kb censored acrocentric arm; so the censoring counts here come from the call table + per-window table, and the bed is used only as a probe
+chm13_geometry	chrom.sizes	n_chm13_flanks_positioned	46	
+chm13_geometry	chrom.sizes	telomeric_repeat_trimmed_bp_median	2634	distance from each flank's telomeric boundary to the contig end, i.e. the telomeric repeat the pipeline trimmed
+chm13_geometry	chrom.sizes	telomeric_repeat_trimmed_bp_max	4586	
+chm13_geometry	chr1p	telomere_to_centromere_bp	121796048	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr2p	telomere_to_centromere_bp	92333543	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr3p	telomere_to_centromere_bp	91738002	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr4p	telomere_to_centromere_bp	49705154	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr5p	telomere_to_centromere_bp	47039134	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr6p	telomere_to_centromere_bp	58286706	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr7p	telomere_to_centromere_bp	60414372	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr8p	telomere_to_centromere_bp	44215832	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr9p	telomere_to_centromere_bp	44951775	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr10p	telomere_to_centromere_bp	39633793	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr11p	telomere_to_centromere_bp	51035789	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr12p	telomere_to_centromere_bp	34620838	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr13p	telomere_to_centromere_bp	15547593	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr14p	telomere_to_centromere_bp	10092112	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr15p	telomere_to_centromere_bp	16678794	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr16p	telomere_to_centromere_bp	35848286	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr17p	telomere_to_centromere_bp	23892419	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr18p	telomere_to_centromere_bp	15965699	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr19p	telomere_to_centromere_bp	25817676	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr20p	telomere_to_centromere_bp	26925852	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr21p	telomere_to_centromere_bp	10962853	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chr22p	telomere_to_centromere_bp	12788180	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chrXp	telomere_to_centromere_bp	57820107	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+chm13_geometry	chrYp	telomere_to_centromere_bp	10565750	cytoband p-arm length: the physical head-room for any extension of a censored p-arm PHR
+survey_calibration	id98_ge5aln	window_sensitivity	0.793	of the 445846 published-passing windows below 500 kb
+survey_calibration	id98_ge5aln	window_specificity	0.991	of the 75510 published-failing windows below 500 kb
+survey_calibration	id98_ge5aln	n_uncensored_overreach	163/14581	survey length exceeds the published length
+survey_calibration	id98_ge5aln	uncensored_overreach_median_bp	100000	
+survey_calibration	id98_ge5aln	n_phr_free_flanks_gaining_a_region	1/3158	a good regime must leave these empty
+survey_calibration	id98_ge2aln	window_sensitivity	0.861	of the 445846 published-passing windows below 500 kb
+survey_calibration	id98_ge2aln	window_specificity	0.985	of the 75510 published-failing windows below 500 kb
+survey_calibration	id98_ge2aln	n_uncensored_overreach	263/14581	survey length exceeds the published length
+survey_calibration	id98_ge2aln	uncensored_overreach_median_bp	100000	
+survey_calibration	id98_ge2aln	n_phr_free_flanks_gaining_a_region	1/3158	a good regime must leave these empty
+survey_calibration	id98_ge1aln	window_sensitivity	0.901	of the 445846 published-passing windows below 500 kb
+survey_calibration	id98_ge1aln	window_specificity	0.954	of the 75510 published-failing windows below 500 kb
+survey_calibration	id98_ge1aln	n_uncensored_overreach	831/14581	survey length exceeds the published length
+survey_calibration	id98_ge1aln	uncensored_overreach_median_bp	55000	
+survey_calibration	id98_ge1aln	n_phr_free_flanks_gaining_a_region	10/3158	a good regime must leave these empty
+survey_calibration	id95_ge5aln	window_sensitivity	0.814	of the 445846 published-passing windows below 500 kb
+survey_calibration	id95_ge5aln	window_specificity	0.989	of the 75510 published-failing windows below 500 kb
+survey_calibration	id95_ge5aln	n_uncensored_overreach	191/14581	survey length exceeds the published length
+survey_calibration	id95_ge5aln	uncensored_overreach_median_bp	100000	
+survey_calibration	id95_ge5aln	n_phr_free_flanks_gaining_a_region	1/3158	a good regime must leave these empty
+survey_calibration	id95_ge2aln	window_sensitivity	0.881	of the 445846 published-passing windows below 500 kb
+survey_calibration	id95_ge2aln	window_specificity	0.980	of the 75510 published-failing windows below 500 kb
+survey_calibration	id95_ge2aln	n_uncensored_overreach	310/14581	survey length exceeds the published length
+survey_calibration	id95_ge2aln	uncensored_overreach_median_bp	100000	
+survey_calibration	id95_ge2aln	n_phr_free_flanks_gaining_a_region	1/3158	a good regime must leave these empty
+survey_calibration	id95_ge1aln	window_sensitivity	0.924	of the 445846 published-passing windows below 500 kb
+survey_calibration	id95_ge1aln	window_specificity	0.944	of the 75510 published-failing windows below 500 kb
+survey_calibration	id95_ge1aln	n_uncensored_overreach	1094/14581	survey length exceeds the published length
+survey_calibration	id95_ge1aln	uncensored_overreach_median_bp	40000	
+survey_calibration	id95_ge1aln	n_phr_free_flanks_gaining_a_region	10/3158	a good regime must leave these empty
+survey_extension	id95_ge2aln|caller_rule	n	1087	
+survey_extension	id95_ge2aln|caller_rule	n_longer_than_500kb	1079	99.3%
+survey_extension	id95_ge2aln|caller_rule	median_length_bp	2980000	
+survey_extension	id95_ge2aln|caller_rule	q1_length_bp	2440000	
+survey_extension	id95_ge2aln|caller_rule	q3_length_bp	4997500	
+survey_extension	id95_ge2aln|caller_rule	median_length_increase_bp	2480000	measured length - 500 kb
+survey_extension	id95_ge2aln|caller_rule	frac_ge_2Mb	0.926	still passing at the 2 Mb ceiling
+survey_extension	id95_ge2aln|caller_rule	frac_ge_5Mb	0.250	still passing at the 5 Mb ceiling (= truncated by the measurement, so a floor)
+survey_extension	id95_ge2aln|strict_contiguous	n	1087	
+survey_extension	id95_ge2aln|strict_contiguous	n_longer_than_500kb	1020	93.8%
+survey_extension	id95_ge2aln|strict_contiguous	median_length_bp	2440000	
+survey_extension	id95_ge2aln|strict_contiguous	q1_length_bp	1605000	
+survey_extension	id95_ge2aln|strict_contiguous	q3_length_bp	3622500	
+survey_extension	id95_ge2aln|strict_contiguous	median_length_increase_bp	1940000	measured length - 500 kb
+survey_extension	id95_ge2aln|strict_contiguous	frac_ge_2Mb	0.696	still passing at the 2 Mb ceiling
+survey_extension	id95_ge2aln|strict_contiguous	frac_ge_5Mb	0.132	still passing at the 5 Mb ceiling (= truncated by the measurement, so a floor)
+survey_extension	id95_ge5aln|caller_rule	n	1087	
+survey_extension	id95_ge5aln|caller_rule	n_longer_than_500kb	1061	97.6%
+survey_extension	id95_ge5aln|caller_rule	median_length_bp	2445000	
+survey_extension	id95_ge5aln|caller_rule	q1_length_bp	1610000	
+survey_extension	id95_ge5aln|caller_rule	q3_length_bp	3525000	
+survey_extension	id95_ge5aln|caller_rule	median_length_increase_bp	1945000	measured length - 500 kb
+survey_extension	id95_ge5aln|caller_rule	frac_ge_2Mb	0.702	still passing at the 2 Mb ceiling
+survey_extension	id95_ge5aln|caller_rule	frac_ge_5Mb	0.115	still passing at the 5 Mb ceiling (= truncated by the measurement, so a floor)
+survey_extension	id95_ge5aln|strict_contiguous	n	1087	
+survey_extension	id95_ge5aln|strict_contiguous	n_longer_than_500kb	887	81.6%
+survey_extension	id95_ge5aln|strict_contiguous	median_length_bp	1365000	
+survey_extension	id95_ge5aln|strict_contiguous	q1_length_bp	895000	
+survey_extension	id95_ge5aln|strict_contiguous	q3_length_bp	2425000	
+survey_extension	id95_ge5aln|strict_contiguous	median_length_increase_bp	865000	measured length - 500 kb
+survey_extension	id95_ge5aln|strict_contiguous	frac_ge_2Mb	0.344	still passing at the 2 Mb ceiling
+survey_extension	id95_ge5aln|strict_contiguous	frac_ge_5Mb	0.028	still passing at the 5 Mb ceiling (= truncated by the measurement, so a floor)
+survey_extension	id95_ge1aln|caller_rule	n	1087	
+survey_extension	id95_ge1aln|caller_rule	n_longer_than_500kb	1083	99.6%
+survey_extension	id95_ge1aln|caller_rule	median_length_bp	3450000	
+survey_extension	id95_ge1aln|caller_rule	q1_length_bp	2465000	
+survey_extension	id95_ge1aln|caller_rule	q3_length_bp	5000000	
+survey_extension	id95_ge1aln|caller_rule	median_length_increase_bp	2950000	measured length - 500 kb
+survey_extension	id95_ge1aln|caller_rule	frac_ge_2Mb	0.966	still passing at the 2 Mb ceiling
+survey_extension	id95_ge1aln|caller_rule	frac_ge_5Mb	0.312	still passing at the 5 Mb ceiling (= truncated by the measurement, so a floor)
+survey_extension	id95_ge1aln|strict_contiguous	n	1087	
+survey_extension	id95_ge1aln|strict_contiguous	n_longer_than_500kb	1055	97.1%
+survey_extension	id95_ge1aln|strict_contiguous	median_length_bp	2765000	
+survey_extension	id95_ge1aln|strict_contiguous	q1_length_bp	2430000	
+survey_extension	id95_ge1aln|strict_contiguous	q3_length_bp	4722500	
+survey_extension	id95_ge1aln|strict_contiguous	median_length_increase_bp	2265000	measured length - 500 kb
+survey_extension	id95_ge1aln|strict_contiguous	frac_ge_2Mb	0.859	still passing at the 2 Mb ceiling
+survey_extension	id95_ge1aln|strict_contiguous	frac_ge_5Mb	0.222	still passing at the 5 Mb ceiling (= truncated by the measurement, so a floor)
+survey_extension_by_arm	1p|caller_rule	n	1	
+survey_extension_by_arm	1p|caller_rule	median_length_bp	490000	
+survey_extension_by_arm	1p|caller_rule	frac_longer_than_500kb	0.000	
+survey_extension_by_arm	1p|strict_contiguous	n	1	
+survey_extension_by_arm	1p|strict_contiguous	median_length_bp	490000	
+survey_extension_by_arm	1p|strict_contiguous	frac_longer_than_500kb	0.000	
+survey_extension_by_arm	3q|caller_rule	n	2	
+survey_extension_by_arm	3q|caller_rule	median_length_bp	707500	
+survey_extension_by_arm	3q|caller_rule	frac_longer_than_500kb	0.500	
+survey_extension_by_arm	3q|strict_contiguous	n	2	
+survey_extension_by_arm	3q|strict_contiguous	median_length_bp	642500	
+survey_extension_by_arm	3q|strict_contiguous	frac_longer_than_500kb	0.500	
+survey_extension_by_arm	4q|caller_rule	n	1	
+survey_extension_by_arm	4q|caller_rule	median_length_bp	500000	
+survey_extension_by_arm	4q|caller_rule	frac_longer_than_500kb	0.000	
+survey_extension_by_arm	4q|strict_contiguous	n	1	
+survey_extension_by_arm	4q|strict_contiguous	median_length_bp	340000	
+survey_extension_by_arm	4q|strict_contiguous	frac_longer_than_500kb	0.000	
+survey_extension_by_arm	13p|caller_rule	n	71	
+survey_extension_by_arm	13p|caller_rule	median_length_bp	5000000	
+survey_extension_by_arm	13p|caller_rule	frac_longer_than_500kb	1.000	
+survey_extension_by_arm	13p|strict_contiguous	n	71	
+survey_extension_by_arm	13p|strict_contiguous	median_length_bp	3805000	
+survey_extension_by_arm	13p|strict_contiguous	frac_longer_than_500kb	0.986	
+survey_extension_by_arm	14p|caller_rule	n	207	
+survey_extension_by_arm	14p|caller_rule	median_length_bp	3500000	
+survey_extension_by_arm	14p|caller_rule	frac_longer_than_500kb	1.000	
+survey_extension_by_arm	14p|strict_contiguous	n	207	
+survey_extension_by_arm	14p|strict_contiguous	median_length_bp	2625000	
+survey_extension_by_arm	14p|strict_contiguous	frac_longer_than_500kb	0.981	
+survey_extension_by_arm	15p|caller_rule	n	116	
+survey_extension_by_arm	15p|caller_rule	median_length_bp	4522500	
+survey_extension_by_arm	15p|caller_rule	frac_longer_than_500kb	1.000	
+survey_extension_by_arm	15p|strict_contiguous	n	116	
+survey_extension_by_arm	15p|strict_contiguous	median_length_bp	3015000	
+survey_extension_by_arm	15p|strict_contiguous	frac_longer_than_500kb	0.983	
+survey_extension_by_arm	21p|caller_rule	n	110	
+survey_extension_by_arm	21p|caller_rule	median_length_bp	5000000	
+survey_extension_by_arm	21p|caller_rule	frac_longer_than_500kb	1.000	
+survey_extension_by_arm	21p|strict_contiguous	n	110	
+survey_extension_by_arm	21p|strict_contiguous	median_length_bp	2657500	
+survey_extension_by_arm	21p|strict_contiguous	frac_longer_than_500kb	1.000	
+survey_extension_by_arm	22p|caller_rule	n	213	
+survey_extension_by_arm	22p|caller_rule	median_length_bp	4435000	
+survey_extension_by_arm	22p|caller_rule	frac_longer_than_500kb	0.995	
+survey_extension_by_arm	22p|strict_contiguous	n	213	
+survey_extension_by_arm	22p|strict_contiguous	median_length_bp	3175000	
+survey_extension_by_arm	22p|strict_contiguous	frac_longer_than_500kb	0.967	
+survey_extension_by_arm	Xp|caller_rule	n	281	
+survey_extension_by_arm	Xp|caller_rule	median_length_bp	2445000	
+survey_extension_by_arm	Xp|caller_rule	frac_longer_than_500kb	0.993	
+survey_extension_by_arm	Xp|strict_contiguous	n	281	
+survey_extension_by_arm	Xp|strict_contiguous	median_length_bp	2420000	
+survey_extension_by_arm	Xp|strict_contiguous	frac_longer_than_500kb	0.854	
+survey_extension_by_arm	Xq|caller_rule	n	2	
+survey_extension_by_arm	Xq|caller_rule	median_length_bp	1120000	
+survey_extension_by_arm	Xq|caller_rule	frac_longer_than_500kb	1.000	
+survey_extension_by_arm	Xq|strict_contiguous	n	2	
+survey_extension_by_arm	Xq|strict_contiguous	median_length_bp	637500	
+survey_extension_by_arm	Xq|strict_contiguous	frac_longer_than_500kb	0.500	
+survey_extension_by_arm	Yp|caller_rule	n	83	
+survey_extension_by_arm	Yp|caller_rule	median_length_bp	2435000	
+survey_extension_by_arm	Yp|caller_rule	frac_longer_than_500kb	0.976	
+survey_extension_by_arm	Yp|strict_contiguous	n	83	
+survey_extension_by_arm	Yp|strict_contiguous	median_length_bp	2430000	
+survey_extension_by_arm	Yp|strict_contiguous	frac_longer_than_500kb	0.904	
+survey_extension_by_confidence	boundary_n_chrs=2	n	374	
+survey_extension_by_confidence	boundary_n_chrs=2	median_length_bp	2425000	
+survey_extension_by_confidence	boundary_n_chrs=2	frac_ge_2Mb	0.749	
+survey_extension_by_confidence	boundary_n_chrs=3-4	n	46	
+survey_extension_by_confidence	boundary_n_chrs=3-4	median_length_bp	2677500	
+survey_extension_by_confidence	boundary_n_chrs=3-4	frac_ge_2Mb	0.630	
+survey_extension_by_confidence	boundary_n_chrs>=5	n	667	
+survey_extension_by_confidence	boundary_n_chrs>=5	median_length_bp	2900000	
+survey_extension_by_confidence	boundary_n_chrs>=5	frac_ge_2Mb	0.672	
+corrected_totals	id95_ge2aln|strict_contiguous	published_phr_bp	2252510000	15668 PHRs
+corrected_totals	id95_ge2aln|strict_contiguous	published_mean_length_bp	143765	matches the paper's 'mean 144 kb'
+corrected_totals	id95_ge2aln|strict_contiguous	additional_bp_lower_bound	2352385000	
+corrected_totals	id95_ge2aln|strict_contiguous	corrected_total_bp	4604895000	
+corrected_totals	id95_ge2aln|strict_contiguous	corrected_mean_length_bp	293904	
+corrected_totals	id95_ge5aln|strict_contiguous	published_phr_bp	2252510000	15668 PHRs
+corrected_totals	id95_ge5aln|strict_contiguous	published_mean_length_bp	143765	matches the paper's 'mean 144 kb'
+corrected_totals	id95_ge5aln|strict_contiguous	additional_bp_lower_bound	1280600000	
+corrected_totals	id95_ge5aln|strict_contiguous	corrected_total_bp	3533110000	
+corrected_totals	id95_ge5aln|strict_contiguous	corrected_mean_length_bp	225498	
+corrected_totals	median	published_median_length_bp	105000	censoring cannot move the median: the censoring point (500 kb) is far above the 50th percentile, so replacing the top 6.9%% by larger values leaves the median unchanged
+transitive_regime	1p	extent_bp	347294	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	1q	extent_bp	140612	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	2p	extent_bp	146637	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	2q	extent_bp	244126	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	3p	extent_bp	647358	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	3q	extent_bp	351362	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	4p	extent_bp	146913	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	4q	extent_bp	322740	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	5p	extent_bp	0	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	5q	extent_bp	293924	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	6p	extent_bp	347412	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	6q	extent_bp	273882	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	7p	extent_bp	246625	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	7q	extent_bp	131887	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	8p	extent_bp	348119	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	8q	extent_bp	0	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	9p	extent_bp	246512	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	9q	extent_bp	265024	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	10p	extent_bp	147511	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	10q	extent_bp	304994	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	11p	extent_bp	348264	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	11q	extent_bp	0	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	12p	extent_bp	147217	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	12q	extent_bp	109999	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	13p	extent_bp	6147456	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	13q	extent_bp	129903	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	14p	extent_bp	14047925	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	14q	extent_bp	0	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	15p	extent_bp	15746742	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	15q	extent_bp	200358	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	16p	extent_bp	147832	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	16q	extent_bp	277816	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	17p	extent_bp	148321	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	17q	extent_bp	135655	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	18p	extent_bp	347983	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	18q	extent_bp	0	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	19p	extent_bp	348038	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	19q	extent_bp	154425	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	20p	extent_bp	147302	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	20q	extent_bp	157368	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	21p	extent_bp	4047495	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	21q	extent_bp	140991	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	22p	extent_bp	17145862	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	22q	extent_bp	109733	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	Xp	extent_bp	2448421	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
+transitive_regime	Xq	extent_bp	406917	transitive closure, 100 kb windows, id>=0.98, min output 5 kb; more permissive than the published direct projection, so this is the upper side of the bound
