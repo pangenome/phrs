@@ -4,7 +4,7 @@ angle: Q&A coverage (talk vs draft)
 draft_reviewed: paper_prep/synthesis/NATURE_DRAFT_v4.md
 transcript: /home/guarracino/Dropbox/grants/r21-cancer-pangenomics/notes/Session7-PopulationGenomics.en.srt
 narrative_extract: paper_prep/synthesis/NARRATIVE_EXTRACT.md
-peer_review_ref: paper_prep/synthesis/PEER_REVIEW_v1.md (do not duplicate)
+peer_review_ref: paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md (do not duplicate)
 revision_log: paper_prep/synthesis/REVISION_LOG_v4.md
 reviewer: narrative-match-qa (agent-167)
 date: 2026-05-17
@@ -14,7 +14,7 @@ date: 2026-05-17
 
 ## 1. My angle
 
-I am auditing whether the paper answers the three Q&A items that an audience member forced into the open at the BoG conference talk: Q1 (Hi-C signal validity at 00:45:12), Q2 (chicken-or-egg causality at 00:46:16), and Q3 (P-arm-to-Q-arm homology at 00:47:39). I am also looking for hard questions the paper invites that the audience did not get to ask. I am NOT re-doing PEER_REVIEW_v1.md's statistical or structural concerns; where I overlap with M3 (flanking paradox), M4 (pedigree null), or M7 (causal loop not closed in human), I note the overlap in one sentence and add only what the peer reviewer missed from the Q&A angle.
+I am auditing whether the paper answers the three Q&A items that an audience member forced into the open at the BoG conference talk: Q1 (Hi-C signal validity at 00:45:12), Q2 (chicken-or-egg causality at 00:46:16), and Q3 (P-arm-to-Q-arm homology at 00:47:39). I am also looking for hard questions the paper invites that the audience did not get to ask. I am NOT re-doing SIMULATED_SIMULATED_PEER_REVIEW_v1.md's statistical or structural concerns; where I overlap with M3 (flanking paradox), M4 (pedigree null), or M7 (causal loop not closed in human), I note the overlap in one sentence and add only what the peer reviewer missed from the Q&A angle.
 
 ---
 
@@ -69,7 +69,7 @@ I am auditing whether the paper answers the three Q&A items that an audience mem
 - **Transcript cite:** 00:47:29-00:47:31 (subtitle 369, second audience member comment after Q2).
 - **Verbatim transcript:** "If you look at this across all segmental duplications, not just the sub-telomeres and in response to Flores' point, be a little more careful about the control of the Hi-C data."
 - **Verbatim draft:** (no corresponding passage; the paper discusses only PHRs and subtelomeric communities throughout)
-- **Divergence:** The audience member made two points in one sentence: (a) this result may not be subtelomere-specific -- it might hold for all SDs; (b) another audience member ("Flores") raised a Hi-C control concern during the session. The paper does not address (a) anywhere. If the Mantel correlation between sequence similarity and 3D proximity holds for all segmental duplications genome-wide (a plausible null, since SDs by definition share sequence and many known SDs are co-localised), then the subtelomeric PHR result is not novel -- it is one instantiation of a general SD principle. NARRATIVE_EXTRACT §6 Q2 noted this: "The result may not be subtelomere-specific if it holds for all segmental duplications." PEER_REVIEW_v1 did not flag this specific gap. The paper never tests it.
+- **Divergence:** The audience member made two points in one sentence: (a) this result may not be subtelomere-specific -- it might hold for all SDs; (b) another audience member ("Flores") raised a Hi-C control concern during the session. The paper does not address (a) anywhere. If the Mantel correlation between sequence similarity and 3D proximity holds for all segmental duplications genome-wide (a plausible null, since SDs by definition share sequence and many known SDs are co-localised), then the subtelomeric PHR result is not novel -- it is one instantiation of a general SD principle. NARRATIVE_EXTRACT §6 Q2 noted this: "The result may not be subtelomere-specific if it holds for all segmental duplications." SIMULATED_PEER_REVIEW_v1 did not flag this specific gap. The paper never tests it.
 - **Concrete edit:** Add one sentence to Discussion or Limitations: "Whether the sequence-similarity-to-nuclear-proximity correlation is specific to subtelomeric PHRs or is a general property of segmental duplications genome-wide has not been tested; a pangenome-scale SD analysis is required to determine whether PHRs are a subset of a broader co-localisation principle or are structurally distinct."
 
 ---
@@ -109,7 +109,7 @@ I am auditing whether the paper answers the three Q&A items that an audience mem
 - **Transcript cite:** 00:42:56-00:43:08 (subtitles 288-290, G15).
 - **Verbatim transcript:** "But I wouldn't say it's conclusive, because unfortunately, when you look at much worse quality assemblies, you see a lot more of this. So it is compatible, but maybe not definitive proof of an actual recombination event."
 - **Verbatim abstract:** "pedigree analysis catches the recombination events that perpetuate both."
-- **Divergence:** "Catches" asserts detection of real events. "Cannot be fully distinguished from assembly artefacts" and "I wouldn't say it's conclusive" both deny that same detection. The abstract is inconsistent with the body and with the speaker's own live caution. REVISION_LOG_v4 C.U08 correctly added the hedge to P9 but left "catches" in the abstract. PEER_REVIEW_v1 did not flag this internal contradiction. A journal editor will read the abstract first and will flag the discrepancy when they reach P9.
+- **Divergence:** "Catches" asserts detection of real events. "Cannot be fully distinguished from assembly artefacts" and "I wouldn't say it's conclusive" both deny that same detection. The abstract is inconsistent with the body and with the speaker's own live caution. REVISION_LOG_v4 C.U08 correctly added the hedge to P9 but left "catches" in the abstract. SIMULATED_PEER_REVIEW_v1 did not flag this internal contradiction. A journal editor will read the abstract first and will flag the discrepancy when they reach P9.
 - **Concrete edit:** Change abstract final sentence to: "Sequence homology mirrors physical proximity in human subtelomeres, and pedigree analysis identifies inter-chromosomal exchange signals consistent with the recombination events that perpetuate both." Replace "catches" with "identifies...consistent with" to match the body's hedged language.
 
 ---
@@ -148,7 +148,7 @@ I am auditing whether the paper answers the three Q&A items that an audience mem
 - **Transcript cite:** NARRATIVE_EXTRACT §6 Q1: Eric acknowledges random MAPQ0 assignment as something "we probably should try to correct for." Transcript 00:45:36-00:45:44 (subtitle 339).
 - **Verbatim transcript:** "So we've done something that we probably should try to correct for."
 - **Verbatim draft:** "Multi-mapping of reads to paralogous sequence cannot inflate a within-community signal in regions that contain no paralogous sequence."
-- **Divergence:** The paper uses the 9-fold strengthening at flanking as evidence against multi-mapping artefact. But the logical corollary -- never stated in the paper -- is that the 9-fold difference means PHR-level B/W (0.027) is 9x weaker than the true proximity signal at flanking (0.0031). Put differently: if the flanking unique-sequence B/W = 0.0031 represents "true" 3D proximity (no multi-mapping) and PHR B/W = 0.027 represents "multi-mapping-inflated" proximity, the multi-mapping is making the PHR signal look WEAKER, not stronger. Note (partial overlap with PEER_REVIEW_v1 M3): M3 flagged that Mantel ρ weakens at flanking while B/W strengthens, and the paper now reports both and explains why. But neither M3 nor v4 states the corollary that PHR B/W = 0.027 is the inflated (weaker-than-true) estimate, and flanking B/W = 0.0031 is the artefact-controlled (stronger-than-PHR) estimate. The paper's framing inverts the logical direction of the control.
+- **Divergence:** The paper uses the 9-fold strengthening at flanking as evidence against multi-mapping artefact. But the logical corollary -- never stated in the paper -- is that the 9-fold difference means PHR-level B/W (0.027) is 9x weaker than the true proximity signal at flanking (0.0031). Put differently: if the flanking unique-sequence B/W = 0.0031 represents "true" 3D proximity (no multi-mapping) and PHR B/W = 0.027 represents "multi-mapping-inflated" proximity, the multi-mapping is making the PHR signal look WEAKER, not stronger. Note (partial overlap with SIMULATED_PEER_REVIEW_v1 M3): M3 flagged that Mantel ρ weakens at flanking while B/W strengthens, and the paper now reports both and explains why. But neither M3 nor v4 states the corollary that PHR B/W = 0.027 is the inflated (weaker-than-true) estimate, and flanking B/W = 0.0031 is the artefact-controlled (stronger-than-PHR) estimate. The paper's framing inverts the logical direction of the control.
 - **Concrete edit:** Add one clause to P8: "The 9-fold strengthening at unique-sequence flanking (B/W = 0.0031 vs PHR B/W = 0.027) is consistent with multi-mapping distributing PHR inter-chromosomal reads across paralogous loci on both within- and between-community arms, reducing the apparent within-community enrichment at PHR loci relative to what is measured at unique flanking sequence. The flanking B/W therefore provides the lower-bound artefact-controlled estimate of true 3D co-localisation, not a ceiling."
 
 ---
@@ -165,7 +165,7 @@ The paper's narrative match to the Q&A is uneven: Q2 (chicken-or-egg) is address
 - Read (full transcript at absolute path `/home/guarracino/Dropbox/grants/r21-cancer-pangenomics/notes/Session7-PopulationGenomics.en.srt`, all 1829 lines)
 - Read (NATURE_DRAFT_v4.md, all 119 lines)
 - Read (NARRATIVE_EXTRACT.md, all 280 lines)
-- Read (PEER_REVIEW_v1.md, all 188 lines)
+- Read (SIMULATED_SIMULATED_PEER_REVIEW_v1.md, all 188 lines)
 - Read (REVISION_LOG_v4.md, all 93 lines)
 
 **Lines of transcript read:** First timestamp 00:27:59,850 (subtitle 1, line 1) through last timestamp 00:48:36,640 (subtitle 395, line 1829). Q&A section: subtitles 326-395, approximately lines 1515-1829.
@@ -179,4 +179,4 @@ The paper's narrative match to the Q&A is uneven: Q2 (chicken-or-egg) is address
 
 **Sections of NARRATIVE_EXTRACT.md consulted:** §1 (metadata), §2 (narrative arc), §3 (verbatim gold G01-G18), §4 (in-talk-not-in-draft T01-T10), §6 (Q&A: Q1, Q2, Q3 in full), §7 (suggested upgrades U01-U10).
 
-**Overlap with PEER_REVIEW_v1.md noted and avoided:** M3 (flanking paradox, partially overlaps Finding 10 -- I add only the logical corollary the peer reviewer missed), M4 (pedigree null -- not repeated), M7 (causal loop not closed in human -- not repeated, only the scenarios-not-distinguished gap in Finding 5 is new). Findings 1, 2, 3, 4, 6, 7, 8, 9 are all new gaps not in PEER_REVIEW_v1.md.
+**Overlap with SIMULATED_SIMULATED_PEER_REVIEW_v1.md noted and avoided:** M3 (flanking paradox, partially overlaps Finding 10 -- I add only the logical corollary the peer reviewer missed), M4 (pedigree null -- not repeated), M7 (causal loop not closed in human -- not repeated, only the scenarios-not-distinguished gap in Finding 5 is new). Findings 1, 2, 3, 4, 6, 7, 8, 9 are all new gaps not in SIMULATED_SIMULATED_PEER_REVIEW_v1.md.

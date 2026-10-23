@@ -1,13 +1,17 @@
 ---
 title: Peer review of NATURE_DRAFT_v3 (Concerted evolution and unorthodox recombination of human subtelomeres)
-reviewer: Simulated Nature reviewer (peer-review-v1)
+reviewer: SIMULATED reviewer (internal, agent-147) - NOT a real journal review
 draft_under_review: paper_prep/synthesis/NATURE_DRAFT_v3.md
 references: paper_prep/synthesis/REFERENCES_v5.bib
 date: 2026-05-17
 style: brutally direct, first-person, no hedge
 ---
 
-# Peer review of "Concerted evolution and unorthodox recombination of human subtelomeres"
+# SIMULATED peer review of "Concerted evolution and unorthodox recombination of human subtelomeres"
+
+> **This document is SIMULATED.** It is an internal, machine-generated critique (agent-147,
+> 2026-05-17) written against `NATURE_DRAFT_v3.md`. It is not a communication from a journal
+> or a real reviewer. The actual peer review is `PEER_REVIEW.md` at the repository root.
 
 I read this manuscript cold against the v3 draft, the figure captions for Fig. 1-4, ED 1-5, ED 8 and nj_tree_arms, and the underlying methods notes in `end-to-end-report/report/04_heterogeneity.md`, `05_hic_validation.md`, `06_dipc_validation.md`, `10_limitations.md` and `14_pedigree_recombination.md`. The submission has real biological content but is currently not in shape to be sent out to the wider review pool as an Article. Detail follows.
 

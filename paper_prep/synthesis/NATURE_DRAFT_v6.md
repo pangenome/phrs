@@ -12,7 +12,7 @@ pass_history:
   - v1.5: Pass A mechanical numerical fixes (REVISION_LOG_v1.5.md)
   - v2: Pass B content additions + REFERENCES_v4 integration (REVISION_LOG_v2.md)
   - v3: R2 audit fixes + round-2 citation upgrades + REFERENCES_v5 (REVISION_LOG_v3.md)
-  - v4: PEER_REVIEW_v1 + NARRATIVE_EXTRACT integration (REVISION_LOG_v4.md)
+  - v4: SIMULATED_PEER_REVIEW_v1 + NARRATIVE_EXTRACT integration (REVISION_LOG_v4.md)
   - v5: NARRATIVE_MATCH_PLAN must-fix + should-fix (REVISION_LOG_v5.md)
   - v6: deferred-analyses integration (D-M4, D-M5, D-M6, D-M9, D-M12, D-PeerQ1, D-PeerQ3, F34) + F20 DUX4-cancer + bib hygiene (REVISION_LOG_v6.md)
 inputs:

@@ -11,10 +11,10 @@ pass_history:
   - v1.5: Pass A mechanical numerical fixes (REVISION_LOG_v1.5.md)
   - v2: Pass B content additions + REFERENCES_v4 integration (REVISION_LOG_v2.md)
   - v3: R2 audit fixes + round-2 citation upgrades + REFERENCES_v5 (REVISION_LOG_v3.md)
-  - v4: PEER_REVIEW_v1 + NARRATIVE_EXTRACT integration (REVISION_LOG_v4.md)
+  - v4: SIMULATED_PEER_REVIEW_v1 + NARRATIVE_EXTRACT integration (REVISION_LOG_v4.md)
 inputs:
   prior_draft: paper_prep/synthesis/NATURE_DRAFT_v3.md
-  peer_review: paper_prep/synthesis/PEER_REVIEW_v1.md
+  peer_review: paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md
   narrative_extract: paper_prep/synthesis/NARRATIVE_EXTRACT.md
   references: paper_prep/synthesis/REFERENCES_v5.bib
   rendered_references: paper_prep/synthesis/RENDERED_REFERENCES_v4.md

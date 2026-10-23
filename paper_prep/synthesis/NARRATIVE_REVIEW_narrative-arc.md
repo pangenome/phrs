@@ -4,7 +4,7 @@ reviewer: narrative-match-narrative (agent-166)
 draft_under_review: paper_prep/synthesis/NATURE_DRAFT_v4.md
 talk_transcript: /home/guarracino/Dropbox/grants/r21-cancer-pangenomics/notes/Session7-PopulationGenomics.en.srt
 narrative_extract: paper_prep/synthesis/NARRATIVE_EXTRACT.md
-peer_review_consulted: paper_prep/synthesis/PEER_REVIEW_v1.md
+peer_review_consulted: paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md
 revision_log_consulted: paper_prep/synthesis/REVISION_LOG_v4.md
 date: 2026-05-17
 style: brutally direct, first-person, no hedge
@@ -14,7 +14,7 @@ style: brutally direct, first-person, no hedge
 
 ## 1. My angle
 
-I am asking one question: does the paper hit the same 5-7 story beats as the talk, in the same order, with the same emphasis? The talk has ten clearly demarcated narrative beats (HPRCv2 substrate → pangenome backstory → implicit graph method → scalability → discovery → community structure → mechanism hypothesis → 3D validation → pedigree → conclusions). I mapped each against the paper's twelve main-text paragraphs (hereafter P1-P12) and the abstract. Wherever the paper deviates from the talk's beat order, emphasis, or framing, I ask whether the deviation is defensible on scientific grounds or whether it weakens the paper's readability and persuasive force. I do NOT re-audit statistical methodology (PEER_REVIEW_v1 covers that); I audit only narrative alignment. Items already fixed in v4 per REVISION_LOG_v4.md are skipped unless the fix was incomplete.
+I am asking one question: does the paper hit the same 5-7 story beats as the talk, in the same order, with the same emphasis? The talk has ten clearly demarcated narrative beats (HPRCv2 substrate → pangenome backstory → implicit graph method → scalability → discovery → community structure → mechanism hypothesis → 3D validation → pedigree → conclusions). I mapped each against the paper's twelve main-text paragraphs (hereafter P1-P12) and the abstract. Wherever the paper deviates from the talk's beat order, emphasis, or framing, I ask whether the deviation is defensible on scientific grounds or whether it weakens the paper's readability and persuasive force. I do NOT re-audit statistical methodology (SIMULATED_PEER_REVIEW_v1 covers that); I audit only narrative alignment. Items already fixed in v4 per REVISION_LOG_v4.md are skipped unless the fix was incomplete.
 
 ---
 
@@ -34,7 +34,7 @@ I am asking one question: does the paper hit the same 5-7 story beats as the tal
 
 **Divergence:** In the talk, mouse is a deliberate conceptual anchor — a whole-project replication from scratch (PHRs built de novo, Jaccard computed, zygotene Hi-C matched) — presented immediately after the mechanism hypothesis, before any human Hi-C numbers are given. The speaker says "this is kind of crazy" (00:40:41) and then delivers mouse as the first quantitative validation of the bouquet mechanism, with the zygotene amplification as the punchline. Human Pore-C and Hi-C follow as confirmation. In the paper the ordering is reversed: two dense paragraphs of human Hi-C/Pore-C/CiFi/Dip-C/sperm scHi-C, then the entire pedigree section, and only then mouse, described as "cross-species generalisation." Calling it "generalisation" after five paragraphs of human data mathematically true but narratively wrong — it makes mouse look like a confirmatory footnote, while the speaker explicitly positioned it as the cleaner, conceptually prior demonstration (no MAPQ0 ambiguity, independent genome, zygotene stages available). A Nature reviewer reading only the abstract will see "mouse zygotene Hi-C" as supporting evidence; listening to the talk they would see it as the main conceptual argument.
 
-**Suggested edit:** Move the mouse paragraph (currently P10) to immediately after the mechanism/bouquet paragraph (P7), before the human Hi-C results. Reframe: "To test whether the bouquet mechanism produces the predicted sequence-contact correlation, we first ran the full pipeline in mouse, where meiotic-stage Hi-C is available..." Then lead into human Hi-C as a "we then asked whether the same correlation holds in human somatic and sperm data." This also partially mitigates the MAPQ0 concern (PEER_REVIEW_v1 Q1) by presenting the cleaner mouse result first.
+**Suggested edit:** Move the mouse paragraph (currently P10) to immediately after the mechanism/bouquet paragraph (P7), before the human Hi-C results. Reframe: "To test whether the bouquet mechanism produces the predicted sequence-contact correlation, we first ran the full pipeline in mouse, where meiotic-stage Hi-C is available..." Then lead into human Hi-C as a "we then asked whether the same correlation holds in human somatic and sperm data." This also partially mitigates the MAPQ0 concern (SIMULATED_PEER_REVIEW_v1 Q1) by presenting the cleaner mouse result first.
 
 ---
 
@@ -128,7 +128,7 @@ I am asking one question: does the paper hit the same 5-7 story beats as the tal
 
 **Transcript (00:42:56-00:43:09, G15/segment 290-291):** "But I wouldn't say it's conclusive, because unfortunately, when you look at much worse quality assemblies, you see a lot more of this. So it is compatible, but maybe not definitive proof of an actual recombination event."
 
-**Divergence:** In the talk, the hedge arrives BEFORE the 92% framing, not after it. The speaker first says "we see some kind of tantalizing signals" (segment 282), then hedges ("I wouldn't say it's conclusive"), then explains why (worse-quality assemblies show more artefacts). The paper leads with the confident "92%" and "almost completely predicts" framing, then appends the hedge. This ordering matters: a reader scanning the paper will absorb "92%... almost completely predicts" as the conclusion, with the hedge as a methodological caveat. A listener hearing the talk absorbs "tantalizing... not conclusive... compatible but not definitive" as the takeaway. The hedge in the paper (C.U08 applied) is present but its placement is subordinated to the confident statistical claim. The speaker was considerably more cautious than the paper reads. Note: PEER_REVIEW_v1 covers the missing null (M4) but not the hedge-ordering issue — they are distinct concerns.
+**Divergence:** In the talk, the hedge arrives BEFORE the 92% framing, not after it. The speaker first says "we see some kind of tantalizing signals" (segment 282), then hedges ("I wouldn't say it's conclusive"), then explains why (worse-quality assemblies show more artefacts). The paper leads with the confident "92%" and "almost completely predicts" framing, then appends the hedge. This ordering matters: a reader scanning the paper will absorb "92%... almost completely predicts" as the conclusion, with the hedge as a methodological caveat. A listener hearing the talk absorbs "tantalizing... not conclusive... compatible but not definitive" as the takeaway. The hedge in the paper (C.U08 applied) is present but its placement is subordinated to the confident statistical claim. The speaker was considerably more cautious than the paper reads. Note: SIMULATED_PEER_REVIEW_v1 covers the missing null (M4) but not the hedge-ordering issue — they are distinct concerns.
 
 **Suggested edit:** Reorder P9: "We see tantalizing signals of inter-chromosomal exchange in the WashU pedigree, though we cannot fully distinguish them from assembly artefacts without orthogonal long-read validation in matched blood-derived tissue. [THEN state the 92% statistic]. The 92% lacks a published null baseline [as deferred]." This preserves the hedged tone before the number, matching the speaker's live register.
 
@@ -160,7 +160,7 @@ I am asking one question: does the paper hit the same 5-7 story beats as the tal
 
 **Transcript (00:43:59-00:44:01, G17):** "We see that sequence homology mirrors physical proximity in nuclear organization, which I think is really fascinating. And I wonder why, actually."
 
-**Divergence:** The abstract currently uses "consistent with meiotic-bouquet repositioning" as a mechanistic claim (this wording was from v3, softened per A.M7 per PEER_REVIEW_v1 M7, but still present). The speaker's conclusions are purely empirical and explicitly wondering: "I wonder why, actually. It's a chicken or egg question." The talk concludes on an observation and an open question; the abstract concludes with a mechanistic attribution ("meiotic-bouquet repositioning") before the chicken-or-egg. These are different epistemic registers. Note: C.U10 added the "sequence homology mirrors physical proximity" sentence to the abstract, which is correct. But "consistent with meiotic-bouquet repositioning" (earlier in abstract) remains and is a stronger claim than the speaker made in his own talk. If the speaker himself chose not to assert the mechanism in his concluding beat, the abstract should follow that caution.
+**Divergence:** The abstract currently uses "consistent with meiotic-bouquet repositioning" as a mechanistic claim (this wording was from v3, softened per A.M7 per SIMULATED_PEER_REVIEW_v1 M7, but still present). The speaker's conclusions are purely empirical and explicitly wondering: "I wonder why, actually. It's a chicken or egg question." The talk concludes on an observation and an open question; the abstract concludes with a mechanistic attribution ("meiotic-bouquet repositioning") before the chicken-or-egg. These are different epistemic registers. Note: C.U10 added the "sequence homology mirrors physical proximity" sentence to the abstract, which is correct. But "consistent with meiotic-bouquet repositioning" (earlier in abstract) remains and is a stronger claim than the speaker made in his own talk. If the speaker himself chose not to assert the mechanism in his concluding beat, the abstract should follow that caution.
 
 **Suggested edit:** Replace "consistent with meiotic-bouquet repositioning" in the abstract with "consistent with 3D co-localisation at telomere-clustering stages of meiosis." This is empirically supported (mouse zygotene Hi-C, sperm scHi-C) without asserting that the bouquet mechanism is causal.
 
@@ -210,7 +210,7 @@ The narrative match between paper and talk is approximately 50-60% for the major
 - Read: NATURE_DRAFT_v4.md (lines 1-119, full document)
 - Read: NARRATIVE_EXTRACT.md (lines 1-280, full document)
 - Read: Session7-PopulationGenomics.en.srt (lines 1-1829, full transcript)
-- Read: PEER_REVIEW_v1.md (lines 1-188, full document)
+- Read: SIMULATED_SIMULATED_PEER_REVIEW_v1.md (lines 1-188, full document)
 - Read: REVISION_LOG_v4.md (lines 1-93, full document)
 
 **Lines of transcript read:** First timestamp 00:27:59 (line 2), last timestamp 00:48:36 (line 1827). All 1829 lines read across three sequential Read calls.
@@ -219,6 +219,6 @@ The narrative match between paper and talk is approximately 50-60% for the major
 
 **Sections of NARRATIVE_EXTRACT.md consulted:** All sections — §1 Transcript Metadata, §2 Narrative Arc, §3 Verbatim Gold (G01-G18), §4 In-Talk Not in Draft (T01-T10), §5 In-Draft Not in Talk (D01-D05), §6 Q&A (Q1-Q3), §7 Suggested Narrative Upgrades (U01-U10).
 
-**PEER_REVIEW_v1 checked for overlap:** All twelve major concerns (M1-M12) and eighteen minor concerns (m1-m18) reviewed. Zero findings here duplicate PEER_REVIEW_v1 concerns — all eleven findings address narrative-structure issues not covered in that review.
+**SIMULATED_PEER_REVIEW_v1 checked for overlap:** All twelve major concerns (M1-M12) and eighteen minor concerns (m1-m18) reviewed. Zero findings here duplicate SIMULATED_PEER_REVIEW_v1 concerns — all eleven findings address narrative-structure issues not covered in that review.
 
 **REVISION_LOG_v4 checked:** Confirmed that C.U01-U10 status codes (APPLY/DEFER/SKIP) were verified per finding. T05 absence from the revision log confirmed as a tracking omission (Finding 2). T04 absence from the revision log confirmed (Finding 8).

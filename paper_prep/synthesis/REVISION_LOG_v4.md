@@ -2,7 +2,7 @@
 title: Revision log for NATURE_DRAFT_v4
 draft: paper_prep/synthesis/NATURE_DRAFT_v4.md
 prior_draft: paper_prep/synthesis/NATURE_DRAFT_v3.md
-peer_review: paper_prep/synthesis/PEER_REVIEW_v1.md
+peer_review: paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md
 narrative_extract: paper_prep/synthesis/NARRATIVE_EXTRACT.md
 references: paper_prep/synthesis/REFERENCES_v5.bib
 open_concerns: paper_prep/synthesis/OPEN_REVIEWER_CONCERNS.md

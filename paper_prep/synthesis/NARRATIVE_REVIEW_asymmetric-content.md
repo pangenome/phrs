@@ -11,7 +11,7 @@ angle: asymmetric-content
 
 ## 1. My angle
 
-I am auditing the directional asymmetries between NATURE_DRAFT_v4.md and the BoG talk transcript. Specifically: what does the speaker say that the paper omits or misrepresents, and what does the paper contain that the speaker judged not worth mentioning in 20 minutes? For each asymmetry I decide whether it is acceptable (talk had no time; paper needs the depth) or problematic (paper missing a key confound the speaker named; paper presenting as finished work the speaker called ongoing; paper using language the speaker explicitly disclaimed). I am NOT re-auditing scientific merit — PEER_REVIEW_v1 covered that. I am auditing narrative coherence. I checked REVISION_LOG_v4.md to avoid flagging fixes already applied.
+I am auditing the directional asymmetries between NATURE_DRAFT_v4.md and the BoG talk transcript. Specifically: what does the speaker say that the paper omits or misrepresents, and what does the paper contain that the speaker judged not worth mentioning in 20 minutes? For each asymmetry I decide whether it is acceptable (talk had no time; paper needs the depth) or problematic (paper missing a key confound the speaker named; paper presenting as finished work the speaker called ongoing; paper using language the speaker explicitly disclaimed). I am NOT re-auditing scientific merit — SIMULATED_PEER_REVIEW_v1 covered that. I am auditing narrative coherence. I checked REVISION_LOG_v4.md to avoid flagging fixes already applied.
 
 ---
 
@@ -48,7 +48,7 @@ And the abstract:
 **Transcript cite:** 00:37:33–00:37:39:
 > "We have this kind of phylogenetic relationship, which we're, this is just for grouping. We don't really know or think directly that there is a phylogenetic relationship between the subtelomeric ends."
 
-**Divergence:** The speaker is explicit live: the tree-like grouping is for convenience, not claimed as a true phylogeny. The paper uses "monophyletic clades" throughout — a term with specific phylogenetic meaning that the speaker explicitly rejected. PEER_REVIEW_v1 already flagged the bootstrap-vs-sensitivity-analysis issue (M9), and REVISION_LOG_v4 correctly renamed it to "sensitivity-analysis support." But the "monophyletic clades" language was not touched. A reviewer who reads the tree caption and then asks "is this a phylogeny?" will find no disclaimer in P4 or the abstract. The speaker's caveat is the right one and needs to be in the paper.
+**Divergence:** The speaker is explicit live: the tree-like grouping is for convenience, not claimed as a true phylogeny. The paper uses "monophyletic clades" throughout — a term with specific phylogenetic meaning that the speaker explicitly rejected. SIMULATED_PEER_REVIEW_v1 already flagged the bootstrap-vs-sensitivity-analysis issue (M9), and REVISION_LOG_v4 correctly renamed it to "sensitivity-analysis support." But the "monophyletic clades" language was not touched. A reviewer who reads the tree caption and then asks "is this a phylogeny?" will find no disclaimer in P4 or the abstract. The speaker's caveat is the right one and needs to be in the paper.
 
 **Suggested fix:** Rewrite P4 opening: "A neighbour-joining tree built on the 41 x 41 arm-level Jaccard distance matrix — used here as an ordering device, not a claim of evolutionary phylogeny — recovers six groupings..." Replace "six monophyletic clades" with "six arm groupings" or "six cluster-equivalent groups." Add a parenthetical in the abstract: "(tree used for ordering, not evolutionary inference)."
 
@@ -146,7 +146,7 @@ There is no mention of cancer in the paper's treatment of the 4q/10q community.
 
 **Transcript cite:** Population genetics is never mentioned. Not once in 20 minutes of talk.
 
-**Divergence:** The speaker allocated zero time to population structure. The paper allocates a full paragraph plus two figure panels to it. PEER_REVIEW_v1 (M6) already flagged that the F_ST 0.10-0.15 is indistinguishable from genome-wide background and does not support a subtelomere-specific signature. The speaker's decision to not mention it is consistent with M6: it is not a notable finding on its own. The paper's current framing ("Cross-arm sequences carry population-genetic structure consistent with genome-wide patterns") correctly hedges, but then spends a full paragraph describing something that is essentially a non-result. If the speaker found it unremarkable enough to skip in a 20-minute talk, the paper should either cut this paragraph (ideal) or move it entirely to Methods/Extended Data. Keeping it as a main-text paragraph inflates its perceived importance.
+**Divergence:** The speaker allocated zero time to population structure. The paper allocates a full paragraph plus two figure panels to it. SIMULATED_PEER_REVIEW_v1 (M6) already flagged that the F_ST 0.10-0.15 is indistinguishable from genome-wide background and does not support a subtelomere-specific signature. The speaker's decision to not mention it is consistent with M6: it is not a notable finding on its own. The paper's current framing ("Cross-arm sequences carry population-genetic structure consistent with genome-wide patterns") correctly hedges, but then spends a full paragraph describing something that is essentially a non-result. If the speaker found it unremarkable enough to skip in a 20-minute talk, the paper should either cut this paragraph (ideal) or move it entirely to Methods/Extended Data. Keeping it as a main-text paragraph inflates its perceived importance.
 
 **Suggested fix:** Move the F_ST paragraph to the Methods §F_ST section and add a one-sentence placeholder in main text: "Cross-arm sequences carry population-genetic structure consistent with genome-wide autosomal patterns (see Methods §F_ST); subtelomere-specific elevation over genome-wide F_ST requires a matched-region control that is deferred."
 
@@ -209,9 +209,9 @@ The narrative match is adequate on structure but has five material gaps: the pap
 
 ## 4. Audit trail
 
-- **Tools used:** Read (NATURE_DRAFT_v4.md, NARRATIVE_EXTRACT.md, PEER_REVIEW_v1.md, REVISION_LOG_v4.md, Session7-PopulationGenomics.en.srt)
+- **Tools used:** Read (NATURE_DRAFT_v4.md, NARRATIVE_EXTRACT.md, SIMULATED_SIMULATED_PEER_REVIEW_v1.md, REVISION_LOG_v4.md, Session7-PopulationGenomics.en.srt)
 - **Lines of transcript read:** All 1829 lines; first timestamp 00:27:59 (chair introduction), last timestamp 00:48:36 (applause)
 - **Lines of draft read:** All 119 lines of NATURE_DRAFT_v4.md
 - **Sections of NARRATIVE_EXTRACT.md consulted:** All sections (1 Transcript Metadata, 2 Narrative Arc, 3 Verbatim Gold G01-G18, 4 In-Talk-Not-in-Draft T01-T10, 5 In-Draft-Not-in-Talk D01-D05, 6 Q&A Q1-Q3, 7 Suggested Narrative Upgrades U01-U10)
-- **PEER_REVIEW_v1.md consulted:** Full document; findings cross-checked against M1-M12 and m1-m18 to avoid duplication
+- **SIMULATED_SIMULATED_PEER_REVIEW_v1.md consulted:** Full document; findings cross-checked against M1-M12 and m1-m18 to avoid duplication
 - **REVISION_LOG_v4.md consulted:** Full document; all findings cross-checked against APPLY/DEFER/SKIP status to avoid flagging already-fixed items

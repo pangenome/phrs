@@ -1,18 +1,18 @@
 ---
 title: Open reviewer concerns deferred from NATURE_DRAFT_v4
 parent_draft: paper_prep/synthesis/NATURE_DRAFT_v4.md
-parent_review: paper_prep/synthesis/PEER_REVIEW_v1.md
+parent_review: paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md
 revision_log: paper_prep/synthesis/REVISION_LOG_v4.md
 date: 2026-05-17
 purpose: |
-  Concerns from PEER_REVIEW_v1.md and NARRATIVE_EXTRACT.md §6 (Q&A) that
+  Concerns from SIMULATED_SIMULATED_PEER_REVIEW_v1.md and NARRATIVE_EXTRACT.md §6 (Q&A) that
   NATURE_DRAFT_v4 cannot close in this revision pass. Each entry: concern
   verbatim or paraphrased, reason deferred, what would close it, rough effort.
 ---
 
 # Open reviewer concerns
 
-The following major concerns from PEER_REVIEW_v1.md are deferred to a future analysis round. NATURE_DRAFT_v4 acknowledges each in-line (Main text or Methods §Limitations).
+The following major concerns from SIMULATED_SIMULATED_PEER_REVIEW_v1.md are deferred to a future analysis round. NATURE_DRAFT_v4 acknowledges each in-line (Main text or Methods §Limitations).
 
 ## D-M4. Pedigree 92% within-Leiden lacks a null baseline
 

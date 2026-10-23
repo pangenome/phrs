@@ -4,7 +4,7 @@ reviewer: narrative-match-voice (agent-165)
 draft_under_review: paper_prep/synthesis/NATURE_DRAFT_v4.md
 transcript: /home/guarracino/Dropbox/grants/r21-cancer-pangenomics/notes/Session7-PopulationGenomics.en.srt
 narrative_extract: paper_prep/synthesis/NARRATIVE_EXTRACT.md
-peer_review_consulted: paper_prep/synthesis/PEER_REVIEW_v1.md
+peer_review_consulted: paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md
 revision_log_consulted: paper_prep/synthesis/REVISION_LOG_v4.md
 date: 2026-05-17
 style: brutally direct, first-person, no hedge
@@ -63,7 +63,7 @@ I am auditing where the speaker chose a specific framing — an analogy, a metap
 - **Transcript cite:** 00:42:56–00:43:09: "But I wouldn't say it's conclusive, because unfortunately, when you look at much worse quality assemblies, you see a lot more of this. So it is compatible, but maybe not definitive proof of an actual recombination event."
 - **Draft verbatim:** "cannot be fully distinguished from assembly artefacts without orthogonal long-read validation in matched blood-derived tissue"
 - **Transcript verbatim:** "when you look at much worse quality assemblies, you see a lot more of this. So it is compatible, but maybe not definitive proof of an actual recombination event."
-- **Divergence:** The REVISION_LOG marks C.U08 as APPLIED. It was applied, but incompletely. The speaker's hedging is grounded in a *specific empirical observation*: the signal frequency is inversely correlated with assembly quality, which means the signal is at least partly an assembly artefact. That is a materially different caveat from "cannot be fully distinguished from artefacts" (which is the standard epistemological hedge any bioinformatics paper can write). The speaker's version tells you *why* caution is warranted: the signal gets worse as assembly quality drops. The draft version reads like boilerplate caution. A peer reviewer who knows this field will notice the missing quality-correlation concern immediately, especially in the context of PEER_REVIEW_v1 M4 (missing pedigree null baseline). Both the statistical hedge and the empirical quality concern should be in the draft. As written, the hedging is cosmetically present but narratively hollow.
+- **Divergence:** The REVISION_LOG marks C.U08 as APPLIED. It was applied, but incompletely. The speaker's hedging is grounded in a *specific empirical observation*: the signal frequency is inversely correlated with assembly quality, which means the signal is at least partly an assembly artefact. That is a materially different caveat from "cannot be fully distinguished from artefacts" (which is the standard epistemological hedge any bioinformatics paper can write). The speaker's version tells you *why* caution is warranted: the signal gets worse as assembly quality drops. The draft version reads like boilerplate caution. A peer reviewer who knows this field will notice the missing quality-correlation concern immediately, especially in the context of SIMULATED_PEER_REVIEW_v1 M4 (missing pedigree null baseline). Both the statistical hedge and the empirical quality concern should be in the draft. As written, the hedging is cosmetically present but narratively hollow.
 - **Suggested edit:** Rewrite to: "These signals are consistent with ongoing inter-chromosomal exchange, though the observed frequency increases in lower-quality assemblies, suggesting assembly artefacts are not fully excluded; orthogonal long-read validation in matched blood-derived tissue is required before these can be interpreted as confirmed recombination events."
 
 ---
@@ -164,7 +164,7 @@ The narrative match is approximately 60%: the major framing moves from the revis
 - `Read` on `paper_prep/synthesis/NATURE_DRAFT_v4.md` (119 lines, full draft)
 - `Read` on `paper_prep/synthesis/NARRATIVE_EXTRACT.md` (280 lines, full extract)
 - `Read` on `/home/guarracino/Dropbox/grants/r21-cancer-pangenomics/notes/Session7-PopulationGenomics.en.srt` (1829 lines, full transcript)
-- `Read` on `paper_prep/synthesis/PEER_REVIEW_v1.md` (188 lines, full review)
+- `Read` on `paper_prep/synthesis/SIMULATED_SIMULATED_PEER_REVIEW_v1.md` (188 lines, full review)
 - `Read` on `paper_prep/synthesis/REVISION_LOG_v4.md` (93 lines, full log)
 
 ### Transcript lines read
@@ -181,5 +181,5 @@ The narrative match is approximately 60%: the major framing moves from the revis
 - §4 (In-Talk, Not in Draft T01–T10): checked for pre-existing ADD/DISCUSS/DEFER decisions
 - §7 (Suggested Narrative Upgrades U01–U10): checked against REVISION_LOG to confirm what was and was not applied
 
-### Cross-checks against PEER_REVIEW_v1 and REVISION_LOG_v4
-All 11 findings verified as not duplicating PEER_REVIEW_v1 concerns (M1–M12, m1–m18). Finding 4 is related to PEER_REVIEW_v1 M4 (pedigree null) but addresses a distinct issue (speaker's empirical caution vs statistical null). REVISION_LOG_v4 checked for all C.U-series applied items; findings target gaps in application quality (Finding 4, 6, 7, 11) or items never applied (Findings 2, 3, 5, 8, 9, 10).
+### Cross-checks against SIMULATED_PEER_REVIEW_v1 and REVISION_LOG_v4
+All 11 findings verified as not duplicating SIMULATED_PEER_REVIEW_v1 concerns (M1–M12, m1–m18). Finding 4 is related to SIMULATED_PEER_REVIEW_v1 M4 (pedigree null) but addresses a distinct issue (speaker's empirical caution vs statistical null). REVISION_LOG_v4 checked for all C.U-series applied items; findings target gaps in application quality (Finding 4, 6, 7, 11) or items never applied (Findings 2, 3, 5, 8, 9, 10).
