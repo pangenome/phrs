@@ -260,3 +260,57 @@ Margin distribution: 177,998 windows; only 1.02% have margin > 0; the retained t
 ## R1-m11 + editor compliance — **D1 done, D2 drafted**
 
 D1: per-superpopulation PHR count, bp, median length + IQR, community shares, and the 500 kb right-censoring share; superpopulation mapping is repo-local (`slides/.../nearest_same_superpop_mds_distances.tsv`), reproduction gate md5-identical. D2: Data/Code availability, ethics split into attestable vs **AUTHOR TO SUPPLY**, format checklist (ED are 3 items but all `.pdf` → need `.tif/.eps`), and it flags a repo URL inconsistency (`ekg/phrs` vs `pangenome/phrs`).
+
+---
+
+# EVIDENCE INDEX — every claim traceable
+
+Each referee item maps to: a **note** (analysis write-up), the **script(s)** that reproduce it, the
+**data artefacts** it writes, and the **version pins** in `response/notes/tool_versions_and_pins.md`.
+Nothing in the response or the manuscript should quote a number that is not reachable through this table.
+
+## Referee #1
+
+| item | level | note | script(s) | data artefacts | manuscript |
+|---|---|---|---|---|---|
+| M1 concerted evolution — topology | L4 | `M1c_duplicon_monophyly.md` (+ superseded `M1_concerted_evolution.md`) | `scripts/cladistics/duplicon_monophyly.py` | `duplicon_monophyly.{tsv,json}` | **to write**: TUBB8B monophyletic, D4Z4/ORF4/SEPTIN14/acrocentric intermixed |
+| M1 corroboration — copy enumeration | L3 | `impg_transitivity_copy_enumeration.md` | `scripts/cladistics/impg_copy_enumeration.py` | `impg_copy_enumeration.tsv` | same passage as above |
+| M2 pedigree — 3 completions | L4 | `M2_pedigree_completions.md` | `scripts/pedigree/identity_margin_distribution.py`, `permuted_parent_child_fp.py` | `identity_margin_distribution.tsv`, `permuted_parent_child_fp.json` | **to write**: margin distribution, permuted FP, contig check |
+| M3 exchange rate vs Lemmers | L1 | — | — | — | **to write**: one sentence, uses the single-event conclusion |
+| M4 / R3-M4 multi-mapping + flank control | L1 | `04_flanking_control` patch | — | — | **patch ready**: `response/patches/flanking_control.tex` |
+| M5 / R3-M3 specificity | L3 | `M5_matched_sd_control.md` | `scripts/hic/matched_sd_control.py` | `matched_sd_control.{tsv,json}` | **to write**: TEL 0.50 vs INT 0.13, Δ+0.39 p=0.006 |
+| M6 mouse satellite | L3 † | `M6_mouse_satellite.md` († stratified result retracted) + `M_mouse_stage_ordering.md` | `scripts/hic/mouse_satellite_sensitivity.py` (void axis), `mouse_stage_profile_disambiguation.py` | `mouse_satellite_sensitivity.json`, `mouse_stage_profile_disambiguation.json` | **to write**: satellite fractions + r=0.79 caveat |
+| M7 mouse dependency-preserving null | L4 | `M_mouse_stage_ordering.md` | `mouse_stage_profile_disambiguation.py` | same JSON | **to write**: zygotene peak, CIs, paired contrast |
+| M8 flank censoring | L3 | `M8_flank_censoring.md` | `flank_censoring_sensitivity.py` | `flank_censoring_sensitivity.tsv` | **to write**: 15.8% saturation, lower bound |
+| M9 gene enrichment | L3 | `M9_enrichment_dependence.md` | `enrichment_family_dependence.py` | `enrichment_family_dependence.tsv` | **to write**: family dependence, `LOC*`, 9 loci/10 chromosomes |
+| M10 comparative frame | L0 | — | — | — | open (literature only) |
+| M11 title "unorthodox" | L1 | — | — | — | **to write**: retitle |
+| M12 confidence intervals | L4 | `scripts/ci/results_d_m12.json` | `bootstrap_ci_d_m12.py`, `matched_fst_from_blocks.py`, `monte_carlo_null_d_m4.py` | `results_d_m12.json`, `matched_fst_d_m6.tsv` | done in Methods |
+| R1-m11 superpopulation descriptives | L2 | `D1_superpopulation_descriptives.md` | `scripts/cladistics/phr_by_superpopulation.py` | `phr_by_superpopulation.tsv` | **to write** |
+
+## Referee #3
+
+| item | level | note | script(s) | data artefacts | manuscript |
+|---|---|---|---|---|---|
+| M6 PHR-call threshold sensitivity | L3 | `R5_pairs_filter_and_R3_thresholds.md` | `scripts/cladistics/phr_call_threshold_sensitivity.py` | `phr_call_threshold_sensitivity.tsv` | **to write**: gate reproduces 15,668/41 exactly; arm count moves only with the chromosomes-per-window rule |
+| M7 similarity vs order | L4 | `05_answers_arm_asymmetry_and_architecture.md` | `arm_module_{architecture,order,orientation}.py`, `peerq3_arm_type_asymmetry.py` | `arm_module_*.tsv`, `peerq3_*.tsv` | written (ED3 + Discussion) |
+
+## Referee #5
+
+| item | level | note | script(s) | data artefacts | manuscript |
+|---|---|---|---|---|---|
+| L193-195 the 2,830 pairs | L1 | `R5_pairs_filter_and_R3_thresholds.md` | — | — | **to write**: C(77,2) − 96 same-chromosome |
+| L86 window-size sensitivity | L0 | — | — | — | open |
+| L152 GO stability across assemblies | L0 | — | — | — | open |
+| L189 cell types/datasets | L1 | — | — | — | **to write**: Methods table |
+
+## Cross-cutting
+
+| item | note | artefacts | manuscript |
+|---|---|---|---|
+| data integrity: `chr13_p` missing from vendored PHR BED | `L5_data_reconciliation.md` | `arm_inclusion_audit.tsv` | **patch ready** + recommendation to regenerate |
+| pedigree pattern categories | — | — | **patch ready**: `pedigree_pattern_categories.tex` |
+| editor compliance | `D2_editor_compliance.md` | — | AUTHOR TO SUPPLY items listed |
+
+† `M6_mouse_satellite.md` carries a retraction header: its satellite-masked axis is void (QLEN/QSTART swap),
+so only its satellite **fractions** may be cited.
