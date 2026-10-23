@@ -1,0 +1,28 @@
+{
+  "sequence_axis": {
+    "p95": {
+      "paf": "/tmp/m5_sd_work/windows.p95.paf",
+      "labelled": "/tmp/m5_sd_work/pairs.p95.labelled.tsv",
+      "n_pairs": 13580
+    }
+  },
+  "provenance": {
+    "window_table": "/home/erikg/phrs/data/hprc25272.CHM13.w100kb-xm5-id098-l5k.tsv.gz",
+    "phr_bed": "/home/erikg/phrs/data/chm13.phrs.bed",
+    "annotations_bed": "/home/erikg/phrs/data/chm13-annotations.bed",
+    "chm13_fasta": "/moosefs/guarracino/HPRCv2/PHR_III/HiC/CHM13/CHM13.fa.gz",
+    "repeatmasker_bed": "/moosefs/guarracino/HPRCv2/PHR_III/hprc_repeatmasker/chm13v2.0_RepeatMasker_4.1.2p1.2022Apr14.bed.gz",
+    "mcools": {
+      "CHM13_HiC": "/moosefs/guarracino/HPRCv2/PHR_III/HiC/CHM13/hicpro_output/cool/CHM13.mcool",
+      "HG002_HiC": "/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/hicpro_output/cool/HG002.mcool",
+      "HG002_PoreC": "/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/porec_output/porec.mcool",
+      "HG002_CiFi": "/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/cifi_output/cifi.mcool"
+    },
+    "published_pair_table": "/home/erikg/phrs/data/human_CHM13_hic_50000bp_seqlevel.tsv",
+    "arm_dist_matrix": "/home/erikg/phrs/data/hprcv2.1Mb.subtelo.arm_dist_matrix.tsv",
+    "workdir": "/tmp/m5_sd_work",
+    "wfmash": "unknown",
+    "python": "3.12.3",
+    "numpy": "2.5.4"
+  }
+}

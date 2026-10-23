@@ -82,3 +82,20 @@ reported with its balance table.
 - Regime B `p90_pggb`: `wfmash -p 90 -s 1000 -l 3000 -n 10 -k 15 -L` — the exact wfmash
   invocation pggb uses to build the graph the published odgi Jaccard is computed on (filtered,
   <=10 mappings/segment). Second alignment regime for the sequence axis.
+
+### Pipeline gotchas found (step 5) — recorded so they are not repeated
+- `wfmash` groups mappings by the last `#` of the sequence name (`-Y '#'` default) and then skips
+  self-group mappings. PanSN-style window names put *every* window in one group and silently
+  suppress all paralogous mappings (measured: 0 mappings for a set of 5 sequences including
+  exact duplicates). Window FASTA names are therefore `chr:start-end` (no `#`).
+- `wfmash` default filtering keeps ~1 mapping per query segment (pilot: 36 records vs 351 with
+  `-f -M`), which penalises high-copy windows specifically. Production sequence regimes use
+  `-f -M`.
+- `wfmash` writes its temporary mapping file into the *current directory* unless `-B` is given;
+  all invocations pass `-B <workdir>` so nothing lands in the repo.
+- PAFs are written to `.part` and renamed, so an interrupted run can never masquerade as a
+  complete alignment (an early jaccard pass on a partially written PAF produced 9,539 pairs
+  instead of the final count — caught and discarded).
+- The independent per-base recomputation in the oracle initially used a *global* coverage array
+  instead of a per-pair one and falsely flagged the estimator; fixed, and all 4 semantic checks
+  plus all per-base equality checks now pass.
