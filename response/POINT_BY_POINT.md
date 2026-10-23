@@ -224,3 +224,37 @@ letter from this file, with tracked changes.
 
 **Step 5 (verification).** `bash compile.sh` → exit 0, `grep -c undefined paper.log` = 0, and
 `python3 scripts/ci/audit_response_numbers.py` for every quoted number.
+
+---
+
+# Lane results (2026-10-23) — five parallel lanes, all completed
+
+Notes: `response/notes/{M1_concerted_evolution,M2_pedigree_completions,R5_pairs_filter_and_R3_thresholds,D1_superpopulation_descriptives,D2_editor_compliance,M6_mouse_satellite}.md`
+
+## R1-M1 — concerted evolution · now **L3**, and the answer is negative for the named families
+
+Substrate definitions pinned before any number: **P** = the telomere-anchored PHR window itself (carries the duplicons); **F** = the adjacent 100 kb of *unique* centromere-proximal sequence. Because F's "paralog" pair is two non-paralogous unique loci, F cannot test homogenisation at all — its 0.18 distance is a floor. **Only P is informative.**
+
+Substrate P, alleles vs paralogs: D4Z4/DUX4L paralog-closer 36/85 (0.42, p=0.19); TUBB8/B **0/197** (p=9.96e-60); OR4F 272/1144 (0.24, p=1.08e-73); SEPTIN14 843/3127 (0.27, p=8.25e-152). On the referee's own formulation, within-individual cross-arm copies are **2.22× / 11.45× / 2.95× / 4.57×** farther apart than same-arm copies from *other* individuals. Sketch distances validated against FastGA alignments (Spearman +0.77, p=8e-25, n=120; ordering preserved, sign p=0.0026).
+
+**Conclusion to write up:** no homogenisation signature for these four families at whole-window resolution. This does **not** contradict the paper: the aggregate's single homogenisation signal is community **C7** (paralog closer in 70.5%, p=2e-7), and **none of the four families has a copy on a C7 arm**. The M1 answer is therefore "homogenisation is demonstrated in the rDNA-bearing acrocentrics, and is not detectable in these gene families" — stated with the dating caveat (no exchange is dated; shared state bounds it as pre-dating the individuals' common ancestor).
+
+## R1-M6 — mouse satellite confound · now **L3**, and it weakens our current mouse claim
+
+- p-end flanks are **0.26–0.99 satellite** (38/39 ≥ 0.5, mean 0.885); q-end flanks **0.002–0.008**. The referee is right.
+- Major satellite `GSAT_MM` is a real Dfam annotation; **minor satellite is a proxy** (no Mus family in the Dfam library) and the proxy recovers ~0, so "minor satellite does not contribute" is **unmeasured**.
+- Stratified: the association **survives in satellite-poor windows** (rho +0.49 to +0.64 at 20 kb, p 0.005–0.025) but the **pachytene peak does not** — the low-satellite subset is flat across stages (0.536 / 0.539 / 0.486 / 0.486).
+
+**MANUSCRIPT CONSEQUENCE (action):** the pachytene-peak framing we added to the Introduction, Results, Fig4c caption and Discussion is a satellite-rich-p-arm phenomenon. It must be qualified: report the whole-flank profile, state that it is dominated by satellite-rich p-arm windows, and report that the satellite-poor subset is flat across stages. This supersedes the "sequence similarity translates into ectopic proximity precisely during the window in which crossovers form" sentence.
+
+## R1-M2 — pedigree completions · **L4-eligible**
+
+Margin distribution: 177,998 windows; only 1.02% have margin > 0; the retained tract sits at the 99.0–99.7th percentile but **558 windows exceed its max margin**, and the withdrawn chr5q/chr1p call sits at 99.1–99.6th — margin does not discriminate (confirms the referee, supports our structure-based argument). Permutation FP: null A p<1e-4; null B genome-wide p<1e-4 but candidate-level p=0.09 (chr9) / 0.32 (chr5). Contig: 23/23 lengths identical, zero N-runs, tract 21,149 bp inside `PAN027.chr9.paternal`.
+
+## R5-L193 + R3-M6 — **answered**
+
+2,830 = C(77,2) − 96 same-chromosome pairs (object identity, not similarity filtering), verified two ways and matching `paper.tex`'s n and ρ. Threshold gate reproduced the published call exactly (15,668 PHRs, 41 arms, all 18,826 region sets identical): consecutive-fail 1–4 → 41 arms; flank 25–400 kb → 41 arms; chromosomes-per-window 2/3–5/6–12/15 → 41/40/38/37; no inter-chr rule → 48 arms (the seven the paper names).
+
+## R1-m11 + editor compliance — **D1 done, D2 drafted**
+
+D1: per-superpopulation PHR count, bp, median length + IQR, community shares, and the 500 kb right-censoring share; superpopulation mapping is repo-local (`slides/.../nearest_same_superpop_mds_distances.tsv`), reproduction gate md5-identical. D2: Data/Code availability, ethics split into attestable vs **AUTHOR TO SUPPLY**, format checklist (ED are 3 items but all `.pdf` → need `.tif/.eps`), and it flags a repo URL inconsistency (`ekg/phrs` vs `pangenome/phrs`).
