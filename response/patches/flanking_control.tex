@@ -1,0 +1,165 @@
+%=====================================================================
+% response/patches/flanking_control.tex
+%
+% WHAT THIS REPLACES
+%   submission/paper.tex lines 291--296 (Results, "Subtelomere similarity
+%   mirrors physical proximity"), verbatim:
+%
+%   | The 100 kb immediately centromere-ward of each PHR, the
+%   | non-PHR flanks, consists of unique sequence and so provides the key control for this
+%   | multi-mapping concern. In HG002 Hi-C, the ratio of between- to within-community
+%   | contact ($B/W$; lower is stronger) is 0.0013 for the flanks versus 0.028 in the PHR
+%   | windows, a 21-fold stronger within-community enrichment, although the flanks do
+%   | not contain the shared sequence used to define PHR pairs.
+%
+%   The deleted sentence set contained only the $B/W$ metric and asserted the
+%   flanks as "21-fold stronger within-community enrichment", which is the
+%   reading Referee #1 (major point 4) and Referee #3 (major point 4) both
+%   rejected: under a between/within ratio a *smaller* number means a
+%   *stronger* within-community contrast, so the sentence as written says the
+%   unique-sequence flanks are the more enriched of the two windows, the
+%   opposite of the inference we drew from it. The patch below restores the
+%   control, reports BOTH metrics, and states the disagreement between them
+%   rather than choosing the convenient one.
+%
+% WHAT IT INSERTS
+%   (a) A replacement Results paragraph (main body, 5 sentences) for the block
+%       above -- text between the two marker comments.
+%   (b) An optional Methods replacement for submission/paper.tex lines
+%       764--767 ("As a unique-sequence control ... the same within-community
+%       enrichment."), at the bottom of this file.
+%
+% EVIDENCE PATHS, each number re-read from disk in this worktree.
+%   R1  end-to-end-report/report/05_hic_validation.md
+%         :48--56   flanking community-free Spearman table
+%         :70       "Flanking regions are unique sequence (no multi-mapping risk)"
+%         :83--92   PHR Mantel table (CHM13 0.656, HG002 0.657)
+%         :95--105  100 kb flanking Mantel table (CHM13 0.522, HG002 0.520)
+%         :257--267 10 kb flanking B/W table (HG002 0.001 at 10 kb, 0.002 at 50 kb)
+%         :269--279 full multi-resolution flanking B/W
+%         :29--41   PHR B/W table (HG002 Hi-C 0.027)
+%   R2  data/hg002_hic_global_test_20000bp.tsv            (vendored, 20 kb, PHR)
+%   R3  data/hg002_hic_flanking_global_test_20000bp.tsv   (vendored, 20 kb, flank)
+%   R4  /moosefs/guarracino/HPRCv2/PHR_III/analysis/human/community_based/{10000,20000,50000}bp/{hg002,chm13}_global_test.tsv
+%   R5  /moosefs/guarracino/HPRCv2/PHR_III/analysis/human/flanking/{10000,20000,50000}bp/{hg002,chm13}_global_test.tsv
+%
+%   The two quantities in each file are the columns within_mean, between_mean
+%   (means over the same arm-pair set: n_within = 256, n_between = 2,670 for
+%   HG002; 53 and 650 for CHM13 at all resolutions) and the mantel row
+%   rho. $B/W$ = between_mean / within_mean. Values I computed:
+%
+%     HG002 Hi-C, 50 kb:  PHR  B/W = 0.00155493/0.05829824 = 0.026672  rho = 0.6572892
+%                         flank B/W = 0.00023081/0.10763414 = 0.0021438 rho = 0.5203025
+%                         fold = 12.44     d(rho) = 0.1370
+%     HG002 Hi-C, 20 kb:  PHR  B/W = 0.00294190/0.10514836 = 0.027979  rho = 0.6484005
+%                         flank B/W = 0.00014418/0.11078114 = 0.0013014 rho = 0.4483600
+%                         fold = 21.50     d(rho) = 0.2000
+%     HG002 Hi-C, 10 kb:  PHR  B/W = 0.00319666/0.11244551 = 0.028429  rho = 0.7052233
+%                         flank B/W = 0.00011884/0.11041649 = 0.0010758 rho = 0.3788857
+%                         fold = 26.43     d(rho) = 0.3263
+%     CHM13 Hi-C, 50 kb:  PHR  B/W = 0.01126298/0.15960217 = 0.070569  rho = 0.6562636
+%                         flank B/W = 0.00496162/0.08758056 = 0.056652  rho = 0.5216684
+%                         fold = 1.25      d(rho) = 0.1346
+%     CHM13 Hi-C, 20 kb:  PHR  B/W = 0.01208156/0.16230106 = 0.074439  rho = 0.7208883
+%                         flank B/W = 0.00360209/0.06314202 = 0.057047  rho = 0.4748003
+%                         fold = 1.30      d(rho) = 0.2461
+%     CHM13 Hi-C, 10 kb:  PHR  B/W = 0.01348945/0.18607208 = 0.072496  rho = 0.7165521
+%                         flank B/W = 0.00325398/0.04558444 = 0.071384  rho = 0.3419603
+%                         fold = 1.02      d(rho) = 0.3746
+%   All Mantel p = 0.0 in the files, i.e. below the 1e-4 resolution of 10,000
+%   row-and-column permutations; quoted as p < 1e-4.
+%
+%   REPRODUCIBILITY CHECK.  data/hg002_hic_global_test_20000bp.tsv and
+%   data/hg002_hic_flanking_global_test_20000bp.tsv are byte-for-byte the same
+%   numbers as R4/R5 at 20000bp (rho 0.6484005 / 0.4483600; between_mean
+%   0.00294190 / 0.00014418), so the vendored 20 kb pair is a subset of the
+%   moosefs sweep and the resolutions are not mixed.
+%
+% RESOLUTION CAVEAT, flagged rather than smoothed over.
+%   The two-significant-figure pair the referee quotes from page 5 (0.0013 vs
+%   0.028, "21-fold") is the 20 kb row above. The 50 kb headline pair is
+%   0.002 vs 0.027, and the exact fold there is 12.4, not 13.5: 13.5 is
+%   0.027/0.002 computed from the rounded values. A "10 kb: 0.029 vs 0.001,
+%   29-fold" version also circulates; 0.029 is the 5 kb PHR value in R1 R5
+%   :269--275, the 10 kb PHR value is 0.028, and the exact 10 kb fold is 26.4.
+%   The text below therefore quotes exact numerators and denominators at one
+%   stated resolution (50 kb) plus the 20 kb row that the current manuscript
+%   already used, and never quotes a fold from rounded inputs.
+%
+%   E5  submission/paper.tex:376 (and the Extended Data caption at :971) --
+%       the module-repertoire Jaccard, 0.83
+%       within versus 0.57 between communities. That non-zero between-community
+%       overlap (0.57, i.e. arms in different communities still share most of
+%       their module repertoire) is the source for the claim below that the
+%       between-class contact term at PHR coordinates carries shared sequence;
+%       without it, that clause would be an inference rather than a
+%       consequence of a measured number.
+%
+% INSTABILITY, stated in the text and not hidden (see also the note at the
+% bottom of the file).
+%   The $B/W$ flank contrast is HG002-specific (12.4-fold at 50 kb) and is
+%   almost absent in CHM13 (1.25-fold). The rank metric is reproducible
+%   between the two haplotypes: flank/PHR rho = 0.5203025/0.6572892 = 0.792 in
+%   HG002 and 0.5216684/0.6562636 = 0.795 in CHM13. A conclusion that holds
+%   under one metric and not the other is reported as such.
+%=====================================================================
+
+%%% BEGIN INSERT (a): Results, replaces submission/paper.tex:291--296
+The 100\,kb immediately centromere-ward of each PHR carries no shared
+paralogous sequence and is uniquely mappable, and so provides the control for
+this multi-mapping concern. Two statistics on the identical arm-pair set
+(256 within-community and 2{,}670 between-community pairs in HG002) order the
+two window types in opposite directions. The binary contrast $B/W$ (mean
+between-community contact divided by mean within-community contact) is 0.0267
+in PHR windows and 0.0021 in the flanks at 50\,kb, and 0.0280 against 0.0013 at
+20\,kb; because a smaller $B/W$ means a stronger within-community contrast,
+this metric places the unique-sequence flanks \emph{above} the PHR windows
+(12.4- and 21.5-fold respectively). The arm-level Mantel $\rho$ between
+sequence similarity and contact does the opposite: 0.657 for PHR windows
+against 0.520 for the flanks in HG002, and 0.656 against 0.522 in CHM13
+($p<10^{-4}$ in all four cases). The disagreement is a property of the two
+statistics, not a contradiction in the data. $B/W$ is a ratio of two class
+means, so it is carried by whichever term moves. Between PHR windows and flanks
+the between-class mean contact changes by 6.7-fold (1.6$\times10^{-3}$ against
+2.3$\times10^{-4}$ over the same 2{,}670 pairs) while the within-class mean
+contact moves the other way by 1.85-fold (0.058 against 0.108); $B/W$ therefore
+tracks the contact that crosses the community boundary, and at PHR coordinates
+that boundary is crossed by sequence which arms in different communities still
+share, the module repertoire overlapping at 0.57 between communities against
+0.83 within them. It is not a measure of the contact the community partition
+adds. A rank correlation over
+the whole arm matrix is not a two-class statistic and is insensitive to a
+background common to both classes; on it the PHR windows exceed the flanks in
+both haplotypes at each of the three resolutions tested, and the gap widens as bins get
+finer (10\,kb: 0.705 against 0.379 in HG002, 0.717 against 0.342 in CHM13).
+Both statistics are biased in the same conservative direction by multi-mapping.
+Placement among $k$ equally scoring loci is uniform, so a specific contact is
+attenuated by roughly $1/k$ per end, and $1/k^2$ for a PHR--PHR contact; the
+attenuation is symmetric across community classes, because a misplaced read is
+as likely to land between communities as within one. Misplacement therefore
+drives $\rho$ down and $B/W$ up, towards the null, and the uniquely mappable
+flank windows carry essentially none of it. PHR-window enrichment is thus a
+lower bound, and the bound is set by the biased measurement, which already
+exceeds the unbiased flank value on the rank metric. A multi-mapping artefact
+predicts the reverse ordering there, PHR below flank, which is not observed.
+%%% END INSERT (a)
+
+%%% BEGIN INSERT (b) -- OPTIONAL: Methods, replaces submission/paper.tex:764--767
+%%% ("As a unique-sequence control for multi-mapping we repeated the calculation
+%%% on the 100 kb immediately centromere-ward of each PHR, outside the called
+%%% PHR; these non-PHR flanks show the same within-community enrichment.")
+As a unique-sequence control for multi-mapping we repeated the calculation on
+the 100\,kb immediately centromere-ward of each PHR, outside the called PHR and
+over the same arm-pair set. We report both the $B/W$ contrast and the arm-level
+Mantel $\rho$ for the control, because they answer different questions and, for
+this comparison, rank the two window types oppositely: $B/W$ is a ratio of two
+class means and is dominated by contact crossing the community boundary,
+whereas $\rho$ is a rank correlation over all arm pairs and is invariant to a
+background shared by both classes. In HG002 Hi-C at 50\,kb, $B/W$ is 0.0267 for
+PHR windows and 0.0021 for the flanks while $\rho$ is 0.657 and 0.520; in CHM13
+Hi-C the same comparison gives 0.0706 against 0.0567 and 0.656 against 0.522.
+Because uniform placement of a multi-mapping read attenuates a specific contact
+by about $1/k$ per end symmetrically across community classes, both PHR-window
+statistics are biased towards the null, and the PHR-window enrichment they
+report is a lower bound.
+%%% END INSERT (b)

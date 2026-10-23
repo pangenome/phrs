@@ -1,0 +1,152 @@
+%=====================================================================
+% response/patches/mouse_satellite_caveat.tex
+%
+% WHAT THIS REPLACES
+%   Three places assert a pachytene peak. Verbatim excerpts, all located by
+%   `grep -n "pachytene" submission/paper.tex`:
+%
+%   (R1) submission/paper.tex:306--312, Results, first sentence of the mouse
+%        paragraph after "(Fig.~\ref{fig:fig4}C).":
+%   | The correlation rises as chromosomes
+%   | synapse and peaks at pachytene, when the synaptonemal complex is fully assembled, then falls
+%   | at diplotene as it disassembles: sequence similarity translates into ectopic proximity
+%   | precisely during the window in which crossovers form. The stage profile is
+%   | resolution-dependent---at 50 kb windows it is flat ($\rho = 0.29$--0.34)---so we report the
+%   | 20 kb profile and treat the stage ordering as descriptive rather than as a tested difference.
+%
+%   (R2) submission/paper.tex:81--83, summary paragraph:
+%   | Mouse contact maps show the same preference:
+%   | the association strengthens as chromosomes synapse and peaks at pachytene, when
+%   | the synaptonemal complex is fully assembled.
+%
+%   (R3) submission/paper.tex:545--547, Fig. 4c caption tail:
+%   | The arm-level Mantel test on
+%   | the same data, which respects that non-independence, gives $\rho = 0.41$, 0.58, 0.63 and
+%   | 0.33 across the four stages (Methods), peaking at pachytene.}
+%
+% WHAT IT INSERTS
+%   A satellite-aware replacement for each of the three, in decreasing length.
+%   The Results replacement is the strongest wording I can defend; below it is
+%   a shorter fallback for the case where the stage ordering turns out to be
+%   indistinguishable after masking (the paper currently treats it as
+%   descriptive anyway, so the fallback is the smaller edit).
+%
+% EVIDENCE PATHS, and what I re-derived from each rather than copying.
+%   E1  response/notes/M6_mouse_satellite.md
+%         :24--36  annotation vs proxy table; mean minor-proxy fraction 0.00004
+%                  (p-end) and 0.00112 (q-end)
+%         :53--66  sat_frac_union p-end min 0.2597 max 0.9928, 38/39 >= 0.50;
+%                  q-end min 0.0021 max 0.0077
+%         :90--96  baseline rho 0.4074/0.5785/0.6259/0.3282, exact reproduction
+%                  of scripts/hic/mantel_mouse_d_m5.json
+%         :112--130 3a low-satellite (21 q-q pairs) 20 kb profile
+%         :160--172 "the stage structure does not survive"; peak-stage flips
+%         :350--369 one-paragraph verdict
+%   E2  scripts/hic/mouse_satellite_sensitivity.json -- I recomputed these myself
+%       from `satellite_annotation.per_flank` (78 flanks = 39 p-end + 39 q-end),
+%       not from the note:
+%         p-end sat_frac_union: min 0.2597, max 0.9928, mean 0.8848,
+%                               38 of 39 >= 0.50, mean frac_bins_sat50 0.8607
+%         q-end sat_frac_union: min 0.0021, max 0.0077, mean 0.0044
+%         p-end sat_frac_major_GSAT_MM: mean 0.2886 (min 0.0000, max 0.9720)
+%         p-end sat_frac_minor_PROXY:  mean 0.00004 ; q-end mean 0.00112
+%         `satellite_annotation.families` = GSAT_MM 471, MurSAT1 120,
+%                                MMSAT4 168, CENSAT_MC 59, SYNREP_MM 266,
+%                                IMPB_01 2548, ZP3AR 212, CYRA11_Mm 617
+%         `verdicts.peak_stage_20kb_baseline` = "pachytene";
+%         `verdicts.peak_stage_20kb_low_sat(both<0.25)` = "zygotene";
+%         `verdicts.peak_stage_20kb_high_sat(both>=0.25)` = "zygotene"
+%   E3  end-to-end-report/report/05_hic_validation.md:176 (mouse section pointer)
+%         and end-to-end-report/report/08_mouse.md for the stage-Mantel framing.
+%
+% THREE THINGS I DELIBERATELY DO NOT CLAIM, because the evidence does not carry
+% them, and each is a place the obvious sentence would be false:
+%
+%   1. "the p-arm satellite fraction is major satellite". It is not, alone.
+%      GSAT_MM accounts for a mean 0.2886 of the p-end flank; the union mean is
+%      0.8848 and the union is eight Dfam families. The minor classes are a
+%      PROXY (there is no Mus "minor satellite" family in this Dfam 3.8 library:
+%      MurSAT1+MMSAT4+CENSAT_MC were substituted) and recover a mean of 4e-5,
+%      so minor-satellite content of these windows is UNMEASURED, not small.
+%      The text therefore says what was measured and names the proxy.
+%
+%   2. "masking the satellite removes the association" -- no masking was done.
+%      §5a of E1 and `not_established` in E2 both record that the contact axis
+%      cannot be satellite-masked (needs zuo2021_<stage>.mcool plus the
+%      haplotype map) and that the sequence axis cannot be re-derived without
+%      rebuilding the pggb graph. What exists is a STRATIFICATION of arm pairs
+%      by flank satellite fraction. The text says "setting aside the
+%      satellite-rich windows", never "masked".
+%
+%   3. "the satellite-poor subset confirms the ordering". It does not: the
+%      20 kb profile there is flat, and its nominal top stage is zygotene by
+%      0.0026, a margin smaller than the Monte-Carlo noise of the 200-permutation
+%      null (E1 §5c). Furthermore the so-called satellite-poor subset IS the
+%      q-q subset -- 21 pairs among 7 q arms -- because arm-level satellite
+%      fraction is bimodal with nothing between 0.10 and 0.25 (E1 §3). It is
+%      not an independent sample and the text says so.
+%
+%   Also note the same flip happens in the satellite-RICH subset (zygotene
+%   0.6515 vs pachytene 0.6394, E1 §3a), so "pachytene" was never robust to
+%   stratification at all. This is why the replacement does not simply swap
+%   pachytene for zygotene: swapping one unstable rank for another would be the
+%   same error in the opposite direction.
+%=====================================================================
+
+%%% BEGIN INSERT (R1) -- Results, replaces submission/paper.tex:306--312
+Because mouse chromosomes are telocentric, the 1\,Mb p-arm flanks that carry the
+mouse PHRs are 26--99\% satellite (mean 88.5\% over 39 p-end flanks, 38 of them
+above 50\%; all 39 q-end flanks are below 0.8\%), and satellite arrays are
+near-identical between chromosomes, so these windows sit at the top of the
+similarity axis and at the extreme of the multi-mapping problem at the same
+time. Setting the satellite-rich windows aside, the sequence--contact
+association persists over the 21 satellite-poor arm pairs ($\rho = 0.486$--$0.539$
+at 20\,kb, permutation $p \leq 0.025$) and is therefore not created by
+satellite-rich p-arm flanks; the stage ordering, however, does not survive the
+same restriction -- the 20\,kb profile is flat across the four stages
+($\rho = 0.536$, 0.539, 0.486 and 0.486) with no resolvable maximum. The
+baseline 20\,kb maximum is itself fragile: the same flip of the nominal top
+stage, from pachytene to zygotene, happens in the satellite-\emph{rich} subset
+($\rho = 0.652$ against 0.639), a margin of 0.012, i.e. of the same order as the
+Monte-Carlo noise of the 200-permutation null (0.005--0.02). We therefore report
+the stage profile as descriptive
+rather than as a tested difference: it is resolution-dependent (flat at
+50\,kb, $\rho = 0.29$--0.34), it does not persist when satellite-rich windows
+are removed, and the satellite-poor subset is 21 pairs drawn from 7 chromosome
+ends, so its per-stage estimates are not independent. Minor-satellite content of
+these windows could not be measured directly -- the local Dfam library has no
+\emph{Mus} minor-satellite family, so MurSAT1, MMSAT4 and CENSAT\_MC were used
+as a proxy, and they cover essentially none of the p-end flanks (mean fraction
+$4\times10^{-5}$) -- and the curated major-satellite family GSAT\_MM covers
+a mean of only 28.9\% of the p-end flank, so at least 59.6\% of it is covered by
+the other seven Dfam families in the union.
+%%% END INSERT (R1)
+
+%%% BEGIN INSERT (R1-fallback) -- SHORTER, use if the stage ordering is
+%%% confirmed indistinguishable after contact-level masking
+Because the 1\,Mb mouse p-arm flanks are 26--99\% satellite (mean 88.5\%) and
+satellite arrays are near-identical between chromosomes, these windows sit at
+the top of the similarity axis and at the extreme of the multi-mapping problem
+at once. The sequence--contact association survives when the satellite-rich
+windows are set aside ($\rho = 0.486$--$0.539$ over the 21 satellite-poor arm
+pairs, permutation $p \leq 0.025$), but the stage ordering does not
+($\rho = 0.536$, 0.539, 0.486 and 0.486 across the four stages, no resolvable
+maximum), so we report the mouse stage profile as descriptive only.
+%%% END INSERT (R1-fallback)
+
+%%% BEGIN INSERT (R2) -- summary paragraph, replaces submission/paper.tex:81--83
+Mouse contact maps show the same preference:
+the association strengthens as chromosomes synapse, although the stage ordering
+is not resolved once the satellite-rich p-arm windows are set aside.
+%%% END INSERT (R2)
+
+%%% BEGIN INSERT (R3) -- Fig. 4c caption, replaces submission/paper.tex:545--547
+%%% NOTE: the trailing "}" is the close of the \caption{ ... } group that is
+%%% opened earlier in the original caption; it is part of the replaced excerpt,
+%%% so this snippet is intentionally NOT brace-balanced on its own.
+The arm-level Mantel test on
+the same data, which respects that non-independence, gives $\rho = 0.41$, 0.58, 0.63 and
+0.33 across the four stages (Methods); the mouse p-arm flanks are 88.5\%
+satellite on average, and the stage ordering is descriptive only -- it does not
+persist once the satellite-rich p-arm windows are set aside.}
+%%% END INSERT (R3)

@@ -1,0 +1,79 @@
+%=====================================================================
+% response/patches/pedigree_pattern_categories.tex
+%
+% WHAT THIS REPLACES
+%   Nothing verbatim: the two terms are ABSENT from the current manuscript.
+%   Verified by `grep -n "sandwich\|complex\|gene_conversion" submission/paper.tex`
+%   -> only unrelated hits (line 83 "synaptonemal complex", 309 "synaptonemal
+%   complex", 379/389/409 "pattern", 883 "rest on pattern, not margin"). The
+%   words sandwich_same_hap and complex do not occur. So this is a re-insertion
+%   at a stated anchor, not a replacement of an excerpt I could quote.
+%
+%   ANCHOR (insert after this verbatim sentence, submission/paper.tex:346-349):
+%   | the chr1p-derived module is present in the grandparents' own chr5q
+%   | (Methods).
+%   i.e. at the end of the first paragraph of the subsection
+%   "Ectopic subtelomeric recombination within a pedigree", immediately before
+%   the sentence that begins "We applied the same scan to the chromosome the
+%   daughter inherited from her mother".
+%
+% WHAT IT INSERTS
+%   Two sentences, one per category, short and self-contained: they name the
+%   classification, define each term operationally, and give the current count
+%   with its denominator.
+%
+% DEFINITIONS -- authority is the classifier itself, not a paraphrase.
+%   E1  /moosefs/guarracino/HPRCv2/scripts/pedigree/analyze-pedigree-recombination.py
+%         :236-249  the pattern assignment, verbatim logic:
+%                   if not left_is_query or not right_is_query -> 'complex'
+%                   elif left_hap == right_hap:
+%                       if ref_hap == left_hap      -> 'sandwich_same_hap'
+%                       else                        -> 'gene_conversion_like'
+%                   else                            -> 'crossover_like'
+%         :265-269  second pass: a 'complex' patch inside an acros-like flank
+%                   (>=5 inter-chr patches from >=3 source chromosomes) is
+%                   RELABELLED 'acros_like'. So the surviving 'complex' count is
+%                   post-relabelling, and the definition below must not be read
+%                   as "all non-sandwich patches".
+%         :593-601  the report's own one-line glosses, quoted verbatim:
+%                   'sandwich_same_hap: patch within same-chr same-hap
+%                    background (unusual)'
+%                   'complex: other complex configurations'
+%   E2  end-to-end-report/report/14_pedigree_recombination.md:20-28,35-45
+%         the HQ filter (is_interchr, min_score >= 0.8, 500 bp <= size <= 100 kb),
+%         "WashU HQ inter-chr patches: 538 total, 494 (92%) within-community",
+%         and the within-community breakdown
+%         acros_like 229 / gene_conversion_like 133 / sandwich_same_hap 115 /
+%         crossover_like 16 / complex 1 (sums to 494, checked).
+%   E3  scripts/pedigree/monte_carlo_null_d_m4.py:503-505 independently repeats
+%         "133 gene_conv + 16 crossover + 30 acros_like-top30; the remaining
+%          199 within-comm acros_like + 115 sandwich_same_hap + 1 complex"
+%       -- 30 + 199 = 229, so the same census is reached from a second file.
+%   E4  scripts/pedigree/patch_tract_lengths.py:326-331 implements the same
+%       three-way sandwich logic on the lower-merge tract set, and agrees that
+%       sandwich_same_hap is the branch where left, right and patch haplotypes
+%       are all equal. Independent in-tree confirmation of the definition.
+%
+% COUNTS QUOTED: 115 and 1, both of 494 within-community WashU HQ inter-chr
+%   patches (E2:43-45). I quote the within-community denominator because that is
+%   the denominator E2's breakdown is defined on; the 538 total includes 44
+%   cross-community patches that are not in the breakdown.
+%
+% CAVEAT I AM KEEPING OUT OF THE SENTENCES AND PUTTING HERE: 'complex' is a
+%   residual class, not a biological category. With n = 1 it cannot support any
+%   statement about configuration; the sentence says only what the classifier
+%   tests (an inter-chromosomal neighbour on at least one side), which is true
+%   of 1 patch and would be true of 0.
+%=====================================================================
+
+%%% BEGIN INSERT: after submission/paper.tex:349 ("(Methods).")
+Each inter-chromosomal patch in the scan was classified by its immediate flanking
+background. A \emph{sandwich\_same\_hap} patch is one whose left and right
+neighbouring segments both lie on the query chromosome and share a single
+haplotype with each other and with the patch's own donor haplotype, so the patch
+changes the chromosome of origin without changing the local haplotype background
+(115 of the 494 within-community patches); a \emph{complex} patch is one whose
+left or right neighbour is itself an inter-chromosomal segment, so it does not
+sit in a clean same-chromosome sandwich (1 of the 494, after patches inside
+acrocentric-like flanks are reclassified as such).
+%%% END INSERT
