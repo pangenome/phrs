@@ -93,7 +93,7 @@ Conventions: paths under `/moosefs/...` are read-only externals; `data/...` are 
 - verdict-safe: descriptive only; differentiation lives in P3/P11
 
 ## P11 — matched F_ST baseline (R1-M6 in the population sense; M12 CIs)
-- script: `scripts/popogen/matched_fst_from_blocks.py`; output `scripts/popogen/matched_fst_d_m6.tsv`;
+- script: `scripts/popgen/matched_fst_from_blocks.py`; output `scripts/popgen/matched_fst_d_m6.tsv`;
   notes `06_answers_stats_and_bib.md`, `03_change_log.md`
 - inputs: `scripts/ci/fst_per_arm_per_pair.tsv` + published baselines (Bhatia 2013; Patterson 2012)
 - verdict-safe: ratios 0.72–1.44, all equivalent; block heterogeneity −0.08 to +0.35; r = +0.07 vs sequence sharing
