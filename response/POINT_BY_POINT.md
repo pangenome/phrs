@@ -239,7 +239,9 @@ Substrate P, alleles vs paralogs: D4Z4/DUX4L paralog-closer 36/85 (0.42, p=0.19)
 
 **Conclusion to write up:** no homogenisation signature for these four families at whole-window resolution. This does **not** contradict the paper: the aggregate's single homogenisation signal is community **C7** (paralog closer in 70.5%, p=2e-7), and **none of the four families has a copy on a C7 arm**. The M1 answer is therefore "homogenisation is demonstrated in the rDNA-bearing acrocentrics, and is not detectable in these gene families" — stated with the dating caveat (no exchange is dated; shared state bounds it as pre-dating the individuals' common ancestor).
 
-## R1-M6 — mouse satellite confound · now **L3**, and it weakens our current mouse claim
+## R1-M6 — mouse satellite confound · L3, but the stratified result is RETRACTED (void axis)
+
+> The satellite-masked axis is broken (QLEN/QSTART swap at `mouse_satellite_sensitivity.py:706`; 4,228/4,228 records reversed, all derived Jaccard = 0). The "pachytene peak does not survive in satellite-poor windows" claim is withdrawn. What stands: the per-arm satellite FRACTIONS (p-end 0.26-0.99, mean 0.885; q-end 0.004) from annotation, and Corr(satellite, published Jaccard) = +0.790 on the real axis. Original (superseded) text follows.
 
 - p-end flanks are **0.26–0.99 satellite** (38/39 ≥ 0.5, mean 0.885); q-end flanks **0.002–0.008**. The referee is right.
 - Major satellite `GSAT_MM` is a real Dfam annotation; **minor satellite is a proxy** (no Mus family in the Dfam library) and the proxy recovers ~0, so "minor satellite does not contribute" is **unmeasured**.
