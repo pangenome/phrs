@@ -78,9 +78,9 @@ concentrated in gene modules associated with chromosome dynamics, intracellular
 organization and germ-cell development.
 Human chromosome-contact maps show preferential proximity between subtelomeres
 with similar sequences, persisting even in adjacent flanks that lack the shared
-sequence used to define each pair. Mouse contact maps show the same preference:
-the association strengthens as chromosomes synapse and peaks at pachytene, when
-the synaptonemal complex is fully assembled. In a three-generation telomere-to-telomere
+sequence used to define each pair. Mouse contact maps show the same preference, and at
+pair resolution the association is strongest at zygotene, when telomeres cluster at
+the nuclear envelope, and weakest at diplotene. In a three-generation telomere-to-telomere
 pedigree, whole-genome comparison identifies putative recombination between
 subtelomeric regions on non-homologous chromosomes from the same sequence
 communities, while recovering the obligate X-Y crossover in PAR1, the
@@ -334,14 +334,23 @@ structure (Fig.~\ref{fig:fig4}B)
 The same within-community enrichment holds in the HG002 CiFi contact map
 \cite{hic3d_cifi2025}.
 Subtelomeric sequence similarity predicts contact between non-homologous mouse chromosome
-ends at every stage of prophase I (arm-level Mantel $\rho = 0.41$, 0.58, 0.63 and 0.33 at
-leptotene, zygotene, pachytene and diplotene, 20 kb windows; $n = 344$ arm pairs; all
-permutation $p < 10^{-4}$; Fig.~\ref{fig:fig4}C). The correlation rises as chromosomes
-synapse and peaks at pachytene, when the synaptonemal complex is fully assembled, then falls
-at diplotene as it disassembles: sequence similarity translates into ectopic proximity
-precisely during the window in which crossovers form. The stage profile is
-resolution-dependent---at 50 kb windows it is flat ($\rho = 0.29$--0.34)---so we report the
-20 kb profile and treat the stage ordering as descriptive rather than as a tested difference. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
+ends at every stage of prophase I (Spearman $\rho = 0.42$, 0.61, 0.58 and 0.25 at leptotene,
+zygotene, pachytene and diplotene over 1{,}135 inter-chromosomal PHR pairs; Fig.~\ref{fig:fig4}C).
+Because those pairs share chromosome ends they are not independent, so we infer at pair
+resolution with two-way clustered standard errors over both arms, and test the same association
+against a permutation null that keeps the between-arm-pair structure: $p = 10^{-4}$ at leptotene,
+zygotene and pachytene and $1.5 \times 10^{-3}$ at diplotene, with 95\% intervals of
+0.37--0.47, 0.57--0.66, 0.53--0.62 and 0.19--0.30. The association is strongest at zygotene:
+the paired contrast against pachytene is $-0.038$ (95\% CI $-0.067$ to $-0.009$, $p = 0.017$).
+Collapsing the pairs to arm means reverses that ordering, so we do not use the arm-level
+summaries for inference; they are reported in Methods only as a display.
+A confound limits the interpretation: mouse p-arm flanks are 88\% satellite (mean satellite
+fraction 0.885, against 0.004 on q-arms), and satellite content tracks the sequence axis at
+$r = 0.79$, so in mouse the similarity that predicts contact is largely similarity of
+satellite sequence. The planar contact matrices are not satellite-maskable, so satellite and
+duplicon contributions cannot be separated here; we therefore read the mouse result as
+proximity between similar subtelomeres in the bouquet rather than as evidence about which
+sequence class drives it. We compared stage-resolved Hi-C from inbred C57BL/6 (B6) spermatocytes mapped to a combined B6 and CAST T2T reference \cite{Francis2025,Zuo2021}, holding assemblies, PHR sequence identities and read-placement
 procedure constant across stages.
 In mouse, where detectable PHRs are concentrated on p-arms, the per-PHR-pair
 statistic peaks at zygotene for p-arm pairs. Restricting to inter-chromosomal pairs of the same
@@ -420,8 +429,8 @@ are orientation-consistent relative to the telomere while freely reassorted in o
 (Extended Data Fig.~\ref{fig:ed3}). The broader pattern is consistent with a simple,
 self-reinforcing model: telomere clustering at the meiotic nuclear envelope brings similar ends
 into a shared compartment, and the association between sequence similarity and contact is
-strongest once chromosomes are fully synapsed in pachytene, when crossovers form; proximity may
-then favour ectopic recombination that helps keep those sequences homogenized. Shared sequence and shared function then feed back to
+strongest at zygotene, when that clustering occurs; proximity may then favour ectopic
+recombination that helps keep those sequences homogenized. Shared sequence and shared function then feed back to
 promote co-localization, so that sequence, function and three-dimensional
 proximity continually reinforce one another. The acrocentric short arms show
 the loop most cleanly: their shared rDNA draws them to the nucleolus, and
@@ -572,10 +581,9 @@ The authors declare no competing interests.
     T2T assemblies; 20 kb contacts over 1 Mb flanks). Left, one dot per
     inter-chromosomal mouse PHR sequence pair, with zygotene contact
     (per-bin-pair length-normalized as in (A), log) versus PHR Jaccard similarity.
-    Right, the per-PHR-pair Spearman statistic across leptotene, zygotene,
-    pachytene and diplotene (exploratory; the pairs share arms). The arm-level Mantel test on
-    the same data, which respects that non-independence, gives $\rho = 0.41$, 0.58, 0.63 and
-    0.33 across the four stages (Methods), peaking at pachytene.}
+    Right, the per-PHR-pair Spearman statistic across leptotene, zygotene, pachytene and
+    diplotene; the pairs share arms, so inference uses two-way clustered standard errors over
+    both arms and a permutation null that preserves the between-arm-pair structure (Methods).}
   \label{fig:fig4}
 \end{figure}
 
