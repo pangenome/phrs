@@ -288,12 +288,43 @@ CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
 Because near-identical PHRs on non-homologous chromosomes cannot be told apart by
 read mapping, we interpret contact at a PHR window as an aggregate over its
 near-identical copies rather than reads uniquely assigned to a single PHR.
-The 100 kb immediately centromere-ward of each PHR, the
-non-PHR flanks, consists of unique sequence and so provides the key control for this
-multi-mapping concern. In HG002 Hi-C, the ratio of between- to within-community
-contact ($B/W$; lower is stronger) is 0.0013 for the flanks versus 0.028 in the PHR
-windows, a 21-fold stronger within-community enrichment, although the flanks do
-not contain the shared sequence used to define PHR pairs.
+The 100\,kb immediately centromere-ward of each PHR carries no shared
+paralogous sequence and is uniquely mappable, and so provides the control for
+this multi-mapping concern. Two statistics on the identical arm-pair set
+(256 within-community and 2{,}670 between-community pairs in HG002) order the
+two window types in opposite directions. The binary contrast $B/W$ (mean
+between-community contact divided by mean within-community contact) is 0.0267
+in PHR windows and 0.0021 in the flanks at 50\,kb, and 0.0280 against 0.0013 at
+20\,kb; because a smaller $B/W$ means a stronger within-community contrast,
+this metric places the unique-sequence flanks \emph{above} the PHR windows
+(12.4- and 21.5-fold respectively). The arm-level Mantel $\rho$ between
+sequence similarity and contact does the opposite: 0.657 for PHR windows
+against 0.520 for the flanks in HG002, and 0.656 against 0.522 in CHM13
+($p<10^{-4}$ in all four cases). The disagreement is a property of the two
+statistics, not a contradiction in the data. $B/W$ is a ratio of two class
+means, so it is carried by whichever term moves. Between PHR windows and flanks
+the between-class mean contact changes by 6.7-fold (1.6$\times10^{-3}$ against
+2.3$\times10^{-4}$ over the same 2{,}670 pairs) while the within-class mean
+contact moves the other way by 1.85-fold (0.058 against 0.108); $B/W$ therefore
+tracks the contact that crosses the community boundary, and at PHR coordinates
+that boundary is crossed by sequence which arms in different communities still
+share, the module repertoire overlapping at 0.57 between communities against
+0.83 within them. It is not a measure of the contact the community partition
+adds. A rank correlation over
+the whole arm matrix is not a two-class statistic and is insensitive to a
+background common to both classes; on it the PHR windows exceed the flanks in
+both haplotypes at each of the three resolutions tested, and the gap widens as bins get
+finer (10\,kb: 0.705 against 0.379 in HG002, 0.717 against 0.342 in CHM13).
+Both statistics are biased in the same conservative direction by multi-mapping.
+Placement among $k$ equally scoring loci is uniform, so a specific contact is
+attenuated by roughly $1/k$ per end, and $1/k^2$ for a PHR--PHR contact; the
+attenuation is symmetric across community classes, because a misplaced read is
+as likely to land between communities as within one. Misplacement therefore
+drives $\rho$ down and $B/W$ up, towards the null, and the uniquely mappable
+flank windows carry essentially none of it. PHR-window enrichment is thus a
+lower bound, and the bound is set by the biased measurement, which already
+exceeds the unbiased flank value on the rank metric. A multi-mapping artefact
+predicts the reverse ordering there, PHR below flank, which is not observed.
 A Pore-C contact matrix \cite{Ulahannan2019} ordered by sequence community shows
 the same community block structure after observed/expected inter-chromosomal
 normalization, which accounts for baseline differences in inter-chromosomal
@@ -761,10 +792,23 @@ For the community-level contact analysis we classified each inter-chromosomal
 arm pair as within-community or between-community using the arm-level Leiden
 ($k=15$) partition, and summarized the contrast as $B/W$, the mean contact of
 between-community pairs divided by the mean contact of within-community pairs
-(so $B/W<1$ indicates stronger within-community contact). As a unique-sequence
-control for multi-mapping we repeated the calculation on the 100 kb immediately
-centromere-ward of each PHR, outside the called PHR; these non-PHR flanks show
-the same within-community enrichment.
+(so $B/W<1$ indicates stronger within-community contact). %%% ("As a unique-sequence control for multi-mapping we repeated the calculation
+%%% on the 100 kb immediately centromere-ward of each PHR, outside the called
+%%% PHR; these non-PHR flanks show the same within-community enrichment.")
+As a unique-sequence control for multi-mapping we repeated the calculation on
+the 100\,kb immediately centromere-ward of each PHR, outside the called PHR and
+over the same arm-pair set. We report both the $B/W$ contrast and the arm-level
+Mantel $\rho$ for the control, because they answer different questions and, for
+this comparison, rank the two window types oppositely: $B/W$ is a ratio of two
+class means and is dominated by contact crossing the community boundary,
+whereas $\rho$ is a rank correlation over all arm pairs and is invariant to a
+background shared by both classes. In HG002 Hi-C at 50\,kb, $B/W$ is 0.0267 for
+PHR windows and 0.0021 for the flanks while $\rho$ is 0.657 and 0.520; in CHM13
+Hi-C the same comparison gives 0.0706 against 0.0567 and 0.656 against 0.522.
+Because uniform placement of a multi-mapping read attenuates a specific contact
+by about $1/k$ per end symmetrically across community classes, both PHR-window
+statistics are biased towards the null, and the PHR-window enrichment they
+report is a lower bound.
 
 \subsection*{Population differentiation}
 
