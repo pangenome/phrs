@@ -216,16 +216,23 @@ context rather than distributed indiscriminately among chromosome ends.
 
 \subsection*{Functional enrichment within subtelomeric PHRs}
 
-We performed a copy-number-aware enrichment analysis of Gene Ontology (GO)
+We asked which functions are represented among the gene copies that PHRs carry,
+using a copy-number-aware comparison of Gene Ontology (GO)
 \cite{GeneOntologyConsortium2026} and Reactome \cite{Reactome2024} annotations
-in CHM13 to assess the functional significance of the PHR compartment (Methods). Gene copies within PHRs were compared with all annotated gene copies
-elsewhere in the genome, with each duplicated copy counted separately rather
-than collapsed by gene name or family. The analysis
-identified 209 significantly enriched terms spanning biological processes,
-molecular functions, cellular components and Reactome pathways.
+in CHM13 against all annotated gene copies elsewhere in the genome, with each
+duplicated copy counted separately rather than collapsed by gene name or family
+(Methods). Two features of the input bound what the comparison can say. Of the
+402 gene copies whose midpoints fall in a PHR, 215 carry no GO or Reactome term
+and cannot enter the test at all, over half of them uncharacterised \texttt{LOC}
+loci; the result therefore rests on the 187 annotated copies. Those 187 copies
+derive from only 39 gene families, and eight families contribute 142 of them.
+The consequence is direct: 124 of the 209 significantly enriched terms draw every
+one of their copies from a single family. The analysis therefore describes the
+abundance of a small number of amplified duplicon families, not a functional
+repertoire of the compartment.
 
-The enrichments fall into several functional systems whose distributions differ
-markedly across the PHR communities (Extended Data Fig.~\ref{fig:ed2}). The most
+The families carrying the strongest copy-number signal fall into several
+functional systems whose distributions differ markedly across the PHR communities (Extended Data Fig.~\ref{fig:ed2}). The most
 community-restricted system is associated with DUX4: functions related to
 zygotic genome activation, transcriptional regulation, the nuclear envelope and
 the cell cycle are concentrated in the community C1 exchange network linking 4q and 10q.
@@ -236,7 +243,8 @@ exocyst activity with DDX11-associated helicase activity and sister-chromatid
 cohesion. A second distributed system is associated with male germ-cell
 development and sexual reproduction. The direct GO term spermatid development
 is enriched 25-fold relative to the rest of the genome and is carried by 19
-SEPTIN14-associated PHR copies;
+SEPTIN14-associated PHR copies, 9 loci spread over 10 chromosomes from a single
+family;
 broader enriched terms include spermatogenesis, germ-cell development, gamete
 generation and sexual reproduction. These SEPTIN14-associated copies also contribute septin and
 cytokinesis functions and are concentrated in community C3, with additional copies in
@@ -249,9 +257,10 @@ shows that PHRs do not carry a uniform functional repertoire. Instead, each
 community contains a different combination of partially overlapping modules:
 some are highly amplified within a single exchange network, whereas others
 recur across multiple communities. This functional mosaic parallels the
-underlying sequence-sharing communities and suggests that inter-chromosomal exchange
-redistributes discrete blocks of gene content rather than homogenizing entire
-chromosome ends.
+underlying sequence-sharing communities: a few amplified families are distributed
+among them in different combinations, rather than every chromosome end carrying a
+uniform repertoire. Whether inter-chromosomal exchange redistributes these families
+or whether they were amplified in place cannot be decided from presence alone.
 
 \subsection*{Communities carry ordinary continental population structure}
 
@@ -718,6 +727,15 @@ inherited terms only through a single explicitly directed NCBI Gene ``related
 functional gene'' link; copies with ambiguous, type-only or unsupported evidence
 were left unannotated and contributed no terms. This kept the number of genomic
 copies separate from the source used to annotate them.
+
+The test universe is therefore smaller than the number of copies: 402 gene copies
+have midpoints inside PHRs, and 187 of them carry at least one usable term, the
+remaining 215 having no GO or Reactome assignment (52\% of those are
+uncharacterised \texttt{LOC} loci). K = 187 was tested across 31{,}235
+term-by-set combinations, with the copy-number-aware background described above,
+and 209 terms passed; 124 of those 209 draw every copy from a single gene family,
+which is reported alongside each term so that family-driven results are not read
+as compartment-wide functional statements.
 
 Direct Gene Ontology assignments came from the NCBI human gene2go snapshot of 13
 July 2026, propagated through the go-basic release of 15 June 2026; Reactome
