@@ -29,14 +29,22 @@ gen () {  # id  query_label  h1_label  h2_label  out_base
     --panel-label ""
   local svg="$TMP/${id}.whole_genome_homologous_context_ribbon.svg"
   local cropped="$TMP/${base}.crop.svg"
+  # The plotter draws on a 3600-unit canvas. Exported 1:1 that becomes a ~36 in page,
+  # which then gets scaled to \linewidth in paper.tex (~5.5 in) and the labels become
+  # unreadable (~2 pt). Dividing the SVG's width/height (not its viewBox) by RENDER_DIV
+  # shrinks the page while leaving every coordinate and font size in user units, so the
+  # text ends up RENDER_DIV times larger relative to the printed width.
+  local RENDER_DIV=5
   # crop the viewBox/height to the content band
-  python3 - "$svg" "$cropped" "$CROP_Y0" "$CROP_H" "$CROP_X0" "$CROP_W" <<'PY'
+  python3 - "$svg" "$cropped" "$CROP_Y0" "$CROP_H" "$CROP_X0" "$CROP_W" "$RENDER_DIV" <<'PY'
 import sys,re
-svg,out,y0,h,x0,w=sys.argv[1:7]
+svg,out,y0,h,x0,w,div=sys.argv[1:8]
+y0,h,x0,w=int(y0),int(h),int(x0),int(w)
+div=float(div)
 s=open(svg).read()
 s=re.sub(r'viewBox="0 0 3600 840"', f'viewBox="{x0} {y0} {w} {h}"', s, count=1)
-s=re.sub(r'width="3600"',  f'width="{w}"',  s, count=1)
-s=re.sub(r'height="840"',  f'height="{h}"', s, count=1)
+s=re.sub(r'width="3600"',  f'width="{w/div:.1f}"',  s, count=1)
+s=re.sub(r'height="840"',  f'height="{h/div:.1f}"', s, count=1)
 # the "100%" background rect is anchored at (0,0); after shifting the viewBox it
 # no longer covers the whole visible region -> replace with a full-crop white rect
 s=s.replace('<rect width="100%" height="100%" fill="white"/>',
