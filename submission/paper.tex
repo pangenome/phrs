@@ -606,8 +606,6 @@ The authors declare no competing interests.
       \put(0.5,35){\textbf{\large\sffamily B}}\end{overpic}}\\[3pt]
   \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5C_paternal.png}%
     \put(0.4,13.5){\textbf{\large\sffamily C}}\end{overpic}\\[3pt]
-  \begin{overpic}[width=0.62\linewidth]{fig/MainFigures/Fig5D_pairwise_9q3q.pdf}%
-    \put(0.5,35){\textbf{\large\sffamily D}}\end{overpic}\\[-2pt]
   {\footnotesize\sffamily\textbf{Match type}\quad
     \fivesw{b8bdc3}~same chromosome\quad
     \fivesw{6f6f6f}~acrocentric\quad
@@ -629,13 +627,7 @@ The authors declare no competing interests.
     Light-gray ribbons show same-chromosome homologous chains, while colored
     ribbons show runs where the best non-homologous
     parental match beats the same-chromosome or homologous match in the same
-    whole-genome scan (\textbf{Methods}). \textbf{(D)} Pairwise alignments of the sequences
-    involved, telomere-first 60 kb: the daughter's paternal chr9q terminus (row) against
-    the father's chr9q hap2, his chr3q hap2 and his chr9q hap1 (columns). Colour is
-    sequence identity on a 98--100\% scale; the called tract is boxed in each cell. In
-    the tract the match to the father's chr3q is near-identical over full coverage, the
-    match to his chr9q hap2 is lower (a drifted descendant of the same module), and his
-    chr9q hap1 has no match at all. The 1p/5q run in (C) reflects ancestral
+    whole-genome scan (\textbf{Methods}). The 1p/5q run in (C) reflects ancestral
     homology rather than exchange: the chr5q homologue explains that sequence
     cleanly and the 1p-derived module is present in the grandparents' own chr5q.
     \emph{Limitation on haplotype identity.} The panel shows which parental
@@ -1051,6 +1043,22 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     repertoire (Jaccard 0.83 within versus 0.57 between, permutation $p = 5\times10^{-10}$) and
     shared block length (median 13.3 versus 9.9 kb) rather than arrangement.}
   \label{fig:ed3}
+\end{figure}
+
+\clearpage
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig4_pairwise_alignments.pdf}
+  \caption{\textbf{Pairwise alignments of the sequences in the retained exchange.}
+    Five telomere-first 60\,kb sequences: the daughter's paternal chr9q terminus (row
+    \texttt{SELF.p.chr9q}) against the father's chr9q hap2 (the transmitted chromosome copy),
+    his chr3q hap2, his chr3q hap1 and his chr9q hap1. Each cell is a dot plot of that pair,
+    with sequence identity on a 98--100\% scale. The called tract is boxed in the three cells
+    of the \texttt{SELF.p.chr9q} row: against the father's chr3q hap2 the diagonal is
+    continuous over the whole window at high identity, against his chr9q hap2 the tract is
+    present but at lower identity (a drifted descendant of the same module), and against his
+    chr9q hap1 the cell is empty, which is what excludes that haplotype as the source.}
+  \label{fig:ed4}
 \end{figure}
 
 \clearpage
