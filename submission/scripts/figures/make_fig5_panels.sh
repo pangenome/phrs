@@ -14,6 +14,12 @@ trap 'rm -rf "$TMP"' EXIT
 # crop window (SVG user units): keep content y in [CROP_Y0, CROP_Y0+CROP_H]
 # and trim empty left margin (content/row-labels start at x~186) to give the
 # chromosomes more horizontal space when scaled to \linewidth.
+# Colour ONLY the runs we claim: the obligate PAR1 control and the single exchange
+# supported by the donor-heterozygosity test. Everything else (notably 1p/5q) is drawn
+# gray, because the class-winner rule also colours thin-margin runs that are
+# indistinguishable from standing polymorphism among the grandparents' haplotypes.
+ONLY_CATEGORIES="PAR_XY,chr9_chr3_candidate"
+
 CROP_Y0=75; CROP_H=565; CROP_X0=165; CROP_W=$((3600 - CROP_X0))
 
 gen () {  # id  query_label  h1_label  h2_label  out_base
@@ -26,6 +32,7 @@ gen () {  # id  query_label  h1_label  h2_label  out_base
     --target-fai "data/fig5_${id}.target.fa.fai" \
     --output-dir "$TMP" \
     --query-label "$q" --target-h1-label "$h1" --target-h2-label "$h2" \
+    --only-categories "${ONLY_CATEGORIES:-}" \
     --panel-label ""
   local svg="$TMP/${id}.whole_genome_homologous_context_ribbon.svg"
   local cropped="$TMP/${base}.crop.svg"

@@ -86,6 +86,9 @@ HOMOLOG_MIN_IDENTITY = 0.95
 CONTIGUOUS_MERGE_GAP_BP = 0
 INTERCHROM_RIBBON_MIN_W = 7.0
 
+# set from --only-categories in main(); None means colour every category
+ONLY_CATEGORIES = None
+
 COLORS = {
     "PAR_XY": "#E7298A",
     "chr5_chr1_candidate": "#1F77B4",
@@ -994,10 +997,22 @@ def draw_callouts(svg: SVG, runs: list[Run], query_layout: GenomeLayout) -> None
             lane = len(lanes)
             lanes.append(center + width / 2)
         y = Y_QUERY - 140 - lane * 42
-        color = COLORS[run.category]
+        drawn_category = run.category
+        if ONLY_CATEGORIES is not None and run.category not in ONLY_CATEGORIES:
+            drawn_category = "other_nonacro"
+        color = COLORS[drawn_category]
         svg.line(center, Y_QUERY - 9, center, y + 8, color, 1.4, 0.9)
-        svg.text(center, y, label_text(run), 27, "700", color, "middle")
-        svg.text(center, y + int(29 * FONT_SCALE), f"{run.bp / 1000:.0f} kb, {run.donor_haplotype}", 24, "600", TEXT, "middle")
+        if drawn_category == run.category:
+            svg.text(center, y, label_text(run), 27, "700", color, "middle")
+            svg.text(
+                center,
+                y + int(29 * FONT_SCALE),
+                f"{run.bp / 1000:.0f} kb, {run.donor_haplotype}",
+                24,
+                "600",
+                TEXT,
+                "middle",
+            )
 
 
 def draw_legend(svg: SVG, runs: list[Run]) -> None:
@@ -1285,6 +1300,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-fai", type=Path, default=DEFAULT_TARGET_FAI)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUT_DIR)
     parser.add_argument("--output-prefix", default=None)
+    parser.add_argument(
+        "--only-categories",
+        default=None,
+        help="Comma-separated run categories to draw coloured. Any other category is drawn as "
+        "gray 'other_nonacro' and its label suppressed. Use this to restrict the panel to the "
+        "runs we actually claim (e.g. the obligate PAR1 control and the exchange supported by "
+        "the donor-heterozygosity test), because the class-winner rule colours any run where "
+        "the paralogous match wins by even a thin margin, which includes standing polymorphism.",
+    )
     parser.add_argument("--query-label", default="PAN027 paternal")
     parser.add_argument("--target-h1-label", default="PAN011 h1")
     parser.add_argument("--target-h2-label", default="PAN011 h2")
@@ -1294,7 +1318,14 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    config = build_config(parse_args())
+    global ONLY_CATEGORIES
+    _args = parse_args()
+    ONLY_CATEGORIES = (
+        {c.strip() for c in _args.only_categories.split(",") if c.strip()}
+        if _args.only_categories
+        else None
+    )
+    config = build_config(_args)
     config.out_dir.mkdir(parents=True, exist_ok=True)
     _query_seqs, query_lengths = read_query_fai(config.query_fai)
     _target_seqs, target_lengths_by_key, _target_lengths_by_seq = read_target_fai(config.target_fai)
