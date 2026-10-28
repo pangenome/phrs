@@ -629,11 +629,17 @@ The authors declare no competing interests.
     whole-genome scan (\textbf{Methods}). Only two runs are coloured: the obligate PAR1 exchange, which serves as the
     positive control, and the single 9q/3q exchange supported by the
     donor-heterozygosity test. The unlabelled gray run at chr5 is the 1p/5q
-    best-match that the same rule also detects; it is left gray because a
-    best-match margin of 0.1--0.5\% cannot be distinguished from standing
-    polymorphism, the chr5q homologue explains that sequence at higher identity
-    (99.6\% against 97.9\%), and the 1p-derived module is present in both
-    grandparents' own chr5q.
+    best-match that the same rule also detects. Its margin is real, not noise: the
+    non-homologous match exceeds the homologous one by 0.1--0.5\%, which is one to
+    five times the human pairwise nucleotide diversity of about 0.1\%, so the
+    sequence genuinely resembles the other chromosome more closely. What a margin
+    cannot do is say when the resemblance arose. For this run the arrangement is
+    already present in both grandparents' own chr5q, and the chr5q homologue still
+    explains the sequence at 99.6\% against 97.9\% for the chr1p copies, so the
+    excess paralogous affinity reflects a haplotype-specific inherited arrangement
+    rather than a copy created in the transmitted meiosis. We therefore leave it
+    gray: not because the signal is weak, but because transmission and de novo
+    exchange are indistinguishable from identity alone.
     \emph{Limitation on haplotype identity.} The panel shows which parental
     haplotype supplies each query segment; it does not establish the haplotype of
     every individual copy of the underlying duplicated sequence. Where an
