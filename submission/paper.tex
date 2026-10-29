@@ -297,29 +297,17 @@ CHM13 Hi-C, HG002 Hi-C and HG002 CiFi (Extended Data Fig.~\ref{fig:ed1}).
 Because near-identical PHRs on non-homologous chromosomes cannot be told apart by
 read mapping, we interpret contact at a PHR window as an aggregate over its
 near-identical copies rather than reads uniquely assigned to a single PHR.
-The 100\,kb immediately centromere-ward of each PHR carries no shared
-paralogous sequence and is uniquely mappable, and so provides the control for
-this multi-mapping concern. Two statistics on the identical arm-pair set
-(256 within-community and 2{,}670 between-community pairs in HG002) order the
-two window types in opposite directions. The binary contrast $B/W$ (mean
-between-community contact divided by mean within-community contact) is 0.0267
-in PHR windows and 0.0021 in the flanks at 50\,kb, and 0.0280 against 0.0013 at
-20\,kb; because a smaller $B/W$ means a stronger within-community contrast,
-this metric places the unique-sequence flanks \emph{above} the PHR windows
-(12.4- and 21.5-fold respectively). The arm-level Mantel $\rho$ between
-sequence similarity and contact does the opposite: 0.657 for PHR windows
-against 0.520 for the flanks in HG002, and 0.656 against 0.522 in CHM13
-($p<10^{-4}$ in all four cases). The disagreement is a property of the two
-statistics, not a contradiction in the data. $B/W$ is a ratio of two class
-means, so it is carried by whichever term moves. Between PHR windows and flanks
-the between-class mean contact changes by 6.7-fold (1.6$\times10^{-3}$ against
-2.3$\times10^{-4}$ over the same 2{,}670 pairs) while the within-class mean
-contact moves the other way by 1.85-fold (0.058 against 0.108); $B/W$ therefore
-tracks the contact that crosses the community boundary, and at PHR coordinates
-that boundary is crossed by sequence which arms in different communities still
-share, the module repertoire overlapping at 0.57 between communities against
-0.83 within them. It is not a measure of the contact the community partition
-adds. A rank correlation over
+The 100\,kb immediately centromere-ward of each PHR carries no shared paralogous
+sequence and is uniquely mappable, and so provides the control for this
+multi-mapping concern. Two statistics on the identical arm-pair set order the two
+window types oppositely. The binary contrast $B/W$ is 0.0267 in PHR windows and
+0.0021 in the flanks at 50\,kb, and 0.0280 against 0.0013 at 20\,kb, which places
+the unique-sequence flanks above the PHR windows; the arm-level Mantel $\rho$
+between sequence similarity and contact does the opposite, 0.657 against 0.520 in
+HG002 and 0.656 against 0.522 in CHM13 ($p<10^{-4}$). The disagreement is a
+property of the two statistics rather than of the data: $B/W$ is a ratio of class
+means and is carried by whichever term moves, so it tracks contact that crosses a
+community boundary rather than the contact the partition adds (Methods). A rank correlation over
 the whole arm matrix is not a two-class statistic and is insensitive to a
 background common to both classes; on it the PHR windows exceed the flanks in
 both haplotypes at each of the three resolutions tested, and the gap widens as bins get
@@ -612,44 +600,18 @@ The authors declare no competing interests.
     \fivesw{E7298A}~PAR1 (obligate)\quad
     \fivesw{D95F02}~9q/3q exchange}
   \caption{\textbf{Pedigree view of an ectopic subtelomeric exchange.}
-    \textbf{(A)} The WashU three-generation pedigree, with grandparents PAN011
-    and PAN010, their daughter PAN027 (the mother of PAN028) and the
-    granddaughter PAN028; PAN028's unsampled father is drawn as an open square.
-    \textbf{(B)} Identity-crossover zoom of the 9q/3q exchange. Along the PAN027
-    paternal chr9q subtelomere, the best-match sequence identity to the father's
-    own chr9q (gray) drops across the called 20 kb tract (shaded), while the match
-    to the father's chr3q (orange) stays near-identical. \textbf{(C)} PAN027 paternal haplotype compared with
-    the two PAN011 father haplotypes. In the ribbon panel, chromosomes are
-    concatenated in order and scaled by their length; the middle
-    track is the meiotic product inherited by the child/query haplotype, and
-    the upper and lower tracks are the two parental haplotypes being compared.
-    Light-gray ribbons show same-chromosome homologous chains, while colored
-    ribbons show runs where the best non-homologous
-    parental match beats the same-chromosome or homologous match in the same
-    whole-genome scan (\textbf{Methods}). Only two runs are coloured: the obligate PAR1 exchange, which serves as the
-    positive control, and the single 9q/3q exchange supported by the
-    donor-heterozygosity test. The unlabelled gray run at chr5 is the 1p/5q
-    best-match that the same rule also detects. Its margin is real, not noise: the
-    non-homologous match exceeds the homologous one by 0.1--0.5\%, which is one to
-    five times the human pairwise nucleotide diversity of about 0.1\%, so the
-    sequence genuinely resembles the other chromosome more closely. What a margin
-    cannot do is say when the resemblance arose. For this run the arrangement is
-    already present in both grandparents' own chr5q, and the chr5q homologue still
-    explains the sequence at 99.6\% against 97.9\% for the chr1p copies, so the
-    excess paralogous affinity reflects a haplotype-specific inherited arrangement
-    rather than a copy created in the transmitted meiosis. We therefore leave it
-    gray: not because the signal is weak, but because transmission and de novo
-    exchange are indistinguishable from identity alone.
-    \emph{Limitation on haplotype identity.} The panel shows which parental
-    haplotype supplies each query segment; it does not establish the haplotype of
-    every individual copy of the underlying duplicated sequence. Where an
-    arrangement differs between the grandparents' two haplotypes but not between a
-    parent and the chromosome transmitted to the child, the correct reading is
-    standing polymorphism, not a transmission event. We therefore make no exchange
-    claim for the 1p/5q runs in either genome: at both 4q/10q-type and 1p/5q
-    coordinates the relevant sequence is polymorphic between haplotypes in the
-    grandparents, and without copy-level haplotype labels a within-family event
-    cannot be separated from that standing variation.}
+    \textbf{(A)} The WashU three-generation pedigree: grandparents PAN011 and
+    PAN010, their daughter PAN027 and her daughter PAN028, whose father is
+    unsampled (open square). \textbf{(B)} Sequence identity along the PAN027
+    paternal chr9q subtelomere: the match to the father's own chr9q (grey) falls
+    across the called 20 kb tract (shaded) while the match to his chr3q (orange)
+    stays near-identical. \textbf{(C)} Whole-genome comparison of that transmitted
+    haplotype (middle track) with the father's two haplotypes (upper, lower);
+    chromosomes are concatenated and scaled by length. Grey ribbons are
+    same-chromosome chains; coloured ribbons mark the two exchanges we report, the
+    obligate PAR1 exchange (pink) and the chr9q/chr3q exchange (orange). The grey
+    run at chr5 is the chr1p/chr5q best non-homologous match, which is inherited
+    rather than created in this meiosis (Results).}
   \label{fig:fig5}
 \end{figure}
 
