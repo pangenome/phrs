@@ -138,9 +138,12 @@ No sign change, and the paralog leads both inside and outside; the dips in the c
    reads in both), so this is a sequence-level finding, not an assembly artefact.
 2. chr1p is **not** a donor to chr5q: there is no boundary-locked switch, only a constant paralogous
    advantage, consistent with standing polymorphism among the grandparents' haplotypes.
-3. Direction of the original chr3→chr9 event is still not established by similarity alone; the
-   tie-breaks are the haplotype-specific presence at chr9 (h2 yes, h1 no) and the recurrence of the
-   same chr3-derived terminus in the unrelated grandmother's chr9:h2.
+3. **Transmission direction is settled by the pedigree, not by similarity.** DAD existed first and SELF's
+   chromosomes derive from his gametes, so a shared segment must have gone DAD -> SELF; the comparison only
+   names which paternal copy (chr9:h2) carried it. Undetermined is the *older* within-genome duplication
+   between chr3q and chr9q: symmetric metrics cannot orient it, and the grandparents are unsampled. The
+   informative asymmetry is DAD's heterozygosity at chr9 (h2 carries, h1 empty) against both chr3 haplotypes
+   carrying the module, plus the same chr3-derived terminus in MOM's chr9:h2.
 
 **Fig 5B defect that remains:** the axis is dice (node overlap) but the caption calls it
 "best-match sequence identity". That label must change; the metric itself is legitimate and is the

@@ -172,9 +172,18 @@ these `Dup`/`Col` calls report.
    windows, and the alternative chr9:h1 is absent there. This is the crossover signature Fig 5B displays.
 3. **chr1p is not a donor to chr5q**: no boundary-locked switch, constant paralogous advantage — standing
    polymorphism among the grandparents' haplotypes, as the caption of Fig 5 states.
-4. **Direction of the original chr3→chr9 event is not settled by similarity** (symmetric metrics cannot
-   orient a duplication). Tie-breaks: haplotype-specific presence at chr9 (h2 yes, h1 no) and recurrence
-   of the same chr3-derived terminus in the unrelated grandmother's chr9:h2.
+4. **Transmission direction is settled by the pedigree, and similarity plays no part in it.** DAD existed
+   before SELF and SELF's chromosomes were built from his gametes, so a segment present in both must have
+   passed DAD -> SELF. The comparison against his haplotypes then identifies *which* paternal copy was
+   transmitted (chr9:h2 at 99.96-99.97% across the whole window versus 7.5% fragmentary coverage on
+   chr9:h1); it does not establish the direction, it only names the donor chromosome.
+   What is *not* oriented by either similarity or this pedigree is the **older duplication between chr3q and
+   chr9q inside the paternal lineage**: a module at chr9 that came from chr3 and a module at chr3 that came
+   from chr9 are indistinguishable under symmetric overlap metrics, and the grandparents are unsampled, so
+   the chr9-side event cannot be traced above DAD. The available asymmetry is that DAD is heterozygous at
+   chr9 (h2 carries the module, h1 is empty) while **both** his chr3 haplotypes carry it, which is the
+   pattern expected of an ancestral chr3 source and a derived chr9 recipient; and MOM's chr9:h2 carries the
+   same chr3-derived terminus, so the arrangement either predates both parents or arose more than once.
 
 ## 9. Corrections log (what was said wrong, and why)
 
