@@ -1,0 +1,16 @@
+community	n_arms	arms	n_pairs	status	median_d_sub	min_d_sub	max_d_sub	median_T_gen	T_ci95_gen	median_T_Myr	T_Myr_if_mu3e-8
+C1	2	chr10_q,chr4_q	1	ok	0.006512	0.006512	0.006512	271,338		5.43	2.17
+C2	1	chr18_p	0	no pair aligned >= 20000 bp							
+C3	6	chr3_q,chr7_p,chr9_q,chr11_p,chr19_p,chr16_q	7	ok	0.005993	0.004254	0.012276	249,716	200,521-351,321	4.99	2.00
+C4	2	chr7_q,chr12_q	0	no pair aligned >= 20000 bp							
+C5	3	chr9_p,chr12_p,chr20_q	2	ok	0.014722	0.013413	0.016031	613,427	558,877-667,977	12.27	4.91
+C6	6	chr1_q,chr17_q,chr19_q,chr13_q,chr22_q,chr21_q	1	ok	0.014188	0.014188	0.014188	591,163		11.82	4.73
+C7	2	chr22_p,chr14_p	1	ok	0.013768	0.013768	0.013768	573,653		11.47	4.59
+C8	1	chr15_q	0	no pair aligned >= 20000 bp							
+C9	1	chr16_p	0	no pair aligned >= 20000 bp							
+C10	1	chr17_p	0	no pair aligned >= 20000 bp							
+C11	4	chr1_p,chr8_p,chr5_q,chr6_q	5	ok	0.006041	0.004982	0.020839	251,716	207,564-868,291	5.03	2.01
+C12	2	chr2_q,chr20_p	0	no pair aligned >= 20000 bp							
+C13	1	chr4_p	0	no pair aligned >= 20000 bp							
+C14	1	chrX_q	0	no pair aligned >= 20000 bp							
+C15	1	chrX_p	0	no pair aligned >= 20000 bp							
