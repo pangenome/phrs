@@ -99,3 +99,49 @@ the transmitted arrangement is a single-copy locus at read resolution.
 
 `scripts/pedigree/ont_read_support_9q3q.py` (this note's companion script) recomputes the table
 above and the junction-spanning read lists from the two BAM sets.
+
+---
+
+## Multi-alignment evidence (sweepga + IMPG) — the framework that produced Fig 5B
+
+Correction to earlier text in this note and in the analysis notes: the class-winner table is **not**
+winner-only. It carries one `same_chrom` and one `interchrom` candidate for **6,821 of 6,958**
+windows, each with its own dice, so it *is* the multi-alignment comparison (sweepga many:many →
+IMPG node-multiset dice), not a single alignment of two windows.
+
+**Per-window dice, daughter's paternal chr9q (− PAN027#2#chr9 vs father PAN011):**
+
+| region | chr9:h2 (homolog) | chr3:h2 (paralog) | Δ(homolog − paralog) |
+|---|---|---|---|
+| outside the called tract (29 windows) | **1.0000** | 0.9995 | **+0.0005** |
+| inside the called tract (12 windows) | **0.9933** (range 0.9782-1.0000) | **0.9994** | **-0.0061** |
+
+The sign flips at the tract boundary and the paralog leads in 11 of 12 tract windows; at
+136,184,000 the homolog falls to 0.9782 while chr3:h2 holds 0.9995. chr9:h1 is absent there
+entirely. **This is the crossover signature, and it is what Fig 5B shows.**
+
+**Same test at 5q/1p (daughter's paternal chr5q − PAN027#2#chr5 vs father PAN011):**
+
+| region | chr5 (homolog) | chr1p (paralog) | Δ |
+|---|---|---|---|
+| outside the called tract (57 windows) | 0.9960 | 0.9970 | −0.0010 |
+| inside the called tract (14 windows) | 0.9967 | 0.9990 | −0.0023 |
+
+No sign change, and the paralog leads both inside and outside; the dips in the chr1p series lie
+*outside* the called tract. So 5q/1p is a uniformly better paralogous family, not a tract.
+
+**Conclusions now supported by the multi-alignment evidence:**
+
+1. chr3q is the apparent donor to the daughter's paternal chr9q terminus (dice; homolog switches
+   from leading outside to trailing inside; the alternative chr9:h1 is absent). The ONT reads show
+   the arrangement is real (junction-spanning reads at MAPQ 60 in DAD and 14 in SELF; telomere-reaching
+   reads in both), so this is a sequence-level finding, not an assembly artefact.
+2. chr1p is **not** a donor to chr5q: there is no boundary-locked switch, only a constant paralogous
+   advantage, consistent with standing polymorphism among the grandparents' haplotypes.
+3. Direction of the original chr3→chr9 event is still not established by similarity alone; the
+   tie-breaks are the haplotype-specific presence at chr9 (h2 yes, h1 no) and the recurrence of the
+   same chr3-derived terminus in the unrelated grandmother's chr9:h2.
+
+**Fig 5B defect that remains:** the axis is dice (node overlap) but the caption calls it
+"best-match sequence identity". That label must change; the metric itself is legitimate and is the
+correct one here, because it penalises incomplete coverage and is sensitive to indels and SVs.
