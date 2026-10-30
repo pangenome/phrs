@@ -58,3 +58,15 @@ These are review-independent and already in the manuscript:
 - matched F_ST baseline (ratios 0.72–1.44, all equivalent) plus block heterogeneity;
 - module architecture (98.6% same telomere-relative orientation; repertoire 0.83 vs 0.57;
   order not conserved) as Extended Data Fig. 3.
+
+## Locus-level report (read-level + multi-alignment)
+
+- **`notes/9q3q_locus_full_report.md`** — the complete record for the one retained ectopic
+  exchange: pipeline and metric definitions (dice/jaccard/cosine, `estimated.identity`, gap-compressed
+  `dv`, length-penalised cols 10/11), the seven candidate explanations with verdicts, ONT read
+  support at every involved end (father chr9 hap1/hap2, chr3 hap1/hap2; daughter paternal/maternal
+  chr9) including the junction-spanning reads that refute assembly over-duplication, the
+  per-window multi-alignment dice profile showing the homolog→paralog switch at the tract
+  boundary (and its absence at 5q/1p), flagger status with corrected `Dup`/`Col` semantics, a
+  corrections log of claims retracted during this analysis, and open items.
+  Companion: `notes/read_support.json`, `scripts/pedigree/ont_read_support_9q3q.py`.
