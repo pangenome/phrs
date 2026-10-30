@@ -1,0 +1,60 @@
+{
+ "father:PAN011#2#chr9": {
+  "term_reads": 112,
+  "term_per_kb": 1.12,
+  "tail5kb_reads": 30,
+  "module_reads": 32,
+  "module_per_kb": 0.59,
+  "who": "father",
+  "label": "MODULE carrier (hap2)",
+  "contig": "PAN011#2#chr9",
+  "length": 133745035
+ },
+ "father:PAN011#1#chr9": {
+  "term_reads": 169,
+  "term_per_kb": 1.69,
+  "tail5kb_reads": 48,
+  "who": "father",
+  "label": "other hap (hap1)",
+  "contig": "PAN011#1#chr9",
+  "length": 136101078
+ },
+ "father:PAN011#2#chr3": {
+  "term_reads": 223,
+  "term_per_kb": 2.23,
+  "tail5kb_reads": 92,
+  "who": "father",
+  "label": "donor chr3 hap2",
+  "contig": "PAN011#2#chr3",
+  "length": 205578940
+ },
+ "father:PAN011#1#chr3": {
+  "term_reads": 171,
+  "term_per_kb": 1.71,
+  "tail5kb_reads": 66,
+  "who": "father",
+  "label": "other chr3 hap1",
+  "contig": "PAN011#1#chr3",
+  "length": 202554222
+ },
+ "SELF:PAN027#2#chr9": {
+  "term_reads": 56,
+  "term_per_kb": 0.56,
+  "tail5kb_reads": 14,
+  "module_reads": 35,
+  "module_per_kb": 0.65,
+  "who": "SELF",
+  "label": "transmitted pat chr9",
+  "contig": "PAN027#2#chr9",
+  "length": 136209149
+ },
+ "SELF:PAN027#1#chr9": {
+  "term_reads": 57,
+  "term_per_kb": 0.57,
+  "tail5kb_reads": 15,
+  "who": "SELF",
+  "label": "maternal chr9 (contrast)",
+  "contig": "PAN027#1#chr9",
+  "length": 129071589
+ }
+}
