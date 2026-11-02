@@ -145,3 +145,37 @@ gene pool. The clock inverts the other way for frequency: d = 2 mu T means 1 Myr
 generations = 0.12%, whereas per-generation exchange would give d = 2 mu = 0.00024%, ~500x below
 anything observed. The implied exchange frequency per block is therefore ~1 per 10^4-10^5
 generations: continuous on a Myr timescale, not generational.
+
+## Inter- vs intra-: the 2x2 against the local (subtelomeric) baseline
+
+Full cohort, 18,827 windows, 1,748 s. Every alignment record is classified from its PanSN tags
+(`sample#hap#contig`): allelic (same arm) vs paralogous (different arm), and paralogous
+intra-chromosomal (chrN_p vs chrN_q) vs inter-chromosomal (different chromosomes).
+
+| class | records | d_sub (weighted) | per-record median | frac >= 99.5% | T (median) |
+|---|---|---|---|---|---|
+| allelic, within individual | 118,112 | 0.00223 | **0.00100** | 0.916 | 0.83 Myr |
+| allelic, between individuals | 55,132,305 | 0.00241 | **0.00100** | 0.908 | 0.83 Myr |
+| paralog, intra-chromosomal | 1,962,844 | 0.01106 | **0.00800** | 0.261 | 6.7 Myr |
+| paralog, inter-chromosomal | 132,557,383 | 0.01220 | **0.00800** | 0.179 | 6.7 Myr |
+
+**1. The local allelic baseline is 0.10% per-record median**, identical within and between
+individuals (0.00100 both), i.e. the same as genome-wide nucleotide diversity - the subtelomeric
+*sequence* baseline is not elevated. The weighted value (0.24%) is inflated because some blocks in an
+"allelic" comparison align to paralogous copies rather than to the orthologous position; the median
+is the honest baseline.
+
+**2. The correct denominator is that local baseline, not genome-wide pi.** paralog / allelic =
+**8.0x by medians, 5.1x by weighted divergence**. For ancient duplicated gene families the
+equivalent ratio is 100-1000x. A 5-8x ratio is the quantitative signature of concerted evolution:
+paralogs are measurably more divergent than alleles, but only by a factor of a few.
+
+**3. Inter- vs intra-chromosomal paralogy is indistinguishable: 1.00x by medians**
+(0.00800 vs 0.00800), 1.10x weighted. A chromosome's own two ends are no more similar to each other
+than to any other chromosome's end. The mild excess of near-identical blocks intra-chromosomally
+(26.1% of bases >= 99.5% vs 17.9%) is not accompanied by any difference in the central tendency.
+This independently supports the community structure cutting across chromosomes rather than
+following them.
+
+**4. Allelic vs paralog is separable, which is what makes the analysis meaningful at all:** 91-92%
+of allelic aligned bases are >= 99.5% identical versus 18-26% for paralogs.
