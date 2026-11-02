@@ -108,3 +108,40 @@ are the young, heavily homogenized ones.
    window pair is still counted exactly once.
 5. Single technology of measurement: wfmash on assembly-vs-assembly; no read-level verification at
    population scale (that was done only for the pedigree locus).
+
+## Is inter-arm exchange rare? (block-level vs arm-scale)
+
+**Block-level sharing is ubiquitous.** Of the 658 heterologous arm pairs:
+
+| threshold | pairs | % | equivalent T (upper bound) |
+|---|---|---|---|
+| d_sub <= 0.5% | 20 | 3.0% | <= 4.2 Myr |
+| d_sub <= 1.0% | 128 | 19.5% | <= 8.3 Myr |
+| d_sub <= 2.0% | 399 | 60.6% | <= 16.7 Myr |
+| d_sub <= 5.0% | 617 | 93.8% | <= 41.7 Myr |
+
+**33 of 45 arms** have at least one heterologous partner below 1% divergence, **18 of 45** below 0.5%,
+and the median arm's best partner sits at 0.639% (5.3 Myr). No arm is isolated: every subtelomere
+carries blocks that it shares recently with at least one non-allelic end.
+
+**What is rare is the arm-scale configuration**, not the molecular process: a discrete module at a
+terminus that behaves as a detectable, transmissible unit (2.3% of arms; one validated by
+transmission in the pedigree). The manuscript's claim should therefore be stated as *block-level
+exchange is ubiquitous and continuous; arm-scale rearrangements that persist as discrete
+configurations are rare* - not "exchange is rare".
+
+## Internal calibration: PAR2 is the "recombines every generation" reference
+
+| pair | d_sub | per-record median | frac >= 99.5% | T (upper bound) |
+|---|---|---|---|---|
+| chrX_q-chrY_q (**PAR2**, obligate male crossover every generation) | **0.00124** | 0.00100 | **0.982** | 1.03 Myr |
+| chrX_p-chrY_p (PAR1 mixed with non-PAR Xp/Yp sequence) | 0.00694 | 0.00400 | 0.552 | 5.79 Myr |
+| chr20_q-chr4_p (tightest in scope) | 0.00252 | 0.00100 | 0.935 | 2.10 Myr |
+
+PAR2's within-species divergence is 0.12% *because* that is allelic coalescence depth (~4 N_e mu),
+not zero. So the correct statement is not "these pairs recombine every generation" but **the
+tightest heterologous modules coalesce no deeper than alleles do** - they are drawn from the same
+gene pool. The clock inverts the other way for frequency: d = 2 mu T means 1 Myr = 50,000
+generations = 0.12%, whereas per-generation exchange would give d = 2 mu = 0.00024%, ~500x below
+anything observed. The implied exchange frequency per block is therefore ~1 per 10^4-10^5
+generations: continuous on a Myr timescale, not generational.
