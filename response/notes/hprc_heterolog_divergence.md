@@ -179,3 +179,50 @@ following them.
 
 **4. Allelic vs paralog is separable, which is what makes the analysis meaningful at all:** 91-92%
 of allelic aligned bases are >= 99.5% identical versus 18-26% for paralogs.
+
+## Intra-community vs inter-community (the comparison that matters)
+
+Pairs where both arms carry a k=15 assignment (n = 626; 58 intra-, 568 inter-community):
+
+| | n | weighted d_sub | median | q25-q75 | per-record median | mean frac >= 99.5% |
+|---|---|---|---|---|---|---|
+| intra-community | 58 | 0.01036 | **0.01310** | 0.0083-0.0147 | 0.0110 | **0.180** |
+| inter-community | 568 | 0.01331 | **0.01637** | 0.0120-0.0246 | 0.0140 | **0.079** |
+
+Mann-Whitney U = 10,947, z = -4.21, **p = 2.5e-5**; ratio **0.80x** (0.78x weighted). Against the
+allelic baseline the two are 13.1x and 16.4x, i.e. both remain far above allelic.
+
+**The two distributions overlap almost completely** (intra q75 0.0147 vs inter q25 0.0120). The
+robust separation is not in the central tendency but in the near-identical tail: **18.0% vs 7.9% of
+aligned bases at >= 99.5% identity, a 2.3x enrichment.**
+
+### Per community (intra vs the same arms' out-of-community partners)
+
+| community | arms | intra | vs outside | ratio |
+|---|---|---|---|---|
+| C14 | X_q, Y_q | 0.00124 | 0.01435 | 0.09x (n=1) |
+| **C11** | 1p, 5q, 6q, 8p | 0.00749 | 0.01538 | **0.49x** |
+| **C3** | 3q, 7p, 9q, 11p, 16q, 19p | 0.00849 | 0.01419 | **0.60x** |
+| C1 | 4q, 10q | 0.00698 | 0.02302 | 0.30x (n=1) |
+| C2 | 10p, 18p | 0.02391 | 0.03090 | 0.77x (n=1) |
+| C6 | 1q, 13q, 17q, 19q, 21q, 22q | 0.01992 | 0.02484 | 0.80x |
+| C5 | 6p, 9p, 12p, 20q | 0.01384 | 0.01455 | **0.95x** |
+| **C7** | 13p, 14p, 15p, 21p, 22p | 0.01429 | 0.01428 | **1.00x** |
+| C4 | 7q, 12q | 0.03775 | 0.02561 | 1.47x (n=1) |
+| C12 | 2q, 20p | 0.01327 | 0.01544 | 0.86x (n=1) |
+| C15 | X_p, Y_p | 0.00694 | 0.01654 | 0.42x (n=1) |
+
+**Community cohesion is community-specific, not global.** C11 and C3 are genuinely cohesive
+(0.49x, 0.60x); C5 shows almost none (0.95x) and **C7 exactly none (1.00x)**. C7 is the acrocentric
+community: its members share rDNA *architecture* while their sequences diverge as much as any
+outside partner. Communities are therefore **structure-/repertoire-defined, not
+divergence-magnitude-defined**.
+
+### Consequence for the manuscript
+
+Do not claim that community members are "more similar overall" - that difference is only 0.80x with
+heavily overlapping distributions. Claim that they share **near-identical blocks**: 2.3x enrichment
+of bases at >= 99.5% identity, consistent with the module-architecture result (block repertoire
+Jaccard 0.83 within vs 0.57 between). Overall divergence magnitude is nearly flat across the genome
+precisely because the blocks themselves are old and shared everywhere (see
+`community_coalescence_times.md`: within-community 0.0070 vs between-community 0.0076 in HG002).
