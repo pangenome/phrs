@@ -13,26 +13,48 @@ the same 2 kb distance bin, so "10-12 kb" means both sides lie 10-12 kb from the
 Paralogs are inter-chromosomal only (same-chromosome pairs excluded). Divergence is substitution-only
 (`X/(=+X)` from CIGAR), allelic and paralog computed identically.
 
-| distance (kb) | allelic | paralog | **ratio** |
-|---|---|---|---|
-| 0-2 | 2.260% | 2.940% | **1.30** |
-| 2-4 | 0.660% | 1.960% | 2.97 |
-| 4-6 | 0.850% | 1.600% | 1.88 |
-| 6-8 | 0.260% | 1.290% | 4.96 |
-| 8-10 | 0.580% | 1.150% | 1.98 |
-| 10-12 | 0.220% | 1.270% | 5.77 |
-| 12-14 | 0.290% | 1.520% | 5.24 |
-| 14-16 | 0.180% | 1.000% | 5.56 |
-| 16-20 | 0.18-0.22% | 0.73-0.81% | 3.3-4.5 |
-| 20-50 | 0.07-0.17% | 0.47-0.94% | 3.5-7.8 |
-| 50-100 | 0.11-0.13% | 0.56-0.62% | 4.8-5.1 |
-| 100-200 | 0.13-0.14% | 0.60-0.68% | 4.3-5.2 |
-| 200-500 | 0.150% | 1.050% | 7.00 |
+| distance (kb) | allelic median | paralog median | ratio | allelic bp (Gbp) | paralog bp (Gbp) |
+|---|---|---|---|---|---|
+| 0-2 | 2.260% | 2.940% | **1.30** | 0.4 | 4.0 |
+| 2-4 | 0.660% | 1.960% | **2.97** | 2.4 | 11.5 |
+| 4-6 | 0.850% | 1.600% | **1.88** | 6.6 | 158.5 |
+| 6-8 | 0.260% | 1.290% | **4.96** | 5.2 | 34.0 |
+| 8-10 | 0.580% | 1.150% | **1.98** | 5.5 | 76.3 |
+| 10-12 | 0.220% | 1.270% | **5.77** | 6.5 | 42.9 |
+| 12-14 | 0.290% | 1.520% | **5.24** | 5.7 | 66.5 |
+| 14-16 | 0.180% | 1.000% | **5.56** | 9.5 | 75.1 |
+| 16-18 | 0.180% | 0.810% | **4.50** | 10.1 | 20.2 |
+| 18-20 | 0.220% | 0.730% | **3.32** | 13.2 | 22.4 |
+| 20-22 | 0.120% | 0.930% | **7.75** | 8.1 | 14.7 |
+| 22-24 | 0.160% | 0.940% | **5.88** | 7.4 | 13.5 |
+| 24-26 | 0.100% | 0.490% | **4.90** | 60.6 | 50.9 |
+| 26-28 | 0.170% | 0.600% | **3.53** | 9.1 | 15.1 |
+| 28-30 | 0.140% | 0.620% | **4.43** | 6.6 | 7.9 |
+| 30-32 | 0.110% | 0.520% | **4.73** | 5.8 | 11.5 |
+| 32-34 | 0.120% | 0.540% | **4.50** | 6.1 | 7.7 |
+| 34-36 | 0.090% | 0.590% | **6.56** | 6.4 | 4.6 |
+| 36-38 | 0.100% | 0.570% | **5.70** | 3.5 | 5.8 |
+| 38-40 | 0.090% | 0.620% | **6.89** | 5.1 | 9.5 |
+| 40-42 | 0.090% | 0.490% | **5.44** | 4.5 | 4.2 |
+| 42-44 | 0.100% | 0.600% | **6.00** | 5.9 | 4.3 |
+| 44-46 | 0.110% | 0.470% | **4.27** | 5.2 | 6.3 |
+| 46-48 | 0.110% | 0.610% | **5.55** | 4.8 | 4.9 |
+| 48-50 | 0.070% | 0.540% | **7.71** | 6.1 | 3.6 |
+| 50-75 | 0.130% | 0.620% | **4.77** | 125.6 | 206.8 |
+| 75-100 | 0.110% | 0.560% | **5.09** | 165.9 | 217.2 |
+| 100-150 | 0.140% | 0.600% | **4.29** | 319.3 | 456.6 |
+| 150-200 | 0.130% | 0.680% | **5.23** | 312.2 | 176.0 |
+| 200-500 | 0.150% | 1.050% | **7.00** | 2219.7 | 137.4 |
 
 ## What this says
 
-**The relative homogenisation does peak at the junction.** In the first 10 kb the
-paralog/allelic ratio is **1.3-3.0**; from 20 kb inward it is **4-8** (median ~5). At the extreme
+**The relative homogenisation does peak at the junction, but as a step rather than a gradient.**
+In the first 10 kb the paralog/allelic ratio is **1.3-3.0**; it then jumps to ~5 across 10-16 kb,
+falls back to **3.32 at 18-20 kb**, and only settles into the 4-8 band (median ~5) beyond 20 kb.
+The 12-20 kb band is where the allelic estimate first becomes stable (0.18-0.29% versus 0.26-2.26%
+closer in), so the transition is best described as two breakpoints at roughly 10 kb and 20 kb, not a
+monotonic decay. Note also that 12-14 kb carries the **highest paralog divergence in the whole
+0-50 kb range (1.52%)**, which is not what a simple monotonic homogenisation model predicts. At the extreme
 tip, non-homologous copies are within 30% of the divergence measured between homologous copies -
 the strongest form of the inter-arm exchange statement, and the shape a crossover/conversion model
 predicts.
