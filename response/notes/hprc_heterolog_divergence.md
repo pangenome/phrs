@@ -226,3 +226,33 @@ of bases at >= 99.5% identity, consistent with the module-architecture result (b
 Jaccard 0.83 within vs 0.57 between). Overall divergence magnitude is nearly flat across the genome
 precisely because the blocks themselves are old and shared everywhere (see
 `community_coalescence_times.md`: within-community 0.0070 vs between-community 0.0076 in HG002).
+
+## Figure: the scope of subtelomeric divergence
+
+`response/notes/heterolog_scope.pdf` / `.png`, produced by
+`scripts/ci/make_heterolog_figure.py` from `/moosefs/erikg/phrs_tmp/hprc_het_hist.json`
+(the cohort run with per-class histograms).
+
+- **A** ECDF of substitution divergence for allelic (same arm), paralog on the same
+  chromosome, and paralog on a different chromosome. Record-level, weighted by aligned bp.
+  Allelic median 0.10%; both paralog classes 0.80% - they are indistinguishable from each
+  other, and both sit 8x above allelic. Bin width is 1e-3, so the allelic curve is visibly
+  stepped: its entire distribution falls inside one or two bins.
+- **B** The same statement as fold-change over the allelic median, with the ancient
+  duplicated-gene-family reference band (100-1000x) for scale. Allelic 1x, all paralogs 8x
+  (record level, exact); the in-community (2.0x) and out-of-community (9.0x) bars are
+  **pair-level** medians, because the aggregator does not accumulate histograms per
+  community - that asymmetry is a real caveat and the reason panel C exists.
+- **C** Community cohesion: within-community median divergence divided by the median to
+  that community's out-of-community partners. Most communities sit at 0.40-0.60 (genuinely
+  cohesive); **C5 at 0.60 and C7 at 0.97** are the weak ones, C7 being the acrocentric
+  community that shares rDNA architecture without sequence cohesion. Communities with <3
+  internal pairs are omitted.
+- **D** Why the community split is tail-defined: per arm pair, median divergence (magnitude)
+  against the fraction of aligned bases at >= 99.5% identity (tail). In-community pairs are
+  not shifted left in magnitude but are strongly enriched at high tail fractions.
+
+**Caption wording to avoid:** "paralogs are more similar within communities than between" -
+the magnitude difference is 0.80x with heavily overlapping distributions. The supported
+wording is "community members share a larger fraction of near-identical blocks (18% vs 8% of
+aligned bases at >= 99.5%), while overall divergence magnitude differs only ~20%".
