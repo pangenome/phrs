@@ -256,3 +256,60 @@ precisely because the blocks themselves are old and shared everywhere (see
 the magnitude difference is 0.80x with heavily overlapping distributions. The supported
 wording is "community members share a larger fraction of near-identical blocks (18% vs 8% of
 aligned bases at >= 99.5%), while overall divergence magnitude differs only ~20%".
+
+## The right summary: best non-homolog partner per end
+
+Community membership is a derived partition; the primitive quantity is **for each chromosome end,
+how close is its closest non-allelic partner**. Using the partner's per-record median divergence
+(robust - see the note on `min_record_d` below), across the 45 ends with alignments:
+
+| statistic | value |
+|---|---|
+| min | **0.10%** (= the allelic baseline, 0.83 Myr) |
+| q25 | 0.25% (2.1 Myr) |
+| **median** | **0.50%** (4.2 Myr) = **5x allelic** |
+| q75 | 0.70% (5.8 Myr) |
+| max | 7.30% (60.8 Myr) |
+| mean | 0.95%; mean/median 1.90 (right-skewed) |
+
+- 11 of 45 ends find a non-homolog within 2x allelic (<= 0.2%)
+- 29 of 45 within 5x (<= 0.5%)
+- 38 of 45 within 10x (<= 1.0%)
+- 41 of 45 within 20x (<= 2.0%)
+
+**Every subtelomere has a non-allelic partner closer than 5x the allelic baseline at the median, a
+quarter are within 2.5x, and four (Xq, Yq, Yp, and the chr20q/chr4p pair) find a non-homolog at
+exactly allelic divergence.** This is the statement the analysis should be built on, with community
+membership as a downstream description of who the partners are.
+
+### Independent validation of the PHR caller
+
+The seven arms with no k=15 assignment (no PHR signal) are chr2_p, chr3_p, chr5_p, chr8_q, chr11_q,
+chr14_q, chr18_q. Their best non-homolog divergences:
+
+| no-signal arm | best non-homolog | median d | T |
+|---|---|---|---|
+| chr2_p | chr5_p | 7.30% | 60.8 Myr |
+| chr3_p | none | - | - |
+| chr5_p | chr16_q | 4.80% | 40.0 Myr |
+| chr8_q | chr17_p | 6.40% | 53.3 Myr |
+| chr11_q | none | - | - |
+| chr14_q | none | - | - |
+| **chr18_q** | **chrX_p** | **0.40%** | **3.3 Myr** |
+
+Six of the seven are exactly the arms with no close non-homolog (median 5.6%, three with no
+heterologous alignment at all), versus **0.50% median for the 41 signal-bearing arms (max 4.0%)**.
+That is a clean, independent confirmation that the PHR caller's "signal" calls track real
+inter-arm sharing.
+
+**chr18_q is the exception and deserves a look**: it has a 0.40% partner (chrX_p) yet carries no PHR
+call - a candidate false negative in the caller, not a false positive.
+
+### Correction: `min_record_d` is not a usable statistic
+
+The pair table's `min_record_d` (minimum per-alignment divergence) is ~0 for 35 of 45 arms because
+with ~10^8 alignment records some single block is always perfect. Any statement of the form "N pairs
+share an allele-level block" based on it is meaningless, and an earlier version of this note claimed
+"261 of 658 pairs have at least one allele-level block" on that basis - **withdrawn**. Robust
+alternatives are the per-record median divergence (`d_median_record`), the fraction of aligned bases
+at >= 99.5% identity (`frac_at_99.5pct`), and the per-end best-partner statistic above.
