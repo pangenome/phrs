@@ -313,3 +313,46 @@ share an allele-level block" based on it is meaningless, and an earlier version 
 "261 of 658 pairs have at least one allele-level block" on that basis - **withdrawn**. Robust
 alternatives are the per-record median divergence (`d_median_record`), the fraction of aligned bases
 at >= 99.5% identity (`frac_at_99.5pct`), and the per-end best-partner statistic above.
+
+## FINAL NUMBERS (1e-4 bins, full cohort, self-pairs excluded)
+
+Supersedes the coarse-bin values earlier in this note. Resolution was 1e-3 in the first runs, which
+quantized every per-record median onto 0.001 increments; the figure and these numbers use **1e-4**.
+
+| quantity | coarse bins | **final (1e-4)** |
+|---|---|---|
+| allelic median (same arm) | 0.10% | **0.15%** |
+| paralog median (different chromosome) | 0.80% | **0.89%** |
+| paralog median (same chromosome) | 0.80% | **0.83%** |
+| paralog / allelic | 8.0x | **5.93x** |
+| inter- / intra-chromosomal paralog | 1.00x | **1.07x** (still indistinguishable) |
+| best partner on another chromosome, median per end | 0.50% | **0.52%** |
+| intra / inter community (inter-chrom pairs only) | 0.80x | **0.80x** (n=58/568, unchanged) |
+
+**Ladder against the corrected allelic baseline of 0.15%:**
+
+| R = d_pair / d_allelic | pairs | % |
+|---|---|---|
+| <= 1.5x (at or below allelic) | 3 | 0.5% |
+| 1.5-3x | 24 | 3.6% |
+| 3-8x | 199 | 30.2% |
+| 8-20x | 336 | 51.1% |
+| > 20x | 96 | 14.6% |
+
+**Best partner on another chromosome, per end (n = 45):** min 0.10%, q25 0.33%, **median 0.52%
+(3.5x allelic)**, q75 0.73%, max 7.35%. 11 of 45 ends find an inter-chromosomal partner within 2x the
+allelic baseline.
+
+### Bug that contaminated one intermediate result
+
+The `PAIR` aggregation key includes allelic pairs (`chrN_p`-`chrN_p`). Any downstream "closest
+partner for arm A" loop must therefore **drop `arm_a == arm_b` before searching**, or every arm
+"finds" a partner at the allelic level (its own alleles). An intermediate computation in this session
+reported a best-partner median of 0.16% and 48 "ends" on that basis; **that number was
+contamination and is withdrawn.** With self-pairs removed the value is 0.52% over 45 ends, which
+matches the coarse-bin estimate (0.50%) to within quantization.
+
+The figure `heterolog_scope.pdf/.png` was regenerated from the final run: panel A now has 1e-4 bins
+(a smooth allelic ECDF with a real shoulder), panel E plots only inter-chromosomal partners with the
+allelic baseline and the per-end median marked, and panel C shows only communities with >= 3 internal
+pairs (C11 0.49x, C3 0.59x, C6 0.80x, C5 0.93x, C7 0.97x).

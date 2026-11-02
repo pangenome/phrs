@@ -37,7 +37,7 @@ C_IN = "#D95F02"
 C_OUT = "#757575"
 
 
-def hist_to_points(hist, bins_per_unit=1000):
+def hist_to_points(hist, bins_per_unit=10000):
     """[(d, weight)] from a weighted histogram whose bin i covers d = i/bins_per_unit."""
     return [(i / bins_per_unit, w) for i, w in enumerate(hist) if w]
 
@@ -72,7 +72,7 @@ def main():
     classes = d["summary"].get("classes", {})
     if not classes:
         sys.exit("no per-class histograms in this JSON - rerun the aggregator with hist dumping")
-    pairs = d["pairs"]
+    pairs = [r for r in d["pairs"] if r["arm_a"] != r["arm_b"]]   # drop allelic self-pairs
     for r in pairs:
         for k in ("d_sub", "d_median_record", "frac_at_99.5pct", "aligned_bp"):
             try:
@@ -86,8 +86,9 @@ def main():
             comm[row["ChromArm"].strip()] = row["Community"].strip()
 
     alle = classes["allelic_between_indiv"]
-    alle_pt = hist_to_points(alle["hist"]) + hist_to_points(
-        classes.get("allelic_within_indiv", alle)["hist"])
+    bpu = int(alle.get("hist_bins_per_unit", 10000))
+    alle_pt = hist_to_points(alle["hist"], bpu) + hist_to_points(
+        classes.get("allelic_within_indiv", alle)["hist"], bpu)
     intra_rows = [r for r in pairs if comm.get(r["arm_a"]) and comm.get(r["arm_a"]) == comm.get(r["arm_b"])]
     inter_rows = [r for r in pairs if comm.get(r["arm_a"]) and comm.get(r["arm_b"])
                   and comm[r["arm_a"]] != comm[r["arm_b"]]]
@@ -102,8 +103,8 @@ def main():
     # ---- A: ECDF
     ax = fig.add_subplot(gs[0, 0])
     # record-level histograms only: exact, and consistent across curves
-    inter_pt_rec = hist_to_points(classes["paralog_inter_chrom"]["hist"])
-    intra_pt_rec = hist_to_points(classes["paralog_intra_chrom"]["hist"])
+    inter_pt_rec = hist_to_points(classes["paralog_inter_chrom"]["hist"], bpu)
+    intra_pt_rec = hist_to_points(classes["paralog_intra_chrom"]["hist"], bpu)
     for pt, lab, col in ((alle_pt, "allelic (same arm)", C_ALLELE),
                          (intra_pt_rec, "paralog, same chromosome", C_IN),
                          (inter_pt_rec, "paralog, different chromosome", C_OUT)):
@@ -179,6 +180,33 @@ def main():
     ax.legend(fontsize=6.5, loc="upper right")
     ax.axvline(base, color=C_ALLELE, ls=":", lw=1)
     ax.text(base * 1.05, 0.95, "allelic", color=C_ALLELE, fontsize=6)
+
+    # ---- E: best non-homolog partner per end
+    bestp = {}
+    for r in pairs:
+        if r["arm_a"].rsplit("_", 1)[0] == r["arm_b"].rsplit("_", 1)[0]:
+            continue                      # inter-chromosomal partners only
+        for e1, e2 in ((r["arm_a"], r["arm_b"]), (r["arm_b"], r["arm_a"])):
+            if r["d_median_record"] != r["d_median_record"]:
+                continue
+            if e1 not in bestp or r["d_median_record"] < bestp[e1][0]:
+                bestp[e1] = (r["d_median_record"], e2)
+    vals = sorted(v for v, _ in bestp.values())
+    axv = fig.add_axes([0.09, -0.16, 0.86, 0.12])
+    axv.scatter(vals, [0] * len(vals), s=26, color="#6a4c93", alpha=0.8, zorder=3)
+    axv.set_ylim(-1, 1)
+    axv.set_xlim(min(vals) * 0.8, max(vals) * 1.25)
+    axv.axvline(base, color=C_ALLELE, ls=":", lw=1.2, zorder=2)
+    axv.axvline(st.median(vals), color=C_IN, lw=1.5, zorder=2)
+    axv.set_xscale("log")
+    axv.set_yticks([])
+    axv.set_xlabel("closest partner on another chromosome, median divergence per end",
+                   fontsize=7.5)
+    axv.tick_params(labelsize=7)
+    axv.text(base * 1.03, 0.28, "allelic\n0.10%", color=C_ALLELE, fontsize=6)
+    axv.text(st.median(vals) * 1.03, 0.28, "median end\n%.2f%%" % (st.median(vals) * 100),
+             color=C_IN, fontsize=6)
+    axv.set_title("E  every end's closest partner on ANOTHER chromosome", fontsize=9, loc="left")
 
     fig.suptitle("Subtelomeric divergence: allelic baseline, paralogous copies, and communities "
                  "(HPRCv2, 465 assemblies, %s window PAFs)" % d["summary"].get("n_files", "?"),

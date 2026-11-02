@@ -38,9 +38,18 @@ CIGAR_RE = re.compile(r"(\d+)([=XIDM])")
 WIN_RE = re.compile(r"(chr[0-9XY]+)_(parm|qarm)$")
 CG_TAG = re.compile(r"cg:Z:([^\t\n]+)")
 GI_TAG = re.compile(r"gi:f:([0-9.eE+-]+)")
-NBINS = 500
+BINS_PER_UNIT = 10000
+NBINS = 5000
 MU = 1.2e-8
 YEARS = 20
+
+
+SAMPLE_RE = re.compile(r"^([^#]+)#([^#]+)#")
+
+
+def sample_hap(name):
+    m = SAMPLE_RE.match(name)
+    return (m.group(1), m.group(2)) if m else (None, None)
 
 
 def arm_of(name):
@@ -63,7 +72,7 @@ def parse_cigar(cg):
 
 
 def binof(d):
-    return NBINS if d >= 0.5 else int(d * 1000)
+    return NBINS if d >= 0.5 else int(d * BINS_PER_UNIT)
 
 
 def _lines(path):
@@ -95,8 +104,16 @@ def process(path):
             continue
         cq, q_arm = arm_of(qn)
         ct, t_arm = arm_of(tn)
-        if not q_arm or not t_arm or cq == ct:
-            continue                        # heterologs only
+        if not q_arm or not t_arm:
+            continue
+        qs_, qh_ = sample_hap(qn)
+        ts_, th_ = sample_hap(tn)
+        if q_arm == t_arm:
+            cls = "allelic_within_indiv" if (qs_ == ts_ and qh_ != th_) else "allelic_between_indiv"
+        elif cq == ct:
+            cls = "paralog_intra_chrom"
+        else:
+            cls = "paralog_inter_chrom"
         mc = CG_TAG.search(line)
         if mc is None:
             continue
@@ -104,9 +121,18 @@ def process(path):
         mx = m + x
         if mx < 2000:
             continue
-        key = (q_arm, t_arm) if q_arm < t_arm else (t_arm, q_arm)
+        key = ("PAIR",) + ((q_arm, t_arm) if q_arm < t_arm else (t_arm, q_arm))
         a = out[key]
         d = x / mx
+        c = out[("CLASS", cls)]
+        c[0] += 1
+        c[1] += mx
+        c[2] += x
+        c[3][binof(d)] += mx
+        if d <= 0.005:
+            c[4] += mx
+        if d < c[5]:
+            c[5] = d
         a[0] += 1
         a[1] += mx
         a[2] += x
@@ -154,8 +180,8 @@ def wquant(hist, q):
     for i, c in enumerate(hist):
         run += c
         if run >= target:
-            return i / 1000.0
-    return NBINS / 1000.0
+            return i / BINS_PER_UNIT
+    return NBINS / BINS_PER_UNIT
 
 
 def main():
@@ -181,7 +207,12 @@ def main():
     tot = merge(parts)
     print(f"done {time.time() - t0:.0f}s, {len(tot)} heterologous arm pairs", file=sys.stderr)
     rows = []
-    for (x, y), v in tot.items():
+    classes = {}
+    for k, v in tot.items():
+        if k[0] == "CLASS":
+            classes[k[1]] = v
+            continue
+        _, x, y = k
         n, mx, xx, hist, bp995, mind, gisum, ghist, n_nogi = v
         if mx < 20000:
             continue
@@ -220,6 +251,22 @@ def main():
          "global_frac_at_99.5pct": sum(v[4] for v in tot.values()) / max(1, sum(v[1] for v in tot.values())),
          "n_files": len(files), "mu": MU}
     s["global_T_Myr"] = s["global_d_median_record"] / (2 * MU) * YEARS / 1e6
+    json.dump({"summary": s, "pairs": rows}, open(a.out + ".json", "w"), indent=1)
+    s["classes"] = {}
+    for cls, v in classes.items():
+        n, mx, xx, hist, bp995, mind = v[0], v[1], v[2], v[3], v[4], v[5]
+        if not mx:
+            continue
+        s["classes"][cls] = {"n_records": n, "aligned_bp": mx,
+                             "d_sub_weighted": xx / mx,
+                             "d_sub_median_record": wquant(hist, 0.5),
+                             "d_q25": wquant(hist, 0.25),
+                             "d_q75": wquant(hist, 0.75),
+                             "frac_at_99.5pct": bp995 / mx,
+                             "T_Myr_median": wquant(hist, 0.5) / (2 * MU) * YEARS / 1e6,
+                             "hist": hist,
+                             "bin_width": 1.0 / BINS_PER_UNIT,
+                             "hist_bins_per_unit": BINS_PER_UNIT}
     json.dump({"summary": s, "pairs": rows}, open(a.out + ".json", "w"), indent=1)
     print(json.dumps(s, indent=1))
     print("\nclosest 15 heterologous arm pairs across the cohort:")
