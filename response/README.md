@@ -70,3 +70,26 @@ These are review-independent and already in the manuscript:
   boundary (and its absence at 5q/1p), flagger status with corrected `Dup`/`Col` semantics, a
   corrections log of claims retracted during this analysis, and open items.
   Companion: `notes/read_support.json`, `scripts/pedigree/ont_read_support_9q3q.py`.
+
+## Heterolog / coalescence / telomere analyses (2026-11)
+
+Six notes added after the first response round. Read them in this order:
+
+| note | what it establishes |
+|---|---|
+| `notes/hprc_heterolog_divergence.md` | cohort-scale allelic vs paralogous divergence across 465 HPRCv2 assemblies (allelic 0.15%, paralog 0.89%, ratio 5.93x; intra vs inter chromosomal indistinguishable at 1.07x); **read the "READ THIS FIRST" banner** - early sections are coarse-bin and superseded by the FINAL NUMBERS section |
+| `notes/community_tier_table.md` | the three regimes: allelic-like (C7 acrocentric, PAR1, PAR2), near-allelic cohesive (C1, C11, C3), weak, and residual (C4) - source material for Extended Data Table `ED_community_tier_table` |
+| `notes/exchange_rate_estimates.md` | exchange rate and transfer size implied by the divergences (1.35e-6 per locus pair per generation; tract ~50 kb; ~17% of the obligate rate for the average block) |
+| `notes/community_coalescence_times.md` | per-community coalescence times, distributions, skew (5-12 Myr upper bound, 2-5 Myr at mu = 3e-8) |
+| `notes/telomere_distance_profile.md` | ratio vs distance from the telomere-subtelomere junction: step structure with breakpoints near 10 and 20 kb |
+| `notes/telomere_gene_vs_intergenic.md` | gene vs intergenic split; the terminal ~6 kb is **unmeasurable** because the allelic denominator fails there |
+| `notes/lit_Tan2026_methods_extract.md` | the companion paper (Tan et al., bioRxiv 10.64898/2026.09.03.748401): verified full-text extract; they do **not** date by molecular clock, and both places where an early draft let their paper soften ours are retracted in-section |
+
+Figures: `notes/heterolog_scope.pdf`, `notes/telomere_profile.pdf`, `notes/coalescence_distribution.pdf`,
+`notes/telomere_end_curves.pdf`. Code: `scripts/ci/hprc_heterolog_divergence.py`,
+`telomere_distance_profile.py`, `telomere_gene_profile.py`, `telomere_end_ratio_curves.py`,
+`make_heterolog_figure.py`, `make_telomere_profile_figure.py`, `make_end_curve_figure.py`,
+`scripts/cladistics/community_coalescence.py`.
+
+**Outstanding (see `ROADMAP_analysis_integration.md`):** Methods and Results text for all of the above
+(patch files, not yet applied); the tip control on long/high-identity records; the primate extension.

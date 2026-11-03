@@ -1,0 +1,12 @@
+community	arms	n_arms	n_internal_pairs	member_allelic_pct	internal_paralog_pct	ratio	outside_paralog_pct	outside_ratio	tier	allelic_from
+C1	chr10_q,chr4_q	2	1	0.19	0.62	3.26	1.99	10.47	near-allelic, cohesive	member arms
+C2	chr10_p,chr18_p	2	1	0.105	1.28	12.19	2.8	26.67	weakly cohesive	member arms
+C3	chr11_p,chr16_q,chr19_p,chr3_q,chr7_p,chr9_q	6	15	0.19	0.67	3.53	1.29	6.79	near-allelic, cohesive	member arms
+C4	chr12_q,chr7_q	2	1	0.15	4.07	27.13	2.39	15.93	residual	member arms
+C5	chr12_p,chr20_q,chr6_p,chr9_p	4	6	0.14	1.365	9.75	1.31	9.36	weakly cohesive	member arms
+C6	chr13_q,chr17_q,chr19_q,chr1_q,chr21_q,chr22_q	6	15	0.155	1.93	12.45	2.24	14.45	weakly cohesive	member arms
+C7	chr13_p,chr14_p,chr15_p,chr21_p,chr22_p	5	10	1.13	1.135	1.0	1.085	0.96	allelic-like	member arms
+C11	chr1_p,chr5_q,chr6_q,chr8_p	4	6	0.17	0.585	3.44	1.33	7.82	near-allelic, cohesive	member arms
+C12	chr20_p,chr2_q	2	1	0.185	1.34	7.24	1.4	7.57	weakly cohesive	member arms
+C14	chrX_q,chrY_q	2	1	0.07	0.1	1.43	1.415	20.21	allelic-like	member arms
+C15	chrX_p,chrY_p	2	1	0.455	0.45	0.99	1.605	3.53	allelic-like	member arms

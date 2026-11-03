@@ -314,3 +314,17 @@ Nothing in the response or the manuscript should quote a number that is not reac
 
 † `M6_mouse_satellite.md` carries a retraction header: its satellite-masked axis is void (QLEN/QSTART swap),
 so only its satellite **fractions** may be cited.
+
+
+## New analyses (2026-11) - not yet in the point-by-point table above
+
+| item | note | artefact | status |
+|---|---|---|---|
+| allelic vs paralogous divergence, cohort scale | `notes/hprc_heterolog_divergence.md` | `scripts/ci/hprc_heterolog_divergence_pairs.tsv` | analysis complete; Methods/Results **to write** |
+| community tiers (allelic-like / cohesive / residual) | `notes/community_tier_table.md` | `submission/supporting_material/ED_community_tier_table.tsv` | **patch ready**: `patches/ED_table_community_tiers.tex` |
+| acrocentric + PAR treatment (answers the review's only methodological objection) | `notes/community_tier_table.md` | same table | **patch ready**: `patches/response_acrocentric_PAR.tex` |
+| exchange rate + transfer size implied | `notes/exchange_rate_estimates.md` | - | analysis complete; Discussion **to write** |
+| coalescence times and distributions | `notes/community_coalescence_times.md` | `scripts/cladistics/community_coalescence_communities.tsv` | analysis complete |
+| distance-from-telomere profile | `notes/telomere_distance_profile.md`, `notes/telomere_gene_vs_intergenic.md` | `notes/telomere_profile.pdf`, `notes/telomere_end_curves.pdf` | tip zone **withdrawn as unmeasurable**; interior 4-8x stands |
+| companion paper (Tan et al. 2026) | `notes/lit_Tan2026_methods_extract.md` | - | full text read; **Methods + references still unobtainable** |
+| primate extension | `ROADMAP_analysis_integration.md` section D/F | - | **not started** |

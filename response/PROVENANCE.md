@@ -119,3 +119,37 @@ Conventions: paths under `/moosefs/...` are read-only externals; `data/...` are 
   the `grch38_coord` release overstates subtelomeric resolvability). Only HG06807 of the pedigree is present.
 - RepeatMasker per haplotype, index `/moosefs/.../repeat_masker_bed_hprc_r2_v1.0.index.csv` (462 haplotypes)
 - shipped IMPG index `hprc25272.bidirectional.impg` — **unusable** (see P2)
+
+## P15 — cohort-scale heterolog divergence (new, 2026-11)
+- Input: `/moosefs/.../PHR_III/all-vs-all.1Mb.p95/*.paf.gz`, 18,827 target-centric PAFs of the
+  telomere-anchored 500 kb windows, 465 assemblies, wfmash -p 95. **CIGARs present**; the `md:f` tag is
+  NOT substitutions/alignment length (disagrees with the CIGAR on 52% of records) and must not be used;
+  `gi:f` is gap-compressed identity.
+- Script: `scripts/ci/hprc_heterolog_divergence.py` (1e-4 bins, lexicographic dedupe, allelic self-pairs
+  excluded from paralog aggregation). Per-arm table: `scripts/ci/hprc_heterolog_divergence_pairs.tsv`.
+- Aggregated outputs live on `/moosefs/erikg/phrs_tmp/hprc_het_final.json` (not committed; rerunnable in
+  ~33 min with 14 workers).
+
+## P16 — distance-from-telomere profile
+- Same input as P15. Scripts `scripts/ci/telomere_distance_profile.py`, `telomere_gene_profile.py`,
+  `telomere_end_ratio_curves.py`. Orientation rule: the window interval endpoint that coincides with a
+  contig end is the telomere (p arms position 0, q arms position L); windows are stored in original
+  contig orientation.
+- Gene mask: `data/chm13v2.0_RefSeq_Liftoff_v5.2.gff3.gz` projected per arm to distance-from-telomere.
+  CHM13 window names carry a `CHM13#0#` prefix that must be stripped to match GFF seqids.
+
+## P17 — companion paper (Tan et al. 2026)
+- doi:10.64898/2026.09.03.748401, PMC13684503, PMID 42922562.
+- **Retrieval: bioRxiv returns HTTP 429 to this host at the IP level** (with and without a browser UA);
+  PMC will never serve it (*"The license terms ... do not permit archiving in PMC"*). The full text was
+  obtained through **Exa's crawler** (`web_search` with `includeContent`), truncated at 50,000 chars and
+  therefore covering Results and Discussion but **not Methods and not the reference list**.
+- Delegated Codex CLI runs cannot write files on this host (`bwrap: loopback: Failed RTM_NEWADDR`);
+  use the `sxgc.*` user lanes instead.
+
+## P18 — primate assemblies (for the planned extension, not yet analysed)
+- `/moosefs/guarracino/chr14-del/assemblies/primates/`: diploid T2T assemblies mPanTro3, mPanPan1,
+  mGorGor1, mPonAbe1, mPonPyg2, mHooLeu1/2, mCalJac1 (#1/#2 each), chromosome-scale, PanSN names carry the
+  human homolog (`chr1_hap1_hsa1`), so inter-species ortholog assignment is given.
+- `/moosefs/guarracino/panpan/`: 50 haplotype assemblies + `all62.fa.gz` (49 GB, 40,892 contigs) for
+  within-species (bonobo) diversity. No pre-existing all-vs-all alignments found.

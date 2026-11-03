@@ -1,0 +1,44 @@
+% Extended Data table: community tiers.
+% Data: submission/supporting_material/ED_community_tier_table.tsv
+% Source of truth for the numbers: response/notes/community_tier_table.md
+% Paste into paper.tex as an Extended Data table; not applied automatically.
+
+\begin{table}[h!]
+\centering
+\caption{\textbf{Three regimes of inter-arm exchange among the subtelomeric
+communities.} For each Leiden ($k=15$) community: the median divergence between
+homologous copies of its member arms (allelic), between its members and each
+other (internal paralogous), and between its members and all ends outside it
+(outside paralogous). Divergence is the per-record median over alignments in
+2\,kb windows, inter-chromosomal pairs only, substitutions only
+($\times/({=}+\times)$). The ratio column is internal paralogous divided by
+allelic; 1.0 means non-homologous copies are as similar as alleles.}
+\label{tab:community_tiers}
+\small
+\begin{tabular}{llrrrrr}
+\hline
+Community & Arms & Allelic & Internal par. & Ratio & Outside par. & Out. ratio \\
+\hline
+C7  & 13p, 14p, 15p, 21p, 22p          & 1.130 & 1.135 & \textbf{1.00} & 1.085 & 0.96 \\
+C15 & Xp, Yp                           & 0.455 & 0.450 & \textbf{0.99} & 1.605 & 3.53 \\
+C14 & Xq, Yq                           & 0.070 & 0.100 & \textbf{1.43} & 1.415 & 20.21 \\
+C1  & 4q, 10q                          & 0.190 & 0.620 & 3.26 & 1.990 & 10.47 \\
+C11 & 1p, 5q, 6q, 8p                   & 0.170 & 0.585 & 3.44 & 1.330 & 7.82 \\
+C3  & 3q, 7p, 9q, 11p, 16q, 19p        & 0.190 & 0.670 & 3.53 & 1.290 & 6.79 \\
+C12 & 20p, 2q                          & 0.185 & 1.340 & 7.24 & 1.400 & 7.57 \\
+C5  & 6p, 9p, 12p, 20q                  & 0.140 & 1.365 & 9.75 & 1.310 & 9.36 \\
+C2  & 10p, 18p                         & 0.105 & 1.280 & 12.19 & 2.800 & 26.67 \\
+C6  & 1q, 13q, 17q, 19q, 21q, 22q      & 0.155 & 1.930 & 12.45 & 2.240 & 14.45 \\
+C4  & 7q, 12q                          & 0.150 & 4.070 & 27.13 & 2.390 & 15.93 \\
+\hline
+\end{tabular}
+
+\vspace{2pt}
+{\footnotesize Divergences in percent. The two arms assigned to C4 share no
+near-identical sequence (0.1\% of aligned bases at $\geq 99.5\%$ identity) and
+that arm is not the closest non-homologous partner for either member; C4 is a
+residual pairing produced by assigning every arm to a community, not a cohesive
+group. C7 (acrocentric short arms) and C15--C14 (the pseudoautosomal regions)
+recombine obligately and are reported here for reference, not as evidence of
+ectopic exchange.}
+\end{table}
