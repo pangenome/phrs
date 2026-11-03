@@ -102,3 +102,42 @@ shows.
 **Cannot:** say anything about the first few kb, because the denominator fails there. And it cannot
 substitute for copy-resolved data at WASH/DDX11L, because per-end curves still compare window
 sequences, not individual repeat copies.
+
+## D. Primate extension - phase-1 design (decided)
+
+**Aligner: FastGA driven through sweepGA, NOT wfmash.** wfmash's pangenome defaults (Mash-sketch
+prefilter, identity floor) are tuned for within-species divergence and prune cross-species
+subtelomeric matches (human-gorilla blocks sit at 2-4%, orangutan deeper), especially in repeat-rich
+sequence where the sketch is least reliable.
+
+Parameters:
+
+- `-f 512` (or 1024) - false-match filter frequency, the parameter that governs sensitivity in repeats
+  (this session already established this value for subtelomeric windows).
+- identity floor set **per species pair** (e.g. 75-80% for orangutan/marmoset, higher for chimp/bonobo),
+  not one global threshold.
+- `--num-mappings many:many` with **no 10:10 cap upstream**: keep all mappings and filter downstream, so
+  that "how many arms does this contig match" - which is itself a measurement - is not destroyed.
+- minimum block length and identity applied afterwards, inside our own `d_sub` code.
+
+**Mandatory control before any human-vs-ape comparison.** Every human baseline in this project
+(allelic 0.150%, paralog 0.890%, ratio 5.93x) comes from the HPRCv2 `all-vs-all.1Mb.p95` set, which is
+**wfmash**. Comparing wfmash-derived human numbers with FastGA-derived ape numbers confounds tool with
+biology. Therefore:
+
+1. Re-align a human subset (~50 HPRCv2 haplotypes x 46 windows) to the CHM13 windows with
+   FastGA/sweepga at the final settings.
+2. Report the offset against the wfmash p95 values on the same classes.
+3. Decide from the offset: if small, use FastGA for apes and cite the calibration; if large, either
+   re-run HPRCv2 in FastGA or restrict the ape claims to **within-species ratios**, which are far less
+   aligner-sensitive than absolute divergences.
+
+**Primary cross-species quantity = ratios** (paralog / ortholog, paralog / allelic within species).
+Absolute divergences are aligner-sensitive; ratios are not. This ordering protects the main claim.
+
+**Direction.** Run with CHM13 windows as the target so each ape contig's multiplicity count is natural,
+then repeat a subset in the reverse direction to confirm the ratio is direction-invariant.
+
+**Phase 1 does not need a graph.** Ortholog baseline, cross-arm level, per-species ratio and the mu
+calibration all come from alignments alone. pggb/IMPG on ~1.5 Gbp is phase 2, only if a claim requires
+cross-species community comparison.
