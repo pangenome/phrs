@@ -109,24 +109,62 @@ mapped to CHM13 with 95% median accuracy, while **8p and 9q reads mapped with 0%
 These reads were misassigned to other arms sharing the same subtelomeric blocks (**8p reads
 misassigned to 6q; 9q reads misassigned to 11p and 3q**)."
 
-So the population-wide data say 9q terminal sequence is **routinely misassigned to 3q and 11p** —
-independent confirmation that 9q and 3q carry strongly homologous terminal sequence, but also the
-reason to be careful: the 9q/3q homology is a **general population feature**, not something unique to
-the pedigree. Our pedigree result is narrower and still valid — it concerns *which paternal haplotype*
-carries the module (DAD chr9:h2 yes, chr9:h1 no) and its transmission through two meioses at
-99.96-99.97% — but it must be described as one sampled carrier of a common architecture, not as a
-private rearrangement.
+So the population-wide data say 9q terminal sequence is **routinely misassigned to 3q and 11p**. This
+is **corroboration of the retained candidate, not a caveat on it**: it independently demonstrates that
+9q's terminus carries sequence homologous to 3q and 11p at population scale — which our own data
+already showed (C3 contains 3q, 9q and 11p; chr3q-chr9q arm-scale divergence 1.23%; 11 of 45 ends
+have a non-homolog partner within 2x the allelic baseline).
 
-## 8. Their positional claim, which bears on our telomere-distance profile (L178-182)
+**CORRECTION (retracted framing).** An earlier revision of this section said the pedigree result "must
+be described as one sampled carrier of a common architecture, not as a private rearrangement", i.e. let
+this sentence from Tan et al. soften our conclusion. **That was wrong and is withdrawn.** A
+read-misassignment result from in-silico mapping contains no information about any of the evidence the
+pedigree claim rests on:
 
-"All-to-all comparisons between representative contigs of each major haplotype ... showed that
-**differences between haplotypes of the same arm lay largely at the telomeric end, while centromeric
-ends were more likely to be homologous**."
+1. **Haplotype specificity.** DAD is heterozygous for the module: chr9:h2 carries it, chr9:h1 does not
+   (7.5% fragmentary coverage at every FastGA frequency tried). Misassignment cannot produce that
+   asymmetry.
+2. **Boundary-locked switch.** In the multi-alignment, the homolog scores 1.0000 outside the tract and
+   0.9933 inside while chr3 stays flat at 0.9994, with the sign change at the tract boundary. Diffuse
+   mapping ambiguity blurs boundaries; it does not create a sharp one.
+3. **Transmission.** 99.96% (DAD to SELF) then 99.97% (SELF to KID), 100% covered, i.e. two
+   independent meioses.
+4. **Single-molecule support.** Five DAD reads cross from unique chr9 sequence into the module (one at
+   MAPQ 60 spanning 173 kb), eight in SELF, and 14-92 reads reach each of the queried telomeres. Those
+   exclude assembly misplacement for this arrangement in these individuals — which is precisely the
+   question in-silico misassignment does not address.
 
-That is a telomere-proximity effect at the *haplotype* level, obtained by contig comparison rather than
-by our distance binning. It is consistent in direction with what we see structurally, and it is not
-subject to the allelic-denominator failure that invalidated our first 10 kb of bins — so their
-framing is the one to cite for the positional gradient.
+Tan et al. analyse no pedigrees and therefore cannot address points 1-4 at all. The correct statement
+is not that our result needs hedging but that the two results answer different questions: **they map
+how common this architecture is in the population; we resolve how it is inherited within a family, at
+haplotype and single-molecule resolution.** Tan's finding is a reason to state the population context
+of the module, not a reason to weaken the transmission claim.
+
+## 8. Their positional claim beside ours (corrected - do NOT cede the gradient to them)
+
+They report (L178-182): "differences between haplotypes of the same arm lay largely at the telomeric
+end, while centromeric ends were more likely to be homologous."
+
+**CORRECTION (retracted framing).** An earlier revision of this section said "cite theirs for the
+telomere gradient, not ours", implying our distance profile is superseded. **That is withdrawn.** Our
+own profile (`telomere_distance_profile.md`) contains results theirs does not, and in one respect
+contradicts a simple gradient:
+
+1. **The structure is steps, not a gradient.** Ratio 1.3-3.0 in the first 10 kb, ~5 across 10-16 kb,
+   back to **3.32 at 18-20 kb**, then 4-8 beyond 20 kb - two breakpoints at roughly 10 and 20 kb.
+2. **12-14 kb carries the HIGHEST paralog divergence in the whole 0-50 kb range (1.52%)**, which a
+   monotonic "homogenisation decays away from the telomere" model does not predict.
+3. **The terminal ~6-10 kb cannot be measured this way at all**: allelic divergence there is
+   0.3-2.5% against 0.09-0.16% in the interior, which cannot be orthologous divergence in a species
+   with 0.1-0.3% diversity. Any claim about sequence divergence in the first few kb - including a
+   gradient claim - is therefore subject to a measurement hazard they do not address.
+
+Their statement is at a different level of analysis (contig architecture per haplotype, not sequence
+divergence by distance, and not tested against a failing allelic denominator), so it neither replaces
+nor validates ours. The defensible synthesis: **their haplotype architecture and our distance profile
+are independent observations of the same non-uniformity; our profile adds the quantitative shape
+(step structure, a paralog maximum at 12-14 kb) and the caution that the last few kb are not
+measurable by sequence comparison.** Cite both, cede nothing.
 
 ## Retrieval record (complete; do not repeat from this host)
 
