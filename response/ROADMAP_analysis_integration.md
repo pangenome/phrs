@@ -141,3 +141,50 @@ then repeat a subset in the reverse direction to confirm the ratio is direction-
 **Phase 1 does not need a graph.** Ortholog baseline, cross-arm level, per-species ratio and the mu
 calibration all come from alignments alone. pggb/IMPG on ~1.5 Gbp is phase 2, only if a claim requires
 cross-species community comparison.
+
+## E. Revision to section D (supersedes the mandatory control)
+
+**Decision: drop the mandatory aligner-consistency control for the initial ape run.** It would require
+re-running and re-adjudicating the human analyses for a doubt that the reviews did not raise (the
+reviewers accepted the alignment methodology; their only methodological objection was the restriction
+to chromosome ends, which distorts acrocentrics and PARs).
+
+Replacement, at the cost of one sentence rather than a cascade:
+
+1. **Compute the ape classes entirely within the ape pipeline** - ape allelic, ape paralog, ape ortholog
+   from the same sweepga -> graph -> IMPG run - so ape ratios are internally consistent by construction.
+2. **Attribute the human numbers to their pipeline** in Methods ("computed with the HPRCv2 window
+   alignments and IMPG similarity"), never implying interchangeability with the ape values.
+3. Revisit only if a claim specifically needs an *absolute* divergence compared across pipelines. The
+   similarity framing does not require it.
+
+## F. The similarity-first reframe (how the analyses are actually built)
+
+Every analysis in this project is based on **IMPG similarity over an implicit pangenome representation**,
+not on pairwise divergences. The alignment step exists to build that representation; the graph is the
+object analysed, and local reinterpretation happens on the graph. Consequences:
+
+- **The ape pipeline must end at IMPG similarity**, not at PAFs. Class assignment (allelic / paralog /
+  ortholog) should be read off the graph alongside arm identity, exactly as for Fig 5.
+- **Divergence is a side channel.** The `d_sub` numbers are useful for the clock and the ratio
+  magnitudes, but they are not the analysis substrate and should be presented as such.
+- **The terminal-kb caveat must be re-tested in the similarity metric.** The earlier finding that the
+  first ~6 kb is unmeasurable is a property of `d_sub` - same-arm alignments there failing to hit
+  orthologous positions. Node-overlap coverage may or may not fail the same way. Do not carry the
+  masking rule over by assumption; test it on dice/jaccard before applying it to a figure.
+
+## G. The reviewer objection, answered
+
+The single methodological criticism in review was that limiting to chromosome ends distorts the
+acrocentrics and the PARs. The community tier table converts that into a result:
+
+| regime | ratio | interpretation |
+|---|---|---|
+| acrocentric p arms | 1.00 | obligate recombinants; alleles and non-homologs indistinguishable |
+| PAR1 | 0.99 | obligate, as above |
+| PAR2 | 1.25 | obligate |
+| facultative arms | 1.2 - 44 | inter-arm exchange at 2-85% of the obligate rate |
+
+So the acrocentric/PAR treatment is not an arbitrary scoping choice: they are a **distinct measurable
+regime**, and the ratio separates them cleanly from the facultative arms. That is the response to the
+reviewer - agree with them, and show the metric that justifies the separation.
