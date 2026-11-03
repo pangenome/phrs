@@ -15,6 +15,13 @@ Two divergence columns are carried throughout:
 T = d/(2*mu), mu = 1.2e-8/bp/generation, 20 y/gen, **an upper bound** (subtelomeric/paternal mutation
 rate is higher; at mu = 3e-8 all T shrink by 60%).
 
+> **READ THIS FIRST.** Sections up to and including "The right summary" were computed with
+> **1e-3 divergence bins** and are superseded by the "FINAL NUMBERS" section at the end, which uses
+> 1e-4 bins and excludes allelic self-pairs. The affected values are: allelic median 0.10% -> **0.15%**,
+> paralog median 0.80% -> **0.89%**, paralog/allelic ratio 8.0x -> **5.93x**, best-partner-per-end
+> median 0.50% -> **0.52%**. Ratio-based conclusions and the intra/inter comparison are unaffected.
+> Where an early value is quoted below it is marked "(coarse bins)".
+
 ## Global
 
 - length-weighted `d_sub` over the cohort: **0.0122**
@@ -159,14 +166,14 @@ intra-chromosomal (chrN_p vs chrN_q) vs inter-chromosomal (different chromosomes
 | paralog, intra-chromosomal | 1,962,844 | 0.01106 | **0.00800** | 0.261 | 6.7 Myr |
 | paralog, inter-chromosomal | 132,557,383 | 0.01220 | **0.00800** | 0.179 | 6.7 Myr |
 
-**1. The local allelic baseline is 0.10% per-record median**, identical within and between
+**1. The local allelic baseline is 0.10% per-record median (coarse bins; 0.15% at 1e-4 resolution)**, identical within and between
 individuals (0.00100 both), i.e. the same as genome-wide nucleotide diversity - the subtelomeric
 *sequence* baseline is not elevated. The weighted value (0.24%) is inflated because some blocks in an
 "allelic" comparison align to paralogous copies rather than to the orthologous position; the median
 is the honest baseline.
 
 **2. The correct denominator is that local baseline, not genome-wide pi.** paralog / allelic =
-**8.0x by medians, 5.1x by weighted divergence**. For ancient duplicated gene families the
+**8.0x by medians, 5.1x by weighted divergence (coarse bins; 5.93x and 5.1x at 1e-4 resolution - use the latter)**. For ancient duplicated gene families the
 equivalent ratio is 100-1000x. A 5-8x ratio is the quantitative signature of concerted evolution:
 paralogs are measurably more divergent than alleles, but only by a factor of a few.
 
@@ -235,7 +242,7 @@ precisely because the blocks themselves are old and shared everywhere (see
 
 - **A** ECDF of substitution divergence for allelic (same arm), paralog on the same
   chromosome, and paralog on a different chromosome. Record-level, weighted by aligned bp.
-  Allelic median 0.10%; both paralog classes 0.80% - they are indistinguishable from each
+  Allelic median 0.10% (coarse bins; 0.15% at 1e-4); both paralog classes 0.80% (0.89%/0.83% at 1e-4) - they are indistinguishable from each
   other, and both sit 8x above allelic. Bin width is 1e-3, so the allelic curve is visibly
   stepped: its entire distribution falls inside one or two bins.
 - **B** The same statement as fold-change over the allelic median, with the ancient
@@ -265,11 +272,11 @@ how close is its closest non-allelic partner**. Using the partner's per-record m
 
 | statistic | value |
 |---|---|
-| min | **0.10%** (= the allelic baseline, 0.83 Myr) |
+| min | **0.10%** (coarse bins; = the allelic baseline, 0.83 Myr) |
 | q25 | 0.25% (2.1 Myr) |
-| **median** | **0.50%** (4.2 Myr) = **5x allelic** |
+| **median** | **0.50%** (4.2 Myr) = **5x allelic** (coarse bins; **0.52%** = 3.5x at 1e-4, which is the value to quote) |
 | q75 | 0.70% (5.8 Myr) |
-| max | 7.30% (60.8 Myr) |
+| max | 7.30% (60.8 Myr) (7.35% at 1e-4) |
 | mean | 0.95%; mean/median 1.90 (right-skewed) |
 
 - 11 of 45 ends find a non-homolog within 2x allelic (<= 0.2%)
@@ -298,7 +305,7 @@ chr14_q, chr18_q. Their best non-homolog divergences:
 | **chr18_q** | **chrX_p** | **0.40%** | **3.3 Myr** |
 
 Six of the seven are exactly the arms with no close non-homolog (median 5.6%, three with no
-heterologous alignment at all), versus **0.50% median for the 41 signal-bearing arms (max 4.0%)**.
+heterologous alignment at all), versus **0.50% median for the 41 signal-bearing arms (max 4.0%)** (0.52% at 1e-4 resolution).
 That is a clean, independent confirmation that the PHR caller's "signal" calls track real
 inter-arm sharing.
 
