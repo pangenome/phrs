@@ -52,3 +52,46 @@ subtelomeric-paralog regime measured elsewhere in this analysis.
 Whether WASH/DDX11L specifically are homogenised between arms remains open, but it cannot be answered
 with arm-level allelic comparisons in these assemblies - it needs copy-resolved (per-locus) comparison
 of gene copies, which the multi-mapping assemblies do not provide.
+
+## Correction: there is no mask bug - the allelic denominator itself fails at the tip
+
+An earlier revision of this note claimed the genic 2-6 kb values were "internally inconsistent with the
+per-arm allelic data, therefore a bug". **That reasoning was wrong and is withdrawn.** The per-arm
+allelic median is an average over the whole 500 kb window, dominated by the interior, whereas a
+distance bin is a positional subset. Comparing the two is not a valid consistency check.
+
+Verified directly instead, on a single PAF whose target is gene-rich
+(`all-vs-HG002_1_chr15_95754595_96254594_chr15_qarm`), recomputing every class/bin by hand:
+
+| distance | class | genic | n | median divergence |
+|---|---|---|---|---|
+| 0-2 kb | paralog | no | 81 | 1.42% |
+| 2-4 kb | paralog | yes | 497 | 2.10% |
+| **4-6 kb** | **allelic** | **yes** | **357** | **1.43%** |
+| 4-6 kb | paralog | yes | 2396 | 1.66% |
+| 8-10 kb | paralog | yes | 465 | 1.33% |
+| 100-150 kb | allelic | no | 580 | 0.16% |
+| 150-200 kb | allelic | no | 370 | 0.12% |
+| 200-500 kb | allelic | yes | 1159 | 0.10% |
+
+The bin reproduces the aggregate exactly. So the mask is doing what it was written to do.
+
+**The real problem is the denominator.** Allelic divergence within ~10 kb of the telomere is
+0.30-2.53% (genic 0.30-1.45%, intergenic 0.52-2.53%), against 0.09-0.16% in the interior. Human
+intraspecific divergence is ~0.1-0.3% even in hypervariable regions, so **an "allelic" value of
+0.6-2.5% cannot be orthologous divergence** - same-arm alignments in the terminal few kb are not
+aligning homologous positions. This applies to genes and intergenic sequence alike.
+
+**Consequence: the telomere-distance profile is uninterpretable inside roughly the first 10 kb**, and
+the "ratio approaches 1 at the junction" result is an artefact of that failure, not a measurement of
+homogenisation. Both the genic and intergenic tip values must be withdrawn as evidence about
+exchange. What remains valid from the profile is the interior (10-500 kb), where allelic divergence
+is 0.09-0.16% and the paralog/allelic ratio sits at 4-8.
+
+A defensible operational rule for any future version of this figure: **discard bins whose allelic
+divergence exceeds ~0.4%** (4x the interior baseline), because the denominator has failed there.
+By that rule every bin at 0-6 kb is discarded, and the first usable bin is 6-8 kb.
+
+Testing terminal exchange specifically needs copy-resolved methods - per-locus assignment of reads or
+assemblies to individual repeat units - not arm-level window comparison. That is out of reach for the
+multi-mapping HPRCv2 assemblies.
