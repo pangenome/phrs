@@ -1,0 +1,5 @@
+panel	status	role	path	note
+A-D	READY	cohort divergence statistics	/moosefs/erikg/phrs_tmp/hprc_het_final.json	output of scripts/ci/hprc_heterolog_divergence.py over all 18,827 PAFs; 1e-4 bins; allelic self-pairs excluded
+A-D	READY	alignment input	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95/*.paf.gz	18,827 target-centric PAFs, 465 assemblies, wfmash -p 95, CIGARs present
+C-D	READY	community assignment	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	arm-level Leiden k=15
+-	GENERATE	figure	figure_ed5_paralog_allelic.pdf	produced by figure_ed5_paralog_allelic.py in this directory
