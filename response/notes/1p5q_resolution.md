@@ -56,3 +56,57 @@ PAN028's **paternal** haplotype belongs to PARTNER, who was never sequenced, so 
 interpretable - the reason the earlier child-side "events" (228 of 310 patch calls, 74%, on the wrong
 copy) were withdrawn. In SELF both parents are sequenced, which is why the 9q/3q claim is anchored there:
 it is the only chromosome copy in the pedigree where every required chromosome is sequenced.
+
+## The symmetric test, run on the parental basis: PAN011 is NOT heterozygous at chr5q
+
+The earlier demotion of 1p/5q was justified by reasoning that did not apply to the parental comparison
+(no boundary-locked switch; population sharing; grandparents). The child-side demotion is separate and
+rests on phasing, because PARTNER is unsampled. So the 9q/3q standard was applied here directly: in a
+single individual, does the **donor-derived block sit on one haplotype only**?
+
+Direct alignment of PAN011's four terminal 200 kb windows (FastGA -f512; best single alignment per pair):
+
+| comparison | aligned bp | identity |
+|---|---|---|
+| chr5 **hap2** vs chr1 hap1 | 30,974 | 99.364% |
+| chr5 **hap2** vs chr1 hap2 | 42,503 | 99.475% |
+| chr5 **hap1** vs chr1 hap1 | 35,489 | 99.265% |
+| chr5 **hap1** vs chr1 hap2 | 42,282 | 99.468% |
+| **chr5 hap2 vs chr5 hap1 (allelic)** | 56,463 | **99.463%** |
+| chr1 hap2 vs chr1 hap1 (allelic) | 42,040 | 99.113% |
+
+**Both chr5 haplotypes carry the chr1p-like sequence**, at comparable span and identity, and their
+paralogous identity to chr1p (99.27-99.48%) is **indistinguishable from the chr5 allelic identity
+(99.46%)**. There is no haplotype asymmetry.
+
+Contrast 9q/3q in the same individual: chr9 hap2 at 100% coverage and 99.79% identity to chr3 hap2, chr9
+hap1 at **7.5% coverage** (fragments only).
+
+**Verdict, on a stated and symmetric standard:** the discriminator is **haplotype asymmetry within one
+individual**. 9q/3q has it; 5q/1p does not. 1p/5q is therefore a shared family present on both homologues
+- allelic-like in structure and in divergence - not a donor swap onto one haplotype.
+
+**Correction to earlier reasoning in this note:** the demotion does NOT rest on the grandparents being
+unsampled, and does not rest on PARTNER. Those are irrelevant to a within-individual comparison. The only
+relevance of the grandparents is to *when* a module entered a lineage, which is a different question and
+should not be attached to the donor claim.
+
+## Read support was also examined (previously never done at these loci)
+
+Same ONT analysis as for 9q/3q, PAN011, four terminal windows:
+
+| contig | reads in terminal 200 kb | reads in last 5 kb | alignments spanning >20 kb |
+|---|---|---|---|
+| chr5 hap1 | 298 | 62 | 167 |
+| chr5 hap2 | 332 | 86 | 194 |
+| chr1 hap1 | 318 | 85 | 160 |
+| chr1 hap2 | 33,322 | 48 | 165 |
+
+Longest single molecules: 243,232 bp (chr5 hap2, MAPQ 60), 233,832 bp (chr1 hap1, MAPQ 60), 226,835 bp
+(chr1 hap2, MAPQ 60), 192,760 bp (chr5 hap1, MAPQ 60). So all four ends are well supported to the
+telomere by single molecules - the assemblies are not unanchored there.
+
+**Caveat:** chr1 hap2 accumulates 33,322 reads in its first 200 kb, ~100x the other three ends. That end
+is a multi-mapping/repeat-rich region, so any divergence statistic computed from it should be treated
+with suspicion. The identity calls above use best-block alignments, which are less affected, but this is
+recorded.
