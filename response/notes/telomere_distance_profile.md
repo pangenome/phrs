@@ -110,3 +110,51 @@ nearly interchangeable with them. My earlier "step, not gradient" correction was
 **Unchanged:** the terminal ~6 kb remains unmeasurable (allelic denominator fails), so the gradient cannot
 be extrapolated to the telomere itself, and "ratio approaches 1 at the junction" still cannot be claimed
 from data - only "ratio is ~1.3 at 8 kb and rises inward".
+
+## Why the terminal ~6 kb is unmeasurable: identified mechanism (not repeats, not the array)
+
+An earlier revision attributed the excluded zone loosely to "repeat arrays". Two direct measurements rule
+both obvious explanations out, and a third supplies the real one.
+
+**(i) The telomeric arrays are not in these windows.** Median (TTAGGG)+(CCCTAA) unit count per kb over 40
+sampled windows, oriented telomere-first:
+
+| 0-2 kb | 2-6 kb | 6-10 kb | 10-20 kb | 20-40 kb |
+|---|---|---|---|---|
+| 1.0 | 0.5 | 0.2 | 0.5 | 0.6 |
+
+A genuine array runs ~150-170 units per kb. The windows were trimmed at the array (hence
+`telo_500kb_trimmed`), so tip divergence is subtelomeric sequence, not telomere.
+
+**(ii) It is not a low-complexity zone - the opposite.** Over 30 sampled windows:
+
+| distance | N% | low-complexity % (6-mers repeated within segment) | GC% |
+|---|---|---|---|
+| 0-2 kb | 0.00 | 32.8 | **62.3** |
+| 2-6 kb | 0.00 | 28.4 | 41.6 |
+| 6-10 kb | 0.00 | 31.8 | 39.5 |
+| 10-20 kb | 0.00 | 51.0 | 41.0 |
+| 20-50 kb | 0.00 | **82.4** | 44.7 |
+
+Repetitiveness rises *inward* (82% at 20-50 kb, where satellite and duplicon arrays sit). The first 6 kb is
+the least repetitive part of the subtelomere, with an unusually GC-rich first 2 kb.
+
+**(iii) What actually fails is allelic alignability.** For two CHM13-target windows, same-arm (allelic)
+alignments by distance on the target:
+
+| distance (kb) | chr9_q records | median block (bp) | chr9_p records | median block (bp) |
+|---|---|---|---|---|
+| 2-4 | **60** | **2,728** | **41** | **3,007** |
+| 8-10 | 92 | 14,780 | 29 | 13,004 |
+| 24-26 | 82 | 12,417 | 245 | 50,033 |
+| 28-30 | **4,933** | **49,988** | **5,283** | **49,983** |
+
+Within the first few kb, **two orders of magnitude fewer individuals align, in blocks ~18x shorter**. So the
+elevated "allelic" divergence in that zone is estimated from a small, haplotype-biased set of short
+fragments - it is not orthologous divergence, and the ratio built on it has no interpretation.
+
+**Correct statement:** the terminal few kb carry haplotype-specific structural variation to the point that
+same-arm alignments are sparse and fragmentary, which invalidates the allelic denominator. This matches
+Tan et al.'s independent finding that subtelomeric haplotype differences lie largely at the telomeric end.
+The exclusion is therefore a consequence of structural polymorphism, not of repetitiveness and not of the
+telomere array.
