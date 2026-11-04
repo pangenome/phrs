@@ -76,3 +76,45 @@ It converts the divergence result into a statement about mechanism that can be t
 rate, with a measured tract size of ~50 kb, and a handful of blocks (ratio ~1.2) approach the obligate
 regime.** That is the sentence the paper can defend; the absolute per-generation rate should be quoted
 only with the assumptions attached.
+
+## Is the ratio a multiple? No - it is a reciprocal, and the linear model fails measurably
+
+The natural guess is that R (paralog/allelic) maps to recombination rate by some multiple, or perhaps
+logarithmically. **Neither. The relation is R = T_paralog / T_allelic, and rates go as 1/R.**
+
+Why, and why the linear reading is ruled out by our own data:
+
+| R | T_paralog (generations) | c = 1/(2T) per generation | intensity vs full pooling (1/R) |
+|---|---|---|---|
+| 1.00 | 62,500 | 8.0e-6 | 100% |
+| 1.20 | 75,000 | 6.7e-6 | 83% |
+| 2.00 | 125,000 | 4.0e-6 | 50% |
+| 3.50 | 218,750 | 2.3e-6 | 29% |
+| **5.93** | **370,625** | **1.35e-6** | **17%** |
+| 12.0 | 750,000 | 6.7e-7 | 8% |
+| 44.0 | 2,750,000 | 1.8e-7 | 2% |
+
+**The escape model contradicts itself at the obligate extreme.** If exchange reset a pair at rate c per
+generation, PAR1/PAR2 - which cross over essentially every male meiosis, c ~ 1 - would give
+T = 1/(2c) = 0.5 generations and divergence ~0.000001%. Observed PAR2 (chrXq-chrYq) is **0.124%**, which
+is T = 51,700 generations, i.e. **exactly the allelic floor**, not zero. So exchange does not drive
+divergence to zero; it drives it to the depth of a single population gene pool, where it stops.
+
+**Consequences:**
+
+1. **R is a ratio of genealogical depths, not a rate.** "5.93x" means the typical block's genealogy is
+   ~6x deeper than that of two alleles in one pool. That is the honest statement.
+2. **The safe rate-like quantity is 1/R** - the exchange intensity as a fraction of what full pooling
+   would give. R = 5.93 -> 17%; R = 1.2 -> 83%; R = 44 -> 2%. This needs no model of how an event
+   resets a tract, because it is defined relative to the obligate case we can measure.
+3. **Equal steps in 1/R are equal steps in intensity; equal steps in R are not.** The mapping is
+   hyperbolic. Reporting "N times more recombination" from a ratio of divergences is therefore wrong
+   unless N is read as a change in 1/R.
+4. **Absolute per-generation rates remain model-dependent.** c = 1/(2T) gives 1.35e-6 per generation for
+   the average block, but since that same model fails by six orders of magnitude at the PAR end, the
+   number should be quoted only with the caveat attached - unlike 1/R, which is model-free.
+5. **The 8x agreement between c = 1/(2T) and the population-frequency estimate (1.7e-7) should therefore
+   be treated as suggestive, not as validation**, because both are built on the same kind of model.
+
+**Bottom line for the manuscript:** present R and 1/R. Do not present a per-generation recombination rate
+as if the ratio gave one by multiplication.
