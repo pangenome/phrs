@@ -95,3 +95,42 @@ By that rule every bin at 0-6 kb is discarded, and the first usable bin is 6-8 k
 Testing terminal exchange specifically needs copy-resolved methods - per-locus assignment of reads or
 assemblies to individual repeat units - not arm-level window comparison. That is out of reach for the
 multi-mapping HPRCv2 assemblies.
+
+## The first ~2 kb is a CpG island, and on the ends that have one it is a DDX11L promoter
+
+Two measurements, from 30 sampled windows oriented telomere-first:
+
+| distance | CpG observed/expected | GC% | island (O/E>0.6, GC>55%) |
+|---|---|---|---|
+| 0-2 kb | **1.02** | **62.3** | **YES** |
+| 2-5 kb | 0.87 | 40.9 | no |
+| 5-10 kb | 0.93 | 40.2 | no |
+
+Genome-wide CpG O/E is ~0.2-0.3; values near 1.0 indicate a CpG island, i.e. a promoter. So the first
+~2 kb of the subtelomere carries a promoter signature, and it is the same zone in which allelic
+alignments collapse (see `telomere_distance_profile.md`).
+
+**Annotation agrees on the ends that have a gene there.** Gene TSS distance from the telomere end in
+CHM13, from RefSeq Liftoff v5.2:
+
+- **7 of 46 ends** have a TSS within 2 kb of the tip; **14 of 46** within 5 kb.
+- The recurrent gene family is **DDX11L** (DEAD/H-box helicase-like pseudogene): DDX11L1, L5 (x2), L8
+  (x2), L9, L10, L16, L17 - **8 of the 15 tip genes**, with TSS 1.7-2.5 kb from the tract.
+- Others at the tip: LOC102723376 (x2), LINC01986 (TSS 749 bp), LINC02684 (859 bp), IGH/IGHVIII-82
+  (chr14q, 4,978 bp).
+
+**Caveats.** (i) It is not every chromosome end - 14/46, i.e. ~30%. (ii) That count should be treated as
+a LOWER bound: RefSeq Liftoff is least reliable in these terminal repeat regions, and the CpG signature
+appears broader than the annotation. (iii) CpG island does not prove an expressed promoter in every
+individual.
+
+**Why this strengthens rather than weakens the exclusion of the terminal zone.** The zone is not
+unreadable sequence - it is the zone where gene and promoter copy number, and their position relative to
+the tract, differ between haplotypes. That is the same copy-number variation Tan et al. report for
+WASH, olfactory receptors and DDX11L. Allelic alignments fragment there because the gene complement
+differs between people, which is a biological finding and the reason a divergence ratio cannot be
+computed - not a technical nuisance.
+
+**Still open.** (a) Whether the GC-rich tip on the other 32 ends is an unannotated promoter or a GC-rich
+repeat. (b) Whether DDX11L presence at the tip predicts lower paralog/allelic divergence on those specific
+arms - the test that would connect the gene placement to the exchange regime.
