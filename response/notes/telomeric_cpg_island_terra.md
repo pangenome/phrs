@@ -22,10 +22,17 @@ are bound in vivo by **phosphorylated (active) RNAPII**. On XqYq most TERRA tran
 multiple human chromosome ends**" promote transcription of TERRA, the telomeric repeat-containing RNA
 transcribed from subtelomeres into the (TTAGGG)n tract.
 
-**Prevalence matches our number.** Roughly **75% of analysed chromosome ends carry a CpG island** within the
-first 15 kb, and TERRA promoters come in two classes - with and without a CpG island - of which only the CpG
-class is DNA-methylation regulated. We measure 88-95% in the first 2 kb, i.e. slightly higher because we
-sample the extreme tip rather than the first 15 kb.
+**Prevalence matches our number, and there is now a T2T-based census.** In **T2T-CHM13v2.0, 39 of 46
+subtelomeres carry TERRA promoters** (Santagostino et al., RNA 2025; verified PMID 41193243), classed by
+repeat organisation - i.e. **85%**. We measure 88-95% of ends CpG-island-like in the first 2 kb, so the two
+independent routes agree. An earlier estimate put a CpG island within the first 15 kb at ~75% of analysed
+ends, with two promoter classes (with and without a CpG island) of which only the CpG class is
+DNA-methylation regulated.
+
+**Which ends lack them (useful corroboration of our gene analysis).** 29 bp repeat variants were reported
+absent from **6p, 8p, 13p, 14p, 17p, 21p, 22p, Xp, 8q and 18q**. Four of those (13p, 14p, 17p, Xp) are
+exactly the ends where we measured **0% genic content in the first 20 kb**, so the annotation-free result
+and the published promoter census agree on which ends are anomalous.
 
 **Chromatin.** Most human subtelomeres carry a **CTCF- and cohesin-binding site within ~1-2 kb of the TTAGGG
 tract, adjacent to a CpG island** implicated in TERRA control; RNAPII enrichment extends from the CTCF site
