@@ -80,3 +80,33 @@ rises to the interior value, explanation 2 does.
 **Second caveat.** The 200-500 kb bin reverses (ratio 7.0, allelic 0.15%, paralog 1.05%) on a much
 larger allelic base (2.2 Tbp) - that region is interstitial-adjacent sequence dominated by ordinary
 segmental duplications, not the subtelomere tip, so it should not be read as part of the gradient.
+
+---
+
+## CORRECTION (supersedes the "step structure" reading above)
+
+The per-arm, equal-weight analysis (`telomere_end_ratio_curves.py`, ED Fig 6) changes the shape, and the
+earlier description in this note was a **pooling artefact**.
+
+**What the two aggregations do:**
+
+- **Pooled** (this note, all arms weighted by aligned base pairs): ratio 4.96 at 6-8 kb, dipping to 1.98
+  at 8-10 kb, 5.77 at 10-12 kb, 3.32 at 18-20 kb, then 4-8 in the interior. From that I inferred steps
+  with breakpoints near 10 and 20 kb.
+- **Per-arm, one vote per chromosome** (ED Fig 6a, histogram medians within each arm, then median across
+  48 arms): ratio **~1.3 in the first 8 kb**, rising continuously through ~2-3 at 20-60 kb, ~3 at
+  100-200 kb, and **~6-7 beyond 300 kb**. No steps, no dip.
+
+**The per-arm version is the one to report**, because a chromosome end is the biological unit and pooling
+lets a handful of high-record arms drive the curve. So the correct description is a **monotone increase of
+the paralog/allelic ratio with distance from the telomere, from ~1.3 within the first 8 kb to ~6-7 in the
+far interior** - not a step function, and not a plateau.
+
+**Consequence.** The original prediction - homogenisation strongest nearest the telomere - is **supported
+in the measurable range**, and more strongly than the pooled analysis suggested: within the first ~8 kb
+(immediately outside the unmeasurable zone) paralogs are only ~1.3x more divergent than alleles, i.e.
+nearly interchangeable with them. My earlier "step, not gradient" correction was itself the artefact.
+
+**Unchanged:** the terminal ~6 kb remains unmeasurable (allelic denominator fails), so the gradient cannot
+be extrapolated to the telomere itself, and "ratio approaches 1 at the junction" still cannot be claimed
+from data - only "ratio is ~1.3 at 8 kb and rises inward".

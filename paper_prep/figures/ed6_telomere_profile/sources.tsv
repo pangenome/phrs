@@ -1,0 +1,5 @@
+panel	status	role	path	note
+a-c	READY	per-arm and per-end ratio curves	/moosefs/erikg/phrs_tmp/telomere_end_curves.json	output of scripts/ci/telomere_end_ratio_curves.py; ARM level carries histograms (medians), END level carries weighted sums
+a-c	READY	alignment input	/moosefs/guarracino/HPRCv2/PHR_III/all-vs-all.1Mb.p95/*.paf.gz	18,827 target-centric PAFs, 465 assemblies, wfmash -p 95
+a-c	READY	community assignment	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	arm-level Leiden k=15
+-	GENERATE	figure	figure_ed6_telomere_profile.pdf	produced by figure_ed6_telomere_profile.py in this directory
