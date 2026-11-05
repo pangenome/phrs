@@ -212,7 +212,9 @@ non-coding RNAs. Within-community arm pairs are overwhelmingly
 assortative by arm type: 41 of 58 pairs (71\%) join two p-arms or
 two q-arms, compared with 400 of 820 (49\%) among all possible pairs of the
 41 PHR-bearing arms. PHR sharing is therefore constrained by chromosome-arm
-context rather than distributed indiscriminately among chromosome ends.
+context rather than distributed indiscriminately among chromosome ends. The sequence immediately
+inside each telomere, where that exchange is concentrated, is itself a shared and copy-variable
+repeat family, which we characterise below.
 
 \subsection*{Functional enrichment within subtelomeric PHRs}
 
@@ -358,6 +360,50 @@ $n = 42$)---though the q-arm subset is small and p-arm windows carry broader
 arm-context effects, so we do not read the arm split as a clean arm-type
 experiment.
 
+\subsection*{The exchange junction is a copy-variable TERRA promoter}
+
+The first two kilobases inside the telomere are not ordinary subtelomeric sequence. We observe a
+CpG island there (CpG observed/expected 1.02, GC 62.3\%), against 40.9\% GC at 2--5\,kb and 40.2\%
+at 5--10\,kb and a genome-wide CpG observed/expected of 0.2--0.3. The window is not telomere: it
+carries about one (TTAGGG)/(CCCTAA) unit per kb, where a genuine repeat array runs 150--170. Nor is
+it low-complexity sequence, which is less abundant at the tip than anywhere else in the compartment
+(32.8\% at 0--2\,kb against 82.4\% at 20--50\,kb, where the satellite and duplicon arrays sit). The
+island is present at 88\% of ends lacking an annotated tip gene and 95\% of ends carrying one, so it
+is not a by-product of gene annotation.
+
+This is a known element. The human terminal repeat region is built, centromere to telomere, from a
+61\,bp, a 29\,bp and a 37\,bp tandem repeat, and the 29\,bp and 37\,bp elements together form a DNA
+island rich in CpG dinucleotides that functions as the promoter driving TERRA
+\cite{Brown1990,Nergadze2009,Farnung2010}; the 29\,bp and 37\,bp elements alone suffice to drive a
+reporter, TERRA start sites on XqYq lie 27\,nt downstream of the last 37\,bp repeat and about
+250\,bp upstream of the telomeric tract \cite{Nergadze2009}, and the element is bound in vivo by
+active RNA polymerase II \cite{Nergadze2009} and sits next to a CTCF/cohesin site within 1--2\,kb of
+the TTAGGG tract \cite{Deng2012}. In T2T-CHM13v2.0, 39 of 46 subtelomeres carry a TERRA promoter,
+classed by repeat organisation \cite{Santagostino2025}, and an older 3.6\,kb repeat immediately
+adjacent to the tract likewise contains a conserved CpG-rich region whose copy number varies among
+telomeres \cite{Cheng1991}. Our measurement therefore confirms rather than discovers: the CpG island
+at the exchange junction is the CpG-island class of TERRA promoter, and its GC content sits at the
+upper extreme of a subtelomeric range already known to run from 62.5\% at 1p to 37.5\% at 3p against
+a genome-wide 41.6\% \cite{Riethman2004}.
+
+The genes annotated at the tip are a separate and weaker matter. Seven of 46 ends have an annotated
+transcription start site within 2\,kb of the tract and 14 of 46 within 5\,kb; the DDX11L family
+supplies 8 of the 15 genes at 1.7--2.5\,kb, with LOC102723376, LINC01986 (749\,bp) and LINC02684
+(859\,bp) the only non-DDX11L loci inside 1\,kb. Their presence does not explain the exchange
+regime: arms with a tip gene have a median paralogous/allelic divergence ratio of 3.06 against 3.82
+for arms without one (Mann--Whitney $p = 0.85$). Whatever sets how homogenized an arm is, it is not
+which gene happens to be annotated at its end.
+
+The promoter is also why the terminal few kilobases cannot be measured by sequence comparison, which
+is a stronger statement than irreproducibility. Same-arm alignments collapse there: 41--60 records of
+median block 2,728--3,007\,bp in the 2--4\,kb bin, against 4,933--5,283 records of about
+50,000\,bp in the 28--30\,kb bin. A tandem array whose copy number and phase differ between
+haplotypes produces exactly that---short, phase-shifted, partly paralogous matches instead of one
+homologous stretch. The paralogous/allelic ratio in that zone is therefore undefined rather than
+noisy, and we exclude it rather than report it (Extended Data Fig.~\ref{fig:ed6}). Outside the
+excluded zone the ratio behaves regularly: about 1.3 within the first 8\,kb, rising through 2--3 at
+20--60\,kb to 6--7 beyond 300\,kb.
+
 \subsection*{Ectopic subtelomeric recombination within a pedigree}
 
 We traced transmission through the WashU pedigree \cite{Cechova2025}, the only one with complete telomere-to-telomere assemblies in all three generations (Fig.~\ref{fig:fig5}A), to detect recent exchange in a single family. We compared the chromosomes a daughter inherited from her father against both of his haplotypes by whole-genome alignment (Methods, Fig.~\ref{fig:fig5}).
@@ -435,6 +481,26 @@ nucleolar contact drives the ectopic recombination that homogenizes them
 \cite{Guarracino2023}. We see the same logic operating on other functional
 modules outside the NORs.
 
+The element at the junction sharpens this picture in one respect and limits it in another. The
+CpG-island TERRA promoter is not a unique sequence that happens to lie near a telomere: it is a
+dispersed repeat family present, in different tandem copy numbers and arrangements, at most
+chromosome ends \cite{Brown1990,Nergadze2009,Santagostino2025}. The immediate substrate of inter-arm
+exchange is therefore itself a shared, copy-variable repeat---the same kind of duplicon that the rest
+of the compartment is built from, and one whose variation between haplotypes is already documented.
+That makes it a plausible participant in the exchange we quantify, although it does not demonstrate
+that exchange occurs within it.
+
+The same element bounds what the divergence profile can say. Because copy number and phase of the
+promoter array differ between haplotypes, same-arm alignments inside the first few kilobases are
+fragmentary and partly paralogous, and no orthologous comparison survives there. We therefore do not
+extrapolate the ratio to the telomere itself and do not claim that it approaches one at the junction;
+the measured statement is that paralogues are only about 1.3-fold more divergent than alleles just
+outside the excluded zone, against roughly six-fold in the far interior, so the terminal sequence is
+the most nearly interchangeable we can measure and the promoter array is where that measurement
+stops. Reading the ratio as a ratio of genealogical depths rather than as a recombination rate, the
+average subtelomeric block exchanges at something like one-sixth of the obligate rate while the most
+cohesive blocks approach it.
+
 This concerted process operates at a characteristic scale. The exchanged blocks
 are on the order of tens to hundreds of kilobases, large enough to carry an intact functional
 module, but small
@@ -454,6 +520,11 @@ maintain similarity and generate new variants
 a stable foundation for chromosome transmission and the flexibility needed for
 germline systems to accommodate continuing change in chromosome-end sequence and
 organization.
+
+One mechanism we can exclude is a role for the genes at the tip. Whether an arm carries an annotated
+subtelomeric gene within 5\,kb of its tract---overwhelmingly a DDX11L pseudogene---has no bearing on
+how homogenized that arm is ($p = 0.85$). The homogenization is a property of the shared repeat
+architecture, not of the gene complement annotated alongside it.
 
 Which factor initiates the loop---sequence similarity, shared function, or physical proximity---remains unresolved, and the acrocentric example, where rDNA both drives and results from nucleolar clustering, suggests there may be no single starting point. The current evidence has gaps: human contact maps are somatic rather than meiotic, and the meiotic-stage data come only from mouse. Improved evidence may shed light on these questions: germline-stage contact maps and larger multigenerational pedigrees with complete, haplotype-resolved telomere-to-telomere assemblies \cite{Cechova2025}, together with orthogonal assays such as FISH \cite{Trask1991}. By applying reference-free pangenome methods to the 465-assembly HPRC v2 panel, we convert relationships inferred from cytogenetics decades ago into a population-scale view of concerted evolution in human subtelomeres.
 
@@ -669,6 +740,29 @@ chromosomes, including its own (so pseudoautosomal Xp/Yp and Xq/Yq, with a
 single partner, are also detected), at a minimum identity of 95\% and minimum
 output length of 3 kb.
 This defined 15,668 PHRs from the 18,826 retained flanks (83.2\%).
+
+\subsection*{The terminal CpG island, GC content and annotatability}
+
+We characterized the sequence immediately inside each telomere on the same telomere-first 500\,kb
+flanks used for PHR calling, cut into 2\,kb bins measured from the junction. Each bin was scored for
+GC content and for CpG observed/expected (the count of CpG dinucleotides divided by the count
+expected from the bin's own G and C frequencies), and a CpG island was called where observed/expected
+exceeded 0.6 and GC exceeded 55\% simultaneously; both thresholds were fixed before the distance
+profile was inspected, and genome-wide CpG observed/expected in these assemblies is 0.2--0.3, which
+leaves an order of magnitude of headroom between ordinary sequence and an island. To establish that
+the tip windows are subtelomeric rather than telomeric we counted (TTAGGG)+(CCCTAA) units per kb in
+the same bins; to exclude low-complexity sequence as the cause of any anomaly we computed the
+fraction of each bin occupied by 6-mers that recur within that bin. Statistics were taken over
+30--120 sampled telomere-anchored windows per measurement (30 for CpG observed/expected, GC and low
+complexity; 40 for telomeric repeat content). Gene transcription start sites were taken from the
+CHM13v2.0 RefSeq/Liftoff v5.2 annotation and reduced to one distance per chromosome end: the gap
+between the telomere-proximal end of the flank and the nearest annotated start site. Alignability was
+measured on same-arm alignment records per 2\,kb bin, assigning a record to a bin only when the
+midpoint of both the query and the target span fell in that bin, exactly as in the distance profile;
+we report the number of records and the median block length. Bins whose allelic divergence exceeds
+0.4\%, four times the interior baseline, are discarded from the distance profile because the allelic
+denominator has failed there; the hatched zone of Extended Data Fig.~\ref{fig:ed6} is generated from
+that rule and not placed by hand.
 
 \subsection*{Pangenome graph, similarity and community detection}
 
@@ -1031,6 +1125,45 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     present but at lower identity (a drifted descendant of the same module), and against his
     chr9q hap1 the cell is empty, which is what excludes that haplotype as the source.}
   \label{fig:ed4}
+\end{figure}
+
+\clearpage
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig5_paralog_allelic_scope.pdf}
+  \caption{\textbf{Allelic, paralogous and community-level divergence in human subtelomeres.}
+    \textbf{a}, Cumulative distribution of substitution divergence between subtelomeric sequences,
+    weighted by aligned base pairs, for homologous copies of the same arm (\emph{allelic}, median
+    0.15\%), copies on the same chromosome (0.83\%) and copies on different chromosomes (0.89\%).
+    \textbf{b}, Each class median as fold-change over the allelic median, with the range occupied by
+    ancient duplicated gene families (100--1,000-fold) shown for scale. \textbf{c}, For each
+    community, median divergence among member arms divided by median divergence to non-member ends;
+    1.0 indicates no internal cohesion. \textbf{d}, Per arm pair, per-record median divergence
+    against the fraction of aligned bases at $\geq 99.5\%$ identity, coloured by whether both arms
+    share a community. \textbf{e}, For each of 45 chromosome ends, the divergence of its closest
+    partner on a different chromosome; dotted line, allelic median; solid line, per-end median.}
+  \label{fig:ed5}
+\end{figure}
+
+\clearpage
+\begin{figure}[htb!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig6_telomere_profile.pdf}
+  \caption{\textbf{Divergence ratio against distance from the telomere, one vote per chromosome end.}
+    Each light-grey curve is one individual chromosome end (individual $\times$ arm), plotted from the
+    telomere--subtelomere junction outward; heavy curves are per-arm medians and the cohort median.
+    The ordinate is the paralogous/allelic divergence ratio: the median inter-chromosomal paralogous
+    divergence of a 2\,kb distance bin divided by the same-arm (allelic) divergence of the same bin,
+    with a record assigned only when the midpoint of both the query and the target span fall in that
+    bin. The ratio rises monotonically with distance, from about 1.3 within the first 8\,kb to 6--7
+    beyond 300\,kb. \emph{Shaded zone, 0--6\,kb}: the TERRA promoter array (61-29-37 repeats and its
+    CpG island) \cite{Nergadze2009,Santagostino2025}. This region is a copy-variable tandem repeat
+    family shared between non-homologous chromosome ends, and its copy number and phase differ
+    between haplotypes, so same-arm alignments there are short and partly paralogous and the ratio is
+    undefined rather than imprecise; it is shown for orientation only and is not a measurement. The
+    hatched width is set by the discard rule in Methods (bins whose allelic divergence exceeds 0.4\%,
+    four times the interior baseline, are discarded), not by hand.}
+  \label{fig:ed6}
 \end{figure}
 
 \clearpage

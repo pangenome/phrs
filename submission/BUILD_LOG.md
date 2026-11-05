@@ -811,3 +811,42 @@ Date: 2026-10-19
 population-differentiation analysis cut in the V7 pass: Results subsection "Communities carry
 ordinary continental population structure" and Methods "Population differentiation", with the
 matched genome-wide baseline comparison (ratios 0.72-1.44, all equivalent).
+
+## TERRA promoter integration + ED Figs 5 and 6
+
+Date: 2026-11-03
+
+First manuscript integration of the heterolog/coalescence cycle. Applied from
+`response/notes/terra_promoter_manuscript_text.md` (subagent-authored, citation-checked) plus the
+`response/patches/paper_tex_insert_ed5.tex` and `..._ed6.tex` blocks.
+
+Changes to `submission/paper.tex`:
+
+1. Results, end of `Community structure of subtelomeric sharing`: one forward-pointing sentence to the
+   new subsection.
+2. Results, new subsection `The exchange junction is a copy-variable TERRA promoter`, inserted before
+   `Ectopic subtelomeric recombination within a pedigree`. Four paragraphs: the CpG-island measurement
+   (O/E 1.02, GC 62.3%); the identification as the 61-29-37 CpG-island TERRA promoter with citations;
+   the annotated tip genes and the p = 0.85 negative result; and the alignability collapse as the
+   reason the terminal ratio is undefined.
+3. Discussion: two paragraphs after "We see the same logic operating on other functional modules
+   outside the NORs", and the negative-result paragraph appended to "This concerted process operates
+   at a characteristic scale".
+4. Methods: new subsection `The terminal CpG island, GC content and annotatability`, including the
+   0.4% allelic-divergence discard rule that generates the hatched zone.
+5. `Extended Data Figure Legends`: ED Fig. 5 (`fig:ed5`, log2-scale divergence scope, 5 panels) and
+   ED Fig. 6 (`fig:ed6`, per-end ratio vs distance, hatched 0-6 kb zone described as the TERRA
+   promoter array).
+6. `bibliography.bib`: eight entries added (Nergadze2009, Farnung2010, Santagostino2025, Deng2012,
+   Feretzaki2019, Cheng1991, Hastings2009, Tan2026). No cited key is missing from the bib.
+
+Build: `bash compile.sh` with the store toolchain from the recipe above.
+Result: **exit 0, 42 pages, `grep -ci undefined paper.log` = 0.**
+
+Verified in the produced PDF: ED Fig. 5 renders on page 37 and ED Fig. 6 on page 38 (page 36 is
+ED Fig. 4); the Methods subsection, the four Results paragraphs and both Discussion insertions are
+present. `paper.pdf` is not tracked.
+
+Note: `AGENTS.md` still states that the active Extended Data labels are `fig:ed1` and `fig:ed2` only.
+`paper.tex` has used `fig:ed1`-`fig:ed4` for some time and now `fig:ed5`/`fig:ed6`; the guide is stale
+on this point and should be updated in both `AGENTS.md` and `CLAUDE.md` together.
