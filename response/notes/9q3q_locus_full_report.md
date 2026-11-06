@@ -212,3 +212,41 @@ these `Dup`/`Col` calls report.
   (columns `group.a.length`, `group.b.length`, `intersection`, `dice.similarity`,
   `estimated.identity`, `winner_class`, `other_seq`); arithmetic verified as in §1(4).
 - Junction-spanning read queries: `samtools view <bam> "<contig>:<start>-<end>"`, ref-span from CIGAR.
+
+## 12. Assembly-integrity check: the reported chr1p admixture on chr9 hap2
+
+Andrea Guarracino raised the possibility of an assembly error on one chr9q haplotype in the father
+(chr1p sequence mixed in). Tested directly rather than argued from other evidence.
+
+**Where the chr1p-like sequence actually is.** chr1p terminal 500 kb (both haplotypes) aligned against
+his chr9 hap2 terminal 745 kb (FastGA -f512; target coordinates in chr9 hap2 space):
+
+| query | aligned bp INSIDE the 54 kb module (133,684,561-133,744,561) | aligned bp outside | longest block |
+|---|---|---|---|
+| chr1p hap1 | **0** | 1,118,063 | 135,397 bp at 99.758% (133.000-133.135 Mb) |
+| chr1p hap2 | **0** | 1,259,983 | 23,166 bp at 98.899% (133.099-133.122 Mb) |
+
+So the chr1p-like material sits **~550 kb proximal to the module**, and **no chr1p alignment falls
+inside the module**. The module region itself aligns to chr3q hap2 at 99.79% over 100% coverage.
+
+**It is not hap2-specific.** chr1p aligns **1,288,637 bp into chr9 hap1's terminal 745 kb** as well
+(longest block 25,245 bp at 97.691%), so both homologues carry it. A chimeric join would be a property of
+one contig, not of both homologues.
+
+**It is expected from population data.** In the cohort pair table (`hprc_heterolog_divergence_pairs.tsv`):
+chr1_p-chr9_q has 24.07 Gbp aligned, weighted divergence 1.054%, **per-record median 0.6%**, q25 0.5%, and
+contains perfect blocks (min record divergence 0). chr1p-chr9q is therefore a normal shared subtelomeric
+pair at population scale, not an anomaly.
+
+**Read support at that region.** ONT, PAN011, all four runs: 229 reads across
+chr9 hap2:133.00-133.14 Mb with **135 alignments spanning >20 kb**, and 232 reads across
+133.13-133.27 Mb with 149 spanning >20 kb. Reads of that length cross any internal join in the stretch, so
+the joins there are single-molecule-supported.
+
+**Verdict.** No impact on the retained 9q/3q claim: the two signals are separable, lie ~550 kb apart, and
+the module has zero chr1p support. The chr1p-like sequence at chr9q proximal is a shared subtelomeric
+family present on both homologues and in the population at large, not a hap2-specific misassembly.
+
+**Open.** If the reported coordinates lie outside the terminal 745 kb scanned here, they must be checked
+separately: a misjoin elsewhere on the contig would not affect the module but would be worth recording,
+since "this contig is chimeric" is an argument a referee could generalise from.
