@@ -250,3 +250,76 @@ family present on both homologues and in the population at large, not a hap2-spe
 **Open.** If the reported coordinates lie outside the terminal 745 kb scanned here, they must be checked
 separately: a misjoin elsewhere on the contig would not affect the module but would be worth recording,
 since "this contig is chimeric" is an argument a referee could generalise from.
+
+## 13. The distal cap is chr1p-like, and the module is internal - partial support for a misassembly
+
+Andrea Guarracino's further report: the 3q-like module lies **many tens of kb inside** the subtelomeric
+region rather than at the very end; something like **chr1p has been pasted onto the end of chr9q**; and
+the reads show **small point-wise disagreements** throughout, as if the assembler traversed the wrong part
+of the graph.
+
+### What is confirmed
+
+**(a) The distal cap is chr1p-like, not chr9.** The last 6.4 kb of chr9 hap2
+(133,738,661-133,745,035) aligned against candidate references:
+
+| reference | aligned bp | identity |
+|---|---|---|
+| **chr1p hap1** | 5,959 / 6,375 | **97.550%** |
+| chr3q hap1 | 5,594 | 96.693% |
+| chr1p hap2 | 4,216 | 95.019% |
+| **chr9q hap1 (his homolog)** | 5,895 | **93.639%** |
+
+So the terminal-most sequence is more similar to chr1p than to his own chr9. The architecture is
+therefore **[chr9 unique][~54 kb 3q-like module][~6 kb chr1p-like cap][telomere]** - and our earlier
+description of the module as "terminal" needs the qualifier "terminal-adjacent, capped by ~6 kb of
+chr1p-like sequence".
+
+**(b) Reads disagree with the assembly most in the cap.** PAN011 ONT reads vs the hap2 assembly, reads
+>=2 kb, mismatch rate:
+
+| region | reads | mismatch rate |
+|---|---|---|
+| proximal flank (chr9-unique) | 224 | 3.205% |
+| 3q-like module | 37 | 3.996% |
+| **distal cap** | 17 | **7.975%** |
+
+The cap sits at 2.5x the flank error rate, which is the pattern expected if that segment was assembled by
+traversing the wrong graph path.
+
+### What is not confirmed: the module as artefact
+
+Reads from chr9 hap2:133.60-133.745 Mb (MAPQ >= 10, 90 reads) were re-assigned against three candidate
+references (hap2 terminus, hap1 terminus, chr3q terminus):
+
+| best-hit reference | reads | median identity |
+|---|---|---|
+| **hap2 as assembled** | **59** | 88.4% |
+| hap1 terminus | 24 | 75.8% |
+| chr3q terminus | 7 | 89.7% |
+
+Most reads prefer the assembled hap2 sequence; the 24 preferring hap1 are expected in a diploid sample.
+The module additionally has junction-spanning reads at up to MAPQ 60 and zero chr1p alignment inside it.
+
+**However, the module-specific test is underpowered:** only **8 reads** in the module+cap interval reach
+MAPQ >= 10, against 37 reads >=2 kb without a MAPQ filter. A confident verdict on the module itself needs
+either HiFi reads across the junction or a copy-resolved assignment, not the low-MAPQ ONT set.
+
+### What this changes in the claim
+
+1. **"Terminal" becomes "terminal-adjacent".** The 3q-derived module is 6.4-60.5 kb from the contig end,
+   capped distally by a chr1p-like 6.4 kb that is the least reliable part of the assembly.
+2. **The donor inference is unchanged.** chr1p has zero alignment inside the module; chr3q has 99.79% over
+   100% coverage; reads span the junction; reads preferentially support the assembled haplotype.
+3. **A second ectopic segment exists** (chr1p-like, distal) that our pipeline did not report as such
+   because it is at the extreme terminus inside the zone we now exclude as the TERRA promoter array. That
+   should be stated rather than left implicit.
+4. **Andrea's graph-traversal concern is supported for the cap and unproven for the module.** Both facts
+   belong in the manuscript record; presenting the locus as cleanly assembled while the cap is 2.5x worse
+   than the flank would not survive scrutiny.
+
+### Decisive follow-up
+
+HiFi reads spanning the chr9 hap2 module boundaries, or per-copy assignment of the module against the
+paternal reads. The ONT set cannot settle it: too few reads reach usable MAPQ in the module, and the raw
+error rate (~3% baseline vs 4% in the module) is too close to the effect size to discriminate.
