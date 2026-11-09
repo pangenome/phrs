@@ -53,6 +53,8 @@ The patched end is what the DAD reads support. The open test is the Fig. 5 align
 
 In Run B (original v1.1), `fig5_patch_compare.sh` gives an interchromosomal winner (DAD h2 chr3) in 10 of the 10 tract windows (136,168,000-136,188,000), with same-chromosome minus interchromosomal identity from -0.021347 to -0.000250.
 
+Fig. 5 steps 4-7 on the patched DAD (`patch_v11/fig5_patch_compare.v11.tsv`, FastGA 8:11:20, steps 5-7 0:11:05, 1,453,756 raw PAF lines against 1,453,788 in Run B): in the same 10 tract windows an interchromosomal winner remains in 2 of 10 (SELF.p 136,166,000 and 136,168,000, margins -0.000500 and -0.000250, both at identity 1.0000 to DAD chr3 and 0.9995-0.99975 to DAD chr9). Outside the tract, in the 26 windows from 136,138,000 to the chromosome end, interchromosomal winners fall from 17 to 3. In the 10 tract windows the same-chromosome match to DAD chr9 h2 now has identity 0.999250-1.000000 (Run B: 0.978153-0.998250).
+
 ## Reproduce
 
 ```shell
