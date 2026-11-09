@@ -79,8 +79,8 @@ organization and germ-cell development.
 Human chromosome-contact maps show preferential proximity between subtelomeres
 with similar sequences, persisting even in adjacent flanks that lack the shared
 sequence used to define each pair. Mouse contact maps show the same preference, and at
-pair resolution the association is strongest at zygotene, when telomeres cluster at
-the nuclear envelope, and weakest at diplotene. In a three-generation telomere-to-telomere
+pair resolution the association is elevated at zygotene, when telomeres cluster at
+the nuclear envelope, and at pachytene, and lowest at diplotene. In a three-generation telomere-to-telomere
 pedigree, whole-genome comparison identifies putative recombination between
 subtelomeric regions on non-homologous chromosomes from the same sequence
 communities, while recovering the obligate X-Y crossover in PAR1, the
@@ -339,8 +339,10 @@ Because those pairs share chromosome ends they are not independent, so we infer 
 resolution with two-way clustered standard errors over both arms, and test the same association
 against a permutation null that keeps the between-arm-pair structure: $p = 10^{-4}$ at leptotene,
 zygotene and pachytene and $1.5 \times 10^{-3}$ at diplotene, with 95\% intervals of
-0.37--0.47, 0.57--0.66, 0.53--0.62 and 0.19--0.30. The association is strongest at zygotene:
-the paired contrast against pachytene is $-0.038$ (95\% CI $-0.067$ to $-0.009$, $p = 0.017$).
+0.37--0.47, 0.57--0.66, 0.53--0.62 and 0.19--0.30. The association is elevated at zygotene and
+pachytene and lowest at diplotene. Zygotene exceeds pachytene at pair resolution (paired contrast
+$-0.038$, 95\% CI $-0.067$ to $-0.009$, $p = 0.017$), but a bootstrap over the 27 chromosome ends
+does not separate the two stages (95\% CI $-0.131$ to $+0.043$).
 Collapsing the pairs to arm means reverses that ordering, so we do not use the arm-level
 summaries for inference; they are reported in Methods only as a display.
 A confound limits the interpretation: mouse p-arm flanks are 88\% satellite (mean satellite
@@ -472,7 +474,7 @@ are orientation-consistent relative to the telomere while freely reassorted in o
 (Extended Data Fig.~\ref{fig:ed3}). The broader pattern is consistent with a simple,
 self-reinforcing model: telomere clustering at the meiotic nuclear envelope brings similar ends
 into a shared compartment, and the association between sequence similarity and contact is
-strongest at zygotene, when that clustering occurs; proximity may then favour ectopic
+elevated at zygotene, when that clustering occurs, and at pachytene; proximity may then favour ectopic
 recombination that helps keep those sequences homogenized. Shared sequence and shared function then feed back to
 promote co-localization, so that sequence, function and three-dimensional
 proximity continually reinforce one another. The acrocentric short arms show
@@ -935,12 +937,26 @@ meiotic Hi-C is from inbred C57BL/6 (B6) spermatocytes \cite{Zuo2021}. Because
 these mice are inbred and homozygous, the reads are single-haplotype and are not
 phased into parental haplotypes; we mapped them to the combined B6+CAST T2T
 reference, keeping multi-mapping reads exactly as in the human pipeline. For each meiotic
-prophase stage we aggregated length-normalized contact over PHR pairs to arm-level matrices
-(344 inter-chromosomal arm pairs) and tested the association with the arm-level sequence
-similarity ($1 - $ Jaccard distance) by Mantel test with 10,000 row-and-column permutations,
-which respects the non-independence of PHR pairs sharing an arm. Reported values are for
-20 kb windows; 50 kb windows give a flat profile and are noted as such in the text. The
-permutation null is centred on zero with a 95\% range of $\pm 0.11$.
+prophase stage we computed the Spearman correlation between length-normalized contact and
+PHR Jaccard similarity over the 1{,}135 inter-chromosomal PHR pairs (1 Mb flanks, 20 kb
+windows). The pairs share chromosome ends, so we kept pair resolution and handled the
+dependence in the inference. The correlation is the slope of an ordinary least-squares
+regression of rank-standardized contact on rank-standardized similarity; its variance is the
+two-way cluster-robust estimate \cite{Cameron2011multiway} over the two arms of each pair,
+with the arm pair as the intersection term (27 arms, 344 arm pairs). The null is a
+permutation that shuffles the similarity of each PHR pair only among PHR pairs of the same
+arm pair (10,000 permutations), so arm identity, distance to the telomere, the number of
+pairs per arm pair and every contact value stay fixed. To compare stages we regressed the
+difference of the standardized contacts of two stages on the shared similarity, which gives
+the difference of the two correlations directly, with the same clustered variance and Holm
+correction over the six stage contrasts. A bootstrap over the 27 chromosome ends (10,000
+replicates) gives wider intervals and does not resolve the zygotene--pachytene contrast
+(95\% CI $-0.131$ to $+0.043$); all other adjacent contrasts stay resolved. For display only,
+we also averaged contact over the PHR pairs of each arm pair and computed an arm-level Mantel
+test (344 arm pairs, 10,000 row-and-column permutations; $\rho = 0.40$, 0.58, 0.63 and 0.33
+from leptotene to diplotene, all $p \leq 10^{-4}$). That summary discards the variance within
+arm pairs and puts the peak at pachytene, so we do not use it for inference. At 50 kb
+windows the four stages do not separate.
 We also computed this correlation within each arm class, using only
 inter-chromosomal pairs in which both PHRs lie on p-arms ($n = 722$) or both on
 q-arms ($n = 42$).
