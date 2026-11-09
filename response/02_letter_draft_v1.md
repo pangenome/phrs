@@ -111,13 +111,7 @@ paternal tip — an ordinary telomere-proximal crossover, not a second exchange.
 
 ## Point 5 — mouse ρ = 0.715 is a non-independent-pair Spearman
 
-Replaced with an arm-level Mantel test with 10,000 row-and-column permutations: ρ = 0.41, 0.58,
-0.63, 0.33 at leptotene, zygotene, pachytene and diplotene (20 kb windows, 344 inter-chromosomal
-arm pairs, all p < 1e-4, permutation null centred on zero with a 95% range of ±0.11). The value is
-attenuated relative to the per-pair statistic (0.715 → 0.58 at zygotene, 0.63 at pachytene),
-which is the inflation the reviewer suspected. The stage profile is now reported as descriptive:
-it rises into synapsis and peaks at pachytene, when the synaptonemal complex is fully assembled,
-falling at diplotene; at 50 kb windows the profile is flat and we say so.
+The pairs share chromosome ends, so they are not independent. We keep pair resolution and handle the dependence in the inference. Inference is at pair resolution (1,135 inter-chromosomal PHR pairs, 1 Mb flanks, 20 kb windows): Spearman ρ = 0.42, 0.61, 0.58 and 0.25 at leptotene, zygotene, pachytene and diplotene, with two-way clustered standard errors over the two arms of each pair (95% CI 0.37-0.47, 0.57-0.66, 0.53-0.62, 0.19-0.30) and a permutation null that shuffles similarity only among PHR pairs of the same arm pair (10,000 permutations; p = 1e-4 at leptotene, zygotene and pachytene, 1.5e-3 at diplotene). The association is elevated at zygotene and pachytene and lowest at diplotene. Zygotene minus pachytene is +0.038 at pair resolution (95% CI 0.009 to 0.067, p = 0.017), but a bootstrap over the 27 chromosome ends does not separate the two stages (95% CI -0.043 to +0.131), so the manuscript does not say "strongest at zygotene". The arm-level Mantel test (344 arm pairs, 10,000 row-and-column permutations; ρ = 0.40, 0.58, 0.63, 0.33, all p <= 1e-4) is kept in Methods as a display only: it discards the variance within arm pairs and puts the peak at pachytene. At 50 kb windows the four stages do not separate.
 
 ## Point 6 — the "100% bootstrap" on the NJ tree
 
@@ -235,7 +229,7 @@ bibliography and has been added; it was already present in the submission biblio
 - `submission/paper.tex` — pedigree section rewritten around the single retained event; chr1p/chr5q
   as ancestral homology; child-side panels retired; Methods (chromosome-copy assignment,
   assembly QC, per-event support table, statistical controls, threshold sensitivity); Discussion
-  (module architecture); mouse analysis replaced by the arm-level Mantel.
+  (module architecture); mouse analysis with pair-level clustered inference, arm-level Mantel as display.
 - `submission/fig/MainFigures/` — Fig5A pedigree with the project naming, Fig5B zoom with
   `SELF.p`/`DAD.h2`, Fig5C paternal ribbon, **new Fig5D pairwise-alignment panel**; the maternal
   and grandchild ribbon panels are removed.

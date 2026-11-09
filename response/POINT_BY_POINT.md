@@ -109,9 +109,8 @@ chr5q/chr1p is ancestral homology, the "two events" is transmission, and margins
 
 ### R1-M7 — mouse null and the "zygotene bouquet" claim · L4 · DONE
 
-Arm-level Mantel, 10,000 row-and-column permutations: ρ = 0.41/0.58/0.63/0.33 (20 kb),
-all p < 1e-4, null 0 ± 0.11. Peak moved to **pachytene**; the bouquet claim was removed from the
-abstract/introduction and replaced by the synapsis framing. `TODO:` none, except R1-M6 below.
+Inference is at pair resolution (1,135 inter-chromosomal PHR pairs, 1 Mb flanks, 20 kb windows): Spearman ρ = 0.42, 0.61, 0.58 and 0.25 at leptotene, zygotene, pachytene and diplotene, with two-way clustered standard errors over the two arms of each pair (95% CI 0.37-0.47, 0.57-0.66, 0.53-0.62, 0.19-0.30) and a permutation null that shuffles similarity only among PHR pairs of the same arm pair (10,000 permutations; p = 1e-4 at leptotene, zygotene and pachytene, 1.5e-3 at diplotene). The association is elevated at zygotene and pachytene and lowest at diplotene. Zygotene minus pachytene is +0.038 at pair resolution (95% CI 0.009 to 0.067, p = 0.017), but a bootstrap over the 27 chromosome ends does not separate the two stages (95% CI -0.043 to +0.131), so the manuscript does not say "strongest at zygotene". The arm-level Mantel test (344 arm pairs, 10,000 row-and-column permutations; ρ = 0.40, 0.58, 0.63, 0.33, all p <= 1e-4) is kept in Methods as a display only: it discards the variance within arm pairs and puts the peak at pachytene. At 50 kb windows the four stages do not separate.
+Source: `notes/M_mouse_stage_ordering.md` (STEP F); manuscript text since commit d9378b9 (abstract, Results, Discussion, Methods). This replaces the earlier entry (arm-level Mantel, peak at pachytene). `TODO:` none, except R1-M6 below.
 
 ### R1-M4 / R3-M3 / R3-M4 — random placement, flank-control logic, B/W paradox · L1 · OPEN
 
@@ -171,7 +170,7 @@ consistent with four 4q/10q transfers over human evolution.
 - **M2** Fig 1A positional-profile test. `TODO:` quantify profile similarity across ends.
 - **M3** random assignment could create contacts — see R1-M4. `TODO:` same fix.
 - **M4** B/W direction paradox — see R1-M4. `TODO:` same fix.
-- **M5** somatic vs meiotic; human meiosis gap. `TODO:` consistent limitation statement.
+- **M5** somatic vs meiotic; human meiosis gap. `TODO:` consistent limitation statement. The formal stage comparison is done: see R1-M7 (paired stage contrasts; zygotene and pachytene both elevated, diplotene lowest).
 - **M6** 41/48 arms depend on thresholds. `TODO:` threshold sweep for the PHR call (identity,
   window, alignment counts) — data exists.
 - **M7** similarity vs order/colinearity. **DONE** — order concordance, orientation, ED3.
@@ -280,7 +279,7 @@ Nothing in the response or the manuscript should quote a number that is not reac
 | M4 / R3-M4 multi-mapping + flank control | L1 | `04_flanking_control` patch | — | — | **patch ready**: `response/patches/flanking_control.tex` |
 | M5 / R3-M3 specificity | L3 | `M5_matched_sd_control.md` | `scripts/hic/matched_sd_control.py` | `matched_sd_control.{tsv,json}` | **to write**: TEL 0.50 vs INT 0.13, Δ+0.39 p=0.006 |
 | M6 mouse satellite | L3 † | `M6_mouse_satellite.md` († stratified result retracted) + `M_mouse_stage_ordering.md` | `scripts/hic/mouse_satellite_sensitivity.py` (void axis), `mouse_stage_profile_disambiguation.py` | `mouse_satellite_sensitivity.json`, `mouse_stage_profile_disambiguation.json` | **to write**: satellite fractions + r=0.79 caveat |
-| M7 mouse dependency-preserving null | L4 | `M_mouse_stage_ordering.md` | `mouse_stage_profile_disambiguation.py` | same JSON | **to write**: zygotene peak, CIs, paired contrast |
+| M7 mouse dependency-preserving null | L4 | `M_mouse_stage_ordering.md` | `mouse_stage_profile_disambiguation.py` | same JSON | written (d9378b9): zygotene and pachytene elevated, CIs, paired contrast, 27-end bootstrap |
 | M8 flank censoring | L3 | `M8_flank_censoring.md` | `flank_censoring_sensitivity.py` | `flank_censoring_sensitivity.tsv` | **to write**: 15.8% saturation, lower bound |
 | M9 gene enrichment | L3 | `M9_enrichment_dependence.md` | `enrichment_family_dependence.py` | `enrichment_family_dependence.tsv` | **to write**: family dependence, `LOC*`, 9 loci/10 chromosomes |
 | M10 comparative frame | L0 | — | — | — | open (literature only) |
