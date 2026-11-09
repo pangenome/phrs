@@ -51,6 +51,8 @@ Read check (`patch_v11/read_check.v11.tsv`, same 2,951 reads on both assemblies,
 
 The patched end is what the DAD reads support. The open test is the Fig. 5 alignment on the patched assembly: if the 9q/3q call comes from the assembly error, the PAN027pat 10:10 alignment on the patched DAD must give SELF.p chr9q its best match on DAD chr9q.
 
+In Run B (original v1.1), `fig5_patch_compare.sh` gives an interchromosomal winner (DAD h2 chr3) in 10 of the 10 tract windows (136,168,000-136,188,000), with same-chromosome minus interchromosomal identity from -0.021347 to -0.000250.
+
 ## Reproduce
 
 ```shell
@@ -76,6 +78,7 @@ The patched target differs from `inputs_v11/PAN027pat_vs_PAN011_joint.target.fa`
 | `igv_slices.sbatch`, `screenshot.py` | BAM slices and IGV-style views of the 9q/3q tract (`screenshots/9q3q_*.png`) |
 | `synteny_chr1_chr9.sbatch`, `synteny_svbyeye.R` | DAD chr9 h2 vs chr1 h1 synteny with SVbyEye (`screenshots/synteny_*.png`) |
 | `patch_dad_chr9.sbatch`, `patch_read_check.sbatch` | patched DAD chr9q end and the read check |
+| `fig5_patch_compare.sh` | Fig. 5 class winners on SELF.p chr9q end, Run B (original v1.1) against the patched run |
 | `diag_sites.sbatch`, `parent_sites.sbatch`, `read_calls.py`, `ont_site_check.sh`, `read_origin.sbatch`, `read_panel.sbatch`, `cross_igv.sh` | diagnostic sites (own copy vs donor copy) and per-read calls at those sites |
 | `where_else.sbatch`, `tip_check.sbatch`, `synteny_extract.sbatch` | where a region occurs in a diploid; chromosome-end comparisons |
 | `call_regions.py`, `run_sensitivity.py` | Fig. 5 call regions and run-calling sensitivity, v1.1 vs v1.3.1 |
