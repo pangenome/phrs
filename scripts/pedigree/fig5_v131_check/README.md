@@ -55,6 +55,16 @@ In Run B (original v1.1), `fig5_patch_compare.sh` gives an interchromosomal winn
 
 Fig. 5 steps 4-7 on the patched DAD (`patch_v11/fig5_patch_compare.v11.tsv`, FastGA 8:11:20, steps 5-7 0:11:05, 1,453,756 raw PAF lines against 1,453,788 in Run B): in the same 10 tract windows an interchromosomal winner remains in 2 of 10 (SELF.p 136,166,000 and 136,168,000, margins -0.000500 and -0.000250, both at identity 1.0000 to DAD chr3 and 0.9995-0.99975 to DAD chr9). Outside the tract, in the 26 windows from 136,138,000 to the chromosome end, interchromosomal winners fall from 17 to 3. In the 10 tract windows the same-chromosome match to DAD chr9 h2 now has identity 0.999250-1.000000 (Run B: 0.978153-0.998250).
 
+Fig. 5C redrawn from the class winners with `submission/scripts/figures/fig5_ribbon_plotter.py` (same cropping as `fig5_panels_rebuild.sh`; no colour restyling, so it differs from `submission/fig/MainFigures/Fig5C_paternal.png`):
+
+| file | content |
+|---|---|
+| `patch_v11/Fig5C_paternal.patched_v11.png` (+ `.svg`) | PAN027 paternal against PAN011 h1 and the patched h2 |
+| `patch_v11/Fig5C_paternal.original_v11.png` (+ `.svg`) | same from Run B (original v1.1) |
+| `patch_v11/fig5_runs.{patched,original}_v11.tsv` | drawn runs (1,758 and 1,778 segments; 51 and 52 drawn runs) |
+
+The only drawn run that disappears on the patched assembly is `chr9_run0054`, PAN027#2#chr9 136,168,000-136,188,000 (20,000 bp, 10 windows, donor PAN011 h2 chr3, same identity 0.991935, interchromosomal identity 0.998775). No run is added. What remains: PAR1 chrX~chrY, the chr5q~chr1p run (28 kb, h2), and acrocentric runs.
+
 ## Reproduce
 
 ```shell
