@@ -65,6 +65,30 @@ Fig. 5C redrawn from the class winners with `submission/scripts/figures/fig5_rib
 
 The only drawn run that disappears on the patched assembly is `chr9_run0054`, PAN027#2#chr9 136,168,000-136,188,000 (20,000 bp, 10 windows, donor PAN011 h2 chr3, same identity 0.991935, interchromosomal identity 0.998775). No run is added. What remains: PAR1 chrX~chrY, the chr5q~chr1p run (28 kb, h2), and acrocentric runs.
 
+## The chr5q~chr1p call and the FastGA seed cutoff
+
+The v1.1 call of the SELF.p chr5 end to DAD chr1p is not an assembly error. The SELF.p chr5 tract matches DAD h2 chr5 at 48 diagnostic sites against 1 for chr1 (64 of 65 over all diagnostic sites), and DAD ONT reads agree at 33 of 33 sites.
+
+In v1.1 the FastGA chain of `PAN027#2#chr5` (182,149,871 bp) on PAN011 h2_chr5 ends at 181,298,272 with `-f32`, the value used by Fig. 5. The v1.3.1 chain (query 182,149,890 bp) reaches 182,144,260 at `-f32`. FastGA alone, without sweepga, stops at the same place.
+
+`fastga_chr5_f.sbatch` runs FastGA alone on this query against the v1.1 joint target at one `-f`. Results in `fastga_chr5_f.summary.tsv`:
+
+| version | `-f` | seconds | PAF lines | chain end in query |
+|---|---|---|---|---|
+| v1.1 | 32 | 1,267 | 67,970 | 181,298,272 |
+| v1.1 | 48 | 1,688 | 118,991 | 182,144,241 |
+| v1.1 | 64 | 1,998 | 174,835 | 182,144,241 |
+| v1.1 | 96 | 1,730 | 304,838 | 182,144,241 |
+| v1.1 | 128 | 2,043 | 444,012 | 182,144,241 |
+| v1.1 | 192 | 2,800 | 724,699 | 182,144,241 |
+| v1.1 | 255 | 4,778 | 990,603 | 182,144,241 |
+| v1.3.1 | 32 | 1,267 | 67,859 | 182,144,260 |
+| v1.3.1 | 255 | 4,829 | 990,463 | 182,144,260 |
+
+The stop lies between `-f33` and `-f48` (36, 40 and 44 were not run). FastGA drops k-mers with 32 or more target positions at `-f32` (`FastGA.c`, `freq >= FREQ`). That the cause is seed loss in the duplicated subtelomere is inferred, the k-mer counts were not measured. That the missing h2_chr5 candidate produces the chr1p winner is also inferred.
+
+Fig. 5 steps 4-7 are rerun at `-f48` and `-f96` for v1.1, v1.3.1 and the patched DAD v1.1 with `fig5_f_submit.sh` (jobs 2871656-2871683, outputs `fig5_f48/` and `fig5_f96/` on the cluster). `fig5_align_f.sbatch` stops when a query contig of at least 10 Mb has an aligned union below 50%. Results are not in yet.
+
 ## Reproduce
 
 ```shell
@@ -77,6 +101,10 @@ sbatch -o logs/patchchk.%j.log patch_read_check.sbatch $D $D/patch_v11 v11
 CID=PAN027pat_vs_PAN011_joint; IN=$D/patch_v11/inputs_v11_patched; O=$D/patch_v11/out_P_v11
 A=$(sbatch --parsable -p tux -w tux05 -c 48 --mem=200G -o logs/P.aln.%j.log ../fig5_stageA/fig5_align.sbatch $CID $IN $O)
 sbatch -p tux -w tux05 -c 48 --mem=480G -d afterok:$A -o logs/P.sim.%j.log ../fig5_stageA/fig5_similarity.sbatch $CID $IN $O/raw_paf/$CID.frequency32.paf.gz $O
+# FastGA chain end of SELF.p chr5 at one -f, one job per value
+sbatch -o logs/fgf.%j.log fastga_chr5_f.sbatch $D $D/check/fastga_chr5_f v11 48
+# Fig. 5 steps 4-7 at one -f (copy fig5_align_f.sbatch and ../fig5_stageA/fig5_similarity.sbatch to $D/scripts_tmp first)
+bash fig5_f_submit.sh 48
 ```
 
 The patched target differs from `inputs_v11/PAN027pat_vs_PAN011_joint.target.fa` only in `PAN011#joint#h2_chr9` (same contig order, other lengths checked). The query is the same file.
@@ -96,3 +124,5 @@ The patched target differs from `inputs_v11/PAN027pat_vs_PAN011_joint.target.fa`
 | `call_regions.py`, `run_sensitivity.py` | Fig. 5 call regions and run-calling sensitivity, v1.1 vs v1.3.1 |
 | `flagger_v11/` | flagger (HiFi, ONT) and nucflag BEDs of the v1.1 release, for the four samples |
 | `sites/` | diagnostic-site tables |
+| `fastga_chr5_stop.sbatch`, `fastga_chr5_f.sbatch`, `fastga_chr5_f.summary.tsv` | FastGA alone on SELF.p chr5 at one or several `-f` |
+| `fig5_align_f.sbatch`, `fig5_f_submit.sh` | Fig. 5 steps 4-7 at a chosen `-f`, with a contig coverage check |
