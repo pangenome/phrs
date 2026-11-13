@@ -1,321 +1,329 @@
-PHRs HPRCv2 Nature reviews + response
+# Point-by-point response tracker (real review)
+
+Working document. One section per referee point, with the **verbatim ask**, our **current best
+answer**, a **resolution level**, and inline `TODO:` notes describing the work needed. This is the
+file to edit as work lands; the letter is assembled from it at the end.
+
+Review: `PEER_REVIEW.md` (Nature editor + five referees). Refs #2 and #4 co-reviewed and submitted
+no independent text.
+
+## Resolution levels
+
+| level | meaning |
+|---|---|
+| **L0** | unanswered |
+| **L1** | answered by argument using existing evidence (no new computation) |
+| **L2** | answered by re-analysing data already on disk |
+| **L3** | answered by new analysis / new computation |
+| **L4** | L3 plus manuscript text and/or figure changed, build verified |
+
+Status flag: `OPEN` · `IN PROGRESS` · `DONE` · `DISPUTED` (we disagree, with reasoning).
+
+---
+
+# Master ranked list
+
+Ordered by (impact on acceptance) × (feasibility with data in hand). Every item that is logically
+achievable is listed.
+
+| rank | id | ask (short) | level now | target | effort |
+|---|---|---|---|---|---|
+| 1 | **R1-M1** | concerted evolution is never tested | **L2 → partly done today** | L4 | 2–3 d |
+| 2 | **R1-M2** | pedigree can't tell exchange from inherited haplotype | **L3 (core done)** | L4 | 1 d to finish |
+| 3 | **R1-M7** | mouse needs dependency-preserving null; "zygotene bouquet" claim | **L4** | L4 | done |
+| 4 | **R3-M7** | Jaccard captures similarity not order | **L4** | L4 | done (ED3) |
+| 5 | **R1-M4 / R3-M3 / R3-M4** | random multi-mapping placement; flank-control logic; B/W paradox | **L1 in letter, L0 in manuscript** | L4 | 1 d |
+| 6 | **R1-M5 / Q2b** | non-subtelomeric duplication control (matched identity/length/copy) | **L0** | L3 | 1–2 w |
+| 7 | **R1-M8** | 500 kb right-censoring; 2–5 Mb re-extraction | **L0** | L3 | 2–3 d |
+| 8 | **R1-M9** | gene enrichment rests on K=187 and one SEPTIN14 duplicon | **L0** | L3 | 3–5 d |
+| 9 | **R1-M6** | mouse p-arm flanks are satellite-dominated | **L1 partial** | L3 | 3–4 d |
+| 10 | **R3-M6** | 41/48 arms depend on thresholds | **L0** | L2 | 1–2 d |
+| 11 | **R5-L193** | why only 2,830 pairs of 15,668 PHRs | **L0** | L1/L2 | 2 h |
+| 12 | **R1-M3** | implied exchange rate vs Lemmers 2010 | **L1 partial** | L4 | 1 d |
+| 13 | **R1-m11** | no population-stratified description | **L1 (F_ST done)** | L4 | 1 d |
+| 14 | **R5-L86** | sensitivity of PHR count to window size | **L0** | L3 | 3–5 d |
+| 15 | **R1-M10** | place the compartment in a comparative frame | **L0** | L1 | 1 d (lit) |
+| 16 | **R1-m2/4/5/6/7/8/12/13, R3-m1/2, R5-L152/L229/L348** | figure/text fixes | mixed | L4 | 2–3 d total |
+| 17 | **Editor compliance** | Data/Code availability, ethics, ED format, Source Data, word count, tracked changes, checklists | **L0** | L4 | 2 d |
+
+---
+
+# Referee #1
+
+### R1-M1 — "Concerted evolution is never tested" · L2 (partial) · OPEN
+
+**Verbatim ask.** "It requires that paralogous copies at different ends be more similar than their
+divergence times predict, i.e. actively homogenized; high identity alone does not show this, since
+recent duplication gives the same signature. The data allow a direct test: duplicon phylogenies
+(D4Z4/DUX4L, TUBB8/TUBB8B, OR4F, SEPTIN14) asking whether copies cluster by end or in…"
+
+**What we already have (stronger than we have claimed).** The allele-versus-paralog comparison in
+`end-to-end-report/report/04_heterogeneity.md` §"Allele vs paralog distance" is exactly the
+homogenisation signature: for each individual with two haplotypes in a multi-arm community, the
+allelic distance (maternal vs paternal copy of *the same* arm) is compared with the paralog
+distance (to the closest copy on a *different* arm of the same community). If paralogs are closer
+than alleles, cross-arm copies are being homogenised faster than alleles diverge — which
+high-identity alone cannot produce. Result: alleles closer in 8 of 9 communities (overall
+p < 1e-300), and **C7 is the exception with paralogs closer than alleles in 70.5% of individuals
+(p = 2e-7)** — i.e. in the rDNA-bearing acrocentric arms, homogenisation has already overtaken
+allelic variation. That inversions the reviewer's premise for the strongest community.
+
+`TODO:` promote this from report §04 into the main text as the explicit concerted-evolution test.
+`TODO:` per-family version for the four families the referee names (D4Z4/DUX4L, TUBB8/B, OR4F,
+SEPTIN14): cross-arm paralog identity vs within-arm allelic identity across the 232 individuals.
+Data: `gene_family_copy_counting_analysis.md`, PHR gene lists, `data/chm13.phrs*.bed`.
+`TODO:` duplicon phylogeny per family (copies × individuals, NJ with character bootstrap) and
+report whether copies cluster **by arm/end** (homogenisation) or **by individual** (drift/descent).
+`TODO:` state the dating logic explicitly (see "Perspective" below).
+
+**Perspective on "they look like they exchanged yesterday".** That appearance *is* the prediction of
+concerted evolution, so it cannot be evidence against it. What we can deliver is bounds, not dates:
+(i) if the homogenised state is shared across all 232 individuals, the last homogenisation predates
+the sample's common ancestor, i.e. it is not a recent event in any one meiosis; (ii) the residual
+site-level differences between paralogs give a lower bound on the number of homogenisation events
+since duplication (each conversion erases differences); (iii) the clock that survives is in the
+flanking single-copy sequence and at breakpoints — which is exactly why the pedigree work (R1-M2)
+asks about junctions rather than identity. Our module-architecture result (repertoire shared,
+orientation conserved at 98.6%, order scrambled) is the expected signature of repeated conversion
+acting on a shared module set rather than of one recent duplication.
+
+### R1-M2 — pedigree: exchange vs inherited haplotype · L3 · DONE (finish to L4)
+
+**Verbatim ask.** "The pedigree evidence does not distinguish a new exchange from an inherited
+haplotype… An exchange claim needs the tract shown absent from both paternal copies of the recipient
+[and: (1) chr5q/chr1p called both father-to-daughter and daughter-to-granddaughter; (2) all three
+Fig 5C calls on the same paternal haplotype; (3) identity margin ~1% with comparable dips outside
+the called tract]. We ask for the comparison against both parental haplotypes, a genome-wide
+distribution of identity margins locating the candidates, a false-positive estimate from permuted
+parent-child pairs, and confirmation that each tract lies in an unbroken contig."
+
+**What we did.** Both-parental-haplotype comparison (father's chr3q h2 at 99.79–99.84% with 100%
+coverage; his chr9q h1 excluded at 7.3–7.5% coverage); per-chromosome maternal-copy resolution
+(the earlier child-side calls used the paternal copy — 73% of them); threshold sweep f10–f8192;
+HiFi flagger cleanliness (1/538). Their three sub-points are all confirmed rather than refuted:
+chr5q/chr1p is ancestral homology, the "two events" is transmission, and margins are ≤1%.
 
-michelle.trenkmann@nature.com
+`TODO:` genome-wide distribution of identity margins with the candidates located on it.
+`TODO:` permuted parent–child false-positive rate (shuffle which child haplotype is compared).
+`TODO:` contig-breakpoint check for the retained tract (unbroken contig across the junction).
 
-Dear Dr Garrison, dear Erik,
+### R1-M7 — mouse null and the "zygotene bouquet" claim · L4 · DONE
 
-Your manuscript, "Concerted evolution and unorthodox recombination of human subtelomeres", has now been seen by 5 referees, whose comments are attached below. While they find your work of potential interest, as do we, they have raised important concerns that in our view need to be addressed before we can consider publication in Nature.
+Inference is at pair resolution (1,135 inter-chromosomal PHR pairs, 1 Mb flanks, 20 kb windows): Spearman ρ = 0.42, 0.61, 0.58 and 0.25 at leptotene, zygotene, pachytene and diplotene, with two-way clustered standard errors over the two arms of each pair (95% CI 0.37-0.47, 0.57-0.66, 0.53-0.62, 0.19-0.30) and a permutation null that shuffles similarity only among PHR pairs of the same arm pair (10,000 permutations; p = 1e-4 at leptotene, zygotene and pachytene, 1.5e-3 at diplotene). The association is elevated at zygotene and pachytene and lowest at diplotene. Zygotene minus pachytene is +0.038 at pair resolution (95% CI 0.009 to 0.067, p = 0.017), but a bootstrap over the 27 chromosome ends does not separate the two stages (95% CI -0.043 to +0.131), so the manuscript does not say "strongest at zygotene". The arm-level Mantel test (344 arm pairs, 10,000 row-and-column permutations; ρ = 0.40, 0.58, 0.63, 0.33, all p <= 1e-4) is kept in Methods as a display only: it discards the variance within arm pairs and puts the peak at pachytene. At 50 kb windows the four stages do not separate.
+Source: `notes/M_mouse_stage_ordering.md` (STEP F); manuscript text since commit d9378b9 (abstract, Results, Discussion, Methods). This replaces the earlier entry (arm-level Mantel, peak at pachytene). `TODO:` none, except R1-M6 below.
 
-You will see that the reviewers are generally interested in the study, but it will need a bit of work to better tease out the novelty and advance over the literature, and to provide further mechanistic insights into the observations (cf. comments from reviewer #1).
+### R1-M4 / R3-M3 / R3-M4 — random placement, flank-control logic, B/W paradox · L1 · OPEN
 
-Should further experiments and/or analyses allow you to address these criticisms, we would be happy to consider a revised manuscript (unless something similar has been accepted at Nature or appeared elsewhere in the meantime). We hope to receive your revised paper within four to six months. If you cannot complete the required revisions within this time frame, please let us know when you would anticipate being able to submit a revised manuscript.
+`TODO:` reinstate the flanking unique-sequence control in the manuscript **with both metrics**
+(B/W 0.027 vs 0.002 at 50 kb; Mantel ρ 0.657→0.520) and state the dilution logic explicitly:
+uniform placement attenuates a specific contact by ~1/k per end (~1/k² for PHR–PHR), symmetrically
+across community classes, so PHR-window enrichment is a **lower bound** and the artefact hypothesis
+predicts the reverse of what we observe.
 
-Any revised manuscript should conform to our format instructions and publication policies (see here). We also strongly suggest that your revised manuscript has tracked changes, which is increasingly requested by referees to aid in their re-review. Please include the final submission word count of the manuscript (excluding abstract, methods, references) within your covering letter.
+### R1-M5 / R3-M3 — matched non-subtelomeric duplication control · L0 · OPEN
 
-> **Response:** XXX (tracked-changes version and final word count in the cover letter)
+`TODO:` pericentromeric + interstitial duplications matched on identity, length and copy number,
+through the identical pipeline; report whether subtelomeric ρ = 0.66 exceeds the all-SD value.
 
-We would appreciate your careful attention to the following:
+### R1-M8 — 500 kb right-censoring · L0 · OPEN
 
-LENGTH: Biological sciences papers typically range from 6–8 printed pages, containing ~2,500–4,300 words depending on the number and size of figures. Larger or composite figures may require reducing text length. Lengthy technical details can be moved to Methods or Supplementary Information. The editor may either confirm the current length is acceptable (with no major additions) or request that the paper be shortened to a specified maximum before resubmission.
+`TODO:` re-extract saturated ends with 2–5 Mb flanks; report the censored fraction; restate 3.51 Mb
+as a lower bound.
 
-> **Response:** XXX
+### R1-M9 — gene enrichment on K=187 · L0 · OPEN
 
-STATISTICS: When revising your manuscript, you should ensure that any statistical analysis used is sound and that it conforms to Nature's guidelines). A collection of articles explaining the basics of statistical analysis and advice on how to best present it can be found here.
+`TODO:` rework around the 215 unannotated copies; quantify the SEPTIN14 dependence of the 25-fold
+spermatid term; report enrichment conditional on the largest family.
 
-> **Response:** XXX
+### R1-M6 — mouse p-arm satellite confound · L1 partial · OPEN
 
-REPRODUCIBILITY: All of the checklists provided with the current submission (Reporting summary, and Code and software checklist (if applicable)) should be updated to reflect the revisions made and submitted with the revised manuscript.
+`TODO:` satellite-masked (minor/major) mouse flank re-analysis; sensitivity of ρ to masking.
 
-> **Response:** XXX (updated Reporting Summary and Code and software checklist)
+### R1-M10 — comparative frame · L0 · OPEN
 
-DATA AND CODE AVAILABILITY STATEMENTS: All original research manuscripts published in Nature Portfolio journals must include a Data availability statement. This statement must make the conditions of access to the “minimum dataset” that is necessary to interpret, verify and extend the research in the article, transparent to readers. This minimum dataset may be provided through deposition in public community/discipline-specific repositories, custom proprietary repositories for certain types of datasets, or general repositories like Figshare, Zenodo and Dryad. Providing large datasets in Supplementary Information is strongly discouraged; the preferred approach is to make data available in repositories. More information on Nature Portfolio’s reporting standards and preparing your Data availability statement can be found here.
+`TODO:` short comparative paragraph (apes, yeast, Phaseolus, Plasmodium VAR) — literature only.
 
-> **Response:** XXX (draft statement in `response/notes/D2_editor_compliance.md`)
+### R1-M3 — rate vs Lemmers 2010 · L1 partial · OPEN
 
-For all studies using custom code or mathematical algorithms that are deemed central to the conclusions, a Code availability statement must be included, indicating whether and how the code or algorithm can be accessed, including any restrictions to access. The Code availability statement should be provided as a separate section after the Data availability statement but before the references. Code should be deposited in a DOI-minting repository such as Zenodo, Gigantum or Code Ocean and cited in the reference list. We encourage you to manage subsequent code versions and to use a license approved by the open source initiative. Additional details can be found here.
+`TODO:` explicit calculation showing our conclusion (one ancestral arrangement, transmitted) is
+consistent with four 4q/10q transfers over human evolution.
 
-> **Response:** XXX (Zenodo DOI; note the repository URL mismatch `ekg/phrs` vs `pangenome/phrs` flagged in `response/notes/D2_editor_compliance.md`)
+### R1 minors
 
-METHODS: After the main text figure legends there should be a section entitled "Methods", which provides the full, step-by-step instructions that would allow other researchers to replicate the results. The Methods section will not appear in print but will appear online in the full-text HTML and PDF versions. The Methods section should be written as concisely as possible but should contain all elements necessary to allow interpretation and reproduction of the results. If there are additional references in the Methods section, their numbering should continue from the last reference in the main text, and they should be listed following the Methods section. Specialized methods that require chemical structures, figures or tables, or methods requiring equations, cannot be accommodated in the Methods section of the main text file. If such information is part of the Methods, the entire Methods section must instead be included within a Supplementary Information text file.
+- **m2** scope statement: which analyses are pangenome-wide vs CHM13-anchored. `TODO:`
+- **m4** Fig 1A vs 1B disagreement at chr3p/chr8q. `TODO:` reconcile or add a PHR track.
+- **m5** distinguish rDNA-driven acrocentric PHRs; restore chrY/14/21 centromere tracks. `TODO:`
+- **m6** quantify "concentrated at ends" against a segdup-density null. `TODO:`
+- **m7** Fig 4A vertical-axis points; per-assay B/W labelling; pair-inclusion rule. `TODO:`
+- **m8** Fig 5 number inconsistencies (PAR1 138 vs 92 kb; 28 kb vs other length). `TODO:` — panels
+  were rebuilt; reconcile numbers rather than delete.
+- **m11** population-stratified descriptives (length, community membership by superpopulation).
+  `TODO:` cheap; our F_ST work already provides the analysis for the differentiation part.
+- **m12** engage Xiao 2026 (D4Z4) and Karimian 2024 (telomere length). `TODO:`
+- **m13** title: "unorthodox" → ectopic/non-allelic. `TODO:`
 
-> **Response:** XXX
+---
 
-ETHICS STATEMENT: For research involving human research participants, the Methods section must include an ethics statement. This statement should provide the name of the committee that approved the study; confirm that the research was performed in accordance with all relevant guidelines and regulations; and confirm that informed consent was obtained from all participants. If the study was granted an exemption from requiring ethics approval, details of the committee granting the exemption must be included.
+# Referee #3
 
-> **Response:** XXX (author to supply; see `response/notes/D2_editor_compliance.md`)
+- **M1** novelty framing vs Linardopoulou 2005 / Guarracino 2023. `TODO:` framing paragraph.
+- **M2** Fig 1A positional-profile test. `TODO:` quantify profile similarity across ends.
+- **M3** random assignment could create contacts — see R1-M4. `TODO:` same fix.
+- **M4** B/W direction paradox — see R1-M4. `TODO:` same fix.
+- **M5** somatic vs meiotic; human meiosis gap. `TODO:` consistent limitation statement. The formal stage comparison is done: see R1-M7 (paired stage contrasts; zygotene and pachytene both elevated, diplotene lowest).
+- **M6** 41/48 arms depend on thresholds. `TODO:` threshold sweep for the PHR call (identity,
+  window, alignment counts) — data exists.
+- **M7** similarity vs order/colinearity. **DONE** — order concordance, orientation, ED3.
+- **M8** call pedigree findings candidate exchanges consistently. **DONE** — one structurally
+  supported event; recurrence withdrawn.
+- **minors** Fig 3 crop at high resolution; define NOR. `TODO:`
 
-For research involving human embryos or gametes, or human stem cells in contexts requiring ethical oversight, the Methods section must include an ethics statement. This statement should provide the name of the committee that approved the study and confirm that the research was performed in accordance with all relevant guidelines and regulations. We encourage authors to follow the principles laid out in the 2021 ISSCR Guidelines for Stem Cell Research and Clinical Translation. Where necessary, the ethics statement should also describe the conditions of donation of materials, such as human embryos or gametes, and confirm that informed consent was obtained from all donors of cells or tissues.
+---
 
-> **Response:** XXX
+# Referee #5
 
-EXTENDED DATA: Extended Data do not appear in the print version of the paper but are included online within the full-text HTML and at the end of the online PDF. Extended Data are an integral part of the paper, and only data that directly contribute to the main message should be included. All Extended Data must be referred to in the main text, and their legends should be listed sequentially at the end of the main text, not in the Extended Data files. Extended Data should be assembled into a maximum of 10 A4 size, multi-panelled display items, submitted as individual files in .jpg, .tif or .eps format only. They should be of the same quality as print figures, but there are important differences in their formatting. More specific instructions are provided here. If you need to describe complex processes, we encourage you to include a schematic of the main finding as part of the Extended Data to aid readers unfamiliar with the immediate discipline.
+- **L86** window-size sensitivity of the 15,668 count. `TODO:` re-run calling at 50 kb.
+- **L152** stability of copy-number-aware GO across assemblies. `TODO:`
+- **L189** which Hi-C/Pore-C datasets and cell types. `TODO:` explicit Methods table.
+- **L193** why 2,830 pairs from 15,668 PHRs. `TODO:` state the filter; 2 h.
+- **L229** Fig 5 legend dark-grey exchanges undefined. `TODO:` moot after the panel rebuild —
+  re-check the current legend.
+- **L348** why 11.6% sampling rather than 3.5%. `TODO:` one paragraph.
 
-> **Response:** XXX (Extended Data files are PDF now; convert to .tif or .eps)
+---
 
-SUPPLEMENTARY INFORMATION: Supplementary Information (SI) is online-only, peer-reviewed material that is essential background to the study (e.g., large data sets, more complex methods, and calculations), but which is too large or impractical, or of interest only to a few specialists, to justify inclusion in the print version of the paper (see here for further details). While SI should not typically contain data figures (any figures additional to those appearing in the main text should be formatted as Extended Data), we require that the raw, uncropped data for gels be presented as an SI figure (see below). Tables may be included in SI, but only if they are unsuitable for formatting as Extended Data (e.g., tables containing large data sets or raw data tables that are best suited to Excel files). If a manuscript has SI, each discrete item of the SI (e.g., videos, tables) must be referred to at an appropriate point in the main manuscript.
+# Editor's compliance list (not scientific, all mandatory)
 
-> **Response:** XXX
+`TODO:` Data availability statement; Code availability statement (DOI-minting repository, e.g.
+Zenodo); ethics statement; Extended Data as `.jpg/.tif/.eps` (currently PDF) and ≤10 items;
+Source Data per figure; final word count in the cover letter; tracked-changes version; updated
+Reporting Summary and Code/software checklist.
 
-SOURCE DATA (GRAPHS): Source data underlying graphs should be provided in spreadsheet format (.xls, .xlsx, or .csv). This is mandatory for animal studies and strongly encouraged for all other figures. Submit one file per figure (or clearly labelled sheets/panels within a file) as a Source Data file, and indicate the relevant figure number(s) in the file description. Source data should not be submitted as Extended Data.
+---
 
-> **Response:** XXX (one Source Data file per figure)
+# Flow — the order this actually happens in
 
-RAW DATA (GELS): For all electrophoretic data (e.g., EMSA, Northern, Southern, and Western blots), the uncropped, full-length source images must be provided in a supplementary figure, including labelled molecular weight/size markers, loading controls, and clear indications of cropping. The source data must be linked to the relevant main or Extended Data figures, with legends referencing the location of the uncropped scans. You should also state whether controls were run on the same or separate gels and be prepared to provide raw data files.
+**Step 0 (now).** Restore the as-submitted manuscript as the base (`cc7921d`), then re-apply our
+seven change-groups as isolated hunks. Reason: referees quote text we deleted (flanking control,
+Fig 5 numbers, pattern categories), so a splice must come before any further text editing.
 
-> **Response:** XXX (the study has no gel data)
+**Step 1 (cheap, high impact — ~3 days total).** R5-L193 filter explanation; R1-m11 superpopulation
+descriptives; R1-M2's three completions; R3-M6 threshold sweep; editor compliance statements;
+reinstatement of the flank rationale (R1-M4).
 
-TUMOR DATA: The Methods must state the maximum tumour size/endpoints approved by the IACUC and confirm these limits were not exceeded. You must also provide source data for tumour growth analyses, preferably including longitudinal measurements for each mouse, uploaded as a Source Data file.
+**Step 2 (the two heavyweight intellectual asks — ~1 week).** R1-M1 concerted-evolution test
+(allele-vs-paralog promoted to main text, per-family trees, dating bounds) and R1-M8 re-extraction
+at 2–5 Mb.
 
-> **Response:** XXX (the study has no tumour data)
+**Step 3 (controls that referees treat as decisive — 2–3 weeks).** R1-M5/R3-M3 matched SD control;
+R1-M6 satellite-masked mouse; R1-M9 gene-enrichment rework.
 
-THIRD PARTY RIGHTS: Please identify any content used in your article, whether in the main text, Extended Data or Supplementary Information, that comes from a third party. This could include figures, tables, images, videos or text boxes that are reproductions or adaptations of items that have previously been published elsewhere and/or are owned by a third party. It also encompasses pictures taken by professional photographers, maps and images downloaded from the internet. You must obtain the right to use each of these items and provide evidence that you have these rights. You will also need to give proper attribution to the copyright holders in your paper. We ask that you fill out a Third party rights table and upload this with your revised manuscript. You can find more information about third-party rights here.
+**Step 4 (text/figures and the letter).** All figure and minor fixes, then assemble the point-by-point
+letter from this file, with tracked changes.
 
-> **Response:** XXX (Third party rights table)
+**Step 5 (verification).** `bash compile.sh` → exit 0, `grep -c undefined paper.log` = 0, and
+`python3 scripts/ci/audit_response_numbers.py` for every quoted number.
 
-In the meantime, we hope that you will find our referees' comments helpful. Please do not hesitate to contact me if there is anything you would like to discuss.
+---
 
-Yours sincerely
+# Lane results (2026-10-23) — five parallel lanes, all completed
 
-Michelle
+Notes: `response/notes/{M1_concerted_evolution,M2_pedigree_completions,R5_pairs_filter_and_R3_thresholds,D1_superpopulation_descriptives,D2_editor_compliance,M6_mouse_satellite}.md`
 
-Dr Michelle Trenkmann
+## R1-M1 — concerted evolution · now **L3**, and the answer is negative for the named families
 
-Senior Editor
+Substrate definitions pinned before any number: **P** = the telomere-anchored PHR window itself (carries the duplicons); **F** = the adjacent 100 kb of *unique* centromere-proximal sequence. Because F's "paralog" pair is two non-paralogous unique loci, F cannot test homogenisation at all — its 0.18 distance is a floor. **Only P is informative.**
 
-Nature
+Substrate P, alleles vs paralogs: D4Z4/DUX4L paralog-closer 36/85 (0.42, p=0.19); TUBB8/B **0/197** (p=9.96e-60); OR4F 272/1144 (0.24, p=1.08e-73); SEPTIN14 843/3127 (0.27, p=8.25e-152). On the referee's own formulation, within-individual cross-arm copies are **2.22× / 11.45× / 2.95× / 4.57×** farther apart than same-arm copies from *other* individuals. Sketch distances validated against FastGA alignments (Spearman +0.77, p=8e-25, n=120; ordering preserved, sign p=0.0026).
 
-orcid.org/0000-0002-3332-6344
+**Conclusion to write up:** no homogenisation signature for these four families at whole-window resolution. This does **not** contradict the paper: the aggregate's single homogenisation signal is community **C7** (paralog closer in 70.5%, p=2e-7), and **none of the four families has a copy on a C7 arm**. The M1 answer is therefore "homogenisation is demonstrated in the rDNA-bearing acrocentrics, and is not detectable in these gene families" — stated with the dating caveat (no exchange is dated; shared state bounds it as pre-dating the individuals' common ancestor).
 
-www.nature.com
+## R1-M6 — mouse satellite confound · L3, but the stratified result is RETRACTED (void axis)
 
-Referee expertise:
+> The satellite-masked axis is broken (QLEN/QSTART swap at `mouse_satellite_sensitivity.py:706`; 4,228/4,228 records reversed, all derived Jaccard = 0). The "pachytene peak does not survive in satellite-poor windows" claim is withdrawn. What stands: the per-arm satellite FRACTIONS (p-end 0.26-0.99, mean 0.885; q-end 0.004) from annotation, and Corr(satellite, published Jaccard) = +0.790 on the real axis. Original (superseded) text follows.
 
-Referee #1: evolutionary genomics, recombination
+- p-end flanks are **0.26–0.99 satellite** (38/39 ≥ 0.5, mean 0.885); q-end flanks **0.002–0.008**. The referee is right.
+- Major satellite `GSAT_MM` is a real Dfam annotation; **minor satellite is a proxy** (no Mus family in the Dfam library) and the proxy recovers ~0, so "minor satellite does not contribute" is **unmeasured**.
+- Stratified: the association **survives in satellite-poor windows** (rho +0.49 to +0.64 at 20 kb, p 0.005–0.025) but the **pachytene peak does not** — the low-satellite subset is flat across stages (0.536 / 0.539 / 0.486 / 0.486).
 
-Referee #3: genome organization
+**MANUSCRIPT CONSEQUENCE (action):** the pachytene-peak framing we added to the Introduction, Results, Fig4c caption and Discussion is a satellite-rich-p-arm phenomenon. It must be qualified: report the whole-flank profile, state that it is dominated by satellite-rich p-arm windows, and report that the satellite-poor subset is flat across stages. This supersedes the "sequence similarity translates into ectopic proximity precisely during the window in which crossovers form" sentence.
 
-Referee #5: human genomics
+## R1-M2 — pedigree completions · **L4-eligible**
 
-Referees' comments:
+Margin distribution: 177,998 windows; only 1.02% have margin > 0; the retained tract sits at the 99.0–99.7th percentile but **558 windows exceed its max margin**, and the withdrawn chr5q/chr1p call sits at 99.1–99.6th — margin does not discriminate (confirms the referee, supports our structure-based argument). Permutation FP: null A p<1e-4; null B genome-wide p<1e-4 but candidate-level p=0.09 (chr9) / 0.32 (chr5). Contig: 23/23 lengths identical, zero N-runs, tract 21,149 bp inside `PAN027.chr9.paternal`.
 
-Referee #1 (Remarks to the Author):
+## R5-L193 + R3-M6 — **answered**
 
-The manuscript carries no line numbers, which made the review process not so straightforward, so we refer to locations by page and figure when appropriate.
+2,830 = C(77,2) − 96 same-chromosome pairs (object identity, not similarity filtering), verified two ways and matching `paper.tex`'s n and ρ. Threshold gate reproduced the published call exactly (15,668 PHRs, 41 arms, all 18,826 region sets identical): consecutive-fail 1–4 → 41 arms; flank 25–400 kb → 41 arms; chromosomes-per-window 2/3–5/6–12/15 → 41/40/38/37; no inter-chr rule → 48 arms (the seven the paper names).
 
-The authors align telomere-anchored 500 kb flanks all against all across 464 haplotype-resolved HPRC v2 assemblies plus CHM13v2.0, without chromosomal partitioning. They call 15,668 pseudo-homolog regions (PHRs) on 41 of 48 arms and partition an arm-level similarity matrix into 15 communities dominated by p–p and q–q sharing. They then ask whether these communities correspond to 3D proximity in human Hi-C, Pore-C and CiFi and in stage-resolved mouse meiotic Hi-C, and whether ongoing exchange is visible in the WashU three-generation T2T pedigree.
+## R1-m11 + editor compliance — **D1 done, D2 drafted**
 
-We find the framing attractive and the central idea well judged as subtelomeres are exactly where reference-anchored analysis fails and a reference-free graph should pay off. Integrating independent data types is the paper's real strength, and using 3D proximity to corroborate communities inferred from sequence alone is elegant. The positive controls are reasonable: unsupervised recovery of every known case of inter-chromosomal subtelomere homology (Xp/Yp, Xq/Yq, the acrocentric short arms, 10p/18p, 4q/10q), the acrocentric signal in the pedigree scan, and the non-PHR flanks as a mappability control.
+D1: per-superpopulation PHR count, bp, median length + IQR, community shares, and the 500 kb right-censoring share; superpopulation mapping is repo-local (`slides/.../nearest_same_superpop_mds_distances.tsv`), reproduction gate md5-identical. D2: Data/Code availability, ethics split into attestable vs **AUTHOR TO SUPPLY**, format checklist (ED are 3 items but all `.pdf` → need `.tif/.eps`), and it flags a repo URL inconsistency (`ekg/phrs` vs `pangenome/phrs`).
 
-The compartment itself is not new. Linardopoulou et al. and Riethman and Ambrosini established the phenomenon, and the PHR concept and proximity-driven model come from the authors' own work on acrocentrics and Robertsonian chromosomes. What is new is the scope and integration, and we regard that as a genuine advance. The compartment is now sequence-resolved across a population panel rather than inferred locus by locus, and much more convincing for it. Where we are not convinced is the mechanistic view. The title commits to concerted evolution and to recombination but neither is tested. Addressing major points 1–3 would elevate this from an important resource to the advance in understanding the phenomena.
+---
 
-> **Response:** XXX
+# EVIDENCE INDEX — every claim traceable
 
-Major points
+Each referee item maps to: a **note** (analysis write-up), the **script(s)** that reproduce it, the
+**data artefacts** it writes, and the **version pins** in `response/notes/tool_versions_and_pins.md`.
+Nothing in the response or the manuscript should quote a number that is not reachable through this table.
 
-1. Concerted evolution is never tested. It requires that paralogous copies at different ends be more similar than their divergence times predict, i.e. actively homogenized; high identity alone does not show this, since recent duplication gives the same signature. The data allow a direct test: duplicon phylogenies (D4Z4/DUX4L, TUBB8/TUBB8B, OR4F, SEPTIN14) asking whether copies cluster by end or interdigitate across ends within a haplotype; a per-family comparison of within-individual divergence between non-homologous copies against between-individual divergence at the same end; or gene-conversion detection on the PHR alignments. Without one of these, "concerted" should be dropped from the title.
+## Referee #1
 
-> **Response:** XXX. Draft facts (from `response/TRACKER.md`, not yet letter text): allele-vs-paralog test in the PHR windows, paralog closer than allele in D4Z4/DUX4L 36 of 85 (p = 0.19), TUBB8/B 0 of 197, OR4F 272 of 1,144, SEPTIN14 843 of 3,127, so no homogenisation signal in these four families; the one community with paralogs closer than alleles is the acrocentric C7 (70.5% of individuals, p = 2e-7). Duplicon topology (`response/notes/M1c_duplicon_monophyly.md`): TUBB8B monophyletic, D4Z4, OR4F, SEPTIN14 and acrocentric copies intermixed. Erik's paralog/homolog divergence ratio by distance from the telomere (meeting 2026-11-12) is not yet in the tracker.
+| item | level | note | script(s) | data artefacts | manuscript |
+|---|---|---|---|---|---|
+| M1 concerted evolution — topology | L4 | `M1c_duplicon_monophyly.md` (+ superseded `M1_concerted_evolution.md`) | `scripts/cladistics/duplicon_monophyly.py` | `duplicon_monophyly.{tsv,json}` | **to write**: TUBB8B monophyletic, D4Z4/ORF4/SEPTIN14/acrocentric intermixed |
+| M1 corroboration — copy enumeration | L3 | `impg_transitivity_copy_enumeration.md` | `scripts/cladistics/impg_copy_enumeration.py` | `impg_copy_enumeration.tsv` | same passage as above |
+| M2 pedigree — 3 completions | L4 | `M2_pedigree_completions.md` | `scripts/pedigree/identity_margin_distribution.py`, `permuted_parent_child_fp.py` | `identity_margin_distribution.tsv`, `permuted_parent_child_fp.json` | **to write**: margin distribution, permuted FP, contig check |
+| M3 exchange rate vs Lemmers | L1 | — | — | — | **to write**: one sentence, uses the single-event conclusion |
+| M4 / R3-M4 multi-mapping + flank control | L1 | `04_flanking_control` patch | — | — | **patch ready**: `response/patches/flanking_control.tex` |
+| M5 / R3-M3 specificity | L3 | `M5_matched_sd_control.md` | `scripts/hic/matched_sd_control.py` | `matched_sd_control.{tsv,json}` | **to write**: TEL 0.50 vs INT 0.13, Δ+0.39 p=0.006 |
+| M6 mouse satellite | L3 † | `M6_mouse_satellite.md` († stratified result retracted) + `M_mouse_stage_ordering.md` | `scripts/hic/mouse_satellite_sensitivity.py` (void axis), `mouse_stage_profile_disambiguation.py` | `mouse_satellite_sensitivity.json`, `mouse_stage_profile_disambiguation.json` | **to write**: satellite fractions + r=0.79 caveat |
+| M7 mouse dependency-preserving null | L4 | `M_mouse_stage_ordering.md` | `mouse_stage_profile_disambiguation.py` | same JSON | written (d9378b9): zygotene and pachytene elevated, CIs, paired contrast, 27-end bootstrap |
+| M8 flank censoring | L3 | `M8_flank_censoring.md` | `flank_censoring_sensitivity.py` | `flank_censoring_sensitivity.tsv` | **to write**: 15.8% saturation, lower bound |
+| M9 gene enrichment | L3 | `M9_enrichment_dependence.md` | `enrichment_family_dependence.py` | `enrichment_family_dependence.tsv` | **to write**: family dependence, `LOC*`, 9 loci/10 chromosomes |
+| M10 comparative frame | L0 | — | — | — | open (literature only) |
+| M11 title "unorthodox" | L1 | — | — | — | **to write**: retitle |
+| M12 confidence intervals | L4 | `scripts/ci/results_d_m12.json` | `bootstrap_ci_d_m12.py`, `matched_fst_from_blocks.py`, `monte_carlo_null_d_m4.py` | `results_d_m12.json`, `matched_fst_d_m6.tsv` | done in Methods |
+| R1-m11 superpopulation descriptives | L2 | `D1_superpopulation_descriptives.md` | `scripts/cladistics/phr_by_superpopulation.py` | `phr_by_superpopulation.tsv` | **to write** |
 
-2. The pedigree evidence does not distinguish a new exchange from an inherited haplotype. The scan is satisfied whenever a transmitted allele resembles the paralogous end more than the father's other allele at the same end, i.e. standing paralogy plus allelic variation, with no recombination in that meiosis. An exchange claim needs the tract shown absent from both paternal copies of the recipient chromosome and present on the donor. Fig. 5B, the only sequence-resolution view, plots only PAN011 h2. Other concerns are:
+## Referee #3
 
-1- chr5q/chr1p is called both father-to-daughter (Fig. 5C) and daughter-to-granddaughter (Fig. 5E), implausible for two independent de novo events in one family
+| item | level | note | script(s) | data artefacts | manuscript |
+|---|---|---|---|---|---|
+| M6 PHR-call threshold sensitivity | L3 | `R5_pairs_filter_and_R3_thresholds.md` | `scripts/cladistics/phr_call_threshold_sensitivity.py` | `phr_call_threshold_sensitivity.tsv` | **to write**: gate reproduces 15,668/41 exactly; arm count moves only with the chromosomes-per-window rule |
+| M7 similarity vs order | L4 | `05_answers_arm_asymmetry_and_architecture.md` | `arm_module_{architecture,order,orientation}.py`, `peerq3_arm_type_asymmetry.py` | `arm_module_*.tsv`, `peerq3_*.tsv` | written (ED3 + Discussion) |
 
-2- all three Fig. 5C calls fall on the same paternal haplotype, as an assembly artefact would
+## Referee #5
 
-3- the identity margin is ~1% or less (Fig. 5B spans 0.97–1.00), with comparable dips outside the called tract.
+| item | level | note | script(s) | data artefacts | manuscript |
+|---|---|---|---|---|---|
+| L193-195 the 2,830 pairs | L1 | `R5_pairs_filter_and_R3_thresholds.md` | — | — | **to write**: C(77,2) − 96 same-chromosome |
+| L86 window-size sensitivity | L0 | — | — | — | open |
+| L152 GO stability across assemblies | L0 | — | — | — | open |
+| L189 cell types/datasets | L1 | — | — | — | **to write**: Methods table |
 
-We ask for the comparison against both parental haplotypes, a genome-wide distribution of identity margins locating the candidates, a false-positive estimate from permuted parent-child pairs, and confirmation that each tract lies in an unbroken contig.
+## Cross-cutting
 
-> **Response:** XXX. Draft facts (branch `pedigree-fig5-validation-and-patching`, `scripts/pedigree/fig5_v131_check/README.md`): (a) the chr9q/chr3q call is an error in the father's assembly: the last 61,919 bp of PAN011 chr9 haplotype 2 copy his chr1 haplotype 1 (same in v1.1 and v1.3.1), his ONT reads disagree at 106 positions with depth 16 against 73; after replacing that end with a consensus of 134 of his ONT reads the call disappears; (b) the father-to-daughter chr5q/chr1p call is an alignment and filtering artefact: the FastGA chain of the daughter's paternal chr5 stops at 181,298,272 of 182,149,871 bp at -f32 and reaches the end from -f48, and the sweepga 10:10 filter with identity scoring drops whole-chromosome homolog alignments that contain at least 10 better short hits; (c) with the default sweepga scoring (log-length-ani) and -f48 the paternal comparison keeps only PAR1 and acrocentric runs; (d) the daughter-to-granddaughter chr5q~chr1p tract (granddaughter chr5 183,044,000-183,074,000 in v1.1) is spanned by 56 granddaughter ONT reads and by 5 reads of the daughter, still under study. Earlier completions (`response/TRACKER.md`): margin distribution over 177,998 windows, permuted-pair false-positive test, contig check.
+| item | note | artefacts | manuscript |
+|---|---|---|---|
+| data integrity: `chr13_p` missing from vendored PHR BED | `L5_data_reconciliation.md` | `arm_inclusion_audit.tsv` | **patch ready** + recommendation to regenerate |
+| pedigree pattern categories | — | — | **patch ready**: `pedigree_pattern_categories.tex` |
+| editor compliance | `D2_editor_compliance.md` | — | AUTHOR TO SUPPLY items listed |
 
-3. The implied exchange rate conflicts with Lemmers et al. (2010) who found only four discrete 4q/10q transfers across worldwide populations in the whole of human evolution. Two to three candidates in three transmissions implies a rate order of magnitude higher. Either these are a much more frequent, shorter class, in which case please explain why they leave no population-level footprint in the same subtelomeres, or many calls are artefacts. An estimated per-meiosis rate with its uncertainty should be presented in ther manuscript.
+† `M6_mouse_satellite.md` carries a retraction header: its satellite-masked axis is void (QLEN/QSTART swap),
+so only its satellite **fractions** may be cited.
 
-> **Response:** XXX. Draft: the non-acrocentric paternal candidates are explained by an assembly error and by alignment filtering (see point 2), so they no longer imply a rate; a per-meiosis rate with uncertainty is in `response/notes/exchange_rate_estimates.md` (not yet in the manuscript).
 
-4. Multi-mapping reads are retained and placed at random among paralogous ends, so expected spurious cross-assignment rises with exactly the quantity on the x-axis of Fig. 4A. The flank control is a good idea but its logic needs stating. Is the flank unique sequence free of multi-mapping, or a null B/W ratio for pairs lacking shared sequence? As it stands the flanks show stronger within-community enrichment than the PHRs (0.0013 versus 0.028, HG002 Hi-C, page 5), the opposite of what shared PHR sequence drawing ends together predicts, which we read as inflated background in PHR windows. Please add a read-level simulation from the matched assembly, remapped identically, reporting mis-assignment against Jaccard similarity. The analysis should be restricted to uniquely mappable bins and for Pore-C and CiFi, contacts anchored on a uniquely mappable monomer.
+## New analyses (2026-11) - not yet in the point-by-point table above
 
-> **Response:** XXX. Draft facts (`response/TRACKER.md`): flank control reinstated with both metrics (B/W 0.027 against 0.002 at 50 kb; Mantel rho 0.657 to 0.520); uniform placement attenuates a specific contact by about 1/k per end, so PHR-window enrichment is a lower bound; patch `response/patches/flanking_control.tex`. Read-level simulation and uniquely mappable restriction: XXX.
-
-5. A control is needed to make the relationship specific to chromosome ends. As presented the result is compatible with a generic property of high-identity segmental duplications. The decisive control is non-subtelomeric duplications, pericentromeric and interstitial, matched on identity, length and copy number and run through the identical pipeline. The authors already cite the resource that makes this straightforward (Jeong et al.). If subtelomeric pairs show a steeper relationship the compartment claim is supported, but if not, the result concerns duplication and mappability rather than chromosome ends.
-
-> **Response:** XXX. Draft facts (`response/notes/M5_matched_sd_control.md`): matched duplication control, telomeric 0.50 against interstitial 0.13, difference +0.39, p = 0.006.
-
-6. Mouse chromosomes are acro/telocentric with essentially no short arm, so a 1 Mb telomere-anchored "p-arm" flank is largely composed of minor and major satellite, which are near-identical between chromosomes, placing these windows at once at the top of the Jaccard axis and at the maximum of the multi-mapping problem. The zygotene peak is a p-arm feature while q-arms peak at diplotene. Pericentromeric heterochromatin in spermatocytes clusters into chromocenters with its own stage dependence, characterized in the source dataset itself (Zuo et al.), so a zygotene maximum over satellite-rich centromeric ends is as consistent with chromocenter clustering as with the bouquet. Since the human maps are somatic, this is the paper's only meiotic evidence. Please report mouse PHR repeat composition, re-run the stage analysis with satellite excluded, and state which mouse ends are centromeric.
-
-> **Response:** XXX. Draft facts (`response/TRACKER.md`): p-end flanks are 0.26-0.99 satellite (mean 0.885), q-end flanks 0.002-0.008; satellite fraction correlates with Jaccard at +0.790. The satellite-masked re-run is void (coordinate swap) and must be redone: XXX.
-
-7. We agree nominal p-values would be inappropriate given that the same subtelomere recurs in many pairs, but the remedy is a null preserving that dependency: a permutation shuffling PHR labels while holding distance-to-telomere and arm identity, with bootstrap intervals from resampling chromosome ends. Fig. 4C needs an explicit test, since "strongest at the zygotene bouquet" appears in the abstract but rests on the ordering of four point estimates. The arm-type assortativity (71% versus 49%) is untested and largely built in of 58 within-community pairs, the acrocentric short arms give 10 p–p and C6 six q-arms 15 q–q by construction (~43%), and C6 is itself unstable under resampling. Please recompute excluding the acrocentric, pseudoautosomal and C6 communities under a null conditioning on community size. Relatedly, "PHR sharing is therefore constrained by chromosome-arm context" (page 4) asserts causality, but a neutral statement about variation explained would be better.
-
-> **Response:** Draft (`response/TRACKER.md`, manuscript text since commit d9378b9): 1,135 inter-chromosomal PHR pairs; Spearman rho 0.42, 0.61, 0.58 and 0.25 at leptotene, zygotene, pachytene and diplotene, two-way clustered standard errors (95% CI 0.37-0.47, 0.57-0.66, 0.53-0.62, 0.19-0.30), permutation null within arm pairs (10,000 permutations); zygotene minus pachytene +0.038 at pair resolution but not separated by a bootstrap over the 27 chromosome ends (-0.043 to +0.131), so the manuscript no longer says "strongest at zygotene". Arm-type assortativity recomputed without acrocentric, PAR and C6 communities: XXX. Causal wording on page 4: XXX.
-
-8. The 500 kb flank right-censors the length distribution, so the 500 kb maximum in Fig. 1B is by construction, "walking inward until inter-chromosomal similarity disappears" (page 3) does not hold for saturated ends, and 3.51 Mb is a lower bound. Please re-extract with 2–5 Mb flanks for saturated ends, state the censored fraction and justify the parameters. As the definition propagates downstream, we regard this as the most important correction. Sensitivity is also unestimated as seven arms are reported PHR-free, and we would want per-arm detection power plus benchmarking against the Ambrosini duplicon annotation and the recovered fractions of PAR1, PAR2, 4q/10q and 10p/18p, the PAR1 tract in the pedigree scan is 138 kb against a true PAR1 of ~2.7 Mb. Finally, we found no repeat masking beyond trimming the terminal telomeric repeat. TAR1, subterminal satellite, interstitial telomeric sequence and shared TE families are near-identical between ends independently of exchange, and with 465 haplotypes five alignments from one other chromosome is a low bar. Please report how many PHRs and communities survive repeat-masked calling.
-
-> **Response:** XXX. Draft facts (`response/notes/M8_flank_censoring.md`): 15.8% of ends saturate the 500 kb flank, so 3.51 Mb is stated as a lower bound. Re-extraction at 2-5 Mb, per-arm detection power, Ambrosini benchmark and repeat-masked calling: XXX.
-
-9. Of 402 gene copies with midpoints in CHM13 PHRs, 215 are unannotated and excluded, leaving K = 187 across 31,235 term combinations, so over half the PHR gene content is invisible. The rest are near-identical members of a few amplified families, so one family drives a term. Thus, the 25-fold "spermatid development" enrichment rests on 19 copies of a single SEPTIN14-associated duplicon. The whole genome is also the wrong comparator, since segmental duplications are generally enriched for particular families. Please repeat against identity- and length-matched non-subtelomeric duplications and with copies collapsed to families, reporting how many of the 209 terms survive. Otherwise, the abstract should follow the discussion, which describes this more accurately as annotation burden across physical copies.
-
-> **Response:** XXX (`response/notes/M9_enrichment_dependence.md`; abstract wording)
-
-10. Subtelomeric heterologous recombination is described well beyond humans, in great apes, yeast, Phaseolus and Plasmodium, where rapid subtelomeric diversification of VAR genes is thought to underpin immune evasion. The paper would be stronger for placing its compartment in that comparative frame rather than treating it as a human peculiarity with a mouse companion. Aqil et al. (2026, GBE) find across 117 vertebrate genomes that the general bias toward tandem duplication reverses toward interspersed duplication specifically in avian and mammalian subtelomeres, implying this compartment may be more pervasive still in other clades.
-
-> **Response:** XXX
-
-Minor points
-
-2. The manuscript is framed as reference-free, yet Fig. 1A, Fig. 3, the GO enrichment and Fig. ED2 are anchored on CHM13 alone; please say which analyses are pangenome-wide and which are reference-free.
-
-> **Response:** XXX
-
-4. Fig. 1A and 1B disagree: chr3p and chr8q appear PHR-free in 1B while 1A shows high-partner-count signal at those ends. We assume these are telomeric or subtelomeric repeats rather than PHRs, but the reader would be better served if the panels agreed, or if called PHRs had their own track in 1A.
-
-> **Response:** XXX
-
-5. Fig. 1A: please distinguish rDNA-driven acrocentric PHRs from the general PHRs that are the paper's subject, restore the omitted centromere tracks for chrY, chr14 and chr21 (chr15 shows a centromere plotted over a PHR) and give the insets a color scale distinct from Fig. 1B, since the two encode different quantities.
-
-> **Response:** XXX
-
-6. "Concentrated at chromosome ends" is asserted from Fig. 1A rather than quantified, and prominent interstitial and pericentromeric blocks are visible on chr1, chr9, chr16 and chr20. Please give the fraction of high-identity inter-chromosomal windows within ~1 Mb of a telomere against a null accounting for segmental-duplication density.
-
-> **Response:** XXX
-
-7. Fig. 4A: the zero-contact floor is explained, but the points forming a flat line along the vertical axis are not; please explain their origin. Please also label each B/W value with its assay (Fig. 4B gives 0.054 for Pore-C; page 5 gives 0.028 and 0.0013 for Hi-C), explain what determines pair inclusion given the differing n across panels (2,830; 2,413; 2,757; 688), and give the number of non-zero pairs for CiFi, whose ρ = 0.196 is dominated by ties at the floor. It is striking that short-read Hi-C yields the strongest correlation despite comparable pair counts. We would be happy if the authors could comment on that.
-
-> **Response:** XXX
-
-8. Pedigree text and figures: the PAR1 tract is 138 kb on page 6 but 92 kb in Fig. 5C, and chr5q/chr1p is 28 kb in Fig. 5C but a different length in Fig. 5E. The argument that the crossover map shows no chr3 crossover does not hold, since a SNP-based map has little power inside high-identity duplications. "The strongest non-acrocentric signal occurred in the paternal comparison" rests on n=3 and should be framed as consistent with expectation, not as evidence. The chr21p/chr4p run has a pericentromeric chr4 partner, exactly what a satellite-driven artefact would look like. Perhaps they could discuss its implication for the scan's false-positive rate.
-
-> **Response:** XXX. Draft facts: the PAR1 call in Fig. 5C is two drawn runs on the daughter's paternal chrX, 14,000-106,000 (92 kb) and 110,000-156,000 (46 kb), together 138 kb; Fig. 5C chr5q/chr1p is the daughter's paternal chr5 182,052,000-182,080,000 (28 kb), Fig. 5E is the granddaughter's chr5 183,044,000-183,074,000 (30 kb), two different comparisons. The crossover-map argument is to be removed from the text. With log-length-ani filtering the chr21p/chr4p run is no longer called. XXX.
-
-11. The 232 individuals span five HPRC superpopulations, yet no population-stratified analysis was performed. Given the "population-scale" framing, and that subtelomeric duplicon copy number varies between populations, even a descriptive summary of PHR length and community membership by superpopulation would strengthen the claim.
-
-> **Response:** XXX (descriptives done: `response/notes/D1_superpopulation_descriptives.md`)
-
-12. The 4q/10q community would benefit from being related to the recent complete characterization of D4Z4 (Xiao et al. 2026 Genome Research), and arm-specific behaviour of ends could be connected to telomere length being chromosome-end-specific and conserved across individuals (Karimian et al. 2024 Science).
-
-> **Response:** XXX
-
-13. "Unorthodox recombination" in the title is imprecise; "ectopic" or "non-allelic inter-chromosomal" recombination would be accurate, and we would prefer a title that does not assert concerted evolution unless major point 1 is addressed.
-
-> **Response:** XXX (title)
-
-Referee #1 (Remarks on code availability):
-
-We checked the code repository and they used Claude code, so it is quite well documented and each step seems to be well explained. However, we did not try to run anything ourselves though.
-
-> **Response:** XXX
-
-Referee #2 (Remarks to the Author):
-
-I co-reviewed this manuscript with one of the reviewers who provided the listed reports.
-
-Referee #2 (Remarks on code availability):
-
-I checked the code repository on github and it seems to be well documented and detailed, thanks in some part to the LLM assisted era we find ourselves in. I did not run anything myself, though I suspect it would be largely clear how things are sequenced and inferences would be reproducible. Indeed the code will be useful to the community for adapting definitions of PHR and also generating pangenome graphs of such PHR regions.
-
-> **Response:** XXX
-
-Referee #3 (Remarks to the Author):
-
-The manuscript uses 465 near-complete human assemblies to map subtelomeric sequence sharing across the genome. The authors identify pseudo-homologous regions on 41 of 48 chromosome arms, organize them into sequence communities, compare these communities with chromosome-contact maps, and report a small number of candidate exchanges in a three-generation pedigree.
-
-The dataset and map may be valuable, but the central observations build substantially on prior work. Linardopoulou et al. (Nature 2005) established the mosaic structure and exchange-prone nature of human subtelomeres. Guarracino et al. (Nature 2023) showed that the five acrocentric short arms form a pseudo-homologous sequence community and provided population-based evidence consistent with ongoing recombination, while noting that recombination was not directly observed. The present study extends this framework to additional chromosome ends and adds 3D-genome analyses, but its conceptual advance is not yet clear enough for a Nature paper. The authors should either narrow their claims or demonstrate more clearly what fundamental new biological insight distinguishes this work from the existing literature.
-
-> **Response:** XXX
-
-Major comments:
-
-1. The authors should clarify what is fundamentally new beyond prior work. Linardopoulou et al. (Nature, 2005) established the mosaic, exchange-prone structure of human subtelomeres. Guarracino et al. (Nature, 2023) showed that the five acrocentric short arms form a pseudo-homologous sequence community and provided evidence consistent with ongoing recombination, although recombination was not directly observed. The present study extends this analysis to additional chromosome ends and adds 3D-genome data, but it does not yet establish a new genome-wide mechanism. The authors should distinguish clearly between sequence sharing, evidence for ongoing exchange, and evidence for a causal 3D-genome model.
-
-> **Response:** XXX
-
-2. Figure 1A and the undefined ‘pattern’ (page 3, first paragraph; Fig. 1A). The statement that ‘the same pattern recurs at most other chromosome ends’ is not quantitatively supported. Figure 1A reports the number of partner chromosomes reached in each 100-kb window, but does not test whether chromosome ends have similar positional profiles. Several chromosome ends also look qualitatively different from the acrocentric short arms and pseudoautosomal regions. Please define ‘pattern’ more precisely and either test the claim or revise the wording. A useful analysis would align chromosome ends by distance from the telomere and compare profiles using cross-correlation or a related measure against a matched null model, such as within-arm permutations or circular shifts.
-
-> **Response:** XXX
-
-3. Pages 5–6; Methods pages 17–18. This is potentially the manuscript’s most important new analysis, but near-identical PHRs make many contact reads impossible to assign to a specific chromosome end. The authors randomly assign such reads and then calculate pair-specific contact correlations, which could create or redistribute apparent contacts. Please either restrict pairwise analyses to uniquely mappable or anchored reads, analyze the signal at an aggregate level, or use simulations to validate the approach. The analysis should also control for arm type, telomere position, chromosome size, and general chromosome-end contact propensity. Because the same chromosome ends occur in many PHR pairs, the statistical analysis should account for this non-independence.
-
-> **Response:** XXX (see Referee #1 point 4)
-
-4. Page 5, second paragraph under “Subtelomere similarity mirrors physical proximity”; Fig. 4B. The authors define B/W as between-community contact divided by within-community contact and state that lower values indicate stronger within-community enrichment. They report B/W values of 0.0013 for non-PHR flanks and 0.028 for PHR windows, but describe the latter as showing stronger enrichment. Under their definition, the lower value indicates stronger enrichment in the flanks; the PHR value is approximately 21-fold higher. Figure 4B reports a separate value of 0.054 from the HG002 Pore-C analysis. Please clarify the datasets and normalizations used, reconcile these values, and recheck the interpretation.
-
-> **Response:** XXX (see Referee #1 point 4)
-
-5. Pages 5–6; Methods page 18, first paragraph. The human contact maps are from somatic or cultured-cell datasets, whereas the meiotic-stage evidence comes from mouse. These data can support an association between subtelomeric sequence communities and contact frequency, but they do not directly establish the proposed mechanism in human meiosis. The claim that the effect is strongest at the zygotene bouquet is also descriptive because stage differences were not statistically tested. Please either provide a formal stage-comparison analysis or present this conclusion more cautiously.
-
-> **Response:** XXX. Draft: formal stage comparison done (see Referee #1 point 7): zygotene and pachytene are both elevated, diplotene lowest, and the two are not separated by a bootstrap over chromosome ends, so the "strongest at zygotene" claim is removed.
-
-6. Page 3, second paragraph; Methods pages 14–15. The conclusion that PHRs occur on 41 of 48 arms may depend on the selected thresholds: 95% identity, at least five alignments from at least two chromosomes, 5-kb windows, a 500-kb flank, and four consecutive failed windows.
-
-> **Response:** XXX. Draft facts (`response/notes/R5_pairs_filter_and_R3_thresholds.md`): the threshold gate reproduces the published call exactly (15,668 PHRs on 41 arms); consecutive failed windows 1-4 give 41 arms; flank 25-400 kb gives 41 arms; chromosomes per window 2/3-5/6-12/15 give 41/40/38/37 arms; no inter-chromosomal rule gives 48 arms.
-
-7. Page 3, third paragraph; Methods page 15, second paragraph; Fig. 2B. The Jaccard analysis measures overlap in graph nodes across complete PHR sequences and then averages the result at the arm level. It captures aggregate sequence similarity, but not whether shared regions occur in the same order or at similar positions along chromosome ends. The authors should distinguish ‘shared sequence’ or ‘similarity’ from ‘shared pattern’ unless they add a positional/profile-based analysis.
-
-> **Response:** XXX. Draft: order and orientation analysis done (`response/05_answers_arm_asymmetry_and_architecture.md`, ED3).
-
-8. Pages 6–7, section ‘Ectopic subtelomeric recombination within a pedigree’; Fig. 5. The pedigree analysis identifies only a few candidate exchanges in one pedigree. These events are not confirmed by independently resolved breakpoints or an orthogonal assay. The authors should consistently call them candidate exchanges and avoid using them as strong evidence for recurrent genome-wide ectopic recombination.
-
-> **Response:** XXX (see Referee #1 point 2; the pedigree section is planned as a note in the main text plus Extended Data)
-
-Minor Comments:
-
-1. Figure 3 (page 11): Please check the left margin and figure bounds at high resolution to ensure that no part of the panel is cropped in the final version.
-
-> **Response:** XXX
-
-2. Define ‘NOR’ at first use for readers outside the immediate field
-
-> **Response:** XXX
-
-Referee #4 (Remarks to the Author):
-
-I co-reviewed this manuscript with one of the reviewers who provided the listed reports.
-
-Referee #5 (Remarks to the Author):
-
-The authors of this manuscript leverage near-complete assemblies of human genomes to identify "pseudo-homolog regions," communities of sub-telomeric sequences with extremely high inter-chromosome identity. Overall, I believe this study adds a fascinating new wrinkle to our understanding of genome evolution and chromosome structure. The manuscript is also clearly written. I have a few minor questions and comments, primarily related to data provenance and the impact of thresholds in some of the analyses.
-
-> **Response:** XXX
-
-L86-90: In the authors' search for PHRs, they query the "implicit" pangenome graph in non-overlapping windows of 100kbp and identify 15,668 putative PHRs. How sensitive is the detected number of candidate PHRs as a function of window size? If the authors performed a more granular search (using windows of, say, 50 kbp), would this recover a greater number of candidate PHRs? Or would decreasing the window size become computationally intractable? This isn't an essential experiment, but it would be helpful to give readers a sense of whether the results are robust to the choice of parameters.
-
-> **Response:** XXX
-
-L152-154: The authors perform a copy-number aware GO/Reactome enrichment analysis (EA) using the CHM13 assembly. While the ability to perform a copy-number-aware EA is an obvious advantage of having a complete, haplotype-resolved genome assembly, I assume the results are influenced by the structure of the particular assembly used. To what extent are these GO/Reactome results driven by the specific duplicon/repeat content of the CHM13 assembly? For example, across the HPRC, how variable are the copy numbers of the D4Z4/DUX4 repeat arrays? If you were to run the GO/Reactome analysis on an individual HPRC assembly with, say, 10 copies of DUX4, would the analysis still return a significant enrichment of zygotic genome activation in PHR communities vs non-PHR communities? I understand that the HPRC assemblies are not as complete as the CHM13 assembly, so a per-individual EA may not be possible. But could the authors speculate about the potential variability of these EA results if they were to be run on each of the HPRC genomes?
-
-> **Response:** XXX
-
-L189-191: As far as I can tell, the authors do not specify the source of the Hi-C/Pore-C datasets used in the HPRC analyses. From what cell type(s) are these data derived? The mouse Hi-C data are from spermatocytes, which seems like a very relevant cell type in which to examine chromosome-chromosome contact maps as they relate to meiotic exchanges. But it's not clear whether the human Hi-C data also derive from germ cells or germ cell progenitors. Perhaps this information is somewhere in the text, but I may have missed it.
-
-> **Response:** XXX (Methods table of datasets and cell types)
-
-L193-195: The authors measure Jaccard similarity and contact strength at 2,830 pairs of inter-chromosomal PHRs. If the authors identified over 15,000 candidate PHRs, shouldn't there be far more than 2,830 possible pairs? Or was this collection of 2,830 pairs filtered in some way (that I may have missed)?
-
-> **Response:** XXX. Draft facts (`response/notes/R5_pairs_filter_and_R3_thresholds.md`): 2,830 = C(77,2) - 96, the pairs of 77 arm-level objects minus 96 same-chromosome pairs; not a similarity filter.
-
-L229-230: In the legend of Figure 5, it's not clear what the dark grey inter-chromosomal exchanges represent. Based on the manuscript text, I assume that these represent acrocentric-acrocentric rDNA exchanges. As far as I can tell, neither the manuscript text nor the figure legend explicitly describes these exchanges. For the sake of clarity, it would be helpful to call them out.
-
-> **Response:** XXX (dark grey = acrocentric-to-acrocentric runs in the plotter, category acro_acro)
-
-L348-351. A non-essential comment, but I am curious as to the choice of sampling 11.6% of all possible unordered pairs of HPRC assemblies. The authors mention that graph connectivity exceeds 99.99% by sampling only 3.5% of possible pairs — was there a particular reason to sample many more pairs than that? Related to a previous comment, I wonder if sampling fewer pairs (and decreasing the size of non-overlapping windows in the implicit graph query) would enable the authors to perform a more granular search for PHRs.
-
-> **Response:** XXX
-
-Referee #5 (Remarks on code availability):
-
-I have not reviewed the authors' code in detail, but it would be helpful to provide a README with a more detailed overview of the repo's directory structure, as well as simple instructions for running the code/notebooks within.
-
-> **Response:** XXX (README with directory overview and run instructions)
-
-This email has been sent through the Springer Nature Manuscript Tracking System NY-610A-SN&MTS
-
-Confidentiality Statement:
-
-This e-mail is confidential and subject to copyright. Any unauthorised use or disclosure of its contents is prohibited. If you have received this email in error please notify our Manuscript Tracking System Helpdesk team at https://digitalsubmissions.freshdesk.com/support/tickets/new .
-
-Details of the confidentiality and pre-publicity policy may be found here http://www.nature.com/authors/policies/confidentiality.html
-
-Privacy Policy | Update Profile
-
-Response
-
-todo. should probably be established on git.
+| item | note | artefact | status |
+|---|---|---|---|
+| allelic vs paralogous divergence, cohort scale | `notes/hprc_heterolog_divergence.md` | `scripts/ci/hprc_heterolog_divergence_pairs.tsv` | analysis complete; Methods/Results **to write** |
+| community tiers (allelic-like / cohesive / residual) | `notes/community_tier_table.md` | `submission/supporting_material/ED_community_tier_table.tsv` | **patch ready**: `patches/ED_table_community_tiers.tex` |
+| acrocentric + PAR treatment (answers the review's only methodological objection) | `notes/community_tier_table.md` | same table | **patch ready**: `patches/response_acrocentric_PAR.tex` |
+| exchange rate + transfer size implied | `notes/exchange_rate_estimates.md` | - | analysis complete; Discussion **to write** |
+| coalescence times and distributions | `notes/community_coalescence_times.md` | `scripts/cladistics/community_coalescence_communities.tsv` | analysis complete |
+| distance-from-telomere profile | `notes/telomere_distance_profile.md`, `notes/telomere_gene_vs_intergenic.md` | `notes/telomere_profile.pdf`, `notes/telomere_end_curves.pdf` | tip zone **withdrawn as unmeasurable**; interior 4-8x stands |
+| companion paper (Tan et al. 2026) | `notes/lit_Tan2026_methods_extract.md` | - | full text read; **Methods + references still unobtainable** |
+| primate extension | `ROADMAP_analysis_integration.md` section D/F | - | **not started** |
