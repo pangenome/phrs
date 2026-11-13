@@ -1,0 +1,99 @@
+== PAN027pat_vs_PAN011_joint cnd_f48_v11 vs mm2ccnd_v11
+A runs 14, B runs 6
+A_only: 10
+B_only: 2
+B_only	chr10	134422000	134432000	10000	chr4	h1	0.9929	other_nonacro
+B_only	chr10	134434000	134450000	16000	chr4	h1	0.9924	other_nonacro
+acro_acro only in mm2ccnd_v11: 0, only in cnd_f48_v11: 10
+== PAN027pat_vs_PAN011_joint mm2cani_v11 vs mm2ccnd_v11
+A runs 1, B runs 6
+A_only: 0
+B_only: 5
+B_only	chr10	134422000	134432000	10000	chr4	h1	0.9929	other_nonacro
+B_only	chr10	134434000	134450000	16000	chr4	h1	0.9924	other_nonacro
+B_only	chrX	12000	62000	50000	chrY	h2	0.9999	PAR_XY
+B_only	chrX	70000	106000	36000	chrY	h2	1.0000	PAR_XY
+B_only	chrX	110000	140000	30000	chrY	h2	1.0000	PAR_XY
+acro_acro only in mm2ccnd_v11: 0, only in mm2cani_v11: 0
+== PAN027pat_vs_PAN011_joint cnd_f48_v131 vs mm2ccnd_v131
+A runs 15, B runs 4
+A_only: 11
+B_only: 0
+acro_acro only in mm2ccnd_v131: 0, only in cnd_f48_v131: 11
+== PAN027pat_vs_PAN011_joint mm2cani_v131 vs mm2ccnd_v131
+A runs 1, B runs 4
+A_only: 0
+B_only: 3
+B_only	chrX	12000	62000	50000	chrY	h2	0.9999	PAR_XY
+B_only	chrX	70000	106000	36000	chrY	h2	1.0000	PAR_XY
+B_only	chrX	110000	140000	30000	chrY	h2	1.0000	PAR_XY
+acro_acro only in mm2ccnd_v131: 0, only in mm2cani_v131: 0
+== PAN027pat_vs_PAN011_joint cnd_f48_v11p vs mm2ccnd_v11p
+A runs 13, B runs 5
+A_only: 10
+B_only: 2
+B_only	chr10	134422000	134432000	10000	chr4	h1	0.9929	other_nonacro
+B_only	chr10	134434000	134450000	16000	chr4	h1	0.9924	other_nonacro
+acro_acro only in mm2ccnd_v11p: 0, only in cnd_f48_v11p: 10
+== PAN027pat_vs_PAN011_joint mm2cani_v11p vs mm2ccnd_v11p
+A runs 0, B runs 5
+A_only: 0
+B_only: 5
+B_only	chr10	134422000	134432000	10000	chr4	h1	0.9929	other_nonacro
+B_only	chr10	134434000	134450000	16000	chr4	h1	0.9924	other_nonacro
+B_only	chrX	12000	62000	50000	chrY	h2	0.9999	PAR_XY
+B_only	chrX	70000	106000	36000	chrY	h2	1.0000	PAR_XY
+B_only	chrX	110000	140000	30000	chrY	h2	1.0000	PAR_XY
+acro_acro only in mm2ccnd_v11p: 0, only in mm2cani_v11p: 0
+== PAN027mat_vs_PAN010_joint cnd_f48_v11 vs mm2ccnd_v11
+A runs 2, B runs 1
+A_only: 2
+B_only: 1
+acro_acro only in mm2ccnd_v11: 1, only in cnd_f48_v11: 2
+== PAN027mat_vs_PAN010_joint mm2cani_v11 vs mm2ccnd_v11
+A runs 1, B runs 1
+A_only: 0
+B_only: 0
+acro_acro only in mm2ccnd_v11: 0, only in mm2cani_v11: 0
+== PAN027mat_vs_PAN010_joint cnd_f48_v131 vs mm2ccnd_v131
+A runs 1, B runs 1
+A_only: 1
+B_only: 1
+acro_acro only in mm2ccnd_v131: 1, only in cnd_f48_v131: 1
+== PAN027mat_vs_PAN010_joint mm2cani_v131 vs mm2ccnd_v131
+A runs 1, B runs 1
+A_only: 0
+B_only: 0
+acro_acro only in mm2ccnd_v131: 0, only in mm2cani_v131: 0
+== PAN028mat_vs_PAN027_joint cnd_f48_v11 vs mm2ccnd_v11
+A runs 138, B runs 121
+A_only: 54
+B_only: 39
+B_only	chr1	12000	30000	18000	chr8	h1	0.9995	other_nonacro
+B_only	chr14	6978000	6998000	20000	chr1	h1	0.9906	acro_other
+B_only	chr9	134872000	134882000	10000	chr3	h1	0.9864	chr9_chr3_candidate
+acro_acro only in mm2ccnd_v11: 36, only in cnd_f48_v11: 54
+== PAN028mat_vs_PAN027_joint mm2cani_v11 vs mm2ccnd_v11
+A runs 94, B runs 121
+A_only: 18
+B_only: 42
+B_only	chr5	183056000	183072000	16000	chr1	h2	0.9988	chr5_chr1_candidate
+acro_acro only in mm2ccnd_v11: 41, only in mm2cani_v11: 18
+== PAN028mat_vs_PAN027_joint cnd_f48_v131 vs mm2ccnd_v131
+A runs 131, B runs 104
+A_only: 60
+A_only	chr22	5160000	5170000	10000	chr10	h2	0.9658	acro_other
+B_only: 34
+B_only	chr9	134872000	134882000	10000	chr3	h1	0.9864	chr9_chr3_candidate
+acro_acro only in mm2ccnd_v131: 33, only in cnd_f48_v131: 59
+== PAN028mat_vs_PAN027_joint mm2cani_v131 vs mm2ccnd_v131
+A runs 78, B runs 104
+A_only: 12
+B_only: 33
+acro_acro only in mm2ccnd_v131: 33, only in mm2cani_v131: 12
+== PAN027pat_vs_PAN011_joint mm2ccnd_v11 vs mm2ccnd_v11p
+A runs 6, B runs 5
+A_only: 1
+A_only	chr9	136168000	136188000	20000	chr3	h2	0.9988	chr9_chr3_candidate
+B_only: 0
+acro_acro only in mm2ccnd_v11p: 0, only in mm2ccnd_v11: 0
