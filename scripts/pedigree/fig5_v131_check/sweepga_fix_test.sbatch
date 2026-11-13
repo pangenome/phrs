@@ -11,7 +11,7 @@
 set -uo pipefail
 D=$1; O=$2; mkdir -p $O; cd $O; log () { echo "[$(date -Is)] $*"; }
 W=/scratch/$USER.sweepgafix.$SLURM_JOB_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.cargo/bin:/gnu/store/c8zkkq4dwblbvkg2589sllnzpnk2nfav-cmake-4.1.3/bin:$PATH  # compute nodes have no cmake
 log "host $(hostname), $(cargo --version), $(cmake --version | head -1)"
 git clone -q https://github.com/pangenome/sweepga.git $W/main && git clone -q $W/main $W/fix && (cd $W/fix && git apply $O/fix_overlap.patch) || { log "ERROR clone or patch"; exit 1; }
 log "main $(git -C $W/main log -1 --format=%h), fix: $(git -C $W/fix diff --stat | tail -1)"
