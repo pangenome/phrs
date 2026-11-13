@@ -4,10 +4,10 @@
 #SBATCH --mem=480G
 #SBATCH --time=1-00:00:00
 # Fig5 steps 5-7, scoring as argument
-# Args: comparison_id inputs_dir raw_paf out_dir [scoring, default ani]
+# Args: comparison_id inputs_dir raw_paf out_dir [scoring, default ani] [sweepga binary] [SWEEPGA_OVERLAP_MODE]
 set -euo pipefail
-CID=$1; IN=$2; RAW=$3; OUT=$4; SC=${5:-ani}
-SWEEPGA=/home/erikg/.cargo/bin/sweepga
+CID=$1; IN=$2; RAW=$3; OUT=$4; SC=${5:-ani}; export SWEEPGA_OVERLAP_MODE=${7:-}
+SWEEPGA=${6:-/home/erikg/.cargo/bin/sweepga}
 IMPG=/home/erikg/.cargo/bin/impg
 BGZIP=$HOME/.local/bin/bgzip
 PIGZ=/usr/bin/pigz
@@ -25,7 +25,7 @@ cp "$IN/$CID.query.fa" "$IN/$CID.query.fa.fai" "$IN/$CID.target.fa" "$IN/$CID.ta
 $PIGZ -dc -p $T "$RAW" > "$W/raw.paf"
 echo "[$(date -Is)] raw PAF lines=$(wc -l < "$W/raw.paf")"
 cd "$W"
-echo "[$(date -Is)] step5 sweepga 10:10 $SC"
+echo "[$(date -Is)] step5 sweepga 10:10 $SC, binary $SWEEPGA, overlap mode ${SWEEPGA_OVERLAP_MODE:-default}"
 $SWEEPGA --num-mappings 10:10 --scaffold-jump 0 --scoring $SC \
   --temp-dir "$W" --output-file filt.paf raw.paf
 rm -f raw.paf
