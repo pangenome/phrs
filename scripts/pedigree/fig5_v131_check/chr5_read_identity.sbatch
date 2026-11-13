@@ -8,6 +8,7 @@
 # Reads spanning PAN028#1#chr5 183,044,000-183,074,000 +-5 kb at MAPQ>=20 (primary): SELF reads (PAN027.onPAN028)
 # and KID reads (PAN028 own). For each read, every alignment record in: KID assembly BAMs and SELF assembly BAMs
 # (PAN027 own for SELF reads, PAN028.onPAN027 for KID reads): contig, start, end, MAPQ, flag, de:f, clips.
+# Records only in chr5 last 1 Mb and chr1 first 1 Mb, both haplotypes (whole-BAM -N scans took > 2 h).
 # out: OUT_DIR/read_identity.tsv (set, read, assembly, contig, start, end, mapq, flag, de, clip_l, clip_r)
 set -euo pipefail
 D=$1; O=$2; cd $D; mkdir -p $O
@@ -18,9 +19,11 @@ T0=183044000; T1=183074000
 span () { for b in "$@"; do $S view -q 20 -F 0x904 $b PAN028#1#chr5:$T0-$T1; done | awk -v a=$((T0-5000)) -v z=$((T1+5000)) '{e=$4; c=$6; while (match(c,/[0-9]+[MDN=X]/)) {e+=substr(c,RSTART,RLENGTH-1); c=substr(c,RSTART+RLENGTH)}; if ($4<=a && e>=z) print $1}' | sort -u; }
 span ont_full/SRR*.PAN027.onPAN028.v11.bam > $W/self.txt; span ont_full/SRR*.PAN028.v11.bam > $W/kid.txt
 log "spanning reads: SELF $(wc -l < $W/self.txt), KID $(wc -l < $W/kid.txt)"
+ends () { awk -v OFS='\t' '$1 ~ /#chr5$/ {print $1, ($2>1000000 ? $2-1000000 : 0), $2} $1 ~ /#chr1$/ {print $1, 0, 1000000}' norm_v11/$1#1.fa.gz.fai norm_v11/$1#2.fa.gz.fai; }
+ends PAN028 > $W/PAN028.bed; ends PAN027 > $W/PAN027.bed; log "regions: $(cat $W/*.bed | tr '\t\n' ': ')"
 rec () { # set assembly names bams...
-  local set=$1 asm=$2 names=$3; shift 3
-  for b in "$@"; do $S view -N $names $b; done | awk -F'\t' -v s=$set -v a=$asm -v OFS='\t' '{e=$4; c=$6; while (match(c,/[0-9]+[MDN=X]/)) {e+=substr(c,RSTART,RLENGTH-1); c=substr(c,RSTART+RLENGTH)};
+  local set=$1 asm=$2 names=$3; shift 3; local bed=$W/PAN028.bed; [ $asm = SELF ] && bed=$W/PAN027.bed
+  for b in "$@"; do $S view -N $names -M -L $bed $b; done | sort -u | awk -F'\t' -v s=$set -v a=$asm -v OFS='\t' '{e=$4; c=$6; while (match(c,/[0-9]+[MDN=X]/)) {e+=substr(c,RSTART,RLENGTH-1); c=substr(c,RSTART+RLENGTH)};
     de="NA"; for (i=12;i<=NF;i++) if ($i ~ /^de:f:/) de=substr($i,6); l=0; r=0; if ($6 ~ /^[0-9]+[SH]/) l=$6+0; if (match($6,/[0-9]+[SH]$/)) r=substr($6,RSTART)+0;
     print s, $1, a, $3, $4, e, $5, $2, de, l, r}'
 }
