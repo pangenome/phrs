@@ -6,8 +6,8 @@
 #SBATCH --exclude=octopus05
 # Homolog vs non-homolog identity per window
 # args: WASHU, TASKS (lines: tag pair chrom), OUT_DIR ; sbatch --array=1-N
-# Query chromosome (as g2_homolog.sbatch: pat, mat, kid) vs the whole parent diploid with minimap2 2.31
-# -cx asm5 --eqx -P: all chains kept, no primary selection, so no chromosome competes with another.
+# Query chromosome (as g2_homolog.sbatch: pat, mat, kid) vs each parent contig, one minimap2 2.31 run per pair
+# (-cx asm5 --eqx), pairs in parallel: no chromosome competes with another; -P on the whole diploid was too slow.
 # Per window (10, 20, 50 kb): best identity (=/(=+X+I+D) inside the window, >= 50% of the window aligned)
 # to the homolog (same chromosome; chrX also chrY) and to any other chromosome.
 # out: OUT_DIR/win/<tag>.<pair>.<chrom>.w<kb>.tsv (start, end, hom_id, hom_target, other_id, other_target), OUT_DIR/paf/
@@ -21,10 +21,14 @@ case $PAIR in pat) Q=PAN027#2; P=PAN011;; mat) Q=PAN027#1; P=PAN010;;
 W=/scratch/$USER.g2p.${SLURM_ARRAY_JOB_ID}_$SLURM_ARRAY_TASK_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
 log () { echo "[$(date -Is)] $*"; }
 $S faidx $N/$Q.fa.gz "$Q#$C" > $W/q.fa; $S faidx $W/q.fa
-zcat $N/$P#1.fa.gz $N/$P#2.fa.gz > $W/t.fa
-log "$TAG $PAIR $C: $Q#$C vs $P diploid ($N), host $(hostname)"
-$MM -cx asm5 --eqx -P -I 8G -t $SLURM_CPUS_PER_TASK $W/t.fa $W/q.fa 2> $W/mm.log > $W/a.paf
-log "records $(wc -l < $W/a.paf), $(grep 'Real time' $W/mm.log)"
+log "$TAG $PAIR $C: $Q#$C vs each $P contig ($N), host $(hostname)"
+for h in 1 2; do cut -f1 $N/$P#$h.fa.gz.fai | sed "s/^/$h\t/"; done > $W/targets.txt
+export MM S N P W
+pair () { t=$2; $S faidx $N/$P#$1.fa.gz "$t" > $W/t.$t.fa && $MM -cx asm5 --eqx -t 1 $W/t.$t.fa $W/q.fa 2> $W/mm.$t.log > $W/a.$t.paf; rm -f $W/t.$t.fa; }
+export -f pair
+xargs -P $SLURM_CPUS_PER_TASK -L 1 bash -c 'pair "$0" "$1"' < $W/targets.txt
+cat $W/a.*.paf > $W/a.paf
+log "pairs $(wc -l < $W/targets.txt), records $(wc -l < $W/a.paf), per target: $(cut -f6 $W/a.paf | sort | uniq -c | sort -rn | head -4 | tr -s ' ' | tr '\n' ';')"
 gzip -c $W/a.paf > $O/paf/$TAG.$PAIR.$C.paf.gz
 python3 - $W/a.paf $C $O/win/$TAG.$PAIR.$C $(cut -f2 $W/q.fa.fai) <<'PY'
 import sys, re, collections
