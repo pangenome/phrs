@@ -6,7 +6,8 @@
 #SBATCH --exclude=octopus05
 # SELF chromosome vs parent homologs
 # args: WASHU, TASKS (lines: tag pair chrom), OUT_DIR ; sbatch --array=1-N
-# tag: v11, v131, v11p, v131p (patched DAD chr9); pair: pat (PAN027#2 vs PAN011) or mat (PAN027#1 vs PAN010).
+# tag: v11, v131, v11p, v131p (patched DAD chr9); pair: pat (PAN027#2 vs PAN011), mat (PAN027#1 vs PAN010),
+# kid (KID.m vs PAN027: hap2 for chr1 3 4 5 7 9 12 14 15 18 21 22 X, hap1 for the rest; kid_phase.sbatch).
 # Targets: parent h1 and h2 contigs of the same chromosome (chrX also chrY), one alignment per target.
 # Tools: wfmash latest (-n 1) and minimap2 2.31 (-cx asm5 --eqx, primary records).
 # Coverage = union of aligned intervals, query and target side; uncovered bases outside N runs are gaps.
@@ -16,7 +17,8 @@ D=$1; T=$2; O=$3; cd $D; mkdir -p $O/{cov,gaps,paf}
 S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools; WF=$D/scripts_tmp/latest/wfmash; export LD_LIBRARY_PATH=$D/scripts_tmp/latest/lib; MM=$D/scripts_tmp/minimap2-2.31/minimap2
 read TAG PAIR C < <(sed -n "${SLURM_ARRAY_TASK_ID}p" $T)
 case $TAG in v11|v131) N=norm_$TAG;; v11p) N=patch_v11/norm_v11_patched;; v131p) N=patch_v131/norm_v131_patched;; esac
-[ $PAIR = pat ] && { Q=PAN027#2; P=PAN011; } || { Q=PAN027#1; P=PAN010; }
+case $PAIR in pat) Q=PAN027#2; P=PAN011;; mat) Q=PAN027#1; P=PAN010;;
+  kid) P=PAN027; case " chr1 chr3 chr4 chr5 chr7 chr9 chr12 chr14 chr15 chr18 chr21 chr22 chrX " in *" $C "*) Q=PAN028#2;; *) Q=PAN028#1;; esac;; esac
 W=/scratch/$USER.g2h.${SLURM_ARRAY_JOB_ID}_$SLURM_ARRAY_TASK_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
 log () { echo "[$(date -Is)] $*"; }
 $S faidx $N/$Q.fa.gz "$Q#$C" > $W/q.fa; $S faidx $W/q.fa
