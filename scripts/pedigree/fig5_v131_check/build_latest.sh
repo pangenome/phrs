@@ -15,12 +15,12 @@ B=$W/target_latest/release; ls $B/sweepga >/dev/null && cp $B/sweepga $O/ && log
 for x in FastGA FAtoGDB GIXmake ALNtoPAF PAFtoALN GDBtoFA; do f=$(find $W/target_latest -type f -name $x -perm -u+x | head -1); [ -n "$f" ] && cp $f $O/ && log "bundled $x from $f"; done
 G=/gnu/store; GT=$G/ndnvicqyk3v45iayahf153w5cpf639iw-gcc-toolchain-14.3.0; CM=$G/c8zkkq4dwblbvkg2589sllnzpnk2nfav-cmake-4.1.3; PK=$G/y9yw118w55d6b9dfh9y2zp6q1hawxmqq-pkg-config-0.29.2
 LIBS="$G/62jjawrmpbsvm7zxzkm862jp4d7b5rl4-htslib-1.21 $G/xkka35zrb34gygb4hxj6hb4lijag291l-gsl-2.8 $G/1vn63xy1cq4kc74w3l93b70wb385jbbz-jemalloc-5.3.0 $G/55xifarldd67da6mdnkapx2as1kng1kp-zlib-1.3.1 $G/r447gvm93x5773nz4jm9dbsyrnqqgbqr-libdeflate-1.19 $G/xwwisbnpbg73wzh9rfmghm51i1k32030-bzip2-1.0.8 $G/s93ifrwg45zk7p7vip2xp9syr0527z65-xz-5.4.5 $G/zycg3161779f4ngajivwpik8mfqkp61m-curl-8.6.0"
-pre=""; rp=""; pc=""; inc=""; for d in $LIBS $GT; do pre="$pre;$d"; rp="$rp -Wl,-rpath,$d/lib"; pc="$pc:$d/lib/pkgconfig"; inc="$inc:$d/include"; done
+pre=""; rp=""; pc=""; inc=""; lib=""; for d in $LIBS $GT; do pre="$pre;$d"; rp="$rp -Wl,-rpath,$d/lib"; pc="$pc:$d/lib/pkgconfig"; inc="$inc:$d/include"; lib="$lib:$d/lib"; done
 cd $W; [ -d wfmash_latest ] || git clone -q --recursive https://github.com/waveygang/wfmash.git wfmash_latest; cd wfmash_latest && git checkout -q $WS && git submodule update -q --init --recursive && log "wfmash $(git log -1 --format='%h %ci')"
-export PATH=$GT/bin:$CM/bin:$PK/bin:/usr/bin:/bin CC=gcc CXX=g++ PKG_CONFIG_PATH=${pc#:} C_INCLUDE_PATH=${inc#:} CPLUS_INCLUDE_PATH=${inc#:}
-git checkout -q -- . && git status --short | head -3; rm -rf build  # untouched upstream source, fresh CMake cache
+export PATH=$GT/bin:$CM/bin:$PK/bin:/usr/bin:/bin CC=gcc CXX=g++ PKG_CONFIG_PATH=${pc#:} C_INCLUDE_PATH=${inc#:} CPLUS_INCLUDE_PATH=${inc#:} LIBRARY_PATH=${lib#:}
+git checkout -q -- . && git status --short | head -3  # untouched upstream source
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="${pre#;}" -DCMAKE_EXE_LINKER_FLAGS="$rp" > $W/wfmash_cmake.log 2>&1 || { tail -30 $W/wfmash_cmake.log; exit 1; }
 nice -n 19 cmake --build build -j 16 > $W/wfmash_build.log 2>&1 || { grep -E -B2 -A8 "error" $W/wfmash_build.log | head -60; exit 1; }
-cp build/bin/wfmash $O/ && log "wfmash copied: $($O/wfmash --version 2>&1 | head -1)"
+mkdir -p $O/lib && cp -L build/lib/libwflign.so build/lib/libwfa2cpp.so.0 build/lib/libwfa2.so.0 $O/lib/ && cp build/bin/wfmash $O/ && log "wfmash copied (run with LD_LIBRARY_PATH=$O/lib): $($O/wfmash --version 2>&1 | head -1)"
 { echo "sweepga $SS"; echo "wfmash $WS"; $O/sweepga --version 2>&1 | head -1; $O/wfmash --version 2>&1 | head -1; } > $O/versions.txt
 log done
