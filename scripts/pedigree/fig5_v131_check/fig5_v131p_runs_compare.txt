@@ -1,0 +1,13 @@
+== PAN027pat_vs_PAN011_joint mm2ccnd_v131 vs mm2ccnd_v131p
+A runs 4, B runs 3
+A_only: 1
+A_only	chr9	136176000	136196000	20000	chr3	h2	0.9988	chr9_chr3_candidate
+B_only: 0
+acro_acro only in mm2ccnd_v131p: 0, only in mm2ccnd_v131: 0
+== PAN027pat_vs_PAN011_joint mm2ccnd_v11p vs mm2ccnd_v131p
+A runs 5, B runs 3
+A_only: 2
+A_only	chr10	134422000	134432000	10000	chr4	h1	0.9929	other_nonacro
+A_only	chr10	134434000	134450000	16000	chr4	h1	0.9924	other_nonacro
+B_only: 0
+acro_acro only in mm2ccnd_v131p: 0, only in mm2ccnd_v11p: 0
