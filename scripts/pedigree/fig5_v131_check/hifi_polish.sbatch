@@ -20,7 +20,8 @@ log () { echo "[$(date -Is)] $*"; }
 C=${SEG%%:*}; H=$(echo $C | cut -d'#' -f2)
 log "start $SM $V $SEG, host $(hostname); pick regions: $PICK"
 for r in $(echo $PICK | tr ',' ' '); do c=${r%%:*}; e=${r##*-}; L=$(cat $D/norm_$V/${c%#chr*}.fa.gz.fai | awk -v c="$c" '$1==c {print $2}'); [ -n "$L" ] && [ "$e" -le "$L" ] || { log "ERROR region $r: contig length ${L:-missing}"; exit 1; }; done
-for b in hifi/bam/*.$SM.$V.bam; do $S view -b -F 0x900 $b $(echo $PICK | tr ',' ' '); done | $S fastq - 2> /dev/null | awk 'NR%4==1 {n=$1} NR%4==1 && seen[n]++ {skip=1; next} NR%4==1 {skip=0} !skip' > $W/reads.fq
+for b in hifi/bam/*.$SM.$V.bam; do $S view -F 0x900 $b $(echo $PICK | tr ',' ' '); done \
+  | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/reads.fq  # one SAM stream per BAM: no header mixing
 log "$SM $V segment $SEG, reads $(awk 'NR%4==2' $W/reads.fq | wc -l) from $PICK"
 aln () { # ref_dir tag
   zcat $1/$SM#1.fa.gz $1/$SM#2.fa.gz > $W/ref.$2.fa; $S faidx $W/ref.$2.fa
