@@ -9,7 +9,7 @@
 # Query chromosome (as g2_homolog.sbatch: pat, mat, kid) vs each parent contig, one minimap2 2.31 run per pair
 # (-cx asm5 --eqx), pairs in parallel: no chromosome competes with another; -P on the whole diploid was too slow.
 # Per window (10, 20, 50 kb): best identity (=/(=+X+I+D) inside the window, >= 50% of the window aligned)
-# to the homolog (same chromosome; chrX also chrY) and to any other chromosome.
+# to the homolog (same chromosome only) and to any other chromosome (chrY included).
 # out: OUT_DIR/win/<tag>.<pair>.<chrom>.w<kb>.tsv (start, end, hom_id, hom_target, other_id, other_target), OUT_DIR/paf/
 set -euo pipefail
 D=$1; T=$2; O=$3; cd $D; mkdir -p $O/{win,paf}
@@ -33,7 +33,7 @@ gzip -c $W/a.paf > $O/paf/$TAG.$PAIR.$C.paf.gz
 python3 - $W/a.paf $C $O/win/$TAG.$PAIR.$C $(cut -f2 $W/q.fa.fai) <<'PY'
 import sys, re, collections
 paf, c, out, L = sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4])
-hom = {c} | ({"chrY"} if c == "chrX" else set())
+hom = {c}  # chrY counts as other, so PAR1 on chrX shows as an X-Y exchange
 ws = (10000, 20000, 50000)
 best = {w: collections.defaultdict(lambda: [0.0, "NA", 0.0, "NA"]) for w in ws}
 n = 0
