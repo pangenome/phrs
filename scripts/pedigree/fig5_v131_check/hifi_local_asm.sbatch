@@ -5,7 +5,8 @@
 #SBATCH -t 12:00:00
 #SBATCH --exclude=octopus05
 # Local HiFi reassembly of an error
-# args: WASHU, SAMPLE, VERSION, ERROR (contig:start-end, 1-based), FLANK_BP, OUT_DIR, [EXTRA_REGIONS comma list], [COMPARE_FASTA]
+# args: WASHU, SAMPLE, VERSION, ERROR (contig:start-end, 1-based), FLANK_BP, OUT_DIR, [EXTRA_REGIONS comma list], [COMPARE_FASTA], [UL=1]
+# UL=1: the sample's own ONT reads (ont_full) from the same regions go to hifiasm --ul (ultra-long, for structure).
 # EXTRA_REGIONS: more places where reads of the true sequence may sit (homologous copies); COMPARE_FASTA: a previous patch.
 # 1. Window = ERROR +- FLANK on the faulty haplotype; its homologous window on the other haplotype from minimap2 asm5.
 # 2. HiFi reads of SAMPLE (hifi/bam, primary) in both windows -> hifiasm 0.25.0 (system gcc build) contigs.
@@ -13,7 +14,7 @@
 #    both flanks of the faulty window (>= 20 kb each side, identity >= 0.999) with the error inside.
 # out: OUT_DIR/contigs.fa, OUT_DIR/contigs_vs_windows.paf, OUT_DIR/summary.tsv
 set -euo pipefail
-D=$1; SM=$2; V=$3; ERR=$4; F=$5; O=$6; EX=${7:-}; CMP=${8:-}; cd $D; mkdir -p $O
+D=$1; SM=$2; V=$3; ERR=$4; F=$5; O=$6; EX=${7:-}; CMP=${8:-}; UL=${9:-0}; cd $D; mkdir -p $O
 S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools; MM=$D/scripts_tmp/minimap2-2.31/minimap2
 HA=$D/scripts_tmp/hifiasm-0.25.0/hifiasm; T=$SLURM_CPUS_PER_TASK
 W=/scratch/$USER.hlasm.$SLURM_JOB_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
@@ -31,7 +32,12 @@ $S faidx $W/other_chr.fa "$OC:$((OS + 1))-$OE" | sed '1s/.*/>other/' > $W/other.
 for b in hifi/bam/*.$SM.$V.bam; do $S view -F 0x900 $b "$C:$WS-$WE" "$OC:$((OS + 1))-$OE" $(echo $EX | tr ',' ' '); done \
   | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/reads.fq
 log "reads $(awk 'NR%4==2' $W/reads.fq | wc -l), bp $(awk 'NR%4==2 {s+=length($0)} END {print s}' $W/reads.fq)"
-cd $W; $HA -t $T -o loc reads.fq > hifiasm.log 2>&1 || { tail -5 hifiasm.log; exit 1; }
+U=""; if [ "$UL" = 1 ]; then
+  for b in ont_full/SRR*.$SM.$V.bam; do $S view -F 0x900 $b "$C:$WS-$WE" "$OC:$((OS + 1))-$OE" $(echo $EX | tr ',' ' '); done \
+    | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/ul.fq
+  log "ONT UL reads $(awk 'NR%4==2' $W/ul.fq | wc -l), bp $(awk 'NR%4==2 {s+=length($0)} END {print s}' $W/ul.fq)"; U="--ul $W/ul.fq"
+fi
+cd $W; $HA -t $T -o loc $U reads.fq > hifiasm.log 2>&1 || { tail -5 hifiasm.log; exit 1; }
 for g in loc.bp.hap1.p_ctg loc.bp.hap2.p_ctg loc.bp.p_ctg; do
   [ -s $g.gfa ] && awk -v p=$g '$1=="S" {print ">"p"."$2"\n"$3}' $g.gfa
 done > $O/contigs.fa
