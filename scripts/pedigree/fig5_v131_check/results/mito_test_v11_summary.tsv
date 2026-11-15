@@ -1,0 +1,9 @@
+label	set	reads	len_median	len_max	len_le_17kb	de_median	to_chrM	sites_before	sites_after
+chr6_dad_h1	locus	89	75380	311041	5	0.022	0	0	0
+chr6_dad_h1	flank	100	70592	311041	6	0.0241	NA	NA	NA
+chrX_mom_h1	locus	81	66312	244747	13	0.0251	7	0	0
+chrX_mom_h1	flank	70	84126	286391	11	0.0244	NA	NA	NA
+chr6_self_pat	locus	103	69694	473482	9	0.025	0	0	0
+chr6_self_pat	flank	99	73903	365548	6	0.0241	NA	NA	NA
+chr6_kid_h2	locus	117	88570	263770	18	0.024	0	0	0
+chr6_kid_h2	flank	123	88570	358223	17	0.0208	NA	NA	NA
