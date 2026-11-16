@@ -1,0 +1,2 @@
+version	contig	kept_1_to	replaced_old_start	replaced_old_end	new_length	segment_bp	segment_N	frame	frame_start	frame_end	reads_mapq20	depth_min	depth_median	depth_max	segment_md5	patched_chr9_md5
+v11	PAN011#2#chr9	133673490	133673491	133744561	133743177	69687	0	PAN027#2#chr9	136139447	136209149	134	19	100	112	159970f65d7b7af57a67345f45b66abb	771cf29c513486519037008ef5d4f264

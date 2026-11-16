@@ -1,0 +1,4 @@
+orig	chr9q_h2_end	zone=133673491-133744561	wrong_positions_MAPQ20=57	at_N_bases=0	wrong_positions_window=57	depth_all_zone_median=17	depth_all_control_median=72
+orig	chr1p_h1_start	zone=8-61926	wrong_positions_MAPQ20=0	at_N_bases=0	wrong_positions_window=0	depth_all_zone_median=56	depth_all_control_median=83
+patched	chr9q_h2_end	zone=133673491-133743177	wrong_positions_MAPQ20=0	at_N_bases=0	wrong_positions_window=0	depth_all_zone_median=77	depth_all_control_median=72
+patched	chr1p_h1_start	zone=8-61926	wrong_positions_MAPQ20=0	at_N_bases=0	wrong_positions_window=0	depth_all_zone_median=67	depth_all_control_median=83
