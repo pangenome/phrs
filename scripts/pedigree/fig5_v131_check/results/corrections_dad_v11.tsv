@@ -1,5 +1,5 @@
 version	sample	contig	start	end	old_bp	new_bp	status	source	evidence
-v11	PAN011	PAN011#2#chr9	133673491	133744561	71071	69705	corrected	DAD ONT consensus, polished with DAD HiFi	ONT 57 -> 0 wrong; HiFi 21 -> 0; merqury chr9 1,028 = before (0 new); = DAD-only hifiasm contig, NM 25 over 68,385 bp
+v11	PAN011	PAN011#2#chr9	133594275	133743195	148921	147583	corrected	hifiasm contig from DAD HiFi only (no SELF data), polished with DAD HiFi	junction = end of 120,784 bp exact contig = assembly; DAD HiFi 0 SNV, 1 indel -> 0, 0 (depth 8); own reads close to contig vs assembly: HiFi 106 vs 38, ONT 230 vs 47
 v11	PAN011	PAN011#2#chr7	1076489	1120704	44216	44483	corrected	hifiasm --ul contig (DAD HiFi + DAD ONT UL), polished with DAD HiFi	HiFi depth 2 -> 6; merqury 1.07-1.13 Mb 4,302 -> 221 error k-mers; PAN011 198,613 -> 194,532, QV 57.9824 -> 58.0726
 v11	PAN011	PAN011#2#chr3	98480001	98580000	100000	NA	known_error	none	ONT 1,197 SNV; HiFi depth 0; merqury 9,762 k-mers; local assembly mixes haplotypes (right side 0.97556); merqury errors over 95-99 Mb
 v11	PAN011	PAN011#1#chr10	134420001	134592605	172605	NA	known_error	none	ONT 237 SNV; HiFi depth 1; merqury 6,805 k-mers; D4Z4 array, local assembly 0.98706 / 0.42 in parts
