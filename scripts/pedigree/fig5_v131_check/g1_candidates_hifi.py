@@ -4,10 +4,12 @@
 usage: g1_candidates_hifi.py WASHU SAMPLE VERSION OUT_TSV
 Rules (fixed 2026-11-16 before the HiFi scan finished):
   a 10 kb bin is flagged when HiFi depth <= 0.25 x the contig median, or HiFi SNV >= 3 with depth >= 3;
+  depth = MAPQ>=0 depth (bins_hifi_q0). Change 2026-11-16 after the first scan: MAPQ>=20 depth was 0 in
+  hap1 = hap2 stretches (diploid mapping, MAPQ 1-5), so 22% of bins were flagged. Thresholds unchanged.
   flagged bins <= 20 kb apart are merged; a group is "satellite" when > 50% of it is in cenSat (annot_v11).
 Per group: bins, min depth, SNV sum, ONT SNV sum (check/wg_scan/bins_ont), merqury error k-mers (merqury/<v>/<s>).
 """
-import collections, gzip, os, statistics as st, sys
+import bisect, collections, gzip, os, statistics as st, sys
 
 D, SM, V, out = sys.argv[1:5]
 def aname(c):
@@ -26,9 +28,9 @@ rows, nb, nf = [], 0, 0
 for h in (1, 2):
     for l in open(f"{D}/norm_{V}/{SM}#{h}.fa.gz.fai"):
         c = l.split("\t")[0]; tag = c.replace("#", "_")
-        hb = f"{D}/check/wg_scan/bins_hifi/{SM}.{V}.{tag}.bins.tsv"; ob = f"{D}/check/wg_scan/bins_ont/{SM}.{V}.{tag}.bins.tsv"
+        hb = f"{D}/check/wg_scan/bins_hifi_q0/{SM}.{V}.{tag}.bins.tsv"; ob = f"{D}/check/wg_scan/bins_ont/{SM}.{V}.{tag}.bins.tsv"
         if not os.path.exists(hb): sys.exit(f"ERROR missing {hb}")
-        b = [(int(r[1]), float(r[2]), int(r[3])) for r in (x.rstrip("\n").split("\t") for x in open(hb))]
+        b = [(int(r[1]), float(r[5]), int(r[3])) for r in (x.rstrip("\n").split("\t") for x in open(hb))]
         ont = {int(r[1]): int(r[3]) for r in (x.rstrip("\n").split("\t") for x in open(ob))} if os.path.exists(ob) else {}
         med = st.median(d for _, d, _ in b); nb += len(b)
         fl = [x for x in b if x[1] <= 0.25 * med or (x[2] >= 3 and x[1] >= 3)]; nf += len(fl)
@@ -40,7 +42,6 @@ for h in (1, 2):
         for grp in g:
             a, z = grp[0][0], grp[-1][0] + 10000
             sat = sum(max(0, min(z, e) - max(a, s)) for s, e in cs[an]) / (z - a)
-            import bisect
             k = bisect.bisect_left(p, z) - bisect.bisect_left(p, a)
             rows.append((c, a, z, len(grp), min(x[1] for x in grp), med, sum(x[2] for x in grp),
                          sum(ont.get(x[0], 0) for x in grp), k, f"{sat:.2f}", "satellite" if sat > 0.5 else "candidate"))
