@@ -9,7 +9,8 @@
 #   [--asm NORM_DIR (default norm_V)] [--read-error CONTIG:A-Z on norm_V, where the BAM reads sit (default --error)]
 #   [--mmi-dir DIR with SM.hifi.mmi and SM.ont.mmi of the --asm diploid] [--rules ex:L,...,id:T,...]
 # Own reads only, same steps for HiFi (hifi/bam) and ONT (ont_full):
-# 1. windows: faulty = ERROR +- FLANK, homolog window on the other haplotype (minimap2 asm5).
+# 1. windows: faulty = ERROR +- FLANK, homolog window on the other haplotype (minimap2 asm5; male X uses Y,
+#    none when no homolog aligns).
 # 2. reads: primary reads from both windows (+ extra regions).
 # 3. span: reads covering ERROR +- 1 kb in the original BAMs (any MAPQ).
 # 4. assemble (hifiasm 0.25.0): mode hifi, mode ont (--ont), mode both (HiFi + --ul ONT).
@@ -37,14 +38,18 @@ RL=$(awk -v c="$C" '$1==c {print $2}' norm_$V/$SM#$H.fa.gz.fai); RWS=$((RA > F ?
 WS=$((A > F ? A - F : 1)); WE=$((Z + F > L ? L : Z + F)); TL=$((WS == 1 ? 1 : 0)); TR=$((WE == L ? 1 : 0))
 log "1 windows: $SM $V asm $NA error $ERR (reads at $RE), faulty $C:$WS-$WE (contig $L bp, terminal left $TL right $TR), host $(hostname)"
 $S faidx $NA/$SM#$H.fa.gz "$C:$WS-$WE" | sed '1s/.*/>assembly/' > $W/asm.fa; $S faidx $W/asm.fa
-$S faidx $NA/$SM#$OH.fa.gz "$OC" > $W/oc.fa
-$MM -cx asm5 -t $T $W/oc.fa $W/asm.fa 2> /dev/null | sort -k10,10nr > $W/proj.paf
-read OS OE < <(awk -F'\t' 'NR==1 {c=($8+$9)/2} $12 >= 5 && ($8+$9)/2 > c - 1e6 && ($8+$9)/2 < c + 1e6 {s = (s == "" || $8 < s) ? $8 : s; e = ($9 > e) ? $9 : e} END {print s, e}' $W/proj.paf)
-[ -n "${OS:-}" ] || { echo "ERROR no homolog window on $OC"; exit 1; }
-log "1 windows: homolog $OC:$((OS + 1))-$OE"
+grep -q -P "^$OC\t" $NA/$SM#$OH.fa.gz.fai || case $OC in *chrX) OC=${OC%chrX}chrY;; *chrY) OC=${OC%chrY}chrX;; esac  # male: X vs Y
+HR=""
+if grep -q -P "^$OC\t" $NA/$SM#$OH.fa.gz.fai; then
+  $S faidx $NA/$SM#$OH.fa.gz "$OC" > $W/oc.fa
+  $MM -cx asm5 -t $T $W/oc.fa $W/asm.fa 2> /dev/null | sort -k10,10nr > $W/proj.paf
+  read OS OE < <(awk -F'\t' 'NR==1 {c=($8+$9)/2} $12 >= 5 && ($8+$9)/2 > c - 1e6 && ($8+$9)/2 < c + 1e6 {s = (s == "" || $8 < s) ? $8 : s; e = ($9 > e) ? $9 : e} END {print s, e}' $W/proj.paf)
+  [ -n "${OS:-}" ] && HR="$OC:$((OS + 1))-$OE"
+fi
+log "1 windows: homolog ${HR:-none (no homolog contig or no alignment on $OC: haploid region, reads from the faulty window only)}"
 for s in hifi ont; do
   [ $s = hifi ] && B=$(ls hifi/bam/*.$SM.$V.bam) || B=$(ls ont_full/SRR*.$SM.$V.bam)
-  for b in $B; do $S view -F 0x900 $b "$C:$RWS-$RWE" "$OC:$((OS + 1))-$OE" $(echo $EX | tr ',' ' '); done \
+  for b in $B; do $S view -F 0x900 $b "$C:$RWS-$RWE" $HR $(echo $EX | tr ',' ' '); done \
     | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/$s.fq
   N=$(awk 'NR%4==2' $W/$s.fq | wc -l); [ $N -gt 0 ] || { echo "ERROR no $s reads"; exit 1; }
   log "2 reads $s: $N reads, $(awk 'NR%4==2 {s+=length($0)} END {print s}' $W/$s.fq) bp from $(echo $B | wc -w) BAMs"
