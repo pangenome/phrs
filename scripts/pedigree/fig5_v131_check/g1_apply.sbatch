@@ -16,14 +16,15 @@ log () { echo "[$(date -Is)] $*"; }
 cd $D; [ -s $O/corrections.tsv ] && { log "exists $O/corrections.tsv, skip"; exit 0; }
 [ -e $O ] && { echo "ERROR $O exists without corrections.tsv; use a new dir"; exit 1; }
 [ -s $TS ] || { echo "ERROR empty or missing task list $TS"; exit 1; }
-mkdir -p $O; : > $O/loci.tsv; miss=0
+mkdir -p /scratch/$USER/tmp/phrs; LT=$(mktemp /scratch/$USER/tmp/phrs/loci.XXXX); miss=0
 while IFS=$'\t' read -r i n e r; do
-  if [ -s $R/$i.$n/summary.tsv ]; then echo -e "$i.$n\tsummary" >> $O/loci.tsv
-  elif [ -e $R/$i.$n/TIMEOUT ]; then echo -e "$i.$n\ttimeout" >> $O/loci.tsv
-  else echo -e "$i.$n\tmissing" >> $O/loci.tsv; miss=$((miss + 1)); fi
+  if [ -s $R/$i.$n/summary.tsv ]; then echo -e "$i.$n\tsummary" >> $LT
+  elif [ -e $R/$i.$n/TIMEOUT ]; then echo -e "$i.$n\ttimeout" >> $LT
+  else echo -e "$i.$n\tmissing" >> $LT; miss=$((miss + 1)); fi
 done < $TS
-log "$SM: task list $TS, $(cut -f2 $O/loci.tsv | sort | uniq -c | tr '\n' ' ')"
-[ $miss -eq 0 ] || { echo "ERROR $miss loci without summary or TIMEOUT"; exit 1; }
+log "$SM: task list $TS, $(cut -f2 $LT | sort | uniq -c | tr '\n' ' ')"
+[ $miss -eq 0 ] || { echo "ERROR $miss loci without summary or TIMEOUT (list $LT)"; exit 1; }
+mkdir -p $O; mv $LT $O/loci.tsv
 python3 scripts_tmp/g1_apply_all.py norm_$V $SM $R $AR $VR $O
 log "lengths: $(for h in 1 2; do awk '/^>/ {next} {s+=length($0)} END {printf s" "}' $O/$SM#$h.fa; done) vs $(for h in 1 2; do awk '{s+=$2} END {printf s" "}' norm_$V/$SM#$h.fa.gz.fai; done)"
 log done
