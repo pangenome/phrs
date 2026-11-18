@@ -862,3 +862,21 @@ Results subsection replaced by `Direct test for exchange between non-homologous 
 caption retitled to `An assembly error in one paternal haplotype mimics an ectopic exchange`, with the
 legend swatch renamed `9q/3q artefact`. Build: exit 0, 0 undefined. Evidence and numbers:
 `response/notes/fig5_retraction_and_concerted_evolution_story.md`.
+
+## Fig. 5 replaced by the concerted-evolution figure; pedigree demoted to Extended Data Fig. 7
+
+Date: 2026-11-17
+
+Main Figure 5 is now `Fig5_concerted_evolution.pdf` (built by
+`paper_prep/figures/fig5_concerted/figure_fig5_concerted.py`, sources and caption alongside):
+**a** three exchange regimes by community, **b** allelic vs paralogous divergence, **c** ratio against
+distance from the telomere with the TERRA array excluded, **d** the candidate-competition panel showing a
+non-homologous end inside the spread of the homologues.
+
+The previous Figure 5 (pedigree, `Fig5A_pedigree` + `Fig5B_zoom9q3q` + `Fig5C_paternal`) moved verbatim
+to the Extended Data legends as `fig:ed7`, placed after `fig:ed6`; its caption is unchanged apart from the
+label, and all four in-text references now point to it. No `\ref{fig:fig5}` remains that referred to the
+pedigree.
+
+Build: exit 0, 0 undefined. Verified in the PDF: the concerted-evolution figure renders on page 18 and the
+demoted pedigree figure on page 40, inside the Extended Data section.
