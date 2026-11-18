@@ -5,7 +5,8 @@ usage: g1_apply_all.py NORM_DIR SAMPLE RUN_DIR ANCHOR VOTE OUT_DIR
 Per locus RUN_DIR/<id>.<name>/ (g1_locus.sbatch): candidates of rule ANCHOR (any mode); a candidate passes when the
 VOTE rule (more, ratio2, binom as in g1_grid_score.py) holds for HiFi and ONT; the passing one with most HiFi + ONT
 candidate votes is applied. Overlapping accepted pieces on the same contig: the one with more votes is kept, the other
-is listed as dropped. Pieces are applied right to left, so coordinates in corrections.tsv are on the input assembly.
+is listed as dropped. Pieces are applied right to left: start/end are on the input assembly, new_start/new_end on the
+output (0-based, end excluded).
 out: OUT_DIR/SAMPLE#{1,2}.fa (all contigs), OUT_DIR/corrections.tsv (applied and dropped, with votes and md5).
 """
 import collections, glob, gzip, hashlib, os, sys
@@ -54,8 +55,11 @@ for h in (1, 2):
             else: parts.append(l.strip())
         flush()
 with open(f"{out}/corrections.tsv", "w") as o:
-    o.write("status\tlocus\tcontig\tstart\tend\told_bp\tnew_bp\tmode\tanchor\tvote\thifi_votes_asm_cand\tont_votes_asm_cand\tpiece_md5\n")
+    o.write("status\tlocus\tcontig\tstart\tend\told_bp\tnew_bp\tnew_start\tnew_end\tmode\tanchor\tvote\thifi_votes_asm_cand\tont_votes_asm_cand\tpiece_md5\n")
+    shift = collections.Counter()
     for st, l in (("applied", keep), ("dropped", drop)):
         for a in sorted(l, key=lambda a: (a["contig"], a["start"])):
-            o.write(f"{st}\t{a['locus']}\t{a['contig']}\t{a['start']}\t{a['end']}\t{a['end'] - a['start']}\t{len(a['seq'])}\t{a['mode']}\t{ar}\t{vr}\t{a['hifi']}\t{a['ont']}\t{hashlib.md5(a['seq'].encode()).hexdigest()[:12]}\n")
+            ns = a["start"] + shift[a["contig"]] if st == "applied" else "NA"; ne = ns + len(a["seq"]) if st == "applied" else "NA"
+            if st == "applied": shift[a["contig"]] += len(a["seq"]) - (a["end"] - a["start"])
+            o.write(f"{st}\t{a['locus']}\t{a['contig']}\t{a['start']}\t{a['end']}\t{a['end'] - a['start']}\t{len(a['seq'])}\t{ns}\t{ne}\t{a['mode']}\t{ar}\t{vr}\t{a['hifi']}\t{a['ont']}\t{hashlib.md5(a['seq'].encode()).hexdigest()[:12]}\n")
 print(f"{sm}: wrote {out}", file=sys.stderr)
