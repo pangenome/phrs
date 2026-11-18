@@ -431,8 +431,7 @@ the draw) and orthogonal assays (ChIA-PET/Micro-C) as the controls that bear on 
 
 ## Rev 13 (2026-11-17) — pedigree exchange retracted; Fig. 5 replaced
 
-- **Withdrawn:** the chr9q<-chr3q ectopic exchange (assembly artefact in PAN011#2#chr9, dice 0.9211 vs
-  1.0000 rebuilt) and the chr1p/chr5q candidate (FastGA `-f32` seed loss; 48 diagnostic sites to chr5q
+- **Withdrawn:** the chr9q<-chr3q ectopic exchange (assembly artefact in PAN011#2#chr9, block identity 0.9940 inside the tract vs 1.0000 outside and 1.0000 rebuilt) and the chr1p/chr5q candidate (FastGA `-f32` seed loss; 48 diagnostic sites to chr5q
   vs 1 to chr1p).
 - **Current claim:** no detectable exchange between non-homologous ends outside the acrocentric short
   arms and the pseudoautosomal regions (paralog/allelic ratio 1.00 and 0.99 versus 3.3-27 elsewhere).
@@ -441,8 +440,8 @@ the draw) and orthogonal assays (ChIA-PET/Micro-C) as the controls that bear on 
   references repointed; abstract, Results subsection (now "Direct test for exchange between
   non-homologous ends") and Methods (`-f` sensitivity, assembly check, competitive similarity test) were
   rewritten. Build exit 0, 0 undefined. See `BUILD_LOG.md`.
-- **New evidence:** the father's chr3q terminus is a closer match to his daughter's chr9q (dice 0.9915)
-  than his own other chr9q haplotype (0.9191) — a non-homologous end inside the spread of the
+- **New evidence:** the father's chr3q terminus is a closer match to his daughter's chr9q (block identity 0.9990)
+  than his own other chr9q haplotype (0.9930) — a non-homologous end inside the spread of the
   homologous ones, which is the concerted-evolution statement now carried by Figure 5.
 - Methodological corrections recorded: `estimated.identity` is the Mash transform of Jaccard, not dice;
   the k-mer sharing figure (96.8%) is not an identity and corresponds to ~99.85% identity.

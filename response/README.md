@@ -5,11 +5,11 @@
 
 The ectopic exchange retained in the first response round is **withdrawn**. Both candidates are
 artefacts: an assembly error in one paternal chr9q haplotype (the assembled segment scores IMPG dice
-0.9211 against the daughter's own copy; rebuilt from his own HiFi reads alone it scores 1.0000) and a
+0.9940 against the daughter's own copy inside the tract, against 1.0000 immediately outside it; rebuilt from his own HiFi reads alone it scores 1.0000) and a
 FastGA `-f32` seed-frequency truncation at chr1p/chr5q (the chr5q chain only reaches the contig end at
 `-f48` and above, and matches at 48 diagnostic sites to 1 to chr1p). Offering every candidate
 simultaneously to IMPG similarity puts the rebuilt homologue first (1.0000) and the alleged donor second
-(0.9915).
+(0.9990).
 
 Consequence: **no exchange between non-homologous ends is detectable in this pedigree outside the
 acrocentric short arms and the pseudoautosomal regions**, which are obligate and sit at paralog/allelic

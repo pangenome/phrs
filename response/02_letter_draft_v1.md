@@ -22,7 +22,7 @@ Three things in this revision are substantive rather than stylistic.
    The single event we retained is an assembly artefact in one paternal haplotype plus a
    seed-frequency artefact at the second candidate (Point 4). Offering every candidate at once to
    IMPG similarity puts the rebuilt homologue first (dice 1.0000) and the alleged donor second
-   (0.9915). Outside the acrocentric arms and the pseudoautosomal regions we claim no detectable
+   (0.9990). Outside the acrocentric arms and the pseudoautosomal regions we claim no detectable
    exchange between non-homologous ends. The within-community statistic that summarises the
    pedigree is unaffected by this and remains stronger after the copy correction (0.945 corrected
    vs 0.918 published; null 0.84, p < 1e-4).
@@ -101,7 +101,8 @@ withdraw it. Two independent artefacts produced the appearance of an exchange:
 **(i) An assembly error in one paternal haplotype.** The terminal ~150 kb of the father's chr9q
 haplotype 2 (PAN011#2#chr9 133,594,275-133,744,561) is misassembled in both releases; the release QC
 marks a MISJOIN at the start of the block, and the assembled segment disagrees with the father's own
-long reads — IMPG dice 0.9211 against his daughter's own copy, where a rebuilt assembly gives 1.0000.
+long reads — IMPG block identity 0.9940 inside that tract against 1.0000 immediately outside it, where a rebuilt
+assembly gives 1.0000 throughout.
 Because his own chr9q copy was partly missing from the assembly, the closest *remaining* sequence, his
 chr3q, won by default. The apparent interchromosomal donor was created by the missing haplotype.
 
@@ -117,21 +118,21 @@ homologue, the competing non-homologue and a no-signal control — aligned them 
 sweepga at a frequency threshold high enough to filter nothing, and scored every pair with IMPG
 similarity in 2 kb windows:
 
-| candidate | dice to the daughter's paternal chr9q, across the tract |
+| candidate | block identity to the daughter's paternal chr9q, across the tract |
 |---|---|
 | rebuilt chr9q haplotype 2 (father's own HiFi reads only, no daughter data) | **1.0000** |
-| father's chr3q haplotype 2 | **0.9915** |
-| released (misassembled) chr9q haplotype 2 | 0.9211 |
-| father's chr9q haplotype 1 | 0.9191 |
-| father's chr1p | 0.9144 |
+| father's chr3q haplotype 2 (uniform inside and outside the tract) | **0.9990** |
+| released (misassembled) chr9q haplotype 2 | 0.9940 inside, 1.0000 outside |
+| father's chr9q haplotype 1 | 0.9930 |
+| father's chr1p | 0.9940 |
 
-The homologue wins outright. And the chr3q-to-homologue difference is 0.06% in identity — within the
+The homologue wins outright. And the chr3q-to-homologue difference is 0.10% in block identity — within the
 range we measure at these ends generally, where the median chromosome end's closest non-homologous
 partner is only 0.52% divergent and 11 of 45 ends lie within twice allelic divergence.
 
 **This makes the region the opposite kind of evidence, and we now present it that way.** The father's
 chr3q terminus is a *closer* match to his daughter's chr9q than his own other chr9q haplotype is
-(0.9915 against 0.9191). A non-homologous end lying inside the spread of the homologous ones is
+(0.9990 against 0.9930). A non-homologous end lying inside the spread of the homologous ones is
 concerted evolution stated as a measurement, and it is now Figure 5. The pedigree figure has moved to
 Extended Data, where it serves as a worked demonstration that identity-based donor assignment fails at
 subtelomeric ends.

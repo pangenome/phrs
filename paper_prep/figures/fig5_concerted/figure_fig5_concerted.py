@@ -59,10 +59,10 @@ ax.set_xscale("log"); ax.set_xlim(0.85, 60)
 ax.set_xlabel("divergence among member arms / allelic divergence")
 ax.set_title("a  three exchange regimes", fontsize=9, loc="left")
 ax.text(1.03, 0.15, "obligate: acrocentric short arms, PAR1/PAR2", fontsize=6, color="#c0392b")
-ax.text(2.2, len(rows) - 1.15, "facultative exchange", fontsize=6, color="#555555")
+ax.text(2.0, 3.0, "facultative exchange", fontsize=6, color="#555555")
 _c4 = [i for i, r in enumerate(rows) if r[0] == "C4"]
 if _c4:
-    ax.text(rows[_c4[0]][1] * 0.55, _c4[0] + 0.28, "residual (forced pairing)", fontsize=6, color="#4d4d4d")
+    ax.text(rows[_c4[0]][1] * 0.42, _c4[0] - 0.42, "residual (forced pairing)", fontsize=6, color="#4d4d4d")
 
 # ---- b: ECDF allelic vs paralogous
 ax = fig.add_subplot(gs[0, 1])
@@ -107,26 +107,24 @@ ax.set_ylabel("paralogous / allelic ratio")
 ax.set_title("c  homogenization strongest nearest the telomere", fontsize=9, loc="left")
 ax.legend(fontsize=6.5, loc="lower right")
 
-# ---- d: candidate competition at 9q
+# ---- d: candidate competition at 9q, inside vs outside the tract
 ax = fig.add_subplot(gs[1, 1])
-cand = list(csv.DictReader(open("candidate_dice_9q.tsv"), delimiter="\t"))
-names = [c["candidate"] for c in cand][::-1]
-vals = [float(c["tract_dice"]) for c in cand][::-1]
-cols = []
-for c in cand[::-1]:
-    if c["candidate"].startswith("DAD chr9 h2 corrected"): cols.append("#1b6ca8")
-    elif c["candidate"].startswith("SELF"): cols.append("#999999")
-    elif c["candidate"].startswith("DAD chr3"): cols.append("#D95F02")
-    elif "original" in c["candidate"]: cols.append("#c0392b")
-    else: cols.append("#bbbbbb")
-ax.barh(range(len(vals)), vals, color=cols, edgecolor="white")
-ax.set_yticks(range(len(vals)))
-ax.set_yticklabels(names, fontsize=7)
-ax.set_xlim(0.88, 1.002)
-for i, v in enumerate(vals):
-    ax.text(v + 0.001, i, f"{v:.4f}", va="center", fontsize=6.5)
-ax.set_xlabel("IMPG dice similarity to the daughter's paternal chr9q, across the tract")
+cand = list(csv.DictReader(open("candidate_block_identity_9q.tsv"), delimiter="\t"))
+cand = cand[::-1]
+names = [c["candidate"] for c in cand]
+tin = [float(c["tract_block_identity"]) for c in cand]
+tout = [float(c["outside_block_identity"]) for c in cand]
+y = range(len(cand)); h = 0.38
+ax.barh([i + h/2 for i in y], tin, height=h, color="#1b6ca8", label="inside the tract", edgecolor="white")
+ax.barh([i - h/2 for i in y], tout, height=h, color="#9ecae1", label="outside the tract", edgecolor="white")
+ax.set_yticks(list(y)); ax.set_yticklabels(names, fontsize=7)
+ax.set_xlim(0.985, 1.0008)
+for i, (a, b) in enumerate(zip(tin, tout)):
+    ax.text(a + 0.00015, i + h/2, f"{a:.4f}", va="center", fontsize=6)
+    ax.text(b + 0.00015, i - h/2, f"{b:.4f}", va="center", fontsize=6)
+ax.set_xlabel("IMPG block identity (gap-compressed) to the daughter's paternal chr9q")
 ax.set_title("d  a non-homologous end inside the spread of the homologues", fontsize=9, loc="left")
+ax.legend(fontsize=6, loc="lower right")
 
 fig.suptitle("Concerted evolution of human subtelomeres: identical sequence at non-homologous ends, "
              "maintained without detectable exchange within a family", fontsize=9.5)

@@ -880,3 +880,32 @@ pedigree.
 
 Build: exit 0, 0 undefined. Verified in the PDF: the concerted-evolution figure renders on page 18 and the
 demoted pedigree figure on page 40, inside the Extended Data section.
+
+## Metric corrected to IMPG block identity (graph/`poa` mode)
+
+Date: 2026-11-18
+
+The competitive test had been run in IMPG's `--fast` sketch mode, where `estimated.identity` is a
+Mash transform of the k-mer Jaccard rather than an identity measure. It was re-run in graph mode
+(`--gfa-engine poa`, abpoa local), which reports node-multiset overlap and a gap-compressed **block
+identity**. Numbers now quoted throughout the manuscript and the response material:
+
+| candidate | dice | block identity, inside the tract | block identity, outside |
+|---|---|---|---|
+| corrected chr9q h2 (father's HiFi only) | 1.0000 | **1.0000** | 1.0000 |
+| father's chr3q h2 | 0.9990 | **0.9990** | 0.9990 |
+| released chr9q h2 (misassembled) | 0.9943 | **0.9940** | **1.0000** |
+| father's chr1p | 0.9938 | 0.9940 | 0.9955 |
+| father's chr9q h1 | 0.9930 | 0.9930 | 0.9882 |
+
+The inside/outside contrast is the diagnostic: the misassembled haplotype is 1.0000 immediately outside
+the tract and 0.9940 inside it, whereas chr3q is 0.9990 both inside and outside — a localised error
+versus a uniform family relationship. Fig. 5d now plots this as paired inside/outside bars.
+
+Also fixed: `data/chm13.phrs.bed` had 37 arm intervals and was missing `chr13_p` relative to the
+published call (38); the interval was reconstructed from `data/all-vs-all.1Mb.p95.id95.len.tsv` and
+inserted in the file's own schema. It annotates arm-level presence in `make_fig2bc_jaccard_heatmaps.R`
+and `make_fig5_pedigree_supporting_material.py` — it does **not** feed the permutation controls, contrary
+to an earlier statement of mine. Those two figures should be regenerated where R/guix is available.
+
+Build: exit 0, 0 undefined.

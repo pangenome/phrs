@@ -420,21 +420,21 @@ An initial pass flagged one candidate: the terminus of the daughter's paternal c
 whole-genome match appeared to be her father's chr3q while the match to his own chr9q fell away
 (Extended Data Fig.~\ref{fig:ed7}B,C). Complete evaluation shows that this call is an artefact of the father's
 assembly at that locus. In both assembly releases the terminal ~150\,kb of his chr9q haplotype 2
-disagrees with his own long reads (dice 0.92 against the daughter's sequence, where a corrected
-assembly gives 1.00), and the release quality control marks a misjoin at the start of the copied block.
+disagrees with his own long reads (block identity 0.994 against the daughter's sequence inside the
+tract, against 1.000 outside it and 1.000 throughout in a corrected assembly), and the release quality control marks a misjoin at the start of the copied block.
 The error is what created the interchromosomal winner: a segment of the father's own haplotype was
 absent from his assembly, so the closest remaining sequence, his chr3q, won by default.
 
 We therefore repeated the comparison with all candidate ends offered to the similarity computation
 simultaneously rather than one alignment setting at a time, and with the father's chr9q rebuilt from
 his own high-fidelity reads alone, without any data from the daughter. On that assembly the daughter's
-paternal chr9q matches her father's chr9q at dice 1.0000 across the called tract, and his chr3q is
-second at 0.9915 (identity 0.9994). The chr3-like character of the terminus is therefore real, but it
-is similarity between shared subtelomeric blocks rather than a donor relationship: a 0.06\%
-difference in identity, well inside the range we measure at chromosome ends generally, where the
+paternal chr9q matches her father's chr9q at IMPG block identity 1.0000 across the called tract, and his chr3q is
+second at 0.9990. The chr3-like character of the terminus is therefore real, but it
+is similarity between shared subtelomeric blocks rather than a donor relationship: a 0.10\%
+difference in block identity, well inside the range we measure at chromosome ends generally, where the
 median end's closest non-homologous partner is 0.52\% divergent (Extended Data Fig.~\ref{fig:ed5}e).
-That the father's chr3q terminus is a closer match to his daughter's chr9q (dice 0.9915) than his own
-other chr9q haplotype is (dice 0.9191) is the concerted-evolution signal itself: a non-homologous end
+That the father's chr3q terminus is a closer match to his daughter's chr9q (block identity 0.9990) than
+his own other chr9q haplotype is (0.9930) is the concerted-evolution signal itself: a non-homologous end
 lying within the spread of the homologous ones.
 
 The chr1p/chr5q similarity visible in the same scans is likewise an artefact, of the alignment rather
@@ -683,10 +683,13 @@ The authors declare no competing interests.
     the telomere, one curve per arm (grey) and the median over 48 arms (black); the hatched zone is the
     TERRA promoter array, a copy-variable repeat family in which the ratio is undefined. \textbf{(d)} All
     candidate ends offered simultaneously to the same similarity computation and scored against the
-    daughter's paternal chr9q across the region previously called as an exchange: the father's chr9q
-    rebuilt from his own high-fidelity reads alone (blue) matches at dice 1.0000 and his chr3q (orange) is
-    second at 0.9915, ahead of the erroneous release assembly (red, 0.9211) and of his own other chr9q
-    haplotype (grey, 0.9191), so a non-homologous end lies within the spread of the homologous ones.}
+    daughter's paternal chr9q across the region previously called as an exchange: IMPG block identity for each candidate end, inside
+    (dark) and outside (light) the region previously called as an exchange. The father's chr9q rebuilt from
+    his own high-fidelity reads alone matches at 1.0000 throughout; his chr3q is second at 0.9990 and is
+    uniform inside and outside, the signature of family similarity rather than a donor; the erroneous
+    release assembly matches at 1.0000 outside the tract but falls to 0.9940 inside it, localising the
+    error; and his own other chr9q haplotype is lowest at 0.9930, so a non-homologous end lies within the
+    spread of the homologous ones.}
   \label{fig:fig5}
 \end{figure}
 
@@ -977,15 +980,36 @@ above 100. For each retained window we computed impg 0.4.1 similarity and kept
 the best same-chromosome or homologous parental match and the best
 non-homologous parental match, assigning the window to the non-homologous class
 only when the non-homologous match was the most similar. The identity margin of
-a called exchange is the amount by which its best non-homologous match exceeds
-the best same-chromosome or homologous match across the tract; a wider margin
-indicates stronger support. Where the competing matches are near-identical
-paralogues, the discriminating quantity is which parent haplotype matches at all
-(coverage), not the identity difference; for the chr9q/chr3q terminal call the
-exclusion of the father's other chr9q copy and the full coverage of his chr3q copy
-hold unchanged across frequency thresholds 10, 32, 512 and 8192, so the call does
-not depend on the threshold that was chosen for tractability. Validation analyses
-in this paper (pairwise panels, re-examination of individual tracts) use permissive
+a candidate is the amount by which its best non-homologous match exceeds
+the best same-chromosome or homologous match across the tract.
+
+\emph{Why a margin alone cannot identify a donor here.} At subtelomeric ends the competing sequences are
+near-identical paralogues, so an exchange and a shared family member can both produce a non-homologous
+winner. Two independent checks are therefore required, and both are reported. First, the seed-frequency
+sensitivity: the candidate set entering the alignment depends on the FastGA frequency threshold, and we
+scanned thresholds 32, 48, 64, 96, 128, 192 and 255. The chr1p/chr5q candidate exists only at threshold
+32 and disappears at 48, where the father's chr5q homologue reaches the last base of its contig at
+identity 1.0000; the chr9q/chr3q candidate survives 32 and 48 but disappears by 96. Neither call is
+invariant to the parameter that was chosen for tractability, which is why the alignment identity alone is
+not used as evidence in this paper. Second, the assembly check: for each candidate locus we compared the
+assembled sequence with the same individual's own long reads, and rebuilt any segment contradicted by
+those reads from that individual's high-fidelity reads alone, without any data from the other pedigree
+members. The rebuilt haplotype was then rescanned with the same procedure.
+
+\emph{Competitive similarity test.} Because a call can be lost or created simply by which candidates reach
+the aligner, the definitive test offers all candidate ends simultaneously: the transmitted haplotype and
+every competing paternal end (including both the released and the corrected assembly of the candidate
+locus, the alternative homologue, the competing non-homologue and a no-signal control) were placed in one
+FASTA, aligned all-against-all with sweepga (many-to-many mappings, no scaffold jumps, FastGA frequency
+5000 so that no candidate is filtered out), and scored with impg similarity in 2 kb windows. Similarity was computed in graph mode (`--gfa-engine poa`), whose node-multiset output reports dice
+similarity and a gap-compressed block identity over the aligned block; block identity is the quantity we
+quote, and dice is reported alongside it. The Mash-transformed `estimated.identity` produced in the
+faster sketch mode is not used: it is a function of the k-mer Jaccard and compresses differences between
+near-identical candidates, whereas in graph mode the two overlap metrics agree with block identity to
+within 0.0005. Candidate rankings are read directly from the dice values, with every
+candidate present at once and no dependence on a frequency threshold.
+
+Validation analyses in this paper (pairwise panels, re-examination of individual tracts) use permissive
 seeding (frequency 512--8192, minimum alignment 200 bp) to retain short and
 repeat-rich matches that the candidate-calling threshold suppresses. We joined two
 neighboring windows into one run only when their query and donor intervals were
@@ -1133,15 +1157,17 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
 \begin{figure}[htb!]
   \centering
   \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig4_pairwise_alignments.pdf}
-  \caption{\textbf{Pairwise alignments of the sequences in the retained exchange.}
+  \caption{\textbf{Pairwise alignments at the candidate locus.}
     Five telomere-first 60\,kb sequences: the daughter's paternal chr9q terminus (row
-    \texttt{SELF.p.chr9q}) against the father's chr9q hap2 (the transmitted chromosome copy),
-    his chr3q hap2, his chr3q hap1 and his chr9q hap1. Each cell is a dot plot of that pair,
-    with sequence identity on a 98--100\% scale. The called tract is boxed in the three cells
-    of the \texttt{SELF.p.chr9q} row: against the father's chr3q hap2 the diagonal is
-    continuous over the whole window at high identity, against his chr9q hap2 the tract is
-    present but at lower identity (a drifted descendant of the same module), and against his
-    chr9q hap1 the cell is empty, which is what excludes that haplotype as the source.}
+    \texttt{SELF.p.chr9q}) against the father's chr9q hap2 as released (the transmitted chromosome copy,
+    but misassembled at this locus), his chr3q hap2, his chr3q hap1 and his chr9q hap1. Each cell is a dot
+    plot of that pair, with sequence identity on a 98--100\% scale. The called tract is boxed in the three
+    cells of the \texttt{SELF.p.chr9q} row: against the father's chr3q hap2 the diagonal is continuous over
+    the whole window at high identity, and against his released chr9q hap2 it is present but at lower
+    identity, which is what originally suggested an interchromosomal donor. Rebuilding that haplotype from
+    his own high-fidelity reads resolves the discrepancy in favour of the homologue (Fig.~\ref{fig:fig5}d),
+    so the panel illustrates the failure mode rather than an exchange: at these ends a near-identical
+    paralogue and a true donor are not separable by identity alone.}
   \label{fig:ed4}
 \end{figure}
 
@@ -1208,15 +1234,15 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     across the shaded 20\,kb tract while the match to his chr3q (orange) stays
     near-identical. This is the signature an exchange would leave, but at this locus
     it is produced by an assembly error in the father's chr9q haplotype 2: the
-    assembled segment disagrees with his own long reads (dice 0.92 against the
-    daughter's sequence), so the closest remaining sequence wins by default.
+    assembled segment disagrees with his own long reads inside the tract (block identity 0.994 there
+    against 1.000 outside it), so the closest remaining sequence wins by default.
     \textbf{(C)} Whole-genome comparison of that transmitted haplotype (middle track)
     with the father's two haplotypes (upper, lower); chromosomes are concatenated and
     scaled by length. Grey ribbons are same-chromosome chains; coloured ribbons mark
     PAR1 (pink), which is obligate, and the chr9q/chr3q best non-homologous match
     (orange). When the father's chr9q is rebuilt from his own high-fidelity reads
-    alone, the daughter's paternal chr9q matches it at dice 1.0000 across the tract and
-    the chr3q match falls to second place (0.9915), leaving PAR1 as the only exchange in
+    alone, the daughter's paternal chr9q matches it at block identity 1.0000 across the tract and
+    the chr3q match falls to second place (0.9990), leaving PAR1 as the only exchange in
     the pedigree. The grey run at chr5 is the chr1p/chr5q best non-homologous match, an
     alignment artefact at the seed-frequency cutoff of the whole-genome scan.}
   \label{fig:ed7}
