@@ -35,40 +35,41 @@ def votes(ev):
                 if ac > max(aa, ae): cnt[cid][1] += 1
         v[s] = cnt
     return v
-out = open(sys.argv[1], "w"); out.write("set\twindow\tanchor\tvote\ttol\tevents\tright\twrong\tmissed\tscore\tdetail\n")
-for spec in sys.argv[2:]:
-    p = spec.split(":"); label, kind, rd = p[0], p[1], p[2]
-    for wd in sorted(glob.glob(f"{rd}/f*")):
-        chk = {}
-        if kind == "sim":
-            for l in list(open(f"{wd}/check.tsv"))[1:]:
-                t = l.rstrip("\n").split("\t"); chk[(t[0], t[1])] = (int(t[6]), int(t[7]), t[8], int(t[9]))
-        evs = sorted(glob.glob(f"{wd}/*/summary.tsv"))
-        data = {}
-        for sf in evs:
-            ev = os.path.dirname(sf); rows = [l.rstrip("\n").split("\t") for l in open(sf)]
-            h = rows[0]; rows = [dict(zip(h, r)) for r in rows[1:]]
-            data[os.path.basename(ev)] = (rows, votes(ev))
-        for ar in RULES:
-            for vr in VOTES:
-                for tol in (TOLS if kind == "sim" else [0]):
-                    right = wrong = miss = 0; det = []
-                    for name, (rows, v) in data.items():
-                        best = None
-                        for r in rows:
-                            if r["rule"] != ar or r["id"] == "NA": continue
-                            h, o = v["hifi"][r["id"]], v["ont"][r["id"]]
-                            if passes(vr, *h) and passes(vr, *o) and (best is None or h[1] + o[1] > best[1]): best = (r["id"], h[1] + o[1])
-                        if kind == "sim":
-                            err = "none_" not in name
-                            if best is None: miss += err; continue
-                            ol, mt, nm, ld = chk[(name, best[0])]
-                            ok = err and nm != "NA" and int(nm) <= tol and abs(ld) <= tol and mt >= ol - tol
-                            right += ok; wrong += not ok; det.append(f"{name}={'R' if ok else 'W'}")
-                        else:
-                            err = name.split(".")[1] != "chr21ctl"
-                            if best is None: miss += err; continue
-                            right += err; wrong += not err; det.append(f"{name}={'fix' if err else 'W'}")
-                    out.write(f"{label}\t{os.path.basename(wd)}\t{ar}\t{vr}\t{tol}\t{len(data)}\t{right}\t{wrong}\t{miss}\t{right - wrong}\t{','.join(det)}\n")
-out.close()
-print(open(sys.argv[1]).read())
+if __name__ == "__main__":  # g1_apply_all.py imports passes and votes
+    out = open(sys.argv[1], "w"); out.write("set\twindow\tanchor\tvote\ttol\tevents\tright\twrong\tmissed\tscore\tdetail\n")
+    for spec in sys.argv[2:]:
+        p = spec.split(":"); label, kind, rd = p[0], p[1], p[2]
+        for wd in sorted(glob.glob(f"{rd}/f*")):
+            chk = {}
+            if kind == "sim":
+                for l in list(open(f"{wd}/check.tsv"))[1:]:
+                    t = l.rstrip("\n").split("\t"); chk[(t[0], t[1])] = (int(t[6]), int(t[7]), t[8], int(t[9]))
+            evs = sorted(glob.glob(f"{wd}/*/summary.tsv"))
+            data = {}
+            for sf in evs:
+                ev = os.path.dirname(sf); rows = [l.rstrip("\n").split("\t") for l in open(sf)]
+                h = rows[0]; rows = [dict(zip(h, r)) for r in rows[1:]]
+                data[os.path.basename(ev)] = (rows, votes(ev))
+            for ar in RULES:
+                for vr in VOTES:
+                    for tol in (TOLS if kind == "sim" else [0]):
+                        right = wrong = miss = 0; det = []
+                        for name, (rows, v) in data.items():
+                            best = None
+                            for r in rows:
+                                if r["rule"] != ar or r["id"] == "NA": continue
+                                h, o = v["hifi"][r["id"]], v["ont"][r["id"]]
+                                if passes(vr, *h) and passes(vr, *o) and (best is None or h[1] + o[1] > best[1]): best = (r["id"], h[1] + o[1])
+                            if kind == "sim":
+                                err = "none_" not in name
+                                if best is None: miss += err; continue
+                                ol, mt, nm, ld = chk[(name, best[0])]
+                                ok = err and nm != "NA" and int(nm) <= tol and abs(ld) <= tol and mt >= ol - tol
+                                right += ok; wrong += not ok; det.append(f"{name}={'R' if ok else 'W'}")
+                            else:
+                                err = name.split(".")[1] != "chr21ctl"
+                                if best is None: miss += err; continue
+                                right += err; wrong += not err; det.append(f"{name}={'fix' if err else 'W'}")
+                        out.write(f"{label}\t{os.path.basename(wd)}\t{ar}\t{vr}\t{tol}\t{len(data)}\t{right}\t{wrong}\t{miss}\t{right - wrong}\t{','.join(det)}\n")
+    out.close()
+    print(open(sys.argv[1]).read())
