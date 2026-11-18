@@ -9,10 +9,12 @@ junction PAF WLEN EA EZ TERM_L TERM_R QLEN RULES: contig (+ strand) vs faulty wi
   id:T  alignment records with identity >= T (= / (= X I D)). Left = a record with >= 20 kb before EA, junction at
         min(EA, record end) projected to the contig; right = a record with >= 20 kb after EZ, junction at
         max(EZ, record start). One record over the whole error: the piece is the contig copy of [EA, EZ).
+  lt = rt (contig adds sequence) and lq = rq (contig removes sequence) are allowed, not both.
   TERM_L / TERM_R: window starts at the contig start / ends at the contig end; that side goes to the contig end.
 votes DIP_SAM CAND_SAM CONTIG OFFSET CANDS OUT_TSV: reads on the whole diploid (shared index) and on the candidates
   (small index), same minimap2 preset, -N and -p. Per candidate (id lt rt nb): best AS on the assembly interval
   [OFFSET+lt, OFFSET+rt) of CONTIG, on the new part [lt, lt+nb) of cand id, and elsewhere in the diploid.
+  An empty interval (pure insertion or deletion) is read as the 2 bp around the junction.
   OUT_TSV rows: cand, read, as_asm, as_cand, as_else, cov_asm, cov_cand (cov = covers its interval +- 1 kb), only
   reads that touch either interval. Prints per candidate: id votes_asm votes_cand span_asm span_cand, where a read
   votes for one side when its AS there beats both others (ties do not vote).
@@ -66,7 +68,7 @@ if cmd == "junction":
                 c = [x for x in g if x[1] >= ez + 20000]
                 if c: x = min(c, key=lambda x: x[0]); j = max(ez, x[0]); R = (j, proj(x[0], x[2], x[3], j))
         else: sys.exit(f"ERROR unknown rule {rule}")
-        if not L or not R or L[1] >= R[1] or L[0] >= R[0]: print(rule, "none")
+        if not L or not R or L[0] > R[0] or L[1] > R[1] or (L[0], L[1]) == (R[0], R[1]): print(rule, "none")
         else: print(rule, L[0], L[1], R[0], R[1])
 elif cmd == "votes":
     dsam, csam, ctg, off, cf, out = sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]), sys.argv[6], sys.argv[7]
@@ -81,7 +83,8 @@ elif cmd == "votes":
             reads.setdefault(x[0], []).append((x[2], p0, p1, next(int(y[5:]) for y in x[11:] if y.startswith("AS:i:"))))
     with open(out, "w") as o:
         for c, lt, rt, nb in cands:
-            iv = {"asm": (ctg, off + lt, off + rt), "cand": (c, lt, lt + nb)}; v = [0, 0, 0, 0]
+            ea, ec = int(rt == lt), int(nb == 0)  # empty side: 1 bp each side of the junction
+            iv = {"asm": (ctg, off + lt - ea, off + rt + ea), "cand": (c, lt - ec, lt + nb + ec)}; v = [0, 0, 0, 0]
             for rn, al in reads.items():
                 b = {"asm": -1, "cand": -1, "else": -1}; cov = {"asm": 0, "cand": 0}
                 for t, p0, p1, a in al:

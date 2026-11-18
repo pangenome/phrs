@@ -76,7 +76,7 @@ for m in hifi ont both; do
   awk '!s[$2]++' $W/$m/picks.txt > $W/$m/first.txt
   while read -r c rule lt lq rt rq; do
     if [ "$lt" = same ]; then printf "NA\t$m\t$rule\t$c\tNA\tNA\tNA\tNA\tsame\n" >> $W/cands_all.tsv; continue; fi
-    $S faidx $W/$m/ctg.fa "$c:$((lq + 1))-$rq" | tail -n +2 | tr -d '\n' > $W/p.seq
+    if [ $lq -lt $rq ]; then $S faidx $W/$m/ctg.fa "$c:$((lq + 1))-$rq" | tail -n +2 | tr -d '\n' > $W/p.seq; else : > $W/p.seq; fi
     if [ $lt -lt $rt ]; then $S faidx $W/asm.fa "assembly:$((lt + 1))-$rt" | tail -n +2 | tr -d '\n' > $W/a.seq; else : > $W/a.seq; fi
     PM=$(md5sum < $W/p.seq | cut -c1-12); AM=$(md5sum < $W/a.seq | cut -c1-12)
     if [ $PM = $AM ]; then printf "NA\t$m\t$rule\t$c\t$((WS - 1 + lt))\t$((WS - 1 + rt))\t$((rt - lt))\t$((rq - lq))\tsame\n" >> $W/cands_all.tsv; continue; fi
