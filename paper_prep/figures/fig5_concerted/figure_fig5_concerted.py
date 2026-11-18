@@ -112,8 +112,8 @@ ax = fig.add_subplot(gs[1, 1])
 cand = list(csv.DictReader(open("candidate_block_identity_9q.tsv"), delimiter="\t"))
 cand = cand[::-1]
 names = [c["candidate"] for c in cand]
-tin = [float(c["tract_block_identity"]) for c in cand]
-tout = [float(c["outside_block_identity"]) for c in cand]
+tin = [float(c["tract_dice"]) for c in cand]
+tout = [float(c["outside_dice"]) for c in cand]
 y = range(len(cand)); h = 0.38
 ax.barh([i + h/2 for i in y], tin, height=h, color="#1b6ca8", label="inside the tract", edgecolor="white")
 ax.barh([i - h/2 for i in y], tout, height=h, color="#9ecae1", label="outside the tract", edgecolor="white")
@@ -122,7 +122,7 @@ ax.set_xlim(0.985, 1.0008)
 for i, (a, b) in enumerate(zip(tin, tout)):
     ax.text(a + 0.00015, i + h/2, f"{a:.4f}", va="center", fontsize=6)
     ax.text(b + 0.00015, i - h/2, f"{b:.4f}", va="center", fontsize=6)
-ax.set_xlabel("IMPG block identity (gap-compressed) to the daughter's paternal chr9q")
+ax.set_xlabel("IMPG dice similarity to the daughter's paternal chr9q")
 ax.set_title("d  a non-homologous end inside the spread of the homologues", fontsize=9, loc="left")
 ax.legend(fontsize=6, loc="lower right")
 

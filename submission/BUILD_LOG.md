@@ -909,3 +909,30 @@ and `make_fig5_pedigree_supporting_material.py` — it does **not** feed the per
 to an earlier statement of mine. Those two figures should be regenerated where R/guix is available.
 
 Build: exit 0, 0 undefined.
+
+## Metric named "graph dice"; dice made primary
+
+Date: 2026-11-18
+
+The overlap measure is now named **graph dice** and defined once in Methods: the dice coefficient over
+the multiset of pangenome-graph nodes each sequence traverses, weighted by node length — the fraction of
+the combined sequence content that two paths share. Rationale recorded in Methods: it is coverage-aware
+(partial matches are penalised, which is the question asked of these ends) and it is the same overlap
+measure that defines the communities elsewhere in the paper, which is reported as a Jaccard index; for
+the same node multisets `D = 2J/(1+J)` is a strictly monotone transform, so no ranking depends on which
+is quoted. Block identity is quoted alongside with its meaning stated (gap-compressed over the aligned
+block, so it does not penalise partial coverage); because every candidate spans the full 2 kb bin the two
+agree to within 0.0005. `estimated.identity` from the sketch mode is explicitly excluded.
+
+Fig. 5d plots graph dice, inside versus outside the called tract:
+
+| candidate | inside tract | outside tract |
+|---|---|---|
+| corrected chr9q h2 (father's HiFi only) | 1.0000 | 1.0000 |
+| father's chr3q h2 | 0.9990 | 0.9987 |
+| released chr9q h2 (misassembled) | **0.9943** | **1.0000** |
+| father's chr1p | 0.9938 | 0.9950 |
+| father's chr9q h1 | 0.9930 | 0.9882 |
+
+Build: exit 0, 0 undefined. Also fixed: inline maths with `|` and `\cap` broke `jnl.cls` and was replaced
+with prose; markdown `**` bold leaks converted to `\textbf{}`.

@@ -420,20 +420,20 @@ An initial pass flagged one candidate: the terminus of the daughter's paternal c
 whole-genome match appeared to be her father's chr3q while the match to his own chr9q fell away
 (Extended Data Fig.~\ref{fig:ed7}B,C). Complete evaluation shows that this call is an artefact of the father's
 assembly at that locus. In both assembly releases the terminal ~150\,kb of his chr9q haplotype 2
-disagrees with his own long reads (block identity 0.994 against the daughter's sequence inside the
-tract, against 1.000 outside it and 1.000 throughout in a corrected assembly), and the release quality control marks a misjoin at the start of the copied block.
+disagrees with his own long reads (dice 0.994 against the daughter's sequence inside the tract,
+against 1.000 outside it and 1.000 throughout in a corrected assembly), and the release quality control marks a misjoin at the start of the copied block.
 The error is what created the interchromosomal winner: a segment of the father's own haplotype was
 absent from his assembly, so the closest remaining sequence, his chr3q, won by default.
 
 We therefore repeated the comparison with all candidate ends offered to the similarity computation
 simultaneously rather than one alignment setting at a time, and with the father's chr9q rebuilt from
 his own high-fidelity reads alone, without any data from the daughter. On that assembly the daughter's
-paternal chr9q matches her father's chr9q at IMPG block identity 1.0000 across the called tract, and his chr3q is
+paternal chr9q matches her father's chr9q at IMPG dice similarity 1.0000 across the called tract, and his chr3q is
 second at 0.9990. The chr3-like character of the terminus is therefore real, but it
 is similarity between shared subtelomeric blocks rather than a donor relationship: a 0.10\%
-difference in block identity, well inside the range we measure at chromosome ends generally, where the
+difference in dice, well inside the range we measure at chromosome ends generally, where the
 median end's closest non-homologous partner is 0.52\% divergent (Extended Data Fig.~\ref{fig:ed5}e).
-That the father's chr3q terminus is a closer match to his daughter's chr9q (block identity 0.9990) than
+That the father's chr3q terminus is a closer match to his daughter's chr9q (dice 0.9990) than
 his own other chr9q haplotype is (0.9930) is the concerted-evolution signal itself: a non-homologous end
 lying within the spread of the homologous ones.
 
@@ -443,8 +443,8 @@ candidate never enters the alignment, so chr1p wins by default; at higher sensit
 homologue reaches the last base of its contig at identity 1.0000 and matches the daughter's tract at 48
 diagnostic sites against 1 for chr1p (Methods).
 
-We conclude that this pedigree contains **no evidence of exchange between non-homologous ends outside
-the acrocentric short arms and the pseudoautosomal regions**. Within those two compartments such sharing
+We conclude that this pedigree contains \textbf{no evidence of exchange between non-homologous ends
+outside the acrocentric short arms and the pseudoautosomal regions}. Within those two compartments such sharing
 is expected and obligate - the acrocentric short arms exchange ribosomal DNA arrays and PAR1 crosses
 over in every male meiosis - and they are accordingly the only regions in which non-homologous copies
 are as similar as alleles (ratio 1.00 and 0.99; Extended Data Table). Acrocentric-acrocentric sharing
@@ -683,11 +683,11 @@ The authors declare no competing interests.
     the telomere, one curve per arm (grey) and the median over 48 arms (black); the hatched zone is the
     TERRA promoter array, a copy-variable repeat family in which the ratio is undefined. \textbf{(d)} All
     candidate ends offered simultaneously to the same similarity computation and scored against the
-    daughter's paternal chr9q across the region previously called as an exchange: IMPG block identity for each candidate end, inside
+    daughter's paternal chr9q across the region previously called as an exchange: IMPG dice similarity for each candidate end, inside
     (dark) and outside (light) the region previously called as an exchange. The father's chr9q rebuilt from
     his own high-fidelity reads alone matches at 1.0000 throughout; his chr3q is second at 0.9990 and is
     uniform inside and outside, the signature of family similarity rather than a donor; the erroneous
-    release assembly matches at 1.0000 outside the tract but falls to 0.9940 inside it, localising the
+    release assembly matches at 1.0000 outside the tract but falls to 0.994 inside it, localising the
     error; and his own other chr9q haplotype is lowest at 0.9930, so a non-homologous end lies within the
     spread of the homologous ones.}
   \label{fig:fig5}
@@ -1001,13 +1001,25 @@ the aligner, the definitive test offers all candidate ends simultaneously: the t
 every competing paternal end (including both the released and the corrected assembly of the candidate
 locus, the alternative homologue, the competing non-homologue and a no-signal control) were placed in one
 FASTA, aligned all-against-all with sweepga (many-to-many mappings, no scaffold jumps, FastGA frequency
-5000 so that no candidate is filtered out), and scored with impg similarity in 2 kb windows. Similarity was computed in graph mode (`--gfa-engine poa`), whose node-multiset output reports dice
-similarity and a gap-compressed block identity over the aligned block; block identity is the quantity we
-quote, and dice is reported alongside it. The Mash-transformed `estimated.identity` produced in the
-faster sketch mode is not used: it is a function of the k-mer Jaccard and compresses differences between
-near-identical candidates, whereas in graph mode the two overlap metrics agree with block identity to
-within 0.0005. Candidate rankings are read directly from the dice values, with every
-candidate present at once and no dependence on a frequency threshold.
+5000 so that no candidate is filtered out), and scored with impg similarity in 2 kb windows in graph mode
+(\texttt{-{}-gfa-engine poa}).
+
+\emph{The similarity measure.} Each sequence is a path through the alignment graph, and the comparison is
+made on the multiset of graph nodes that path traverses, weighted by node length, so a path that loops
+through a repeat counts those bases more than once. On those multisets we report the dice coefficient, twice the shared content divided by the sum of the two lengths,
+which we refer to throughout as \emph{graph dice}: the fraction of the combined sequence content of the
+two paths that is shared. Two properties recommend it here. It is coverage-aware,
+so a candidate that matches only part of a window is penalised, which is the question we are asking of
+these ends. And it is the same overlap measure that defines the communities elsewhere in the paper, which
+is reported as a Jaccard index; for the same node multisets the two are related exactly by
+$D=2J/(1+J)$, a strictly monotone transform, so no ranking depends on which is quoted. The command's
+second output column, block identity, is a gap-compressed identity over the aligned block
+(matches over matches + mismatches + gap events). It conditions on the aligned length and so does not
+penalise partial coverage; because every candidate here spans the full 2 kb bin the two agree to within
+0.0005, and we quote it alongside. The Mash-transformed \texttt{estimated.identity} emitted by the same command
+in its faster sketch mode is not used: it is a function of the k-mer Jaccard rather than of the graph,
+and it compresses differences between near-identical candidates. Candidate rankings are read directly from
+the graph dice values, with every candidate present at once and no dependence on a frequency threshold.
 
 Validation analyses in this paper (pairwise panels, re-examination of individual tracts) use permissive
 seeding (frequency 512--8192, minimum alignment 200 bp) to retain short and
@@ -1234,14 +1246,14 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     across the shaded 20\,kb tract while the match to his chr3q (orange) stays
     near-identical. This is the signature an exchange would leave, but at this locus
     it is produced by an assembly error in the father's chr9q haplotype 2: the
-    assembled segment disagrees with his own long reads inside the tract (block identity 0.994 there
-    against 1.000 outside it), so the closest remaining sequence wins by default.
+    assembled segment disagrees with his own long reads inside the tract (dice 0.994 there against
+    1.000 outside it), so the closest remaining sequence wins by default.
     \textbf{(C)} Whole-genome comparison of that transmitted haplotype (middle track)
     with the father's two haplotypes (upper, lower); chromosomes are concatenated and
     scaled by length. Grey ribbons are same-chromosome chains; coloured ribbons mark
     PAR1 (pink), which is obligate, and the chr9q/chr3q best non-homologous match
     (orange). When the father's chr9q is rebuilt from his own high-fidelity reads
-    alone, the daughter's paternal chr9q matches it at block identity 1.0000 across the tract and
+    alone, the daughter's paternal chr9q matches it at dice 1.0000 across the tract and
     the chr3q match falls to second place (0.9990), leaving PAR1 as the only exchange in
     the pedigree. The grey run at chr5 is the chr1p/chr5q best non-homologous match, an
     alignment artefact at the seed-frequency cutoff of the whole-genome scan.}

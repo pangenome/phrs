@@ -18,7 +18,7 @@ similarity (sweepga `--num-mappings many:many`, `--fastga-frequency 5000`; 2 kb 
 --fast`), including the corrected and uncorrected paternal chr9q, his other chr9q haplotype, chr3q,
 chr19q, chr1p and a no-signal control:
 
-| candidate | tract dice | **tract block identity** | outside dice |
+| candidate | tract dice | **tract graph dice** | outside dice |
 |---|---|---|---|
 | SELF.p (self) | 1.0000 | 1.0000 | 1.00 |
 | **DAD chr9 h2, corrected** | **1.0000** | **1.0000** | **1.0000** |
@@ -28,7 +28,7 @@ chr19q, chr1p and a no-signal control:
 | DAD chr1 h1 | 0.9938 | 0.9940 | 0.9950 |
 | DAD chr19 h2 | no coverage | - | 0.05 |
 
-**Corrected, the homolog wins outright at block identity 1.0000**; chr3q is second at 0.9990 and is
+**Corrected, the homolog wins outright at graph dice 1.0000**; chr3q is second at 0.9990 and is
 uniform inside and outside the tract, the signature of family similarity rather than a donor. The
 released assembly matches at 1.0000 outside the tract and falls to 0.9940 inside it, localising the
 error, which is what let chr3q win.
@@ -36,7 +36,7 @@ error, which is what let chr3q win.
 ## The story that replaces it
 
 **A non-homologous end lies inside the spread of the homologous ones.** The father's chr3q terminus is a
-*closer* match to his daughter's chr9q (block identity 0.9990) than his own other chr9q haplotype is
+*closer* match to his daughter's chr9q (graph dice 0.999) than his own other chr9q haplotype is
 (0.9930).
 That is the concerted-evolution signal itself, and it is now measured on the same metric as everything
 else in the paper: chr3q sits within the margin of difference between the two chr9q's.
@@ -49,11 +49,11 @@ that have been exchanging for far longer than a pedigree can observe.
 
 ## Metric correction made along the way
 
-Reported metric: **IMPG block identity** (gap-compressed, graph/`poa` mode), with dice alongside.
+Reported metric: **IMPG graph dice** (gap-compressed, graph/`poa` mode), with dice alongside.
 `estimated.identity` in the `--fast` sketch mode is **not** dice: it is the Mash transform
 `(2J/(1+J))^(1/k)` of the Jaccard, while dice is `2*shared/(A+B)`; the two coincide only when sketch
 sizes are equal. This is why the figure's identity axis compressed the chr3q-vs-homolog difference
-(0.9994 vs 1.0000) while the graph-mode metric separates it clearly (0.9990 vs 1.0000). **Fig. 5 now plots block identity, in graph mode.**
+(0.9994 vs 1.0000) while the graph-mode metric separates it clearly (0.9990 vs 1.0000). **Fig. 5 now plots graph dice, in graph mode.**
 
 ## Applied to the manuscript (build exit 0, 0 undefined, commit in `BUILD_LOG.md`)
 

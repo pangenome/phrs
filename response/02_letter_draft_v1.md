@@ -101,7 +101,7 @@ withdraw it. Two independent artefacts produced the appearance of an exchange:
 **(i) An assembly error in one paternal haplotype.** The terminal ~150 kb of the father's chr9q
 haplotype 2 (PAN011#2#chr9 133,594,275-133,744,561) is misassembled in both releases; the release QC
 marks a MISJOIN at the start of the block, and the assembled segment disagrees with the father's own
-long reads — IMPG block identity 0.9940 inside that tract against 1.0000 immediately outside it, where a rebuilt
+long reads — IMPG graph dice 0.9940 inside that tract against 1.0000 immediately outside it, where a rebuilt
 assembly gives 1.0000 throughout.
 Because his own chr9q copy was partly missing from the assembly, the closest *remaining* sequence, his
 chr3q, won by default. The apparent interchromosomal donor was created by the missing haplotype.
@@ -118,7 +118,7 @@ homologue, the competing non-homologue and a no-signal control — aligned them 
 sweepga at a frequency threshold high enough to filter nothing, and scored every pair with IMPG
 similarity in 2 kb windows:
 
-| candidate | block identity to the daughter's paternal chr9q, across the tract |
+| candidate | graph dice to the daughter's paternal chr9q, across the tract |
 |---|---|
 | rebuilt chr9q haplotype 2 (father's own HiFi reads only, no daughter data) | **1.0000** |
 | father's chr3q haplotype 2 (uniform inside and outside the tract) | **0.9990** |
@@ -126,7 +126,7 @@ similarity in 2 kb windows:
 | father's chr9q haplotype 1 | 0.9930 |
 | father's chr1p | 0.9940 |
 
-The homologue wins outright. And the chr3q-to-homologue difference is 0.10% in block identity — within the
+The homologue wins outright. And the chr3q-to-homologue difference is 0.10% in graph dice — within the
 range we measure at these ends generally, where the median chromosome end's closest non-homologous
 partner is only 0.52% divergent and 11 of 45 ends lie within twice allelic divergence.
 
