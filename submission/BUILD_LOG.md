@@ -850,3 +850,15 @@ present. `paper.pdf` is not tracked.
 Note: `AGENTS.md` still states that the active Extended Data labels are `fig:ed1` and `fig:ed2` only.
 `paper.tex` has used `fig:ed1`-`fig:ed4` for some time and now `fig:ed5`/`fig:ed6`; the guide is stale
 on this point and should be updated in both `AGENTS.md` and `CLAUDE.md` together.
+
+## Fig. 5 retraction and its replacement
+
+Date: 2026-11-17
+
+The pedigree exchange claim was withdrawn after complete evaluation showed both candidates to be
+artefacts (assembly error at chr9q; seed-frequency truncation at chr5q) and a corrected competitive
+IMPG-similarity test put the homolog first at dice 1.0000. Edits: abstract pedigree sentence, the
+Results subsection replaced by `Direct test for exchange between non-homologous ends`, and the Fig. 5
+caption retitled to `An assembly error in one paternal haplotype mimics an ectopic exchange`, with the
+legend swatch renamed `9q/3q artefact`. Build: exit 0, 0 undefined. Evidence and numbers:
+`response/notes/fig5_retraction_and_concerted_evolution_story.md`.
