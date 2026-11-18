@@ -17,7 +17,8 @@ import collections, glob, gzip, math, os, sys
 RULES = ["ex:5000", "ex:10000", "ex:20000", "id:0.99", "id:0.995", "id:0.999"]
 VOTES = ["more", "ratio2", "binom"]; TOLS = [10, 50, 200]
 def binom_p(c, n):
-    return sum(math.comb(n, k) for k in range(c, n + 1)) / 2 ** n if n else 1.0
+    lc = lambda k: math.lgamma(n + 1) - math.lgamma(k + 1) - math.lgamma(n - k + 1) - n * math.log(2)  # python 3.6: no math.comb
+    return sum(math.exp(lc(k)) for k in range(c, n + 1)) if n else 1.0
 def passes(rule, a, c):
     if rule == "more": return c > a
     if rule == "ratio2": return c >= 2 * a and c >= 3
