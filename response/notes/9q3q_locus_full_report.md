@@ -1,5 +1,15 @@
 # The 9q/3q locus in the WashU pedigree — complete record
 
+> **RETRACTED 2026-11-17.** The ectopic exchange described below is an artefact. The terminal ~150 kb of
+> DAD chr9q haplotype 2 is misassembled in both releases; rebuilt from his own HiFi reads alone, the
+> daughter's paternal chr9q matches that haplotype at IMPG dice 1.0000 and his chr3q falls to second place
+> (0.9915). The chr1p/chr5q candidate is an alignment artefact at FastGA `-f32`. No exchange between
+> non-homologous ends is detected in this pedigree outside the acrocentric short arms and the PARs.
+> Evidence: `response/notes/fig5_retraction_and_concerted_evolution_story.md`,
+> `recent_upstream_updates_20261117.md`, `andrea_patch_reconciliation.md`.
+> Kept here as the historical record of how the call was made and why it failed.
+
+
 Date: 2026-10-23. Naming: **SELF = PAN027** (focal), **DAD = PAN011**, MOM = PAN010, KID = PAN028
 (`PEDIGREE_NAMING.md`). This report supersedes and consolidates
 `M2b_9q3q_read_support.md`, `M1c_duplicon_monophyly.md` (for this locus) and the 9q/3q parts of

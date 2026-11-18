@@ -327,3 +327,13 @@ so only its satellite **fractions** may be cited.
 | distance-from-telomere profile | `notes/telomere_distance_profile.md`, `notes/telomere_gene_vs_intergenic.md` | `notes/telomere_profile.pdf`, `notes/telomere_end_curves.pdf` | tip zone **withdrawn as unmeasurable**; interior 4-8x stands |
 | companion paper (Tan et al. 2026) | `notes/lit_Tan2026_methods_extract.md` | - | full text read; **Methods + references still unobtainable** |
 | primate extension | `ROADMAP_analysis_integration.md` section D/F | - | **not started** |
+
+## Retraction (2026-11-17) — supersedes every pedigree-exchange row above
+
+| item | note | artefact | status |
+|---|---|---|---|
+| the retained chr9q<->chr3q event | `notes/fig5_retraction_and_concerted_evolution_story.md` | corrected DAD assembly + competitive IMPG test (`paper_prep/figures/fig5_concerted/`) | **RETRACTED**; assembly artefact (dice 0.9211 vs 1.0000) |
+| the chr1p/chr5q candidate | `notes/1p5q_resolution.md`, `notes/recent_upstream_updates_20261117.md` | `fastga_chr5_f.summary.tsv` | **RETRACTED**; FastGA `-f32` seed loss |
+| no detectable heterolog exchange outside acrocentrics/PARs | `notes/community_tier_table.md` | `submission/supporting_material/ED_community_tier_table.tsv` | **current claim**; ratio 1.00 (C7) and 0.99/1.43 (PARs) vs 3.3-27 elsewhere |
+| Fig. 5 | `paper_prep/figures/fig5_concerted/` | `submission/fig/MainFigures/Fig5_concerted_evolution.pdf` | now the concerted-evolution figure; pedigree moved to Extended Data Fig. 7 |
+| Methods `-f` sensitivity + assembly check + competitive test | `submission/paper.tex` | BUILD_LOG entry | **applied and built** (exit 0, 0 undefined) |
