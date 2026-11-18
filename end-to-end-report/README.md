@@ -36,7 +36,7 @@
 
 ### Part IV: Pedigree Analysis
 
-- [Pedigree recombination](report/14_pedigree_recombination.md) — Subtelomeric recombination in two pedigrees (WashU 3-generation, CEPH1463 4-generation). Inter-chromosomal exchange in PHR regions, NAHR/gene conversion events, cross-assembler validation (hifiasm vs verkko), transmission across generations
+- [Pedigree recombination](report/14_pedigree_recombination.md) — **WITHDRAWN as evidence of exchange: read the corrective note at the head of that file.** — Subtelomeric recombination in two pedigrees (WashU 3-generation, CEPH1463 4-generation). Inter-chromosomal exchange in PHR regions, NAHR/gene conversion events, cross-assembler validation (hifiasm vs verkko), transmission across generations
 
 ### Part V: Summary and Context
 
