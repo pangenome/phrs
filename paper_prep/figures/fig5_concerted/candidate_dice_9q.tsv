@@ -1,0 +1,7 @@
+candidate	tract_dice	tract_est_identity	outside_dice	note
+SELF.p (self)	1.0000	1.0000	1.00	query against itself
+DAD chr9 h2 corrected	1.0000	1.0000	1.00	rebuilt from DAD HiFi reads only, no SELF data
+DAD chr3 h2	0.9915	0.9994	0.98	second best in the tract
+DAD chr9 h2 original	0.9211	0.9945	1.00	the erroneous release assembly
+DAD chr9 h1	0.9191	0.9944	0.87	the father's other chr9q haplotype
+DAD chr1 h1	0.9144	0.9941	0.94	control

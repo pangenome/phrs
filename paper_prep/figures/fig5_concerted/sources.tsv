@@ -1,0 +1,7 @@
+panel	status	role	path	note
+a,b	READY	cohort divergence and community structure	/moosefs/erikg/phrs_tmp/hprc_het_final.json	output of scripts/ci/hprc_heterolog_divergence.py, 18,827 PAFs, 1e-4 bins, allelic self-pairs excluded
+c	READY	per-arm and per-end ratio curves	/moosefs/erikg/phrs_tmp/telomere_end_curves.json	output of scripts/ci/telomere_end_ratio_curves.py
+a-c	READY	community assignment	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	arm-level Leiden k=15
+d	READY	candidate competition at chr9q	candidate_dice_9q.tsv	summarised from candidate_similarity_9q.tsv; regenerate with sweepga --num-mappings many:many --fastga-frequency 5000 then impg similarity --fast over 2 kb bins, all candidate ends in one graph
+d	READY	raw similarity output	candidate_similarity_9q.tsv	full impg similarity output including the corrected and uncorrected paternal chr9q
+-	GENERATE	figure	figure_fig5_concerted.pdf	produced by figure_fig5_concerted.py in this directory

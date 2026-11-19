@@ -18,10 +18,14 @@ Three things in this revision are substantive rather than stylistic.
    the **paternal** copy, from a father whose genome is not in the data. Re-running our own
    merge code with the correct copy per chromosome reduces the child-side call count by 73%
    (567 → 155 tracts). The reviewers who suspected these were artefacts were right.
-2. **What survives is narrower and better supported.** One ectopic exchange remains, on the
-   chromosome copy where every required genome is sequenced, and the within-community statistic
-   that summarises the pedigree is stronger after the correction (0.945 corrected vs 0.918
-   published; null 0.84, p < 1e-4).
+2. **We have withdrawn the last exchange candidate, and no exchange remains in the pedigree.**
+   The single event we retained is an assembly artefact in one paternal haplotype plus a
+   seed-frequency artefact at the second candidate (Point 4). Offering every candidate at once to
+   IMPG similarity puts the rebuilt homologue first (dice 1.0000) and the alleged donor second
+   (0.9990). Outside the acrocentric arms and the pseudoautosomal regions we claim no detectable
+   exchange between non-homologous ends. The within-community statistic that summarises the
+   pedigree is unaffected by this and remains stronger after the copy correction (0.945 corrected
+   vs 0.918 published; null 0.84, p < 1e-4).
 3. **We added an architectural result** that the first submission only implied: shared
    subtelomeric modules are orientation-consistent relative to the telomere (98.6% of 9.6 Gbp)
    while their order along the arm is not conserved, and community membership tracks repertoire
@@ -89,25 +93,56 @@ our earlier "a different aligner did not reproduce it" argument, which was itsel
 that aligner's default chunking filter. With the candidate no longer claimed, the objection
 applies to nothing we assert.
 
-## Point 4 — the one retained exchange, and why it is not an artefact
+## Point 4 — we have retracted the exchange, and the region is the opposite finding
 
-| evidence | value |
+Since the preprint we have re-examined the one candidate we retained, and it does not survive. We
+withdraw it. Two independent artefacts produced the appearance of an exchange:
+
+**(i) An assembly error in one paternal haplotype.** The terminal ~150 kb of the father's chr9q
+haplotype 2 (PAN011#2#chr9 133,594,275-133,744,561) is misassembled in both releases; the release QC
+marks a MISJOIN at the start of the block, and the assembled segment disagrees with the father's own
+long reads — IMPG graph dice 0.9940 inside that tract against 1.0000 immediately outside it, where a rebuilt
+assembly gives 1.0000 throughout.
+Because his own chr9q copy was partly missing from the assembly, the closest *remaining* sequence, his
+chr3q, won by default. The apparent interchromosomal donor was created by the missing haplotype.
+
+**(ii) A seed-frequency artefact at the second candidate.** For chr1p/chr5q the father's chr5q
+candidate never enters the alignment at the frequency threshold used for the whole-genome scan; at
+threshold 48 and above the chr5q chain reaches the last base of its contig at identity 1.0000 and
+matches at 48 diagnostic sites against 1 for chr1p.
+
+**The definitive test offers every candidate at once.** Rather than comparing candidates one alignment
+setting at a time, we placed the transmitted haplotype and every competing paternal end in a single
+alignment — both the released and the rebuilt assembly of the candidate locus, the alternative
+homologue, the competing non-homologue and a no-signal control — aligned them all-against-all with
+sweepga at a frequency threshold high enough to filter nothing, and scored every pair with IMPG
+similarity in 2 kb windows:
+
+| candidate | graph dice to the daughter's paternal chr9q, across the tract |
 |---|---|
-| recipient | SELF.p.chr9q (PAN027 paternal chr9q terminus, telomere-first 13–57 kb of the last 500 kb) |
-| donor | DAD.h2.chr3q (PAN011 chr3q haplotype 2) — **99.79–99.84% identity, 100% of the terminal 60 kb covered** |
-| excluded | DAD.h1.chr9q (**7.3–7.5% coverage at every threshold tested**) |
-| structure | the father is heterozygous for the module (present on his chr9q hap2, absent from hap1), so the exchange predates his somatic genome and arose in the paternal lineage's germline |
-| independence from thresholds | unchanged across FastGA frequency 10, 32, 512, 8192 |
-| assembly QC | 1 of 538 patches overlaps a HiFi flagger call (acrocentric subclass 1 of 459); the larger ONT overlap is a generic chromosome-end effect present in every individual |
+| rebuilt chr9q haplotype 2 (father's own HiFi reads only, no daughter data) | **1.0000** |
+| father's chr3q haplotype 2 (uniform inside and outside the tract) | **0.9990** |
+| released (misassembled) chr9q haplotype 2 | 0.9940 inside, 1.0000 outside |
+| father's chr9q haplotype 1 | 0.9930 |
+| father's chr1p | 0.9940 |
 
-Two points deserve emphasis. The discriminating evidence is **coverage, not identity** — the
-competing matches are near-identical paralogues, so identity is a dead heat at ~99.5% while the
-excluded haplotype simply fails to match at all. And the frequency threshold we chose for
-tractability (32) does not drive the call: we swept it from 10 to 8192 and the exclusion and the
-coverage advantage are unchanged.
+The homologue wins outright. And the chr3q-to-homologue difference is 0.10% in graph dice — within the
+range we measure at these ends generally, where the median chromosome end's closest non-homologous
+partner is only 0.52% divergent and 11 of 45 ends lie within twice allelic divergence.
 
-Within the pedigree, the child's chr9q terminus is then a 99.97% copy of that already-derived
-paternal tip — an ordinary telomere-proximal crossover, not a second exchange.
+**This makes the region the opposite kind of evidence, and we now present it that way.** The father's
+chr3q terminus is a *closer* match to his daughter's chr9q than his own other chr9q haplotype is
+(0.9990 against 0.9930). A non-homologous end lying inside the spread of the homologous ones is
+concerted evolution stated as a measurement, and it is now Figure 5. The pedigree figure has moved to
+Extended Data, where it serves as a worked demonstration that identity-based donor assignment fails at
+subtelomeric ends.
+
+**What we can and cannot claim about exchange in a pedigree.** Across the whole three-generation family
+the only heterologous sharing that behaves like obligate exchange is acrocentric-acrocentric and Xp/Yp —
+the two compartments where non-homologous copies are as similar as alleles (paralog/allelic ratio 1.00
+and 0.99). We therefore no longer claim detectable exchange between non-homologous ends anywhere else.
+That is a narrower claim than the preprint's, and it is consistent with the exchange rate our divergence
+data imply: ~1 event per 740,000 generations per locus pair, far too rare to expect in one family.
 
 ## Point 5 — mouse ρ = 0.715 is a non-independent-pair Spearman
 

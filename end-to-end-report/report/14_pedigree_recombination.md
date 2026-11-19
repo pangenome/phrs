@@ -1,4 +1,52 @@
-# Pedigree subtelomeric inter-chromosomal exchanges
+# Pedigree subtelomeric inter-chromosomal exchanges — **[WITHDRAWN 2026-11-17, see note below]**
+
+> ## ⚠ CORRECTIVE NOTE (2026-11-17) — the exchange claims in this section are WITHDRAWN
+>
+> Everything below describes inter-chromosomal patch calls from `odgi untangle` and treats them as
+> candidate ectopic exchanges. **Those calls do not survive complete evaluation, and the manuscript no
+> longer makes them.** Read this section as the record of an analysis that was performed, not as current
+> findings.
+>
+> **1. The retained chr9q<->chr3q event is an assembly artefact.** The terminal ~150 kb of PAN011#2#chr9
+> (133,594,275-133,744,561) is misassembled in both the v1.1 and v1.3.1 releases; the release QC marks a
+> `MISJOIN` at 133,673,490-133,686,589, and the assembled segment disagrees with PAN011's own long reads
+> (IMPG dice **0.9211** against his daughter's own copy). Rebuilt from his HiFi reads alone, with no
+> PAN027 data, and rescanned with every candidate end offered simultaneously to IMPG similarity
+> (sweepga many-to-many, FastGA frequency 5000, 2 kb bins), the daughter's paternal chr9q matches the
+> rebuilt homologue at dice **1.0000**, her father's chr3q is second at **0.9915**, the released assembly
+> third at 0.9211, and his other chr9q haplotype at 0.9191. The apparent donor was created by the
+> missing haplotype.
+>
+> **2. The chr1p/chr5q candidate is an alignment artefact.** At the FastGA frequency threshold used for
+> the whole-genome scan (`-f32`) the father's chr5q candidate never enters the alignment; at `-f48` and
+> above the chr5q chain reaches the last base of its contig at identity 1.0000 and matches at **48
+> diagnostic sites against 1** for chr1p.
+>
+> **3. Child-side calls (PAN028) depend on an unsampled father.** PAN028's haplotypes are labelled per
+> chromosome and her paternal copy belongs to PARTNER, who was never sequenced, so nothing on that side
+> is interpretable; re-running with the correct maternal copy per chromosome reduces the child-side call
+> count by 73% (567 -> 155 tracts).
+>
+> **4. What replaces these findings.** No exchange between non-homologous ends is detectable in this
+> pedigree outside the **acrocentric short arms and the pseudoautosomal regions**, where sharing is
+> obligate: those are the only compartments in which non-homologous copies are as similar as alleles
+> (paralog/allelic ratio **1.00** for the acrocentric community and **0.99 / 1.43** for PAR1 / PAR2),
+> against 3.3-3.5 for the cohesive communities and 7-27 for the facultative remainder. Notably, the
+> father's chr3q terminus is a *closer* match to his daughter's chr9q (0.9915) than his own other chr9q
+> haplotype (0.9191) - a non-homologous end inside the spread of the homologous ones, which is the
+> concerted-evolution result now carried by Figure 5 of the manuscript.
+>
+> **Sources of truth for the current position:**
+> `response/01_evidence_log_pedigree.txt` (REV 13 at the head),
+> `response/notes/fig5_retraction_and_concerted_evolution_story.md`,
+> `response/notes/recent_upstream_updates_20261117.md`,
+> `response/notes/andrea_patch_reconciliation.md`, `response/notes/1p5q_resolution.md`,
+> `response/notes/community_tier_table.md`, and `submission/BUILD_LOG.md`.
+>
+> The per-patch tables and the community-assortment statistics below (e.g. 494/538 within-community) are
+> still useful as a description of *what the caller produced*; they are not evidence of exchange.
+
+---
 
 Analysis of inter-chromosomal patches in odgi untangle results (`nth.best=1`) for two pedigrees, validated against the Leiden arm-level community structure from the HPRCv2 analysis.
 

@@ -1,4 +1,24 @@
 REVIEWS — open reviewer arguments and evidence status (pedigree / Fig5)
+REV 13 (2026-11-17) - THE RETAINED EVENT IS RETRACTED.
+The chr9q<-chr3q event claimed in rev 11-12 is an artefact of the DAD assembly. The terminal
+~150 kb of PAN011#2#chr9 (133,594,275-133,744,561) is misassembled in v1.1 and v1.3.1;
+nucflag marks a MISJOIN at 133,673,490-133,686,589, and the segment disagrees with DAD's own
+long reads (IMPG graph dice 0.9940 inside the tract against 1.0000 outside it; a corrected assembly
+gives 1.0000 throughout). Rebuilt from DAD HiFi reads alone (no SELF data) and rescanned with every candidate
+end offered simultaneously (sweepga many:many, FastGA frequency 5000, impg similarity --fast,
+2 kb bins): SELF.p.chr9q matches the corrected DAD chr9q at graph dice 1.0000, DAD chr3q is second at
+0.9990 (uniform inside and outside the tract), the released assembly 0.9940 inside versus 1.0000
+outside the tract, and DAD chr9q h1 at 0.9930. The father's chr3q
+terminus is thus closer to his daughter's chr9q than his own other chr9q haplotype is - a
+concerted-evolution signal, not a donor. The chr1p/chr5q call is separately retracted as a
+FastGA -f32 seed-loss artefact (chain reaches the last base of chr5q h2 only at -f48 and above;
+48 diagnostic sites to chr5q vs 1 to chr1p). Net: no exchange between non-homologous ends is
+detectable in this pedigree outside the acrocentric short arms and the pseudoautosomal regions,
+where sharing is obligate (paralog/allelic ratio 1.00 and 0.99). See
+response/notes/fig5_retraction_and_concerted_evolution_story.md and
+recent_upstream_updates_20261117.md. Manuscript updated (Fig. 5 is now the concerted-evolution
+figure; the pedigree figure is Extended Data Fig. 7).
+
 ========================================================================
 Last updated: 2026-10-16 (rev 12: reviewer-response wording agreed - labels misinterpreted (KID hap1/hap2 per chromosome), child-side calls withdrawn as dependent on unsampled PARTNER, chr9q<-chr3q ectopic event retained, chr1p/chr5q ancestral homology, flagger clean. Prior: rev 11: SINGLE-EVENT statement - one ectopic-derived structure (SELF.p.chr9q <- DAD.h2.chr3q, full trio evidence); all other pedigree 'events' withdrawn as plain transmission or dependent on the unsampled PARTNER. Prior: rev 10: PARENT-OF-ORIGIN corrected - PAN028 is parentally assigned by the paper (imprinted loci) and differs per chromosome; our earlier child windows used the PATERNAL copy for chr1/3/5/9; child results redone on the correct copy - chr9q tip is a 99.97% transmitted crossover, chr5q/chr1p clean transmission, chr1p-like chr5q tip claim retracted). Superseded framing: rev 8 (R3 final framing — chr9q terminus is chr3q-derived with a stable ranking across settings; segdup-scale margin is expected; flagger clean (HiFi); maternal chr5q/chr1p is a clean standard-transmission case; child chr5q tip chr1p-like follow-up)
 

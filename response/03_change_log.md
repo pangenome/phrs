@@ -428,3 +428,20 @@ the draw) and orthogonal assays (ChIA-PET/Micro-C) as the controls that bear on 
 7. **Discussion/abstract audit** for "recurrent exchange" phrasing that implies
    multiple pedigree events; keep the population-level recurrent-exchange claim
    (supported by the pangenome survey) separate from the single germline event.
+
+## Rev 13 (2026-11-17) — pedigree exchange retracted; Fig. 5 replaced
+
+- **Withdrawn:** the chr9q<-chr3q ectopic exchange (assembly artefact in PAN011#2#chr9, graph dice 0.994 inside the tract vs 1.0000 outside and 1.0000 rebuilt) and the chr1p/chr5q candidate (FastGA `-f32` seed loss; 48 diagnostic sites to chr5q
+  vs 1 to chr1p).
+- **Current claim:** no detectable exchange between non-homologous ends outside the acrocentric short
+  arms and the pseudoautosomal regions (paralog/allelic ratio 1.00 and 0.99 versus 3.3-27 elsewhere).
+- **Manuscript:** Figure 5 is now the concerted-evolution figure (`Fig5_concerted_evolution.pdf`, four
+  panels); the pedigree figure moved verbatim to Extended Data Fig. 7 (`fig:ed7`) with all in-text
+  references repointed; abstract, Results subsection (now "Direct test for exchange between
+  non-homologous ends") and Methods (`-f` sensitivity, assembly check, competitive similarity test) were
+  rewritten. Build exit 0, 0 undefined. See `BUILD_LOG.md`.
+- **New evidence:** the father's chr3q terminus is a closer match to his daughter's chr9q (graph dice 0.999)
+  than his own other chr9q haplotype (0.9930) — a non-homologous end inside the spread of the
+  homologous ones, which is the concerted-evolution statement now carried by Figure 5.
+- Methodological corrections recorded: `estimated.identity` is the Mash transform of Jaccard, not dice;
+  the k-mer sharing figure (96.8%) is not an identity and corresponds to ~99.85% identity.

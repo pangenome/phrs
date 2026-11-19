@@ -1,5 +1,26 @@
 # response/ — reviewer-response material
 
+
+## Retraction notice (2026-11-17) — read before the pedigree material
+
+The ectopic exchange retained in the first response round is **withdrawn**. Both candidates are
+artefacts: an assembly error in one paternal chr9q haplotype (the assembled segment scores IMPG dice
+0.9940 against the daughter's own copy inside the tract, against 1.0000 immediately outside it; rebuilt from his own HiFi reads alone it scores 1.0000) and a
+FastGA `-f32` seed-frequency truncation at chr1p/chr5q (the chr5q chain only reaches the contig end at
+`-f48` and above, and matches at 48 diagnostic sites to 1 to chr1p). Offering every candidate
+simultaneously to IMPG similarity puts the rebuilt homologue first (1.0000) and the alleged donor second
+(0.9990).
+
+Consequence: **no exchange between non-homologous ends is detectable in this pedigree outside the
+acrocentric short arms and the pseudoautosomal regions**, which are obligate and sit at paralog/allelic
+ratio 1.00 and 0.99. Manuscript changes: Figure 5 is now the concerted-evolution figure; the pedigree
+figure moved to Extended Data Fig. 7; abstract, Results and Methods updated and rebuilt (exit 0,
+0 undefined).
+
+New notes for this: `notes/fig5_retraction_and_concerted_evolution_story.md`,
+`notes/recent_upstream_updates_20261117.md`, `notes/andrea_patch_reconciliation.md`,
+`notes/1p5q_resolution.md`, `notes/community_tier_table.md`, `notes/exchange_rate_estimates.md`,
+`notes/telomeric_cpg_island_terra.md`, `MATERIALS.md`, `ROADMAP_analysis_integration.md`.
 ## Why this directory exists, and a correction about what is in it
 
 The real peer review is **`PEER_REVIEW.md` at the repository root**: the Nature editor's letter

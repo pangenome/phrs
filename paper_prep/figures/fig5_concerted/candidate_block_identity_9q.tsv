@@ -1,0 +1,7 @@
+candidate	tract_dice	tract_block_identity	outside_dice	outside_block_identity	note
+SELF.p (self)	1.0000	1.0000	1.0000	1.0000	query against itself
+DAD chr9 h2 corrected	1.0000	1.0000	1.0000	1.0000	rebuilt from DAD HiFi reads only, no SELF data
+DAD chr3 h2	0.9990	0.9990	0.9987	0.9990	uniform inside and outside: family similarity, no step
+DAD chr9 h2 original	0.9943	0.9940	1.0000	1.0000	localised drop exactly at the error
+DAD chr1 h1	0.9938	0.9940	0.9950	0.9955	control
+DAD chr9 h1	0.9930	0.9930	0.9882	0.9910	the father's other chr9q haplotype

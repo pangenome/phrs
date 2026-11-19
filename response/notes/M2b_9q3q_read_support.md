@@ -1,5 +1,15 @@
 # R1-M2b — What the ONT reads say at the 9q/3q locus: alternatives and read support
 
+> **RETRACTED 2026-11-17.** The ectopic exchange described below is an artefact. The terminal ~150 kb of
+> DAD chr9q haplotype 2 is misassembled in both releases; rebuilt from his own HiFi reads alone, the
+> daughter's paternal chr9q matches that haplotype at IMPG dice 1.0000 and his chr3q falls to second place
+> (0.9990). The chr1p/chr5q candidate is an alignment artefact at FastGA `-f32`. No exchange between
+> non-homologous ends is detected in this pedigree outside the acrocentric short arms and the PARs.
+> Evidence: `response/notes/fig5_retraction_and_concerted_evolution_story.md`,
+> `recent_upstream_updates_20261117.md`, `andrea_patch_reconciliation.md`.
+> Kept here as the historical record of how the call was made and why it failed.
+
+
 > Provenance for this note: see `response/PROVENANCE.md` (tool versions: `response/notes/tool_versions_and_pins.md`).
 
 Reads: PAN011 (DAD) ONT, 4 runs `SRR37826054`-`57`, mapped to the PAN011 v1.31 assembly; PAN027

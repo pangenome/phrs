@@ -850,3 +850,89 @@ present. `paper.pdf` is not tracked.
 Note: `AGENTS.md` still states that the active Extended Data labels are `fig:ed1` and `fig:ed2` only.
 `paper.tex` has used `fig:ed1`-`fig:ed4` for some time and now `fig:ed5`/`fig:ed6`; the guide is stale
 on this point and should be updated in both `AGENTS.md` and `CLAUDE.md` together.
+
+## Fig. 5 retraction and its replacement
+
+Date: 2026-11-17
+
+The pedigree exchange claim was withdrawn after complete evaluation showed both candidates to be
+artefacts (assembly error at chr9q; seed-frequency truncation at chr5q) and a corrected competitive
+IMPG-similarity test put the homolog first at dice 1.0000. Edits: abstract pedigree sentence, the
+Results subsection replaced by `Direct test for exchange between non-homologous ends`, and the Fig. 5
+caption retitled to `An assembly error in one paternal haplotype mimics an ectopic exchange`, with the
+legend swatch renamed `9q/3q artefact`. Build: exit 0, 0 undefined. Evidence and numbers:
+`response/notes/fig5_retraction_and_concerted_evolution_story.md`.
+
+## Fig. 5 replaced by the concerted-evolution figure; pedigree demoted to Extended Data Fig. 7
+
+Date: 2026-11-17
+
+Main Figure 5 is now `Fig5_concerted_evolution.pdf` (built by
+`paper_prep/figures/fig5_concerted/figure_fig5_concerted.py`, sources and caption alongside):
+**a** three exchange regimes by community, **b** allelic vs paralogous divergence, **c** ratio against
+distance from the telomere with the TERRA array excluded, **d** the candidate-competition panel showing a
+non-homologous end inside the spread of the homologues.
+
+The previous Figure 5 (pedigree, `Fig5A_pedigree` + `Fig5B_zoom9q3q` + `Fig5C_paternal`) moved verbatim
+to the Extended Data legends as `fig:ed7`, placed after `fig:ed6`; its caption is unchanged apart from the
+label, and all four in-text references now point to it. No `\ref{fig:fig5}` remains that referred to the
+pedigree.
+
+Build: exit 0, 0 undefined. Verified in the PDF: the concerted-evolution figure renders on page 18 and the
+demoted pedigree figure on page 40, inside the Extended Data section.
+
+## Metric corrected to IMPG block identity (graph/`poa` mode)
+
+Date: 2026-11-18
+
+The competitive test had been run in IMPG's `--fast` sketch mode, where `estimated.identity` is a
+Mash transform of the k-mer Jaccard rather than an identity measure. It was re-run in graph mode
+(`--gfa-engine poa`, abpoa local), which reports node-multiset overlap and a gap-compressed **block
+identity**. Numbers now quoted throughout the manuscript and the response material:
+
+| candidate | dice | block identity, inside the tract | block identity, outside |
+|---|---|---|---|
+| corrected chr9q h2 (father's HiFi only) | 1.0000 | **1.0000** | 1.0000 |
+| father's chr3q h2 | 0.9990 | **0.9990** | 0.9990 |
+| released chr9q h2 (misassembled) | 0.9943 | **0.9940** | **1.0000** |
+| father's chr1p | 0.9938 | 0.9940 | 0.9955 |
+| father's chr9q h1 | 0.9930 | 0.9930 | 0.9882 |
+
+The inside/outside contrast is the diagnostic: the misassembled haplotype is 1.0000 immediately outside
+the tract and 0.9940 inside it, whereas chr3q is 0.9990 both inside and outside — a localised error
+versus a uniform family relationship. Fig. 5d now plots this as paired inside/outside bars.
+
+Also fixed: `data/chm13.phrs.bed` had 37 arm intervals and was missing `chr13_p` relative to the
+published call (38); the interval was reconstructed from `data/all-vs-all.1Mb.p95.id95.len.tsv` and
+inserted in the file's own schema. It annotates arm-level presence in `make_fig2bc_jaccard_heatmaps.R`
+and `make_fig5_pedigree_supporting_material.py` — it does **not** feed the permutation controls, contrary
+to an earlier statement of mine. Those two figures should be regenerated where R/guix is available.
+
+Build: exit 0, 0 undefined.
+
+## Metric named "graph dice"; dice made primary
+
+Date: 2026-11-18
+
+The overlap measure is now named **graph dice** and defined once in Methods: the dice coefficient over
+the multiset of pangenome-graph nodes each sequence traverses, weighted by node length — the fraction of
+the combined sequence content that two paths share. Rationale recorded in Methods: it is coverage-aware
+(partial matches are penalised, which is the question asked of these ends) and it is the same overlap
+measure that defines the communities elsewhere in the paper, which is reported as a Jaccard index; for
+the same node multisets `D = 2J/(1+J)` is a strictly monotone transform, so no ranking depends on which
+is quoted. Block identity is quoted alongside with its meaning stated (gap-compressed over the aligned
+block, so it does not penalise partial coverage); because every candidate spans the full 2 kb bin the two
+agree to within 0.0005. `estimated.identity` from the sketch mode is explicitly excluded.
+
+Fig. 5d plots graph dice, inside versus outside the called tract:
+
+| candidate | inside tract | outside tract |
+|---|---|---|
+| corrected chr9q h2 (father's HiFi only) | 1.0000 | 1.0000 |
+| father's chr3q h2 | 0.9990 | 0.9987 |
+| released chr9q h2 (misassembled) | **0.9943** | **1.0000** |
+| father's chr1p | 0.9938 | 0.9950 |
+| father's chr9q h1 | 0.9930 | 0.9882 |
+
+Build: exit 0, 0 undefined. Also fixed: inline maths with `|` and `\cap` broke `jnl.cls` and was replaced
+with prose; markdown `**` bold leaks converted to `\textbf{}`.
