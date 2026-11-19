@@ -1,0 +1,87 @@
+segments=4290 all_runs=2400 drawn_runs=104 homolog_segments=165026 homolog_runs=81044 drawn_homolog_runs=3604
+segments=1473 all_runs=847 drawn_runs=43 homolog_segments=175037 homolog_runs=66649 drawn_homolog_runs=4741
+segments=3987 all_runs=2248 drawn_runs=91 homolog_segments=164071 homolog_runs=80448 drawn_homolog_runs=3598
+segments=1758 all_runs=1011 drawn_runs=51 homolog_segments=174126 homolog_runs=66592 drawn_homolog_runs=4737
+segments=4358 all_runs=2487 drawn_runs=103 homolog_segments=181483 homolog_runs=91413 drawn_homolog_runs=3848
+segments=4445 all_runs=3025 drawn_runs=84 homolog_segments=172861 homolog_runs=70897 drawn_homolog_runs=4466
+segments=4138 all_runs=2393 drawn_runs=90 homolog_segments=180411 homolog_runs=90776 drawn_homolog_runs=3814
+segments=3871 all_runs=2783 drawn_runs=60 homolog_segments=172596 homolog_runs=70773 drawn_homolog_runs=4450
+segments=2243 all_runs=1606 drawn_runs=40 homolog_segments=202559 homolog_runs=92680 drawn_homolog_runs=4545
+== PAN027pat_vs_PAN011_joint f32_v11 vs f48_v11
+A runs 52, B runs 61
+A_only: 3
+A_only	chr15	5192000	5204000	12000	chr3	h2	0.9920	acro_other
+A_only	chr5	182010000	182022000	12000	chr1	h2	0.9987	chr5_chr1_candidate
+A_only	chr5	182052000	182080000	28000	chr1	h2	0.9983	chr5_chr1_candidate
+B_only: 11
+B_only	chr19	42000	54000	12000	chr16	h1	0.9992	other_nonacro
+B_only	chrX	88848000	88858000	10000	chrY	h2	0.9768	PAR_XY
+B_only	chrX	154022000	154032000	10000	chrY	h2	0.9980	PAR_XY
+acro_acro only in f48_v11: 8, only in f32_v11: 0
+== PAN027pat_vs_PAN011_joint f32_v131 vs f48_v131
+A runs 43, B runs 84
+A_only: 1
+A_only	chr15	5192000	5204000	12000	chr3	h2	0.9920	acro_other
+B_only: 41
+B_only	chr19	42000	54000	12000	chr16	h1	0.9992	other_nonacro
+B_only	chr21	632000	652000	20000	chr3	h2	0.9778	acro_other
+B_only	chr21	666000	678000	12000	chr3	h2	0.9956	acro_other
+B_only	chr21	694000	712000	18000	chr3	h2	0.9976	acro_other
+B_only	chrX	88848000	88858000	10000	chrY	h2	0.9768	PAR_XY
+B_only	chrX	154022000	154032000	10000	chrY	h2	0.9980	PAR_XY
+acro_acro only in f48_v131: 35, only in f32_v131: 0
+== PAN027pat_vs_PAN011_joint f32_v11p vs f48_v11p
+A runs 51, B runs 60
+A_only: 3
+A_only	chr15	5192000	5204000	12000	chr3	h2	0.9920	acro_other
+A_only	chr5	182010000	182022000	12000	chr1	h2	0.9987	chr5_chr1_candidate
+A_only	chr5	182052000	182080000	28000	chr1	h2	0.9983	chr5_chr1_candidate
+B_only: 11
+B_only	chr19	42000	54000	12000	chr16	h1	0.9992	other_nonacro
+B_only	chrX	88848000	88858000	10000	chrY	h2	0.9768	PAR_XY
+B_only	chrX	154022000	154032000	10000	chrY	h2	0.9980	PAR_XY
+acro_acro only in f48_v11p: 8, only in f32_v11p: 0
+== PAN027mat_vs_PAN010_joint f32_v11 vs f48_v11
+A runs 25, B runs 40
+A_only: 2
+B_only: 17
+B_only	chr1	128414000	128426000	12000	chr13	h1	0.9563	acro_other
+B_only	chr3	201392000	201406000	14000	chr19	h2	0.9943	other_nonacro
+acro_acro only in f48_v11: 15, only in f32_v11: 2
+== PAN027mat_vs_PAN010_joint f48_v11 vs f96_v11
+A runs 40, B runs 40
+A_only: 8
+A_only	chr1	128414000	128426000	12000	chr13	h1	0.9563	acro_other
+A_only	chr3	201392000	201406000	14000	chr19	h2	0.9943	other_nonacro
+B_only: 8
+B_only	chr16	8000	22000	14000	chr20	h2	0.9994	other_nonacro
+B_only	chr19	4000	24000	20000	chr3	h1	0.9888	other_nonacro
+B_only	chr19	50000	66000	16000	chr15	h2	0.9959	acro_other
+B_only	chr19	68000	84000	16000	chr11	h1	0.9975	other_nonacro
+B_only	chr8	70000	80000	10000	chr6	h1	0.9962	other_nonacro
+B_only	chr8	80000	90000	10000	chr6	h2	0.9982	other_nonacro
+acro_acro only in f96_v11: 2, only in f48_v11: 6
+== PAN027mat_vs_PAN010_joint f32_v131 vs f48_v131
+A runs 25, B runs 40
+A_only: 1
+B_only: 16
+B_only	chr3	201392000	201406000	14000	chr19	h2	0.9944	other_nonacro
+acro_acro only in f48_v131: 15, only in f32_v131: 1
+== PAN028mat_vs_PAN027_joint f32_v11 vs f48_v11
+A runs 104, B runs 103
+A_only: 4
+B_only: 4
+acro_acro only in f48_v11: 4, only in f32_v11: 4
+== PAN028mat_vs_PAN027_joint f32_v131 vs f48_v131
+A runs 91, B runs 90
+A_only: 4
+B_only: 2
+acro_acro only in f48_v131: 2, only in f32_v131: 4
+== PAN027pat_vs_PAN011_joint f48_v11 vs f48_v11p
+A runs 61, B runs 60
+A_only: 1
+A_only	chr9	136168000	136188000	20000	chr3	h2	0.9988	chr9_chr3_candidate
+B_only: 0
+acro_acro only in f48_v11p: 0, only in f48_v11: 0
+
+[exited with code 0]

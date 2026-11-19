@@ -1,0 +1,63 @@
+diff --git a/src/plane_sweep_exact.rs b/src/plane_sweep_exact.rs
+index 8923d5f..24916ea 100644
+--- a/src/plane_sweep_exact.rs
++++ b/src/plane_sweep_exact.rs
+@@ -109,6 +109,20 @@ impl PlaneSweepMapping {
+         }
+     }
+ 
++    /// Fraction of this mapping's query span covered by another mapping
++    pub fn query_covered_by(&self, other: &PlaneSweepMapping) -> f64 {
++        let len = (self.query_end - self.query_start) as f64;
++        let ov = (self.query_end.min(other.query_end) as i64 - self.query_start.max(other.query_start) as i64).max(0) as f64;
++        if len > 0.0 { ov / len } else { 0.0 }
++    }
++
++    /// Fraction of this mapping's target span covered by another mapping
++    pub fn target_covered_by(&self, other: &PlaneSweepMapping) -> f64 {
++        let len = (self.target_end - self.target_start) as f64;
++        let ov = (self.target_end.min(other.target_end) as i64 - self.target_start.max(other.target_start) as i64).max(0) as f64;
++        if len > 0.0 { ov / len } else { 0.0 }
++    }
++
+     /// Calculate overlap fraction with another mapping (query axis)
+     pub fn query_overlap(&self, other: &PlaneSweepMapping) -> f64 {
+         let overlap_start = self.query_start.max(other.query_start);
+@@ -243,9 +257,15 @@ fn mark_good(
+ 
+             // Check overlap with all kept mappings
+             for &kept_idx in &kept_indices {
+-                let overlap = match axis {
+-                    Axis::Query => mappings[idx].query_overlap(&mappings[kept_idx]),
+-                    Axis::Target => mappings[idx].target_overlap(&mappings[kept_idx]),
++                // Default: overlap over the shorter mapping, so a long candidate that contains
++                // a kept short mapping is marked overlapped and removed everywhere.
++                // SWEEPGA_OVERLAP_MODE=candidate (temporary): fraction of the candidate covered
++                // by the kept mapping, so long chains survive short better-scoring hits.
++                let overlap = match (axis, overlap_relative_to_candidate()) {
++                    (Axis::Query, false) => mappings[idx].query_overlap(&mappings[kept_idx]),
++                    (Axis::Target, false) => mappings[idx].target_overlap(&mappings[kept_idx]),
++                    (Axis::Query, true) => mappings[idx].query_covered_by(&mappings[kept_idx]),
++                    (Axis::Target, true) => mappings[idx].target_covered_by(&mappings[kept_idx]),
+                 };
+ 
+                 if overlap > overlap_threshold {
+@@ -258,6 +278,18 @@ fn mark_good(
+     }
+ }
+ 
++/// Temporary switch: SWEEPGA_OVERLAP_MODE=candidate measures overlap over the candidate only
++fn overlap_relative_to_candidate() -> bool {
++    static MODE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
++    *MODE.get_or_init(|| {
++        let on = std::env::var("SWEEPGA_OVERLAP_MODE").map(|v| v == "candidate").unwrap_or(false);
++        if on {
++            eprintln!("[sweepga] SWEEPGA_OVERLAP_MODE=candidate: overlap measured over the candidate mapping");
++        }
++        on
++    })
++}
++
+ #[derive(Debug, Clone, Copy)]
+ pub enum Axis {
+     Query,

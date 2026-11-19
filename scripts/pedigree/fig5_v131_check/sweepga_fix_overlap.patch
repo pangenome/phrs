@@ -1,0 +1,40 @@
+diff --git a/src/plane_sweep_exact.rs b/src/plane_sweep_exact.rs
+index 8923d5f..018b37e 100644
+--- a/src/plane_sweep_exact.rs
++++ b/src/plane_sweep_exact.rs
+@@ -109,6 +109,20 @@ impl PlaneSweepMapping {
+         }
+     }
+ 
++    /// Fraction of this mapping's query span covered by another mapping
++    pub fn query_covered_by(&self, other: &PlaneSweepMapping) -> f64 {
++        let len = (self.query_end - self.query_start) as f64;
++        let ov = (self.query_end.min(other.query_end) as i64 - self.query_start.max(other.query_start) as i64).max(0) as f64;
++        if len > 0.0 { ov / len } else { 0.0 }
++    }
++
++    /// Fraction of this mapping's target span covered by another mapping
++    pub fn target_covered_by(&self, other: &PlaneSweepMapping) -> f64 {
++        let len = (self.target_end - self.target_start) as f64;
++        let ov = (self.target_end.min(other.target_end) as i64 - self.target_start.max(other.target_start) as i64).max(0) as f64;
++        if len > 0.0 { ov / len } else { 0.0 }
++    }
++
+     /// Calculate overlap fraction with another mapping (query axis)
+     pub fn query_overlap(&self, other: &PlaneSweepMapping) -> f64 {
+         let overlap_start = self.query_start.max(other.query_start);
+@@ -243,9 +257,12 @@ fn mark_good(
+ 
+             // Check overlap with all kept mappings
+             for &kept_idx in &kept_indices {
++                // Fraction of the candidate covered by the kept mapping. Using the shorter
++                // of the two lengths let a short kept mapping contained in a long candidate
++                // mark the long one as overlapped, and the flag removed it everywhere.
+                 let overlap = match axis {
+-                    Axis::Query => mappings[idx].query_overlap(&mappings[kept_idx]),
+-                    Axis::Target => mappings[idx].target_overlap(&mappings[kept_idx]),
++                    Axis::Query => mappings[idx].query_covered_by(&mappings[kept_idx]),
++                    Axis::Target => mappings[idx].target_covered_by(&mappings[kept_idx]),
+                 };
+ 
+                 if overlap > overlap_threshold {

@@ -1,0 +1,17 @@
+== PAN028mat_vs_PAN027_joint mm2ccnd_v11 vs kidmmm2c_v11
+A runs 121, B runs 0
+A_only: 121
+A_only	chr1	12000	30000	18000	chr8	h1	0.9995	other_nonacro
+A_only	chr14	6978000	6998000	20000	chr1	h1	0.9906	acro_other
+A_only	chr5	183056000	183072000	16000	chr1	h2	0.9988	chr5_chr1_candidate
+A_only	chr9	134872000	134882000	10000	chr3	h1	0.9864	chr9_chr3_candidate
+B_only: 0
+acro_acro only in kidmmm2c_v11: 0, only in mm2ccnd_v11: 117
+== PAN028mat_vs_PAN027_joint mm2ccnd_v131 vs kidmmm2c_v131
+A runs 104, B runs 0
+A_only: 104
+A_only	chr1	12000	30000	18000	chr8	h1	0.9995	other_nonacro
+A_only	chr5	183476000	183490000	14000	chr1	h2	0.9986	chr5_chr1_candidate
+A_only	chr9	134872000	134882000	10000	chr3	h1	0.9864	chr9_chr3_candidate
+B_only: 0
+acro_acro only in kidmmm2c_v131: 0, only in mm2ccnd_v131: 101

@@ -5,18 +5,18 @@
 #SBATCH --mem=64G
 #SBATCH -t 12:00:00
 # Read-vs-assembly scan of all chromosome ends
-# args: WASHU, OUT_DIR, SAMPLE (PAN011, PAN027, PAN028), [VERSION] (default v11), [END_BP] (default 500000)
+# args: WASHU, OUT_DIR, SAMPLE (PAN010, PAN011, PAN027, PAN028), [VERSION] (default v11), [END_BP] (default 500000), [BAM_DIR] (default ont)
 # Own ONT reads on the own diploid. Per 10 kb bin of the first and last END_BP of every contig:
 # wrong positions (>= 3 MAPQ>=20 reads show a base, >= 80% share one base that is not the assembly base),
 # median depth of MAPQ>=20 reads and of all reads.
 # out: end_scan.<sample>.<v>.tsv (bins), end_scan.<sample>.<v>.wrong.tsv (positions)
 set -euo pipefail
-D=$1; OUT=$2; SM=$3; V=${4:-v11}; E=${5:-500000}; cd $D; mkdir -p $OUT
+D=$1; OUT=$2; SM=$3; V=${4:-v11}; E=${5:-500000}; BD=${6:-ont}; cd $D; mkdir -p $OUT
 S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools
 W=/scratch/$USER.endscan.$SLURM_JOB_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
 log () { echo "[$(date -Is)] $*"; }
-ls ont/SRR*.$SM.$V.bam > $W/bams.txt
-log "host $(hostname), $SM $V, BAMs $(wc -l < $W/bams.txt), end window $E bp"
+ls $BD/SRR*.$SM.$V.bam > $W/bams.txt
+log "host $(hostname), $SM $V, BAM dir $BD, BAMs $(wc -l < $W/bams.txt), end window $E bp"
 cat > $W/bin.py <<'PY'
 import re, sys, statistics as st, collections
 # stdin: mpileup of all BAMs; argv: contig, end label, region start, region end, depth file, out prefix

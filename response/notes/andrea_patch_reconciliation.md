@@ -3,6 +3,18 @@
 Branch merged: `pedigree-fig5-validation-and-patching` (merge `46d584d`). Her README:
 `scripts/pedigree/fig5_v131_check/README.md`.
 
+> **Correction (2026-11-18, A. Guarracino; checked on the raw v1.1 files as shipped).** The k-mer containment in
+> §2-3 counted 21-mers on the forward strand only. The chr9 h2 block is a reverse-complement copy of chr1 hap1,
+> so forward-only counting cannot see it. With canonical 21-mers (both strands), the block
+> `PAN011.chr9.haplotype2:133,682,643-133,744,561` is **100.0%** contained in chr1 hap1 first 200 kb (forward-only
+> 0.6%, which reproduces §2), 1.2% in chr1 hap2 (forward-only 0.5%) and 89.4% in chr3 hap2 terminal 579 kb (same
+> both ways). The 20 kb tract `133,702,042-133,722,041` and the reverse complement of `PAN011.chr1.haplotype1:
+> 22,528-42,527` (`samtools faidx -i`) have the same md5 (`e075205bcb5e`): 0 of 20,000 differences; forward-strand
+> comparison gives 14,902. So the chr9 h2 block is a chr1p copy **and** chr3-like (chr1p and chr3q ends share
+> sequence). The §2 verdict "not chr1-like" and the matching rows in §7 do not hold. Later work superseded §7:
+> DAD chr9 corrected with a DAD-only hifiasm contig gives same-chromosome identity 1.0000 and the 9q/3q call is
+> retracted (see `fig5_retraction_and_concerted_evolution_story.md`).
+
 ## Two separate loci - and only one of her conclusions survives
 
 | locus | her claim | verdict after independent testing |
@@ -49,6 +61,10 @@ hold on the v1.1 assemblies as shipped. A direct FastGA search of the chr9 tract
 `-f8`, `-f32` and `-f512` returns **zero alignments**, and naive positional comparison of the 20 kb
 tract against the reverse complement gives 14,064/20,000 differences (~random). So this is not a
 threshold effect like §1; the sequence simply is not chr1.
+
+> **Correction (2026-11-18):** not reproduced with canonical (both-strand) 21-mers or with the reverse complement:
+> 100.0% of the block's 21-mers are in chr1 hap1 first 200 kb, and the 20 kb tract equals the reverse complement of
+> chr1 hap1 22,528-42,527 base for base (md5 `e075205bcb5e` on both). See the note at the top.
 
 Her chr1 coordinates may belong to a different contig or release, and that should be resolved with her
 directly before the claim is used anywhere. It is not reproducible from the shipped assemblies.
