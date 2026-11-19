@@ -16,16 +16,18 @@ set -euo pipefail
 D=$1; T=$2; O=$3; cd $D; mkdir -p $O/{cov,gaps,paf}
 S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools; WF=$D/scripts_tmp/latest/wfmash; export LD_LIBRARY_PATH=$D/scripts_tmp/latest/lib; MM=$D/scripts_tmp/minimap2-2.31/minimap2
 read TAG PAIR C < <(sed -n "${SLURM_ARRAY_TASK_ID}p" $T)
-case $TAG in v11|v131) N=norm_$TAG;; v11p) N=patch_v11/norm_v11_patched;; v131p) N=patch_v131/norm_v131_patched;; c11) N=g1/corrected_v11_pol/norm;; c11b) N=g1/corrected_v11b_pol/norm;; c131) N=g1/corrected_v131/norm;; esac
+case $TAG in v11|v131) N=norm_$TAG;; v11p) N=patch_v11/norm_v11_patched;; v131p) N=patch_v131/norm_v131_patched;; c11) N=g1/corrected_v11_pol/norm;; c11b) N=g1/corrected_v11b_pol/norm;; c131) N=g1/corrected_v131/norm;; g11) N=g1/apply_v11;; *) echo "unknown tag $TAG"; exit 1;; esac
 case $PAIR in pat) Q=PAN027#2; P=PAN011;; mat) Q=PAN027#1; P=PAN010;;
   kid) P=PAN027; case " chr1 chr3 chr4 chr5 chr7 chr9 chr12 chr14 chr15 chr18 chr21 chr22 chrX " in *" $C "*) Q=PAN028#2;; *) Q=PAN028#1;; esac;; esac
+NQ=$N; NP=$N
+if [ $TAG = g11 ]; then NQ=$N/${Q%%#*}/polished2/norm; NP=$N/$P/polished2/norm; fi
 W=/scratch/$USER.g2h.${SLURM_ARRAY_JOB_ID}_$SLURM_ARRAY_TASK_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
 log () { echo "[$(date -Is)] $*"; }
-$S faidx $N/$Q.fa.gz "$Q#$C" > $W/q.fa; $S faidx $W/q.fa
-TG=$(for h in 1 2; do cut -f1 $N/$P#$h.fa.gz.fai | grep -E "#$C\$$( [ $C = chrX ] && echo '|#chrY$')" | sed "s/^/$h:/"; done)
+$S faidx $NQ/$Q.fa.gz "$Q#$C" > $W/q.fa; $S faidx $W/q.fa
+TG=$(for h in 1 2; do cut -f1 $NP/$P#$h.fa.gz.fai | grep -E "#$C\$$( [ $C = chrX ] && echo '|#chrY$')" | sed "s/^/$h:/"; done)
 log "$TAG $PAIR $C query $Q#$C, targets: $(echo $TG | tr '\n' ' '), host $(hostname), wfmash $($WF --version 2>&1 | head -1)"
 for x in $TG; do h=${x%%:*}; t=${x#*:}; n=$(echo $t | tr '#' '_')
-  $S faidx $N/$P#$h.fa.gz "$t" > $W/t.fa; $S faidx $W/t.fa
+  $S faidx $NP/$P#$h.fa.gz "$t" > $W/t.fa; $S faidx $W/t.fa
   $WF -t $SLURM_CPUS_PER_TASK -n 1 --quiet -B $W $W/t.fa $W/q.fa > $W/wf.$n.paf 2> $W/wf.log || { log "ERROR wfmash $t"; tail -5 $W/wf.log; exit 1; }
   $MM -cx asm5 --eqx -t $SLURM_CPUS_PER_TASK $W/t.fa $W/q.fa 2> $W/mm.log | awk -F'\t' '/tp:A:P/' > $W/mm.$n.paf
   log "$t: wfmash $(wc -l < $W/wf.$n.paf) records, minimap2 primary $(wc -l < $W/mm.$n.paf)"
