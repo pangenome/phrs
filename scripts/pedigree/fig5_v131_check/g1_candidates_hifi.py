@@ -6,7 +6,7 @@ Rules (fixed 2026-11-16 before the HiFi scan finished):
   a 10 kb bin is flagged when HiFi depth <= 0.25 x the contig median, or HiFi SNV >= 3 with depth >= 3;
   depth = MAPQ>=0 depth (bins_hifi_q0). Change 2026-11-16 after the first scan: MAPQ>=20 depth was 0 in
   hap1 = hap2 stretches (diploid mapping, MAPQ 1-5), so 22% of bins were flagged. Thresholds unchanged.
-  flagged bins <= 20 kb apart are merged; a group is "satellite" when > 50% of it is in cenSat (annot_v11).
+  flagged bins <= 20 kb apart are merged; a group is "satellite" when > 50% of it is in cenSat (annot_<version>).
 Per group: bins, min depth, SNV sum, ONT SNV sum (check/wg_scan/bins_ont), merqury error k-mers (merqury/<v>/<s>).
 """
 import bisect, collections, gzip, os, statistics as st, sys
@@ -16,7 +16,7 @@ def aname(c):
     s, h, ch = c.split("#")
     return f"{s}.{ch}." + ({"1": "maternal", "2": "paternal"}[h] if s == "PAN027" else f"haplotype{h}")
 cs = collections.defaultdict(list)
-for l in open(f"{D}/annot_v11/{SM}.polished.diploid.cenSat.bed"):
+for l in open(f"{D}/annot_{V}/{SM}.polished.diploid.cenSat.bed"):
     t = l.split("\t")
     if len(t) >= 3 and t[1].isdigit(): cs[t[0]].append((int(t[1]), int(t[2])))
 mq = collections.defaultdict(list)
