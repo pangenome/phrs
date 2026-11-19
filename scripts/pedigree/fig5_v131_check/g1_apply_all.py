@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Apply accepted G1 pieces to one person's assembly.
 
-usage: g1_apply_all.py NORM_DIR SAMPLE RUN_DIR ANCHOR VOTE OUT_DIR
+usage: g1_apply_all.py NORM_DIR SAMPLE RUN_DIR ANCHOR VOTE OUT_DIR [KEEP_TXT]
+KEEP_TXT (g1_merqury_filter.py): only these loci are applied; other accepted pieces are listed as dropped_merqury.
 Per locus RUN_DIR/<id>.<name>/ (g1_locus.sbatch): candidates of rule ANCHOR (any mode); a candidate passes when the
 VOTE rule (more, ratio2, binom as in g1_grid_score.py) holds for HiFi and ONT; the passing one with most HiFi + ONT
 candidate votes is applied. Overlapping accepted pieces on the same contig: the one with more votes is kept, the other
@@ -14,6 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from g1_grid_score import passes, votes  # same vote counting as the grid
 
 na, sm, rd, ar, vr, out = sys.argv[1:7]
+kl = set(l.strip() for l in open(sys.argv[7])) if len(sys.argv) > 7 else None
 acc = []
 for sf in sorted(glob.glob(f"{rd}/*/summary.tsv")):
     ev = os.path.dirname(sf); rows = [l.rstrip("\n").split("\t") for l in open(sf)]
@@ -35,7 +37,12 @@ for sf in sorted(glob.glob(f"{rd}/*/summary.tsv")):
 print(f"{sm}: {len(glob.glob(rd + '/*/summary.tsv'))} loci, {len(acc)} accepted ({ar}, {vr})", file=sys.stderr)
 by = collections.defaultdict(list)
 for a in acc: by[a["contig"]].append(a)
-keep, drop = [], []
+keep, drop, dmq = [], [], []
+if kl is not None:
+    dmq = [a for a in acc if a["locus"] not in kl]; acc = [a for a in acc if a["locus"] in kl]
+    by = collections.defaultdict(list)
+    for a in acc: by[a["contig"]].append(a)
+    print(f"{sm}: keep list {len(kl)} loci, {len(acc)} applied candidates, {len(dmq)} dropped by merqury", file=sys.stderr)
 for c, l in by.items():
     for a in sorted(l, key=lambda a: -a["votes"]):
         (drop if any(a["start"] < b["end"] and b["start"] < a["end"] for b in keep if b["contig"] == c) else keep).append(a)
@@ -57,7 +64,7 @@ for h in (1, 2):
 with open(f"{out}/corrections.tsv", "w") as o:
     o.write("status\tlocus\tcontig\tstart\tend\told_bp\tnew_bp\tnew_start\tnew_end\tmode\tanchor\tvote\thifi_votes_asm_cand\tont_votes_asm_cand\tpiece_md5\n")
     shift = collections.Counter()
-    for st, l in (("applied", keep), ("dropped", drop)):
+    for st, l in (("applied", keep), ("dropped", drop), ("dropped_merqury", dmq)):
         for a in sorted(l, key=lambda a: (a["contig"], a["start"])):
             ns = a["start"] + shift[a["contig"]] if st == "applied" else "NA"; ne = ns + len(a["seq"]) if st == "applied" else "NA"
             if st == "applied": shift[a["contig"]] += len(a["seq"]) - (a["end"] - a["start"])
