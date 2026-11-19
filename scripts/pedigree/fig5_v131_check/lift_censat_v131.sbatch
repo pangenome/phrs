@@ -66,7 +66,7 @@ for l in open(bed):
     s, e = int(t[1]), int(t[2]); k = status.get(t[0])
     if k is None: print(f"ERROR cenSat contig {t[0]} not in md5 table", file=sys.stderr); sys.exit(1)
     if k == "same": rows.append(t); c["same"] += 1; bp["same_in"] += e - s; bp["same_out"] += e - s; continue
-    bp["changed_in"] += e - s; hits = [p for a in alns[t[0]] if (p := project(a, s, e))]
+    bp["changed_in"] += e - s; hits = [p for p in (project(a, s, e) for a in alns[t[0]]) if p]
     if not hits: c["lost"] += 1; continue
     c["lifted"] += 1
     for a, b in hits: rows.append([t[0], str(a), str(b)] + t[3:6] + [str(a), str(b)] + t[8:]); bp["changed_out"] += b - a
