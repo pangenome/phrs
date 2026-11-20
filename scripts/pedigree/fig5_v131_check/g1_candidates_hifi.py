@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Candidate assembly errors from the HiFi scan.
 
-usage: g1_candidates_hifi.py WASHU SAMPLE VERSION OUT_TSV
+usage: g1_candidates_hifi.py WASHU SAMPLE VERSION OUT_TSV [ANNOT_DIR, default annot_VERSION]
 Rules (fixed 2026-11-16 before the HiFi scan finished):
   a 10 kb bin is flagged when HiFi depth <= 0.25 x the contig median, or HiFi SNV >= 3 with depth >= 3;
   depth = MAPQ>=0 depth (bins_hifi_q0). Change 2026-11-16 after the first scan: MAPQ>=20 depth was 0 in
@@ -12,11 +12,13 @@ Per group: bins, min depth, SNV sum, ONT SNV sum (check/wg_scan/bins_ont), merqu
 import bisect, collections, gzip, os, statistics as st, sys
 
 D, SM, V, out = sys.argv[1:5]
+AD = sys.argv[5] if len(sys.argv) > 5 else f"annot_{V}"
+print(f"{SM} {V}: cenSat from {D}/{AD}", file=sys.stderr)
 def aname(c):
     s, h, ch = c.split("#")
     return f"{s}.{ch}." + ({"1": "maternal", "2": "paternal"}[h] if s == "PAN027" else f"haplotype{h}")
 cs = collections.defaultdict(list)
-for l in open(f"{D}/annot_{V}/{SM}.polished.diploid.cenSat.bed"):
+for l in open(f"{D}/{AD}/{SM}.polished.diploid.cenSat.bed"):
     t = l.split("\t")
     if len(t) >= 3 and t[1].isdigit(): cs[t[0]].append((int(t[1]), int(t[2])))
 mq = collections.defaultdict(list)
