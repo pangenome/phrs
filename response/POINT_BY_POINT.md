@@ -29,14 +29,14 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20 (line n
 |---|---|---|---|---|
 | R1-M1 | concerted evolution is never tested | done (`M1c_duplicon_monophyly.md`, `hprc_heterolog_divergence.md`) | Fig. 5 is the concerted-evolution figure, Discussion 479-481 | title kept by the authors |
 | R1-M2 | pedigree exchange vs inherited haplotype | done: both calls retracted (assembly error, FastGA seed loss). G1-corrected v1.1 of all 4 people: G2 finds only PAR1 and acrocentric runs | Results "Direct test", Methods, ED7 | add corrected-DAD Fig. 5 path and KID maternal result to ED7. G1 on v1.3.1 ends 2026-11-21 |
-| R1-m8 | pedigree numbers disagree | - | paper.tex text and captions say chr3q 0.9990, other chr9q 0.9930 (432-437, 688-691, 1257). `paper_prep/figures/fig5_concerted/caption.md` and `candidate_dice_9q.tsv` say 0.9915 and 0.9191 | one table, every number from it |
-| R1-M3 | exchange rate vs Lemmers 2010 | moot: no exchange is called after the retraction (`exchange_rate_estimates.md`) | not stated | one sentence |
+| R1-m8 | pedigree numbers disagree | - | paper.tex text, captions and Fig. 5d (graph dice, BUILD_LOG 2026-11-18) agree: chr3q 0.9990, other chr9q 0.9930. Only the older `paper_prep/figures/fig5_concerted/caption.md` and `candidate_dice_9q.tsv` still say 0.9915 and 0.9191 | update or mark those two files as superseded |
+| R1-M3 | exchange rate vs Lemmers 2010 | moot: no exchange is called after the retraction (`exchange_rate_estimates.md`) | written (179bc78), pedigree conclusion | done |
 | R1-M4 / R3-M3 / R3-M4 | multi-mapping, flank control, B/W direction | flank control logic | written (302-323, 906) | read-level simulation not done |
-| R1-M5 | matched non-subtelomeric duplication control | done (`M5_matched_sd_control.md`: CHM13 Hi-C rho +0.540 telomeric vs +0.104 interstitial, delta +0.436, p=0.001) | not stated | Results sentence + Methods paragraph |
+| R1-M5 | matched non-subtelomeric duplication control | done (`M5_matched_sd_control.md`: CHM13 Hi-C rho +0.540 telomeric vs +0.104 interstitial, delta +0.436, p=0.001) | written (179bc78): Results 3D section + Methods Hi-C | done, literal matched-SD census still not run |
 | R1-M6 | mouse p-arm satellite confound | satellite fractions only (masked axis void) | written (349-352) | done as a stated limitation |
 | R1-M7 | mouse dependency-preserving null | done | written | done |
 | R1-M8 | 500 kb right-censoring, 2-5 Mb flanks | censored fraction done (`M8_flank_censoring.md`: 1,087 of 15,668). 5 Mb wfmash run 545 of 1,614 flanks (ends 2026-11-23) | not stated | PHR lengths at 5 Mb, check PHRs < 500 kb unchanged, then text |
-| R1-M9 | enrichment rests on few families | done (`M9_enrichment_dependence.md`) | copy counting and SEPTIN14 loci written (226, 249, 798) | check the family-collapsed and matched-SD comparator numbers are stated |
+| R1-M9 | enrichment rests on few families | done (`M9_enrichment_dependence.md`) | written: copy counting, SEPTIN14 loci, 0 of 209 after leave-largest-family-out (179bc78) | matched-SD comparator not run |
 | R1-M10 | comparative frame | - | not stated (0 hits for Plasmodium, Phaseolus, Aqil) | Discussion paragraph, literature only |
 | R1-m2 / m4 / m5 / m6 / m7 | scope statement, Fig. 1A vs 1B, acro PHR track, ends vs segdup null, Fig. 4A floor | - | not stated | figure and text fixes |
 | R1-m11 | superpopulation descriptives | done (`D1_superpopulation_descriptives.md`) | written (268-292) | done |
@@ -45,13 +45,13 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20 (line n
 | R3-M1 | novelty framing | - | Introduction | author framing |
 | R3-M2 | Fig. 1A "pattern" untested | - | not stated | profile test or drop the word |
 | R3-M5 | somatic vs meiotic | stage test done (R1-M7) | limitation at 543 | check wording |
-| R3-M6 | thresholds behind 41 of 48 arms | done (Lane results: 41 arms at fail 1-4 and flank 25-400 kb) | not stated | Methods sentence or table |
+| R3-M6 | thresholds behind 41 of 48 arms | done (Lane results: 41 arms at fail 1-4 and flank 25-400 kb) | written (179bc78), Methods PHR detection | done |
 | R3-M7 / R3-M8 | order vs similarity, call candidates consistently | done | ED3, retraction | done |
 | R3 minors | Fig. 3 crop, define NOR | - | NOR no longer used | check Fig. 3 crop |
 | R5-L86 | window-size sensitivity | - | not stated | rerun with 50 kb windows |
 | R5-L152 | GO stability across assemblies | - | not stated | DUX4 copy number across HPRC, discussion or rerun |
 | R5-L189 | Hi-C, Pore-C, CiFi cell types | - | accessions only (867-880, 1081-1100) | cell type per dataset |
-| R5-L193 | why 2,830 pairs | done (C(77,2) - 96 same-chromosome pairs) | n stated (298), rule not | one sentence |
+| R5-L193 | why 2,830 pairs | done (C(77,2) - 96 same-chromosome pairs) | written (179bc78), Methods Hi-C | done |
 | R5-L229 | Fig. 5 dark grey | moot (Fig. 5 rebuilt) | - | check ED7 legend |
 | R5-L348 | 11.6% vs 3.5% sampling | - | written (711-714) | done |
 | R5 code | repository README | - | no README in the repo root | write README |
