@@ -952,3 +952,11 @@ Small, targeted additions, each with numbers from an existing analysis note:
 | R1-M9 | Results (functional enrichment) | `response/notes/M9_enrichment_dependence.md` (0 of 209 after leave-largest-family-out) |
 
 Build: `bash compile.sh` exit 0, `grep -c undefined paper.log` = 0, 46 pages.
+
+## R1-M5 text removed
+
+Date: 2026-11-20
+
+The window-class control added in 179bc78 measures contact only between PHRs on both axes, so it does not test contact at non-subtelomeric duplications, which is what Referee #1 asks. We removed it from Results and Methods until the matched segmental-duplication control is run. R3-M6, R5-L193, R1-M3 and R1-M9 text stays.
+
+Build: `bash compile.sh` exit 0, `grep -c undefined paper.log` = 0, 45 pages.
