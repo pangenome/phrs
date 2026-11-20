@@ -230,7 +230,8 @@ and cannot enter the test at all, over half of them uncharacterised \texttt{LOC}
 loci; the result therefore rests on the 187 annotated copies. Those 187 copies
 derive from only 39 gene families, and eight families contribute 142 of them.
 The consequence is direct: 124 of the 209 significantly enriched terms draw every
-one of their copies from a single family. The analysis therefore describes the
+one of their copies from a single family, and removing each term's largest contributing family
+leaves none of the 209 significant. The analysis therefore describes the
 abundance of a small number of amplified duplicon families, not a functional
 repertoire of the compartment.
 
@@ -325,6 +326,11 @@ flank windows carry essentially none of it. PHR-window enrichment is thus a
 lower bound, and the bound is set by the biased measurement, which already
 exceeds the unbiased flank value on the rank metric. A multi-mapping artefact
 predicts the reverse ordering there, PHR below flank, which is not observed.
+The association belongs to chromosome ends rather than to shared sequence anywhere in the genome.
+Between-chromosome sequence sharing computed from CHM13 windows within 100\,kb of a telomere tracks
+contact in all four maps (Mantel $\rho = 0.325$--$0.540$), whereas the same quantity computed from
+windows at least 1\,Mb from both telomeres does not ($\rho = 0.068$--$0.154$), also when we keep only
+interstitial windows that carry a cross-chromosome duplicate (Methods).
 A Pore-C contact matrix \cite{Ulahannan2019} ordered by sequence community shows
 the same community block structure after observed/expected inter-chromosomal
 normalization, which accounts for baseline differences in inter-chromosomal
@@ -451,6 +457,9 @@ are as similar as alleles (ratio 1.00 and 0.99; Extended Data Table). Acrocentri
 appears in both germlines, consistent with the rDNA exchange system \cite{Guarracino2023}. Everywhere
 else the sharing we detect is family-level similarity between blocks that have been exchanging on a
 timescale far longer than a pedigree can observe, not a discrete event.
+With no event outside these compartments in the three transmissions we examined, the pedigree
+implies no rate of discrete exchange that would conflict with the four discrete 4q/10q transfers
+reported across human populations \cite{dux4_d4z4_fshd_lemmers2010worldwide}.
 
 \subsection*{Discussion}
 
@@ -747,6 +756,12 @@ chromosomes, including its own (so pseudoautosomal Xp/Yp and Xq/Yq, with a
 single partner, are also detected), at a minimum identity of 95\% and minimum
 output length of 3 kb.
 This defined 15,668 PHRs from the 18,826 retained flanks (83.2\%).
+The arm-level result does not depend on the stopping rule or on the scan length. Stopping after one,
+two or three failed windows gives 15,624, 15,664 and 15,668 PHRs, and limiting the inward scan to
+25--400\,kb gives 15,668, all on the same 41 arms. Requiring 3, 6 or 15 chromosomes per window instead
+of 2 leaves 40, 38 and 37 arms (14,369, 13,422 and 10,030 PHRs). The 95\% identity, the
+five-alignment minimum and the 5\,kb window are fixed in the stored alignment index and were not
+varied.
 
 \subsection*{The terminal CpG island, GC content and annotatability}
 
@@ -883,6 +898,10 @@ valid bin-pairs, giving the mean contact per bin-pair. This normalization remove
 differences in contact opportunity caused by different numbers of valid bins, so
 pairs spanning more bins do not automatically have larger total contact.
 
+We formed pairs within one genome, because a contact map holds only its own sample. In HG002 the
+77 PHR sequences on 41 arms give $\binom{77}{2} = 2{,}926$ pairs, and removing the 96 pairs on the
+same chromosome leaves the 2,830 pairs of Fig.~\ref{fig:fig4}A.
+
 We report each Spearman correlation as a descriptive measure of how strongly
 similarity tracks contact, not a p-value, because the pairs are not independent
 (the same subtelomere recurs in many pairs).
@@ -910,6 +929,22 @@ Because uniform placement of a multi-mapping read attenuates a specific contact
 by about $1/k$ per end symmetrically across community classes, both PHR-window
 statistics are biased towards the null, and the PHR-window enrichment they
 report is a lower bound.
+
+To ask whether the association is specific to chromosome ends, we replaced the sequence axis with
+one computed from interstitial windows of the same genome and kept the contact values fixed. From
+CHM13 100\,kb windows aligned to HPRC v2 haplotype contigs at $\geq 98\%$ identity (chrY excluded,
+because the Hi-C maps use a Y-masked reference), we scored for each pair of chromosomes the mean share
+of their windows with a partner on the other chromosome. We did this separately for windows within
+100\,kb of a telomere, for windows at least 1\,Mb from both telomeres, and for the 1,280 of those
+interstitial windows that carry a cross-chromosome duplicate. We related each sharing matrix to the chromosome-level mean PHR contact
+by a Mantel test with average ranks, 10,000 chromosome-label permutations and 2,000 chromosome
+bootstrap replicates. Telomeric sharing predicts contact (CHM13 Hi-C $\rho = 0.540$, 95\% CI
+0.35--0.66; HG002 Hi-C 0.491; HG002 Pore-C 0.506; HG002 CiFi 0.325), and interstitial sharing does
+not (0.104, 95\% CI $-0.17$ to 0.38; 0.105; 0.154; 0.068). The paired difference is 0.436 (95\% CI
+0.14--0.71, $p = 0.001$), 0.386 ($p = 0.007$), 0.352 ($p = 0.010$) and 0.257 ($p = 0.042$). Both
+axes are at chromosome rather than arm level, so these values are not comparable with the arm-level
+$\rho$ above. This window-class contrast is not a census of pericentromeric and interstitial
+segmental duplications matched on identity, length and copy number.
 
 \subsection*{Population differentiation}
 

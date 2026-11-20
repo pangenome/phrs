@@ -936,3 +936,19 @@ Fig. 5d plots graph dice, inside versus outside the called tract:
 
 Build: exit 0, 0 undefined. Also fixed: inline maths with `|` and `\cap` broke `jnl.cls` and was replaced
 with prose; markdown `**` bold leaks converted to `\textbf{}`.
+
+## Reviewer text additions: R1-M5, R3-M6, R5-L193, R1-M3, R1-M9
+
+Date: 2026-11-20
+
+Small, targeted additions, each with numbers from an existing analysis note:
+
+| point | where | source |
+|---|---|---|
+| R1-M5 | Results (3D section) + Methods (Hi-C pipeline) | `response/notes/M5_matched_sd_control.md` §4.2 |
+| R3-M6 | Methods (PHR detection) | `scripts/cladistics/phr_call_threshold_sensitivity.tsv` |
+| R5-L193 | Methods (Hi-C pipeline) | `response/notes/R5_pairs_filter_and_R3_thresholds.md` §1.5 |
+| R1-M3 | Results (pedigree conclusion) | Lemmers 2010 (already cited) |
+| R1-M9 | Results (functional enrichment) | `response/notes/M9_enrichment_dependence.md` (0 of 209 after leave-largest-family-out) |
+
+Build: `bash compile.sh` exit 0, `grep -c undefined paper.log` = 0, 46 pages.
