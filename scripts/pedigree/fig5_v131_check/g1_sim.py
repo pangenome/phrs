@@ -5,6 +5,10 @@ usage: g1_sim.py WASHU SAMPLE VERSION HAP SEED OUT_DIR [MODE: standard (default)
 term mode (2026-11-21): term_para = the L bp starting 20 kb from one contig end replaced by the same L bp of another
 end of the same arm community (data/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv, not C7, C14, C15), oriented
 telomere-outward, 2 each for L = 10, 50, 100 kb; term_none = 6 untouched end windows (controls); same clean-end rule.
+term_hi mode (2026-11-21): as the real DAD chr9 h2 end (wrong vs right block 98.3% identical): the L bp starting 20 kb
+from a clean end replaced by its best-aligned copy at another end (last 500 kb of any end, either haplotype, other
+chromosome, not X-Y; minimap2 2.31 asm20 -P, >= 95% of the block in one record, identity 0.97-0.995, the one nearest
+0.983), 2 each for L = 50, 100, 150 kb, only the aligned part replaced; term_none controls; OUT_DIR/donors.tsv.
 Clean 10 kb bins: HiFi and ONT Q0 scans unflagged (depth > 0.25 x contig median, SNV < 3) for +- 300 kb, no cenSat.
 Types x sizes (2, 10, 50 kb), one each, >= 2 Mb apart, >= 1 Mb from ends: del (remove), dup (tandem copy), foreign
 (replace with a clean segment of another contig), snv (1 change per 1,000 bp); term_del removes the last L bp of a
@@ -16,7 +20,7 @@ import collections, gzip, os, random, statistics as st, sys
 
 D, SM, V, H, seed, O = sys.argv[1:7]; H = int(H); rng = random.Random(int(seed))
 MODE = sys.argv[7] if len(sys.argv) > 7 else "standard"
-if MODE not in ("standard", "term"): sys.exit(f"ERROR unknown mode {MODE}")
+if MODE not in ("standard", "term", "term_hi"): sys.exit(f"ERROR unknown mode {MODE}")
 def read(f):
     name, seq = None, []
     for l in gzip.open(f, "rt"):
@@ -67,7 +71,7 @@ if MODE == "standard":
         for t in ("del", "dup", "foreign", "snv", "term_del"):
             c, p = pick(L, t == "term_del"); ev.append((t, L, c, p))
     for _ in range(10): c, p = pick(50000); ev.append(("none", 50000, c, p))
-else:
+elif MODE == "term":
     pref = f"{SM}#{H}#"; com = collections.defaultdict(list)
     for l in list(open(f"{D}/scripts_tmp/arm_communities_k15.tsv"))[1:]:
         arm, cm = l.split("\t")[:2]; ch, a = arm.split("_")
@@ -84,6 +88,44 @@ else:
             seg = endseg(sc, sa, L); src[(c, p)] = seg if a == "q" else rc(seg)
             ev.append(("term_para", L, c, p)); print(f"term_para {L}: {c} {a} <- {sc} {sa} ({cm})", file=sys.stderr); break
         else: sys.exit(f"ERROR no clean community end left for L={L}")
+if MODE == "term_hi":
+    import shutil, subprocess, tempfile
+    ends = [(c, a, "") for c in sorted(seqs) for a in ("p", "q") if clean_end(c, a)]; rng.shuffle(ends); usedend = set()
+    tmp = f"/scratch/{os.environ['USER']}/tmp/phrs"; os.makedirs(tmp, exist_ok=True); T = tempfile.mkdtemp(dir=tmp)
+    don = {}
+    for hs in (seqs, dict(read(f"{D}/norm_{V}/{SM}#{3 - H}.fa.gz"))):
+        for c, s in hs.items(): don[f"{c}:q"] = s[max(0, len(s) - 500000):]; don[f"{c}:p"] = s[:500000]
+    with open(f"{T}/don.fa", "w") as o: o.write("".join(f">{k}\n{s}\n" for k, s in don.items()))
+    SIZES = (150000, 150000, 100000, 100000, 50000, 50000)
+    qp = lambda c, a, L: len(seqs[c]) - 20000 - L if a == "q" else 20000
+    with open(f"{T}/q.fa", "w") as o:
+        for c, a, _ in ends:
+            for L in sorted(set(SIZES)): o.write(f">{c}:{a}:{L}\n{seqs[c][qp(c, a, L):qp(c, a, L) + L]}\n")
+    print(f"term_hi: {len(ends)} clean ends x {len(set(SIZES))} sizes vs {len(don)} donor ends (500 kb, both haplotypes)", file=sys.stderr)
+    subprocess.run(f"{D}/scripts_tmp/minimap2-2.31/minimap2 -cx asm20 --eqx -P -t 4 -o {T}/a.paf {T}/don.fa {T}/q.fa", shell=True, check=True)
+    best = {}
+    for l in open(f"{T}/a.paf"):
+        f = l.split("\t"); ch = {f[0].split(":")[0].split("#")[2], f[5].split(":")[0].split("#")[2]}
+        if len(ch) == 1 or ch == {"chrX", "chrY"}: continue  # allelic (same chromosome) or X-Y PAR, not a paralog
+        L = int(f[0].split(":")[2]); cov = (int(f[3]) - int(f[2])) / L; idn = int(f[9]) / int(f[10])
+        if cov >= 0.95 and 0.97 <= idn <= 0.995 and int(f[9]) > best.get((f[0], f[5]), [0])[0]: best[(f[0], f[5])] = [int(f[9]), cov, idn, f]
+    cand = collections.defaultdict(list)
+    for (q, t), v in best.items(): cand[q].append((abs(v[2] - 0.983), t, v))
+    print("term_hi: clean ends with a donor (identity 0.97-0.995, >= 95% of the block aligned): " + ", ".join(f"{L // 1000} kb {sum(1 for c, a, _ in ends if cand[f'{c}:{a}:{L}'])}" for L in sorted(set(SIZES))), file=sys.stderr)
+    with open(f"{O}/donors.tsv", "w") as dn:
+        dn.write("recipient\tarm\tblock_bp\tdonor_end\tstrand\tidentity\tcoverage\treplaced_bp\tdonor_bp\n")
+        for L in SIZES:
+            for c, a, _ in ends:
+                ok = [x for x in cand[f"{c}:{a}:{L}"] if tuple(x[1].split(":")) not in usedend]  # a donor end is never a recipient or control
+                if (c, a) in usedend or not ok: continue
+                _, t, (m, cov, idn, f) = min(ok); usedend |= {(c, a), tuple(t.split(":"))}; p0 = qp(c, a, L)
+                qs, qe, ts, te = int(f[2]), int(f[3]), int(f[7]), int(f[8]); seg = don[t][ts:te]
+                src[(c, p0 + qs)] = seg if f[4] == "+" else rc(seg); ev.append(("term_hi", qe - qs, c, p0 + qs))
+                dn.write(f"{c}\t{a}\t{L}\t{t}\t{f[4]}\t{idn:.4f}\t{cov:.4f}\t{qe - qs}\t{te - ts}\n")
+                print(f"term_hi {L}: {c} {a} [{p0 + qs}, {p0 + qe}) <- {t} {f[4]} [{ts}, {te}), identity {idn:.4f}", file=sys.stderr); break
+            else: sys.exit(f"ERROR no clean end left with a donor for L={L}")
+    shutil.rmtree(T)
+if MODE != "standard":
     for c, a, cm in ends:
         if sum(1 for e in ev if e[0] == "term_none") == 6: break
         if (c, a) in usedend: continue
@@ -102,7 +144,7 @@ for c in seqs:
             rep = list(seg)
             for i in range(rng.randrange(1000), L, 1000): rep[i] = rng.choice([b for b in "ACGT" if b != rep[i].upper()])
             rep = "".join(rep)
-        elif t == "term_para": rep = src[(cc, p)]
+        elif t in ("term_para", "term_hi"): rep = src[(cc, p)]
         else: rep = seg
         if len(rep) != L and t in ("term_para",): sys.exit(f"ERROR term_para block length {len(rep)} != {L} at {cc}:{p}")
         parts.append(rep); last = p + L; shift += len(rep) - L

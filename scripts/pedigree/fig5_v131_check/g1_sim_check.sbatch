@@ -6,12 +6,16 @@
 #SBATCH --exclude=octopus05
 # Does each piece restore the original?
 # usage: sbatch g1_sim_check.sbatch --washu D --sim SIM_DIR --runs RUN_DIR --sample SM --version V --hap H --out TSV
+#   [--tasks TSV (default SIM_DIR/locus_tasks.tsv; first column = truth.tsv row)]
 # For every piece in RUN_DIR/<event>/pieces.fa (header: id contig start end mode rule contig): patched =
 # modified[start-50k, start) + piece + modified[end, end+50k) (clamped at contig ends); original = norm_V on the matching interval (shift from
-# truth.tsv); minimap2 2.31 asm5 --eqx best record: NM and length difference.
+# truth.tsv: x - shift before the event or inside an event of unchanged length, x - shift after it, the event start or end for x
+# inside an event that changes length); minimap2 2.31 asm5 --eqx
+# best record: NM and length difference.
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
-while [ $# -gt 0 ]; do case $1 in --washu) D=$2;; --sim) SD=$2;; --runs) RD=$2;; --sample) SM=$2;; --version) V=$2;; --hap) H=$2;; --out) OUT=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+while [ $# -gt 0 ]; do case $1 in --washu) D=$2;; --sim) SD=$2;; --runs) RD=$2;; --sample) SM=$2;; --version) V=$2;; --hap) H=$2;; --out) OUT=$2;; --tasks) TK=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+TK=${TK:-$SD/locus_tasks.tsv}
 for v in D SD RD SM V H OUT; do [ -n "${!v:-}" ] || { echo "ERROR missing $v"; exit 2; }; done
 cd $D; S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools; MM=$D/scripts_tmp/minimap2-2.31/minimap2
 mkdir -p /scratch/$USER/tmp/phrs; W=$(mktemp -d /scratch/$USER/tmp/phrs/simchk.XXXX)
@@ -35,6 +39,7 @@ for f in ("p", "o"):
     open(f"{W}/{f}.fa", "w").write(f"{h}\n{s[t0:len(s) - t1]}\n"); out.append(t0 + t1)
 print(*out)
 PY
+om () { if [ $1 -le $m0 ] || [ $((m1 - m0)) -eq $((o1 - o0)) ]; then echo $(($1 - (m0 - o0))); elif [ $1 -ge $m1 ]; then echo $(($1 - (m1 - o1))); else echo $2; fi; }  # sim -> norm_V
 printf "event\tid\tcontig\tpiece_start\tpiece_end\tpatched_bp\toriginal_bp\tmatches\tnm\tlength_diff\tpatched_telo_bp\toriginal_telo_bp\n" > $OUT
 while IFS=$'\t' read -r i n e r; do
   P=$RD/$i.$n/pieces.fa; [ -s $P ] || continue
@@ -47,13 +52,14 @@ while IFS=$'\t' read -r i n e r; do
     [ -n "$CL" ] && [ $L -ge 0 ] && [ $R -ge 0 ] || { echo "ERROR piece $id $c $a-$z, contig length '$CL'"; exit 1; }
     { echo ">patched"; { [ $L -eq 0 ] || $S faidx $SD/norm/$SM#$H.fa.gz "$c:$((a - L + 1))-$a" | tail -n +2; echo "$seq"
       [ $R -eq 0 ] || $S faidx $SD/norm/$SM#$H.fa.gz "$c:$((z + 1))-$((z + R))" | tail -n +2; } | tr -d '\n'; echo; } > $W/p.fa
-    $S faidx norm_$V/$SM#$H.fa.gz "$c:$((a - L + 1 - (m0 - o0)))-$((z - (m1 - o1) + R))" | sed '1s/.*/>original/' > $W/o.fa
+    OS=$(om $((a - L)) $o0); OE=$(om $((z + R)) $o1)
+    $S faidx norm_$V/$SM#$H.fa.gz "$c:$((OS + 1))-$OE" | sed '1s/.*/>original/' > $W/o.fa
     read -r TP TO < <(python3 $W/trim.py $W $((a == L)) $((z + R == CL))); [ -n "${TO:-}" ] || { echo "ERROR telomere trim failed on $id"; exit 1; }
     $MM -cx asm5 --eqx $W/o.fa $W/p.fa 2> /dev/null | sort -k10,10nr | head -1 > $W/a.paf
     PL=$(tail -n +2 $W/p.fa | tr -d '\n' | wc -c); OL=$(tail -n +2 $W/o.fa | tr -d '\n' | wc -c)
     MT=$(awk '{print $10 + 0}' $W/a.paf); NM=$(awk '{for (k=13; k<=NF; k++) if ($k ~ /^NM:i:/) print substr($k, 6)}' $W/a.paf)
     printf "$i.$n\t$id\t$c\t$a\t$z\t$PL\t$OL\t${MT:-0}\t${NM:-NA}\t$((PL - OL))\t$TP\t$TO\n" >> $OUT
   done
-done < $SD/locus_tasks.tsv
+done < $TK
 echo "[$(date -Is)] $(($(wc -l < $OUT) - 1)) pieces checked"
 rm -rf "$W"
