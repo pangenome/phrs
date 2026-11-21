@@ -55,7 +55,7 @@ while IFS=$'\t' read -r i n e r; do
     OS=$(om $((a - L)) $o0); OE=$(om $((z + R)) $o1)
     $S faidx norm_$V/$SM#$H.fa.gz "$c:$((OS + 1))-$OE" | sed '1s/.*/>original/' > $W/o.fa
     read -r TP TO < <(python3 $W/trim.py $W $((a == L)) $((z + R == CL))); [ -n "${TO:-}" ] || { echo "ERROR telomere trim failed on $id"; exit 1; }
-    $MM -cx asm5 --eqx $W/o.fa $W/p.fa 2> /dev/null | sort -k10,10nr | head -1 > $W/a.paf
+    $MM -cx asm5 --eqx $W/o.fa $W/p.fa 2> /dev/null | sort -k10,10nr | awk "NR == 1" > $W/a.paf  # awk reads all: head -1 made sort exit 141 (SIGPIPE) under pipefail
     PL=$(tail -n +2 $W/p.fa | tr -d '\n' | wc -c); OL=$(tail -n +2 $W/o.fa | tr -d '\n' | wc -c)
     MT=$(awk '{print $10 + 0}' $W/a.paf); NM=$(awk '{for (k=13; k<=NF; k++) if ($k ~ /^NM:i:/) print substr($k, 6)}' $W/a.paf)
     printf "$i.$n\t$id\t$c\t$a\t$z\t$PL\t$OL\t${MT:-0}\t${NM:-NA}\t$((PL - OL))\t$TP\t$TO\n" >> $OUT
