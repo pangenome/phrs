@@ -29,7 +29,15 @@ awk -F'\t' -v OFS='\t' '{e=($9 > $8 ? $9 : $8 + 1); print $3, $8, e, $2}' $W/app
 log "$SM $V: $NP applied pieces from $I; $(awk '{s+=$3-$2} END {print s}' $W/seg.bed) bp in pieces"
 for s in hifi ont; do
   [ $s = hifi ] && BS=$(ls hifi/bam/*.$SM.$V.bam) || BS=$(ls ont_full/SRR*.$SM.$V.bam)
-  for b in $BS; do $S view -F 0x900 -L $W/pick.bed $b; done | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/$s.fq
+  # moosefs read errors: retry each BAM
+  for b in $BS; do
+    for t in 1 2 3; do
+      if $S view -F 0x900 -L $W/pick.bed $b > $W/view.sam; then break; fi
+      [ $t -lt 3 ] || { echo "ERROR samtools view failed 3 times on $b" >&2; exit 1; }
+      log "samtools view failed on $b (try $t of 3), retry in 60 s" >&2; sleep 60
+    done
+    cat $W/view.sam
+  done | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/$s.fq
   log "reads $s: $(awk 'NR%4==2' $W/$s.fq | wc -l)"
 done
 cat $I/$SM#1.fa $I/$SM#2.fa > $W/ref0.fa; $S faidx $W/ref0.fa
