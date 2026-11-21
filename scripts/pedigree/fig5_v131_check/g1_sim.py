@@ -112,6 +112,7 @@ if MODE == "term_hi":
     cand = collections.defaultdict(list)
     for (q, t), v in best.items(): cand[q].append((abs(v[2] - 0.983), t, v))
     print("term_hi: clean ends with a donor (identity 0.97-0.995, >= 95% of the block aligned): " + ", ".join(f"{L // 1000} kb {sum(1 for c, a, _ in ends if cand[f'{c}:{a}:{L}'])}" for L in sorted(set(SIZES))), file=sys.stderr)
+    os.makedirs(O, exist_ok=True)
     with open(f"{O}/donors.tsv", "w") as dn:
         dn.write("recipient\tarm\tblock_bp\tdonor_end\tstrand\tidentity\tcoverage\treplaced_bp\tdonor_bp\n")
         for L in SIZES:
