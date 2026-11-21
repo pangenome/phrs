@@ -7,7 +7,7 @@
 # Does each piece restore the original?
 # usage: sbatch g1_sim_check.sbatch --washu D --sim SIM_DIR --runs RUN_DIR --sample SM --version V --hap H --out TSV
 # For every piece in RUN_DIR/<event>/pieces.fa (header: id contig start end mode rule contig): patched =
-# modified[start-50k, start) + piece + modified[end, end+50k); original = norm_V on the matching interval (shift from
+# modified[start-50k, start) + piece + modified[end, end+50k) (clamped at contig ends); original = norm_V on the matching interval (shift from
 # truth.tsv); minimap2 2.31 asm5 --eqx best record: NM and length difference.
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
@@ -22,9 +22,12 @@ while IFS=$'\t' read -r i n e r; do
   [ -n "${m1:-}" ] || { echo "ERROR event $i not in truth.tsv"; exit 1; }
   awk '/^>/ {h=substr($0, 2); next} {print h"\t"$0}' $P | while IFS=$'\t' read -r h seq; do
     read -r id c a z rest <<< "$h"
-    { echo ">patched"; { $S faidx $SD/norm/$SM#$H.fa.gz "$c:$((a - 49999))-$a" | tail -n +2; echo "$seq"
-      $S faidx $SD/norm/$SM#$H.fa.gz "$c:$((z + 1))-$((z + 50000))" | tail -n +2; } | tr -d '\n'; echo; } > $W/p.fa
-    $S faidx norm_$V/$SM#$H.fa.gz "$c:$((a - 49999 - (m0 - o0)))-$((z - (m1 - o1) + 50000))" | sed '1s/.*/>original/' > $W/o.fa
+    # flanks up to 50 kb, clamped at the contig ends (terminal pieces start at 0 or end at the contig length)
+    CL=$(awk -v c="$c" '$1 == c {print $2}' $SD/norm/$SM#$H.fa.gz.fai); L=$((a < 50000 ? a : 50000)); R=$((CL - z < 50000 ? CL - z : 50000))
+    [ -n "$CL" ] && [ $L -ge 0 ] && [ $R -ge 0 ] || { echo "ERROR piece $id $c $a-$z, contig length '$CL'"; exit 1; }
+    { echo ">patched"; { [ $L -eq 0 ] || $S faidx $SD/norm/$SM#$H.fa.gz "$c:$((a - L + 1))-$a" | tail -n +2; echo "$seq"
+      [ $R -eq 0 ] || $S faidx $SD/norm/$SM#$H.fa.gz "$c:$((z + 1))-$((z + R))" | tail -n +2; } | tr -d '\n'; echo; } > $W/p.fa
+    $S faidx norm_$V/$SM#$H.fa.gz "$c:$((a - L + 1 - (m0 - o0)))-$((z - (m1 - o1) + R))" | sed '1s/.*/>original/' > $W/o.fa
     $MM -cx asm5 --eqx $W/o.fa $W/p.fa 2> /dev/null | sort -k10,10nr | head -1 > $W/a.paf
     PL=$(tail -n +2 $W/p.fa | tr -d '\n' | wc -c); OL=$(tail -n +2 $W/o.fa | tr -d '\n' | wc -c)
     MT=$(awk '{print $10 + 0}' $W/a.paf); NM=$(awk '{for (k=13; k<=NF; k++) if ($k ~ /^NM:i:/) print substr($k, 6)}' $W/a.paf)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Score vote rules on simulated terminal errors.
 
-usage: g1_terminal_rule_check.py WASHU LABEL:GRID_WINDOW_DIR...
+usage: g1_terminal_rule_check.py WASHU LABEL:GRID_WINDOW_DIR[:CHECK_TSV]... (CHECK_TSV in GRID_WINDOW_DIR, default check.tsv)
 For events named *term_* (within 20 kb of a contig end): best ex:5000 candidate under 'more' (HiFi and ONT more)
 and 'ont_only' (ONT more); right = NM, length difference <= 50 and matches >= original - 50 (as g1_grid_score.py).
 """
@@ -9,9 +9,9 @@ import glob, os, sys
 D = sys.argv[1]; os.chdir(D); sys.path.insert(0, "scripts_tmp")
 from g1_grid_score_v2 import votes, passes
 for spec in sys.argv[2:]:
-    label, gd = spec.split(":")
+    label, gd, *cf = spec.split(":")
     chk = {}
-    for l in list(open(f"{gd}/check.tsv"))[1:]:
+    for l in list(open(f"{gd}/{cf[0] if cf else 'check.tsv'}"))[1:]:
         t = l.rstrip("\n").split("\t"); chk[(t[0], t[1])] = (int(t[6]), int(t[7]), t[8], int(t[9]))
     for sf in sorted(glob.glob(f"{gd}/*term_*/summary.tsv")):
         ev = os.path.dirname(sf); name = os.path.basename(ev)
