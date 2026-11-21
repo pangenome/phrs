@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Put known errors into one haplotype.
 
-usage: g1_sim.py WASHU SAMPLE VERSION HAP SEED OUT_DIR
+usage: g1_sim.py WASHU SAMPLE VERSION HAP SEED OUT_DIR [MODE: standard (default) | term]
+term mode (2026-11-21): term_para = the L bp starting 20 kb from one contig end replaced by the same L bp of another
+end of the same arm community (data/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv, not C7, C14, C15), oriented
+telomere-outward, 2 each for L = 10, 50, 100 kb; term_none = 6 untouched end windows (controls); same clean-end rule.
 Clean 10 kb bins: HiFi and ONT Q0 scans unflagged (depth > 0.25 x contig median, SNV < 3) for +- 300 kb, no cenSat.
 Types x sizes (2, 10, 50 kb), one each, >= 2 Mb apart, >= 1 Mb from ends: del (remove), dup (tandem copy), foreign
 (replace with a clean segment of another contig), snv (1 change per 1,000 bp); term_del removes the last L bp of a
@@ -12,6 +15,8 @@ out: OUT_DIR/norm/SAMPLE#{1,2}.fa (HAP modified, other copied), OUT_DIR/truth.ts
 import collections, gzip, os, random, statistics as st, sys
 
 D, SM, V, H, seed, O = sys.argv[1:7]; H = int(H); rng = random.Random(int(seed))
+MODE = sys.argv[7] if len(sys.argv) > 7 else "standard"
+if MODE not in ("standard", "term"): sys.exit(f"ERROR unknown mode {MODE}")
 def read(f):
     name, seq = None, []
     for l in gzip.open(f, "rt"):
@@ -50,11 +55,40 @@ def pick(L, term=False):
         if any(abs(p - u) < 2000000 for u in used[c]): continue
         used[c].append(p); return c, p
     sys.exit(f"ERROR no clean place for L={L} term={term}")
-ev = []
-for L in (2000, 10000, 50000):
-    for t in ("del", "dup", "foreign", "snv", "term_del"):
-        c, p = pick(L, t == "term_del"); ev.append((t, L, c, p))
-for _ in range(10): c, p = pick(50000); ev.append(("none", 50000, c, p))
+ev = []; src = {}
+def rc(x): return x[::-1].translate(str.maketrans("ACGTacgtNn", "TGCAtgcaNn"))
+def endseg(c, arm, L):  # L bp starting 20 kb from the end, read telomere-outward as a q-end
+    n = len(seqs[c]); return seqs[c][n - 20000 - L:n - 20000] if arm == "q" else rc(seqs[c][20000:20000 + L])
+def clean_end(c, arm):
+    n = len(seqs[c]); r = range(max(n - 1000000, 0) // 10000 * 10000, n - 30000, 10000) if arm == "q" else range(30000, 1000000, 10000)
+    return not any(q in flag[c] for q in r)
+if MODE == "standard":
+    for L in (2000, 10000, 50000):
+        for t in ("del", "dup", "foreign", "snv", "term_del"):
+            c, p = pick(L, t == "term_del"); ev.append((t, L, c, p))
+    for _ in range(10): c, p = pick(50000); ev.append(("none", 50000, c, p))
+else:
+    pref = f"{SM}#{H}#"; com = collections.defaultdict(list)
+    for l in list(open(f"{D}/scripts_tmp/arm_communities_k15.tsv"))[1:]:
+        arm, cm = l.split("\t")[:2]; ch, a = arm.split("_")
+        if cm not in ("C7", "C14", "C15") and pref + ch in seqs: com[cm].append((pref + ch, a))
+    ends = [(c, a, cm) for cm, xs in sorted(com.items()) if len(xs) > 1 for c, a in xs if clean_end(c, a)]
+    rng.shuffle(ends); usedend = set()
+    for L in (10000, 10000, 50000, 50000, 100000, 100000):
+        for c, a, cm in ends:
+            if (c, a) in usedend: continue
+            others = [x for x in com[cm] if x != (c, a)]
+            if not others: continue
+            sc, sa = rng.choice(others); usedend.add((c, a))
+            n = len(seqs[c]); p = n - 20000 - L if a == "q" else 20000
+            seg = endseg(sc, sa, L); src[(c, p)] = seg if a == "q" else rc(seg)
+            ev.append(("term_para", L, c, p)); print(f"term_para {L}: {c} {a} <- {sc} {sa} ({cm})", file=sys.stderr); break
+        else: sys.exit(f"ERROR no clean community end left for L={L}")
+    for c, a, cm in ends:
+        if sum(1 for e in ev if e[0] == "term_none") == 6: break
+        if (c, a) in usedend: continue
+        usedend.add((c, a)); n = len(seqs[c]); ev.append(("term_none", 50000, c, n - 70000 if a == "q" else 20000))
+    if sum(1 for e in ev if e[0] == "term_none") < 6: sys.exit("ERROR fewer than 6 clean ends for term_none")
 new, truth = dict(seqs), []
 for c in seqs:
     s, shift = seqs[c], 0; parts, last = [], 0
@@ -68,7 +102,9 @@ for c in seqs:
             rep = list(seg)
             for i in range(rng.randrange(1000), L, 1000): rep[i] = rng.choice([b for b in "ACGT" if b != rep[i].upper()])
             rep = "".join(rep)
+        elif t == "term_para": rep = src[(cc, p)]
         else: rep = seg
+        if len(rep) != L and t in ("term_para",): sys.exit(f"ERROR term_para block length {len(rep)} != {L} at {cc}:{p}")
         parts.append(rep); last = p + L; shift += len(rep) - L
         truth.append((t, L, c, p, p + L, ms, ms + len(rep)))
     parts.append(s[last:]); new[c] = "".join(parts)
