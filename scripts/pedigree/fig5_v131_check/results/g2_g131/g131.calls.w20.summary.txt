@@ -1,0 +1,9 @@
+g131 kid delta 0.0005: runs 10, outside cenSat and problematic 3, kept (not short end runs) 3
+g131 kid delta 0.001: runs 10, outside cenSat and problematic 3, kept (not short end runs) 3
+g131 kid delta 0.002: runs 9, outside cenSat and problematic 3, kept (not short end runs) 3
+g131 mat delta 0.0005: runs 17, outside cenSat and problematic 0, kept (not short end runs) 10
+g131 mat delta 0.001: runs 16, outside cenSat and problematic 0, kept (not short end runs) 9
+g131 mat delta 0.002: runs 12, outside cenSat and problematic 0, kept (not short end runs) 7
+g131 pat delta 0.0005: runs 20, outside cenSat and problematic 0, kept (not short end runs) 13
+g131 pat delta 0.001: runs 18, outside cenSat and problematic 0, kept (not short end runs) 12
+g131 pat delta 0.002: runs 16, outside cenSat and problematic 0, kept (not short end runs) 11
