@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """Candidate assembly errors from the HiFi scan.
 
-usage: g1_candidates_hifi.py WASHU SAMPLE VERSION OUT_TSV [ANNOT_DIR, default annot_VERSION]
+usage: g1_candidates_hifi.py WASHU SAMPLE VERSION OUT_TSV [ANNOT_DIR, default annot_VERSION] [MERGE_BP, default 20000]
 Rules (fixed 2026-11-16 before the HiFi scan finished):
   a 10 kb bin is flagged when HiFi depth <= 0.25 x the contig median, or HiFi SNV >= 3 with depth >= 3;
   depth = MAPQ>=0 depth (bins_hifi_q0). Change 2026-11-16 after the first scan: MAPQ>=20 depth was 0 in
   hap1 = hap2 stretches (diploid mapping, MAPQ 1-5), so 22% of bins were flagged. Thresholds unchanged.
-  flagged bins <= 20 kb apart are merged; a group is "satellite" when > 50% of it is in cenSat (annot_<version>).
+  flagged bins <= MERGE_BP apart are merged (20 kb until 2026-11-21); a group is "satellite" when > 50% of it is in cenSat (annot_<version>).
 Per group: bins, min depth, SNV sum, ONT SNV sum (check/wg_scan/bins_ont), merqury error k-mers (merqury/<v>/<s>).
 """
 import bisect, collections, gzip, os, statistics as st, sys
 
 D, SM, V, out = sys.argv[1:5]
 AD = sys.argv[5] if len(sys.argv) > 5 else f"annot_{V}"
-print(f"{SM} {V}: cenSat from {D}/{AD}", file=sys.stderr)
+MG = int(sys.argv[6]) if len(sys.argv) > 6 else 20000
+print(f"{SM} {V}: cenSat from {D}/{AD}, merge distance {MG} bp", file=sys.stderr)
 def aname(c):
     s, h, ch = c.split("#")
     return f"{s}.{ch}." + ({"1": "maternal", "2": "paternal"}[h] if s == "PAN027" else f"haplotype{h}")
@@ -38,7 +39,7 @@ for h in (1, 2):
         fl = [x for x in b if x[1] <= 0.25 * med or (x[2] >= 3 and x[1] >= 3)]; nf += len(fl)
         g = []
         for x in fl:
-            if g and x[0] - g[-1][-1][0] <= 20000: g[-1].append(x)
+            if g and x[0] - g[-1][-1][0] <= MG: g[-1].append(x)
             else: g.append([x])
         an = aname(c); p = sorted(mq.get(c, []))
         for grp in g:
