@@ -552,3 +552,18 @@ Manual reference: wfmash on these tracts needs -p as PERCENT (e.g. -p 90)
 in wfmash v0.24.2-16+; faidx region-files want name:start-end lines, not
 BED; the v1.1 assemblies are bgzipped WITH .fai on moosefs
 (washu_v131/assemblies_v11/) — index them in place if writable, or copy.
+REV 13b (2026-11-18) - WHAT THE RELEASED SEGMENT ACTUALLY WAS.
+Correction to REV 13, after A. Guarracino pointed out that my k-mer containment counted forward-strand
+21-mers only: the inserted block at the chr9q h2 terminus is a REVERSE-COMPLEMENT copy of a chr1p
+segment, so a forward-only count cannot detect it. Verified with canonical (both-strand) 21-mers: the
+block PAN011#2#chr9 133,682,643-133,744,561 is 100.0% contained in chr1 hap1's first 200 kb (forward-only
+0.6%, my error), 89.4% in the chr3 hap2 terminal 579 kb and 1.2% in chr1 hap2. Positional check: block
+offsets 0 / 1,000 / 20,000 / 60,000 map to chr1 hap1 reverse-strand 138,032 / 139,074 / 158,074 / 197,948 -
+constant offset, collinear over 60 kb. So the released terminus was an inserted rc chr1p copy, not the
+chromosome's own sequence, and it is simultaneously chr3-like because the chr1p and chr3q terminal blocks
+share sequence. My "not chr1-like" refutation was a strand error and is withdrawn. Her claim that the copy
+sits at chr1 h1 8-61,926 (tract at rc of 22,528-42,527) does not reproduce here - I measure ~138-198 kb -
+so the coordinates need reconciling with her command; no conclusion depends on that. The retraction itself
+is unchanged: on the corrected assembly (hifiasm contig from DAD HiFi only, no SELF data) the daughter's
+paternal chr9q matches at graph dice 1.0000, chr3q is second at 0.9990, and the 9q/3q call stays withdrawn.
+

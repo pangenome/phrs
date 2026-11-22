@@ -15,6 +15,40 @@ Branch merged: `pedigree-fig5-validation-and-patching` (merge `46d584d`). Her RE
 > DAD chr9 corrected with a DAD-only hifiasm contig gives same-chromosome identity 1.0000 and the 9q/3q call is
 > retracted (see `fig5_retraction_and_concerted_evolution_story.md`).
 
+## §0 — Verified restatement (supersedes §2, §3 and §7 below on the chr1 question)
+
+I verified A. Guarracino's correction independently. **She is right and my §2-3 were wrong**: I counted
+21-mers on the forward strand only, and the inserted block is a **reverse-complement** copy, so a
+forward-only count cannot see it. With canonical (both-strand) 21-mers:
+
+| reference | canonical 21-mer containment of the chr9 h2 block (133,682,643-133,744,561) |
+|---|---|
+| **chr1 hap1 first 200 kb** | **100.0%** |
+| chr3 hap2 terminal 579 kb | 89.4% |
+| chr1 hap2 first 200 kb | 1.2% |
+
+(positional check, independent of the containment count: block positions 0, 1,000, 20,000 and 60,000 map
+to chr1 hap1 reverse-strand positions 138,032; 139,074; 158,074 and 197,948 - a constant offset,
+collinear over 60 kb.)
+
+So the released chr9q h2 terminus contains an **rc copy of a chr1p segment**, and it is simultaneously
+89.4% chr3-like, because the chr1p and chr3q terminal blocks themselves share sequence. "chr1-like" and
+"chr3-like" are therefore not alternatives: the block is a chr1p copy, and the family it belongs to is
+shared with chr3q. Her identification was correct; my refutation was a strand error.
+
+**Correction to her coordinates.** She places the copy at chr1 h1 8-61,926 and the 20 kb tract at the
+reverse complement of chr1 h1 22,528-42,527. I do not reproduce that window: the collinear mapping I
+measure is chr1 h1 ~138,032-197,948 (reverse strand), and the 20 kb window from 22,529 differs from the
+tract at 14,064 of 20,000 positions. Her md5 `e075205bcb5e` does match the tract sequence itself, so the
+difference is in the chr1 coordinates she paired it with - most likely a different release or contig. This
+does not affect any conclusion; it only means the published description should either use the coordinates
+verified here or cite her exact command.
+
+**What this changes elsewhere.** Nothing in the retraction. The corrected DAD assembly (hifiasm contig from
+DAD HiFi reads only) still matches the daughter's haplotype at graph dice 1.0000, chr3q is still second at
+0.9990, and the 9q/3q call is still retracted - because the *released* segment was an inserted chr1p copy,
+not the chromosome's own sequence.
+
 ## Two separate loci - and only one of her conclusions survives
 
 | locus | her claim | verdict after independent testing |

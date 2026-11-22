@@ -960,3 +960,25 @@ Date: 2026-11-20
 The window-class control added in 179bc78 measures contact only between PHRs on both axes, so it does not test contact at non-subtelomeric duplications, which is what Referee #1 asks. We removed it from Results and Methods until the matched segmental-duplication control is run. R3-M6, R5-L193, R1-M3 and R1-M9 text stays.
 
 Build: `bash compile.sh` exit 0, `grep -c undefined paper.log` = 0, 45 pages.
+
+## Upstream sync (Andrea, 21 Nov) and the strand correction to my own k-mer test
+
+Date: 2026-11-18
+
+Pulled 122 upstream commits (fast-forward, no conflicts). Her additions to `paper.tex` were kept: the
+family-removal result for enrichment, the reconciliation of "no event in this pedigree" with the four
+discrete 4q/10q transfers in the population (Lemmers 2010), the PHR threshold-sensitivity paragraph, and
+the within-genome pair count (C(77,2) = 2,926 - 96 = 2,830). Build after the merge: exit 0, 0 undefined.
+
+**Correction accepted from her review of my analysis.** My statement that the inserted chr9q segment was
+"not chr1-like" was wrong: I had counted 21-mers on the forward strand only, and the segment is a
+reverse-complement copy of a chr1p block. With canonical 21-mers it is 100.0% contained in chr1 hap1
+(forward-only 0.6%), collinear at constant offset over 60 kb (block 0/1k/20k/60k -> chr1 h1
+138,032/139,074/158,074/197,948). It is at the same time 89.4% chr3-like, because the chr1p and chr3q
+terminal blocks are themselves shared sequence - so "chr1-like" and "chr3-like" are not alternatives.
+Her quoted chr1 coordinates (8-61,926; tract rc of 22,528-42,527) were not reproduced here and should be
+reconciled with her command; no conclusion depends on them.
+
+The manuscript Results now names the artefact precisely: the released assembly carries a reverse-complement
+copy of a chr1p segment at that terminus, which is why his own chr9q haplotype was missing there and chr3q
+won by default. Retraction unchanged.

@@ -423,8 +423,12 @@ whole-genome match appeared to be her father's chr3q while the match to his own 
 assembly at that locus. In both assembly releases the terminal ~150\,kb of his chr9q haplotype 2
 disagrees with his own long reads (dice 0.994 against the daughter's sequence inside the tract,
 against 1.000 outside it and 1.000 throughout in a corrected assembly), and the release quality control marks a misjoin at the start of the copied block.
-The error is what created the interchromosomal winner: a segment of the father's own haplotype was
-absent from his assembly, so the closest remaining sequence, his chr3q, won by default.
+The error is what created the interchromosomal winner: the released assembly carries, at that terminus,
+a reverse-complement copy of a segment of his own chr1p (100\% of the segment's canonical 21-mers fall
+within chr1p, collinear over 60\,kb at constant offset), so his own chr9q haplotype was absent from that
+region and the closest remaining sequence, his chr3q, won by default. The inserted chr1p segment is
+itself a member of the family shared with chr3q, which is why the same block reads as both chr1-like and
+chr3-like.
 
 We therefore repeated the comparison with all candidate ends offered to the similarity computation
 simultaneously rather than one alignment setting at a time, and with the father's chr9q rebuilt from
