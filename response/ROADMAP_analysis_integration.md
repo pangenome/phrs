@@ -226,12 +226,17 @@ closes R1-M10's empirical half. *Unblocks:* the comparative-frame item, which re
 `chr13_p` (37 → 38 intervals). Needs R/guix. *Unblocks:* consistency between figure annotation and the
 published call (38 intervals).
 
-### Stage 4 — reconcile the Methods detection rule with Andrea's simulated terminal errors
-She now has `term` and `term_hi` modes (subtelomeric block replaced by a same-community end, and by a
-97-99.5% identical copy of another end) plus ONT-only vs vote-rule scoring on simulated errors. Our
-Methods asserts the `-f` sweep and the assembly check but quotes no false-positive / false-negative rate.
-*Deliverable:* a Methods sentence with her measured rates, or a correction if her numbers contradict the
-rule. *Unblocks:* any claim we make about how detectable a real exchange would have been.
+### Stage 4 — reconcile the Methods detection rule with Andrea's error-detection work (inputs now in hand)
+Her 22 Nov commits supply the material: a **whole-genome ONT end scan of all four pedigree members**
+(v1.3.1) with a flag rule that yields **25 suspect ends including DAD chr9q**; a **FastGA `-f` end-reach
+scan** (`38 fixes SELF.p 5q; 4 ends fail up to 48`); and a **control** in which a candidate supported by
+paralog-partner reads still passes (`control_partners.vs_patch.tsv`: candidate NM 2 over 147,586 bp versus
+NM 1,340 over 149,108 bp for the original assembly), alongside `control_no_partners`.
+
+*Deliverable:* a Methods sentence quantifying the rule — what the flag rule catches, what it misses, and
+the NM criterion that separates a corrected candidate from the released assembly — plus a check that our
+text does not claim more detectability than her scans support. *Unblocks:* any statement about how
+detectable a genuine exchange would have been in this pedigree.
 
 ### Stage 5 — strand-audit the remaining strand-sensitive analyses
 1. **Window orientation.** The distance profile assumes p-arm windows start at the telomere and q-arm
