@@ -188,3 +188,63 @@ acrocentrics and the PARs. The community tier table converts that into a result:
 So the acrocentric/PAR treatment is not an arbitrary scoping choice: they are a **distinct measurable
 regime**, and the ratio separates them cleanly from the facultative arms. That is the response to the
 reviewer - agree with them, and show the metric that justifies the separation.
+
+## H. Staged plan (2026-11-18), chained by dependency
+
+Each stage names what it unblocks. Nothing later starts until the stage above it is closed, because the
+strand error showed how cheaply a number can look finished while being wrong.
+
+### Stage 0 — strand audit (DONE)
+Every k-mer-containment claim in this cycle was recomputed with canonical (both-strand) 21-mers.
+
+| claim | forward-only | canonical | verdict |
+|---|---|---|---|
+| released chr9q h2 block (133,682,643-133,744,561) contained in chr1 hap1 | 0.6% | **100.0%** | my refutation was wrong; block is an rc chr1p copy |
+| her ONT patch segment vs chr1 hap1 | 0.9% | **90.7%** | patch also carries a chr1p component |
+| corrected chr9q terminus vs chr1 hap1 | 0.9% | **91.0%** | true terminus is family-shared |
+| corrected chr9q terminus vs chr3 hap2 | 96.8% | 96.8% | unchanged (same strand) |
+| corrected chr9q terminus vs SELF.p | 99.9% | 99.9% | inheritance unchanged |
+
+**The resolution this gives:** the *released* assembly held a pure ~62 kb reverse-complement chr1p
+insertion; the *true* terminus, rebuilt from DAD's own reads, is an ordinary subtelomeric block ~96.8%
+shared with chr3q and ~91.0% with chr1p. The two papers' descriptions ("a chr1p copy" / "chr3-like") were
+both right about different objects. Retraction unaffected.
+
+**Reproduction rule added:** all k-mer containment, coincidence and containment tests must use canonical
+k-mers; a forward-only count silently returns ~0 against a reverse-complemented copy.
+
+### Stage 1 — propagate stage 0 (in progress with this commit)
+Notebook, evidence log (REV 13b), BUILD_LOG and the manuscript's artefact sentence all carry the canonical
+numbers. *Unblocks:* nothing to build on until the record agrees.
+
+### Stage 2 — the specificity paragraph (last open reviewer item)
+TEL ρ = 0.504 vs INT ρ = 0.129, Δ = +0.393 [0.111, 0.679], p = 0.006. Writes into Results + Methods;
+closes R1-M10's empirical half. *Unblocks:* the comparative-frame item, which reuses the same numbers.
+
+### Stage 3 — regenerate the two figures that read `data/chm13.phrs.bed`
+`make_fig2bc_jaccard_heatmaps.R` and `make_fig5_pedigree_supporting_material.py`, now that the BED has
+`chr13_p` (37 → 38 intervals). Needs R/guix. *Unblocks:* consistency between figure annotation and the
+published call (38 intervals).
+
+### Stage 4 — reconcile the Methods detection rule with Andrea's simulated terminal errors
+She now has `term` and `term_hi` modes (subtelomeric block replaced by a same-community end, and by a
+97-99.5% identical copy of another end) plus ONT-only vs vote-rule scoring on simulated errors. Our
+Methods asserts the `-f` sweep and the assembly check but quotes no false-positive / false-negative rate.
+*Deliverable:* a Methods sentence with her measured rates, or a correction if her numbers contradict the
+rule. *Unblocks:* any claim we make about how detectable a real exchange would have been.
+
+### Stage 5 — strand-audit the remaining strand-sensitive analyses
+1. **Window orientation.** The distance profile assumes p-arm windows start at the telomere and q-arm
+   windows end at it. If any were reverse-complemented during extraction, the profile is mirrored. Test
+   empirically (telomeric-repeat asymmetry or a known landmark) rather than by assumption.
+2. **ED3 orientation result** (98.6% of 9.6 Gbp same telomere-relative orientation) — confirm it was
+   computed from the PAF strand column, not from coordinate order.
+3. Any dot-plot highlight boxes that assume a strand.
+
+### Stage 6 — author-to-supply items
+Ethics statement, Zenodo DOI, Source Data, ED figures as `.tif`/`.eps`, word count, tracked-changes copy.
+
+### Stage 7 — closing gate
+`bash compile.sh` (exit 0, zero undefined), `python3 scripts/ci/audit_response_numbers.py`, and a final
+sweep for superseded numbers (the values in `response/notes/andrea_patch_reconciliation.md` §2-3 are
+deliberately retained as the historical record and must stay flagged as such).

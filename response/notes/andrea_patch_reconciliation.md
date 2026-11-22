@@ -49,6 +49,20 @@ DAD HiFi reads only) still matches the daughter's haplotype at graph dice 1.0000
 0.9990, and the 9q/3q call is still retracted - because the *released* segment was an inserted chr1p copy,
 not the chromosome's own sequence.
 
+
+**Stage-0 addition (canonical k-mers, both strands).** The released block is 100.0% contained in chr1
+hap1, but the rebuilt sequences are family blocks, not pure chr1 copies:
+
+| sequence | chr3 hap2 term | chr1 hap1 first 200 kb | SELF.p term |
+|---|---|---|---|
+| her ONT patch segment (69.7 kb) | 96.4% | **90.7%** (forward-only 0.9%) | 99.5% |
+| corrected chr9q terminus (70 kb) | 96.8% | **91.0%** (forward-only 0.9%) | 99.9% |
+| released chr9q block (61.9 kb) | 89.4% | **100.0%** (forward-only 0.6%) | - |
+
+So the released assembly carried a **pure** reverse-complement chr1p insertion, whereas the true terminus
+is ~97% chr3-shared and ~91% chr1p-shared at once - an ordinary family block. Both papers' descriptions
+were right about different objects: hers about the released block, ours about the family it belongs to.
+
 ## Two separate loci - and only one of her conclusions survives
 
 | locus | her claim | verdict after independent testing |

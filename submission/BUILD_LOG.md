@@ -982,3 +982,11 @@ reconciled with her command; no conclusion depends on them.
 The manuscript Results now names the artefact precisely: the released assembly carries a reverse-complement
 copy of a chr1p segment at that terminus, which is why his own chr9q haplotype was missing there and chr3q
 won by default. Retraction unchanged.
+
+## Stage 0 complete: canonical-k-mer strand audit
+
+All k-mer containment claims were recomputed with canonical 21-mers. Two changed materially (the released
+chr9q block is 100.0% chr1p-contained, not 0.6%; the rebuilt sequences are 90.7-91.0% chr1p and 96.4-96.8%
+chr3, i.e. family blocks). No conclusion changed; the retraction stands. Resolution recorded: the released
+assembly held a pure rc chr1p insertion, while the true terminus is an ordinary shared family block. The
+staged plan (stages 0-7) is in `response/ROADMAP_analysis_integration.md` section H.
