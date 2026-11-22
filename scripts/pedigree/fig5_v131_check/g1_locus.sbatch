@@ -8,6 +8,7 @@
 # usage: sbatch g1_locus.sbatch --washu D --sample SM --version V --error CONTIG:A-Z --flank BP --out DIR [--extra R1,R2]
 #   [--asm NORM_DIR (default norm_V)] [--read-error CONTIG:A-Z on norm_V, where the BAM reads sit (default --error)]
 #   [--mmi-dir DIR with SM.hifi.mmi and SM.ont.mmi of the --asm diploid] [--rules ex:L,...,id:T,...]
+#   [--bam-dir DIR with SM.hifi.bam and SM.ont.bam aligned to the --asm diploid (sims): reads sit on --asm, --read-error = --error]
 # Own reads only, same steps for HiFi (hifi/bam) and ONT (ont_full):
 # 1. windows: faulty = ERROR +- FLANK, homolog window on the other haplotype (minimap2 asm5; male X uses Y,
 #    none when no homolog aligns).
@@ -23,8 +24,8 @@
 #      DIR/<mode>.contigs.fa
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
-EX=""; NA=""; RE=""; MD=""; RU=ex:5000,ex:10000,ex:20000,id:0.99,id:0.995,id:0.999
-while [ $# -gt 0 ]; do case $1 in --washu) D=$2;; --sample) SM=$2;; --version) V=$2;; --error) ERR=$2;; --flank) F=$2;; --out) O=$2;; --extra) EX=$2;; --asm) NA=$2;; --read-error) RE=$2;; --mmi-dir) MD=$2;; --rules) RU=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+EX=""; NA=""; RE=""; MD=""; BD=""; RU=ex:5000,ex:10000,ex:20000,id:0.99,id:0.995,id:0.999
+while [ $# -gt 0 ]; do case $1 in --washu) D=$2;; --sample) SM=$2;; --version) V=$2;; --error) ERR=$2;; --flank) F=$2;; --out) O=$2;; --extra) EX=$2;; --asm) NA=$2;; --read-error) RE=$2;; --mmi-dir) MD=$2;; --rules) RU=$2;; --bam-dir) BD=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
 for v in D SM V ERR F O; do [ -n "${!v:-}" ] || { echo "ERROR missing argument for $v"; exit 2; }; done
 log () { echo "[$(date -Is)] $*"; }
 cd $D; [ -s $O/summary.tsv ] && { log "exists $O/summary.tsv, skip"; exit 0; }
@@ -34,9 +35,11 @@ HA=$D/scripts_tmp/hifiasm-0.25.0/hifiasm; PY=$D/scripts_tmp/g1_locus.py; T=${SLU
 C=${ERR%%:*}; R=${ERR#*:}; A=${R%-*}; Z=${R#*-}; H=$(echo $C | cut -d'#' -f2); OH=$((3 - H)); OC=${C/\#$H\#/\#$OH\#}
 NA=${NA:-norm_$V}; RE=${RE:-$ERR}; RR=${RE#*:}; RA=${RR%-*}; RZ=${RR#*-}; [ "${RE%%:*}" = "$C" ] || { echo "ERROR --read-error contig ${RE%%:*} is not $C"; exit 2; }
 L=$(awk -v c="$C" '$1==c {print $2}' $NA/$SM#$H.fa.gz.fai); [ -n "$L" ] || { echo "ERROR $C not in $NA"; exit 1; }
-RL=$(awk -v c="$C" '$1==c {print $2}' norm_$V/$SM#$H.fa.gz.fai); RWS=$((RA > F ? RA - F : 1)); RWE=$((RZ + F > RL ? RL : RZ + F))
+RN=norm_$V; if [ -n "$BD" ]; then RN=$NA; [ "$RE" = "$ERR" ] || { echo "ERROR with --bam-dir the reads sit on $NA: --read-error $RE must equal --error $ERR"; exit 2; }; for s in hifi ont; do [ -s $BD/$SM.$s.bam ] || { echo "ERROR missing $BD/$SM.$s.bam"; exit 1; }; done; fi
+bams () { if [ -n "$BD" ]; then echo $BD/$SM.$1.bam; elif [ $1 = hifi ]; then ls hifi/bam/*.$SM.$V.bam; else ls ont_full/SRR*.$SM.$V.bam; fi; }
+RL=$(awk -v c="$C" '$1==c {print $2}' $RN/$SM#$H.fa.gz.fai); RWS=$((RA > F ? RA - F : 1)); RWE=$((RZ + F > RL ? RL : RZ + F))
 WS=$((A > F ? A - F : 1)); WE=$((Z + F > L ? L : Z + F)); TL=$((WS == 1 ? 1 : 0)); TR=$((WE == L ? 1 : 0))
-log "1 windows: $SM $V asm $NA error $ERR (reads at $RE), faulty $C:$WS-$WE (contig $L bp, terminal left $TL right $TR), host $(hostname)"
+log "1 windows: $SM $V asm $NA error $ERR (reads at $RE on $RN${BD:+, BAMs $BD}), faulty $C:$WS-$WE (contig $L bp, terminal left $TL right $TR), host $(hostname)"
 $S faidx $NA/$SM#$H.fa.gz "$C:$WS-$WE" | sed '1s/.*/>assembly/' > $W/asm.fa; $S faidx $W/asm.fa
 grep -q -P "^$OC\t" $NA/$SM#$OH.fa.gz.fai || case $OC in *chrX) OC=${OC%chrX}chrY;; *chrY) OC=${OC%chrY}chrX;; esac  # male: X vs Y
 HR=""
@@ -48,7 +51,7 @@ if grep -q -P "^$OC\t" $NA/$SM#$OH.fa.gz.fai; then
 fi
 log "1 windows: homolog ${HR:-none (no homolog contig or no alignment on $OC: haploid region, reads from the faulty window only)}"
 for s in hifi ont; do
-  [ $s = hifi ] && B=$(ls hifi/bam/*.$SM.$V.bam) || B=$(ls ont_full/SRR*.$SM.$V.bam)
+  B=$(bams $s)
   for b in $B; do $S view -F 0x900 $b "$C:$RWS-$RWE" $HR $(echo $EX | tr ',' ' '); done \
     | awk -F'\t' '!s[$1]++ {print "@"$1"\n"$10"\n+\n"$11}' > $W/$s.fq
   N=$(awk 'NR%4==2' $W/$s.fq | wc -l); [ $N -gt 0 ] || { echo "ERROR no $s reads"; exit 1; }
@@ -111,7 +114,7 @@ if [ -s $W/cands.tsv ]; then
   log "6 votes: new pieces also match $(wc -l < $W/hits.txt) places elsewhere; their reads join"
   for s in hifi ont; do
     X=$([ $s = hifi ] && echo map-hifi || echo map-ont)
-    [ $s = hifi ] && B=$(ls hifi/bam/*.$SM.$V.bam) || B=$(ls ont_full/SRR*.$SM.$V.bam)
+    B=$(bams $s)
     if [ -s $W/hits.txt ]; then for b in $B; do $S view -F 0x900 $b $(cat $W/hits.txt); done | awk -F'\t' '{print "@"$1"\n"$10"\n+\n"$11}' >> $W/$s.fq; fi
     awk 'NR%4==1 {k=!s[$1]++} k' $W/$s.fq > $W/$s.u.fq
     $MM -ax $X -N 20 -p 0.5 -t $T $MD/$SM.$s.mmi $W/$s.u.fq 2> /dev/null > $W/$s.dip.sam
