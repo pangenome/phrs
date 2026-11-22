@@ -1,0 +1,5 @@
+v11.pat.chr5q	inputs_v11/PAN027pat_vs_PAN011_joint.query.fa	inputs_v11/PAN027pat_vs_PAN011_joint.target.fa	PAN027#2#chr5	q	PAN011#joint#h2_chr5
+v11.pat.chr8q	inputs_v11/PAN027pat_vs_PAN011_joint.query.fa	inputs_v11/PAN027pat_vs_PAN011_joint.target.fa	PAN027#2#chr8	q	PAN011#joint#h1_chr8
+v11.pat.chr13q	inputs_v11/PAN027pat_vs_PAN011_joint.query.fa	inputs_v11/PAN027pat_vs_PAN011_joint.target.fa	PAN027#2#chr13	q	PAN011#joint#h1_chr13
+v11.mat.chr19q	inputs_v11/PAN027mat_vs_PAN010_joint.query.fa	inputs_v11/PAN027mat_vs_PAN010_joint.target.fa	PAN027#1#chr19	q	PAN010#joint#h1_chr19
+v11.kid.chr7p	fig5_kidm2/inputs_v11/PAN028mat_vs_PAN027_joint.query.fa	fig5_kidm2/inputs_v11/PAN028mat_vs_PAN027_joint.target.fa	PAN028#1#chr7	p	PAN027#joint#h2_chr7
