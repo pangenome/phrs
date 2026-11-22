@@ -7,13 +7,13 @@ chr1	published	107350000	114700000	h1	h2	match
 chr1	published	190650000	191050000	h2	h1	match
 chr2	ours	50600000	50600000	h1	h2	untestable
 chr2	ours	144000000	144000000	h2	h1	match
-chr2	published	144050000	144050000	h2	h1	match
+chr2	published	144000000	144050000	h2	h1	match
 chr4	ours	20550000	20550000	h1	h2	match
 chr4	published	4900000	39250000	h1	h2	match
 chr5	ours	32400000	32450000	h1	h2	untestable
 chr6	ours	170700000	170700000	h2	h1	untestable
 chr7	ours	7150000	7150000	h1	h2	match
-chr7	published	7100000	7100000	h1	h2	match
+chr7	published	7100000	7150000	h1	h2	match
 chr8	ours	2600000	2600000	h1	h2	match
 chr8	ours	128500000	128550000	h2	h1	untestable
 chr8	published	2500000	2550000	h1	h2	match
@@ -24,10 +24,10 @@ chr11	ours	11400000	11400000	h1	h2	untestable
 chr11	ours	130800000	130800000	h2	h1	untestable
 chr12	ours	119000000	119000000	h1	h2	untestable
 chr13	ours	90550000	90600000	h2	h1	match
-chr13	published	90600000	90600000	h2	h1	match
+chr13	published	90550000	90600000	h2	h1	match
 chr14	ours	37400000	37400000	h1	h2	match
 chr14	ours	86100000	86100000	h2	h1	match
-chr14	published	37350000	37350000	h1	h2	match
+chr14	published	37350000	37450000	h1	h2	match
 chr14	published	50700000	95100000	h2	h1	match
 chr15	ours	96600000	96600000	h2	h1	untestable
 chr17	ours	11550000	11650000	h1	h2	match
@@ -37,6 +37,6 @@ chr17	published	49550000	82250000	h2	h1	match
 chr18	ours	2050000	2050000	h1	h2	match
 chr18	ours	75450000	75550000	h2	h1	match
 chr18	published	2100000	47350000	h1	h2	match
-chr18	published	75600000	75600000	h2	h1	match
+chr18	published	75500000	75600000	h2	h1	match
 chr19	ours	7250000	7250000	h1	h2	untestable
 chr19	ours	62550000	62550000	h2	h1	untestable
