@@ -23,7 +23,7 @@ Status flag: `OPEN` · `IN PROGRESS` · `DONE` · `DISPUTED` (we disagree, with 
 
 # Master ranked list
 
-Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20 (line numbers are paper.tex lines). The per-point sections below keep their history. "Analysis" says whether the numbers exist. "Manuscript" says whether paper.tex states them.
+Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R1-M5, R1-m12 and R3 minors re-checked at `5ee0c90` on 2026-11-23 (line numbers are paper.tex lines). The per-point sections below keep their history. "Analysis" says whether the numbers exist. "Manuscript" says whether paper.tex states them.
 
 | id | ask (short) | analysis | manuscript | next step |
 |---|---|---|---|---|
@@ -32,22 +32,22 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20 (line n
 | R1-m8 | pedigree numbers disagree | - | paper.tex text, captions and Fig. 5d (graph dice, BUILD_LOG 2026-11-18) agree: chr3q 0.9990, other chr9q 0.9930. Only the older `paper_prep/figures/fig5_concerted/caption.md` and `candidate_dice_9q.tsv` still say 0.9915 and 0.9191 | update or mark those two files as superseded |
 | R1-M3 | exchange rate vs Lemmers 2010 | moot: no exchange is called after the retraction (`exchange_rate_estimates.md`) | written (179bc78), pedigree conclusion | done |
 | R1-M4 / R3-M3 / R3-M4 | multi-mapping, flank control, B/W direction | flank control logic | written (302-323, 906) | read-level simulation not done |
-| R1-M5 | matched non-subtelomeric duplication control | done (`M5_matched_sd_control.md`: CHM13 Hi-C rho +0.540 telomeric vs +0.104 interstitial, delta +0.436, p=0.001) | not stated (window-class text removed: it measures PHR contact only, not contact at interstitial duplications) | run the matched-SD control: SD annotation, matched pairs, similarity and contact in CHM13 and HG002 |
+| R1-M5 | matched non-subtelomeric duplication control | not done: `M5_matched_sd_control.md` is a window-class control (PHR contact on both axes), not the referee's matched-SD test | not stated (window-class text removed, b8ff8ff) | match SDs from `PHR_III/annotations/chm13_sd/chm13v2.0_SD.bed` on identity, length, copy number; similarity and contact in CHM13 and HG002 |
 | R1-M6 | mouse p-arm satellite confound | satellite fractions only (masked axis void) | written (349-352) | done as a stated limitation |
-| R1-M7 | mouse dependency-preserving null | done | written | done |
+| R1-M7 | mouse dependency-preserving null; arm-type assortativity | done; arm type without C7, C6, C14, C15: 14 of 31 vs 157 of 325, p = 0.67 (`arm_type_asymmetry_r1m7.tsv`) | mouse written; arm-type Results written (paper.tex:212-218) | Discussion 491-492 and Methods 802-805 still to align |
 | R1-M8 | 500 kb right-censoring, 2-5 Mb flanks | censored fraction done (`M8_flank_censoring.md`: 1,087 of 15,668). 5 Mb wfmash run 545 of 1,614 flanks (ends 2026-11-23) | not stated | PHR lengths at 5 Mb, check PHRs < 500 kb unchanged, then text |
 | R1-M9 | enrichment rests on few families | done (`M9_enrichment_dependence.md`) | written: copy counting, SEPTIN14 loci, 0 of 209 after leave-largest-family-out (179bc78) | matched-SD comparator not run |
 | R1-M10 | comparative frame | - | not stated (0 hits for Plasmodium, Phaseolus, Aqil) | Discussion paragraph, literature only |
 | R1-m2 / m4 / m5 / m6 / m7 | scope statement, Fig. 1A vs 1B, acro PHR track, ends vs segdup null, Fig. 4A floor | - | not stated | figure and text fixes |
 | R1-m11 | superpopulation descriptives | done (`D1_superpopulation_descriptives.md`) | written (268-292) | done |
-| R1-m12 | Xiao 2026, Karimian 2024 | - | Xiao cited, Karimian not | one sentence + citation |
+| R1-m12 | Xiao 2026, Karimian 2024 | - | neither cited ("Xiao" in paper.tex is an HPRC author name); A/B shown 2026-11-21 | user choice, then citation |
 | R1-m13 | title | - | kept | author decision |
 | R3-M1 | novelty framing | - | Introduction | author framing |
 | R3-M2 | Fig. 1A "pattern" untested | - | not stated | profile test or drop the word |
 | R3-M5 | somatic vs meiotic | stage test done (R1-M7) | limitation at 543 | check wording |
 | R3-M6 | thresholds behind 41 of 48 arms | done (Lane results: 41 arms at fail 1-4 and flank 25-400 kb) | written (179bc78), Methods PHR detection | done |
 | R3-M7 / R3-M8 | order vs similarity, call candidates consistently | done | ED3, retraction | done |
-| R3 minors | Fig. 3 crop, define NOR | - | NOR no longer used | check Fig. 3 crop |
+| R3 minors | Fig. 3 crop, define NOR | - | NOR used undefined at paper.tex:504 | define NOR, check Fig. 3 crop |
 | R5-L86 | window-size sensitivity | - | not stated | rerun with 50 kb windows |
 | R5-L152 | GO stability across assemblies | - | not stated | DUX4 copy number across HPRC, discussion or rerun |
 | R5-L189 | Hi-C, Pore-C, CiFi cell types | - | accessions only (867-880, 1081-1100) | cell type per dataset |

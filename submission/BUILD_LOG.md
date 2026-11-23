@@ -990,3 +990,10 @@ chr9q block is 100.0% chr1p-contained, not 0.6%; the rebuilt sequences are 90.7-
 chr3, i.e. family blocks). No conclusion changed; the retraction stands. Resolution recorded: the released
 assembly held a pure rc chr1p insertion, while the true terminus is an ordinary shared family block. The
 staged plan (stages 0-7) is in `response/ROADMAP_analysis_integration.md` section H.
+
+## R1-M7 arm-type text (2026-11-23)
+
+Results (paper.tex:212-218) now report the arm-type test: 41 of 58 within-community pairs are
+same-type against 400 of 820 (permutation p = 0.005), and without C7, C6, C14 and C15 14 of 31
+against 157 of 325 (p = 0.67). Source: `scripts/cladistics/arm_type_asymmetry_r1m7.tsv`
+(`peerq3_arm_type_asymmetry.py --exclude C7,C14,C15,C6`). Build: compile.sh exit 0, 0 undefined, 45 pages.
