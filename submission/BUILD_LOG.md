@@ -999,3 +999,12 @@ against 157 of 325 (p = 0.67). Source: `scripts/cladistics/arm_type_asymmetry_r1
 (`peerq3_arm_type_asymmetry.py --exclude C7,C14,C15,C6`). Discussion (paper.tex:493-497) names the two
 single-arm-type communities, C7 and C6; Methods (paper.tex:809-811) describe the permutation test.
 Build: compile.sh exit 0, 0 undefined, 46 pages.
+
+## Fig. 5 panel a, Extended Data Table 1 (2026-11-23)
+
+Fig. 5 caption and panel a label no longer call PAR2 (C14, ratio 1.43) obligate or place it at 1.0;
+figure regenerated with `FIG5_INPUT_DIR` (pixel difference confined to the panel a label).
+Extended Data Table 1 (`tab:community_tiers`) added from `response/patches/ED_table_community_tiers.tex`
+with a corrected method sentence (each column reproduced exactly from `hprc_het_final.json`: per-pair
+bp-weighted median of records with >= 2 kb aligned, outside partners = all 48 arms on other chromosomes)
+and a corrected C4 sentence (chr7q is the closest partner of chr12q). Build: exit 0, 0 undefined, 47 pages.

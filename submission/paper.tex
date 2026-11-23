@@ -454,7 +454,7 @@ We conclude that this pedigree contains \textbf{no evidence of exchange between 
 outside the acrocentric short arms and the pseudoautosomal regions}. Within those two compartments such sharing
 is expected and obligate - the acrocentric short arms exchange ribosomal DNA arrays and PAR1 crosses
 over in every male meiosis - and they are accordingly the only regions in which non-homologous copies
-are as similar as alleles (ratio 1.00 and 0.99; Extended Data Table). Acrocentric-acrocentric sharing
+are as similar as alleles (ratio 1.00 and 0.99; Extended Data Table~\ref{tab:community_tiers}). Acrocentric-acrocentric sharing
 appears in both germlines, consistent with the rDNA exchange system \cite{Guarracino2023}. Everywhere
 else the sharing we detect is family-level similarity between blocks that have been exchanging on a
 timescale far longer than a pedigree can observe, not a discrete event.
@@ -686,7 +686,7 @@ The authors declare no competing interests.
   \caption{\textbf{Concerted evolution of human subtelomeres.}
     \textbf{(a)} For each Leiden community, median divergence among member arms divided by the median
     allelic divergence of those arms; 1.0 (dotted) means non-homologous copies are as similar as alleles.
-    Acrocentric short arms (C7) and the pseudoautosomal regions (C15, C14) sit at 1.0, the obligate case;
+    Acrocentric short arms (C7) and PAR1 (C15) sit at 1.0, the obligate case, and PAR2 (C14) at 1.4;
     C1, C11 and C3 are cohesive at 3.3-3.5; the remainder are facultative, 7-27. C4 is a residual pairing,
     not a cohesive group. \textbf{(b)} Cumulative distribution of substitution divergence, weighted by
     aligned base pairs, for homologous copies of an arm (allelic, median 0.15\%) and copies on different
@@ -1283,6 +1283,51 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     alignment artefact at the seed-frequency cutoff of the whole-genome scan.}
   \label{fig:ed7}
 \end{figure}
+
+\clearpage
+\section*{Extended Data Tables}
+
+\setcounter{table}{0}
+\renewcommand{\tablename}{Extended Data Table}
+
+\begin{table}[h!]
+\centering
+\caption{\textbf{Three regimes of inter-arm exchange among the subtelomeric
+communities.} For each Leiden ($k=15$) community with at least two arms: the median divergence
+between homologous copies of its member arms (allelic), between member arms on different
+chromosomes (internal paralogous), and between member arms and every arm outside the community
+on a different chromosome (outside paralogous). For each arm pair, divergence is the median,
+weighted by aligned base pairs, of substitutions per aligned position ($\times/({=}+\times)$)
+over alignment records with at least 2\,kb of aligned positions, and each column is the median
+of these pair values. The ratio column is internal paralogous divided by allelic; 1.0 means
+non-homologous copies are as similar as alleles.}
+\label{tab:community_tiers}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrr}
+\hline
+Community & Arms & Allelic & Internal par. & Ratio & Outside par. & Out. ratio \\
+\hline
+C7  & 13p, 14p, 15p, 21p, 22p          & 1.130 & 1.135 & \textbf{1.00} & 1.085 & 0.96 \\
+C15 & Xp, Yp                           & 0.455 & 0.450 & \textbf{0.99} & 1.605 & 3.53 \\
+C14 & Xq, Yq                           & 0.070 & 0.100 & \textbf{1.43} & 1.415 & 20.21 \\
+C1  & 4q, 10q                          & 0.190 & 0.620 & 3.26 & 1.990 & 10.47 \\
+C11 & 1p, 5q, 6q, 8p                   & 0.170 & 0.585 & 3.44 & 1.330 & 7.82 \\
+C3  & 3q, 7p, 9q, 11p, 16q, 19p        & 0.190 & 0.670 & 3.53 & 1.290 & 6.79 \\
+C12 & 20p, 2q                          & 0.185 & 1.340 & 7.24 & 1.400 & 7.57 \\
+C5  & 6p, 9p, 12p, 20q                 & 0.140 & 1.365 & 9.75 & 1.310 & 9.36 \\
+C2  & 10p, 18p                         & 0.105 & 1.280 & 12.19 & 2.800 & 26.67 \\
+C6  & 1q, 13q, 17q, 19q, 21q, 22q      & 0.155 & 1.930 & 12.45 & 2.240 & 14.45 \\
+C4  & 7q, 12q                          & 0.150 & 4.070 & 27.13 & 2.390 & 15.93 \\
+\hline
+\end{tabular}}
+
+\vspace{2pt}
+{\footnotesize Divergences in percent. C4 pairs two arms that share almost no near-identical
+sequence (0.1\% of aligned bases at $\geq 99.5\%$ identity); it is a residual pairing produced by
+assigning every arm to a community, not a cohesive group. C7 (acrocentric short arms), C15 (PAR1)
+and C14 (PAR2) are known exchange systems and are reported for reference, not as evidence of
+ectopic exchange.}
+\end{table}
 
 \clearpage
 \subsection*{Human Pangenome Reference Consortium}

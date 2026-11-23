@@ -12,14 +12,17 @@ d  A non-homologous end inside the spread of the homologous ones: IMPG similarit
 
 Inputs are listed in sources.tsv. Run from this directory: python3 figure_fig5_concerted.py
 """
-import json, csv, statistics as st
+import json, csv, os, statistics as st
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-HET = "/moosefs/erikg/phrs_tmp/hprc_het_final.json"
-CUR = "/moosefs/erikg/phrs_tmp/telomere_end_curves.json"
-K15 = ("/moosefs/guarracino/HPRCv2/PHR_III/similarity/"
-       "hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv")
+# FIG5_INPUT_DIR: a local copy of the three inputs below (same file names), when /moosefs is not mounted
+IN = os.environ.get("FIG5_INPUT_DIR")
+HET = os.path.join(IN, "hprc_het_final.json") if IN else "/moosefs/erikg/phrs_tmp/hprc_het_final.json"
+CUR = os.path.join(IN, "telomere_end_curves.json") if IN else "/moosefs/erikg/phrs_tmp/telomere_end_curves.json"
+K15 = (os.path.join(IN, "hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv") if IN else
+       "/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv")
+print(f"inputs: {HET} {CUR} {K15}")
 TIER = {"C7": "#c0392b", "C15": "#8e44ad", "C14": "#9b59b6", "C1": "#2a9d8f",
         "C11": "#1b6ca8", "C3": "#D95F02", "C2": "#7f7f7f", "C5": "#7f7f7f",
         "C6": "#7f7f7f", "C12": "#7f7f7f", "C4": "#4d4d4d"}
@@ -58,7 +61,7 @@ ax.set_yticklabels([f"{r[0]}  ({r[2]} pair{'s' if r[2]>1 else ''})" for r in row
 ax.set_xscale("log"); ax.set_xlim(0.85, 60)
 ax.set_xlabel("divergence among member arms / allelic divergence")
 ax.set_title("a  three exchange regimes", fontsize=9, loc="left")
-ax.text(1.03, 0.15, "obligate: acrocentric short arms, PAR1/PAR2", fontsize=6, color="#c0392b")
+ax.text(1.03, 0.15, "obligate: acrocentric short arms, PAR1", fontsize=6, color="#c0392b")
 ax.text(2.0, 3.0, "facultative exchange", fontsize=6, color="#555555")
 _c4 = [i for i, r in enumerate(rows) if r[0] == "C4"]
 if _c4:
