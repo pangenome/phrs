@@ -154,8 +154,11 @@ chromosome end hold 11\% of the windows that share sequence with another chromos
 share expected from their density of inter-chromosomal segmental duplications (permutation
 $p = 0.0001$, Methods). Most shared windows lie elsewhere, in interstitial and pericentromeric
 duplications. The acrocentric short
-arms and pseudoautosomal regions appear as expected positive controls, but the
-same pattern recurs at most other chromosome ends.
+arms and pseudoautosomal regions appear as expected positive controls, and 29 of the
+other 39 chromosome ends share their positional profile, with sharing highest in the windows
+next to the telomere and falling inward (correlation with the control profile against circular
+shifts, $p < 0.05$, Methods). Eight ends share no sequence with another chromosome above this
+threshold within 5\,Mb of the telomere.
 
 Applying this approach to 465 near-complete assemblies, we identified 15,668
 PHRs on 41 of the 48 chromosome arms; the remaining seven arms (chr2p, chr3p,
@@ -798,6 +801,12 @@ segmental-duplication density class (CHM13v2.0 duplication annotation, partner o
 chromosome; covered fraction below 0.001, 0.001--0.1, 0.1--0.25, 0.25--0.5, 0.5--0.75 and 0.75--1). The
 expected share at the ends is 6.1\% (95\% interval 5.1--7.1\%), and with classes of any
 duplication it is 4.0\%.
+To compare positional profiles, we took for each chromosome end the number of other chromosomes
+reached by at least 47 haplotypes in each 100\,kb window over the 5\,Mb next to the telomere, and
+correlated it with the mean profile of the acrocentric short arms and the two X pseudoautosomal
+ends (the CHM13v2.0 Y has PAR1 masked). For each end the null distribution is the correlation after
+circularly shifting its own profile by 1 to 49 windows, which keeps its autocorrelation and breaks
+its alignment to the telomere.
 
 \subsection*{Exclusions and flank extraction}
 

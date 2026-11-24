@@ -45,7 +45,7 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 | R1-m12 | Xiao 2026, Karimian 2024 | - | neither cited ("Xiao" in paper.tex is an HPRC author name); A/B shown 2026-11-21 | user choice, then citation |
 | R1-m13 | title | - | kept | author decision |
 | R3-M1 | novelty framing | - | Introduction | author framing |
-| R3-M2 | Fig. 1A "pattern" untested | - | not stated | profile test or drop the word |
+| R3-M2 | Fig. 1A "pattern" untested | done | profile = partner chromosomes (>= 47 haplotypes) per 100 kb window over 5 Mb from the telomere; correlation with the acro + X PAR mean profile vs 49 circular shifts: 29 of 39 ends p < 0.05, 8 no sharing, 3p and 3q not significant (`scripts/ci/end_profile_crosscorr.py`, `.txt`) | Results Fig. 1A paragraph, Methods survey |
 | R3-M5 | somatic vs meiotic | stage test done (R1-M7) | limitation at 543 | check wording |
 | R3-M6 | thresholds behind 41 of 48 arms | done (Lane results: 41 arms at fail 1-4 and flank 25-400 kb) | written (179bc78), Methods PHR detection | done |
 | R3-M7 / R3-M8 | order vs similarity, call candidates consistently | done | ED3, retraction | done |
