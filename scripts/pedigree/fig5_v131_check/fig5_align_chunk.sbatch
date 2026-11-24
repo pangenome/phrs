@@ -6,18 +6,22 @@
 #SBATCH --exclude=octopus05,octopus06
 # Fig5 step 4 with the query cut into pieces: FastGA stops the transmitted-copy chain before chromosome ends when the query is
 # a whole chromosome (chr8q: stops at 144,312,322 even vs DAD h1 alone; a 2 Mb end vs the whole genome reaches the end).
-# usage: sbatch fig5_align_chunk.sbatch --cid CID --in IN_DIR --out OUT_DIR --freq F --piece BP
+# usage: sbatch fig5_align_chunk.sbatch --cid CID --in IN_DIR --out OUT_DIR --freq F --piece BP [--batches K]
+# --batches K: query contigs split into K groups (whole contigs, balanced by bp), one sweepga run per group, PAFs joined
+# (SELF.p failed 4 times in sweepga's ALNtoPAF on the whole query: 2879922, 2879985, 2880081; K=1 is the plain run).
 # Same sweepga call as fig5_align_f.sbatch. Each query contig is cut into ceil(L/BP) equal pieces (each <= BP, no overlap),
 # named CONTIG:A-B (samtools faidx); after alignment the query name, length and coordinates go back to the contig.
 # An alignment that crosses a piece boundary becomes two records. Every query contig >= 10 Mb must be aligned over >= 50%.
-# out: OUT_DIR/raw_paf/CID.frequency<F>.piece<BP>.paf.gz and .coverage.tsv
+# out: OUT_DIR/raw_paf/CID.frequency<F>.piece<BP>[.batches<K>].paf.gz and .coverage.tsv
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
-while [ $# -gt 0 ]; do case $1 in --cid) CID=$2;; --in) IN=$2;; --out) OUT=$2;; --freq) F=$2;; --piece) P=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+K=1
+while [ $# -gt 0 ]; do case $1 in --cid) CID=$2;; --in) IN=$2;; --out) OUT=$2;; --freq) F=$2;; --piece) P=$2;; --batches) K=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
 for v in CID IN OUT F P; do [ -n "${!v:-}" ] || { echo "ERROR missing $v"; exit 2; }; done
 log () { echo "[$(date -Is)] $*"; }
 OUT=$(realpath -m "$OUT")  # absolute: the script cd's into the work dir before the final cp (2879810 lost 5 h on a relative OUT)
-R=$OUT/raw_paf/$CID.frequency$F.piece$P.paf.gz
+SFX=piece$P; [ $K -gt 1 ] && SFX=$SFX.batches$K
+R=$OUT/raw_paf/$CID.frequency$F.$SFX.paf.gz
 [ -s $R ] && { log "exists $R, skip"; exit 0; }
 SWEEPGA=/home/erikg/.cargo/bin/sweepga; PIGZ=/usr/bin/pigz; S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools
 mkdir -p /scratch/$USER/tmp/phrs "$OUT/raw_paf"; W=$(mktemp -d /scratch/$USER/tmp/phrs/fig5chunk.XXXX)
@@ -29,8 +33,15 @@ awk -F'\t' -v p=$P '{n = int(($2 + p - 1) / p); s = int(($2 + n - 1) / n); for (
 log "query contigs $(wc -l < $CID.query.fa.fai), pieces $(wc -l < pieces.txt), longest piece $(awk -F'[:-]' '{d = $NF - $(NF-1) + 1; if (d > m) m = d} END {print m}' pieces.txt) bp"
 $S faidx -r pieces.txt $CID.query.fa > q.fa
 [ $(grep -c '>' q.fa) -eq $(wc -l < pieces.txt) ] || { echo "ERROR piece count differs from pieces.txt"; exit 1; }
-log "sweepga fastga f$F many:many on pieces"
-$SWEEPGA --fastga --fastga-frequency $F --num-mappings many:many --scaffold-jump 0 --temp-dir "$W" --output-file pieces.paf q.fa "$CID.target.fa"
+sort -k2,2nr $CID.query.fa.fai | awk -F'\t' -v k=$K '{g = 0; for (i = 1; i < k; i++) if (b[i] < b[g]) g = i; b[g] += $2; print $1 "\t" g}' > groups.tsv
+: > pieces.paf
+for g in $(seq 0 $((K - 1))); do
+  awk -F'\t' -v g=$g 'NR == FNR {if ($2 == g) c[$1] = 1; next} {i = match($0, /:[0-9]+-[0-9]+$/); if (substr($0, 1, i - 1) in c) print}' groups.tsv pieces.txt > p.$g.txt
+  $S faidx -r p.$g.txt q.fa > q.$g.fa
+  log "sweepga fastga f$F many:many, group $g of $K: $(cut -f2 groups.tsv | grep -cx $g) contigs, $(wc -l < p.$g.txt) pieces, $(grep -v '>' q.$g.fa | tr -d '\n' | wc -c) bp"
+  $SWEEPGA --fastga --fastga-frequency $F --num-mappings many:many --scaffold-jump 0 --temp-dir "$W" --output-file pieces.$g.paf q.$g.fa "$CID.target.fa"
+  log "group $g PAF lines $(wc -l < pieces.$g.paf)"; cat pieces.$g.paf >> pieces.paf; rm -f pieces.$g.paf q.$g.fa
+done
 log "piece PAF lines=$(wc -l < pieces.paf)"
 awk -F'\t' 'BEGIN {OFS = "\t"} NR == FNR {L[$1] = $2; next} {i = match($1, /:[0-9]+-[0-9]+$/); if (!i) {print "ERROR query name without piece range: " $1 > "/dev/stderr"; exit 1} c = substr($1, 1, i - 1); split(substr($1, i + 1), r, "-"); if (!(c in L)) {print "ERROR unknown contig " c > "/dev/stderr"; exit 1} o = r[1] - 1; $1 = c; $2 = L[c]; $3 += o; $4 += o; print}' $CID.query.fa.fai pieces.paf > $CID.raw.paf
 N=$(wc -l < $CID.raw.paf); [ $N -eq $(wc -l < pieces.paf) ] || { echo "ERROR lift lost lines"; exit 1; }
@@ -40,5 +51,5 @@ cut -f1,3,4 "$CID.raw.paf" | sort -S 8G -k1,1 -k2,2n \
     "$CID.query.fa.fai" - | sort -V | tee cov.tsv \
   || { log "ERROR contig coverage below 0.5 (see table above)"; exit 1; }
 $PIGZ -p $SLURM_CPUS_PER_TASK -c "$CID.raw.paf" > out.paf.gz; gzip -t out.paf.gz
-cp out.paf.gz $R; cp cov.tsv "$OUT/raw_paf/$CID.frequency$F.piece$P.coverage.tsv"
+cp out.paf.gz $R; cp cov.tsv "$OUT/raw_paf/$CID.frequency$F.$SFX.coverage.tsv"
 log "DONE $R lines=$N"
