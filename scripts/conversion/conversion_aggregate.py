@@ -8,7 +8,9 @@ interval overlap (>= --min-overlap of the shorter one) an embedded tract in a wi
 a tract seen in one individual only is a SINGLETON (both haplotypes of one person count once), the class
 in which assembly errors would fall. C7 (acrocentric short arms) and the pseudoautosomal communities C14
 and C15 are reported apart: their copies are as similar as alleles, so a "closer paralog" is expected there.
-OUTPUT: <out>.community.tsv, <out>.arm.tsv, <out>.tracts.tsv (embedded tracts with sharing).
+LOCUS = tracts of the same arm and donor arm merged across individuals where their telomere-distance
+intervals overlap or touch.
+OUTPUT: <out>.community.tsv, <out>.arm.tsv, <out>.tracts.tsv (embedded tracts with sharing), <out>.loci.tsv.
 """
 import argparse, csv, glob, os, re, sys, time
 from collections import defaultdict
@@ -104,7 +106,26 @@ def main():
         fh.write("\t".join(tk) + "\n")
         for t in tracts:
             fh.write("\t".join(str(t[k]) for k in tk) + "\n")
-    log(f"wrote {a.out}.community.tsv, {a.out}.arm.tsv, {a.out}.tracts.tsv")
+    # LOCI: per (arm, donor arm), tracts of all individuals merged where their telomere-distance intervals
+    # overlap or touch; n_individuals = distinct samples (both haplotypes of a person count once)
+    loci = []
+    for (arm, par), idx in sorted(groups.items()):
+        cur = None
+        for i in sorted(idx, key=lambda i: (tracts[i]["d0"], tracts[i]["d1"])):
+            t = tracts[i]
+            if cur and t["d0"] <= cur["d1"]:
+                cur["d1"] = max(cur["d1"], t["d1"]); cur["samples"].add(t["sample"]); cur["lens"].append(t["length"])
+            else:
+                cur = dict(community=t["community"], arm=arm, paralog_arm=par, d0=t["d0"], d1=t["d1"],
+                           samples={t["sample"]}, lens=[t["length"]])
+                loci.append(cur)
+    with open(a.out + ".loci.tsv", "w") as fh:
+        fh.write("community\tarm\tparalog_arm\td0\td1\tn_tracts\tn_individuals\tmedian_tract_length\n")
+        for x in loci:
+            fh.write(f"{x['community']}\t{x['arm']}\t{x['paralog_arm']}\t{x['d0']}\t{x['d1']}\t{len(x['lens'])}\t"
+                     f"{len(x['samples'])}\t{sorted(x['lens'])[len(x['lens']) // 2]}\n")
+    log(f"{len(loci)} loci, {sum(len(x['samples']) == 1 for x in loci)} in one individual")
+    log(f"wrote {a.out}.community.tsv, {a.out}.arm.tsv, {a.out}.tracts.tsv, {a.out}.loci.tsv")
 
 
 if __name__ == "__main__":
