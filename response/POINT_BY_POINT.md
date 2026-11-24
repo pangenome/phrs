@@ -50,7 +50,7 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 | R3 minors | Fig. 3 crop, define NOR | - | NOR used undefined at paper.tex:504 | define NOR, check Fig. 3 crop |
 | R5-L86 | window-size sensitivity | - | not stated | rerun with 50 kb windows |
 | R5-L152 | GO stability across assemblies | done | DUX4/DUX4L copies per haplotype from the Liftoff annotation: 4q median 25 (2-82, 357), 10q 20 (1-77, 355), CHM13 34 and 34; cites Lucas 2026; the ZGA terms rest on DUX4 copies alone (`scripts/cladistics/dux4_copies_per_window.tsv`) | paper.tex C1 paragraph and enrichment paragraph |
-| R5-L189 | Hi-C, Pore-C, CiFi cell types | - | accessions only (867-880, 1081-1100) | cell type per dataset |
+| R5-L189 | Hi-C, Pore-C, CiFi cell types | done | Methods, first lines of "Hi-C, Pore-C and CiFi pipeline": HG002 Hi-C (BioSample SAMN03283347, B-lymphocyte, Coriell) and CiFi (SAMEA117757461, HG002 LCL) checked in the metadata, Pore-C taken as the same HG002 line; HPRC samples B-lymphocyte (230/234 in the HPRC sample table); CHM13hTERT; mouse spermatocytes | cell type per dataset |
 | R5-L193 | why 2,830 pairs | done (C(77,2) - 96 same-chromosome pairs) | written (179bc78), Methods Hi-C | done |
 | R5-L229 | Fig. 5 dark grey | moot (Fig. 5 rebuilt) | - | check ED7 legend |
 | R5-L348 | 11.6% vs 3.5% sampling | - | written (711-714) | done |
