@@ -95,6 +95,7 @@ Usage
   duplicon_monophyly.py --workscratch DIR   # where intermediate FASTAs live
 """
 
+import csv
 import argparse
 import gzip
 import json
@@ -1223,7 +1224,7 @@ def to_newick(adj, n_tips, units=None):
         return "(" + ",".join(parts) + ")"
 
     u, v, _t = root_edge
-    return "(%s,%s);" % (rec(u, None), rec(v, None))
+    return "(%s,%s);" % (rec(u, v), rec(v, u))
 
 
 def distance_classes(M, units, cols=None):
@@ -2230,7 +2231,7 @@ def run_self_tests():
 # --------------------------------------------------------------------------------------
 
 def main():
-    global WORKDIR, MSA_DIR, MSA_ONLY, MAX_HAPS, MAX_HAPS_PER_ARM
+    global WORKDIR, MSA_DIR, MSA_ONLY, MAX_HAPS, MAX_HAPS_PER_ARM, REF_MAX, FAMILIES
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--self-test", action="store_true")
@@ -2244,7 +2245,17 @@ def main():
     ap.add_argument("--msa-only", action="store_true", help="with --msa-dir: alignments only, no trees")
     ap.add_argument("--max-haps", type=int, default=MAX_HAPS)
     ap.add_argument("--max-haps-per-arm", type=int, default=MAX_HAPS_PER_ARM)
+    ap.add_argument("--ref-max", type=int, default=REF_MAX, help="clip the reference frame to this many bp")
+    ap.add_argument("--families-tsv", default=None,
+                    help="replace the built-in families: TSV with label, comm, chrom, start, end, arms (comma), note")
     args = ap.parse_args()
+    REF_MAX = args.ref_max
+    if args.families_tsv:
+        FAMILIES = []
+        for r in csv.DictReader(open(args.families_tsv), delimiter="\t"):
+            FAMILIES.append(dict(label=r["label"], comm=r["comm"], ref=(r["chrom"], int(r["start"]), int(r["end"])),
+                                 ref_note=r["note"], arms=r["arms"].split(",")))
+        log("families from %s: %s" % (args.families_tsv, ", ".join(f["label"] for f in FAMILIES)))
 
     WORKDIR = args.workscratch
     MSA_DIR, MSA_ONLY = args.msa_dir, args.msa_only

@@ -1,0 +1,7 @@
+label	comm	chrom	start	end	arms	note
+WASH	mixed	chr20	66187777	66202791	chr20_qarm,chr12_parm,chr15_qarm,chr16_parm,chr19_parm,chr20_parm,chr3_qarm,chrX_qarm	WASH7P (GFF3 chr20:66187777-66202791)
+DDX11L	mixed	chr19	4460	6999	chr19_parm,chr11_parm,chr12_parm,chr15_qarm,chr16_parm,chr20_parm,chr20_qarm,chr3_qarm,chr9_parm,chrX_qarm	DDX11L1 (GFF3 chr19:4460-6999)
+CICP	C3/C11	chr7	61233	65009	chr7_parm,chr11_parm,chr16_qarm,chr19_parm,chr1_parm,chr20_qarm,chr2_qarm,chr3_qarm,chr5_qarm	CICP27 (GFF3 chr7:61233-65009)
+FAM138	mixed	chr9	28530	30000	chr9_parm,chr11_parm,chr12_parm,chr15_qarm,chr19_parm,chr20_qarm,chr3_qarm	FAM138C (GFF3 chr9:28530-30000)
+IL9R	mixed	chr9	150400984	150409700	chr9_qarm,chr16_parm,chr18_parm,chrX_qarm	IL9RP1 (GFF3 chr9:150400984-150409700)
+FRG2	C1	chr4	193392577	193395463	chr4_qarm,chr10_qarm	FRG2 (GFF3 chr4:193392577-193395463)

@@ -1,0 +1,6 @@
+label	comm	chrom	start	end	arms	note
+TUBB8_TUBB8B_10k	C2	chr10	39416	69557	chr10_parm,chr18_parm	first 10 kb of TUBB8 (GFF3 gene span chr10:39416-69557)
+OR4F_10k	C11	chr5	181905487	181933378	chr5_qarm,chr6_qarm	first 10 kb of OR4F3 (GFF3 gene span chr5:181905487-181933378)
+SEPTIN14_10k	C3/C11	chr5	181891501	181901500	chr5_qarm,chr1_parm,chr2_qarm,chr3_qarm,chr7_parm,chr9_qarm	CICP15 + SEPTIN14P5 block (GFF3 chr5:181891501-181899694) to 10 kb
+WASH_10k	mixed	chr20	66187777	66202791	chr20_qarm,chr12_parm,chr15_qarm,chr16_parm,chr19_parm,chr20_parm,chr3_qarm,chrX_qarm	first 10 kb of WASH7P
+IL9R_9k	mixed	chr9	150400984	150409700	chr9_qarm,chr16_parm,chr18_parm,chrX_qarm	IL9RP1 whole gene (8.7 kb)
