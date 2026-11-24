@@ -221,6 +221,52 @@ numbers. *Unblocks:* nothing to build on until the record agrees.
 TEL ρ = 0.504 vs INT ρ = 0.129, Δ = +0.393 [0.111, 0.679], p = 0.006. Writes into Results + Methods;
 closes R1-M10's empirical half. *Unblocks:* the comparative-frame item, which reuses the same numbers.
 
+
+### Stage 2 (revised) — the matched-SD control, no caveats
+
+The reviewer's actual comparator is a set of **non-telomeric segmental duplications matched to the
+telomeric PHRs on identity, length and copy number**, run through the same similarity-against-contact
+machinery. The window-class comparison already in `notes/M5_matched_sd_control.md` is a surrogate; this
+stage replaces it so the specificity claim can be stated without a caveat.
+
+**Data on disk**
+
+| input | path | note |
+|---|---|---|
+| HG002 hap1 assembly | `HPRCv2/PHR_III/trimmed-assemblies/hg002v1.1.pat.PanSN.trimmed.fa.gz` | 2.95 Gbp, 23 contigs |
+| HG002 Hi-C | `HPRCv2/submission_Randiak/data/HG002.mcool` | multi-resolution cooler; needs `h5py` (guix store has python-h5py 3.6/3.8) or `cooler` |
+| chromosome sizes | `data/chm13.chrom.sizes`, `data/chm13v2.0_cytobands_allchrs.bed` | for the >=1 Mb-from-telomere and pericentromeric exclusions |
+| telomeric side (already built) | `seqlevel_correlation_test/HG002_hic_*_seqlevel.tsv` | pair-level jaccard vs Hi-C for the PHR pairs |
+
+HG002 is the right genome for both sides: it has the assembly, the Hi-C matrix, and already provides the
+telomeric correlation (+0.548), so the two classes share one contact dataset.
+
+**Steps**
+
+1. **Self-align HG002 hap1** (running: `FastGA -T96 -f512 -s1000 -c100 -i0.88 -paf`, process
+   `hg002-self-aln`), giving all intra-genome duplications at >=88% identity with repeat sensitivity
+   lifted (`-f512`).
+2. **Call interstitial SDs**: blocks >=5 kb at >=95% identity whose both mates lie >=1 Mb from both
+   telomeres and outside pericentromeric satellite per the cytoband BED. Record per pair: identity,
+   aligned length, and the copy number of the family.
+3. **Match to the PHR set**: nearest-neighbour stratified sampling without replacement on (a) pairwise
+   identity within 0.5 percentage points, (b) aligned length within 20%, (c) family copy number within 1.
+   Report the matched distributions side by side as a table, because the matching *is* the control.
+4. **Contact per pair**: mean Hi-C contact per valid bin pair over the 100 kb bins overlapping each
+   mate, using the same normalization as the telomeric tables (mean contact per bin pair, so that pairs
+   spanning more bins do not score higher automatically).
+5. **Mantel/Hi-C correlation** within each class with average-rank tie handling, 10,000 label
+   permutations and bootstrap over nodes, then the telomeric-minus-interstitial contrast on matched
+   pairs only. Acceptance: specificity is a clean claim if the contrast stays positive and significant
+   on matched pairs; if it does not, the claim changes rather than acquiring a caveat.
+
+**Blockers to clear**: `h5py`/`cooler` for the mcool (guix store has h5py builds; else install cooler
+into a venv); runtime of step 1 (2.95 Gbp self-alignment, hours, 96 threads).
+
+**Why this supersedes the surrogate**: the surrogate compared window *classes* on an alignment-free
+partner-share axis; this compares matched SD *pairs* on the same axis as the telomeric result, which is
+what the reviewer asked for and what removes the caveat.
+
 ### Stage 3 — regenerate the two figures that read `data/chm13.phrs.bed`
 `make_fig2bc_jaccard_heatmaps.R` and `make_fig5_pedigree_supporting_material.py`, now that the BED has
 `chr13_p` (37 → 38 intervals). Needs R/guix. *Unblocks:* consistency between figure annotation and the
