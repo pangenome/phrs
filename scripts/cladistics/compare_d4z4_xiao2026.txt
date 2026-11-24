@@ -1,0 +1,23 @@
+sample	arm	read_full_units	annotation_copies	difference
+HG00621	chr4_qarm	13	14	+1
+HG00621	chr4_qarm	15	16	+1
+HG00621	chr10_qarm	10	11	+1
+HG00621	chr10_qarm	19	20	+1
+HG00735	chr4_qarm	34	32	-2
+HG00735	chr4_qarm	46	47	+1
+HG00735	chr10_qarm	4	5	+1
+HG00735	chr10_qarm	31	24	-7
+HG00741	chr4_qarm	10	11	+1
+HG00741	chr4_qarm	38	37	-1
+HG00741	chr10_qarm	20	17	-3
+HG01106	chr4_qarm	15	16	+1
+HG01106	chr10_qarm	17	18	+1
+HG01175	chr4_qarm	33	34	+1
+HG01175	chr4_qarm	52	52	+0
+HG01175	chr10_qarm	8	9	+1
+HG01175	chr10_qarm	20	19	-1
+HG00099	chr4_qarm	23	15	-8
+HG00099	chr10_qarm	7	8	+1
+HG00706	chr4_qarm	24	25	+1
+HG00706	chr10_qarm	7	8	+1
+# 21 arrays in 7 individuals; annotation - reads: 0 in 1, +1 in 14, within 1 unit 17, within 2 18, larger 3

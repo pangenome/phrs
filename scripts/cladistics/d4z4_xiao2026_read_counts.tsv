@@ -1,0 +1,15 @@
+sample	arm_type	full_units	source
+HG00621	chr4_qarm	13,15	Xiao 2026 Table S2 (HPRC raw ONT reads)
+HG00621	chr10_qarm	10,19	Xiao 2026 Table S2
+HG00735	chr4_qarm	34,46	Xiao 2026 Table S2
+HG00735	chr10_qarm	4,31	Xiao 2026 Table S2
+HG00741	chr4_qarm	10,38	Xiao 2026 Table S2
+HG00741	chr10_qarm	20	Xiao 2026 Table S2
+HG01106	chr4_qarm	15,28	Xiao 2026 Table S2
+HG01106	chr10_qarm	17	Xiao 2026 Table S2
+HG01175	chr4_qarm	33,52	Xiao 2026 Table S2
+HG01175	chr10_qarm	8,20	Xiao 2026 Table S2
+HG00099	chr4_qarm	23,35	Xiao 2026 Table S6 (1KGP ONT reads)
+HG00099	chr10_qarm	7	Xiao 2026 Table S6
+HG00706	chr4_qarm	24	Xiao 2026 Table S6
+HG00706	chr10_qarm	7	Xiao 2026 Table S6
