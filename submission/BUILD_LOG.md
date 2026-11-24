@@ -1008,3 +1008,9 @@ Extended Data Table 1 (`tab:community_tiers`) added from `response/patches/ED_ta
 with a corrected method sentence (each column reproduced exactly from `hprc_het_final.json`: per-pair
 bp-weighted median of records with >= 2 kb aligned, outside partners = all 48 arms on other chromosomes)
 and a corrected C4 sentence (chr7q is the closest partner of chr12q). Build: exit 0, 0 undefined, 47 pages.
+
+## Fig. 5 print sizes (2026-11-24)
+
+Fig. 5 fonts raised for a 13 x 9 in figure printed at text width (ticks 13 pt, titles 16 pt, notes 12 pt), panel a labels
+moved off the points with the cohesive tier (C1, C11, C3) labelled as in the caption, panel b legend shortened, panel d
+legend below the axis; content unchanged. Build: compile.sh exit 0, 0 undefined, 47 pages.
