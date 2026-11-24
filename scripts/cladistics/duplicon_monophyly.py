@@ -1435,6 +1435,7 @@ def pick_acro_reference(sub, arms, workdir, tile=ACRO_TILE):
 
 WORKDIR = None
 MSA_DIR = None                 # --msa-dir: write each family's copy alignment for GENECONV (R1-M1 test 3a)
+MSA_ONLY = False               # --msa-only: write the alignments and skip trees, distances and flank control
 MSA_CODE = "ACGT-N"            # matrix codes 0..3 ACGT, 4 gap, 5 missing
 
 
@@ -1445,7 +1446,7 @@ def arm_short(arm):
 
 def write_msa(path, M, items):
     """FASTA alignment in reference columns; names <arm>_<sample>_<hap>[_u<i>] (GENECONV-safe)."""
-    names = set()
+    names, side = set(), []
     with open(path, "w") as fh:
         for i, it in enumerate(items):
             name = "%s_%s_%s" % (arm_short(it["arm"]), it["sample"], it["hap"])
@@ -1455,7 +1456,13 @@ def write_msa(path, M, items):
                 die("duplicate MSA name %s in %s" % (name, path))
             names.add(name)
             fh.write(">%s\n%s\n" % (name, "".join(MSA_CODE[c] for c in M[i])))
-    log("  wrote %s: %d sequences x %d columns" % (path, len(items), M.shape[1]))
+            side.append([name, it.get("target", ""), it.get("tstart", ""), it.get("tend", ""),
+                         it.get("strand", ""), it.get("ident", ""), it.get("n_copies", "")])
+    with open(path.rsplit(".", 1)[0] + ".tsv", "w") as fh:
+        fh.write("name\ttarget\ttstart\ttend\tstrand\tident\tn_copies\n")
+        for r in side:
+            fh.write("\t".join(str(x) for x in r) + "\n")
+    log("  wrote %s (+ .tsv coordinates): %d sequences x %d columns" % (path, len(items), M.shape[1]))
 
 
 def family_run(fam, copies_sub, flank_sub, sup, out):
@@ -1569,6 +1576,8 @@ def family_run(fam, copies_sub, flank_sub, sup, out):
             write_msa(os.path.join(MSA_DIR, "%s_%s_units.fa" % (label, rtag)), M, units)
             Cm, repm = consensus_matrix(M, units)
             write_msa(os.path.join(MSA_DIR, "%s_%s_arrays.fa" % (label, rtag)), Cm, repm)
+        if MSA_ONLY:
+            continue
         n_kept_cols = int((M != 5).any(axis=0).sum())
         out["regimes"][rkey]["reference_columns_with_data"] = n_kept_cols
 
@@ -1639,6 +1648,8 @@ def family_run(fam, copies_sub, flank_sub, sup, out):
                     usub, Msub, L_ref)
         # persist the point trees compactly (newick is inside the per-level result)
 
+    if MSA_ONLY:
+        return out
     # ---- flank control ----------------------------------------------------------------
     out["flank_control"] = flank_control(fam, flank_sub, sup, haps, ref_arm=(
         ACRO_PICK_ARM if fam.get("acro") else
@@ -2219,7 +2230,7 @@ def run_self_tests():
 # --------------------------------------------------------------------------------------
 
 def main():
-    global WORKDIR, MSA_DIR
+    global WORKDIR, MSA_DIR, MSA_ONLY, MAX_HAPS, MAX_HAPS_PER_ARM
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--self-test", action="store_true")
@@ -2230,10 +2241,16 @@ def main():
                                                       "duplicon_monophyly.json"))
     ap.add_argument("--only-family", default=None)
     ap.add_argument("--msa-dir", default=None, help="write per-family copy alignments here")
+    ap.add_argument("--msa-only", action="store_true", help="with --msa-dir: alignments only, no trees")
+    ap.add_argument("--max-haps", type=int, default=MAX_HAPS)
+    ap.add_argument("--max-haps-per-arm", type=int, default=MAX_HAPS_PER_ARM)
     args = ap.parse_args()
 
     WORKDIR = args.workscratch
-    MSA_DIR = args.msa_dir
+    MSA_DIR, MSA_ONLY = args.msa_dir, args.msa_only
+    MAX_HAPS, MAX_HAPS_PER_ARM = args.max_haps, args.max_haps_per_arm
+    if MSA_ONLY and not MSA_DIR:
+        die("--msa-only needs --msa-dir")
     if MSA_DIR:
         os.makedirs(MSA_DIR, exist_ok=True)
     os.makedirs(WORKDIR, exist_ok=True)
@@ -2309,7 +2326,10 @@ def main():
     with open(args.out_json, "w") as fh:
         json.dump(report, fh, indent=1, sort_keys=True, default=str)
     log("wrote %s" % args.out_json)
-    emit_tsv(report, args.out_tsv)
+    if MSA_ONLY:
+        log("--msa-only: no TSV")
+    else:
+        emit_tsv(report, args.out_tsv)
     log("total wall %.1f s" % report["wall_seconds_total"])
 
 

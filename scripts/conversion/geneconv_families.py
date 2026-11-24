@@ -9,10 +9,15 @@ in every kept sequence, run GENECONV (patched 1.81a, scripts/conversion/geneconv
 in its own directory, parse the .frags table, and classify every globally significant inner fragment
 (GI, simulation P corrected over all pairs < 0.05) by pair: different arms (an exchange between chromosome
 ends), same arm in different haplotypes, or same arm in the same haplotype (within one array).
-OUTPUT: <out>/summary.tsv (one row per alignment) and <out>/fragments.tsv (one row per GI fragment).
+With --batch-haps N an alignment is split into batches of N haplotypes (all copies of a haplotype in one
+batch, haplotypes sorted by name), run with --jobs in parallel: GENECONV time grows with the square of the
+number of copies, and a batch of 20 haplotypes has the size of the validated 20-haplotype run. Each batch
+corrects its own P over its own pairs, so a summary over B batches should require sim P < 0.05 / B.
+OUTPUT: <out>/summary.tsv (one row per alignment or batch) and <out>/fragments.tsv (one row per GI fragment).
 """
 import argparse, os, subprocess, sys, time
 from collections import Counter
+from multiprocessing import Pool
 
 FRAG_COLS = ["type", "names", "sim_p", "bc_ka_p", "begin", "end", "len", "npoly", "ndif", "totdifs", "mismat_pen"]
 
@@ -122,6 +127,28 @@ def run_one(msa, geneconv, outdir, min_complete, gopts, reuse=False, max_cons=0.
     return row, gi
 
 
+def split_batches(msa, n, outdir):
+    seqs = read_fasta(msa)
+    haps = sorted({"_".join(k.split("_")[1:3]) for k in seqs})
+    stem = os.path.basename(msa).rsplit(".", 1)[0]
+    paths = []
+    for b in range(0, len(haps), n):
+        hs = set(haps[b:b + n])
+        p = os.path.join(outdir, "batches", f"{stem}_b{b // n + 1:02d}.fa")
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "w") as fh:
+            for k, v in seqs.items():
+                if "_".join(k.split("_")[1:3]) in hs:
+                    fh.write(f">{k}\n{v}\n")
+        paths.append(p)
+    log(f"{stem}: {len(seqs)} sequences, {len(haps)} haplotypes -> {len(paths)} batches of <= {n}")
+    return paths
+
+
+def _run(args):
+    return run_one(*args)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("msas", nargs="+")
@@ -131,6 +158,8 @@ def main():
     ap.add_argument("--gopts", action="append", default=None,
                     help="extra GENECONV options per run, e.g. '' and '/g1' (repeatable)")
     ap.add_argument("--reuse", action="store_true", help="parse an existing aln.frags instead of rerunning")
+    ap.add_argument("--batch-haps", type=int, default=0, help="split each alignment into batches of N haplotypes")
+    ap.add_argument("--jobs", type=int, default=1)
     ap.add_argument("--max-cons-dist", type=float, default=0.02,
                     help="drop copies whose p-distance to their own arm consensus exceeds this (0 = keep all)")
     a = ap.parse_args()
@@ -138,10 +167,11 @@ def main():
     os.makedirs(a.out, exist_ok=True)
     log(f"inputs: {len(a.msas)} alignments; geneconv {a.geneconv}; min_complete {a.min_complete}; "
         f"runs per alignment: {gopts}")
+    msas = [p for m in a.msas for p in (split_batches(m, a.batch_haps, a.out) if a.batch_haps else [m])]
+    work = [(m, a.geneconv, a.out, a.min_complete, g, a.reuse, a.max_cons_dist) for m in msas for g in gopts]
     rows, allf = [], []
-    for m in a.msas:
-        for g in gopts:
-            r, f = run_one(m, a.geneconv, a.out, a.min_complete, g, a.reuse, a.max_cons_dist)
+    with Pool(a.jobs) as pool:
+        for r, f in pool.imap(_run, work):
             rows.append(r)
             allf += f
     keys = ["alignment", "status", "n_in", "n_far_dropped", "n_kept", "arms_kept", "columns", "columns_used", "polymorphisms",
