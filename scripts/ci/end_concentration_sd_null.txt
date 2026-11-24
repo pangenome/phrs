@@ -1,0 +1,17 @@
+windows 31185, at an end 504 (0.0162); shared (>= 1 other chromosome, >= 47 haplotypes) 1132; shared at an end 124 = 0.1095 of shared windows
+-- null within inter-chromosomal SD density classes [0.0, 0.001, 0.1, 0.25, 0.5, 0.75, 1.01]
+   class 0.0-0.001: windows 25940, shared 422, at an end 311, shared at an end 21
+   class 0.001-0.1: windows 3513, shared 8, at an end 50, shared at an end 0
+   class 0.1-0.25: windows 273, shared 20, at an end 17, shared at an end 3
+   class 0.25-0.5: windows 282, shared 47, at an end 19, shared at an end 14
+   class 0.5-0.75: windows 182, shared 47, at an end 13, shared at an end 12
+   class 0.75-1.01: windows 995, shared 588, at an end 94, shared at an end 74
+   expected share of shared windows at an end 0.0605 (95% 0.0512-0.0707); observed 0.1095; enrichment 1.81x; one-sided p 0.0001 (10000 permutations)
+-- null within any SD density classes [0.0, 0.001, 0.1, 0.25, 0.5, 0.75, 1.01]
+   class 0.0-0.001: windows 24055, shared 418, at an end 164, shared at an end 21
+   class 0.001-0.1: windows 4145, shared 7, at an end 160, shared at an end 0
+   class 0.1-0.25: windows 440, shared 12, at an end 30, shared at an end 2
+   class 0.25-0.5: windows 456, shared 38, at an end 25, shared at an end 15
+   class 0.5-0.75: windows 306, shared 32, at an end 17, shared at an end 8
+   class 0.75-1.01: windows 1783, shared 625, at an end 108, shared at an end 78
+   expected share of shared windows at an end 0.0403 (95% 0.0309-0.0504); observed 0.1095; enrichment 2.72x; one-sided p 0.0001 (10000 permutations)

@@ -39,7 +39,8 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 | R1-M9 | enrichment rests on few families | done (`M9_enrichment_dependence.md`) | written: copy counting, SEPTIN14 loci, 0 of 209 after leave-largest-family-out (179bc78) | matched-SD comparator not run |
 | R1-M10 | comparative frame | - | not stated (0 hits for Plasmodium, Phaseolus, Aqil) | Discussion paragraph, literature only |
 | R1-m2 | scope statement | done | end of the Introduction: which analyses compare the 465 assemblies with one another and where CHM13 is the coordinate system or annotation substrate | text |
-| R1-m4 / m5 / m6 / m7 | Fig. 1A vs 1B, acro PHR track, ends vs segdup null, Fig. 4A floor | - | not stated | figure and text fixes |
+| R1-m6 | ends vs segdup null | done | windows within 1 Mb of an end: 1.6% of 31,185 windows, 11.0% of 1,132 shared windows; SD-density null 6.1% (95% 5.1-7.1), 1.8x, p = 0.0001 (10,000 permutations); most shared windows are interstitial or pericentromeric (`scripts/ci/end_concentration_sd_null.py`, `.txt`) | Results Fig. 1A paragraph, Methods survey |
+| R1-m4 / m5 / m7 | Fig. 1A vs 1B, acro PHR track, Fig. 4A floor | - | not stated | figure and text fixes |
 | R1-m11 | superpopulation descriptives | done (`D1_superpopulation_descriptives.md`) | written (268-292) | done |
 | R1-m12 | Xiao 2026, Karimian 2024 | - | neither cited ("Xiao" in paper.tex is an HPRC author name); A/B shown 2026-11-21 | user choice, then citation |
 | R1-m13 | title | - | kept | author decision |
