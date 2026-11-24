@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Known-answer test for geneconv_families.py: two arms of 12 copies each (3% fixed between-arm
 differences, 0.3% private differences), one planted 600 bp tract copied from a 10q copy into a 4q copy,
-and the same alignment without the plant. Pass = a cross-arm GI fragment involving the planted copy
-and overlapping the tract, and no cross-arm GI fragment without the plant.
+and the same alignment without the plant but with one divergent outlier 10q copy (4% from every copy
+after column 500, the D4Z4 artefact). Pass = a cross-arm GI fragment involving the planted copy and
+overlapping the tract; no cross-arm GI fragment without the plant, the outlier dropped by --max-cons-dist.
 Run: python3 scripts/conversion/test_geneconv_families.py GENECONV_BINARY WORKDIR"""
 import os, random, subprocess, sys
 
@@ -30,6 +31,10 @@ def copies(anc, arm):
 seqs = {**copies(base, "4q"), **copies(arm10, "10q")}
 plant = {k: list(v) for k, v in seqs.items()}
 plant["4q_HG005_1"][1000:1600] = seqs["10q_HG007_1"][1000:1600]
+outlier = list(arm10)
+for j in rng.sample(range(500, L), int(0.04 * L)):
+    outlier[j] = other[other[outlier[j]]]
+seqs["10q_HG099_1"] = outlier
 ok = True
 for name, s in (("plant", plant), ("noplant", seqs)):
     fa = os.path.join(wd, f"TEST_{name}_arrays.fa")
