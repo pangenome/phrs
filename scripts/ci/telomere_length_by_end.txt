@@ -1,0 +1,7 @@
+466 telo files, 20588 intervals on 14409 contigs
+windows with one adjacent telomere interval: 18827; without: 0
+all arms with a ratio: 45 arms; Spearman(median telomere length, closest-paralog/allelic ratio) = 0.032, permutation p = 0.836
+without acrocentric p, X and Y: 36 arms; Spearman(median telomere length, closest-paralog/allelic ratio) = 0.344, permutation p = 0.0377
+ranks among 39 arms without acrocentric p, X and Y (1 = shortest): chr17_p 4, chr20_q 10, chr12_p 1, chr4_q 23, chr12_q 25, chr3_p 32
+shortest 6: chr12_p (7368), chr7_p (7477), chr9_p (7568), chr17_p (7638), chr11_q (7644), chr2_q (7664)
+longest 6: chr5_p (8805), chr19_q (8886), chr1_q (8936), chr13_q (9043), chr14_q (9208), chr4_p (9418)

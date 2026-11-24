@@ -614,6 +614,14 @@ One mechanism we can exclude is a role for the genes at the tip. Whether an arm 
 subtelomeric gene within 5\,kb of its tract---overwhelmingly a DDX11L pseudogene---has no bearing on
 how homogenized that arm is ($p = 0.85$). The homogenization is a property of the shared repeat
 architecture, not of the gene complement annotated alongside it.
+Telomere length is also specific to each chromosome end and conserved across individuals
+\cite{Karimian2024}. The telomere tracts assembled next to our 18,827 windows reproduce the shortest
+ends of that study, 12p and 17p ranking first and fourth of 39 ends without the acrocentric short
+arms and the sex chromosomes, but not its longest, with 4q, 12q and 3p ranking 23rd to 32nd. Median
+telomere length per end correlates only weakly with how homogenized the end is (Spearman
+$\rho = 0.34$ over 36 such ends, permutation $p = 0.04$, longer telomeres at less homogenized ends,
+and $\rho = 0.03$ when the acrocentric and sex-chromosome ends are included). End-specific telomere
+length and subtelomeric exchange are therefore at most weakly related.
 
 Which factor initiates the loop---sequence similarity, shared function, or physical proximity---remains unresolved, and the acrocentric example, where rDNA both drives and results from nucleolar clustering, suggests there may be no single starting point. The current evidence has gaps: human contact maps are somatic rather than meiotic, and the meiotic-stage data come only from mouse. Improved evidence may shed light on these questions: germline-stage contact maps and larger multigenerational pedigrees with complete, haplotype-resolved telomere-to-telomere assemblies \cite{Cechova2025}, together with orthogonal assays such as FISH \cite{Trask1991}. By applying reference-free pangenome methods to the 465-assembly HPRC v2 panel, we convert relationships inferred from cytogenetics decades ago into a population-scale view of concerted evolution in human subtelomeres.
 
@@ -911,6 +919,12 @@ sides by bins that match the window's own arm. Tracts at overlapping distance fr
 the same donor arm in different individuals were merged into positions and counted as shared. We
 compared tracts with HMM-Flagger v1.2.1 calls of the HPRC release and inspected HiFi reads at 20
 tracts found in one individual and 10 shared tracts.
+
+\emph{Telomere length.} We took the telomere tract that \texttt{seqtk telo} called next to each of
+the 18,827 windows (all windows have one), and per chromosome end the median over haplotypes. The
+assemblies come from lymphoblastoid cell lines, whose telomeres differ from those of blood
+\cite{Lucas2026}. We correlated the median with the ratio between the divergence to the closest arm
+on another chromosome and the allelic divergence of the end (Spearman, 10,000 permutations).
 
 \subsection*{Pangenome graph, similarity and community detection}
 
