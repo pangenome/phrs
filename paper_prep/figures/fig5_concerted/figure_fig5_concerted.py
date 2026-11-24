@@ -107,10 +107,10 @@ for rr in arms.values():
     ys = [x["ratio"] for x in rr if x.get("ratio") and x["from_kb"] >= MASK]
     if len(xs) >= 5: ax.plot(xs, ys, color="#9a9a9a", lw=0.5, alpha=0.4)
 ax.plot(mx, my, color="k", lw=2.4, label="median, 48 arms")
-ax.axvspan(0, MASK, color="#d9d9d9", hatch="///", edgecolor="#999", alpha=0.6)
-ax.text(MASK * 1.1, 55, "TERRA promoter array\nexcluded (ratio undefined)", fontsize=FS_NOTE, va="top",
-        bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.5))
-ax.set_xscale("log"); ax.set_yscale("log"); ax.set_ylim(0.6, 60)
+ax.axvspan(1, MASK, facecolor="#eeeeee", hatch="///", edgecolor="#888888", lw=0)
+ax.text(1.15, 0.68, "TERRA\npromoter array,\nexcluded", fontsize=FS_NOTE - 1, va="bottom",
+        bbox=dict(facecolor="white", edgecolor="none", alpha=0.9, pad=1.5))
+ax.set_xscale("log"); ax.set_yscale("log"); ax.set_ylim(0.6, 60); ax.set_xlim(1, 600)
 ax.set_xlabel("distance from the telomere (kb)")
 ax.set_ylabel("paralogous / allelic ratio")
 ax.set_title("c  homogenization strongest nearest the telomere", fontsize=FS_TITLE, loc="left")
