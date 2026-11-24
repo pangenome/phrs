@@ -5,6 +5,8 @@ specific: canonical k-mers of a query interval that occur in none of the exclusi
           (the other ends of the same person and every other window of the same arms in the cohort).
 count:    occurrences of those k-mers in reads (BAM/CRAM/FASTA/FASTQ, both strands via canonical form),
           per k-mer and in total, with the read count scanned.
+cooccur:  fragments (reads grouped by name, so both mates of a pair) that carry >= 1 k-mer of set A and
+          >= 1 k-mer of set B, e.g. a 10p-type allele before a junction and an 18p-type allele after it.
 Canonical k-mers are required: a forward-only count misses reverse-complement copies (project rule).
 """
 import argparse, gzip, sys, time
@@ -58,7 +60,41 @@ def main():
     c.add_argument("--reads", nargs="+", required=True)
     c.add_argument("--reference", help="FASTA for CRAM decoding")
     c.add_argument("--out", required=True)
+    o = sub.add_parser("cooccur")
+    o.add_argument("--kmers-a", required=True)
+    o.add_argument("--kmers-b", required=True)
+    o.add_argument("--reads", nargs="+", required=True, help="BAM/CRAM, name-grouping is done in memory")
+    o.add_argument("--reference", help="FASTA for CRAM decoding")
+    o.add_argument("--out", required=True)
     a = ap.parse_args()
+    if a.cmd == "cooccur":
+        import pysam
+        A = set(l.split("\t")[0] for l in open(a.kmers_a).read().splitlines()[1:])
+        Bk = set(l.split("\t")[0] for l in open(a.kmers_b).read().splitlines()[1:])
+        if A & Bk:
+            raise SystemExit(f"FATAL: {len(A & Bk)} k-mers in both sets")
+        k = len(next(iter(A)))
+        with open(a.out, "w") as fh:
+            fh.write("reads\tn_reads\tfragments_with_a\tfragments_with_b\tfragments_with_a_and_b\n")
+            for path in a.reads:
+                frag = {}
+                n = 0
+                for r in pysam.AlignmentFile(path, reference_filename=a.reference).fetch(until_eof=True):
+                    if r.is_secondary or r.is_supplementary or not r.query_sequence:
+                        continue
+                    n += 1
+                    ks = set(canon_kmers(r.query_sequence, k))
+                    fa, fb = bool(ks & A), bool(ks & Bk)
+                    if fa or fb:
+                        f = frag.setdefault(r.query_name, [False, False])
+                        f[0] |= fa
+                        f[1] |= fb
+                na = sum(f[0] for f in frag.values())
+                nb = sum(f[1] for f in frag.values())
+                nab = sum(f[0] and f[1] for f in frag.values())
+                log(f"{path}: {n} reads; fragments with A {na}, with B {nb}, with A and B {nab}")
+                fh.write(f"{path}\t{n}\t{na}\t{nb}\t{nab}\n")
+        return
     if a.cmd == "specific":
         qs = list(read_fasta(a.query_fasta))
         q = "N".join(v for _, v in qs)

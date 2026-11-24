@@ -3,6 +3,7 @@
 specific k-mers; reads carrying it forward and reverse-complemented are both counted; reads without it
 give zero. Run: python3 scripts/conversion/test_junction_kmers.py WORKDIR"""
 import os, random, subprocess, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 wd = sys.argv[1]
 os.makedirs(wd, exist_ok=True)
@@ -29,4 +30,23 @@ rows = [l.split("\t") for l in open(f"{wd}/count.tsv").read().splitlines()[1:]]
 ok = nspec == 60 + 31 - 1 and int(rows[0][4]) == 2 * nspec and int(rows[1][4]) == 0
 print(f"{'PASS' if ok else 'FAIL'} specific k-mers {nspec} (expect 90); occurrences in 2 carrier reads "
       f"{rows[0][4]} (expect {2 * nspec}); in non-carriers {rows[1][4]} (expect 0)")
-sys.exit(0 if ok else 1)
+# cooccur: A = k-mers of the insert's left half, B = of its right half; fragment r0 (one read) and
+# pair p (left half in mate 1, right half in mate 2, as BAM) carry both, n0 carries only A.
+import pysam
+open(f"{wd}/a.tsv", "w").write("kmer\tx\n" + "".join(f"{x}\t0\n" for x in set(
+    __import__("junction_kmers").canon_kmers(ins[:31], 31))))
+open(f"{wd}/b.tsv", "w").write("kmer\tx\n" + "".join(f"{x}\t0\n" for x in set(
+    __import__("junction_kmers").canon_kmers(ins[29:], 31))))
+hdr = pysam.AlignmentHeader.from_dict({"SQ": [{"SN": "q", "LN": 2000}]})
+with pysam.AlignmentFile(f"{wd}/frag.bam", "wb", header=hdr) as bam:
+    for name, seq in (("r0", left[-40:] + ins + right[:40]), ("p", left[-60:] + ins[:31]), ("p", rc(ins[29:] + right[:60])),
+                      ("n0", left[-60:] + ins[:31])):
+        r = pysam.AlignedSegment(hdr)
+        r.query_name, r.query_sequence, r.flag, r.reference_id, r.reference_start = name, seq, 4, -1, -1
+        bam.write(r)
+subprocess.run(py + ["cooccur", "--kmers-a", f"{wd}/a.tsv", "--kmers-b", f"{wd}/b.tsv", "--reads", f"{wd}/frag.bam",
+                     "--out", f"{wd}/co.tsv"], check=True)
+row = open(f"{wd}/co.tsv").read().splitlines()[1].split("\t")
+ok2 = row[2:] == ["3", "2", "2"]
+print(f"{'PASS' if ok2 else 'FAIL'} cooccur fragments with A, B, A and B: {row[2:]} (expect 3, 2, 2)")
+sys.exit(0 if ok and ok2 else 1)
