@@ -54,7 +54,7 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 | R5-L189 | Hi-C, Pore-C, CiFi cell types | done | Methods, first lines of "Hi-C, Pore-C and CiFi pipeline": HG002 Hi-C (BioSample SAMN03283347, B-lymphocyte, Coriell) and CiFi (SAMEA117757461, HG002 LCL) checked in the metadata, Pore-C taken as the same HG002 line; HPRC samples B-lymphocyte (230/234 in the HPRC sample table); CHM13hTERT; mouse spermatocytes | cell type per dataset |
 | R5-L193 | why 2,830 pairs | done (C(77,2) - 96 same-chromosome pairs) | written (179bc78), Methods Hi-C | done |
 | R5-L229 | Fig. 5 dark grey | moot (Fig. 5 rebuilt) | - | check ED7 legend |
-| R5-L348 | 11.6% vs 3.5% sampling | - | written (711-714) | done |
+| R5-L348 | 11.6% vs 3.5% sampling | done | Methods now says why: above the 3.5% connectivity threshold so that queries need few hops (diameter two at 11.6%, any two sequences through at most one intermediate) | response: the PHR call does not use the sampled survey, it uses the complete flank all-against-all at 5 kb |
 | R5 code | repository README | - | no README in the repo root | write README |
 | Editor | Data and Code availability, ethics, ED format, Source Data, word count, tracked changes, checklists, third-party rights | D2 drafted (`D2_editor_compliance.md`) | one combined "Data and code availability" (1081), no ethics, ED files are pdf/png | split sections, Zenodo DOI, ethics text (authors), ED as tif |
 
