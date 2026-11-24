@@ -1,0 +1,3 @@
+version	sample	step	contig	coord_fa	pos	source	reason
+v11	PAN011	end_replace	PAN011#2#chr9	norm_v11/PAN011#2.fa.gz	133594274	g1/local_asm/chr9_h2/contigs.fa:loc.bp.hap2.p_ctg.h2tg000001l:144573	G2: SELF.p chr9q does not match DAD h2 chr9q; end replaced from the end of a 120,784 bp exact match by a DAD-only hifiasm contig (g1_build_dad_v11b.sh, 2026-11-21)
+v11	PAN027	tip_trim	PAN027#1#chr22	norm_v131/PAN027#1.fa.gz	48463777	ont_full/*.PAN027.v131.bam	10,434 bp non-telomeric tail after the q telomere; tip-trim rule (tip_trim.py, user yes 2026-11-23); rule checked on v1.3.1, identical tail in v1.1
