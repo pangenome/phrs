@@ -1014,3 +1014,10 @@ and a corrected C4 sentence (chr7q is the closest partner of chr12q). Build: exi
 Fig. 5 fonts raised for a 13 x 9 in figure printed at text width (ticks 13 pt, titles 16 pt, notes 12 pt), panel a labels
 moved off the points with the cohesive tier (C1, C11, C3) labelled as in the caption, panel b legend shortened, panel d
 legend below the axis; content unchanged. Build: compile.sh exit 0, 0 undefined, 47 pages.
+
+## R5-L152 D4Z4 copy number (2026-11-24)
+
+C1 sentence "copy number ranging from 0 to 22" (no source) replaced by DUX4/DUX4L copies per haplotype from the
+Liftoff annotation of each assembly (4q median 25, range 2-82, 357 haplotypes; 10q 20, 1-77, 355), citing Lucas 2026
+(HPRC2 preprint, new bib entry). One sentence added to the enrichment paragraph: the ZGA terms rest on DUX4 copies
+alone and CHM13 carries 34 on each arm. Build: exit 0, 0 undefined, 47 pages.
