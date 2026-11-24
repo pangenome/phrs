@@ -1021,3 +1021,11 @@ C1 sentence "copy number ranging from 0 to 22" (no source) replaced by DUX4/DUX4
 Liftoff annotation of each assembly (4q median 25, range 2-82, 357 haplotypes; 10q 20, 1-77, 355), citing Lucas 2026
 (HPRC2 preprint, new bib entry). One sentence added to the enrichment paragraph: the ZGA terms rest on DUX4 copies
 alone and CHM13 carries 34 on each arm. Build: exit 0, 0 undefined, 47 pages.
+
+## R1-M1 concerted-evolution tests (2026-11-24)
+
+New Results subsection "Non-homologous ends are homogenized, most strongly near the telomere" before the TERRA
+section: first main-text citation of Fig. 5a-c (test 2), the copy trees of 24 pangenome gene families and the
+acrocentric repeat (new Extended Data Fig. 8, ED_Fig8_duplicon_trees.pdf, test 1), and gene conversion (GENECONV,
+the 2 kb scan, HG01884 and HG03239, test 3). New Methods subsection "Tests of homogenization"; new bib entry
+Sawyer1989. About 600 words added to Results. Build: exit 0, 0 undefined, 50 pages.

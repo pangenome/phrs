@@ -27,7 +27,7 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 
 | id | ask (short) | analysis | manuscript | next step |
 |---|---|---|---|---|
-| R1-M1 | concerted evolution is never tested | done (`M1c_duplicon_monophyly.md`, `hprc_heterolog_divergence.md`) | Fig. 5 is the concerted-evolution figure, Discussion 479-481 | title kept by the authors |
+| R1-M1 | concerted evolution is never tested | done, all three tests | new Results section "Non-homologous ends are homogenized, most strongly near the telomere": Fig. 5a-c (test 2), ED Fig. 8 trees of 24 pangenome families + acro (test 1), GENECONV + 2 kb scan, HG01884 and HG03239 inherited tracts (test 3); Methods "Tests of homogenization" | title kept by the authors |
 | R1-M2 | pedigree exchange vs inherited haplotype | done: both calls retracted (assembly error, FastGA seed loss). G1-corrected v1.1 and v1.3.1 of all 4 people: G2 finds PAR1, acrocentric runs and the 9q/3q run (inside the released MISJOIN at DAD chr9 h2: genome-wide G1 does not fix it); the targeted chr9 patch removes the 9q/3q run | Results "Direct test", Methods, ED7 | add corrected-DAD Fig. 5 path and KID maternal result to ED7. G1 on v1.3.1 ends 2026-11-21 |
 | R1-m8 | pedigree numbers disagree | - | paper.tex text, captions and Fig. 5d (graph dice, BUILD_LOG 2026-11-18) agree: chr3q 0.9990, other chr9q 0.9930. Only the older `paper_prep/figures/fig5_concerted/caption.md` and `candidate_dice_9q.tsv` still say 0.9915 and 0.9191 | update or mark those two files as superseded |
 | R1-M3 | exchange rate vs Lemmers 2010 | moot: no exchange is called after the retraction (`exchange_rate_estimates.md`) | written (179bc78), pedigree conclusion | done |

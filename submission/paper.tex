@@ -373,6 +373,51 @@ $n = 42$)---though the q-arm subset is small and p-arm windows carry broader
 arm-context effects, so we do not read the arm split as a clean arm-type
 experiment.
 
+\subsection*{Non-homologous ends are homogenized, most strongly near the telomere}
+
+High identity between non-homologous ends does not by itself show concerted evolution, because a
+recent duplication leaves the same signature. Homogenization predicts more: copies at different ends
+should approach allelic divergence where exchange is frequent. We compared, over every aligned base
+pair of the all-against-all alignment of the 18,827 telomere-anchored windows, the divergence between
+copies of the same arm in different haplotypes (allelic) with that between copies on different
+chromosomes (paralogous). Paralogous copies are six times more divergent overall (median 0.89\%
+against 0.15\%, Fig.~\ref{fig:fig5}b), and the ratio separates three regimes
+(Fig.~\ref{fig:fig5}a, Extended Data Table~\ref{tab:community_tiers}). Non-homologous copies are as
+similar as alleles in the acrocentric short arms and PAR1 (ratio 1.0), three to four times more
+divergent in C1, C11 and C3 (3.3--3.5), and 7 to 27 times in the other communities. Along the
+chromosome end the median ratio is 1.2--2.3 within the first 16\,kb and 6.6 at 200--500\,kb
+(Fig.~\ref{fig:fig5}c). A single duplication followed by independent divergence would leave the same
+divergence along the whole duplicated block. A ratio that falls toward the telomere is instead
+expected if exchange is most frequent at the chromosome tip.
+
+The topology of duplicon copies gives a second test. We built trees of the copies of
+24 gene families that have copies at two or more ends across the 465 haplotypes, together with the
+acrocentric short-arm repeat (20 haplotypes per family, Methods, Extended Data Fig.~\ref{fig:ed8}).
+Where exchange is obligate, in the acrocentric short arms and in all seven pseudoautosomal families,
+copies from different ends interleave, so the test detects exchange where it is known to occur.
+Outside these compartments the families split. Copies of each end form their own clade in FAM87,
+FRG2 and TUBB8, and in IL9R and WASIR2 apart from their pseudoautosomal copies, the pattern of an old
+duplication without later exchange. No end forms its own clade in D4Z4, CIC, FAM138, OR4G, AGGF1, CLUH
+and WASHC1, and only some ends do in WASH, DDX11L, SEPTIN14, OR4F and FAM157. A tree cannot date an
+exchange, but interleaved copies show that some copies at different ends share a more recent ancestor
+than copies at the same end.
+
+Last, we searched for gene conversion directly, as segments of one end that carry the sequence of
+another. On the copy alignments of the duplicon families, GENECONV \cite{Sawyer1989} detects two
+events among TUBB8 copies, one in SEPTIN14, inside an Alu element shared with 1p and 7p, and none
+in OR4F. Both TUBB8
+events are supported by HiFi and ONT reads and are inherited. The maternal 18p of HG01884 ends in
+38\,kb of 10p-type sequence, with the junction inside TUBB8B, and the maternal 10p of HG03239 carries
+a 180\,bp tract of 18p-type sequence, and in both families the 1000 Genomes reads place the segment
+in the mother (Methods). Across all windows, a scan of the alignments in 2\,kb bins finds 34,418
+tracts, at 1,757 distinct positions, in which a haplotype is closer to another end than to its own
+arm, and 96\% of them are shared between individuals. They cover 6.3\% of the scored sequence in C3
+and 3.4\% in C11, 0.07\% in C2, whose TUBB8 copies keep to their own ends, and 9.2\% in the
+acrocentric short arms. All 30 tracts we sampled are supported by HiFi reads, and 98.6\% of tracts
+avoid regions flagged by assembly quality control. The gradient toward the telomere, the interleaved
+copy trees and the inherited conversion tracts all point to repeated exchange between non-homologous
+ends, rather than to duplications that have since diverged independently.
+
 \subsection*{The exchange junction is a copy-variable TERRA promoter}
 
 The first two kilobases inside the telomere are not ordinary subtelomeric sequence. We observe a
@@ -794,6 +839,50 @@ we report the number of records and the median block length. Bins whose allelic 
 0.4\%, four times the interior baseline, are discarded from the distance profile because the allelic
 denominator has failed there; the hatched zone of Extended Data Fig.~\ref{fig:ed6} is generated from
 that rule and not placed by hand.
+
+\subsection*{Tests of homogenization}
+
+\emph{Allelic and paralogous divergence.} From the all-against-all alignments of the telomere-anchored
+windows (wfmash, with =/X operations in the CIGAR), the divergence of a record is the fraction of
+mismatched aligned positions. Allelic records join windows of the same arm in different haplotypes,
+and paralogous records join windows on different chromosomes. For each arm pair we took the median,
+weighted by aligned base pairs, over records with at least 2\,kb aligned (Extended Data
+Table~\ref{tab:community_tiers}), and Fig.~\ref{fig:fig5}b weights every aligned base pair. For
+Fig.~\ref{fig:fig5}c we assigned each record to a distance bin only when the midpoints of its query and
+target spans lie in the same bin (2\,kb bins to 50\,kb, coarser beyond), divided the median paralogous
+by the median allelic divergence per arm and bin, and plotted the median over arms.
+
+\emph{Duplicon trees.} We intersected the Liftoff gene annotation of each assembly with the windows and
+grouped genes into families by name, merging numbered paralogues and pseudogenes of one family. Of
+130 families with copies on at least two arms in at least 10\% of the haplotypes, we tested 30: the
+named families with a median copy longer than 1\,kb, plus OR4F and OR4G, with DUX4 and DUX4L tested
+together as the D4Z4 repeat unit. For each family we cut a
+reference of up to 4\,kb from its CHM13 copy, found copies in the windows of the family's arms with
+FastGA (\texttt{-l500 -i0.7 -f8192}), kept copies aligned at $\geq 80$\% identity (at most ten evenly
+spaced copies per window) in 20 haplotypes sampled across superpopulations, projected them onto the
+reference columns, and built neighbour-joining trees from p-distances with gaps treated as missing.
+An arm forms its own clade when all its copies fall in one clade of the tree. Six families had copies
+on one arm only and were not drawn. As a control, the same procedure on the adjacent 100\,kb of unique
+sequence recovers each individual's two haplotypes as sister copies for all 124 arms tested.
+
+\emph{Gene conversion.} We ran GENECONV 1.81a \cite{Sawyer1989} (\texttt{/w123 /lp /es}) on the copy
+alignments of TUBB8, OR4F, SEPTIN14 and D4Z4 across all haplotypes in batches of 20 haplotypes, after
+removing copies with less than 90\% of columns or more than 2\% divergence from
+the consensus of their own arm. We counted a copy as converted when it appeared in at least three
+fragments between arms with simulated $p < 0.05$ divided by the number of batches. The consensus
+sequences of the 4q and 10q D4Z4 units are indistinguishable, so conversion between them cannot be
+assigned this way. We checked
+candidates with the HPRC HiFi and ONT read alignments to the same assemblies and traced them in the
+1000 Genomes high-coverage reads of the parents with canonical 31-mers specific to the converted
+segment and with read pairs joining the segment to its flanks. For the genome-wide scan, each window's
+alignments were cut into 2\,kb bins, and for every other haplotype we kept the record covering most of
+the bin (at least 75\%). A bin is converted when it has at least 20 allelic copies and the median
+divergence to the copies of some other arm, with at least 20 copies, is lower than the median allelic
+divergence by at least 0.25\%. Runs of converted bins form tracts, and we kept tracts flanked on both
+sides by bins that match the window's own arm. Tracts at overlapping distance from the telomere with
+the same donor arm in different individuals were merged into positions and counted as shared. We
+compared tracts with HMM-Flagger v1.2.1 calls of the HPRC release and inspected HiFi reads at 20
+tracts found in one individual and 10 shared tracts.
 
 \subsection*{Pangenome graph, similarity and community detection}
 
@@ -1289,6 +1378,20 @@ pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
     the pedigree. The grey run at chr5 is the chr1p/chr5q best non-homologous match, an
     alignment artefact at the seed-frequency cutoff of the whole-genome scan.}
   \label{fig:ed7}
+\end{figure}
+
+\clearpage
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig8_duplicon_trees.pdf}
+  \caption{\textbf{Copy trees of duplicon families shared between chromosome ends.} For each family,
+    the neighbour-joining tree of its copies in 20 haplotypes (topology only, arbitrary root) with,
+    below it, the chromosome arm of each copy in tree order. One block of colour per arm means that
+    the copies of each end form their own clade; interleaved colours mean that copies from different
+    ends share a clade. Families are sorted by the share of arms whose copies form one clade. The
+    acrocentric short-arm repeat and the seven pseudoautosomal families (controls) are drawn last:
+    exchange there is obligate and their copies interleave in every case.}
+  \label{fig:ed8}
 \end{figure}
 
 \clearpage
