@@ -1691,6 +1691,10 @@ def flank_control(fam, flank_sub, sup, haps, ref_arm):
             if len(cand) < 6:
                 rres["arms"][arm] = dict(error="only %d labelled flanks" % len(cand))
                 continue
+            if not any(x[0] == "CHM13" for x in flank_sub.by_arm.get(arm, [])):
+                rres["arms"][arm] = dict(error="no CHM13 flank window (control reference) for this arm")
+                log("    flank %s: no CHM13 flank window, control not run for this arm" % arm)
+                continue
             picked = stratified_pick(cand, MAX_HAPS, sup)
             wanted = [flank_sub.name_of[(s, h, arm)] for s, h in picked]
             # add other arms' flanks to the same target so cross-arm hits are visible
