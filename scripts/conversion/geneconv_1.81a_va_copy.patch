@@ -1,0 +1,11 @@
+--- a/geneconv.c	2000-10-07 14:08:26.000000000 -0700
++++ b/geneconv.c	2026-11-23 19:21:31.199115095 -0700
+@@ -590,7 +590,7 @@
+ int bprintf (const char *control, ...)
+  { int ret;  va_list list;  va_start(list, control);
+    ret=vprintf (control, list);
+-   if (fflog) ret=vfprintf (fflog, control, list);
++   if (fflog) { va_end(list); va_start(list, control); ret=vfprintf (fflog, control, list); }
+    va_end(list);
+    return ret; }
+ 

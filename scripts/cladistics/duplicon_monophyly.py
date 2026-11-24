@@ -117,7 +117,7 @@ import numpy as np
 
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-FASTGA = os.path.expanduser("~/.cargo/bin/FastGA")
+FASTGA = os.environ.get("FASTGA", os.path.expanduser("~/.cargo/bin/FastGA"))
 
 COPIES_FA = ("/moosefs/guarracino/HPRCv2/PHR_III/"
              "hprcv2.1Mb.telo_500kb_trimmed.fa.gz")
@@ -1434,6 +1434,28 @@ def pick_acro_reference(sub, arms, workdir, tile=ACRO_TILE):
 # --------------------------------------------------------------------------------------
 
 WORKDIR = None
+MSA_DIR = None                 # --msa-dir: write each family's copy alignment for GENECONV (R1-M1 test 3a)
+MSA_CODE = "ACGT-N"            # matrix codes 0..3 ACGT, 4 gap, 5 missing
+
+
+def arm_short(arm):
+    c, a = arm.split("_")
+    return c[3:] + a[0]
+
+
+def write_msa(path, M, items):
+    """FASTA alignment in reference columns; names <arm>_<sample>_<hap>[_u<i>] (GENECONV-safe)."""
+    names = set()
+    with open(path, "w") as fh:
+        for i, it in enumerate(items):
+            name = "%s_%s_%s" % (arm_short(it["arm"]), it["sample"], it["hap"])
+            if name in names or "tstart" in it:
+                name += "_u%d" % i
+            if name in names:
+                die("duplicate MSA name %s in %s" % (name, path))
+            names.add(name)
+            fh.write(">%s\n%s\n" % (name, "".join(MSA_CODE[c] for c in M[i])))
+    log("  wrote %s: %d sequences x %d columns" % (path, len(items), M.shape[1]))
 
 
 def family_run(fam, copies_sub, flank_sub, sup, out):
@@ -1543,6 +1565,10 @@ def family_run(fam, copies_sub, flank_sub, sup, out):
             out["regimes"][rkey]["error"] = "fewer than 4 copies discovered"
             continue
         M = build_matrix(units, L_ref)
+        if MSA_DIR:
+            write_msa(os.path.join(MSA_DIR, "%s_%s_units.fa" % (label, rtag)), M, units)
+            Cm, repm = consensus_matrix(M, units)
+            write_msa(os.path.join(MSA_DIR, "%s_%s_arrays.fa" % (label, rtag)), Cm, repm)
         n_kept_cols = int((M != 5).any(axis=0).sum())
         out["regimes"][rkey]["reference_columns_with_data"] = n_kept_cols
 
@@ -2193,7 +2219,7 @@ def run_self_tests():
 # --------------------------------------------------------------------------------------
 
 def main():
-    global WORKDIR
+    global WORKDIR, MSA_DIR
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--self-test", action="store_true")
@@ -2203,9 +2229,13 @@ def main():
     ap.add_argument("--out-json", default=os.path.join(REPO, "scripts", "cladistics",
                                                       "duplicon_monophyly.json"))
     ap.add_argument("--only-family", default=None)
+    ap.add_argument("--msa-dir", default=None, help="write per-family copy alignments here")
     args = ap.parse_args()
 
     WORKDIR = args.workscratch
+    MSA_DIR = args.msa_dir
+    if MSA_DIR:
+        os.makedirs(MSA_DIR, exist_ok=True)
     os.makedirs(WORKDIR, exist_ok=True)
 
     if args.self_test:
