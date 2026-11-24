@@ -157,6 +157,7 @@ MAX_HAPS = 20                  # haplotypes per family when a common set exists
 MIN_COMMON_HAPS = 8            # below this, fall back to per-arm sampling
 MAX_HAPS_PER_ARM = 8           # per-arm mode (acrocentric control needs this)
 REF_MAX = 4000                 # reference frame is clipped to this many bp
+MIN_REF_COV = 0.0              # a copy must align over this fraction of the reference (0 = no filter)
 
 # Families.  `ref` = (chrom, start, end) of the CHM13 reference unit; `arms` = the
 # chromosome arms whose copies are compared; `query` = the CHM13 window used to cut the
@@ -609,6 +610,8 @@ def discover_copies(ref_fa, target_fa, paf_path, max_copies, target_seqs, l_ref)
     n_proj_fail = 0
     for rec in recs:
         if rec["alnlen"] < MIN_ALN:
+            continue
+        if rec["qend"] - rec["qstart"] < MIN_REF_COV * l_ref:
             continue
         ident = rec["nmatch"] / float(rec["alnlen"])
         if ident < MIN_UNIT_ID:
@@ -2231,7 +2234,7 @@ def run_self_tests():
 # --------------------------------------------------------------------------------------
 
 def main():
-    global WORKDIR, MSA_DIR, MSA_ONLY, MAX_HAPS, MAX_HAPS_PER_ARM, REF_MAX, FAMILIES
+    global WORKDIR, MSA_DIR, MSA_ONLY, MAX_HAPS, MAX_HAPS_PER_ARM, REF_MAX, FAMILIES, MIN_REF_COV
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--self-test", action="store_true")
@@ -2246,10 +2249,12 @@ def main():
     ap.add_argument("--max-haps", type=int, default=MAX_HAPS)
     ap.add_argument("--max-haps-per-arm", type=int, default=MAX_HAPS_PER_ARM)
     ap.add_argument("--ref-max", type=int, default=REF_MAX, help="clip the reference frame to this many bp")
+    ap.add_argument("--min-ref-cov", type=float, default=MIN_REF_COV,
+                    help="drop alignments covering less than this fraction of the reference (partial copies)")
     ap.add_argument("--families-tsv", default=None,
                     help="replace the built-in families: TSV with label, comm, chrom, start, end, arms (comma), note")
     args = ap.parse_args()
-    REF_MAX = args.ref_max
+    REF_MAX, MIN_REF_COV = args.ref_max, args.min_ref_cov
     if args.families_tsv:
         FAMILIES = []
         for r in csv.DictReader(open(args.families_tsv), delimiter="\t"):
@@ -2291,7 +2296,7 @@ def main():
             MIN_COMPARABLE_COLS=MIN_COMPARABLE_COLS, P_DIST_CAP=P_DIST_CAP,
             N_BOOT=N_BOOT, N_PERM=N_PERM, SEED=SEED, MAX_HAPS=MAX_HAPS,
             MIN_COMMON_HAPS=MIN_COMMON_HAPS, MAX_HAPS_PER_ARM=MAX_HAPS_PER_ARM,
-            REF_MAX=REF_MAX, FASTGA_THREADS=FASTGA_THREADS),
+            REF_MAX=REF_MAX, MIN_REF_COV=MIN_REF_COV, FASTGA_THREADS=FASTGA_THREADS),
         tools=dict(fastga=tool_version([FASTGA]),
                    samtools=tool_version(["samtools", "--version"]),
                    python=sys.version.split()[0], numpy=np.__version__),

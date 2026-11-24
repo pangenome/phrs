@@ -75,7 +75,8 @@ def layout(t, ys, out):
 
 d = json.load(open(a.json))
 fams = list(d["families"])
-cols = ["#1b6ca8", "#D95F02", "#2a9d8f", "#c0392b", "#8e44ad", "#7f7f7f", "#e6ab02"]
+cols = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22",
+        "#17becf"]  # tab10: distinct colours for up to 10 arms
 fig, axes = plt.subplots(1, len(fams), figsize=(4.2 * len(fams), 9))
 for ax, fam in zip(axes, fams):
     rec = d["families"][fam]["regimes"][a.regime]["strata"][a.stratum][a.labels]
@@ -89,7 +90,9 @@ for ax, fam in zip(axes, fams):
     if len(names) != rec["n_taxa"] or len(set(names)) != len(names):
         raise SystemExit(f"FATAL: {fam}: {len(names)} tips ({len(set(names))} distinct) vs n_taxa {rec['n_taxa']}")
     arms = sorted({t[2].split("|")[1].split("_", 1)[1] for t in out["tips"]})
-    cm = {x: cols[i % len(cols)] for i, x in enumerate(arms)}
+    if len(arms) > len(cols):
+        raise SystemExit(f"FATAL: {fam} has {len(arms)} arms, {len(cols)} colours")
+    cm = {x: cols[i] for i, x in enumerate(arms)}
     for x0, x1, y in out["h"]:
         ax.plot([x0, x1], [y, y], color="#555", lw=0.6)
     for x, y0, y1 in out["v"]:
