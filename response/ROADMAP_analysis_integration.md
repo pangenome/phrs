@@ -260,6 +260,44 @@ telomeric correlation (+0.548), so the two classes share one contact dataset.
    pairs only. Acceptance: specificity is a clean claim if the contrast stays positive and significant
    on matched pairs; if it does not, the claim changes rather than acquiring a caveat.
 
+
+#### Stage 2 implementation note (design corrected against the data)
+
+Two dead ends, both informative:
+
+1. **Block identity at >=95% is the wrong axis for the telomeric side.** Requiring >=95% identity blocks and
+   >=20 kb aligned leaves only **18** HG002 arm pairs, of which **2** have non-zero contact - far too thin
+   for a Mantel. The published rho = +0.548 was computed on **jaccard between flanks over 20 kb bins**, not
+   on block identity.
+2. **`:resolutions/100000` does not exist** in `HG002.mcool` (10 kb-20 Mb, no 100 kb); 80 kb is the nearest
+   and is fine for the matched comparison, but the pair tables use 20 kb bins and those are the right scale
+   to match on.
+
+**Corrected design, both classes identical:**
+
+| element | telomeric class (exists) | interstitial class (to build) |
+|---|---|---|
+| pairs | `seqlevel_correlation_test/HG002_hic_20000bp_seqlevel.tsv` - 2,543 pairs, 2,281 with contact > 0 | interstitial duplicated region pairs, >=1 Mb from both telomeres, outside pericentromeric satellite |
+| similarity | `jaccard` column, computed over 20 kb bins | same definition, computed over 20 kb bins between the two region sequences |
+| contact | `hic_contact_norm`, mean per valid 20 kb bin pair | same, from `HG002.mcool` |
+| matching | - | matched to telomeric pairs on jaccard (+/-0.02) and region size (+/-20%) |
+
+**Why this is the referee's test after all:** both classes are pairs of homologous duplicated regions,
+scored by the same overlap statistic at the same bin size against the same Hi-C matrix; the only
+difference is proximity to a telomere. A matched-SD contrast on this footing answers "is the
+similarity-contact association a telomere property or a duplication property" without the window-class
+surrogate and without a caveat.
+
+**Materials already in hand:** HG002 hap1 self-alignment (25.8 M alignments,
+`/tmp/flagger_v11/sdctl/hg002pat_self.paf`), the interstitial block inventory
+(`interstitial_sd_pairs.tsv`, 4.01 M blocks >=5 kb and >=95% with both mates >=1 Mb from telomeres over 253
+chromosome pairs), `HG002.mcool` readable through `cooler` in `/tmp/venv-cx`, and the HG002 20 kb
+telomeric pair table.
+
+**Tooling notes:** FastGA segfaults on gzipped input (decompress first), `GIXmake` caps at 32 threads, and
+on this host FastGA now hangs on the 20 Mb window set while wfmash completes it in 107 s - so alignments
+here are wfmash. Six FastGA processes from the failed attempts are stuck in uninterruptible state.
+
 **Blockers to clear**: `h5py`/`cooler` for the mcool (guix store has h5py builds; else install cooler
 into a venv); runtime of step 1 (2.95 Gbp self-alignment, hours, 96 threads).
 
