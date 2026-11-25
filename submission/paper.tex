@@ -430,7 +430,9 @@ tracts, at 1,757 distinct positions, in which a haplotype is closer to another e
 arm, and 96\% of them are shared between individuals. They cover 6.3\% of the scored sequence in C3
 and 3.4\% in C11, 0.07\% in C2, whose TUBB8 copies keep to their own ends, and 9.2\% in the
 acrocentric short arms. All 30 tracts we sampled are supported by HiFi reads, and 98.6\% of tracts
-avoid regions flagged by assembly quality control. The gradient toward the telomere, the interleaved
+avoid regions flagged by assembly quality control. Conversion is visible only where the converted
+segment differs from the sequence it replaced, so exchange between near-identical copies escapes
+detection \cite{Mansai2010} and these counts are a lower bound. The gradient toward the telomere, the interleaved
 copy trees and the inherited conversion tracts all point to repeated exchange between non-homologous
 ends, rather than to duplications that have since diverged independently.
 
@@ -920,7 +922,10 @@ segment and with read pairs joining the segment to its flanks. For the genome-wi
 alignments were cut into 2\,kb bins, and for every other haplotype we kept the record covering most of
 the bin (at least 75\%). A bin is converted when it has at least 20 allelic copies and the median
 divergence to the copies of some other arm, with at least 20 copies, is lower than the median allelic
-divergence by at least 0.25\%. Runs of converted bins form tracts, and we kept tracts flanked on both
+divergence by at least 0.25\%. The scan follows the principle that sites at which a copy carries the
+allele of another locus rather than its own, clustered along the sequence, mark converted tracts
+\cite{Harpak2017}, but compares each haplotype with the other haplotypes of its own arm and of every
+other arm instead of with orthologs in other species. Runs of converted bins form tracts, and we kept tracts flanked on both
 sides by bins that match the window's own arm. Tracts at overlapping distance from the telomere with
 the same donor arm in different individuals were merged into positions and counted as shared. We
 compared tracts with HMM-Flagger v1.2.1 calls of the HPRC release and inspected HiFi reads at 20
