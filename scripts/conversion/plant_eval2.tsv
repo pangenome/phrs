@@ -1,0 +1,91 @@
+window	donor	scan	length	subst	found	start_offset	end_offset	embedded	calls_off_plants	control_calls
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 1000	10000	64	1	5966	-35	1	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 1000	1000	6	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 1000	500	14	1	270	770	1	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 10000	10000	64	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 10000	1000	6	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 10000	500	14	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 2000	10000	64	1	966	-1035	1	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 2000	1000	6	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 2000	500	14	1	270	1770	1	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 5000	10000	64	1	1966	-3035	1	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 5000	1000	6	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	bin 5000	500	14	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	sites	10000	64	1	298	-453	1	8	8
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	sites	1000	6	1	183	-346	1	8	8
+chr4_qarm_from_chr10_qarm_1	chr10_qarm	sites	500	14	1	163	-168	1	8	8
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 1000	10000	48	1	7789	-218	1	2	2
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 1000	1000	7	1	14	2	1	2	2
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 1000	500	3	0	NA	NA	NA	2	2
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 10000	10000	48	0	NA	NA	NA	0	0
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 10000	1000	7	0	NA	NA	NA	0	0
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 10000	500	3	0	NA	NA	NA	0	0
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 2000	10000	48	1	7789	-218	1	1	1
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 2000	1000	7	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 2000	500	3	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 5000	10000	48	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 5000	1000	7	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	bin 5000	500	3	0	NA	NA	NA	1	1
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	sites	10000	48	1	422	-5136	1	0	0
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	sites	1000	7	1	166	-105	1	0	0
+chr4_qarm_from_chr10_qarm_2	chr10_qarm	sites	500	3	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 1000	10000	108	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 1000	500	2	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 1000	1000	5	1	30	30	1	1	1
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 10000	10000	108	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 10000	500	2	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 10000	1000	5	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 2000	10000	108	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 2000	500	2	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 2000	1000	5	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 5000	10000	108	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 5000	500	2	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	bin 5000	1000	5	0	NA	NA	NA	0	0
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	sites	10000	108	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	sites	500	2	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_1	chr5_qarm	sites	1000	5	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 1000	10000	71	1	602	-395	1	11	11
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 1000	1000	3	0	NA	NA	NA	11	11
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 1000	500	3	0	NA	NA	NA	11	11
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 10000	10000	71	0	NA	NA	NA	0	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 10000	1000	3	0	NA	NA	NA	0	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 10000	500	3	0	NA	NA	NA	0	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 2000	10000	71	1	-4398	-395	1	4	5
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 2000	1000	3	0	NA	NA	NA	4	5
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 2000	500	3	0	NA	NA	NA	4	5
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 5000	10000	71	1	1602	-3395	1	1	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 5000	1000	3	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	bin 5000	500	3	0	NA	NA	NA	1	1
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	sites	10000	71	0	NA	NA	NA	3	3
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	sites	1000	3	0	NA	NA	NA	3	3
+chr6_qarm_from_chr5_qarm_2	chr5_qarm	sites	500	3	0	NA	NA	NA	3	3
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 1000	2000	18	1	132	132	1	17	18
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 1000	500	9	0	NA	NA	NA	17	18
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 1000	5000	22	0	NA	NA	NA	17	18
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 10000	2000	18	0	NA	NA	NA	1	2
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 10000	500	9	0	NA	NA	NA	1	2
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 10000	5000	22	0	NA	NA	NA	1	2
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 2000	2000	18	0	NA	NA	NA	11	13
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 2000	500	9	0	NA	NA	NA	11	13
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 2000	5000	22	0	NA	NA	NA	11	13
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 5000	2000	18	1	132	3132	1	3	4
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 5000	500	9	0	NA	NA	NA	3	4
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	bin 5000	5000	22	0	NA	NA	NA	3	4
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	sites	2000	18	1	54	-106	1	2	2
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	sites	500	9	0	NA	NA	NA	2	2
+chr9_qarm_from_chr16_qarm_1	chr16_qarm	sites	5000	22	0	NA	NA	NA	2	2
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 1000	2000	19	1	199	199	1	21	24
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 1000	1000	18	0	NA	NA	NA	21	24
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 1000	500	4	0	NA	NA	NA	21	24
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 10000	2000	19	0	NA	NA	NA	2	3
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 10000	1000	18	0	NA	NA	NA	2	3
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 10000	500	4	0	NA	NA	NA	2	3
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 2000	2000	19	0	NA	NA	NA	9	10
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 2000	1000	18	1	-115	4884	1	9	10
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 2000	500	4	0	NA	NA	NA	9	10
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 5000	2000	19	0	NA	NA	NA	3	4
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 5000	1000	18	0	NA	NA	NA	3	4
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	bin 5000	500	4	0	NA	NA	NA	3	4
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	sites	2000	19	1	26	-134	1	1	2
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	sites	1000	18	0	NA	NA	NA	1	2
+chr9_qarm_from_chr16_qarm_2	chr16_qarm	sites	500	4	0	NA	NA	NA	1	2
