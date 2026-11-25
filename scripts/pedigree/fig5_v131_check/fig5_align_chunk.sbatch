@@ -9,7 +9,7 @@
 # usage: sbatch fig5_align_chunk.sbatch --cid CID --in IN_DIR --out OUT_DIR --freq F --piece BP [--batches K]
 # --batches K: query contigs split into K groups (whole contigs, balanced by bp), one sweepga run per group, PAFs joined
 # (SELF.p failed 4 times in sweepga's ALNtoPAF on the whole query: 2879922, 2879985, 2880081; K=1 is the plain run).
-# Each group: up to 3 tries; finished groups saved in OUT_DIR/raw_paf/<name>.parts/ and reused by a rerun.
+# A failing group is run again one contig at a time; finished groups saved in OUT_DIR/raw_paf/<name>.parts/ and reused by a rerun.
 # Same sweepga call as fig5_align_f.sbatch. Each query contig is cut into ceil(L/BP) equal pieces (each <= BP, no overlap),
 # named CONTIG:A-B (samtools faidx); after alignment the query name, length and coordinates go back to the contig.
 # An alignment that crosses a piece boundary becomes two records. Every query contig >= 10 Mb must be aligned over >= 50%.
@@ -38,6 +38,11 @@ sort -k2,2nr $CID.query.fa.fai | awk -F'\t' -v k=$K '{g = 0; for (i = 1; i < k; 
 # finished groups are kept in PD and reused when the same command runs again (KID 2880973, 2881075 lost 5-6 h each)
 PD=$OUT/raw_paf/$CID.frequency$F.$SFX.parts; mkdir -p $PD
 if [ -s $PD/groups.tsv ]; then cmp groups.tsv $PD/groups.tsv || { echo "ERROR groups differ from $PD/groups.tsv"; exit 1; }; else cp groups.tsv $PD/; fi
+run () {  # one sweepga run: TAG QUERY_FA OUT_PAF; logs exit status and peak RSS of FastGA/ALNtoPAF; returns the sweepga status
+  ( set +ex; while sleep 15; do ps -C FastGA,ALNtoPAF -o rss=,comm=; done ) > mem.$1.txt 2> /dev/null & local M=$! rc=0  # ps exits 1 when neither runs
+  $SWEEPGA --fastga --fastga-frequency $F --num-mappings many:many --scaffold-jump 0 --temp-dir "$W" --output-file $3 $2 "$CID.target.fa" || rc=$?
+  kill $M; log "$1 sweepga exit $rc, peak RSS: $(peak mem.$1.txt)"; return $rc
+}
 peak () { awk '{if ($1 > m[$2]) m[$2] = $1} END {for (p in m) printf "%s %.1f GB ", p, m[p] / 1048576}' $1; }
 : > pieces.paf
 for g in $(seq 0 $((K - 1))); do
@@ -45,14 +50,18 @@ for g in $(seq 0 $((K - 1))); do
   awk -F'\t' -v g=$g 'NR == FNR {if ($2 == g) c[$1] = 1; next} {i = match($0, /:[0-9]+-[0-9]+$/); if (substr($0, 1, i - 1) in c) print}' groups.tsv pieces.txt > p.$g.txt
   $S faidx -r p.$g.txt q.fa > q.$g.fa
   log "sweepga fastga f$F many:many, group $g of $K: $(cut -f2 groups.tsv | grep -cx $g) contigs ($(awk -F'\t' -v g=$g '$2 == g {printf $1 " "}' groups.tsv)), $(wc -l < p.$g.txt) pieces, $(grep -v '>' q.$g.fa | tr -d '\n' | wc -c) bp"
-  for t in 1 2 3; do  # ALNtoPAF was killed (code None) in groups that pass on another run: retry, log memory
-    ( set +ex; while sleep 15; do ps -C FastGA,ALNtoPAF -o rss=,comm=; done ) > mem.$g.$t.txt 2> /dev/null & M=$!  # ps exits 1 when neither runs
-    if $SWEEPGA --fastga --fastga-frequency $F --num-mappings many:many --scaffold-jump 0 --temp-dir "$W" --output-file pieces.$g.paf q.$g.fa "$CID.target.fa"; then
-      kill $M; log "group $g try $t ok, peak RSS: $(peak mem.$g.$t.txt)"; break
-    fi
-    kill $M; log "group $g try $t FAILED, peak RSS: $(peak mem.$g.$t.txt); node memory GB: $(free -g | awk '/Mem/ {print "total " $2 ", used " $3 ", available " $7}')"
-    [ $t -lt 3 ] || { echo "ERROR group $g failed 3 times"; exit 1; }
-  done
+  # a failing group fails again on every try (KID K=8 group 5, chr6 chr11 chr18: 4 of 4, ALNtoPAF code None, RSS 2.4 GB of 503 GB;
+  # the same contigs passed inside other groups with K=4): no retry, run the group's contigs one at a time instead
+  if ! run g$g q.$g.fa pieces.$g.paf; then
+    log "group $g FAILED; node memory GB: $(free -g | awk '/Mem/ {print "total " $2 ", used " $3 ", available " $7}'); its contigs one at a time"
+    : > pieces.$g.paf
+    for c in $(awk -F'\t' -v g=$g '$2 == g {print $1}' groups.tsv); do
+      awk -v c="$c" '{i = match($0, /:[0-9]+-[0-9]+$/); if (substr($0, 1, i - 1) == c) print}' p.$g.txt > p.$g.c.txt
+      $S faidx -r p.$g.c.txt q.fa > q.$g.c.fa
+      run "g$g.$c" q.$g.c.fa pieces.$g.c.paf || { echo "ERROR group $g contig $c failed alone ($(wc -l < p.$g.c.txt) pieces)"; exit 1; }
+      log "group $g contig $c: $(wc -l < p.$g.c.txt) pieces, PAF lines $(wc -l < pieces.$g.c.paf)"; cat pieces.$g.c.paf >> pieces.$g.paf; rm -f pieces.$g.c.paf q.$g.c.fa
+    done
+  fi
   $PIGZ -p $SLURM_CPUS_PER_TASK -c pieces.$g.paf > $PD/g$g.paf.gz.part; gzip -t $PD/g$g.paf.gz.part; mv $PD/g$g.paf.gz.part $PD/g$g.paf.gz
   log "group $g PAF lines $(wc -l < pieces.$g.paf), saved $PD/g$g.paf.gz"; cat pieces.$g.paf >> pieces.paf; rm -f pieces.$g.paf q.$g.fa
 done
