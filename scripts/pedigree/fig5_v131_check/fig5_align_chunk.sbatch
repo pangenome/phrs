@@ -9,6 +9,7 @@
 # usage: sbatch fig5_align_chunk.sbatch --cid CID --in IN_DIR --out OUT_DIR --freq F --piece BP [--batches K]
 # --batches K: query contigs split into K groups (whole contigs, balanced by bp), one sweepga run per group, PAFs joined
 # (SELF.p failed 4 times in sweepga's ALNtoPAF on the whole query: 2879922, 2879985, 2880081; K=1 is the plain run).
+# Each group: up to 3 tries; finished groups saved in OUT_DIR/raw_paf/<name>.parts/ and reused by a rerun.
 # Same sweepga call as fig5_align_f.sbatch. Each query contig is cut into ceil(L/BP) equal pieces (each <= BP, no overlap),
 # named CONTIG:A-B (samtools faidx); after alignment the query name, length and coordinates go back to the contig.
 # An alignment that crosses a piece boundary becomes two records. Every query contig >= 10 Mb must be aligned over >= 50%.
@@ -34,13 +35,26 @@ log "query contigs $(wc -l < $CID.query.fa.fai), pieces $(wc -l < pieces.txt), l
 $S faidx -r pieces.txt $CID.query.fa > q.fa
 [ $(grep -c '>' q.fa) -eq $(wc -l < pieces.txt) ] || { echo "ERROR piece count differs from pieces.txt"; exit 1; }
 sort -k2,2nr $CID.query.fa.fai | awk -F'\t' -v k=$K '{g = 0; for (i = 1; i < k; i++) if (b[i] < b[g]) g = i; b[g] += $2; print $1 "\t" g}' > groups.tsv
+# finished groups are kept in PD and reused when the same command runs again (KID 2880973, 2881075 lost 5-6 h each)
+PD=$OUT/raw_paf/$CID.frequency$F.$SFX.parts; mkdir -p $PD
+if [ -s $PD/groups.tsv ]; then cmp groups.tsv $PD/groups.tsv || { echo "ERROR groups differ from $PD/groups.tsv"; exit 1; }; else cp groups.tsv $PD/; fi
+peak () { awk '{if ($1 > m[$2]) m[$2] = $1} END {for (p in m) printf "%s %.1f GB ", p, m[p] / 1048576}' $1; }
 : > pieces.paf
 for g in $(seq 0 $((K - 1))); do
+  if [ -s $PD/g$g.paf.gz ]; then gzip -t $PD/g$g.paf.gz; zcat $PD/g$g.paf.gz >> pieces.paf; log "group $g reused from $PD ($(zcat $PD/g$g.paf.gz | wc -l) lines)"; continue; fi
   awk -F'\t' -v g=$g 'NR == FNR {if ($2 == g) c[$1] = 1; next} {i = match($0, /:[0-9]+-[0-9]+$/); if (substr($0, 1, i - 1) in c) print}' groups.tsv pieces.txt > p.$g.txt
   $S faidx -r p.$g.txt q.fa > q.$g.fa
-  log "sweepga fastga f$F many:many, group $g of $K: $(cut -f2 groups.tsv | grep -cx $g) contigs, $(wc -l < p.$g.txt) pieces, $(grep -v '>' q.$g.fa | tr -d '\n' | wc -c) bp"
-  $SWEEPGA --fastga --fastga-frequency $F --num-mappings many:many --scaffold-jump 0 --temp-dir "$W" --output-file pieces.$g.paf q.$g.fa "$CID.target.fa"
-  log "group $g PAF lines $(wc -l < pieces.$g.paf)"; cat pieces.$g.paf >> pieces.paf; rm -f pieces.$g.paf q.$g.fa
+  log "sweepga fastga f$F many:many, group $g of $K: $(cut -f2 groups.tsv | grep -cx $g) contigs ($(awk -F'\t' -v g=$g '$2 == g {printf $1 " "}' groups.tsv)), $(wc -l < p.$g.txt) pieces, $(grep -v '>' q.$g.fa | tr -d '\n' | wc -c) bp"
+  for t in 1 2 3; do  # ALNtoPAF was killed (code None) in groups that pass on another run: retry, log memory
+    ( set +ex; while sleep 15; do ps -C FastGA,ALNtoPAF -o rss=,comm=; done ) > mem.$g.$t.txt 2> /dev/null & M=$!  # ps exits 1 when neither runs
+    if $SWEEPGA --fastga --fastga-frequency $F --num-mappings many:many --scaffold-jump 0 --temp-dir "$W" --output-file pieces.$g.paf q.$g.fa "$CID.target.fa"; then
+      kill $M; log "group $g try $t ok, peak RSS: $(peak mem.$g.$t.txt)"; break
+    fi
+    kill $M; log "group $g try $t FAILED, peak RSS: $(peak mem.$g.$t.txt); node memory GB: $(free -g | awk '/Mem/ {print "total " $2 ", used " $3 ", available " $7}')"
+    [ $t -lt 3 ] || { echo "ERROR group $g failed 3 times"; exit 1; }
+  done
+  $PIGZ -p $SLURM_CPUS_PER_TASK -c pieces.$g.paf > $PD/g$g.paf.gz.part; gzip -t $PD/g$g.paf.gz.part; mv $PD/g$g.paf.gz.part $PD/g$g.paf.gz
+  log "group $g PAF lines $(wc -l < pieces.$g.paf), saved $PD/g$g.paf.gz"; cat pieces.$g.paf >> pieces.paf; rm -f pieces.$g.paf q.$g.fa
 done
 log "piece PAF lines=$(wc -l < pieces.paf)"
 awk -F'\t' 'BEGIN {OFS = "\t"} NR == FNR {L[$1] = $2; next} {i = match($1, /:[0-9]+-[0-9]+$/); if (!i) {print "ERROR query name without piece range: " $1 > "/dev/stderr"; exit 1} c = substr($1, 1, i - 1); split(substr($1, i + 1), r, "-"); if (!(c in L)) {print "ERROR unknown contig " c > "/dev/stderr"; exit 1} o = r[1] - 1; $1 = c; $2 = L[c]; $3 += o; $4 += o; print}' $CID.query.fa.fai pieces.paf > $CID.raw.paf
