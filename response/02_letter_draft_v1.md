@@ -141,8 +141,13 @@ subtelomeric ends.
 the only heterologous sharing that behaves like obligate exchange is acrocentric-acrocentric and Xp/Yp —
 the two compartments where non-homologous copies are as similar as alleles (paralog/allelic ratio 1.00
 and 0.99). We therefore no longer claim detectable exchange between non-homologous ends anywhere else.
-That is a narrower claim than the preprint's, and it is consistent with the exchange rate our divergence
-data imply: ~1 event per 740,000 generations per locus pair, far too rare to expect in one family.
+That is a narrower claim than the preprint's, and it is consistent with the mixing our divergence data
+imply once it is expressed correctly. We no longer quote a rate of events: in an obligate region a
+crossover occurs every generation, yet two copies there still coalesce ~62,500 generations ago, because
+crossing over makes the two loci a single pool rather than a shallow genealogy. The data constrain a
+ratio of genealogical depths, $R$, which is 1.0 where mixing is obligate (acrocentric short arms, PARs),
+1.8 at the telomeric end of the compartment, 5.9 for the average block and 44 in the weakest blocks, so
+mixing relative to the obligate case, $1/(R-1)$, runs from 1.2 down to 0.02.
 
 ## Point 5 — mouse ρ = 0.715 is a non-independent-pair Spearman
 

@@ -1029,3 +1029,29 @@ section: first main-text citation of Fig. 5a-c (test 2), the copy trees of 24 pa
 acrocentric repeat (new Extended Data Fig. 8, ED_Fig8_duplicon_trees.pdf, test 1), and gene conversion (GENECONV,
 the 2 kb scan, HG01884 and HG03239, test 3). New Methods subsection "Tests of homogenization"; new bib entry
 Sawyer1989. About 600 words added to Results. Build: exit 0, 0 undefined, 50 pages.
+
+## Exchange regimes expressed as ratios of genealogical depths
+
+Date: 2026-11-18
+
+The "one exchange per N generations" phrasing was withdrawn: it implies an event clock that these data do
+not contain, and mixing per-pair figures with a system-wide one produced an apparent contradiction
+between the telomeric ratio and the average rate. Replaced throughout by the dimensionless ratio
+$R = T_{\text{coalescence}}(\text{non-homologous pair}) / T_{\text{coalescence}}(\text{alleles in one
+pool})$, anchored at $R = 1$ for the obligate case (acrocentric short arms, PAR1, PAR2), where a
+crossover occurs every generation yet coalescence is still ~62,500 generations because the two loci are
+a single pool. Mixing relative to obligate follows as $1/(R-1) = 4N_e m$.
+
+New Extended Data Table 2 (`tab:exchange_regimes`): obligate 1.00 / $\infty$; telomeric end 1.82 / 1.22;
+mid 3.44 / 0.41; average block 5.93 / 0.20; far interior 6.63 / 0.18; weakest 44 / 0.023. Data:
+`submission/supporting_material/ED_exchange_regimes_table.tsv`; patch:
+`response/patches/ED_table_exchange_regimes.tex`; derivation and the list of withdrawn statements:
+`response/notes/exchange_rate_estimates.md`.
+
+$R$ is quoted as primary because it cancels the substitution rate — numerator and denominator are measured
+in the same GC-rich sequence — so it survives both GC-biased gene conversion and the elevated
+paternal-germline rate, which make the absolute times upper bounds.
+
+Also corrected: the Discussion previously said "about 1.3-fold more divergent than alleles just outside
+the excluded zone"; the like-for-like per-arm median is 1.82, and the earlier 1.3 was a smoothed figure
+value mixed with a length-weighted cohort number. Build: exit 0, 0 undefined.
