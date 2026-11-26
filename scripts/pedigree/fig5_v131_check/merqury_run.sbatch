@@ -12,7 +12,7 @@ set -euo pipefail
 D=$1; SM=$2; N=$3; TAG=$4; cd $D; O=$D/merqury/$TAG/$SM; mkdir -p $O
 G=/gnu/store; export MERQURY=$D/scripts_tmp/merqury-1.4.1
 export PATH=$G/8zwv41mb9sgb08652jfn9s4h697550v9-meryl-1.4.1/bin:$G/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin:$G/18fiwlwr3d3jglkcypdv5250d098ax12-bedtools-2.31.1/bin:$PATH
-W=/scratch/$USER.merqury.$SLURM_JOB_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
+mkdir -p /scratch/$USER/tmp/phrs; W=$(mktemp -d /scratch/$USER/tmp/phrs/merqury.XXXX); trap 'rm -rf $W' EXIT
 log () { echo "[$(date -Is)] $*"; }
 cp -r short/meryl/$SM.k21.meryl $W/reads.meryl
 zcat $N/$SM#1.fa.gz > $W/${SM}_hap1.fasta; zcat $N/$SM#2.fa.gz > $W/${SM}_hap2.fasta

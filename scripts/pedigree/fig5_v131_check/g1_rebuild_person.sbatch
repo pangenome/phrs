@@ -16,7 +16,9 @@
 #  8 g1_manual_fixes.sh: manual fixes of g1_manual_fixes.tsv for V and SM, in file order (end_replace: g1_end_replace.py, then
 #    hifi_polish.sbatch on the inserted piece when g1_end_polish.tsv lists it; tip_trim: tip_trim.py)
 #  9 per-contig md5 vs the final of g1_finals.tsv (seq_md5.py); a difference exits non-zero
-# out: DIR/{cand.tsv,tasks.tsv,applied,polished,merqury_filter.*,applied2,polished2,fix<N>}, DIR/final_dir.txt, DIR/compare.tsv
+# work: node scratch (mktemp under /scratch/$USER/tmp/phrs), removed on exit
+# out: DIR/ tables only (cand.tsv, tasks.tsv, gap100k.keep.txt, merqury_filter.*, applied*/corrections.tsv, fix*/junction.tsv,
+#   fix*.pol/polish.tsv, new.md5, ref.md5, compare.tsv, final_dir.txt)
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
 while [ $# -gt 0 ]; do case $1 in --washu) D=$2;; --version) V=$2;; --sample) SM=$2;; --runs) R=$2;; --out) O=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
@@ -25,7 +27,11 @@ log () { echo "[$(date -Is)] $*"; }
 cd $D; T=$D/scripts_tmp; S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools; BGZ=$(ls -d /gnu/store/*htslib-1.19*/bin/bgzip | head -1)
 [ -e $O ] && { echo "ERROR $O exists; use a new dir"; exit 1; }
 MT=$(basename $(dirname $O)).r1; [ -e merqury/$MT/$SM ] && { echo "ERROR merqury/$MT/$SM exists"; exit 1; }
-mkdir -p $O; log "rebuild $SM $V: runs $R, out $O, host $(hostname), cpus $SLURM_CPUS_PER_TASK"
+# all steps write to node scratch; on exit only the tables (*.tsv, *.txt, *.md5, < 50 MB each) are copied to OUT on moosefs,
+# not the FASTA files (2026-11-26: moosefs move, "don't copy stuff"; the rebuild is a check against g1_finals.tsv)
+OUT=$(realpath -m $O); mkdir -p $OUT /scratch/$USER/tmp/phrs; O=$(mktemp -d /scratch/$USER/tmp/phrs/rebuild.$SM.$V.XXXX)
+trap 'rc=$?; cd $O && find . -type f \( -name "*.tsv" -o -name "*.txt" -o -name "*.md5" \) -size -50M -print0 | tar --null -T - -cf - | (cd $OUT && tar xf -); cd /; rm -rf $O; echo "exit status $rc at line ${LINENO}; tables copied to $OUT"' EXIT; trap 'exit 143' TERM
+mkdir -p $O; log "rebuild $SM $V: runs $R, work $O, out $OUT, host $(hostname), cpus $SLURM_CPUS_PER_TASK"
 log "step 1 candidates"
 python3 $T/g1_candidates_hifi.py $D $SM $V $O/cand.tsv
 awk -F'\t' -v OFS='\t' 'NR > 1 && $11 == "candidate" {n++; r = $1 ":" $2 + 1 "-" $3; print n, "g" n, r, r}' $O/cand.tsv > $O/tasks.tsv
