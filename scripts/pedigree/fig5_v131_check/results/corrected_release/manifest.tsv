@@ -1,0 +1,17 @@
+version	sample	haplotype	path	bytes	contigs	bp	md5
+v11	PAN010	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v11/PAN010/polished2/norm/PAN010#1.fa.gz	901949577	23	3023090876	9d89ba448df89362e8a495916be66499
+v11	PAN010	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v11/PAN010/polished2/norm/PAN010#2.fa.gz	902633410	23	3036923385	a20fae73b05c3c4336683ed78278ce95
+v11	PAN011	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v11f/PAN011/fix1.pol/norm/PAN011#1.fa.gz	902091866	23	3028921368	c4c110db9caafe3dffb7858d295324a2
+v11	PAN011	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v11f/PAN011/fix1.pol/norm/PAN011#2.fa.gz	863991053	23	2921542635	ee7b576790e314529741039b5e8d7830
+v11	PAN027	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v11d/PAN027/norm/PAN027#1.fa.gz	886839526	23	3018885685	116d192960ed0b5f7ddd85c620b4ad72
+v11	PAN027	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v11d/PAN027/norm/PAN027#2.fa.gz	886503816	23	3025372649	5df7e722c50801829b06e10445ad9111
+v11	PAN028	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v11/PAN028/polished2/norm/PAN028#1.fa.gz	902154500	23	3036590338	f43c60ae6b6da623c30222998fdd2101
+v11	PAN028	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v11/PAN028/polished2/norm/PAN028#2.fa.gz	901362435	23	3025799599	16a4f1d631b8cf250d4eb070880e9a2e
+v131	PAN010	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v131/PAN010/polished2/norm/PAN010#1.fa.gz	901987431	23	3022403457	4dadf14ed061f3b825a75df7d8ea66e1
+v131	PAN010	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v131/PAN010/polished2/norm/PAN010#2.fa.gz	902638221	23	3036925553	b779a3f3f928c00c9a5512342ed18485
+v131	PAN011	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v131f/PAN011/fix1.pol/norm/PAN011#1.fa.gz	902145903	23	3028907858	f3e4bec33ee8fdd590c348101ac0340c
+v131	PAN011	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v131f/PAN011/fix1.pol/norm/PAN011#2.fa.gz	863972137	23	2921366322	a9100b20aa6e869a4acf8c7e1718d7f3
+v131	PAN027	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v131d/PAN027/norm/PAN027#1.fa.gz	886874258	23	3018727861	1e0ab68e633d221ef16ed9305bcd275f
+v131	PAN027	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/final_v131d/PAN027/norm/PAN027#2.fa.gz	886764874	23	3027522497	9bd583584ae517a4c8305a59d5e74730
+v131	PAN028	1	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v131/PAN028/polished2_b/norm/PAN028#1.fa.gz	900784038	23	3026360164	c04b298efab9703a7f4ef599e1ecff4f
+v131	PAN028	2	/moosefs/guarracino/HPRCv2/PHR_III/pedigrees/washu_v131/g1/apply_v131/PAN028/polished2_b/norm/PAN028#2.fa.gz	901518182	23	3026661286	958713499512be7a2956fc8a989e8de7
