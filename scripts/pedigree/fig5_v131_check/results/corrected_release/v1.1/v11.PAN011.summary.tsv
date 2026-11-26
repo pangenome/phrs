@@ -1,3 +1,3 @@
 version	sample	haplotype	contigs	orig_bp	final_bp	orig_N	final_N	orig_N_pct	final_N_pct	orig_N_runs	final_N_runs	final_non_ACGTN	merqury_kmers_orig	merqury_kmers_final	QV_orig	QV_final	changes_G1	changes_manual	NA_coordinates
 v11	PAN011	1	23	3028914412	3028921368	3854108	3854108	0.1272	0.1272	13	13	0	72788	68423	59.4089	59.6775	48	0	0
-v11	PAN011	2	23	2921541893	2921542638	3175196	3163770	0.1087	0.1083	7	6	0	125825	115547	56.8758	57.2459	39	1	0
+v11	PAN011	2	23	2921541893	2921542635	3175196	3163770	0.1087	0.1083	7	6	0	125825	115547	56.8758	57.2459	39	1	0
