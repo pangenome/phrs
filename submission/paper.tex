@@ -520,6 +520,13 @@ candidate never enters the alignment, so chr1p wins by default; at higher sensit
 homologue reaches the last base of its contig at identity 1.0000 and matches the daughter's tract at 48
 diagnostic sites against 1 for chr1p (Methods).
 
+Neither run remains when we repeat the whole-genome comparison on the assemblies of all four
+individuals corrected with their own reads (Methods). From father to daughter the only runs between
+non-homologous chromosomes are PAR1 (138\,kb) and acrocentric short arms (47 runs, 836\,kb), and
+two thin runs from the interior of chr1 and chr3 to acrocentric short arms (Extended Data
+Fig.~\ref{fig:ed7}C). From mother to daughter (9 runs, 182\,kb) and from daughter to granddaughter
+(22 runs, 396\,kb) every such run joins acrocentric short arms.
+
 We conclude that this pedigree contains \textbf{no evidence of exchange between non-homologous ends
 outside the acrocentric short arms and the pseudoautosomal regions}. Within those two compartments such sharing
 is expected and obligate - the acrocentric short arms exchange ribosomal DNA arrays and PAR1 crosses
@@ -1251,8 +1258,8 @@ PAN027 from parental k-mers), and the released file names do not encode it; we t
 resolved, chromosome by chromosome, the copy inherited from the transmitting parent by
 identity to that parent's two haplotypes before comparison, and we assign a block of tens
 of kilobases to a non-homologous source only when the most similar sequence in the
-transmitting parent's genome lies on another chromosome (the exceptions being PAR1, the
-acrocentric short arms and the chr9q/chr3q terminus reported here). Transmissions are
+transmitting parent's genome lies on another chromosome (the exceptions being PAR1 and the
+acrocentric short arms). Transmissions are
 presented only where the donor genome is complete: both of PAN027's parents are sequenced,
 whereas PAN028's father is not, so her paternal copy is excluded from the analysis.
 
@@ -1278,14 +1285,10 @@ One of the 538 patches overlaps such a call; among the acrocentric patches the r
 cover the terminal tens of kilobases of every chromosome end in every individual of the
 pedigree, including arms where no inter-chromosomal patch is called.
 
-\emph{How each retained call is supported.} The two non-acrocentric signals differ in kind.
-PAR1 is an obligate exchange and serves as the positive control: its non-homologous identity
+\emph{How each retained call is supported.} PAR1 is an obligate exchange and serves as the positive control: its non-homologous identity
 (median 1.000) exceeds the homologous alternative (0.992) by ~0.8 percentage points across
-138 kb. The chr9q/chr3q terminus is supported by structure rather than by margin: its
-non-homologous identity exceeds the homologous alternative by only ~0.3 percentage points,
-but the donor haplotype carries the module while the same individual's other chr9q copy has
-no match there at all (7.5\% coverage), so the call rests on the donor's own heterozygous
-structure. The acrocentric-acrocentric calls rest on pattern, not margin: they recur as
+138 kb. We do not retain the chr9q/chr3q terminus, because it disappears once we correct the
+father's chr9q haplotype 2 (Extended Data Fig.~\ref{fig:ed7}C). The acrocentric-acrocentric calls rest on pattern, not margin: they recur as
 multi-source blocks (at least five patches from at least three source acrocentric arms per
 flank), the signature of multi-paralog NAHR, and their identity to the homologous arm is on
 average slightly higher than to the non-homologous arm. See
