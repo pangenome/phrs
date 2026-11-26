@@ -1157,12 +1157,36 @@ q-arms ($n = 42$).
 
 \subsection*{Pedigree direct-alignment windows}
 
-For the transmission analysed in Extended Data Fig.~\ref{fig:ed7}C we aligned one child haplotype
+\emph{Assembly correction.} Before the comparisons we corrected the version 1.1 assemblies of all
+four individuals, each with that individual's own reads only. We flagged 10\,kb bins where the
+individual's HiFi depth fell to at most a quarter of the contig median, or where the HiFi reads
+carried at least three single-nucleotide differences at depth at least 3, merged flagged bins
+within 20\,kb and skipped groups lying mostly in centromeric satellite arrays. For each candidate we reassembled the candidate $\pm$400\,kb with hifiasm 0.25.0 from
+the individual's HiFi reads, ONT reads or both, and took as replacement a contig that matched the
+assembly exactly over at least 5\,kb on each side. We applied a replacement only when more of the
+individual's HiFi reads and more of their ONT reads aligned better to it than to the assembled
+sequence, and kept it only when it did not raise the number of assembly 21-mers absent from the
+individual's Illumina reads (Merqury) within 1\,kb. We then polished the replaced pieces with the
+individual's HiFi reads (bcftools haploid calls with quality at least 20). Two chromosome ends
+needed separate fixes. We replaced the terminal 150,287\,bp of the father's chr9q haplotype 2 with a
+contig assembled from his HiFi reads alone, joined at the end of a 120,784\,bp exact match to the
+assembly, and we removed a 10,434\,bp tail without telomeric repeats beyond the telomere of the
+daughter's maternal chr22q. In total we made 318 changes (316 reassembled pieces and the two end
+fixes). The Merqury quality value rose in all eight haplotypes (range 56.83--60.78 before, 57.18--60.85
+after) and the assembly 21-mers absent from the Illumina reads fell from 773,971 to 712,344. One
+script rebuilds the four corrected assemblies from the released ones and reproduces them base for
+base.
+
+For each transmission (Extended Data Fig.~\ref{fig:ed7}C) we aligned one child haplotype
 (the query) against the combined two-haplotype assembly of the transmitting
-parent (the target) \cite{Cechova2025}. Starting from a whole-genome sweepga
-0.1.1~\cite{sweepga} (commit 02e7ed0d, with its bundled FastGA) alignment (frequency
-threshold 32, many-to-many mappings, no scaffold jumps), we filtered to 10:10 mapping
-classes and summarized the
+parent (the target) \cite{Cechova2025}, both corrected. We cut each query chromosome into equal
+pieces of at most 2\,Mb, because FastGA stopped the alignment chain short of some chromosome ends
+when the query was a whole chromosome, aligned the pieces in eight groups of whole chromosomes with
+sweepga 0.1.1~\cite{sweepga} (commit 02e7ed0d, with its bundled FastGA, frequency threshold 32,
+many-to-many mappings, no scaffold jumps) and returned every alignment to chromosome coordinates.
+When sweepga's conversion to PAF failed on a group, we reran the same FastGA call and converted its
+output with ALNtoPAF on one thread, which gave output identical to sweepga's on a group where both ran (180,083
+of 180,083 lines). We filtered to 18:18 mapping classes and summarized the
 query in non-overlapping 2 kb windows, excluding centromeric windows, windows
 without alignment support, and windows with inter-chromosomal alignment depth
 above 100. For each retained window we computed impg 0.4.1 similarity and kept
@@ -1426,13 +1450,12 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
       \put(1,50){\textbf{\large\sffamily A}}\end{overpic}\hfill
     \begin{overpic}[width=0.575\linewidth]{fig/MainFigures/Fig5B_zoom9q3q.pdf}%
       \put(0.5,35){\textbf{\large\sffamily B}}\end{overpic}}\\[3pt]
-  \begin{overpic}[width=\linewidth]{fig/MainFigures/Fig5C_paternal.png}%
+  \begin{overpic}[width=\linewidth]{fig/MainFigures/ED7C_paternal_corrected.png}%
     \put(0.4,13.5){\textbf{\large\sffamily C}}\end{overpic}\\[3pt]
   {\footnotesize\sffamily\textbf{Match type}\quad
     \fivesw{b8bdc3}~same chromosome\quad
     \fivesw{6f6f6f}~acrocentric\quad
-    \fivesw{E7298A}~PAR1 (obligate)\quad
-    \fivesw{D95F02}~9q/3q artefact}
+    \fivesw{E7298A}~PAR1 (obligate)}
   \caption{\textbf{An assembly error in one paternal haplotype mimics an ectopic exchange.}
     \textbf{(A)} The WashU three-generation pedigree: grandparents PAN011 and
     PAN010, their daughter PAN027 and her daughter PAN028, whose father is
@@ -1444,14 +1467,16 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
     assembled segment disagrees with his own long reads inside the tract (dice 0.994 there against
     1.000 outside it), so the closest remaining sequence wins by default.
     \textbf{(C)} Whole-genome comparison of that transmitted haplotype (middle track)
-    with the father's two haplotypes (upper, lower); chromosomes are concatenated and
-    scaled by length. Grey ribbons are same-chromosome chains; coloured ribbons mark
-    PAR1 (pink), which is obligate, and the chr9q/chr3q best non-homologous match
-    (orange). When the father's chr9q is rebuilt from his own high-fidelity reads
-    alone, the daughter's paternal chr9q matches it at dice 1.0000 across the tract and
-    the chr3q match falls to second place (0.9990), leaving PAR1 as the only exchange in
-    the pedigree. The grey run at chr5 is the chr1p/chr5q best non-homologous match, an
-    alignment artefact at the seed-frequency cutoff of the whole-genome scan.}
+    with the father's two haplotypes (upper, lower), after we corrected the assemblies of
+    all four individuals (Methods). The father's corrected chr9q terminus comes from his own
+    high-fidelity reads alone. Chromosomes are concatenated and scaled by length. Grey
+    ribbons are same-chromosome chains, dark grey ribbons join acrocentric short arms and
+    the pink ribbon marks PAR1, which is obligate. On the corrected assemblies the
+    daughter's paternal chr9q matches her father's chr9q at dice 1.0000 across the tract
+    and his chr3q comes second (0.9990). No chr9q/chr3q or chr1p/chr5q run remains, so PAR1
+    is the only exchange outside the acrocentric short arms. Two thin runs join interior
+    sequence of the daughter's chr3 (96.79--96.80\,Mb, 18\,kb) and chr1 (131.02--131.03\,Mb,
+    10\,kb) to acrocentric short arms, and neither lies at a chromosome end.}
   \label{fig:ed7}
 \end{figure}
 

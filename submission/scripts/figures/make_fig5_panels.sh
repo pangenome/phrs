@@ -22,14 +22,14 @@ ONLY_CATEGORIES="PAR_XY,chr9_chr3_candidate"
 
 CROP_Y0=75; CROP_H=565; CROP_X0=165; CROP_W=$((3600 - CROP_X0))
 
-gen () {  # id  query_label  h1_label  h2_label  out_base
-  local id="$1" q="$2" h1="$3" h2="$4" base="$5"
+gen () {  # id  query_label  h1_label  h2_label  out_base  [data_prefix (default fig5_)]
+  local id="$1" q="$2" h1="$3" h2="$4" base="$5" dp="${6:-fig5_}"
   echo ">>> panel $base ($id)"
   FIG5_HIDE_LEGEND=1 python3 "$PLOTTER" \
     --comparison-id "$id" \
-    --class-winners "data/fig5_${id}.class_winners.impg_similarity.tsv.gz" \
-    --query-fai "data/fig5_${id}.query.fa.fai" \
-    --target-fai "data/fig5_${id}.target.fa.fai" \
+    --class-winners "data/${dp}${id}.class_winners.impg_similarity.tsv.gz" \
+    --query-fai "data/${dp}${id}.query.fa.fai" \
+    --target-fai "data/${dp}${id}.target.fa.fai" \
     --output-dir "$TMP" \
     --query-label "$q" --target-h1-label "$h1" --target-h2-label "$h2" \
     --only-categories "${ONLY_CATEGORIES:-}" \
@@ -67,4 +67,10 @@ gen PAN027pat_vs_PAN011_joint "SELF.p (PAN027 paternal)" "DAD.h1 (PAN011)" "DAD.
 # Retired with the label correction: the maternal (PAN027mat_vs_PAN010) and KID
 # (PAN028mat_vs_PAN027) ribbon panels. The KID panel queried hap1, which is the
 # paternal copy on chr1,3,5,9 - see RESPONSE_CHANGELOG.md.
-echo "done: $OUT/Fig5C_paternal.{pdf,png}"
+# Extended Data Fig. 7C: the same comparison on the corrected v1.1 assemblies of all four individuals (G1 reassembly, father's
+# chr9q end from his own HiFi reads, SELF.m chr22q tip trim), query in 2 Mb pieces, N=18 mapping filter
+# (scripts/pedigree/fig5_v131_check: fig5_align_chunk.sbatch, fig5_similarity_s.sbatch; washu_v131/fig5_final/n18/pat).
+# Only PAR1 is coloured: no chr9q/chr3q or chr1p/chr5q run remains.
+# CROP_X0 100 (not 165): at 165 the middle row label is cut to "ELF.p"
+CROP_X0=100 CROP_W=3500 ONLY_CATEGORIES="PAR_XY" gen PAN027pat_vs_PAN011_joint "SELF.p (PAN027 paternal)" "DAD.h1 (PAN011)" "DAD.h2 (PAN011)" ED7C_paternal_corrected fig5_corrected_v11_
+echo "done: $OUT/Fig5C_paternal.{pdf,png} $OUT/ED7C_paternal_corrected.{pdf,png}"
