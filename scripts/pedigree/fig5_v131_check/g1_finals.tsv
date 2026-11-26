@@ -1,9 +1,9 @@
 version	sample	dir
 v11	PAN010	g1/apply_v11/PAN010/polished2/norm
-v11	PAN011	g1/final_v11c/PAN011/norm
+v11	PAN011	g1/final_v11f/PAN011/fix1.pol/norm
 v11	PAN027	g1/final_v11d/PAN027/norm
 v11	PAN028	g1/apply_v11/PAN028/polished2/norm
 v131	PAN010	g1/apply_v131/PAN010/polished2/norm
-v131	PAN011	g1/final_v131c/PAN011/norm
+v131	PAN011	g1/final_v131f/PAN011/fix1.pol/norm
 v131	PAN027	g1/final_v131d/PAN027/norm
 v131	PAN028	g1/apply_v131/PAN028/polished2_b/norm
