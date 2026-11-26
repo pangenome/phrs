@@ -9,7 +9,9 @@ length L is accepted when
   (ii)  >= --min-informative of the 1 kb bins of the site have >= 20 alleles and >= 20 donor-arm copies
         (best record per query, >= 75% of the bin aligned, as in conversion_scan.py) and median d(donor
         copies) - median d(alleles) >= --min-gap, so a converted copy would differ from its own arm;
-  (iii) the site is >= --spacing bp from any other planted site.
+  (iii) the site is >= --spacing bp from any other planted site;
+  (iv)  the chosen donor copy differs from the recipient at >= --min-subst of the site's positions, so the
+        plant changes the sequence (a donor copy that happens to match the recipient tests nothing).
 Each length is tried on its own (longest first); the --index-th window where >= --min-placed lengths get a
 site is used. Inside each site the recipient sequence is
 replaced by the aligned donor sequence. OUTPUT: <out>.fa (the modified window, same name) and
@@ -67,6 +69,8 @@ def main():
     ap.add_argument("--min-gap", type=float, default=0.003)
     ap.add_argument("--min-informative", type=float, default=0.75)
     ap.add_argument("--min-placed", type=int, default=3)
+    ap.add_argument("--min-subst", type=float, default=0.003,
+                    help="the donor record must differ from the recipient at >= this fraction of the site")
     ap.add_argument("--min-copies", type=int, default=20)
     ap.add_argument("--max-windows", type=int, default=60)
     ap.add_argument("--seed", type=int, default=20261124)
@@ -76,7 +80,7 @@ def main():
     L = sorted((int(x) for x in a.lengths.split(",")), reverse=True)
     log(f"recipient {a.recipient_arm}, donor {a.donor_arm}, lengths {L}, index {a.index}, flank {a.flank}, "
         f"spacing {a.spacing}, max_indel {a.max_indel}, min_gap {a.min_gap}, min_informative {a.min_informative}, "
-        f"min_placed {a.min_placed}, seed {a.seed}")
+        f"min_placed {a.min_placed}, min_subst {a.min_subst}, seed {a.seed}")
     paths = [p.strip() for p in open(a.list) if p.strip().endswith(f"_{a.recipient_arm}.paf.gz") and "CHM13" not in p]
     random.Random(a.seed).shuffle(paths)
     log(f"{len(paths)} candidate {a.recipient_arm} windows")
@@ -118,6 +122,9 @@ def main():
                         continue
                     bs = range(s // 1000, (e - 1) // 1000 + 1)
                     if sum(b in ok_bin for b in bs) < a.min_informative * len(bs):
+                        continue
+                    xs = sum(min(t0 + n, e) - max(t0, s) for op, n, t0, _ in ops if op == "X" and t0 < e and t0 + n > s)
+                    if xs < a.min_subst * ln:
                         continue
                     site = (s, ln, r)
                     break

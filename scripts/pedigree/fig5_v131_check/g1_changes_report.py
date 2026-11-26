@@ -7,8 +7,9 @@ SAMPLE#{1,2}.fa), FINAL_DIR/SAMPLE#{1,2}.fa.gz (corrected), FIXES_TSV (g1_manual
 SAMPLE_hap{1,2}_only.bed.gz (error k-mers = assembly 21-mers absent from the Illumina reads) and SAMPLE.qv.
 Coordinates are 0-based, end excluded. G1 piece on the final assembly: polish edits only inside pieces (a few bp), so the
 sequence before and after the piece in the pre-polish assembly is searched in the final contig within +- 2 kb of the
-expected position (pre-polish position + shift of the previous piece on the contig), with anchors of 1, 5 and 20 kb in turn;
-the first anchor found once gives the coordinate, otherwise NA and a log line. end_replace: [pos, end) -> [junction, end); tip_trim: [keep, end) -> [end, end).
+expected position (pre-polish position + shift of the previous piece on the contig), with anchors of 1, 5 and 20 kb in turn,
+first at the piece border, then 100 bp away from it (polish can edit the border); the first anchor found once gives the
+coordinate, otherwise NA and a log line. end_replace: [pos, end) -> [junction, end); tip_trim: [keep, end) -> [end, end).
 merqury k-mers per change: error k-mer starts in the interval +- 1 kb (same window as g1_merqury_filter.py).
 out: OUT_PREFIX.changes.tsv, OUT_PREFIX.summary.tsv; log on stderr.
 """
@@ -42,14 +43,19 @@ cols = ["version", "sample", "haplotype", "contig", "step", "change_id", "orig_s
 rows, na = [], 0
 last = [None, 0]
 def lift(s, fa, c, p, exp, left):  # final position of pre-polish position p (expected exp); left: anchor ends at p
-    n = []
-    for L in ANCH:
-        an = get(fa, c, max(0, p - L), p) if left else get(fa, c, p, p + L)
-        if len(an) < min(L, 1000): break
-        lo_, hi_ = exp - TOL - (len(an) if left else 0), exp + TOL + (0 if left else len(an))
-        w = s[max(0, lo_):hi_]; k = [max(0, lo_) + m.start() for m in re.finditer(f"(?={re.escape(an)})", w)]
-        n.append(f"{len(an)} bp: {len(k)}")
-        if len(k) == 1: return (k[0] + len(an) if left else k[0]), ", ".join(n)
+    n = []  # offset 100: polish can edit the first bases next to a piece (an indel on its border, KID v1.1 chr10 g334)
+    for off in (0, 100):
+        for L in ANCH:
+            q = p - off if left else p + off
+            an = get(fa, c, max(0, q - L), q) if left else get(fa, c, q, q + L)
+            if len(an) < min(L, 1000): break
+            e = exp - off if left else exp + off
+            lo_, hi_ = e - TOL - (len(an) if left else 0), e + TOL + (0 if left else len(an))
+            w = s[max(0, lo_):hi_]; k = [max(0, lo_) + m.start() for m in re.finditer(f"(?={re.escape(an)})", w)]
+            n.append(f"offset {off} {len(an)} bp: {len(k)}")
+            if len(k) == 1:
+                if off: log(f"OFFSET {c}:{p} {'left' if left else 'right'} anchor found {off} bp away from the piece border")
+                return (k[0] + len(an) + off if left else k[0] - off), ", ".join(n)
     return None, ", ".join(n)
 def find(s, a, lo_, hi_):  # unique position of a in s[lo_:hi_]
     w = s[max(0, lo_):hi_]; n = w.count(a)
