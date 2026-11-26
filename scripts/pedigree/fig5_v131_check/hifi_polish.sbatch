@@ -15,7 +15,7 @@ set -euo pipefail
 D=$1; SM=$2; V=$3; IN=$4; SEG=$5; PICK=$6; O=$7; cd $D; mkdir -p $O/norm
 S=/gnu/store/wzsmrd0x9qb0bdydrg479fq7z5p2v3cc-samtools-1.19/bin/samtools; B=/gnu/store/z0030n89k5wdgz9s3lr54rwxnh9gqgzj-bcftools-1.21/bin/bcftools
 MM=$D/scripts_tmp/minimap2-2.31/minimap2; BGZ=$(ls -d /gnu/store/*htslib-1.19*/bin/bgzip | head -1); T=$SLURM_CPUS_PER_TASK
-W=/scratch/$USER.hpol.$SLURM_JOB_ID; mkdir -p $W; trap 'rm -rf $W' EXIT
+mkdir -p /scratch/$USER/tmp/phrs; W=$(mktemp -d /scratch/$USER/tmp/phrs/hpol.XXXX); trap 'rm -rf $W' EXIT
 log () { echo "[$(date -Is)] $*"; }
 C=${SEG%%:*}; H=$(echo $C | cut -d'#' -f2)
 log "start $SM $V $SEG, host $(hostname); pick regions: $PICK"
