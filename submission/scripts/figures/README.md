@@ -70,8 +70,10 @@ cp /home/guarracino/Dropbox/git/HPRCv2/p_interchrom_karyogram_count_rainbow_inse
 ## VENDORED — copied, not computed
 
 ```bash
-# Fig3 — UCSC hs1 browser screenshots (rebuild needs internet + a UCSC session:
-#   python3 slides/chm13-phr-ucsc-browser/_scripts/render_ucsc_browser_suite.py --force)
+# Fig3 — UCSC hs1 browser screenshots. Since 2026-11-27 the six panels come from
+#   python3 submission/scripts/figures/render_fig3_ucsc.py OUT_DIR   (internet; new UCSC session, May 2026 track
+#   configuration, label column 22 characters so that "SEDEF Segmental Dups" is not cut), then cp OUT_DIR/Fig3*.png $M/.
+# The May 2026 panels below came from slides/chm13-phr-ucsc-browser/_scripts/render_ucsc_browser_suite.py --force.
 P=slides/chm13-phr-ucsc-browser/_assets/ucsc/panels; M=submission/fig/MainFigures
 cp $P/chr4q_chr4_193304946_193574945.png   $M/Fig3a_C1_chr4q.png
 cp $P/chr10q_chr10_134488135_134758134.png $M/Fig3a_C1_chr10q.png
