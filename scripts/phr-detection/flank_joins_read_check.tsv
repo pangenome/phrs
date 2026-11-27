@@ -1,0 +1,113 @@
+flank	verdict	first_wrong_join_kb_from_telomere	joins(kind@kb:len:class)	hprc_t2t_level	hprc_t2t_gaps	paper_phr_bp	evidence
+HG00097#2#CM094075.1:7887-507886_chr1_parm	undecided	.	N@149.353:2159:not_spanned	scaffold	2	295000	HiFi:NOT_SPANNED:tel37/far44:span0:stopTel0,ONT:NOT_SPANNED:tel6/far8:span0:stopTel0
+HG00097#2#CM094081.1:5136-505135_chr10_parm	undecided	.	N@465.353:3314:not_spanned	scaffold	2	70000	HiFi:NOT_SPANNED:tel36/far29:span0:stopTel0,ONT:NOT_SPANNED:tel13/far17:span0:stopTel0
+HG00128#1#CM090090.1:2871-502870_chr19_parm	undecided	.	N@239.154:18644:not_spanned	scaffold	1	210000	HiFi:NOT_SPANNED:tel37/far19:span0:stopTel0,ONT:NOT_SPANNED:tel10/far9:span0:stopTel0
+HG00133#1#CM090049.1:184353503-184853502_chr5_qarm	undecided	.	N@378.859:3498:not_spanned	scaffold	1	195000	HiFi:NOT_SPANNED:tel26/far26:span0:stopTel0,ONT:NOT_SPANNED:tel11/far14:span0:stopTel0
+HG00133#2#JBHIKR010000001.1:5413-505412_chr19_parm	undecided	.	N@298.24:657006:not_spanned	not T2T	.	210000	HiFi:NOT_SPANNED:tel20/far11:span0:stopTel0,ONT:NOT_SPANNED:tel5/far5:span0:stopTel0
+HG00146#2#CM090038.1:135992477-136492476_chr10_qarm	wrong	75.203	TEL+N@75.203:6797:end_at_join	scaffold	1	250000	HiFi:LOW_COVERAGE:tel4/far25:span0:stopTel0,ONT:TELOMERE_STOP:tel4/far29:span0:stopTel18
+HG00253#2#JBIREK010000015.1:6633-506632_chr16_parm	wrong	193.662	N+TEL@193.662:3338:no_reads_tel	not T2T	.	25000	HiFi:ONE_SIDE_NO_READS:tel0/far27:span0:stopTel0,ONT:ONE_SIDE_NO_READS:tel0/far15:span0:stopTel0
+HG00272#2#CM094222.1:133327480-133827479_chr12_qarm	undecided	.	N@310.926:21924:no_reads_far	scaffold	2	25000	HiFi:ONE_SIDE_NO_READS:tel21/far0:span0:stopTel0,ONT:NOT_SPANNED:tel12/far7:span0:stopTel0
+HG00321#1#CM089547.1:135279924-135779923_chr12_qarm	undecided	.	N@311.331:23574:no_reads_far	scaffold	1	25000	HiFi:ONE_SIDE_NO_READS:tel29/far1:span0:stopTel0,ONT:NOT_SPANNED:tel18/far8:span0:stopTel0
+HG00321#1#JBHIIY010000033.1:45464559-45964558_chr22_qarm	undecided	.	N@42.972:100:not_spanned	not T2T	.	25000	HiFi:NOT_SPANNED:tel41/far26:span0:stopTel0,ONT:NOT_SPANNED:tel14/far8:span0:stopTel0
+HG00321#2#CM089568.1:8620-508619_chr2_parm	undecided	.	N@198.14:9323:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel33/far28:span0:stopTel0,ONT:NOT_SPANNED:tel20/far18:span0:stopTel0
+HG00329#2#CM094244.1:133251511-133751510_chr12_qarm	undecided	.	N@305.321:34507:no_reads_far	scaffold	1	15000	HiFi:ONE_SIDE_NO_READS:tel17/far2:span0:stopTel0,ONT:NOT_SPANNED:tel16/far7:span0:stopTel0
+HG00350#2#CM094490.1:4812-504811_chr5_parm	undecided	.	N@60.752:100:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel47/far26:span0:stopTel0,ONT:NOT_SPANNED:tel16/far13:span0:stopTel0
+HG00350#2#CM094499.1:63731832-64231831_chr19_qarm	undecided	.	N@67.651:33811:not_spanned	scaffold	2	20000	HiFi:NOT_SPANNED:tel41/far30:span0:stopTel0,ONT:NOT_SPANNED:tel6/far9:span0:stopTel0
+HG00408#1#CM085964.1:65302714-65802713_chr20_qarm	undecided	.	N@388.707:98171:not_spanned	scaffold	2	105000	HiFi:NOT_SPANNED:tel15/far17:span0:stopTel0,ONT:NOT_SPANNED:tel11/far13:span0:stopTel0
+HG00438#1#CM089167.1:12734-512733_chr1_parm	wrong	27.384	N+TEL@27.384:5616:no_reads_tel	scaffold	2	245000	HiFi:NOT_SPANNED:tel20/far45:span0:stopTel1,ONT:ONE_SIDE_NO_READS:tel0/far32:span0:stopTel0
+HG00438#1#CM089168.1:17554-517553_chr2_parm	wrong	15.29	N+TEL@15.29:10710:end_at_join	scaffold	1	0	HiFi:TELOMERE_STOP:tel1/far57:span0:stopTel8,ONT:TELOMERE_STOP:tel1/far33:span0:stopTel2
+HG005#2#CM099973.1:10611-510610_chr2_parm	undecided	.	N@230.016:32737:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel37/far25:span0:stopTel0,ONT:NOT_SPANNED:tel9/far15:span0:stopTel0
+HG005#2#JAHEPN020000076.1:90205461-90705460_chr14_qarm	undecided	.	N@311.171:411801:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel19/far21:span0:stopTel0,ONT:LOW_COVERAGE:tel7/far4:span0:stopTel0
+HG00544#1#CM089378.1:83186933-83686932_chr16_qarm	undecided	.	N@38.26:100:not_spanned	scaffold	1	175000	HiFi:NOT_SPANNED:tel60/far27:span0:stopTel0,ONT:NOT_SPANNED:tel19/far15:span0:stopTel0
+HG00544#1#JBHIIM010000037.1:95329705-95829704_chr14_qarm	undecided	.	N@75.117:732913:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel15/far14:span0:stopTel0,ONT:NOT_SPANNED:tel13/far13:span0:stopTel0
+HG00597#1#CM085771.1:146426942-146926941_chr8_qarm	undecided	.	N@158.281:38420:not_spanned	scaffold	2	0	HiFi:NOT_SPANNED:tel28/far21:span0:stopTel0,ONT:NOT_SPANNED:tel17/far15:span0:stopTel0
+HG00642#1#CM086613.1:133110080-133610079_chr12_qarm	undecided	.	N@315.142:28836:no_reads_far	scaffold	1	25000	HiFi:ONE_SIDE_NO_READS:tel23/far1:span0:stopTel0,ONT:ONE_SIDE_NO_READS:tel13/far1:span0:stopTel0
+HG00673#1#JAHBBZ020000061.1:40247493-40747492_chr21_qarm	undecided	.	N@361.889:61898:not_spanned	not T2T	.	20000	HiFi:NOT_SPANNED:tel20/far17:span0:stopTel0,ONT:NOT_SPANNED:tel11/far13:span0:stopTel0
+HG00706#1#CM100018.1:145449049-145949048_chr8_qarm	correct	.	N@425.187:100:spanned	scaffold	2	0	HiFi:NOT_SPANNED:tel11/far23:span0:stopTel0,ONT:SPANNED_LOW_MAPQ:tel26/far15:span10:stopTel0
+HG00733#1#CM099629.1:181289586-181789585_chr5_qarm	wrong	50.21	TEL+N@50.21:78790:end_at_join	scaffold	1	50000	HiFi:TELOMERE_STOP:tel36/far35:span0:stopTel6,ONT:TELOMERE_STOP:tel20/far56:span0:stopTel2
+HG00741#1#CM087904.1:133018538-133518537_chr12_qarm	undecided	.	N@310.612:23597:no_reads_far	scaffold	1	25000	HiFi:ONE_SIDE_NO_READS:tel21/far1:span0:stopTel0,ONT:NOT_SPANNED:tel17/far15:span0:stopTel0
+HG01081#2#JBHIHH010000037.1:97901867-98401866_chr14_qarm	undecided	.	N@384.822:100:not_spanned	not T2T	.	0	HiFi:LOW_COVERAGE:tel13/far4:span0:stopTel0,ONT:NOT_SPANNED:tel22/far7:span0:stopTel0
+HG01167#1#JBIREP010000009.1:5161-505160_chr10_parm	wrong	25.029	N+TEL@25.029:1971:no_reads_tel	not T2T	.	95000	HiFi:LOW_COVERAGE:tel4/far28:span0:stopTel0,ONT:ONE_SIDE_NO_READS:tel0/far24:span0:stopTel0
+HG01255#1#CM086703.1:24639-524638_chr2_parm	undecided	.	N@197.853:3288:not_spanned	scaffold	3	0	HiFi:NOT_SPANNED:tel39/far39:span0:stopTel0,ONT:NOT_SPANNED:tel25/far16:span0:stopTel0
+HG01358#2#CM089076.1:2321-502320_chr16_parm	undecided	.	N@221.01:430428:not_spanned	scaffold	1	205000	HiFi:NOT_SPANNED:tel14/far11:span0:stopTel0,ONT:LOW_COVERAGE:tel5/far4:span0:stopTel0
+HG01784#1#CM087569.1:12792-512791_chr5_parm	wrong	51.321	N+TEL@51.321:8679:end_at_join	scaffold	2	0	HiFi:TELOMERE_STOP:tel13/far28:span0:stopTel7,ONT:TELOMERE_STOP:tel4/far39:span0:stopTel11
+HG01786#1#CM089504.1:171559632-172059631_chr6_qarm	undecided	.	N@57.847:18247:not_spanned	scaffold	1	55000	HiFi:NOT_SPANNED:tel24/far38:span0:stopTel0,ONT:NOT_SPANNED:tel19/far9:span0:stopTel0
+HG01786#2#CM089531.1:3815-503814_chr9_parm	undecided	.	N@159.991:168042:not_spanned	scaffold	1	40000	HiFi:NOT_SPANNED:tel63/far38:span0:stopTel0,ONT:NOT_SPANNED:tel14/far15:span0:stopTel0
+HG01928#1#CM088986.1:192351236-192851235_chr4_qarm	correct	.	N@94.95:15537:spanned	scaffold	2	95000	HiFi:NOT_SPANNED:tel13/far13:span0:stopTel0,ONT:SPANNED:tel30/far22:span14:stopTel0
+HG01928#1#CM088988.1:171676088-172176087_chr6_qarm	undecided	.	TEL+N@76.709:37291:no_reads_far	scaffold	1	75000	HiFi:ONE_SIDE_NO_READS:tel17/far2:span0:stopTel0,ONT:TELOMERE_STOP:tel8/far8:span0:stopTel2
+HG01928#2#CM089000.1:247913024-248413023_chr1_qarm	undecided	.	N@203.323:100:not_spanned	scaffold	3	20000	HiFi:NOT_SPANNED:tel28/far32:span0:stopTel0,ONT:NOT_SPANNED:tel19/far18:span0:stopTel0
+HG01952#1#CM087980.1:9486-509485_chr16_parm	wrong	23.543	N+TEL@23.543:59457:end_at_join	scaffold	1	25000	HiFi:TELOMERE_STOP:tel15/far33:span0:stopTel2,ONT:TELOMERE_STOP:tel9/far29:span0:stopTel6
+HG01975#1#JBJUVS010000057.1:96876038-97376037_chr14_qarm	undecided	.	N@108.547:15616:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel23/far31:span0:stopTel0,ONT:NOT_SPANNED:tel13/far22:span0:stopTel0
+HG01975#2#CM099816.1:136312205-136812204_chr10_qarm	correct	.	N@94.847:14560:spanned	scaffold	1	195000	HiFi:NOT_SPANNED:tel18/far10:span0:stopTel0,ONT:SPANNED:tel28/far22:span13:stopTel0
+HG01981#2#CM086340.1:96418485-96918484_chr16_qarm	undecided	.	N@292.165:952498:no_reads_far	scaffold	2	155000	HiFi:NOT_SPANNED:tel18/far20:span0:stopTel0,ONT:ONE_SIDE_NO_READS:tel13/far1:span0:stopTel0
+HG02074#2#JBHIGL010000005.1:9448-509447_chr1_parm	wrong_tiny	3	TEL@3:6000:end_at_join	not T2T	.	330000	HiFi:TELOMERE_STOP:tel5/far38:span0:stopTel4,ONT:TELOMERE_STOP:tel0/far48:span0:stopTel3
+HG02083#1#CM086959.1:9058-509057_chr14_parm	wrong	130.457	N+TEL@130.457:3543:end_at_join	scaffold	2	500000	HiFi:TELOMERE_STOP:tel23/far35:span0:stopTel4,ONT:TELOMERE_STOP:tel11/far40:span0:stopTel5
+HG02083#2#CM086964.1:182382253-182882252_chr5_qarm	undecided	.	N@232.397:17936:not_spanned	scaffold	2	200000	HiFi:NOT_SPANNED:tel26/far6:span0:stopTel0,ONT:NOT_SPANNED:tel18/far19:span0:stopTel0
+HG02132#2#CM086914.1:18626-518625_chr13_parm	undecided	.	N@316.627:100:not_spanned	scaffold	2	500000	HiFi:NOT_SPANNED:tel32/far44:span0:stopTel0,ONT:NOT_SPANNED:tel20/far21:span0:stopTel0
+HG02145#1#CM099676.1:134109128-134609127_chr10_qarm	correct	.	N@93.819:100:spanned	scaffold	3	185000	HiFi:LOW_COVERAGE:tel24/far4:span0:stopTel0,ONT:SPANNED:tel32/far23:span22:stopTel0
+HG02165#1#JBHDWW010000012.1:18580-518579_chr2_parm	undecided	.	N@455.206:100:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel35/far28:span0:stopTel0,ONT:NOT_SPANNED:tel11/far11:span0:stopTel0
+HG02178#1#CM089924.1:182225349-182725348_chr5_qarm	undecided	.	N@368.556:123071:not_spanned	scaffold	2	185000	HiFi:NOT_SPANNED:tel26/far32:span0:stopTel0,ONT:NOT_SPANNED:tel9/far13:span0:stopTel0
+HG02178#2#CM089935.1:241838531-242338530_chr2_qarm	undecided	.	N@293.72:27449:no_reads_far	scaffold	2	120000	HiFi:ONE_SIDE_NO_READS:tel37/far2:span0:stopTel0,ONT:NOT_SPANNED:tel12/far14:span0:stopTel0
+HG02257#2#CM089258.1:190294234-190794233_chr4_qarm	wrong	61.178	TEL+N@61.178:27822:end_at_join	scaffold	1	60000	HiFi:NOT_SPANNED:tel20/far10:span0:stopTel0,ONT:TELOMERE_STOP:tel3/far10:span0:stopTel3
+HG02391#1#JBHDXJ010000066.1:39309454-39809453_chr21_qarm	wrong	28.737	TEL+N@28.737:1263:end_at_join	not T2T	.	50000	HiFi:TELOMERE_STOP:tel21/far40:span0:stopTel8,ONT:TELOMERE_STOP:tel5/far32:span0:stopTel6
+HG02523#2#JBHDTU010000043.1:99698811-100198810_chr14_qarm	undecided	.	N@290.068:763635:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel15/far22:span0:stopTel0,ONT:NOT_SPANNED:tel17/far15:span0:stopTel0
+HG02630#1#JAHAOQ020000073.1:96479107-96979106_chr14_qarm	undecided	.	N@37.926:898951:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel26/far25:span0:stopTel0,ONT:NOT_SPANNED:tel10/far13:span0:stopTel0
+HG02668#1#CM088869.1:139144484-139644483_chr9_qarm	undecided	.	N@110.477:100:not_spanned	scaffold	1	330000	HiFi:NOT_SPANNED:tel39/far38:span0:stopTel0,ONT:NOT_SPANNED:tel16/far5:span0:stopTel0
+HG02698#1#CM086824.1:6073-506072_chr5_parm	undecided	.	N@139.944:100:not_spanned	scaffold	2	0	HiFi:NOT_SPANNED:tel32/far21:span0:stopTel0,ONT:NOT_SPANNED:tel13/far14:span0:stopTel0
+HG02717#1#CM088956.1:202190227-202690226_chr3_qarm	correct	.	N@48.923:100:spanned	scaffold	5	270000	HiFi:NOT_SPANNED:tel23/far41:span0:stopTel0,ONT:SPANNED:tel22/far29:span19:stopTel0
+HG02723#1#CM092034.1:135200129-135700128_chr9_qarm	undecided	.	N@435.319:33285:not_spanned	scaffold	1	225000	HiFi:NOT_SPANNED:tel29/far35:span0:stopTel0,ONT:NOT_SPANNED:tel17/far21:span0:stopTel0
+HG02735#1#CM089328.1:14684-514683_chr2_parm	undecided	.	N@197.737:5797:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel24/far13:span0:stopTel0,ONT:NOT_SPANNED:tel14/far9:span0:stopTel0
+HG02735#1#JBHIII010000074.1:1313538-1813537_chr14_qarm	undecided	.	N@340.866:62282:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel12/far16:span0:stopTel0,ONT:NOT_SPANNED:tel5/far8:span0:stopTel0
+HG02965#1#CM087353.1:102342000-102841999_chr14_qarm	wrong	202.344	TEL+N@202.344:6656:end_at_join	scaffold	3	0	HiFi:TELOMERE_STOP:tel6/far34:span0:stopTel4,ONT:TELOMERE_STOP:tel4/far38:span0:stopTel14
+HG03041#2#CM088730.1:190602106-191102105_chr4_qarm	undecided	.	N@56.411:88786:not_spanned	scaffold	1	55000	HiFi:NOT_SPANNED:tel35/far16:span0:stopTel0,ONT:NOT_SPANNED:tel8/far17:span0:stopTel0
+HG03139#2#CM091841.1:134597608-135097607_chr10_qarm	undecided	.	N@376.208:112235:not_spanned	scaffold	1	175000	HiFi:NOT_SPANNED:tel22/far17:span0:stopTel0,ONT:NOT_SPANNED:tel13/far8:span0:stopTel0
+HG03369#1#JBIREB010000047.1:139259092-139759091_chr4_qarm	undecided	.	N@56.543:58508:not_spanned	not T2T	.	55000	HiFi:NOT_SPANNED:tel22/far16:span0:stopTel0,ONT:NOT_SPANNED:tel8/far7:span0:stopTel0
+HG03453#2#JAGYVV020000005.1:8811-508810_chr2_parm	undecided	.	N@199.075:1119:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel36/far31:span0:stopTel0,ONT:NOT_SPANNED:tel15/far16:span0:stopTel0
+HG03470#1#CM091830.1:83991168-84491167_chr17_qarm	wrong	444.952	TEL+N@444.952:36048:end_at_join	scaffold	1	45000	HiFi:TELOMERE_STOP:tel10/far30:span0:stopTel3,ONT:TELOMERE_STOP:tel6/far40:span0:stopTel2
+HG03470#2#CM091874.1:133668751-134168750_chr10_qarm	wrong	138.209	TEL+N@138.209:6791:no_reads_tel	scaffold	1	235000	HiFi:ONE_SIDE_NO_READS:tel0/far17:span0:stopTel0,ONT:TELOMERE_STOP:tel5/far39:span0:stopTel2
+HG03516#2#CM089237.1:102779048-103279047_chr14_qarm	correct	.	N@112.78:100:spanned	scaffold	4	0	HiFi:NOT_SPANNED:tel20/far23:span0:stopTel0,ONT:SPANNED:tel27/far23:span17:stopTel0
+HG03540#2#CM088067.1:30915-530914_chr11_parm	wrong_tiny	0	N@0:4171:end_at_join	scaffold	1	230000	HiFi:ONE_SIDE_NO_READS:tel0/far37:span0:stopTel0,ONT:TELOMERE_STOP:tel0/far27:span0:stopTel4
+HG03579#2#CM089286.1:5334-505333_chr4_parm	undecided	.	N@328.42:19114:not_spanned	scaffold	1	60000	HiFi:NOT_SPANNED:tel20/far44:span0:stopTel0,ONT:NOT_SPANNED:tel11/far13:span0:stopTel0
+HG03654#2#JBHDTO010000058.1:96962792-97462791_chr14_qarm	undecided	.	N@139.558:20383:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel9/far23:span0:stopTel0,ONT:NOT_SPANNED:tel12/far18:span0:stopTel0
+HG03804#1#CM088329.1:13532-513531_chr4_parm	undecided	.	N@47.843:100:not_spanned	scaffold	1	90000	HiFi:NOT_SPANNED:tel51/far33:span0:stopTel0,ONT:NOT_SPANNED:tel20/far14:span0:stopTel0
+HG03816#2#CM100040.1:15761-515760_chr2_parm	undecided	.	N@199.199:7569:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel35/far25:span0:stopTel0,ONT:NOT_SPANNED:tel24/far20:span0:stopTel0
+HG03834#2#CM085817.1:7277-507276_chr13_parm	undecided	.	N@81.177:100:not_spanned	scaffold	2	500000	HiFi:NOT_SPANNED:tel21/far17:span0:stopTel0,ONT:NOT_SPANNED:tel8/far8:span0:stopTel0
+HG03834#2#JBHDUX010000045.1:97206197-97706196_chr14_qarm	wrong	383.123	N@383.123:100:no_reads_tel	not T2T	.	0	HiFi:ONE_SIDE_NO_READS:tel2/far14:span0:stopTel0,ONT:NOT_SPANNED:tel5/far8:span0:stopTel0
+HG03874#2#CM089474.1:184379812-184879811_chr5_qarm	undecided	.	TEL+N@23.531:2469:not_spanned	scaffold	1	220000	HiFi:NOT_SPANNED:tel12/far25:span0:stopTel0,ONT:NOT_SPANNED:tel6/far28:span0:stopTel1
+HG03942#1#CM088391.1:190873098-191373097_chr4_qarm	undecided	.	TEL+N@120.09:20910:not_spanned	scaffold	1	120000	HiFi:NOT_SPANNED:tel13/far12:span0:stopTel0,ONT:NOT_SPANNED:tel9/far5:span0:stopTel1
+HG03942#1#CM088399.1:7944-507943_chr19_parm	undecided	.	N+TEL@55.193:41807:not_spanned	scaffold	3	55000	HiFi:NOT_SPANNED:tel26/far23:span0:stopTel0,ONT:NOT_SPANNED:tel14/far25:span0:stopTel0
+HG04157#1#CM088413.1:182454938-182954937_chr5_qarm	wrong	11.2	TEL+N@11.2:9800:end_at_join	scaffold	1	200000	HiFi:TELOMERE_STOP:tel9/far55:span0:stopTel6,ONT:TELOMERE_STOP:tel1/far40:span0:stopTel5
+HG04187#1#CM099750.1:3171-503170_chr17_parm	undecided	.	N@85.903:16660:not_spanned	scaffold	3	40000	HiFi:NOT_SPANNED:tel13/far9:span0:stopTel0,ONT:NOT_SPANNED:tel10/far8:span0:stopTel0
+HG04199#1#CM086776.1:9018-509017_chr2_parm	undecided	.	N@205.898:100:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel22/far33:span0:stopTel0,ONT:LOW_COVERAGE:tel11/far11:span1:stopTel0
+HG04228#1#CM088484.1:6274-506273_chr10_parm	undecided	.	N@136.894:18151:not_spanned	scaffold	2	70000	HiFi:LOW_COVERAGE:tel4/far27:span0:stopTel0,ONT:NOT_SPANNED:tel18/far16:span0:stopTel0
+NA18565#1#CM094318.1:194716261-195216260_chr4_qarm	correct	.	N@67.118:100:spanned	scaffold	3	150000	HiFi:NOT_SPANNED:tel11/far13:span0:stopTel0,ONT:SPANNED:tel20/far21:span12:stopTel0
+NA18565#1#CM094322.1:137135049-137635048_chr10_qarm	undecided	.	N@58.452:100:spanned;N@134.797:81678:not_spanned	scaffold	2	135000	HiFi:LOW_COVERAGE:tel4/far19:span0:stopTel0,ONT:SPANNED:tel26/far26:span19:stopTel0 | HiFi:NOT_SPANNED:tel20/far23:span0:stopTel0,ONT:NOT_SPANNED:tel8/far23:span0:stopTel0
+NA18570#2#CM087684.1:100374447-100874446_chr14_qarm	undecided	.	N@423.268:139651:not_spanned	scaffold	1	0	HiFi:NOT_SPANNED:tel21/far13:span0:stopTel0,ONT:NOT_SPANNED:tel6/far19:span0:stopTel0
+NA18906#2#CM091949.1:182671639-183171638_chr5_qarm	undecided	.	N@341.505:36870:not_spanned	scaffold	1	180000	HiFi:NOT_SPANNED:tel25/far30:span0:stopTel0,ONT:NOT_SPANNED:tel14/far17:span0:stopTel0
+NA18940#1#CM101708.1:134047899-134547898_chr10_qarm	undecided	.	N@21.826:23:not_spanned	scaffold	1	20000	HiFi:NOT_SPANNED:tel31/far27:span0:stopTel0,ONT:NOT_SPANNED:tel44/far44:span0:stopTel0
+NA18940#1#CM101710.1:7460-507459_chr16_parm	undecided	.	N@11.594:23:not_spanned	scaffold	3	10000	HiFi:LOW_COVERAGE:tel3/far20:span0:stopTel0,ONT:NOT_SPANNED:tel15/far41:span0:stopTel0
+NA18940#1#CM101713.1:5311-505310_chr19_parm	undecided	.	N@142.241:23:not_spanned	scaffold	1	175000	HiFi:NOT_SPANNED:tel25/far20:span0:stopTel0,ONT:NOT_SPANNED:tel25/far26:span0:stopTel0
+NA18940#2#CM101715.1:241182083-241682082_chr2_qarm	undecided	.	N@63.52:23:not_spanned	scaffold	7	65000	HiFi:NOT_SPANNED:tel19/far11:span0:stopTel0,ONT:NOT_SPANNED:tel15/far18:span0:stopTel0
+NA18940#2#CM101716.1:8218-508217_chr3_parm	correct	.	N@470.341:100:spanned	scaffold	4	0	HiFi:NOT_SPANNED:tel24/far28:span0:stopTel0,ONT:SPANNED:tel41/far45:span20:stopTel0
+NA18940#2#CM101722.1:134758494-135258493_chr10_qarm	undecided	.	N@21.826:23:not_spanned	scaffold	1	20000	HiFi:NOT_SPANNED:tel39/far25:span0:stopTel0,ONT:NOT_SPANNED:tel33/far57:span0:stopTel0
+NA18940#2#CM101724.1:7460-507459_chr16_parm	wrong	11.594	N@11.594:23:no_reads_tel	scaffold	9	10000	HiFi:ONE_SIDE_NO_READS:tel1/far32:span0:stopTel0,ONT:NOT_SPANNED:tel7/far40:span0:stopTel0
+NA18940#2#JBKACL010000014.1:94394716-94894715_chr14_qarm	undecided	.	N@236.478:100:not_spanned	not T2T	.	0	HiFi:NOT_SPANNED:tel26/far11:span0:stopTel0,ONT:NOT_SPANNED:tel22/far14:span0:stopTel0
+NA18944#1#CM101656.1:1191-501190_chr22_parm	undecided	.	N@232.304:100:not_spanned	scaffold	4	500000	HiFi:NOT_SPANNED:tel17/far37:span0:stopTel0,ONT:NOT_SPANNED:tel33/far35:span0:stopTel0
+NA18945#1#JBKACE010000003.1:199128303-199628302_chr3_qarm	undecided	.	N@45.497:100:not_spanned	not T2T	.	290000	HiFi:NOT_SPANNED:tel18/far28:span0:stopTel0,ONT:NOT_SPANNED:tel17/far12:span0:stopTel0
+NA18971#2#CM087291.1:9616-509615_chr22_parm	undecided	.	N@313.637:2260652:not_spanned	scaffold	3	315000	HiFi:LOW_COVERAGE:tel16/far3:span0:stopTel0,ONT:NOT_SPANNED:tel27/far10:span0:stopTel0
+NA18971#2#JBHDWL010000047.1:58496851-58996850_chr17_qarm	undecided	.	N@495.1:17302:not_spanned	not T2T	.	45000	HiFi:NOT_SPANNED:tel20/far8:span0:stopTel0,ONT:NOT_SPANNED:tel9/far20:span0:stopTel0
+NA18976#2#CM089767.1:6019-506018_chr15_parm	undecided	.	N@50.713:8887:not_spanned	scaffold	4	500000	HiFi:NOT_SPANNED:tel45/far73:span0:stopTel0,ONT:NOT_SPANNED:tel13/far25:span0:stopTel0
+NA18982#1#CM101420.1:182120680-182620679_chr5_qarm	undecided	.	N@86.964:100:not_spanned	scaffold	1	185000	HiFi:NOT_SPANNED:tel24/far20:span0:stopTel0,ONT:NOT_SPANNED:tel20/far19:span0:stopTel0
+NA19159#1#CM099940.1:5016-505015_chr2_parm	undecided	.	N@197.552:100:not_spanned	scaffold	2	0	HiFi:LOW_COVERAGE:tel24/far4:span0:stopTel0,ONT:NOT_SPANNED:tel13/far7:span0:stopTel0
+NA19185#1#CM087728.1:133919266-134419265_chr10_qarm	undecided	.	TEL+N@157.047:22953:not_spanned	scaffold	2	155000	HiFi:LOW_COVERAGE:tel4/far35:span0:stopTel0,ONT:LOW_COVERAGE:tel4/far28:span0:stopTel1
+NA19338#2#CM087771.1:14624-514623_chr2_parm	wrong	112.352	N+TEL@112.352:61648:end_at_join	scaffold	1	0	HiFi:TELOMERE_STOP:tel13/far22:span0:stopTel6,ONT:TELOMERE_STOP:tel4/far34:span0:stopTel6
+NA19338#2#CM087773.1:191090544-191590543_chr4_qarm	wrong	57.938	TEL+N@57.938:8062:end_at_join	scaffold	1	270000	HiFi:TELOMERE_STOP:tel4/far24:span0:stopTel9,ONT:TELOMERE_STOP:tel2/far37:span0:stopTel4
+NA19468#1#CM087830.1:5015-505014_chr22_parm	undecided	.	N@70.743:1162436:not_spanned	scaffold	1	70000	HiFi:NOT_SPANNED:tel7/far23:span0:stopTel0,ONT:TELOMERE_STOP:tel13/far43:span0:stopTel2
+NA19468#2#CM087837.1:134000536-134500535_chr10_qarm	wrong	109.518	N@109.518:38169:no_reads_tel	scaffold	2	105000	HiFi:ONE_SIDE_NO_READS:tel2/far21:span0:stopTel0,ONT:ONE_SIDE_NO_READS:tel1/far18:span0:stopTel0
+NA19700#1#CM089620.1:181336470-181836469_chr5_qarm	wrong	74.532	TEL+N@74.532:2468:end_at_join	scaffold	1	255000	HiFi:NOT_SPANNED:tel15/far36:span0:stopTel0,ONT:TELOMERE_STOP:tel4/far36:span0:stopTel5
+NA20762#2#JBKOQX010000012.1:135129645-135629644_chr10_qarm	undecided	.	N@105.468:3248:not_spanned	not T2T	.	230000	HiFi:LOW_COVERAGE:tel2/far0:span0:stopTel0,ONT:NOT_SPANNED:tel8/far16:span0:stopTel0
+NA20809#2#JBIREA010000057.1:99181185-99681184_chr1_qarm	wrong	18.074	N@18.074:100:end_at_join	not T2T	.	40000	HiFi:ONE_SIDE_NO_READS:tel2/far35:span0:stopTel0,ONT:TELOMERE_STOP:tel0/far36:span0:stopTel14
+NA20827#1#CM102542.1:192234602-192734601_chr4_qarm	undecided	.	N@127.51:41994:not_spanned	scaffold	1	125000	HiFi:LOW_COVERAGE:tel10/far4:span0:stopTel0,ONT:NOT_SPANNED:tel76/far32:span0:stopTel0
+NA20827#1#CM102554.1:5228-505227_chr17_parm	undecided	.	N@280.333:100000:not_spanned	scaffold	1	5000	HiFi:LOW_COVERAGE:tel4/far5:span0:stopTel0,ONT:NOT_SPANNED:tel16/far19:span0:stopTel0
+NA20827#2#CM102575.1:5228-505227_chr17_parm	undecided	.	N@280.333:100000:not_spanned	scaffold	1	5000	HiFi:LOW_COVERAGE:tel3/far6:span0:stopTel0,ONT:NOT_SPANNED:tel15/far14:span0:stopTel0
+NA21102#2#CM094448.1:159939731-160439730_chr7_qarm	wrong_tiny	3	TEL@3:2000:no_reads_tel	scaffold	1	10000	HiFi:ONE_SIDE_NO_READS:tel1/far44:span0:stopTel0,ONT:ONE_SIDE_NO_READS:tel0/far34:span0:stopTel0

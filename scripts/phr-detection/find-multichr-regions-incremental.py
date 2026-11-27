@@ -41,6 +41,9 @@ def parse_args():
                              'max is capped to actual sequence length (prevents out-of-bounds '
                              'coordinates when sequences are shorter than --max, e.g. after '
                              'telomere trimming).')
+    parser.add_argument('--sequences', default=None,
+                        help='Optional: file with one sequence name per line; process only these '
+                             '(each must be in the impg index)')
     parser.add_argument('--verbose', action='store_true',
                         help='Print progress and query counts to stderr')
     return parser.parse_args()
@@ -135,8 +138,8 @@ def query_impg_window(paf_list, impg_index, seq_name, start, end, min_identity, 
     ]
 
     result = subprocess.run(cmd, capture_output=True, text=True)
-    if result.returncode != 0:
-        return defaultdict(int), defaultdict(int)
+    if result.returncode != 0:  # an impg error must not read as a window without signal
+        raise SystemExit(f"FATAL: impg query {region} exit {result.returncode}: {result.stderr[:1000]}")
 
     chr_counts = defaultdict(int)
     chrarm_counts = defaultdict(int)
@@ -295,6 +298,14 @@ def main():
     if args.verbose:
         print("Getting sequence list from impg...", file=sys.stderr)
     sequences = get_sequences(args.paf_list, args.impg_index)
+    if args.sequences:
+        keep = [l.strip() for l in open(args.sequences) if l.strip()]
+        missing = set(keep) - set(sequences)
+        if missing:
+            sys.exit(f"FATAL: {len(missing)} of {len(keep)} --sequences names not in the impg index, e.g. {sorted(missing)[:3]}")
+        keep = set(keep)
+        sequences = [x for x in sequences if x in keep]
+        print(f"--sequences: processing {len(sequences)} of the indexed sequences", file=sys.stderr)
 
     if args.verbose:
         print(f"Found {len(sequences)} sequences to process", file=sys.stderr)
