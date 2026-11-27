@@ -66,6 +66,32 @@ independent placement seeds, the arbitrary choice carries no information about c
 membership. Orthogonal contact assays in the same individual (ChIA-PET or Micro-C) would close
 the question without relying on placement at all.
 
+## Referee #1, major point 1: a base-level conversion scan (letter only; merge into the answer on concerted evolution)
+
+The 2 kb scan in Methods cannot see conversion tracts shorter than a bin. We therefore also ran the same test at base resolution, and we report it here rather than in the manuscript.
+
+**The test.** At each position we compared the haplotype with the other haplotypes of its own arm and with the copies of every other arm, using at least 20 copies of each.
+- A donor-type site is a position where at least 90% of the copies of another arm share the haplotype's base and at most 10% of the copies of its own arm do.
+- A tract is a run of at least two donor-type sites with no own-arm-type site between them.
+
+**Three controls before counting.**
+- **Clustering beyond chance.** Independent errors or recurrent mutations would scatter donor-type sites among the own-arm sites.
+  - For each haplotype window and donor arm we computed the exact expected number of runs if the two kinds of site were in random order.
+  - We kept a run only when fewer than 0.05 runs at least as long are expected by chance in that window.
+  - Of 69,720 runs, 31,663 pass, with at most 554 expected by chance (false discovery rate at most 1.7%).
+- **Assembly quality.** Before removal, 2.8% of these events overlapped an HMM-Flagger call of the HPRC release, against 0.66% of scored 2 kb bins. We removed the 205 events that overlap a call and the 24 events of samples without Flagger calls.
+- **Aligner independence.** We realigned the copies of a random sample of events with minimap2 instead of wfmash and recomputed the sites with the same thresholds. In that sample, 42 of 48 events found in one individual and 26 of 29 shared events reappear (68 of 77, 88%, 95% CI 79-94%).
+
+**Result.**
+- **What remains.** After these filters 7,085 events remain, with median length 396 bp and 4 donor-type sites.
+- **Individual and shared.** 1,508 are found in a single individual, and 5,518 are shared between individuals.
+- **New relative to the 2 kb scan.** 4,739 lie outside the 2 kb tracts.
+- **Read support.** HiFi reads support all 30 events that we inspected in a sample drawn before filtering: no read column inside any of them disagrees with the assembly.
+
+**Limits.**
+- **Sensitivity.** With tracts of known size planted into real haplotypes, the base-level scan found 7 of 18. The scan sees a conversion only where the donor differs from the replaced sequence at two or more sites, so these counts are a lower bound.
+- **No dating of shared events.** For events shared by several individuals we cannot tell an old conversion from an ancestral state retained on some haplotypes without an outgroup, so we do not date them.
+
 ## Points 2-4: the pedigree (Referee #1, major points 2 and 3 and minor point 8; Referee #3, major point 8)
 
 The referees were right about the pedigree. We retract both exchange candidates. The corrected analysis finds no exchange between non-homologous chromosome ends outside PAR1 and the acrocentric short arms. The genome-wide result, inter-chromosomal subtelomeric sharing organised into communities across 232 individuals, does not depend on the pedigree.
