@@ -1,6 +1,6 @@
 # Sequence similarity vs 3D proximity of PHRs: checks for the revision (R1-M4, R1-M5, R3-M3)
 
-Status 2026-11-27 15:10 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
+Status 2026-11-27 15:07 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
 
 ## 1. The question
 
@@ -17,6 +17,8 @@ The referees ask two things.
 - Pore-C and CiFi keep only uniquely mapped reads. `pairtools parse2` 1.1.3 has `--min-mapq 1` by default, and our commands do not change it.
 - The Methods (lines 1062-1069) say that we keep multi-mapping reads for all three assays. This is true only for Hi-C. A correction is proposed in `clean28_paper_edits.md`.
 - The paper's Python environment (porec/1.0) had lost compiled modules. We rebuilt it from the exact package list, and the rebuilt environment reproduces the paper's tables byte for byte.
+
+**Effect on the paper and the rebuttal.** Methods lines 1086-1095 of `submission/paper.tex` say that we keep multi-mapping reads in Hi-C, Pore-C and CiFi. This must change: Pore-C and CiFi keep only uniquely mapped reads (proposed text in `clean28_paper_edits.md`, section "Altre correzioni"). The rebuttal should say we corrected the Methods. All numbers in the paper stay valid, because the reproduction is byte for byte.
 
 ## 3. Hi-C with a mapping-quality filter
 
@@ -46,6 +48,8 @@ We confirmed this by rebalancing the MAPQ >= 2 matrices without cooler's low-cov
 | HG002, `--mad-max 0` | 77 of 77 | 0.487 | 0.460 |
 
 Balancing itself is not the problem for the paper's analysis, which keeps all reads: there PHR bins have normal coverage and balancing corrects coverage biases as intended. The problem appears only when a filter removes most reads inside PHRs. Then cooler's default bin filters treat PHR bins as missing data, and the test can no longer see the regions it is about. Any unique-read analysis of PHRs needs either raw densities or a balancing that keeps PHR bins.
+
+**Effect on the paper and the rebuttal.** This answers the R1-M4 request for unique reads in Hi-C: with MAPQ >= 2 the Mantel is 0.487 in HG002 and, once PHR bins are not masked, 0.503 in CHM13. For the paper, a sentence or an Extended Data table row with these values, and a Methods sentence that unique-read matrices need balancing that keeps PHR bins (`--mad-max 0`). The current paper does not report any MAPQ-filtered analysis.
 
 ## 4. Matched control: non-subtelomeric segmental duplications (R1-M5)
 
@@ -96,9 +100,13 @@ Many pairs of loci share no sequence in the graph (Jaccard 0). For example, 2,12
 - In HG002 Hi-C with unique reads (MAPQ >= 2), PHRs lie above the controls (significant at 20 kb). In CHM13 with unique reads and default balancing, PHRs lie below the controls, but half of the CHM13 PHR bins are masked there (section 3). With the low-coverage filter off, all 875 pairs remain and PHRs lie above the controls (0.490 against 0.401), within the interval.
 - In Pore-C and CiFi, PHRs lie above the controls. Among pairs that share sequence, more similar PHRs are closer, and more similar control duplications are not.
 
+**Effect on the paper and the rebuttal.** This is the R1-M5 answer, and it changes the planned one. `response/POINT_BY_POINT.md` (row R1-M5) plans to report whether the subtelomeric rho exceeds the all-duplication value. In Hi-C it does not (0.488 against 0.493 in HG002). In Pore-C and CiFi it does (0.420 against 0.202, 0.191 against 0.071). The rebuttal should report both and explain the Hi-C result with sections 6-8 (multi-mapping makes any similar duplication pair look close in Hi-C). For the paper: a Results sentence, a Methods paragraph (SEDEF matching, new pggb graph, per-pair rho, bootstrap) and an Extended Data table.
+
 ## 5. Confounders (R3-M3)
 
 We repeated the Mantel test controlling for arm type, acrocentric p arms, X/Y arms, PHR length, chromosome size and contact propensity (partial Mantel). It stays at 0.624 for HG002 Hi-C, 0.676 for CHM13 Hi-C, 0.393 for Pore-C and 0.281 for CiFi, all with p 0.0001. It stays between 0.26 and 0.81 within same-type pairs, within p-q pairs and without acrocentric p and X/Y arms (`scripts/hic/contact_controls_r3m3.*`).
+
+**Effect on the paper and the rebuttal.** Already part of the R3-M3 answer (`scripts/hic/contact_controls_r3m3.*`). For the paper, the partial Mantel values can go in a Methods sentence or an Extended Data table.
 
 ## 6. Null simulations
 
@@ -146,6 +154,8 @@ The paper's Mantel on the simulated matrices (50 kb):
 
 The null Mantel is as high as the real one even with few errors. In the simulation those errors are the only contacts between ends, and they all follow similarity. The Mantel test uses only the ranking, not the number of contacts, so on its own it cannot separate errors from biology. We therefore counted.
 
+**Effect on the paper and the rebuttal.** This contradicts the paper's current argument. Results lines 344-353 and Methods lines 1130-1133 say that misplacement of multi-mapping reads attenuates contacts symmetrically, biases rho and B/W towards the null, makes the PHR-window enrichment a lower bound, and that an artefact would predict PHR below flank. The simulations show the opposite: errors alone, with no true contact between ends, give a Mantel of 0.76-0.82 in Hi-C and 0.64 in Pore-C, because a read from one PHR lands on the most similar PHRs, not at random. These sentences must be removed, and the flank-ordering argument (PHR 0.657 above flank 0.520) no longer rules out the artefact. The rebuttal must not use the dilution argument planned in `response/POINT_BY_POINT.md` (section R1-M4 / R3-M3 / R3-M4, lines 129-135). The rebuttal can state that we simulated reads at the read level as R1-M4 asked, and that the Mantel alone cannot separate errors from proximity.
+
 ## 7. Calibration on depth
 
 For each end we measured how much deeper the real data are than the simulation (real over simulated raw contacts inside its PHR window). We scaled the simulated false contacts to that depth and obtained the false contacts expected in the real data, with a lower and an upper bound (the error can come from either end of a pair). We compared them with the contacts observed between the same PHRs, on different chromosomes. rho is the arm-level Spearman rho between similarity and contact density, before and after removing the upper bound of expected false contacts.
@@ -161,6 +171,8 @@ For each end we measured how much deeper the real data are than the simulation (
 | Pore-C (paper) | 8,039 | 3.2-8.1% | 9.0-82.0% | 0.450 | 0.440 | 0.396 |
 | CiFi (paper) | 942 | 2.8-7.9% | | 0.308 | 0.300 | |
 | CiFi, multi-mapping reads kept | 86,218 | 34.8-45.0% | | 0.545 | 0.517 | |
+
+**Effect on the paper and the rebuttal.** This is the quantitative answer to R1-M4 and R3-M3: how much of the contact between PHRs mapping errors can explain. For the paper, a Results paragraph that replaces the lower-bound argument, a Methods subsection (simulation, error profiles, depth scaling) and an Extended Data table with this table. The Discussion should state that Hi-C contact between PHRs is inflated by mapping errors.
 
 ## 8. The paper's Mantel on matrices without the expected false contacts
 
@@ -181,6 +193,8 @@ We subtracted the upper bound of expected false contacts from each real matrix, 
 
 All Mantel tests keep p < 0.0001 (10,000 permutations). The expected false contacts that cannot be removed fall on pixels where the real matrix has fewer contacts than the simulation predicts, so there the subtraction removes every real contact. In Pore-C this is most of the expected artefact (10,429 of 13,255 contacts at 50 kb).
 
+**Effect on the paper and the rebuttal.** This is the main new evidence for the paper's claim that similarity tracks proximity: after removing the expected errors the paper's own statistics stay significant (Mantel 0.40-0.66 in Hi-C, 0.47-0.48 in Pore-C, p < 0.0001). For the paper: report the cleaned Mantel next to the original one (Results, Extended Data Fig. 1 or a table), and keep Fig. 4A (Pore-C, unique reads) with the note that errors explain 9.0-82.0% of its PHR contacts. For the rebuttal: the core reply to R1-M4, R3-M3 and R3-M4.
+
 ## 9. Reruns with multi-mapping reads
 
 We reprocessed CiFi from raw reads with two `parse2` branches on the same alignments.
@@ -190,6 +204,8 @@ We reprocessed CiFi from raw reads with two `parse2` branches on the same alignm
 
 The first Pore-C rerun failed after 17 h 43 min, near the end of flow cell 1, with no recoverable message: pore-c-py digest wrote one warning per monomer, and moosefs kept only the first 28.9 GB of a 113 GB log. The second run uses `pore-c-py digest --quiet` (identical records, checked with samtools view) and logs the exit code of every stage. It is expected to end around 2026-11-29 06:00 MST.
 
+**Effect on the paper and the rebuttal.** Supports the Methods sentence that a mapping-quality filter removes the signal we analyze (CiFi: 942 contacts between PHRs with unique reads, 86,218 with multi-mapping reads), and shows that keeping multi-mapping reads and removing the expected errors gives a stronger test than filtering. The Pore-C rerun will add the same check for Pore-C. For the rebuttal: the reply to the R1-M4 request for analyses restricted to unique reads.
+
 ## 10. What the checks say together
 
 1. Mapping errors are real and large in Hi-C. With realistic reads they explain up to 56% of the contacts between PHRs in HG002 and up to 86% in CHM13 (150 bp reads, against 250 bp in HG002). This is why, in Hi-C with all reads, PHRs behave like the control duplications.
@@ -198,3 +214,31 @@ The first Pore-C rerun failed after 17 h 43 min, near the end of flow cell 1, wi
 4. With unique reads only (Pore-C, CiFi), PHRs lie above matched non-subtelomeric duplications. Among pairs that share sequence, more similar PHRs are closer, and more similar control duplications are not.
 5. A high null Mantel only shows that the Mantel alone is not evidence. The evidence is the counting (calibration) and the cleaned matrices.
 6. Strict filters remove almost every read inside PHRs, and cooler's default balancing then masks the PHR bins (CHM13 MAPQ >= 2: 19 of 38 PHR windows). With PHR bins kept, the CHM13 unique-read Mantel is 0.503. Keeping multi-mapping reads and removing the expected errors gives more contacts and a stronger test (CiFi 0.427 against 0.308).
+
+**Effect on the paper and the rebuttal.** The summary below lists every change.
+
+## 11. Changes to the paper and the rebuttal
+
+Paper (proposals only: `submission/paper.tex` is not edited here; line numbers refer to the current file).
+
+| Where | Change | Evidence |
+|---|---|---|
+| Methods, lines 1086-1095 | Pore-C and CiFi matrices keep only uniquely mapped reads (pairtools parse2 default `--min-mapq 1`); only Hi-C keeps multi-mapping reads | section 2 |
+| Results, lines 344-353, and Methods, lines 1130-1133 | Remove the claim that multi-mapping biases rho and B/W towards the null, that PHR enrichment is a lower bound, and that an artefact would put PHR below flank | sections 6-8 |
+| Results, after line 343 | New paragraph: read-level null simulations, depth calibration (errors explain up to 56% of PHR contacts in HG002 Hi-C, 86% in CHM13, 9.0-82.0% in Pore-C), and the paper's Mantel after removing the expected errors (0.40-0.66 in Hi-C, 0.47-0.48 in Pore-C, p < 0.0001) | sections 6-8 |
+| Results | One sentence on the matched duplication control (Pore-C and CiFi above controls, Hi-C equal) | section 4 |
+| Results or Extended Data | Unique-read Hi-C: Mantel 0.487 (HG002) and 0.503 (CHM13 with PHR bins kept) | section 3 |
+| Methods | New subsections: null simulations with real-read error profiles, calibration, artefact subtraction; matched duplication control; balancing for unique-read matrices | sections 3, 4, 6-8 |
+| Extended Data | Tables of sections 4, 7 and 8 | sections 4, 7, 8 |
+| Discussion | State that Hi-C contact between PHRs is inflated by mapping errors and that the conclusion rests on the error-corrected statistics and the unique-read assays | sections 7, 8, 10 |
+| Fig. 4A | No change to the data; the legend or text can note the share of Pore-C PHR contacts explained by errors | section 7 |
+
+Rebuttal (`response/POINT_BY_POINT.md`).
+
+| Point | Planned answer now | Answer supported by these checks |
+|---|---|---|
+| R1-M4 (simulate reads, unique reads) | Flank control and dilution logic, "lower bound" (lines 129-135); "read-level simulation not done" (line 34) | Read-level simulations done for Hi-C, Pore-C and CiFi; errors inflate the Mantel rather than diluting it; calibration and cleaned Mantel; unique-read Hi-C (MAPQ >= 2) and CiFi rerun with multi-mapping reads |
+| R3-M3 (random placement could create contacts) | Same as R1-M4 | Yes, it creates them, and we quantify them (section 7); the correlation survives their removal (section 8) |
+| R3-M4 (B/W direction) | Dilution argument | The B/W argument cannot rest on symmetric dilution; report B/W on the cleaned matrices (HG002 Hi-C at 50 kb 0.026 after removing the expected errors of the realistic simulation, against 0.027 in the paper; within/between p < 0.0001) |
+| R1-M5 (matched duplication control) | "report whether subtelomeric rho exceeds the all-SD value" (line 140) | Hi-C: no (PHR equal to controls); Pore-C and CiFi: yes, significantly; explained by mapping errors in Hi-C |
+| R3-M3 (confounders) | Controls done, text to write | Partial Mantel 0.28-0.68, p 0.0001 (section 5) |
