@@ -1,6 +1,6 @@
 # Sequence similarity vs 3D proximity of PHRs: checks for the revision (R1-M4, R1-M5, R3-M3)
 
-Status 2026-11-27 08:45 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
+Status 2026-11-27 15:10 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
 
 ## 1. The question
 
@@ -35,6 +35,16 @@ We rebuilt the Hi-C matrices keeping only pairs with MAPQ >= 1 or >= 2 on both r
 - On raw contact densities, similarity still follows contact at CHM13 MAPQ >= 2 (arm-level Spearman rho 0.438, from 3,327 contacts between PHRs).
 - In HG002 the MAPQ >= 2 filter lowers coverage everywhere, so PHR bins are not outliers, keep their weights, and the Mantel stays at 0.487.
 
+We confirmed this by rebalancing the MAPQ >= 2 matrices without cooler's low-coverage filter (`cooler balance --mad-max 0`) and rerunning the paper's statistics. With the default filters we recover the numbers above exactly (control).
+
+| MAPQ >= 2 matrix | PHR windows with a balanced bin (50 kb) | Mantel 50 kb | Mantel 20 kb |
+|---|---|---|---|
+| CHM13, default filters | 19 of 38 | -0.023 (p 0.34) | 0.021 (p 0.36) |
+| CHM13, `--mad-max 0` | 38 of 38 | 0.503 (p < 0.0001) | 0.520 (p < 0.0001) |
+| CHM13, no filter | 38 of 38 | 0.503 (p < 0.0001) | 0.520 (p < 0.0001) |
+| HG002, default filters | 77 of 77 | 0.487 | 0.460 |
+| HG002, `--mad-max 0` | 77 of 77 | 0.487 | 0.460 |
+
 Balancing itself is not the problem for the paper's analysis, which keeps all reads: there PHR bins have normal coverage and balancing corrects coverage biases as intended. The problem appears only when a filter removes most reads inside PHRs. Then cooler's default bin filters treat PHR bins as missing data, and the test can no longer see the regions it is about. Any unique-read analysis of PHRs needs either raw densities or a balancing that keeps PHR bins.
 
 ## 4. Matched control: non-subtelomeric segmental duplications (R1-M5)
@@ -67,6 +77,8 @@ Results at 50 kb unless stated.
 | Hi-C CHM13, MAPQ >= 1 | 0.446 | 0.514 | -0.068 (-0.245 to 0.124) |
 | Hi-C CHM13, MAPQ >= 2 | 0.138 (152 pairs) | 0.416 | -0.279 (-0.625 to 0.018) |
 | Hi-C CHM13, MAPQ >= 2, 20 kb | -0.009 (478 pairs) | 0.393 | -0.402 (-0.578 to -0.214) |
+| Hi-C CHM13, MAPQ >= 2, rebalanced `--mad-max 0` | 0.490 (875 pairs) | 0.401 | 0.090 (-0.095 to 0.234) |
+| Hi-C CHM13, MAPQ >= 2, rebalanced, 20 kb | 0.507 | 0.416 | 0.091 (-0.101 to 0.247) |
 | Pore-C HG002 (unique reads) | 0.420 | 0.202 | 0.219 (0.119 to 0.311) |
 | CiFi HG002 (unique reads) | 0.191 | 0.071 | 0.120 (0.032 to 0.213) |
 | CiFi HG002, multi-mapping reads kept | 0.335 | 0.180 | 0.155 (0.038 to 0.273) |
@@ -81,7 +93,7 @@ Many pairs of loci share no sequence in the graph (Jaccard 0). For example, 2,12
 | Hi-C HG002 | 0.622 | 0.486 |
 
 - In Hi-C with all reads or MAPQ >= 1, PHRs behave like any segmental duplication (differences within the interval).
-- In HG002 Hi-C with unique reads (MAPQ >= 2), PHRs lie above the controls (significant at 20 kb). In CHM13 with unique reads, PHRs lie below the controls, but most CHM13 PHR bins are masked there (section 3) and only 152 or 478 pairs remain.
+- In HG002 Hi-C with unique reads (MAPQ >= 2), PHRs lie above the controls (significant at 20 kb). In CHM13 with unique reads and default balancing, PHRs lie below the controls, but half of the CHM13 PHR bins are masked there (section 3). With the low-coverage filter off, all 875 pairs remain and PHRs lie above the controls (0.490 against 0.401), within the interval.
 - In Pore-C and CiFi, PHRs lie above the controls. Among pairs that share sequence, more similar PHRs are closer, and more similar control duplications are not.
 
 ## 5. Confounders (R3-M3)
@@ -90,53 +102,65 @@ We repeated the Mantel test controlling for arm type, acrocentric p arms, X/Y ar
 
 ## 6. Null simulations
 
-We simulated reads that all come from one chromosome end, so every contact between two different ends is a mapping error, and we ran them through the paper's pipelines.
+We simulated reads that all come from one chromosome end, so every contact between two different ends is a mapping error, and we ran them through the paper's pipelines (HiC-Pro for Hi-C, the paper's pore-c-py and pairtools chain for Pore-C and CiFi).
 
-| Assay | Reads | Errors | Depth |
+We ran two versions.
+
+- Clean reads: Hi-C read pairs of 250 bp (HG002) or 150 bp (CHM13, as the real reads) with 0.2% substitutions; Pore-C and CiFi concatemers of real NlaIII or DpnII fragments (4 per read on average) with 1% (Pore-C) or 0.1% (CiFi) errors.
+- Realistic reads: each simulated Hi-C read takes the profile of a random real read of the same mate (length, base qualities, mismatch positions, 5' soft clip filled with random bases, 3' soft clip filled with sequence of the partner locus, as when a read runs through a ligation junction). Each simulated Pore-C read takes the substitution, insertion and deletion rates of a random real read, and each monomer the soft-clipped fractions of a random real monomer. We sampled the profiles along the whole of every input file (every 3,000th Hi-C read in HG002, every 1,500th in CHM13, every 2,000th Pore-C read), because the first reads of a file are not representative: in CHM13 R1, reads 1-100,000 carry 1.96% and 1.92% mismatches against 1.02% and 0.84% for reads 100,001-200,000.
+
+Real against simulated reads, mapped with the paper's options (Hi-C: Bowtie2 local mode as in HiC-Pro; Pore-C: minimap2 map-ont; all primary alignments):
+
+| | Mismatches per aligned base | Soft-clipped bases | Reads with 0 mismatches |
 |---|---|---|---|
-| Hi-C | pairs of 250 bp (HG002) or 150 bp (CHM13), contact distance P(s) ~ 1/s from 1 to 500 kb | 0.2% substitutions | 40 pairs per kb |
-| Pore-C | real NlaIII fragments, 4 per read on average | 1% (0.5% substitutions, 0.25% insertions, 0.25% deletions) | 20 reads per kb |
-| CiFi | real DpnII fragments, 4 per read on average | 0.1% | 20 reads per kb |
+| HG002 Hi-C R1, real (whole files) | 1.15% | 27.1% | 57.1% |
+| HG002 Hi-C R1, realistic simulation | 1.17% | 25.0% | 55.4% |
+| HG002 Hi-C R1, clean simulation | 0.20% | 0.01% | 60.8% |
+| HG002 Hi-C R2, real / realistic | 2.22% / 2.00% | 28.2% / 25.9% | 43.7% / 46.6% |
+| CHM13 Hi-C R1, real / realistic | 0.78% / 0.79% | 11.3% / 10.8% | 73.4% / 72.8% |
+| CHM13 Hi-C R2, real / realistic | 1.95% / 1.94% | 12.7% / 12.2% | 46.9% / 46.4% |
+| Pore-C monomers, real / realistic / clean (edit distance) | 1.94% / 1.69% / 0.99% | 7.1% / 2.4% / 0.4% | |
+| CiFi monomers, real / clean (edit distance) | 0.088% / 0.099% | 0.23% / 0.14% | |
 
-The read lengths match the real data. HG002 Hi-C reads are 248-249 bp on average (maximum 251) in all 8 input files, and CHM13 Hi-C reads are 150 bp in all 4 files.
+The realistic Hi-C simulations match the real reads. The realistic Pore-C simulation matches the edit distance but soft-clips less (2.4% against 7.1%). The clean CiFi simulation already matches the real CiFi reads, so we kept it.
 
 Fraction of contact sides placed in the PHR of another arm:
 
-| Simulation | All reads | Unique reads only |
-|---|---|---|
-| Hi-C HG002 | 19.4% | 0.094% (MAPQ >= 2) |
-| Hi-C CHM13 | 14.7% | 0.012% (MAPQ >= 2) |
-| Pore-C | 15.9% (`--min-mapq 0`) | 0.24% (`--min-mapq 1`, as in the paper) |
-| CiFi | 11.4% (`--min-mapq 0`) | 0.17% (`--min-mapq 1`, as in the paper) |
+| Simulation | All reads, clean | All reads, realistic | Unique reads, clean | Unique reads, realistic |
+|---|---|---|---|---|
+| Hi-C HG002 | 19.4% | 22.2% | 0.094% (MAPQ >= 2) | 1.83% |
+| Hi-C CHM13 | 14.7% | 15.6% | 0.012% (MAPQ >= 2) | 0.22% |
+| Pore-C (all = `--min-mapq 0`, unique = paper's `--min-mapq 1`) | 15.9% | 14.2% | 0.24% | 2.96% |
+| CiFi | 11.4% | | 0.17% | |
 
-In HG002 Hi-C, the error rate of each pair of ends follows their similarity (Spearman rho 0.774 over 2,830 pairs).
+With realistic reads, the fraction of pairs that pass MAPQ >= 1 and >= 2 in HG002 (58.5% and 7.2%) is close to the real genome-wide fractions (54.7% and 7.48%); with clean reads almost every pair passed MAPQ >= 1. In HG002 Hi-C, the error rate of each pair of ends follows their similarity (Spearman rho 0.774 over 2,830 pairs, clean simulation).
 
 The paper's Mantel on the simulated matrices (50 kb):
 
-| Assay | Null simulation | Real data |
-|---|---|---|
-| Hi-C HG002 | 0.755 | 0.657 |
-| Hi-C CHM13 | 0.781 | 0.656 |
-| Pore-C, unique reads | 0.580 | 0.486 |
-| CiFi, unique reads | 0.334 | 0.308 |
+| Assay | Null, clean | Null, realistic | Real data |
+|---|---|---|---|
+| Hi-C HG002 | 0.755 | 0.815 | 0.657 |
+| Hi-C CHM13 | 0.781 | 0.783 | 0.656 |
+| Pore-C, unique reads | 0.580 | 0.643 | 0.486 |
+| CiFi, unique reads | 0.334 | | 0.308 |
 
-The null Mantel is as high as the real one even with 0.24% errors. In the simulation those errors are the only contacts between ends, and they all follow similarity. The Mantel test uses only the ranking, not the number of contacts, so on its own it cannot separate errors from biology. We therefore counted.
+The null Mantel is as high as the real one even with few errors. In the simulation those errors are the only contacts between ends, and they all follow similarity. The Mantel test uses only the ranking, not the number of contacts, so on its own it cannot separate errors from biology. We therefore counted.
 
 ## 7. Calibration on depth
 
-For each end we measured how much deeper the real data are than the simulation (real over simulated raw contacts inside its PHR window). We scaled the simulated false contacts to that depth and obtained the false contacts expected in the real data, with a lower and an upper bound (the error can come from either end of a pair). We compared them with the contacts observed between the same PHRs, on different chromosomes. The last two columns give the arm-level Spearman rho between similarity and contact density, before and after removing the upper bound of expected false contacts.
+For each end we measured how much deeper the real data are than the simulation (real over simulated raw contacts inside its PHR window). We scaled the simulated false contacts to that depth and obtained the false contacts expected in the real data, with a lower and an upper bound (the error can come from either end of a pair). We compared them with the contacts observed between the same PHRs, on different chromosomes. rho is the arm-level Spearman rho between similarity and contact density, before and after removing the upper bound of expected false contacts.
 
-| Assay | Observed contacts between PHRs | Explained by errors | rho before | rho after |
-|---|---|---|---|---|
-| Hi-C HG002 | 339,856 | 30.0-39.4% | 0.758 | 0.721 |
-| Hi-C HG002, MAPQ >= 1 | 166,352 | 35.1-45.0% | 0.732 | 0.697 |
-| Hi-C HG002, MAPQ >= 2 | 6,426 | 0.65-1.04% | 0.325 | 0.323 |
-| Hi-C CHM13 | 209,864 | 49.8-75.3% | 0.780 | 0.584 |
-| Hi-C CHM13, MAPQ >= 1 | 160,340 | 56.2-84.4% | 0.765 | 0.504 |
-| Hi-C CHM13, MAPQ >= 2 | 3,327 | 0.86-1.42% | 0.438 | 0.433 |
-| Pore-C (paper) | 8,039 | 3.2-8.1% | 0.450 | 0.440 |
-| CiFi (paper) | 942 | 2.8-7.9% | 0.308 | 0.300 |
-| CiFi, multi-mapping reads kept | 86,218 | 34.8-45.0% | 0.545 | 0.517 |
+| Assay | Observed contacts between PHRs | Explained by errors, clean | Explained by errors, realistic | rho before | rho after, clean | rho after, realistic |
+|---|---|---|---|---|---|---|
+| Hi-C HG002 | 339,856 | 30.0-39.4% | 45.8-55.7% | 0.758 | 0.721 | 0.708 |
+| Hi-C HG002, MAPQ >= 1 | 166,352 | 35.1-45.0% | 44.2-53.9% | 0.732 | 0.697 | 0.688 |
+| Hi-C HG002, MAPQ >= 2 | 6,426 | 0.65-1.04% | 14.4-22.0% | 0.325 | 0.323 | 0.291 |
+| Hi-C CHM13 | 209,864 | 49.8-75.3% | 58.9-85.9% | 0.780 | 0.584 | 0.520 |
+| Hi-C CHM13, MAPQ >= 1 | 160,340 | 56.2-84.4% | 59.4-87.5% | 0.765 | 0.504 | 0.490 |
+| Hi-C CHM13, MAPQ >= 2 | 3,327 | 0.86-1.42% | 17.0-28.5% | 0.438 | 0.433 | 0.341 |
+| Pore-C (paper) | 8,039 | 3.2-8.1% | 9.0-82.0% | 0.450 | 0.440 | 0.396 |
+| CiFi (paper) | 942 | 2.8-7.9% | | 0.308 | 0.300 | |
+| CiFi, multi-mapping reads kept | 86,218 | 34.8-45.0% | | 0.545 | 0.517 | |
 
 ## 8. The paper's Mantel on matrices without the expected false contacts
 
@@ -145,53 +169,32 @@ We subtracted the upper bound of expected false contacts from each real matrix, 
 - With the simulation in place of the real data, the subtraction removes all 488,882 false contacts and leaves none between different ends.
 - With nothing subtracted, the pipeline reproduces the paper's CiFi tables byte for byte at 50 and 20 kb.
 
-| Assay | Mantel 50 kb, original | Mantel 50 kb, cleaned | Mantel 20 kb, original | Mantel 20 kb, cleaned | Expected false contacts removed (50 kb) |
-|---|---|---|---|---|---|
-| Hi-C HG002 | 0.657 | 0.632 | 0.648 | 0.587 | 91.0% of 290,009 |
-| Hi-C HG002, MAPQ >= 1 | 0.630 | 0.575 | 0.615 | 0.560 | 89.7% of 163,591 |
-| Hi-C CHM13 | 0.656 | 0.563 | 0.721 | 0.684 | 85.7% of 237,749 |
-| Hi-C CHM13, MAPQ >= 1 | 0.636 | 0.430 | 0.717 | 0.663 | 84.0% of 203,436 |
-| Pore-C | 0.486 | 0.482 | 0.476 | 0.475 | 52.8% of 2,218 |
-| CiFi | 0.308 | 0.308 | 0.321 | 0.321 | 30.6% of 125 |
-| CiFi, multi-mapping reads kept | 0.440 | 0.427 | 0.512 | 0.502 | 89.7% of 116,735 |
+| Assay | Mantel 50 kb: paper / cleaned, clean sim / cleaned, realistic sim | Mantel 20 kb: paper / clean sim / realistic sim | Expected false contacts removed at 50 kb, realistic |
+|---|---|---|---|
+| Hi-C HG002 | 0.657 / 0.632 / 0.404 | 0.648 / 0.587 / 0.574 | 416,080 of 467,791 (88.9%) |
+| Hi-C HG002, MAPQ >= 1 | 0.630 / 0.575 / 0.495 | 0.615 / 0.560 / 0.567 | 195,069 of 225,690 (86.4%) |
+| Hi-C CHM13 | 0.656 / 0.563 / 0.468 | 0.721 / 0.684 / 0.661 | 249,874 of 305,089 (81.9%) |
+| Hi-C CHM13, MAPQ >= 1 | 0.636 / 0.430 / 0.407 | 0.717 / 0.663 / 0.654 | 191,506 of 236,964 (80.8%) |
+| Pore-C | 0.486 / 0.482 / 0.479 | 0.476 / 0.475 / 0.473 | 2,826 of 13,255 (21.3%) |
+| CiFi | 0.308 / 0.308 / | 0.321 / 0.321 / | (clean: 38 of 125) |
+| CiFi, multi-mapping reads kept | 0.440 / 0.427 / | 0.512 / 0.502 / | (clean: 104,692 of 116,735) |
 
-All Mantel tests keep p < 0.0001 (10,000 permutations). The part of the expected false contacts that cannot be removed falls on pixels where the real matrix has fewer contacts than expected.
+All Mantel tests keep p < 0.0001 (10,000 permutations). The expected false contacts that cannot be removed fall on pixels where the real matrix has fewer contacts than the simulation predicts, so there the subtraction removes every real contact. In Pore-C this is most of the expected artefact (10,429 of 13,255 contacts at 50 kb).
 
-## 9. CiFi rerun with multi-mapping reads
+## 9. Reruns with multi-mapping reads
 
 We reprocessed CiFi from raw reads with two `parse2` branches on the same alignments.
 
 - The paper's branch (`--min-mapq 1`) reproduces the published matrix exactly (18,028,298 of 18,028,298 pixels, 35,560,326 contacts) and the published statistics byte for byte.
 - The `--min-mapq 0` branch keeps 240,300,440 pairs (6.76 times more). The Mantel rises from 0.308 to 0.440 at 50 kb and stays at 0.427 after removing the expected false contacts.
 
-The Pore-C rerun is running (expected 2026-11-29 around 00:00 MST).
+The first Pore-C rerun failed after 17 h 43 min, near the end of flow cell 1, with no recoverable message: pore-c-py digest wrote one warning per monomer, and moosefs kept only the first 28.9 GB of a 113 GB log. The second run uses `pore-c-py digest --quiet` (identical records, checked with samtools view) and logs the exit code of every stage. It is expected to end around 2026-11-29 06:00 MST.
 
 ## 10. What the checks say together
 
-1. Mapping errors are real and large in Hi-C. In the calibration they explain up to 39% of the contacts between PHRs in HG002 and up to 75% in CHM13 (150 bp reads, against 250 bp in HG002). This is why, in Hi-C, PHRs behave like the control duplications.
-2. After removing the expected errors, the correlation remains. The cleaned Mantel is 0.43-0.68 in Hi-C. In Pore-C and CiFi the errors are at most 8% and the Mantel barely changes.
-3. With unique reads only (Pore-C, CiFi), PHRs lie above matched non-subtelomeric duplications. Among pairs that share sequence, more similar PHRs are closer, and more similar control duplications are not.
-4. A high null Mantel only shows that the Mantel alone is not evidence. The evidence is the counting (calibration) and the cleaned matrices.
-5. Strict filters remove almost every read inside PHRs (MAPQ >= 2, or unique reads in CiFi), so the tests lose power. CHM13 at MAPQ >= 2 shows this. Keeping multi-mapping reads and removing the expected errors gives more contacts and a stronger test (CiFi 0.427 against 0.308).
-
-## Open issue: real Hi-C reads have more errors than the simulated ones
-
-We mapped 200,000 real R1 reads and the simulated reads with the paper's Bowtie2 options and index.
-
-| | Mismatches per aligned base | Soft-clipped read bases | Reads with 0 mismatches | Error implied by base qualities |
-|---|---|---|---|---|
-| HG002 real | 2.42% | 30.3% | 36.4% | 1.18% |
-| HG002 simulated | 0.20% | 0.01% | 60.8% | |
-| CHM13 real | 1.49% | 11.5% | 46.5% | 0.81% |
-| CHM13 simulated | 0.19% | 0.02% | 75.1% | |
-
-Real reads carry 7.8 (CHM13) and 12.1 (HG002) times more mismatches, and many cross a ligation junction, which local alignment soft-clips (30% of read bases in HG002). Both effects shorten the unique part of a read and make wrong placements more likely, so the Hi-C simulations probably underestimate the errors, and sections 6-8 for Hi-C may need a rerun with an error profile taken from the real reads (base qualities and junction clipping). We ran the same check for Pore-C and CiFi: the first 5,000 real Pore-C reads (42,444 monomers) and 2,000 real CiFi reads (25,024 monomers), and the simulated reads, digested and mapped with the paper's chain (all primary monomer alignments).
-
-| | Divergence per aligned base (minimap2 de) | Edit distance per aligned base | Soft-clipped monomer bases |
-|---|---|---|---|
-| Pore-C real | 1.48% | 2.00% | 7.2% |
-| Pore-C simulated | 0.98% | 0.99% | 0.38% |
-| CiFi real | 0.076% | 0.088% | 0.23% |
-| CiFi simulated | 0.099% | 0.099% | 0.14% |
-
-The CiFi simulation matches the real error rate. The Pore-C simulation has half the real edit distance (0.99% against 2.00%), so it may also underestimate the errors, less than the Hi-C one.
+1. Mapping errors are real and large in Hi-C. With realistic reads they explain up to 56% of the contacts between PHRs in HG002 and up to 86% in CHM13 (150 bp reads, against 250 bp in HG002). This is why, in Hi-C with all reads, PHRs behave like the control duplications.
+2. Unique reads are not free of errors. With realistic reads, 1.8% (HG002 Hi-C, MAPQ >= 2), 0.22% (CHM13) and 3.0% (Pore-C, as in the paper) of contact sides land in the PHR of another arm, and the calibration attributes 14.4-28.5% (Hi-C MAPQ >= 2) and 9.0-82.0% (Pore-C) of the contacts between PHRs to errors.
+3. After removing the expected errors, the correlation remains. With the realistic simulations the cleaned Mantel is 0.40-0.66 in Hi-C and 0.47-0.48 in Pore-C, all p < 0.0001.
+4. With unique reads only (Pore-C, CiFi), PHRs lie above matched non-subtelomeric duplications. Among pairs that share sequence, more similar PHRs are closer, and more similar control duplications are not.
+5. A high null Mantel only shows that the Mantel alone is not evidence. The evidence is the counting (calibration) and the cleaned matrices.
+6. Strict filters remove almost every read inside PHRs, and cooler's default balancing then masks the PHR bins (CHM13 MAPQ >= 2: 19 of 38 PHR windows). With PHR bins kept, the CHM13 unique-read Mantel is 0.503. Keeping multi-mapping reads and removing the expected errors gives more contacts and a stronger test (CiFi 0.427 against 0.308).
