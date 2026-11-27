@@ -3,7 +3,7 @@
 
 usage: fixes_figdata.py SAMTOOLS MINIMAP2 D OUT_DIR   (run in D = washu_v131; OUT_DIR new)
 chr9q: SELF.p chr9 (PAN027#2#chr9 of g1/final_v131d, the copy SELF got from DAD) last 400 kb in 10 kb windows, aligned
-  (minimap2 -cx asm5) to the last 700 kb of DAD h2 chr9 in norm_v131 (original) and g1/final_v131c (corrected); per window
+  (minimap2 -cx asm5) to the last 700 kb of DAD h2 chr9 in norm_v131 (original) and the v131 DAD final of g1_finals.tsv (corrected); per window
   the best record: identity = matching bases / alignment block length, query bases aligned.
 chr22q: SELF.m chr22 (PAN027#1#chr22), last 30 kb of norm_v131 in 500 bp bins (bin 0 = the original contig end):
   TTAGGG % of the bin; ONT read ends (primary reads that cross 30 kb before the end, end projected with soft clips as in
@@ -21,7 +21,9 @@ q, Lq = "g1/final_v131d/PAN027/norm/PAN027#2.fa.gz", fai("g1/final_v131d/PAN027/
 with open(f"{O}/q.fa", "w") as f:
     for a in range(Lq - 400000, Lq, 10000): f.write(f">w{Lq - a}\n{get(q, 'PAN027#2#chr9', a, a + 10000)}\n")
 best = {}
-for lab, t in (("original", "norm_v131/PAN011#2.fa.gz"), ("corrected", "g1/final_v131c/PAN011/norm/PAN011#2.fa.gz")):
+DADF = next(l.split("\t")[2].strip() for l in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "g1_finals.tsv")) if l.startswith("v131\tPAN011\t"))
+log(f"DAD v131 final: {DADF}")
+for lab, t in (("original", "norm_v131/PAN011#2.fa.gz"), ("corrected", f"{DADF}/PAN011#2.fa.gz")):
     Lt = fai(t, "PAN011#2#chr9")
     with open(f"{O}/t.fa", "w") as f: f.write(f">t\n{get(t, 'PAN011#2#chr9', Lt - 700000, Lt)}\n")
     out = subprocess.run([MM, "-cx", "asm5", "-t", "4", f"{O}/t.fa", f"{O}/q.fa"], capture_output=True, text=True, check=True).stdout
