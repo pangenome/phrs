@@ -110,15 +110,16 @@ the called tract]. We ask for the comparison against both parental haplotypes, a
 distribution of identity margins locating the candidates, a false-positive estimate from permuted
 parent-child pairs, and confirmation that each tract lies in an unbroken contig."
 
-**What we did.** Both-parental-haplotype comparison (father's chr3q h2 at 99.79–99.84% with 100%
-coverage; his chr9q h1 excluded at 7.3–7.5% coverage); per-chromosome maternal-copy resolution
-(the earlier child-side calls used the paternal copy — 73% of them); threshold sweep f10–f8192;
-read-based correction of all four assemblies, and Merqury error k-mers inside the 82 final runs (outside PAR1: 1 on the transmitted side and 0 on the donor side, against 33.8 and 42.4 expected). Their three sub-points are all confirmed rather than refuted:
-chr5q/chr1p is ancestral homology, the "two events" is transmission, and margins are ≤1%.
+**What we did.** Both candidates retracted: chr9q/chr3q was a misassembly of the father's chr9q haplotype 2, chr1p/chr5q a
+FastGA seed-frequency artefact. Read-based correction of all four assemblies (318 changes), scan of each transmitted
+haplotype against both parental haplotypes (2 Mb query pieces, 18:18), competitive test with all candidates at once
+(corrected chr9q h2 graph dice 1.0000, chr3q 0.9985, released chr9q h2 0.9918, chr9q h1 no alignment), Merqury error
+k-mers in the 82 runs (outside PAR1: 1 transmitted side, 0 donor side, against 33.8 and 42.4 expected). Letter text:
+`02_letter_draft_v1.md`, Points 2-4.
 
-`TODO:` genome-wide distribution of identity margins with the candidates located on it.
-`TODO:` permuted parent–child false-positive rate (shuffle which child haplotype is compared).
-`TODO:` contig-breakpoint check for the retained tract (unbroken contig across the junction).
+Margin distribution: answered by no longer using margins (Methods, "Why a margin alone cannot identify a donor here") plus
+ED7B and the run table. Unbroken contig: moot, no candidate remains (corrected chr9q end is one HiFi contig).
+`TODO:` permuted parent-child false-positive rate (e.g. MOM against DAD through the same scan): user decides whether to run.
 
 ### R1-M7 — mouse null and the "zygotene bouquet" claim · L4 · DONE
 
