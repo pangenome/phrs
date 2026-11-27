@@ -7,6 +7,8 @@ set -euo pipefail
 CW=$1; CID=$2; FAI=$3; OUT=$4
 P=/tmp/guarracino.fig5_ribbon_plotter.py
 case $CID in
+  PAN027pat_vs_PAN010_*) L=("PAN027 paternal" "PAN010 h1" "PAN010 h2");;  # permuted pair (R1-M2 control)
+  PAN027mat_vs_PAN011_*) L=("PAN027 maternal" "PAN011 h1" "PAN011 h2");;  # permuted pair (R1-M2 control)
   PAN027pat_*) L=("PAN027 paternal" "PAN011 h1" "PAN011 h2");;
   PAN027mat_*) L=("PAN027 maternal" "PAN010 h1" "PAN010 h2");;
   PAN028mat_*) L=("PAN028 maternal" "PAN027 h1" "PAN027 h2");;
