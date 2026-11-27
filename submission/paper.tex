@@ -1210,15 +1210,14 @@ the best same-chromosome or homologous match across the tract.
 \emph{Why a margin alone cannot identify a donor here.} At subtelomeric ends the competing sequences are
 near-identical paralogues, so an exchange and a shared family member can both produce a non-homologous
 winner. Two independent checks are therefore required, and both are reported. First, the seed-frequency
-sensitivity: the candidate set entering the alignment depends on the FastGA frequency threshold, and we
-scanned thresholds 32, 48, 64, 96, 128, 192 and 255. The chr1p/chr5q candidate exists only at threshold
+sensitivity: the candidate set entering the alignment depends on the FastGA frequency threshold, and on
+the released assemblies we scanned thresholds 32, 48, 64, 96, 128, 192 and 255. The chr1p/chr5q candidate exists only at threshold
 32 and disappears at 48, where the father's chr5q homologue reaches the last base of its contig at
 identity 1.0000; the chr9q/chr3q candidate survives 32 and 48 but disappears by 96. Neither call is
 invariant to the parameter that was chosen for tractability, which is why the alignment identity alone is
-not used as evidence in this paper. Second, the assembly check: for each candidate locus we compared the
-assembled sequence with the same individual's own long reads, and rebuilt any segment contradicted by
-those reads from that individual's high-fidelity reads alone, without any data from the other pedigree
-members. The rebuilt haplotype was then rescanned with the same procedure.
+not used as evidence in this paper. Second, the assembly check: we corrected all four assemblies with each
+individual's own reads, without any data from the other pedigree members (above), and rescanned every
+transmission on the corrected assemblies.
 
 \emph{Competitive similarity test.} Because a call can be lost or created simply by which candidates reach
 the aligner, the definitive test offers all candidate ends simultaneously. We took the terminal 200\,kb of
@@ -1244,9 +1243,9 @@ in its faster sketch mode is not used: it is a function of the k-mer Jaccard rat
 and it compresses differences between near-identical candidates. Candidate rankings are read directly from
 the graph dice values, with every candidate present at once and no dependence on a frequency threshold.
 
-Validation analyses in this paper (pairwise panels, re-examination of individual tracts) use permissive
-seeding (frequency 512--8192, minimum alignment 200 bp) to retain short and
-repeat-rich matches that the candidate-calling threshold suppresses. We joined two
+The pairwise dot plots of Extended Data Fig.~\ref{fig:ed4} use permissive FastGA settings (seed
+frequency 8192, chain start threshold 200, minimum chain coverage 70\%, minimum identity 0.6) to retain
+short and repeat-rich matches that the scan threshold suppresses. We joined two
 neighboring windows into one run only when their query and donor intervals were
 directly adjacent, touching end to end with no gap, on the same donor
 chromosome, haplotype and sequence; we did not bridge gaps or chain non-adjacent
@@ -1319,7 +1318,10 @@ meiotic Hi-C is GEO GSE155638 (runs SRR12376885--SRR12376892) \cite{Zuo2021}.
 The B6 and CAST T2T assemblies are in ENA BioProject PRJEB47108 (GCA\_964188535
 and GCA\_964188545) \cite{Francis2025}, and the WashU three-generation T2T
 pedigree assemblies are at \url{https://github.com/biomonika/washu-pedigree}
-\cite{Cechova2025}.
+\cite{Cechova2025}. Every change we made to
+them, with its coordinates in the released and the corrected assemblies and the read support, is listed in
+\texttt{scripts/pedigree/fig5\_v131\_check/results/corrected\_release} of the code repository, together with
+the script that rebuilds the corrected assemblies from the released ones.
 
 \subsection*{Code availability}
 
@@ -1399,16 +1401,17 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
   \centering
   \includegraphics[width=\linewidth]{fig/ExtendedDataFigures/ED_Fig4_pairwise_alignments.pdf}
   \caption{\textbf{Pairwise alignments at the candidate locus.}
-    Five telomere-first 60\,kb sequences: the daughter's paternal chr9q terminus (row
-    \texttt{SELF.p.chr9q}) against the father's chr9q hap2 as released (the transmitted chromosome copy,
-    but misassembled at this locus), his chr3q hap2, his chr3q hap1 and his chr9q hap1. Each cell is a dot
-    plot of that pair, with sequence identity on a 98--100\% scale. The called tract is boxed in the three
-    cells of the \texttt{SELF.p.chr9q} row: against the father's chr3q hap2 the diagonal is continuous over
-    the whole window at high identity, and against his released chr9q hap2 it is present but at lower
-    identity, which is what originally suggested an interchromosomal donor. Rebuilding that haplotype from
-    his own high-fidelity reads resolves the discrepancy in favour of the homologue (Fig.~\ref{fig:fig5}d),
-    so the panel illustrates the failure mode rather than an exchange: at these ends a near-identical
-    paralogue and a true donor are not separable by identity alone.}
+    Telomere-first 60\,kb ends from the corrected assemblies, plus the father's released chr9q haplotype 2: the
+    daughter's paternal chr9q (\texttt{SELF.p chr9q}), her father's chr9q haplotype 2 corrected and as released,
+    his chr3q haplotypes 2 and 1, and his chr9q haplotype 1. Each cell is a dot plot of that pair (FastGA all
+    against all, seed frequency 8192), each alignment coloured by its identity on a 98--100\% scale. The former
+    9q/3q tract on the daughter's chr9q is shaded. Her sequence aligns end to end with her father's corrected
+    chr9q at identity 0.9997 (58,679\,bp), with his chr3q haplotype 2 at 0.9962 (59,048\,bp), with his released
+    chr9q at 0.9908 (54,366\,bp, a tail that is a copy of his chr1p) and with his chr3q haplotype 1 at 0.9832.
+    His other chr9q haplotype aligns only near the telomere (at most 4,585\,bp at 0.9226). Against the released
+    assembly the chr3q end was the closest match, which is what suggested an interchromosomal donor; the
+    corrected assembly resolves the case in favour of the homologue (Fig.~\ref{fig:fig5}d). At these ends a
+    near-identical paralogue and a true donor are not separable by identity alone.}
   \label{fig:ed4}
 \end{figure}
 
