@@ -1055,3 +1055,21 @@ paternal-germline rate, which make the absolute times upper bounds.
 Also corrected: the Discussion previously said "about 1.3-fold more divergent than alleles just outside
 the excluded zone"; the like-for-like per-arm median is 1.82, and the earlier 1.3 was a smoothed figure
 value mixed with a length-weighted cohort number. Build: exit 0, 0 undefined.
+
+## Upstream sync (27 Nov) and the 0.9918 provenance question
+
+Date: 2026-11-28
+
+Fast-forwarded 33 upstream commits (no conflicts). Andrea renamed the $R=1$ regime from "obligate" to
+"complete mixing" in the table, the Discussion and the Extended Data Table 2 row, which is the more
+accurate description (crossover is obligate generation by generation, but what $R=1$ asserts is complete
+mixing). The notes were aligned to that wording. She also closed two items we had open: a new Results
+subsection "Non-homologous ends are homogenized, most strongly near the telomere" implementing the R1-M1
+tests, and the R1-M10 comparative Discussion paragraph.
+
+Build after the merge: exit 0, 0 undefined.
+
+One provenance question is recorded in `response/notes/ed7_dice_value_discrepancy.md`: the manuscript
+quotes IMPG dice 0.9918 for the released chr9q haplotype in the tract, while recomputation from the
+competitive run gives 0.9935-0.9945 depending on the statistic. The manuscript is internally consistent at
+0.9918 (three mentions, no competing value), so this is a provenance question rather than an inconsistency.
