@@ -29,7 +29,7 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 |---|---|---|---|---|
 | R1-M1 | concerted evolution is never tested | done, all three tests | new Results section "Non-homologous ends are homogenized, most strongly near the telomere": Fig. 5a-c (test 2), ED Fig. 8 trees of 24 pangenome families + acro (test 1), GENECONV + 2 kb scan, HG01884 and HG03239 inherited tracts (test 3); Methods "Tests of homogenization" | title kept by the authors |
 | R1-M2 | pedigree exchange vs inherited haplotype | done: both calls retracted (assembly error, FastGA seed loss). Final scan on the corrected v1.1 of all 4 people (G1 + DAD chr9q from his own HiFi + SELF.m chr22q trim, 2 Mb query pieces, 18:18): father to daughter PAR1 (138 kb), 47 acrocentric runs (830 kb) and 2 thin interior chr1/chr3 runs to acrocentric p arms; mother to daughter 9 acrocentric runs (182 kb); daughter to granddaughter 22 acrocentric runs (396 kb); no 9q/3q or 1p/5q run. Fig. 5d values hold on the final assemblies (tract sequence identical) | Results "Direct test", Methods (assembly correction, alignment), ED7C (c632451, 2a6c2b5) | - |
-| R1-m8 | pedigree numbers disagree | done | paper.tex text, captions and Fig. 5d agree (graph dice chr3q 0.9990, other chr9q 0.9930). `paper_prep/figures/fig5_concerted/caption.md` now quotes the graph-dice values; `sources.tsv` marks `candidate_dice_9q.tsv` (sketch mode, 0.9915/0.9191) SUPERSEDED | - |
+| R1-m8 | pedigree numbers disagree | done | paper.tex text, captions and Fig. 5d agree, now on the corrected assemblies (graph dice chr3q 0.9985, the father's other chr9q has no alignment in the tract). `paper_prep/figures/fig5_concerted/caption.md` now quotes the graph-dice values; `sources.tsv` marks `candidate_dice_9q.tsv` (sketch mode, 0.9915/0.9191) SUPERSEDED | - |
 | R1-M3 | exchange rate vs Lemmers 2010 | moot: no exchange is called after the retraction (`exchange_rate_estimates.md`) | written (179bc78), pedigree conclusion | done |
 | R1-M4 / R3-M3 / R3-M4 | multi-mapping, flank control, B/W direction | flank control logic | written (302-323, 906) | read-level simulation not done |
 | R1-M5 | matched non-subtelomeric duplication control | not done: `M5_matched_sd_control.md` is a window-class control (PHR contact on both axes), not the referee's matched-SD test | not stated (window-class text removed, b8ff8ff) | match SDs from `PHR_III/annotations/chm13_sd/chm13v2.0_SD.bed` on identity, length, copy number; similarity and contact in CHM13 and HG002 |
@@ -113,7 +113,7 @@ parent-child pairs, and confirmation that each tract lies in an unbroken contig.
 **What we did.** Both-parental-haplotype comparison (father's chr3q h2 at 99.79–99.84% with 100%
 coverage; his chr9q h1 excluded at 7.3–7.5% coverage); per-chromosome maternal-copy resolution
 (the earlier child-side calls used the paternal copy — 73% of them); threshold sweep f10–f8192;
-HiFi flagger cleanliness (1/538). Their three sub-points are all confirmed rather than refuted:
+read-based correction of all four assemblies, and Merqury error k-mers inside the 82 final runs (outside PAR1: 1 on the transmitted side and 0 on the donor side, against 33.8 and 42.4 expected). Their three sub-points are all confirmed rather than refuted:
 chr5q/chr1p is ancestral homology, the "two events" is transmission, and margins are ≤1%.
 
 `TODO:` genome-wide distribution of identity margins with the candidates located on it.

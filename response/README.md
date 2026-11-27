@@ -4,12 +4,13 @@
 ## Retraction notice (2026-11-17) — read before the pedigree material
 
 The ectopic exchange retained in the first response round is **withdrawn**. Both candidates are
-artefacts: an assembly error in one paternal chr9q haplotype (the assembled segment scores IMPG dice
-0.9940 against the daughter's own copy inside the tract, against 1.0000 immediately outside it; rebuilt from his own HiFi reads alone it scores 1.0000) and a
+artefacts: an assembly error in one paternal chr9q haplotype (its last 60 kb are a copy of his chr1p and
+score IMPG dice 0.9918 against the daughter's own copy inside the tract; rebuilt from his own HiFi reads alone it scores 1.0000) and a
 FastGA `-f32` seed-frequency truncation at chr1p/chr5q (the chr5q chain only reaches the contig end at
 `-f48` and above, and matches at 48 diagnostic sites to 1 to chr1p). Offering every candidate
-simultaneously to IMPG similarity puts the rebuilt homologue first (1.0000) and the alleged donor second
-(0.9990).
+simultaneously to IMPG similarity, on the assemblies we corrected with each person's own reads, puts the
+rebuilt homologue first (1.0000) and the alleged donor second (0.9985); the father's other chr9q haplotype
+does not carry the sequence.
 
 Consequence: **no exchange between non-homologous ends is detectable in this pedigree outside the
 acrocentric short arms and the pseudoautosomal regions**, which are obligate and sit at paralog/allelic
@@ -54,7 +55,7 @@ reports before anything is sent.
 Material that stayed elsewhere because it is canonical for the project rather than
 response-specific: `PEDIGREE_NAMING.md` (naming and per-chromosome copy rules),
 `scripts/ci/audit_response_numbers.py` (checks every quoted number against its source),
-`submission/supporting_material/Fig5_margin_table.tsv`.
+`submission/supporting_material/Fig5_pedigree_runs.tsv`.
 
 ## Status of the re-mapping
 
@@ -74,7 +75,7 @@ These are review-independent and already in the manuscript:
   threshold-invariance across FastGA frequency 10–8192, and HiFi flagger cleanliness;
 - chr1p/chr5q reclassified as ancestral homology;
 - mouse analysis replaced by an arm-level Mantel (ρ 0.41/0.58/0.63/0.33; pachytene peak);
-- permutation null for the within-community fraction (0.68/0.84 nulls vs 0.872/0.945 observed);
+- permutation null for the within-community fraction of the final pedigree runs (null 0.929 vs 0.976 observed, 80 of 82 runs, p = 0.0003);
 - character-level bootstrap with the consequence that TIGHT_q and 4q/10q are **not** clades;
 - matched F_ST baseline (ratios 0.72–1.44, all equivalent) plus block heterogeneity;
 - module architecture (98.6% same telomere-relative orientation; repertoire 0.83 vs 0.57;

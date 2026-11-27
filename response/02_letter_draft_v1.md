@@ -20,12 +20,13 @@ Three things in this revision are substantive rather than stylistic.
    (567 → 155 tracts). The reviewers who suspected these were artefacts were right.
 2. **We have withdrawn the last exchange candidate, and no exchange remains in the pedigree.**
    The single event we retained is an assembly artefact in one paternal haplotype plus a
-   seed-frequency artefact at the second candidate (Point 4). Offering every candidate at once to
-   IMPG similarity puts the rebuilt homologue first (dice 1.0000) and the alleged donor second
-   (0.9990). Outside the acrocentric arms and the pseudoautosomal regions we claim no detectable
-   exchange between non-homologous ends. The within-community statistic that summarises the
-   pedigree is unaffected by this and remains stronger after the copy correction (0.945 corrected
-   vs 0.918 published; null 0.84, p < 1e-4).
+   seed-frequency artefact at the second candidate (Point 4). We corrected the assemblies of all four
+   family members with each person's own reads (318 changes, Merqury QV up in all eight haplotypes)
+   and redid the whole pedigree analysis on them. Offering every candidate at once to IMPG
+   similarity puts the rebuilt homologue first (dice 1.0000) and the alleged donor second (0.9985),
+   and the father's other chr9q haplotype does not carry the sequence at all. Across the three
+   transmissions the only runs between non-homologous chromosome ends are PAR1 and acrocentric
+   short arms, and 80 of the 82 runs join arms of the same Leiden community (null 0.929, p = 0.0003).
 3. **We added an architectural result** that the first submission only implied: shared
    subtelomeric modules are orientation-consistent relative to the telomere (98.6% of 9.6 Gbp)
    while their order along the arm is not conserved, and community membership tracks repertoire
@@ -69,18 +70,20 @@ the question without relying on placement at all.
 
 ## Point 2 — the pedigree "92% within Leiden community" statistic
 
-It now has a null, and the null is close to what the reviewer predicted. Ten thousand
-permutations preserving the per-arm patch-count marginals give an expected within-community
-fraction of 0.68 for the published patch set and **0.84** for the corrected one — not 0.5.
-Against those nulls:
+The 92% came from the odgi-untangle patch set, which we have withdrawn together with the exchange
+calls built on it. We recomputed the statistic on the runs of the final analysis: the three
+transmissions scanned on the corrected assemblies, runs of at least 10 kb at identity at least 0.95.
+It now has a null, and the null is close to what the reviewer predicted. Ten thousand permutations of
+the donor arms, which keep the per-arm run counts on both sides, give an expected within-community
+fraction of 0.929, not 0.5:
 
 | set | observed | null mean | null 95% | p |
 |---|---|---|---|---|
-| published, 538 patches | 0.872 (469/538) | 0.677 | [0.664, 0.693] | < 1e-4 |
-| corrected copies, 310 patches | **0.945** (293/310) | 0.840 | [0.832, 0.852] | < 1e-4 |
+| 82 runs, three transmissions, corrected assemblies | **0.976** (80/82) | 0.929 | [0.927, 0.951] | 0.0003 |
 
-Wilson 95% intervals: 0.918 [0.892, 0.939] published; **0.945 [0.914, 0.965]** corrected. The
-observation sits at the 100th percentile of both nulls.
+Wilson 95% interval of the observed fraction: [0.915, 0.993]. The 78 acrocentric runs and the two PAR1
+runs are within a community. The two exceptions join interior sequence (the chr3 centromere region,
+the chr1q pericentromeric region) to acrocentric short arms, and neither lies at a chromosome end.
 
 ## Point 3 — the chr5q/chr1p candidate "recurs, so it must be an artefact"
 
@@ -118,22 +121,22 @@ homologue, the competing non-homologue and a no-signal control — aligned them 
 sweepga at a frequency threshold high enough to filter nothing, and scored every pair with IMPG
 similarity in 2 kb windows:
 
-| candidate | graph dice to the daughter's paternal chr9q, across the tract |
+| candidate (corrected assemblies, plus the released chr9q) | graph dice to the daughter's paternal chr9q, across the tract |
 |---|---|
 | rebuilt chr9q haplotype 2 (father's own HiFi reads only, no daughter data) | **1.0000** |
-| father's chr3q haplotype 2 (uniform inside and outside the tract) | **0.9990** |
-| released (misassembled) chr9q haplotype 2 | 0.9940 inside, 1.0000 outside |
-| father's chr9q haplotype 1 | 0.9930 |
-| father's chr1p | 0.9940 |
+| father's chr3q haplotype 2 | **0.9985** |
+| released (misassembled) chr9q haplotype 2: its last 60 kb are a copy of his chr1p | 0.9918 |
+| father's chr1p | 0.9918 |
+| father's chr9q haplotype 1 | no alignment (the 20 kb tract has no hit in the last 3 Mb of this haplotype) |
 
-The homologue wins outright. And the chr3q-to-homologue difference is 0.10% in graph dice — within the
+The homologue wins outright. And the chr3q-to-homologue difference is 0.15% in graph dice — within the
 range we measure at these ends generally, where the median chromosome end's closest non-homologous
 partner is only 0.52% divergent and 11 of 45 ends lie within twice allelic divergence.
 
 **This makes the region the opposite kind of evidence, and we now present it that way.** The father's
-chr3q terminus is a *closer* match to his daughter's chr9q than his own other chr9q haplotype is
-(0.9990 against 0.9930). A non-homologous end lying inside the spread of the homologous ones is
-concerted evolution stated as a measurement, and it is now Figure 5. The pedigree figure has moved to
+chr3q terminus matches his daughter's chr9q at 0.9985, while his own other chr9q haplotype does not
+carry the sequence at all. A non-homologous end that carries a block one of the homologous ends lacks
+is concerted evolution stated as a measurement, and it is now Figure 5d. The pedigree figure has moved to
 Extended Data, where it serves as a worked demonstration that identity-based donor assignment fails at
 subtelomeric ends.
 
@@ -273,7 +276,8 @@ bibliography and has been added; it was already present in the submission biblio
 - `submission/fig/MainFigures/` — Fig5A pedigree with the project naming, Fig5B zoom with
   `SELF.p`/`DAD.h2`, Fig5C paternal ribbon, **new Fig5D pairwise-alignment panel**; the maternal
   and grandchild ribbon panels are removed.
-- `submission/supporting_material/Fig5_margin_table.tsv` — per-event support.
+- `submission/supporting_material/Fig5_pedigree_runs.tsv` — the 82 runs of the final pedigree scan (arms, communities, identities, Merqury error k-mers).
+- `scripts/pedigree/fig5_v131_check/` — assembly correction and its rebuild (`g1_rebuild.sh`), the corrected-release tables and README (`results/corrected_release/`), the pedigree scan (`fig5_align_chunk.sbatch`, `fig5_similarity_s.sbatch`), the Fig. 5d competition (`fig5d_competition.sbatch`) and the run statistics (`pedigree_run_stats.py`).
 - `scripts/pedigree/untangle_multimap_tracts.py` — `--kid-correct-copies` (per-chromosome maternal
   copy); `scripts/pedigree/recount/` — the 567 → 155 recount.
 - `scripts/hic/mantel_mouse_d_m5.py`; `scripts/cladistics/{char_bootstrap_d_m9.R,d_m9/,peerq3_*,
