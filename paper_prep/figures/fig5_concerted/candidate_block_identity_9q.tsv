@@ -1,7 +1,6 @@
-candidate	tract_dice	tract_block_identity	outside_dice	outside_block_identity	note
-SELF.p (self)	1.0000	1.0000	1.0000	1.0000	query against itself
-DAD chr9 h2 corrected	1.0000	1.0000	1.0000	1.0000	rebuilt from DAD HiFi reads only, no SELF data
-DAD chr3 h2	0.9990	0.9990	0.9987	0.9990	uniform inside and outside: family similarity, no step
-DAD chr9 h2 original	0.9943	0.9940	1.0000	1.0000	localised drop exactly at the error
-DAD chr1 h1	0.9938	0.9940	0.9950	0.9955	control
-DAD chr9 h1	0.9930	0.9930	0.9882	0.9910	the father's other chr9q haplotype
+candidate	tract_dice	tract_block_identity	tract_windows	outside_dice	outside_block_identity	outside_windows	note
+DAD chr9 h2 corrected	1.0000	1.0000	10	0.9998	0.9998	90	the final corrected assembly (end from his own HiFi reads, HiFi-polished)
+DAD chr3 h2	0.9985	0.9985	10	0.9937	0.9937	90	non-homologous end
+DAD chr9 h2 released	0.9918	0.9918	10	0.9905	0.9905	90	released v1.1: its last 60 kb, which hold the tract, are his chr1p copy (equal to DAD chr1 h1 in all 30 windows there)
+DAD chr1 h1 (p end)	0.9918	0.9918	10	0.9791	0.9791	88	source of the released chr9q tail
+DAD chr9 h1	NA	NA	0	0.9072	0.9072	47	his other chr9q haplotype: no alignment in the tract

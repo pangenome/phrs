@@ -121,18 +121,20 @@ ax = fig.add_subplot(gs[1, 1])
 cand = list(csv.DictReader(open("candidate_block_identity_9q.tsv"), delimiter="\t"))
 cand = cand[::-1]
 names = [c["candidate"] for c in cand]
-tin = [float(c["tract_dice"]) for c in cand]
-tout = [float(c["outside_dice"]) for c in cand]
-y = range(len(cand)); h = 0.38
-ax.barh([i + h/2 for i in y], tin, height=h, color="#1b6ca8", label="inside the tract", edgecolor="white")
-ax.barh([i - h/2 for i in y], tout, height=h, color="#9ecae1", label="outside the tract", edgecolor="white")
+num = lambda x: None if x == "NA" else float(x)  # NA: no alignment in that region
+tin = [num(c["tract_dice"]) for c in cand]
+tout = [num(c["outside_dice"]) for c in cand]
+y = range(len(cand)); h = 0.38; X0 = 0.975
+for vals, off, col, lab in ((tin, h/2, "#1b6ca8", "inside the tract"), (tout, -h/2, "#9ecae1", "outside the tract")):
+    ax.barh([i + off for i, v in zip(y, vals) if v is not None], [v for v in vals if v is not None], height=h, color=col,
+            label=lab, edgecolor="white")
+    for i, v in zip(y, vals):  # value at the bar end; below the axis start or missing: text at the axis start
+        txt = "no alignment" if v is None else f"{v:.4f}" + (" (off scale)" if v < X0 else "")
+        ax.text(X0 + 0.0002 if v is None or v < X0 else v + 0.00015, i + off, txt, va="center", fontsize=FS_VAL)
 ax.set_yticks(list(y)); ax.set_yticklabels(names, fontsize=FS_TICK)
-ax.set_xlim(0.985, 1.0008); ax.set_xticks([0.986, 0.990, 0.994, 0.998])
-for i, (a, b) in enumerate(zip(tin, tout)):
-    ax.text(a + 0.00015, i + h/2, f"{a:.4f}", va="center", fontsize=FS_VAL)
-    ax.text(b + 0.00015, i - h/2, f"{b:.4f}", va="center", fontsize=FS_VAL)
+ax.set_xlim(X0, 1.0025); ax.set_xticks([0.976, 0.982, 0.988, 0.994, 1.0])
 ax.set_xlabel("IMPG dice similarity to the daughter's paternal chr9q")
-ax.set_title("d  a non-homologous end inside the spread of the homologues", fontsize=FS_TITLE, loc="left")
+ax.set_title("d  his chr3q, not his other chr9q, is the next match", fontsize=FS_TITLE, loc="left")
 ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=2, frameon=False)
 
 fig.suptitle("Concerted evolution of human subtelomeres: identical sequence at non-homologous ends,\n"

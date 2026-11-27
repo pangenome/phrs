@@ -19,11 +19,12 @@ alignments there are short and partly paralogous and the ratio is undefined rath
 
 **d**, All candidate ends offered simultaneously to the same similarity computation, scored against the
 daughter's paternal chr9q across the tract that was previously called as an exchange. The father's chr9q
-rebuilt from his own high-fidelity reads alone (blue) matches at graph dice 1.0000 inside and outside
-the tract, and his chr3q (orange) is second at 0.9990, uniform inside and outside (0.9987). The erroneous
-release assembly (red) matches at 1.0000 outside the tract but at 0.9943 inside it, and his own other chr9q
-haplotype (grey) is lowest at 0.9930. A non-homologous end therefore lies within the spread of the
-homologous ones. Values: candidate_block_identity_9q.tsv (impg similarity, graph mode, BUILD_LOG 2026-11-18).
+rebuilt from his own high-fidelity reads alone matches at graph dice 1.0000 inside the tract and 0.9998 outside,
+and his chr3q is second at 0.9985 inside the tract. The released assembly matches at 0.9918, the same value as his
+chr1p in every window of its last 60 kb, because that tail is a copy of his chr1p. His own other chr9q haplotype
+has no alignment in the tract (0.9072 over the 47 outside windows it covers), so a non-homologous end carries a
+block that one of his homologous copies lacks. Values: candidate_block_identity_9q.tsv, from
+scripts/pedigree/fig5_v131_check/fig5d_competition.sbatch on the final corrected v1.1 assemblies (2026-11-26).
 
 Divergence in **a**-**c** is X/(=+X) from alignment CIGARs in 2 kb windows over the terminal 500 kb of
 each arm, inter-chromosomal pairs only. Dice in **d** is IMPG node-overlap similarity in 2 kb windows.

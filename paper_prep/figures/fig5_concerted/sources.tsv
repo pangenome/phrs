@@ -2,7 +2,7 @@ panel	status	role	path	note
 a,b	READY	cohort divergence and community structure	/moosefs/erikg/phrs_tmp/hprc_het_final.json	output of scripts/ci/hprc_heterolog_divergence.py, 18,827 PAFs, 1e-4 bins, allelic self-pairs excluded
 c	READY	per-arm and per-end ratio curves	/moosefs/erikg/phrs_tmp/telomere_end_curves.json	output of scripts/ci/telomere_end_ratio_curves.py
 a-c	READY	community assignment	/moosefs/guarracino/HPRCv2/PHR_III/similarity/hprcv2.1Mb.subtelo.arm-leiden-k15.assignments.tsv	arm-level Leiden k=15
-d	READY	candidate competition at chr9q	candidate_block_identity_9q.tsv	graph dice and block identity inside and outside the tract (impg similarity --gfa-engine poa, 2 kb bins, all candidate ends in one graph; BUILD_LOG 2026-11-18); read by figure_fig5_concerted.py
+d	READY	candidate competition at chr9q	candidate_block_identity_9q.tsv	graph dice inside and outside the tract on the final corrected v1.1 assemblies (scripts/pedigree/fig5_v131_check/fig5d_competition.sbatch: terminal 200 kb ends, sweepga f5000 many:many, impg 0.4.1 similarity --gfa-engine poa, 2 kb windows, best pair per window; 2026-11-26); read by figure_fig5_concerted.py
 d	SUPERSEDED	sketch-mode candidate table	candidate_dice_9q.tsv	impg similarity --fast (Mash-transformed estimated.identity): 0.9915 / 0.9191 are not the paper's numbers; kept for history, not read by the figure
 d	READY	raw similarity output	candidate_similarity_9q.tsv	full impg similarity output including the corrected and uncorrected paternal chr9q
 -	GENERATE	figure	figure_fig5_concerted.pdf	produced by figure_fig5_concerted.py in this directory

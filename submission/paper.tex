@@ -493,8 +493,9 @@ An initial pass flagged one candidate: the terminus of the daughter's paternal c
 whole-genome match appeared to be her father's chr3q while the match to his own chr9q fell away
 (Extended Data Fig.~\ref{fig:ed7}B,C). Complete evaluation shows that this call is an artefact of the father's
 assembly at that locus. In both assembly releases the terminal ~150\,kb of his chr9q haplotype 2
-disagrees with his own long reads (dice 0.994 against the daughter's sequence inside the tract,
-against 1.000 outside it and 1.000 throughout in a corrected assembly), and the release quality control marks a misjoin at the start of the copied block.
+disagrees with his own long reads, and the release quality control marks a misjoin at the start of the copied block.
+Against the daughter's sequence in the called tract the released haplotype reaches IMPG dice similarity 0.9918,
+the corrected haplotype 1.0000.
 The error is what created the interchromosomal winner: the released assembly carries, at that terminus,
 a reverse-complement copy of a segment of his own chr1p (100\% of the segment's canonical 21-mers fall
 within chr1p, collinear over 60\,kb at constant offset), so his own chr9q haplotype was absent from that
@@ -503,16 +504,18 @@ itself a member of the family shared with chr3q, which is why the same block rea
 chr3-like.
 
 We therefore repeated the comparison with all candidate ends offered to the similarity computation
-simultaneously rather than one alignment setting at a time, and with the father's chr9q rebuilt from
-his own high-fidelity reads alone, without any data from the daughter. On that assembly the daughter's
+simultaneously rather than one alignment setting at a time, on the assemblies we corrected with each
+individual's own reads (Methods), in which the father's chr9q terminus comes from his own high-fidelity
+reads alone, without any data from the daughter. On those assemblies the daughter's
 paternal chr9q matches her father's chr9q at IMPG dice similarity 1.0000 across the called tract, and his chr3q is
-second at 0.9990. The chr3-like character of the terminus is therefore real, but it
-is similarity between shared subtelomeric blocks rather than a donor relationship: a 0.10\%
+second at 0.9985. The chr3-like character of the terminus is therefore real, but it
+is similarity between shared subtelomeric blocks rather than a donor relationship: a 0.15\%
 difference in dice, well inside the range we measure at chromosome ends generally, where the
 median end's closest non-homologous partner is 0.52\% divergent (Extended Data Fig.~\ref{fig:ed5}e).
-That the father's chr3q terminus is a closer match to his daughter's chr9q (dice 0.9990) than
-his own other chr9q haplotype is (0.9930) is the concerted-evolution signal itself: a non-homologous end
-lying within the spread of the homologous ones.
+His other chr9q haplotype does not carry this sequence at all: the 20\,kb tract has no alignment within
+the last 3\,Mb of that haplotype. That the father's chr3q terminus matches his daughter's chr9q at 0.9985
+while one of his own chr9q copies lacks the sequence is the concerted-evolution signal itself: a
+non-homologous end carries a block that a homologous end does not.
 
 The chr1p/chr5q similarity visible in the same scans is likewise an artefact, of the alignment rather
 than of the assembly. At the seed-frequency cutoff used for the whole-genome scan the father's chr5q
@@ -793,12 +796,13 @@ The authors declare no competing interests.
     TERRA promoter array, a copy-variable repeat family in which the ratio is undefined. \textbf{(d)} All
     candidate ends offered simultaneously to the same similarity computation and scored against the
     daughter's paternal chr9q across the region previously called as an exchange: IMPG dice similarity for each candidate end, inside
-    (dark) and outside (light) the region previously called as an exchange. The father's chr9q rebuilt from
-    his own high-fidelity reads alone matches at 1.0000 throughout; his chr3q is second at 0.9990 and is
-    uniform inside and outside, the signature of family similarity rather than a donor; the erroneous
-    release assembly matches at 1.0000 outside the tract but falls to 0.994 inside it, localising the
-    error; and his own other chr9q haplotype is lowest at 0.9930, so a non-homologous end lies within the
-    spread of the homologous ones.}
+    (dark) and outside (light) the region previously called as an exchange, as the mean over 2\,kb windows.
+    The father's corrected chr9q, whose end we rebuilt from his own high-fidelity reads alone, matches at
+    1.0000 inside the tract and 0.9998 outside. His chr3q is second at 0.9985 inside the tract. The
+    released assembly matches at 0.9918, the same value as his chr1p in every window of its last 60\,kb,
+    because that tail is a copy of his chr1p. His own other chr9q haplotype has no alignment in the tract
+    (0.9072 over the 47 outside windows it covers), so a non-homologous end carries a block that one of
+    his homologous copies lacks.}
   \label{fig:fig5}
 \end{figure}
 
@@ -1217,12 +1221,15 @@ those reads from that individual's high-fidelity reads alone, without any data f
 members. The rebuilt haplotype was then rescanned with the same procedure.
 
 \emph{Competitive similarity test.} Because a call can be lost or created simply by which candidates reach
-the aligner, the definitive test offers all candidate ends simultaneously: the transmitted haplotype and
-every competing paternal end (including both the released and the corrected assembly of the candidate
-locus, the alternative homologue, the competing non-homologue and a no-signal control) were placed in one
-FASTA, aligned all-against-all with sweepga (many-to-many mappings, no scaffold jumps, FastGA frequency
-5000 so that no candidate is filtered out), and scored with impg similarity in 2 kb windows in graph mode
-(\texttt{-{}-gfa-engine poa}).
+the aligner, the definitive test offers all candidate ends simultaneously. We took the terminal 200\,kb of
+the daughter's paternal chr9q and of every competing paternal end from the corrected assemblies (the
+father's chr9q haplotypes 1 and 2, his chr3q, chr19q and chr1p, and his chr2p as a no-signal control,
+with p ends reverse-complemented so that the telomere comes last), added the released chr9q haplotype 2,
+placed all in one FASTA, aligned them all-against-all with sweepga (many-to-many mappings, no scaffold
+jumps, FastGA frequency 5000 so that no candidate is filtered out), and scored them with impg 0.4.1
+similarity in 2\,kb windows of the daughter's chr9q in graph mode (\texttt{-{}-gfa-engine poa}). For each
+window and candidate we kept the best-scoring pair and averaged over the ten windows of the called tract
+(\texttt{PAN027\#2\#chr9:136,168,000--136,188,000}) and over the other windows.
 
 \emph{The similarity measure.} Each sequence is a path through the alignment graph, and the comparison is
 made on the multiset of graph nodes that path traverses, weighted by node length, so a path that loops
@@ -1232,11 +1239,7 @@ two paths that is shared. Two properties recommend it here. It is coverage-aware
 so a candidate that matches only part of a window is penalised, which is the question we are asking of
 these ends. And it is the same overlap measure that defines the communities elsewhere in the paper, which
 is reported as a Jaccard index; for the same node multisets the two are related exactly by
-$D=2J/(1+J)$, a strictly monotone transform, so no ranking depends on which is quoted. The command's
-second output column, block identity, is a gap-compressed identity over the aligned block
-(matches over matches + mismatches + gap events). It conditions on the aligned length and so does not
-penalise partial coverage; because every candidate here spans the full 2 kb bin the two agree to within
-0.0005, and we quote it alongside. The Mash-transformed \texttt{estimated.identity} emitted by the same command
+$D=2J/(1+J)$, a strictly monotone transform, so no ranking depends on which is quoted. The Mash-transformed \texttt{estimated.identity} emitted by the same command
 in its faster sketch mode is not used: it is a function of the k-mer Jaccard rather than of the graph,
 and it compresses differences between near-identical candidates. Candidate rankings are read directly from
 the graph dice values, with every candidate present at once and no dependence on a frequency threshold.
@@ -1467,8 +1470,8 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
     across the shaded 20\,kb tract while the match to his chr3q (orange) stays
     near-identical. This is the signature an exchange would leave, but at this locus
     it is produced by an assembly error in the father's chr9q haplotype 2: the
-    assembled segment disagrees with his own long reads inside the tract (dice 0.994 there against
-    1.000 outside it), so the closest remaining sequence wins by default.
+    assembled terminus is a copy of his own chr1p (dice 0.9918 to the daughter's sequence in the tract,
+    against 1.0000 for the corrected assembly), so the closest remaining sequence wins by default.
     \textbf{(C)} Whole-genome comparison of that transmitted haplotype (middle track)
     with the father's two haplotypes (upper, lower), after we corrected the assemblies of
     all four individuals (Methods). The father's corrected chr9q terminus comes from his own
@@ -1476,7 +1479,7 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
     ribbons are same-chromosome chains, dark grey ribbons join acrocentric short arms and
     the pink ribbon marks PAR1, which is obligate. On the corrected assemblies the
     daughter's paternal chr9q matches her father's chr9q at dice 1.0000 across the tract
-    and his chr3q comes second (0.9990). No chr9q/chr3q or chr1p/chr5q run remains, so PAR1
+    and his chr3q comes second (0.9985). No chr9q/chr3q or chr1p/chr5q run remains, so PAR1
     is the only exchange outside the acrocentric short arms. Two thin runs join interior
     sequence of the daughter's chr3 (96.79--96.80\,Mb, 18\,kb) and chr1 (131.02--131.03\,Mb,
     10\,kb) to acrocentric short arms, and neither lies at a chromosome end.}
