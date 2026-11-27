@@ -1,0 +1,9 @@
+/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/cifi_output/cifi.mcool minus artefact from /moosefs/guarracino/HPRCv2/PHR_III/simhic/cifi_null_rk20/sim.mq1.mcool at 50000 bp (scale at 5000 bp): 77 ends, 1267 of 120013 bins in domains; scale median 0.07481, range 0-0.7778; ends without scale ['chr13_PATERNAL_q', 'chr13_PATERNAL_p', 'chr13_MATERNAL_q']
+artefact pixels whose ends lack a scale (given the largest scale): 3 pixels, 5 simulated contacts
+factor applied to the expected artefact: 0.0
+class two different ends: 645 simulated pixels, 2187 simulated contacts, expected 0.0
+class one end and outside the domains: 137 simulated pixels, 320 simulated contacts, expected 0.0
+class outside the domains: 0 simulated pixels, 0 simulated contacts, expected 0.0
+simulated contacts inside one end's domain (kept, not artefact): 550015
+pixels 0-8654385 of 8654385
+done /scratch/guarracino/tmp/phrs/corrres.HaYL/corr.50000.cool: real contacts 35560326; expected artefact 0.0 on 782 pixels, 177 present in the real matrix; removed 0.0 (0.000000); not removable (floor at 0) 0.0; real contacts left between different ends' domains 11418.0

@@ -1,0 +1,29 @@
+contact	statistic	subset	n_arms	n_pairs	rho	p_perm
+CHM13_HiC	mantel	all arms	38	688	0.674	0.0001
+CHM13_HiC	mantel	all	37	652	0.748	0.0001
+CHM13_HiC	partial	all	37	652	0.676	0.0001
+CHM13_HiC	oe	all	37	652	0.489	0.0001
+CHM13_HiC	mantel	same-type pairs	37	324	0.773	0.0001
+CHM13_HiC	mantel	p-q pairs	37	328	0.725	0.0001
+CHM13_HiC	mantel	without acrocentric p and X/Y	37	425	0.806	0.0001
+HG002_HiC	mantel	all arms	41	803	0.657	0.0001
+HG002_HiC	mantel	all	41	803	0.657	0.0001
+HG002_HiC	partial	all	41	803	0.624	0.0001
+HG002_HiC	oe	all	41	803	0.623	0.0001
+HG002_HiC	mantel	same-type pairs	41	400	0.614	0.0001
+HG002_HiC	mantel	p-q pairs	41	403	0.708	0.0001
+HG002_HiC	mantel	without acrocentric p and X/Y	41	485	0.733	0.0001
+HG002_PoreC	mantel	all arms	41	803	0.485	0.0001
+HG002_PoreC	mantel	all	41	803	0.485	0.0001
+HG002_PoreC	partial	all	41	803	0.393	0.0001
+HG002_PoreC	oe	all	41	803	0.406	0.0001
+HG002_PoreC	mantel	same-type pairs	41	400	0.494	0.0001
+HG002_PoreC	mantel	p-q pairs	41	403	0.472	0.0001
+HG002_PoreC	mantel	without acrocentric p and X/Y	41	485	0.506	0.0001
+HG002_CiFi	mantel	all arms	41	803	0.304	0.0001
+HG002_CiFi	mantel	all	41	803	0.304	0.0001
+HG002_CiFi	partial	all	41	803	0.281	0.0001
+HG002_CiFi	oe	all	41	803	0.288	0.0001
+HG002_CiFi	mantel	same-type pairs	41	400	0.355	0.0001
+HG002_CiFi	mantel	p-q pairs	41	403	0.260	0.0001
+HG002_CiFi	mantel	without acrocentric p and X/Y	41	485	0.304	0.0001

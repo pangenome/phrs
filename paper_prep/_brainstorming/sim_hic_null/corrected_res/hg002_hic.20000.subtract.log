@@ -1,0 +1,20 @@
+/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/hicpro_output/cool/HG002.mcool minus artefact from /moosefs/guarracino/HPRCv2/PHR_III/simhic/null_pk40/sim.mcool at 20000 bp (scale at 5000 bp): 77 ends, 3068 of 299993 bins in domains; scale median 0.3846, range 0.1349-1.27; ends without scale []
+artefact pixels whose ends lack a scale (given the largest scale): 0 pixels, 0 simulated contacts
+factor applied to the expected artefact: 1.0
+class two different ends: 71794 simulated pixels, 458473 simulated contacts, expected 276418.5
+class one end and outside the domains: 12134 simulated pixels, 27086 simulated contacts, expected 9402.8
+class outside the domains: 1539 simulated pixels, 3306 simulated contacts, expected 4197.4
+simulated contacts inside one end's domain (kept, not artefact): 374524
+pixels 0-20000000 of 233787347
+pixels 20000000-40000000 of 233787347
+pixels 40000000-60000000 of 233787347
+pixels 60000000-80000000 of 233787347
+pixels 80000000-100000000 of 233787347
+pixels 100000000-120000000 of 233787347
+pixels 120000000-140000000 of 233787347
+pixels 140000000-160000000 of 233787347
+pixels 160000000-180000000 of 233787347
+pixels 180000000-200000000 of 233787347
+pixels 200000000-220000000 of 233787347
+pixels 220000000-233787347 of 233787347
+done /scratch/guarracino/tmp/phrs/corrres.FyIh/corr.20000.cool: real contacts 597291764; expected artefact 290018.7 on 85467 pixels, 52797 present in the real matrix; removed 230516.1 (0.000386); not removable (floor at 0) 31036.5; real contacts left between different ends' domains 1576785.6

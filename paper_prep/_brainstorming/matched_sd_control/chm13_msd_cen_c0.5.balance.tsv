@@ -1,0 +1,6 @@
+set	n	identity_mean	log10_len_mean	log2_copies_mean	smd_identity	smd_log10_len	smd_log2_copies
+PHR_all	347	0.9634	4.2484	4.1209	0.000	0.000	0.000
+PHR_matched	158	0.9536	3.9863	4.0111	-0.438	-0.428	-0.345
+PHR_unmatched	189	0.9717	4.4675	4.2127	0.366	0.358	0.288
+candidates	10609	0.9336	3.7274	2.7118	-1.322	-0.850	-4.421
+matched_controls	426	0.9507	3.9390	3.9468	-0.565	-0.505	-0.546

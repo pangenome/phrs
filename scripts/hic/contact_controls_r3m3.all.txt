@@ -1,0 +1,61 @@
+CHM13_HiC: arms with no contact to any other arm, dropped from the controlled statistics: ['chr13_q']
+CHM13_HiC: 37 arms (not in the similarity matrix or without PHR calls: []), 666 pairs
+HG002_HiC: 41 arms (not in the similarity matrix or without PHR calls: []), 820 pairs
+HG002_PoreC: 41 arms (not in the similarity matrix or without PHR calls: []), 820 pairs
+HG002_CiFi: 41 arms (not in the similarity matrix or without PHR calls: []), 820 pairs
+CHM13_HiC	mantel	all arms	arms 38	pairs 703	rho 0.656	p 0.0001
+CHM13_HiC	mantel	all	arms 37	pairs 666	rho 0.727	p 0.0001
+CHM13_HiC	partial	all	arms 37	pairs 666	rho 0.637	p 0.0001
+CHM13_HiC	oe	all	arms 37	pairs 666	rho 0.478	p 0.0001
+   covariate same arm type: rho with contact 0.090, with similarity 0.109
+   covariate acrocentric p arms: rho with contact -0.383, with similarity -0.302
+   covariate X/Y arms: rho with contact -0.170, with similarity -0.360
+   covariate log median PHR length: rho with contact -0.066, with similarity -0.117
+   covariate log chromosome sizes: rho with contact 0.077, with similarity -0.027
+   covariate |log size difference|: rho with contact 0.050, with similarity 0.120
+   covariate log contact propensity: rho with contact 0.508, with similarity 0.457
+CHM13_HiC	mantel	same-type pairs	pairs 324	rho 0.773	p 0.0001
+CHM13_HiC	mantel	p-q pairs	pairs 342	rho 0.678	p 0.0001
+CHM13_HiC	mantel	without acrocentric p and X/Y	pairs 435	rho 0.783	p 0.0001
+HG002_HiC	mantel	all arms	arms 41	pairs 820	rho 0.657	p 0.0001
+HG002_HiC	mantel	all	arms 41	pairs 820	rho 0.657	p 0.0001
+HG002_HiC	partial	all	arms 41	pairs 820	rho 0.606	p 0.0001
+HG002_HiC	oe	all	arms 41	pairs 820	rho 0.616	p 0.0001
+   covariate same arm type: rho with contact 0.072, with similarity 0.099
+   covariate acrocentric p arms: rho with contact -0.289, with similarity -0.276
+   covariate X/Y arms: rho with contact -0.134, with similarity -0.440
+   covariate log median PHR length: rho with contact 0.001, with similarity -0.183
+   covariate log chromosome sizes: rho with contact 0.015, with similarity 0.068
+   covariate |log size difference|: rho with contact -0.071, with similarity 0.069
+   covariate log contact propensity: rho with contact 0.336, with similarity 0.006
+HG002_HiC	mantel	same-type pairs	pairs 400	rho 0.614	p 0.0001
+HG002_HiC	mantel	p-q pairs	pairs 420	rho 0.703	p 0.0001
+HG002_HiC	mantel	without acrocentric p and X/Y	pairs 496	rho 0.734	p 0.0001
+HG002_PoreC	mantel	all arms	arms 41	pairs 820	rho 0.486	p 0.0001
+HG002_PoreC	mantel	all	arms 41	pairs 820	rho 0.486	p 0.0001
+HG002_PoreC	partial	all	arms 41	pairs 820	rho 0.388	p 0.0001
+HG002_PoreC	oe	all	arms 41	pairs 820	rho 0.408	p 0.0001
+   covariate same arm type: rho with contact 0.098, with similarity 0.099
+   covariate acrocentric p arms: rho with contact -0.235, with similarity -0.276
+   covariate X/Y arms: rho with contact -0.122, with similarity -0.440
+   covariate log median PHR length: rho with contact -0.009, with similarity -0.183
+   covariate log chromosome sizes: rho with contact 0.091, with similarity 0.068
+   covariate |log size difference|: rho with contact 0.029, with similarity 0.069
+   covariate log contact propensity: rho with contact 0.317, with similarity 0.271
+HG002_PoreC	mantel	same-type pairs	pairs 400	rho 0.494	p 0.0001
+HG002_PoreC	mantel	p-q pairs	pairs 420	rho 0.475	p 0.0001
+HG002_PoreC	mantel	without acrocentric p and X/Y	pairs 496	rho 0.506	p 0.0001
+HG002_CiFi	mantel	all arms	arms 41	pairs 820	rho 0.308	p 0.0001
+HG002_CiFi	mantel	all	arms 41	pairs 820	rho 0.308	p 0.0001
+HG002_CiFi	partial	all	arms 41	pairs 820	rho 0.280	p 0.0001
+HG002_CiFi	oe	all	arms 41	pairs 820	rho 0.292	p 0.0001
+   covariate same arm type: rho with contact 0.011, with similarity 0.099
+   covariate acrocentric p arms: rho with contact -0.025, with similarity -0.276
+   covariate X/Y arms: rho with contact -0.064, with similarity -0.440
+   covariate log median PHR length: rho with contact 0.090, with similarity -0.183
+   covariate log chromosome sizes: rho with contact -0.044, with similarity 0.068
+   covariate |log size difference|: rho with contact -0.034, with similarity 0.069
+   covariate log contact propensity: rho with contact 0.262, with similarity 0.208
+HG002_CiFi	mantel	same-type pairs	pairs 400	rho 0.355	p 0.0001
+HG002_CiFi	mantel	p-q pairs	pairs 420	rho 0.267	p 0.0001
+HG002_CiFi	mantel	without acrocentric p and X/Y	pairs 496	rho 0.310	p 0.0001

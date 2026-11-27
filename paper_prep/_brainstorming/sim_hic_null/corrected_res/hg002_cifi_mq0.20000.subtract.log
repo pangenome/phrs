@@ -1,0 +1,12 @@
+/moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0/cifi.mcool minus artefact from /moosefs/guarracino/HPRCv2/PHR_III/simhic/cifi_null_rk20/sim.mq0.mcool at 20000 bp (scale at 5000 bp): 77 ends, 3068 of 299993 bins in domains; scale median 0.1088, range 0-0.3818; ends without scale []
+artefact pixels whose ends lack a scale (given the largest scale): 0 pixels, 0 simulated contacts
+factor applied to the expected artefact: 1.0
+class two different ends: 74487 simulated pixels, 900467 simulated contacts, expected 115062.5
+class one end and outside the domains: 3082 simulated pixels, 13817 simulated contacts, expected 1345.5
+class outside the domains: 172 simulated pixels, 856 simulated contacts, expected 326.8
+simulated contacts inside one end's domain (kept, not artefact): 1301001
+pixels 0-20000000 of 75229565
+pixels 20000000-40000000 of 75229565
+pixels 40000000-60000000 of 75229565
+pixels 60000000-75229565 of 75229565
+done /scratch/guarracino/tmp/phrs/corrres.I21m/corr.20000.cool: real contacts 240300440; expected artefact 116734.8 on 77741 pixels, 36658 present in the real matrix; removed 89315.4 (0.000372); not removable (floor at 0) 9831.6; real contacts left between different ends' domains 484938.5

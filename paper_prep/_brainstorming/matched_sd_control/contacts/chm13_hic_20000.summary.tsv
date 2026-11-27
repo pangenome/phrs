@@ -1,0 +1,4 @@
+set	pairs	rho	ci_low	ci_high	pairs_jaccard_gt0	rho_jaccard_gt0
+PHR	835	0.5549	0.3994	0.7052	505	0.7675
+control	7014	0.5671	0.4859	0.6391	1738	0.6485
+PHR_minus_control	NA	-0.0122	-0.1781	0.1560	NA	NA

@@ -1,0 +1,15 @@
+/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/porec_output/porec.mcool minus artefact from /moosefs/guarracino/HPRCv2/PHR_III/simhic/porec_null_rk20/sim.mq1.mcool at 20000 bp (scale at 5000 bp): 77 ends, 3068 of 299993 bins in domains; scale median 0.1679, range 0-1; ends without scale ['chr13_PATERNAL_p', 'chr10_MATERNAL_p', 'chr17_MATERNAL_p']
+artefact pixels whose ends lack a scale (given the largest scale): 4 pixels, 4 simulated contacts
+factor applied to the expected artefact: 1.0
+class two different ends: 4290 simulated pixels, 7686 simulated contacts, expected 1680.4
+class one end and outside the domains: 2002 simulated pixels, 2876 simulated contacts, expected 473.1
+class outside the domains: 62 simulated pixels, 64 simulated contacts, expected 64.0
+simulated contacts inside one end's domain (kept, not artefact): 867476
+pixels 0-20000000 of 120969848
+pixels 20000000-40000000 of 120969848
+pixels 40000000-60000000 of 120969848
+pixels 60000000-80000000 of 120969848
+pixels 80000000-100000000 of 120969848
+pixels 100000000-120000000 of 120969848
+pixels 120000000-120969848 of 120969848
+done /scratch/guarracino/tmp/phrs/corrres.pJmv/corr.20000.cool: real contacts 286293292; expected artefact 2217.6 on 6354 pixels, 1366 present in the real matrix; removed 650.0 (0.000002); not removable (floor at 0) 14.0; real contacts left between different ends' domains 88240.3

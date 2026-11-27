@@ -1,0 +1,4 @@
+min_mapq	pairs	reads	in_phr_of_homologous_end	in_phr_of_another_arm	rate_another_arm
+0	863389	1726778	155723	334877	0.193932
+1	863364	1726728	155721	334870	0.193933
+2	63782	127564	58	120	0.000940704

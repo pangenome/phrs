@@ -1,0 +1,6 @@
+50000	test	within_mean	between_mean	n_within	n_between	U_statistic	p_value
+50000	within_vs_between	0.012853483365615464	2.9192568403152177e-06	256	2670	576243.0	2.4626955970356222e-98
+50000	mantel	NA	NA	NA	41	0.7553970594443492	0.0
+20000	test	within_mean	between_mean	n_within	n_between	U_statistic	p_value
+20000	within_vs_between	0.01760623158284554	2.671513655675829e-09	256	2670	553598.0	3.4440260632751447e-81
+20000	mantel	NA	NA	NA	41	0.7331070122233653	0.0
