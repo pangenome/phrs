@@ -1,0 +1,8 @@
+candidate	tract_dice	tract_block_identity	tract_windows	outside_dice	outside_block_identity	outside_windows
+DAD_chr19h2	NA	NA	0	0.5968	0.5968	8
+DAD_chr1h1	0.9918	0.9918	10	0.9791	0.9791	88
+DAD_chr2p_CONTROL	NA	NA	0	0.6500	0.6500	8
+DAD_chr3h2	0.9985	0.9985	10	0.9937	0.9937	90
+DAD_chr9h1	NA	NA	0	0.9072	0.9072	47
+DAD_chr9h2_CORR	1.0000	1.0000	10	0.9998	0.9998	90
+DAD_chr9h2_ORIG	0.9918	0.9918	10	0.9905	0.9905	90
