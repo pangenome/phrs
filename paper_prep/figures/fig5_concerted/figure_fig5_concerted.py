@@ -65,7 +65,7 @@ ax.set_yticklabels([f"{r[0]}  ({r[2]} pair{'s' if r[2]>1 else ''})" for r in row
 ax.set_xscale("log"); ax.set_xlim(0.85, 120); ax.set_ylim(-0.6, len(rows) - 0.2)
 ax.set_xlabel("divergence among member arms / allelic divergence")
 ax.set_title("a  three exchange regimes", fontsize=FS_TITLE, loc="left")
-ax.text(1.12, 0.5, "obligate: acrocentric short arms, PAR1", fontsize=FS_NOTE, color="#c0392b", va="center")
+ax.text(1.12, 0.5, "complete mixing: acrocentric short arms, PAR1", fontsize=FS_NOTE, color="#c0392b", va="center")
 ax.text(5.0, 4.0, "cohesive", fontsize=FS_NOTE, color="#1b6ca8", va="center")
 ax.text(16.0, 7.0, "facultative", fontsize=FS_NOTE, color="#555555", va="center")
 _c4 = [i for i, r in enumerate(rows) if r[0] == "C4"]

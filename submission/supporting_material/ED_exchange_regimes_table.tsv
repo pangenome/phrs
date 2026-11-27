@@ -1,5 +1,5 @@
 regime	R_ratio_of_genealogical_depths	T_coalescence_generations	T_Myr_upper_bound	mixing_1_over_R_minus_1	anchor
-obligate (acrocentric short arms, PAR1, PAR2)	1.00	62500	1.25	infinite	one pool: obligate crossover, no barrier to mixing
+complete mixing (acrocentric short arms, PAR1, PAR2)	1.00	62500	1.25	infinite	one pool: no barrier to mixing
 telomeric end of the compartment (6-10 kb)	1.82	113750	2.28	1.22	near-pool; the most nearly interchangeable sequence we can measure
 mid compartment (20-100 kb)	3.44	215000	4.30	0.41
 average subtelomeric block	5.93	370625	7.41	0.20	length-weighted, all records, all distances

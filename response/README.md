@@ -13,7 +13,7 @@ rebuilt homologue first (1.0000) and the alleged donor second (0.9985); the fath
 does not carry the sequence.
 
 Consequence: **no exchange between non-homologous ends is detectable in this pedigree outside the
-acrocentric short arms and the pseudoautosomal regions**, which are obligate and sit at paralog/allelic
+acrocentric short arms and the pseudoautosomal regions**, which mix completely (PAR1 with an obligate crossover) and sit at paralog/allelic
 ratio 1.00 and 0.99. Manuscript changes: Figure 5 is now the concerted-evolution figure; the pedigree
 figure moved to Extended Data Fig. 7; abstract, Results and Methods updated and rebuilt (exit 0,
 0 undefined).

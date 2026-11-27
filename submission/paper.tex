@@ -409,8 +409,8 @@ expected if exchange is most frequent at the chromosome tip.
 The topology of duplicon copies gives a second test. We built trees of the copies of
 24 gene families that have copies at two or more ends across the 465 haplotypes, together with the
 acrocentric short-arm repeat (20 haplotypes per family, Methods, Extended Data Fig.~\ref{fig:ed8}).
-Where exchange is obligate, in the acrocentric short arms and in all seven pseudoautosomal families,
-copies from different ends interleave, so the test detects exchange where it is known to occur.
+Where exchange is known to occur, in the acrocentric short arms and in all seven pseudoautosomal families
+(obligate crossover in PAR1), copies from different ends interleave, so the test detects exchange there.
 Outside these compartments the families split. Copies of each end form their own clade in FAM87,
 FRG2 and TUBB8, and in IL9R and WASIR2 apart from their pseudoautosomal copies, the pattern of an old
 duplication without later exchange. No end forms its own clade in D4Z4, CIC, FAM138, OR4G, AGGF1, CLUH
@@ -605,14 +605,14 @@ terminal sequence is the most nearly interchangeable we can measure and the prom
 that measurement stops.
 
 It is worth being precise about what such a ratio is, because it is easy to read it as a rate of
-events and it is not one. In an obligate region - the pseudoautosomal regions and the acrocentric short
-arms - a crossover occurs every generation, and yet two copies there still coalesce ~62,500 generations
-ago, because crossing over does not make a genealogy shallow, it makes both loci a single pool whose
-genealogy is as deep as the population's. What the data constrain is therefore a ratio of genealogical
+events and it is not one. In PAR1 a crossover is obligate in every male meiosis, and yet two copies there
+still coalesce ~62,500 generations ago, as do copies on different acrocentric short arms, because
+exchange does not make a genealogy shallow, it makes both loci a single pool whose genealogy is as deep
+as the population's. What the data constrain is therefore a ratio of genealogical
 depths, $R$, and not an interval between exchanges: the average block's common ancestor is 5.9 times
 older than that of two alleles, the far interior 6.6 times, the telomeric end of the compartment 1.8
-times, and where mixing is obligate $R = 1$ (Extended Data Table~\ref{tab:exchange_regimes}). Mixing relative to the obligate
-case follows as $1/(R-1)$, running from 1.2 at the telomeric end to 0.02 in the weakest blocks. $R$ is
+times, and where mixing is complete $R = 1$ (Extended Data Table~\ref{tab:exchange_regimes}). Mixing relative to complete
+mixing follows as $1/(R-1)$, running from 1.2 at the telomeric end to 0.02 in the weakest blocks. $R$ is
 the robust quantity: it is a ratio of two divergences measured identically in the same compartment, so
 the substitution rate cancels, whereas the absolute times inherit the uncertainty from GC-biased gene
 conversion in this GC-rich sequence and from the elevated paternal-germline rate.
@@ -787,7 +787,7 @@ The authors declare no competing interests.
   \caption{\textbf{Concerted evolution of human subtelomeres.}
     \textbf{(a)} For each Leiden community, median divergence among member arms divided by the median
     allelic divergence of those arms; 1.0 (dotted) means non-homologous copies are as similar as alleles.
-    Acrocentric short arms (C7) and PAR1 (C15) sit at 1.0, the obligate case, and PAR2 (C14) at 1.4;
+    Acrocentric short arms (C7) and PAR1 (C15) sit at 1.0, complete mixing, and PAR2 (C14) at 1.4;
     C1, C11 and C3 are cohesive at 3.3-3.5; the remainder are facultative, 7-27. C4 is a residual pairing,
     not a cohesive group. \textbf{(b)} Cumulative distribution of substitution divergence, weighted by
     aligned base pairs, for homologous copies of an arm (allelic, median 0.15\%) and copies on different
@@ -1500,7 +1500,7 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
     the copies of each end form their own clade; interleaved colours mean that copies from different
     ends share a clade. Families are sorted by the share of arms whose copies form one clade. The
     acrocentric short-arm repeat and the seven pseudoautosomal families (controls) are drawn last:
-    exchange there is obligate and their copies interleave in every case.}
+    these copies exchange between non-homologous ends, obligately in PAR1, and interleave in every case.}
   \label{fig:ed8}
 \end{figure}
 
@@ -1553,10 +1553,10 @@ ectopic exchange.}
 \centering
 \caption{\textbf{Exchange regimes as ratios of genealogical depths.} For each regime, $R$ is the
 coalescence time of two non-homologous subtelomeric copies divided by the coalescence time of two
-alleles drawn from one population pool. $R=1$ is the obligate case, in which mixing is complete and the
-two loci behave as a single pool; the obligate coalescence time of 62,500 generations is set by the
-population's genealogy rather than by the crossover rate, which is why crossovers cannot be counted as
-events separated by an interval. The last column is mixing relative to the obligate case,
+alleles drawn from one population pool. $R=1$ is complete mixing, in which the two loci behave as a
+single pool; its coalescence time of 62,500 generations is set by the population's genealogy rather than
+by the exchange rate, which is why exchanges cannot be counted as events separated by an interval. The
+last column is mixing relative to complete mixing,
 $1/(R-1)=4N_e m$, under coalescence with migration. Times assume $1.2\times10^{-8}$ substitutions per
 base per generation and are upper bounds: GC-biased gene conversion in this GC-rich compartment, and the
 elevated paternal-germline rate, both raise the effective substitution rate and shorten the true times.
@@ -1570,7 +1570,7 @@ the same axis.}
 \hline
 Regime & $R$ & $T$ (generations) & $1/(R-1)$ \\
 \hline
-Obligate (acrocentric short arms, PAR1, PAR2) & 1.00 & 62,500 & $\infty$ \\
+Complete mixing (acrocentric short arms, PAR1, PAR2) & 1.00 & 62,500 & $\infty$ \\
 Telomeric end (6--10\,kb)           & 1.82 & 113,750 & 1.22 \\
 Mid compartment (20--100\,kb)        & 3.44 & 215,000 & 0.41 \\
 Average block (length-weighted)     & 5.93 & 370,625 & 0.20 \\
