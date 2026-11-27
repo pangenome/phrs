@@ -1,6 +1,36 @@
 # Sequence similarity vs 3D proximity of PHRs: checks for the revision (R1-M4, R1-M5, R3-M3)
 
-Status 2026-11-27 15:07 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
+Status 2026-11-27 15:20 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
+
+## Bottom line: does this hurt the paper?
+
+No. The central claim, that chromosome ends with more similar PHRs are closer in the nucleus, passes the test the referees asked for. But one argument in the paper is wrong and must go, and the Hi-C numbers have to be reported smaller.
+
+Good for us.
+
+1. The signal survives the removal of mapping errors. We subtracted the largest number of false contacts that read-level simulations with realistic errors predict, and reran the paper's statistics. All stay significant (p < 0.0001):
+
+   | Assay | Mantel in the paper (50 kb / 20 kb) | After removing the expected errors (50 kb / 20 kb) |
+   |---|---|---|
+   | Hi-C HG002 | 0.657 / 0.648 | 0.404 / 0.574 |
+   | Hi-C CHM13 | 0.656 / 0.721 | 0.468 / 0.661 |
+   | Pore-C HG002 | 0.486 / 0.476 | 0.479 / 0.473 |
+   | CiFi HG002, multi-mapping reads kept | 0.440 / 0.512 | 0.427 / 0.502 |
+
+2. The effect is specific to PHRs (R1-M5, section 4). In the assays that keep only uniquely mapped reads, PHRs lie above matched non-subtelomeric segmental duplications (Pore-C rho 0.420 against 0.202, CiFi 0.191 against 0.071). Among pairs that share sequence, more similar PHRs are closer, and more similar control duplications are not (Pore-C 0.365 against -0.005, CiFi 0.168 against -0.056).
+3. Hi-C with uniquely mapped reads only keeps the signal: Mantel 0.487 in HG002 and 0.503 in CHM13 once cooler's balancing no longer masks PHR bins (section 3).
+4. The partial Mantel controlling for arm type, acrocentric and X/Y arms, PHR length, chromosome size and contact propensity stays at 0.28-0.68 (R3-M3, section 5).
+5. The paper's numbers reproduce byte for byte, and we now have the read-level simulations the referees asked for, so the rebuttal can answer with numbers.
+
+Bad for us, all fixable.
+
+1. One argument in the paper is wrong. Results lines 344-353 and Methods lines 1130-1133 say that multi-mapping reads can only weaken the signal, so the observed value is a lower bound. Simulations show the opposite: mapping errors alone, with no true contact between ends, give a Mantel of 0.76-0.82 in Hi-C and 0.64 in Pore-C, because a read from one PHR lands on the most similar PHRs. A referee who ran the simulation would find this. The planned rebuttal for R1-M4 uses the same argument and must change (section 11).
+2. In Hi-C a large part of the contact between PHRs is artefactual: up to 56% in HG002 and up to 86% in CHM13 (section 7). The raw Hi-C Mantel values overstate the effect, and the error-corrected values above are the ones to report.
+3. In Hi-C, PHRs behave like matched segmental duplications (0.488 against 0.493), because multi-mapping makes any similar pair of duplications look close. The specificity claim has to rest on Pore-C and CiFi (section 4).
+4. The Methods say that Pore-C and CiFi keep multi-mapping reads; they keep only uniquely mapped reads (section 2).
+5. In Pore-C the uncertainty is wide: mapping errors may explain 9.0-82.0% of the contacts between PHRs, even with uniquely mapped reads (section 7). After removing the upper bound the Mantel still stays at 0.479.
+
+What to change: remove the lower-bound paragraph, correct the Methods, report the error-corrected Mantel next to the original one, add the matched duplication control, and rest the specificity on Pore-C and CiFi (full list in section 11). The main limit of the whole analysis is that it assumes the simulated reads err like the real ones; we built them from error profiles of real reads and they match, except that simulated Pore-C monomers are soft-clipped less (2.4% against 7.1%). The Pore-C rerun with multi-mapping reads (due 2026-11-29) will show whether Pore-C gains signal as CiFi did.
 
 ## 1. The question
 
