@@ -6,14 +6,17 @@ Null model: only cis contacts near each end, no true contact between ends. For e
 hg002_subtelomeric_regions.bed plus its 100 kb flank window), read 1 starts uniformly in the end domain (PHR + flank);
 read 2 lies at distance s from read 1, with P(s) proportional to 1/s on [MIN_S, MAX_S], towards the telomere or the
 centromere at random, and must stay inside the extended domain (end domain + MAX_S inward) and the chromosome. Strands
-are random; reads have uniform substitution errors at rate ERR and quality F. Read names carry the truth:
+are random; reads have uniform substitution errors at rate ERR and quality F, or, with --profile (read_profile.py hic),
+each read takes the profile of a random real read of the same mate: its length, base qualities and mismatch positions,
+random bases over its 5' soft clip, and over its 3' soft clip the sequence of the partner locus (the other read's
+position, opposite strand), as when a read runs through a ligation junction. Read names carry the truth:
 s<n>:<chr1>:<pos1>:<strand1>:<chr2>:<pos2>:<strand2> (1-based leftmost reference position of each read).
 
 subcommands
   regions  PHR_BED FLANK_BED CHROM_SIZES OUT_PREFIX [--max-s 500000]
            writes OUT.regions.txt (samtools regions of the extended domains) and OUT.domains.tsv
   simulate DOMAINS_TSV EXTENDED_FA OUT_PREFIX [--pairs-per-kb 8] [--read-len 250] [--err 0.002] [--min-s 1000]
-           [--max-s 500000] [--seed 20261126]   writes OUT_R1.fastq.gz, OUT_R2.fastq.gz
+           [--max-s 500000] [--seed 20261126] [--profile PROFILES_TSV_GZ]   writes OUT_R1.fastq.gz, OUT_R2.fastq.gz
   evaluate DOMAINS_TSV ALL_VALID_PAIRS OUT_PREFIX [--tol 600]  (HiC-Pro reports a 5' end, up to read length plus
            soft clips away from the leftmost position)
            writes OUT.reads.tsv (per read: true end and window, assigned end and window, correct within TOL bp) and
@@ -30,6 +33,7 @@ s = sp.add_parser("simulate"); s.add_argument("domains"); s.add_argument("fa"); 
 s.add_argument("--pairs-per-kb", type=float, default=8); s.add_argument("--read-len", type=int, default=250)
 s.add_argument("--err", type=float, default=0.002); s.add_argument("--min-s", type=int, default=1000)
 s.add_argument("--max-s", type=int, default=500000); s.add_argument("--seed", type=int, default=20261126)
+s.add_argument("--profile", help="real-read profiles (read_profile.py hic); replaces --read-len, --err and the F qualities")
 e = sp.add_parser("evaluate"); e.add_argument("domains"); e.add_argument("avp"); e.add_argument("out")
 e.add_argument("--tol", type=int, default=600)
 a = ap.parse_args()
@@ -72,9 +76,19 @@ elif a.cmd == "simulate":
                 name, buf = l[1:].split()[0], []
             else: buf.append(l.strip())
     seqs[name] = "".join(buf).upper()
-    comp = str.maketrans("ACGTN", "TGCAN"); B = np.frombuffer(b"ACGT", dtype=np.uint8); L = a.read_len
+    comp = str.maketrans("ACGTN", "TGCAN"); B = np.frombuffer(b"ACGT", dtype=np.uint8); L = a.read_len; P = None
+    if a.profile:
+        P = {1: [], 2: []}
+        with gzip.open(a.profile, "rt") as f:
+            if not f.readline().startswith("mate\t"): sys.exit("FATAL profile header")
+            for l in f:
+                m, n_, q, c5, c3, mm = l.rstrip("\n").split("\t")[:6]
+                P[int(m)].append((int(n_), q, int(c5), int(c3), np.array([int(v) for v in mm.split(",")] if mm != "." else [], dtype=int)))
+        L = max(x[0] for v in P.values() for x in v)
+        log(f"profiles {a.profile}: mate 1 {len(P[1])}, mate 2 {len(P[2])}; longest read {L}; mean mismatches per aligned base"
+            f" {sum(len(x[4]) for v in P.values() for x in v) / sum(x[0] - x[2] - x[3] for v in P.values() for x in v):.5f}")
     log(f"simulate: {len(D)} ends, {len(seqs)} sequences, {a.pairs_per_kb} pairs per kb of end domain, read length {L},"
-        f" error {a.err}, s in [{a.min_s}, {a.max_s}] with P(s) ~ 1/s, seed {a.seed}")
+        f" error {'from profiles' if P else a.err}, s in [{a.min_s}, {a.max_s}] with P(s) ~ 1/s, seed {a.seed}")
     n, drop = 0, collections.Counter()
     with gzip.open(a.out + "_R1.fastq.gz", "wt", compresslevel=1) as o1, gzip.open(a.out + "_R2.fastq.gz", "wt", compresslevel=1) as o2:
         for d in D:
@@ -86,17 +100,27 @@ elif a.cmd == "simulate":
                 x = int(rng.integers(lo, hi - L)); sd = int(round(math.exp(rng.uniform(math.log(a.min_s), math.log(a.max_s)))))
                 y = x + sd if rng.random() < 0.5 else x - sd
                 if y < d["ext_start"] or y + L > d["ext_end"]: drop["partner outside extended domain"] += 1; continue
+                pr = [P[k][int(rng.integers(len(P[k])))] for k in (1, 2)] if P else [(L, "F" * L, 0, 0, None)] * 2
                 rr = []
-                for p in (x, y):
-                    t = sq[p - off:p - off + L]; st = "+" if rng.random() < 0.5 else "-"
+                for p, q in zip((x, y), pr):
+                    t = sq[p - off:p - off + q[0]]; st = "+" if rng.random() < 0.5 else "-"
                     if st == "-": t = t.translate(comp)[::-1]
                     rr.append((p, st, t))
                 if any("N" in t for _, _, t in rr): drop["N in read"] += 1; continue
-                rn = f"s{n}:{d['chrom']}:{rr[0][0] + 1}:{rr[0][1]}:{d['chrom']}:{rr[1][0] + 1}:{rr[1][1]}"
-                for (p, st, t), o in zip(rr, (o1, o2)):
-                    b = np.frombuffer(t.encode(), dtype=np.uint8).copy(); m = rng.random(L) < a.err
+                out = []
+                for i, ((p, st, t), (Li, q, c5, c3, mm)) in enumerate(zip(rr, pr)):
+                    b = np.frombuffer(t.encode(), dtype=np.uint8).copy()
+                    if P:
+                        pj, sj = rr[1 - i][0], rr[1 - i][1]; seg = sq[pj - off:pj - off + c3]
+                        if c3: b[Li - c3:] = np.frombuffer((seg.translate(comp)[::-1] if sj == "+" else seg).encode(), dtype=np.uint8)
+                        if c5: b[:c5] = B[rng.integers(0, 4, c5)]
+                        m = np.zeros(Li, dtype=bool); m[mm] = True
+                    else: m = rng.random(L) < a.err
                     if m.any(): b[m] = B[(np.searchsorted(B, b[m]) + rng.integers(1, 4, m.sum())) % 4]  # a different base
-                    o.write(f"@{rn}\n{b.tobytes().decode()}\n+\n{'F' * L}\n")
+                    out.append((b.tobytes().decode(), q))
+                if any("N" in r_ for r_, _ in out): drop["N in the partner sequence of a 3' clip"] += 1; continue
+                rn = f"s{n}:{d['chrom']}:{rr[0][0] + 1}:{rr[0][1]}:{d['chrom']}:{rr[1][0] + 1}:{rr[1][1]}"
+                for (r_, q), o in zip(out, (o1, o2)): o.write(f"@{rn}\n{r_}\n+\n{q}\n")
                 n += 1; made += 1
     log(f"simulate: wrote {n} read pairs to {a.out}_R1/_R2.fastq.gz; dropped draws {dict(drop)}")
 

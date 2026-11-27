@@ -1,0 +1,3 @@
+set	min_mapq	reads	aligned_bases	mismatch_per_base	gap_ext_per_base	softclip_per_base	frac_0mm	frac_1mm	frac_2mm	frac_3plus
+sim	30	6243	901329	0.00448005	3.10652e-05	0.0374927	0.783437	0.0945058	0.0422874	0.0690373
+sim	0	21278	2847125	0.00792765	0.000576722	0.107786	0.727888	0.109503	0.0481248	0.091268

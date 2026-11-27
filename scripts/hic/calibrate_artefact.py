@@ -11,8 +11,8 @@ contacts below 1 kb). An artefact between A and B comes from reads of A or of B,
 E_lo = X_sim * min(s_A, s_B) and E_hi = X_sim * max(s_A, s_B). The observed count O is the raw real contact count
 between the two PHR windows. Raw counts at RESOLUTION (5 kb), no balancing, both matrices. An end with no simulated
 cis contact in its PHR window (possible with MAPQ filters) has no scale: a pair with one such end uses the scale of the
-other end for both bounds, a pair with two such ends gets E = 0 when X_sim = 0 and stops the run otherwise; the ends
-and pairs concerned are logged.
+other end for both bounds, a pair with two such ends gets E = 0 when X_sim = 0 and otherwise the smallest and the
+largest scale over all ends as its bounds; the ends and pairs concerned are logged.
 
 Outputs: OUT.pairs.tsv (per pair of ends on different chromosomes, homologs of the two haplotypes count as the same
 chromosome: O, X_sim, s_A, s_B, E_lo, E_hi, bin pairs); OUT.arms.tsv (per pair of arms: sums over the ends, densities
@@ -48,8 +48,9 @@ log("scale s = real / simulated cis contacts in the PHR window: median %.4g, ran
 def bounds(xs, sa, sb):
     w = [x for x in (sa, sb) if x == x]
     if w: return xs * min(w), xs * max(w)
-    if xs > 0: sys.exit(f"FATAL simulated artefact {xs} between two ends without a scale")
+    if xs > 0: both[0] += 1; both[1] += xs; return xs * min(v), xs * max(v)
     return 0.0, 0.0
+both = [0, 0.0]
 half = collections.Counter()
 tot = lambda clr, x, y: float(clr.matrix(balance=False, sparse=True).fetch(reg[x], reg[y]).sum())
 ends = sorted(reg); rows = []
@@ -60,7 +61,8 @@ for i, x in enumerate(ends):
         o, xs = tot(C["real"], x, y), tot(C["sim"], x, y)
         half[sum(v != v for v in (s[x], s[y]))] += 1
         rows.append((x, y, o, xs, s[x], s[y], *bounds(xs, s[x], s[y]), nb[x] * nb[y]))
-log(f"end pairs by number of ends without a scale: {dict(half)}")
+log(f"end pairs by number of ends without a scale: {dict(half)}; pairs with two such ends and simulated artefact: {both[0]}"
+    f" ({both[1]:.0f} simulated contacts, bounded by the smallest and largest scale)")
 with open(a.out + ".pairs.tsv", "w") as f:
     f.write("end_a\tend_b\tobserved\tsim_artefact\tscale_a\tscale_b\texpected_lo\texpected_hi\tbin_pairs\n")
     for r in rows: f.write("\t".join(f"{v:.6g}" if isinstance(v, float) else str(v) for v in r) + "\n")

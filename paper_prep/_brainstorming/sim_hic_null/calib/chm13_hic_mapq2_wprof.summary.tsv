@@ -1,0 +1,14 @@
+measure	value
+end_pairs	688
+observed_total	3327
+expected_lo_total	564.505
+expected_hi_total	949.488
+expected_lo_over_observed	0.169674
+expected_hi_over_observed	0.285389
+end_pairs_expected_hi_ge_observed	247
+arm_pairs	688
+arm_pairs_jaccard_gt0	659
+rho_jaccard_observed	0.437816
+rho_jaccard_excess_hi	0.341321
+rho_jaccard_observed_jaccard_gt0	0.45992
+rho_jaccard_excess_hi_jaccard_gt0	0.362228

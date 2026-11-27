@@ -10,19 +10,20 @@
 # --expand | pairtools restrict -f FRAGMENTS | pairtools sort | pairtools dedup | cooler cload pairs (5 kb) + zoomify
 # --balance. parse2 runs twice on the same annotated alignments: with its default --min-mapq 1 (as in the paper) and
 # with --min-mapq 0. Tools from the rebuilt paper env (condatools/porec/1.0-rebuilt). Work in node /scratch.
-# usage: sbatch sim_porec_null.sbatch --enzyme NlaIII|DpnII --preset map-ont|map-hifi --site CATG|GATC --domains TSV
+# usage: sbatch sim_porec_null.sbatch --enzyme NlaIII|DpnII --preset map-ont|map-hifi --site CATG|GATC --domains TSV [--profile PROFILE_TSV_GZ]
 #        --fasta EXT_FA_GZ --sim PY --reads-per-kb N --errors "SUB INS DEL" --out DIR
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
-while [ $# -gt 0 ]; do case $1 in --enzyme) EZ=$2;; --preset) PR=$2;; --site) SITE=$2;; --domains) DOM=$2;; --fasta) FA=$2;; --sim) SIM=$2;; --reads-per-kb) RK=$2;; --errors) ER=$2;; --out) O=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+while [ $# -gt 0 ]; do case $1 in --enzyme) EZ=$2;; --preset) PR=$2;; --site) SITE=$2;; --domains) DOM=$2;; --fasta) FA=$2;; --sim) SIM=$2;; --reads-per-kb) RK=$2;; --errors) ER=$2;; --out) O=$2;; --profile) PF=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
 for v in EZ PR SITE DOM FA SIM RK ER O; do [ -n "${!v:-}" ] || { echo "ERROR missing $v"; exit 2; }; done
+PF=${PF:-}
 log () { echo "[$(date -Is)] $*"; }
 export PATH=/moosefs/guarracino/condatools/porec/1.0-rebuilt/bin:$PATH
 H=/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002; REF=$H/HG002.fa.gz; CS=$H/chrom.sizes; FR=$H/fragments_$EZ.bed
 N=${SLURM_CPUS_PER_TASK:-48}; read SUB INS DEL <<< "$ER"
 mkdir -p $O /scratch/$USER/tmp/phrs; W=$(mktemp -d /scratch/$USER/tmp/phrs/simporec.XXXX); trap 'rc=$?; rm -rf $W; echo "exit status $rc at line ${LINENO}"' EXIT
 log "host $(hostname); $N cores; $EZ $PR site $SITE; errors sub $SUB ins $INS del $DEL; $RK reads per kb; $(pore-c-py --version 2>&1 | tail -1); $(minimap2 --version); pairtools $(pairtools --version 2>&1 | awk '{print $NF}'); $(samtools --version | head -1)"
-python3 $SIM simulate $DOM $FA $FR $SITE $W/sim --reads-per-kb $RK --sub $SUB --ins $INS --dele $DEL
+python3 $SIM simulate $DOM $FA $FR $SITE $W/sim --reads-per-kb $RK --sub $SUB --ins $INS --dele $DEL ${PF:+--profile $PF}
 pore-c-py digest $W/sim.fastq.gz $EZ --threads $((N / 3)) --max_monomers 250 \
   | samtools fastq -T '*' \
   | minimap2 -ay -t $((N * 2 / 3)) -x $PR --cap-kalloc 100m --cap-sw-mem 50m $REF - \

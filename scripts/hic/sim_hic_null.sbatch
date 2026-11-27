@@ -8,20 +8,21 @@
 # cores, same bowtie2 index and chrom.sizes), evaluate placement against the truth in the read names, and build the
 # mcool exactly as for the real data (cooler cload pairs + zoomify --balance, cooler 0.10.4 env). All work in node
 # /scratch; outputs copied to OUT.
-# usage: sbatch sim_hic_null.sbatch [--sample HG002|CHM13] --domains TSV --fasta EXT_FA_GZ --sim PY --pairs-per-kb N --out DIR
+# usage: sbatch sim_hic_null.sbatch [--sample HG002|CHM13] --domains TSV --fasta EXT_FA_GZ --sim PY --pairs-per-kb N --out DIR [--profile PROFILE_TSV_GZ]
 #        [--read-len L] (default 250: HG002 Hi-C reads are 251 bp; CHM13 Hi-C reads are 150 bp)
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
 SM=HG002; RL=250
-while [ $# -gt 0 ]; do case $1 in --sample) SM=$2;; --domains) DOM=$2;; --fasta) FA=$2;; --sim) SIM=$2;; --pairs-per-kb) PK=$2;; --read-len) RL=$2;; --out) O=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+while [ $# -gt 0 ]; do case $1 in --sample) SM=$2;; --domains) DOM=$2;; --fasta) FA=$2;; --sim) SIM=$2;; --pairs-per-kb) PK=$2;; --read-len) RL=$2;; --profile) PF=$2;; --out) O=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
 for v in DOM FA SIM PK O; do [ -n "${!v:-}" ] || { echo "ERROR missing $v"; exit 2; }; done
+PF=${PF:-}
 log () { echo "[$(date -Is)] $*"; }
 H=/moosefs/guarracino/HPRCv2/PHR_III/HiC/$SM; SIF=/moosefs/guarracino/sifs/hicpro-latest.simg; E=/moosefs/guarracino/condatools/porec/1.0-rebuilt/bin
 N=${SLURM_CPUS_PER_TASK:-48}
 mkdir -p $O /scratch/$USER/tmp/phrs; W=$(mktemp -d /scratch/$USER/tmp/phrs/simhic.XXXX); trap 'rc=$?; rm -rf $W; echo "exit status $rc at line ${LINENO}"' EXIT
 log "sample $SM; host $(hostname); $N cores; domains $DOM; fasta $FA; $PK pairs per kb; read length $RL"
 mkdir -p $W/in/hicpro_input/001 $W/out
-$E/python3 $SIM simulate $DOM $FA $W/in/hicpro_input/001/001 --pairs-per-kb $PK --read-len $RL
+$E/python3 $SIM simulate $DOM $FA $W/in/hicpro_input/001/001 --pairs-per-kb $PK --read-len $RL ${PF:+--profile $PF}
 cp -r $H/bowtie2_index $W/in/; cp $H/chrom.sizes $W/in/
 sed "s|^N_CPU = .*|N_CPU = $N|" $H/config-hicpro.txt > $W/in/config-hicpro.txt
 nd=$(awk 'NR==FNR {a[FNR]=$0; next} a[FNR] != $0 {d++; print "config differs: " $0 > "/dev/stderr"} END {print d + 0}' $H/config-hicpro.txt $W/in/config-hicpro.txt)

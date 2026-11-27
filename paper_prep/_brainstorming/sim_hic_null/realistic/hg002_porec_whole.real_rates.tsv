@@ -1,0 +1,3 @@
+set	min_mapq	monomers	mapped	frac_mapped	aligned_bases	divergence	nm_per_base	softclip_per_base
+real	30	481945	25030	0.0519354	12103445	0.0116826	0.0156012	0.0421241
+real	0	481945	347206	0.720427	106143724	0.0145807	0.0194303	0.0705335

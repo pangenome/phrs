@@ -7,12 +7,14 @@ Null model: for each end (PHR window plus 100 kb flank, as sim_hic_null.py domai
 digest) containing a uniform position of the end domain; each other one is the fragment containing a position at
 distance s from it, P(s) proportional to 1/s on [MIN_S, MAX_S], inside the extended domain. Monomers are stripped of
 the enzyme site at their ends, oriented at random and joined by one site, as in a ligation product, so that pore-c-py
-digest splits them again. Errors per base: substitution, insertion, deletion at SUB, INS, DEL. Read names s<n>; the
-truth (end and monomer coordinates) goes to OUT.truth.tsv.
+digest splits them again. Errors per base: substitution, insertion, deletion at SUB, INS, DEL, or, with --profile
+(read_profile.py porec), each read takes the substitution, insertion and deletion rates of a random real read and each
+monomer gets random bases over the fractions of its length that a random real monomer had soft-clipped at its 5' and 3'
+ends. Read names s<n>; the truth (end and monomer coordinates) goes to OUT.truth.tsv.
 
 subcommands
   simulate DOMAINS_TSV EXTENDED_FA FRAGMENTS_BED SITE OUT [--reads-per-kb 20] [--mean-monomers 4] [--sub 0.005]
-           [--ins 0.0025] [--dele 0.0025] [--min-s 1000] [--max-s 500000] [--seed 20261126]
+           [--ins 0.0025] [--dele 0.0025] [--min-s 1000] [--max-s 500000] [--seed 20261126] [--profile TSV_GZ]
            writes OUT.fastq.gz and OUT.truth.tsv
   evaluate DOMAINS_TSV TRUTH_TSV PAIRS OUT [--tol 1000]
            per pair side of the pairs file (readID chrom1 pos1 chrom2 pos2 ...): the read's true end, the end window
@@ -28,6 +30,7 @@ s = sp.add_parser("simulate")
 for k in ("domains", "fa", "frags", "site", "out"): s.add_argument(k)
 for k, v in (("--reads-per-kb", 20.0), ("--mean-monomers", 4.0), ("--sub", 0.005), ("--ins", 0.0025), ("--dele", 0.0025)): s.add_argument(k, type=float, default=v)
 for k, v in (("--min-s", 1000), ("--max-s", 500000), ("--seed", 20261126)): s.add_argument(k, type=int, default=v)
+s.add_argument("--profile", help="real-read profiles (read_profile.py porec); replaces --sub, --ins and --dele")
 e = sp.add_parser("evaluate")
 for k in ("domains", "truth", "pairs", "out"): e.add_argument(k)
 e.add_argument("--tol", type=int, default=1000)
@@ -61,10 +64,20 @@ if a.cmd == "simulate":
     log(f"simulate: {len(D)} ends, {sum(map(len, fr.values()))} {site} fragments inside the extended domains; {a.reads_per_kb} reads"
         f" per kb, mean monomers {a.mean_monomers}, errors sub {a.sub} ins {a.ins} del {a.dele}, s in [{a.min_s}, {a.max_s}], seed {a.seed}")
     B = np.frombuffer(b"ACGT", dtype=np.uint8)
-    def mutate(t):
+    PR, PC = None, None
+    if a.profile:
+        PR, PC = [], []
+        with gzip.open(a.profile, "rt") as f:
+            if not f.readline().startswith("read\t"): sys.exit("FATAL profile header")
+            for l in f:
+                x = l.rstrip("\n").split("\t"); PR.append((float(x[2]), float(x[3]), float(x[4])))
+                PC += [tuple(map(float, c.split("/"))) for c in x[5].split(",")]
+        log(f"profiles {a.profile}: {len(PR)} reads, {len(PC)} monomers; mean rates sub {np.mean([r[0] for r in PR]):.5f},"
+            f" ins {np.mean([r[1] for r in PR]):.5f}, del {np.mean([r[2] for r in PR]):.5f}; mean clipped fraction 5' {np.mean([c[0] for c in PC]):.4f}, 3' {np.mean([c[1] for c in PC]):.4f}")
+    def mutate(t, rs, ri, rd):
         b = np.frombuffer(t.encode(), dtype=np.uint8).copy(); u = rng.random(len(b))
-        sub = u < a.sub; b[sub] = B[(np.searchsorted(B, b[sub]) + rng.integers(1, 4, sub.sum())) % 4]
-        keep = ~((u >= a.sub) & (u < a.sub + a.dele)); ins = (u >= a.sub + a.dele) & (u < a.sub + a.dele + a.ins)
+        sub = u < rs; b[sub] = B[(np.searchsorted(B, b[sub]) + rng.integers(1, 4, sub.sum())) % 4]
+        keep = ~((u >= rs) & (u < rs + rd)); ins = (u >= rs + rd) & (u < rs + rd + ri)
         out = np.insert(b, np.nonzero(ins)[0] + 1, B[rng.integers(0, 4, ins.sum())])
         mask = np.insert(keep, np.nonzero(ins)[0] + 1, True)
         return out[mask].tobytes().decode()
@@ -96,8 +109,13 @@ if a.cmd == "simulate":
                     x = x[len(site):] if x.startswith(site) else x
                     x = x[:-len(site)] if x.endswith(site) else x
                     st = "+" if rng.random() < 0.5 else "-"
-                    parts.append(x if st == "+" else x.translate(comp)[::-1]); desc.append(f"{c}:{s0}-{e0}:{st}")
-                r = mutate(site.join(parts))
+                    x = x if st == "+" else x.translate(comp)[::-1]
+                    if PC:
+                        f5, f3 = PC[int(rng.integers(len(PC)))]; k5, k3 = int(round(f5 * len(x))), int(round(f3 * len(x)))
+                        if k5 + k3 < len(x): x = "".join("ACGT"[v] for v in rng.integers(0, 4, k5)) + x[k5:len(x) - k3] + "".join("ACGT"[v] for v in rng.integers(0, 4, k3))
+                        else: x = "".join("ACGT"[v] for v in rng.integers(0, 4, len(x)))
+                    parts.append(x); desc.append(f"{c}:{s0}-{e0}:{st}")
+                r = mutate(site.join(parts), *(PR[int(rng.integers(len(PR)))] if PR else (a.sub, a.ins, a.dele)))
                 if "N" in r: drop["N in read"] += 1; continue
                 o.write(f"@s{n}\n{r}\n+\n{'5' * len(r)}\n"); t.write(f"s{n}\t{d['end']}\t{','.join(desc)}\n")
                 n += 1; nmono += len(mono)

@@ -6,12 +6,14 @@
 # with the paper's chain (pore-c-py digest ENZYME --max_monomers 250 | samtools fastq -T '*' | minimap2 -ay -x PRESET
 # --cap-kalloc 100m --cap-sw-mem 50m HG002.fa.gz). For primary monomer alignments with MAPQ >= 30, and with any MAPQ:
 # gap-compressed divergence (minimap2 de tag) weighted by aligned length, edit distance (NM) per aligned base, and
-# soft-clipped bases per monomer base; plus the fraction of monomers mapped. Writes OUT/rates.tsv.
-# usage: sbatch porec_error_rate.sbatch --assay porec|cifi --n N --reads-per-kb R --out DIR
+# soft-clipped bases per monomer base; plus the fraction of monomers mapped. Writes OUT/rates.tsv. --n 0 maps only the
+# simulated reads.
+# usage: sbatch porec_error_rate.sbatch --assay porec|cifi --n N --reads-per-kb R --out DIR [--profile PROFILE_TSV_GZ]
 set -euxo pipefail
 trap 'echo "exit status $? at line ${LINENO}"' EXIT
-while [ $# -gt 0 ]; do case $1 in --assay) AS=$2;; --n) NR=$2;; --reads-per-kb) RK=$2;; --out) O=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
+while [ $# -gt 0 ]; do case $1 in --assay) AS=$2;; --n) NR=$2;; --reads-per-kb) RK=$2;; --out) O=$2;; --profile) PF=$2;; *) echo "ERROR unknown argument $1"; exit 2;; esac; shift 2; done
 for v in AS NR RK O; do [ -n "${!v:-}" ] || { echo "ERROR missing $v"; exit 2; }; done
+PF=${PF:-}
 log () { echo "[$(date -Is)] $*"; }
 export PATH=/moosefs/guarracino/condatools/porec/1.0-rebuilt/bin:$PATH
 B=/moosefs/guarracino/HPRCv2; H=$B/PHR_III/HiC/HG002; Q=$B/PHR_III/simhic; N=${SLURM_CPUS_PER_TASK:?}
@@ -25,12 +27,12 @@ read SUB INS DEL <<< "$ER"
 W=$(mktemp -d /scratch/$USER/tmp/phrs/perr.XXXX); trap 'rc=$?; rm -rf $W; echo "exit status $rc at line ${LINENO}"' EXIT
 log "host $(hostname); assay $AS ($EZ, $PR); first $NR real reads of $IN; sim errors $SUB $INS $DEL at $RK reads per kb"
 # the reader stops early, so the upstream gets SIGPIPE: pipefail is off inside these subshells
-case $IN in *.bam) ( set +o pipefail; samtools view -h $IN | awk -v n=$NR '/^@/ {print; next} {if (++k > n) exit; print}' ) | samtools view -b -o $W/real.bam -; RIN=$W/real.bam;;
+[ $NR -gt 0 ] && case $IN in *.bam) ( set +o pipefail; samtools view -h $IN | awk -v n=$NR '/^@/ {print; next} {if (++k > n) exit; print}' ) | samtools view -b -o $W/real.bam -; RIN=$W/real.bam;;
             *) ( set +o pipefail; zcat $IN | head -n $((4 * NR)) ) | gzip -1 > $W/real.fastq.gz; RIN=$W/real.fastq.gz;; esac
-python3 $Q/sim_porec_null.py simulate $Q/hg002_null.domains.tsv $Q/hg002_null.ext.fa.gz $H/fragments_$EZ.bed $SITE $W/sim --reads-per-kb $RK --sub $SUB --ins $INS --dele $DEL
+python3 $Q/sim_porec_null.py simulate $Q/hg002_null.domains.tsv $Q/hg002_null.ext.fa.gz $H/fragments_$EZ.bed $SITE $W/sim --reads-per-kb $RK --sub $SUB --ins $INS --dele $DEL ${PF:+--profile $PF}
 printf "set\tmin_mapq\tmonomers\tmapped\tfrac_mapped\taligned_bases\tdivergence\tnm_per_base\tsoftclip_per_base\n" > $O/rates.tsv
-for t in real sim; do
-  src=$RIN; [ $t = sim ] && src=$W/sim.fastq.gz
+for t in $([ $NR -gt 0 ] && echo real) sim; do
+  src=${RIN:-}; [ $t = sim ] && src=$W/sim.fastq.gz
   pore-c-py digest $src $EZ --threads 4 --max_monomers 250 | samtools fastq -T '*' > $W/$t.mono.fq
   minimap2 -ay -t $N -x $PR --cap-kalloc 100m --cap-sw-mem 50m $H/HG002.fa.gz $W/$t.mono.fq 2> $W/$t.mm2.log | samtools view -F 0x900 -o $W/$t.sam -
   for q in 30 0; do awk -v t=$t -v q=$q 'BEGIN{OFS="\t"} {n++; if ($3 == "*" || $5 < q) next; r++; m=0; s=0; c=$6
