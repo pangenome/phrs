@@ -1,100 +1,61 @@
-# Response-letter material (NOT manuscript text)
+# Response-letter material on the pedigree (NOT manuscript text)
 
-Everything here belongs in the response to reviewers. The manuscript carries only the
-corrected analysis and claims; it never comments on what was wrong before.
+Everything here belongs in the response to reviewers. The manuscript carries only the corrected analysis and claims.
+Naming: SELF = PAN027, DAD = PAN011, MOM = PAN010, KID = PAN028 (her father, PARTNER, is not sequenced).
 
 ## Point: the pedigree exchange candidates
 
-**What we found on re-examination.** Two defects in our own analysis, not in the data:
+**What we did.** We redid the whole pedigree analysis on assemblies that we corrected with each person's own reads.
 
-1. **Haplotype labels were read as parent-of-origin.** The released PAN028 assemblies
-   name the two copies `hap1`/`hap2` per chromosome; the v1.0 parent-of-origin assignment
-   differs between chromosomes (maternal copy = hap2 on chr1, 3, 4, 5, 7, 9, 12, 14, 15,
-   18, 21, 22, X; hap1 on the remainder). Our child-side scans queried hap1 and treated it
-   as the maternally inherited copy, which is correct on only 10 of 23 chromosomes:
-   **228 of the 310 child-side patch calls (74%) are on chromosomes where that copy is
-   paternal**, i.e. from the child's father, whose genome is not in the pedigree.
-2. **Two events depended on those calls.** The "largest crossover-like event", a 27,969 bp
-   chr3q->chr7p run, and a 2,089 bp chr3q->chr9q run are both on that paternal copy. On the
-   daughter's actual maternal chr3 the same interval is 99.94% identical to her mother's
-   paternal chr3q - ordinary transmission - with chr7p losing by 3.3%. Both are withdrawn.
+1. **Assembly correction.** We corrected the version 1.1 assemblies of all four people with each person's own reads only.
+   - We flagged bins where the HiFi depth falls or the HiFi reads disagree with the assembly.
+   - We reassembled each candidate with hifiasm from the same person's reads.
+   - We replaced a region only when more of the person's HiFi reads and more of their ONT reads support the new sequence.
+   - We kept a replacement only when it did not raise the number of assembly k-mers absent from the person's Illumina reads (Merqury).
+   - We polished the replaced pieces with the person's HiFi reads.
+   - We fixed two chromosome ends: the father's chr9q haplotype 2 and a 10,434 bp non-telomeric tail on the daughter's maternal chr22q.
 
-**So the reviewers were right** that the array of pedigree "events" was an artefact. It was
-an artefact of our labelling, and only the father-to-daughter comparisons (where both of
-the daughter's parents are sequenced and her own labels are verified by parental k-mers)
-support a claim.
+   We made 318 changes in total. The Merqury quality value rose in all eight haplotypes, and the error k-mers fell from 773,971 to 712,344. One script rebuilds the four corrected assemblies from the released ones, base for base. We applied the same procedure to v1.3.1 (311 changes) and share both corrected releases, with the list of changes, with the data producers.
+2. **Transmission scan.** We repeated the whole-genome comparison of each transmitted haplotype with the transmitting parent's two haplotypes on the corrected assemblies.
+   - We cut the query into 2 Mb pieces, because FastGA stopped short of some chromosome ends with whole-chromosome queries.
+   - We applied the 18:18 mapping filter and classified 2 kb windows.
+   - We drew runs of at least 10 kb at identity at least 0.95.
+3. **Result.** No run joins two non-homologous chromosome ends outside PAR1 and the acrocentric short arms.
+   - **Father to daughter:** PAR1 (138 kb), 47 runs between acrocentric short arms (830 kb), and two thin runs from interior sequence to acrocentric short arms. These two lie in the chr3 centromere region and in the chr1q pericentromeric satellite at 131 Mb, not at chromosome ends.
+   - **Mother to daughter:** 9 runs, all between acrocentric short arms (182 kb).
+   - **Daughter to granddaughter (her maternal copy, resolved per chromosome):** 22 runs, all between acrocentric short arms (396 kb).
+   - **Leiden communities:** 80 of the 82 runs join arms of the same community, against 0.929 expected under a permutation null that keeps the per-arm run counts (95% interval 0.927-0.951, p = 0.0003). The two exceptions are the interior runs.
 
-**What survives, and why it is stronger than before.** One ectopic exchange: the daughter's
-paternal chr9q terminus derives from her father's chr3q (99.79-99.84% identity, 100% coverage
-of the terminal 60 kb), while his chr9q hap1 has no match there and his chr9q hap2 carries
-only a drifted descendant (99.45-99.77%). Because he is heterozygous for the module, the
-exchange predates his soma and arose in the paternal lineage's germline. No flagger call
-contradicts it: HiFi flagger QC is clean at every interval, and the ONT `Col` calls covering
-the terminal tens of kb appear at every chromosome end in every sample.
+## Point: the chr9q/chr3q candidate
 
-**chr1p/chr5q is not an event.** It is ancestral homology: the chr5q homologue explains the
-sequence cleanly (99.58% over the full terminal 60 kb versus 97.9% for the chr1p copies) and
-the chr1p-derived module is present in both grandparents' own chr5q.
+**It was an assembly error, and we retract it as an exchange.**
+- The last ~60 kb of the father's released chr9q haplotype 2 are a reverse-complement copy of a segment of his own chr1p. The release QC marks a misjoin there, and his own long reads disagree with the assembled sequence.
+- With his chr9q end rebuilt from his own HiFi reads alone, without any data from the daughter, her paternal chr9q matches his chr9q at graph dice 1.0000 across the called tract.
+- His chr3q is second at 0.9985.
+- His other chr9q haplotype does not carry this sequence at all: the 20 kb tract has no alignment within the last 3 Mb of that haplotype.
 
-**Re-counted statistics.** Applying the same filters to the correct copies gives ~316
-patches with ~309 within a Leiden community (**98%**, previously 92% of 538). The
-wrong-copy calls were disproportionately cross-community because they described an
-individual outside the pedigree, so removing them sharpens the claim. The manuscript
-Fig. 4 caption and the pedigree section were corrected accordingly; the child-side panels
-were retired.
+We now present this locus for what it shows: a non-homologous end (chr3q) carries the block that one of the father's homologous ends lacks, which is the concerted-evolution signal of Fig. 5d, not a transmission event.
 
-**Residual limitation we accept.** 54 of the 228 intervals cannot be tested at all without
-the paternal genome (they fall outside the maternal flank because the haplotypes differ in
-arm length). We state this in Methods and report only the transmissions with complete donor
-genomes.
+## Point: the chr1p/chr5q candidate
 
-## Point: assembly-quality QC of the called patches
+**It was an alignment artefact.** At the seed-frequency cutoff of the original scan, the father's chr5q candidate never entered the alignment, so chr1p won by default. At higher sensitivity the chr5q homologue reaches the last base of its contig at identity 1.0000. On the corrected assemblies, with the query in 2 Mb pieces, no chr1p/chr5q run remains.
 
-We re-ran the QC of all 538 WashU patch intervals against the assembly-QC calls for these
-assemblies:
+## Point: child-side calls and haplotype labels
 
-| query class | patches | overlap with a HiFi flagger call | rate |
-|---|---|---|---|
-| acrocentric | 459 | 1 | 0.2% |
-| non-acrocentric | 79 | 0 | 0.0% |
-| all | 538 | 1 | 0.2% |
+The released PAN028 files name the two copies hap1/hap2 per chromosome. The maternal copy is hap2 on chr1, 3, 4, 5, 7, 9, 12, 14, 15, 18, 21, 22 and X, and hap1 on the rest. Our earlier child-side scan read hap1 as the maternal copy, which is correct on only 10 of 23 chromosomes. We now resolve the maternal copy per chromosome. We report only transmissions whose donor genome is sequenced, so PAN028's paternal copy is excluded.
 
-The previously quoted "66 of 538" figure came from the ONT-based calls, which mark the
-terminal tens of kilobases of every chromosome end in every individual, including arms
-where no patch is called; that overlap is a property of ONT assemblies, not of the calls.
-At HiFi resolution the called intervals are essentially untouched. We now state this in
-Methods with the HiFi/ONT distinction explicit.
+## Point: assembly quality of the called intervals
 
-## Point: the chr1p/chr5p candidate "recurs, so it must be an artefact"
-
-The recurrence is inheritance of a standing arrangement, not two independent events, and the
-call is not a margin-supported exchange at all:
-
-- On the maternal side the chr5q homologue explains the sequence cleanly: 99.58% identity
-  over the full terminal 60 kb versus 97.9% for the chr1p copies.
-- The chr1p-derived module is present in **both grandparents' own chr5q**, so it predates the
-  family; it is ancestral homology, and we now describe it that way rather than as an
-  exchange candidate.
-- Our earlier claim that a different aligner "did not reproduce" the call was itself an
-  artefact of that aligner's default chunking filter; with permissive parameters the chr1p
-  homology is recovered at 99-100%. We have removed that argument from the manuscript, since
-  the correct reason to downgrade the candidate is the standing-homology comparison, not
-  aligner disagreement.
-
-Net effect on the paper: the chr5q/chr1p candidate is no longer presented as an exchange, so
-the "it happens twice" objection no longer applies to anything we claim.
+The earlier answer intersected the 538 odgi-untangle patches with the release QC calls. That patch set is withdrawn together with the untangle analysis. We now answer in two ways:
+- **Assembly correction.** We corrected the assemblies themselves with each person's reads, as described above.
+- **Merqury error k-mers in the runs.** We counted assembly 21-mers absent from the person's Illumina reads inside the 82 final runs, on both the query and the donor side. We compared the counts with the genome-wide rate of each haplotype (numbers in Methods).
 
 ## Point: what this does not change
 
-- The genome-wide result - inter-chromosomal subtelomeric sharing organised into
-  communities across 232 individuals - does not depend on the pedigree.
-- The one retained exchange is supported by the donor's own competing chromosomes, not by
-  a narrow identity margin alone.
+- The genome-wide result, inter-chromosomal subtelomeric sharing organised into communities across 232 individuals, does not depend on the pedigree.
+- The pedigree now gives a clean negative result outside the obligate compartments, with PAR1 recovered as the positive control.
 
 ## Tone rules for the letter
 
-- State the error plainly and without hedging; the reviewers identified a real defect and
-  we thank them for it.
-- Do not characterise the surviving claim as "caveated" - it is the better-supported claim.
-- Keep the naming explicit (SELF = PAN027, DAD = PAN011, KID = PAN028, PARTNER unsampled)
-  so the label issue is unambiguous.
+- State the errors plainly; the reviewers identified real defects and we thank them for it.
+- Keep the naming explicit (SELF = PAN027, DAD = PAN011, MOM = PAN010, KID = PAN028, PARTNER unsampled).

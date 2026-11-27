@@ -525,7 +525,7 @@ diagnostic sites against 1 for chr1p (Methods).
 
 Neither run remains when we repeat the whole-genome comparison on the assemblies of all four
 individuals corrected with their own reads (Methods). From father to daughter the only runs between
-non-homologous chromosomes are PAR1 (138\,kb) and acrocentric short arms (47 runs, 836\,kb), and
+non-homologous chromosomes are PAR1 (138\,kb) and acrocentric short arms (47 runs, 830\,kb), and
 two thin runs from the interior of chr1 and chr3 to acrocentric short arms (Extended Data
 Fig.~\ref{fig:ed7}C). From mother to daughter (9 runs, 182\,kb) and from daughter to granddaughter
 (22 runs, 396\,kb) every such run joins acrocentric short arms.
@@ -1266,12 +1266,18 @@ acrocentric short arms). Transmissions are
 presented only where the donor genome is complete: both of PAN027's parents are sequenced,
 whereas PAN028's father is not, so her paternal copy is excluded from the analysis.
 
-\emph{Statistical controls for the pedigree and clustering statistics.} The within-community
-fraction was compared against a permutation null that preserves the per-arm patch-count
-marginals (10,000 permutations), because the expected within-community fraction depends on the
-arm-size distribution and is 0.68 for the published patch set and 0.84 for the corrected set,
-not 0.5; Wilson-score 95\% confidence intervals are reported for the fraction
-(0.918, 95\% CI 0.892--0.939 published; 0.945, 95\% CI 0.914--0.965 corrected). The arm-level
+\emph{Pedigree runs and Leiden communities.} We assigned each end of a drawn run to a chromosome arm by
+its position relative to the active centromeric HOR arrays of its own contig (release annotation), and
+each arm to its Leiden community. Of the 82 runs of the three transmissions (1,574\,kb), 80 join arms of
+the same community (0.976, Wilson 95\% CI 0.915--0.993): the 78 runs between acrocentric short arms and
+the two PAR1 runs. The two exceptions join interior sequence to acrocentric short arms, one in the chr3
+centromere region between two active HOR arrays (18\,kb) and one in the chr1q pericentromeric region at
+131.0\,Mb (10\,kb). Because the expected within-community fraction depends on how runs fall on arms,
+we compared it with a null that permutes the donor arms over all runs and so keeps the per-arm run
+counts on both sides (10,000 permutations). The null fraction has mean 0.929 (95\% interval
+0.927--0.951), and 2 of the 10,000 permutations reach the observed fraction ($p = 0.0003$).
+
+\emph{Statistical controls for the clustering statistics.} The arm-level
 tree was assessed with a character-level bootstrap: 1,000 replicates resampling the 15,089
 signal-bearing PHRs with replacement, recomputing the arm-level Jaccard matrix and rebuilding
 neighbour-joining and UPGMA trees per replicate. Recovery is 100\% for the Xp/Yp and Xq/Yq
@@ -1281,21 +1287,19 @@ are not monophyletic clades in the arm-level tree, so clade support is not claim
 $F_{ST}$ carries a block-jackknife 95\% interval and Mantel $\rho$ values carry bootstrap
 intervals.
 
-\emph{Assembly quality control of called intervals.} Each called patch interval was
-intersected with the HiFi-based assembly-QC calls available for these assemblies (flagger).
-One of the 538 patches overlaps such a call; among the acrocentric patches the rate is 1 of
-459. The larger overlap seen with ONT-based QC calls is not patch-specific: those calls
-cover the terminal tens of kilobases of every chromosome end in every individual of the
-pedigree, including arms where no inter-chromosomal patch is called.
+\emph{Assembly quality of the runs.} Besides the read-based correction of all four assemblies, we
+counted Merqury error k-mers (assembly 21-mers absent from the person's Illumina reads) inside each
+run, on the transmitted haplotype and on the donor haplotype. Outside PAR1 the 80 runs carry 1 such
+k-mer on the transmitted side and none on the donor side, against 33.8 and 42.4 expected from each
+haplotype's genome-wide rate. The two PAR1 runs carry 26 and 49 (2.4 and 5.5 expected).
 
-\emph{How each retained call is supported.} PAR1 is an obligate exchange and serves as the positive control: its non-homologous identity
-(median 1.000) exceeds the homologous alternative (0.992) by ~0.8 percentage points across
-138 kb. We do not retain the chr9q/chr3q terminus, because it disappears once we correct the
-father's chr9q haplotype 2 (Extended Data Fig.~\ref{fig:ed7}C). The acrocentric-acrocentric calls rest on pattern, not margin: they recur as
-multi-source blocks (at least five patches from at least three source acrocentric arms per
-flank), the signature of multi-paralog NAHR, and their identity to the homologous arm is on
-average slightly higher than to the non-homologous arm. See
-\texttt{supporting\_material/Fig5\_margin\_table.tsv}.
+\emph{How each retained call is supported.} PAR1 is an obligate exchange and serves as the positive
+control. Across 138\,kb in two runs the daughter's paternal Xp matches her father's Yp at mean identity
+0.99996 and 0.99991, and his Xp at 0.900 and 0.877. We do not retain the chr9q/chr3q terminus, because
+it disappears once we correct the father's chr9q haplotype 2 (Extended Data Fig.~\ref{fig:ed7}C). The
+acrocentric runs recur across the short arms: the 12 transmitted acrocentric short arms with runs carry
+1 to 30 runs each, from 1 to 4 donor short arms. Every run, with its arms, communities, identities and
+Merqury counts, is listed in \texttt{supporting\_material/Fig5\_pedigree\_runs.tsv}.
 
 \subsection*{Data availability}
 
@@ -1455,7 +1459,7 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
     \begin{overpic}[width=0.40\linewidth]{fig/MainFigures/Fig5A_pedigree.pdf}%
       \put(1,50){\textbf{\large\sffamily A}}\end{overpic}\hfill
     \begin{overpic}[width=0.575\linewidth]{fig/MainFigures/Fig5B_zoom9q3q.pdf}%
-      \put(0.5,35){\textbf{\large\sffamily B}}\end{overpic}}\\[3pt]
+      \put(-3.5,42){\textbf{\large\sffamily B}}\end{overpic}}\\[3pt]
   \begin{overpic}[width=\linewidth]{fig/MainFigures/ED7C_paternal_corrected.png}%
     \put(0.4,13.5){\textbf{\large\sffamily C}}\end{overpic}\\[3pt]
   {\footnotesize\sffamily\textbf{Match type}\quad
@@ -1465,13 +1469,13 @@ Analysis code, manuscript source, figure-generation scripts and figure input fil
   \caption{\textbf{An assembly error in one paternal haplotype mimics an ectopic exchange.}
     \textbf{(A)} The WashU three-generation pedigree: grandparents PAN011 and
     PAN010, their daughter PAN027 and her daughter PAN028, whose father is
-    unsampled (open square). \textbf{(B)} Sequence identity along the PAN027
-    paternal chr9q subtelomere: the match to the father's own chr9q (grey) falls
-    across the shaded 20\,kb tract while the match to his chr3q (orange) stays
-    near-identical. This is the signature an exchange would leave, but at this locus
-    it is produced by an assembly error in the father's chr9q haplotype 2: the
-    assembled terminus is a copy of his own chr1p (dice 0.9918 to the daughter's sequence in the tract,
-    against 1.0000 for the corrected assembly), so the closest remaining sequence wins by default.
+    unsampled (open square). \textbf{(B)} Best-match identity in 2\,kb windows along the PAN027
+    paternal chr9q subtelomere. Against the released assembly the match to the father's chr9q
+    haplotype 2 (grey) falls across the shaded 20\,kb tract while his chr3q (orange) stays
+    near-identical, the signature an exchange would leave. At this locus it comes from an assembly
+    error: the released terminus is a copy of his own chr1p (dice 0.9918 to the daughter's sequence in
+    the tract), so the closest remaining sequence wins by default. Against the corrected assembly his
+    chr9q (blue) matches at 1.000 across the tract (dice 1.0000).
     \textbf{(C)} Whole-genome comparison of that transmitted haplotype (middle track)
     with the father's two haplotypes (upper, lower), after we corrected the assemblies of
     all four individuals (Methods). The father's corrected chr9q terminus comes from his own

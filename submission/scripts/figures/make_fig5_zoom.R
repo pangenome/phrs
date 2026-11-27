@@ -23,11 +23,13 @@ REVIEW <- length(rarg) > 0
 outdir <- if (REVIEW) sub("^--out=", "", rarg) else mfig
 pat <- file.path(root, "data/fig5_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz")
 p28 <- file.path(root, "data/fig5_PAN028mat_vs_PAN027_joint.class_winners.impg_similarity.tsv.gz")
+# the same comparison on the final corrected v1.1 assemblies (18:18 filter, 2 Mb query pieces; scripts/pedigree/fig5_v131_check)
+patc <- file.path(root, "data/fig5_corrected_v11_PAN027pat_vs_PAN011_joint.class_winners.impg_similarity.tsv.gz")
 TEXT <- "#202124"; GREY <- "#6f6f6f"
 
 cfgs <- list(
-  list(id="9q3q", file=pat, qchr="chr9",  lo=136130000, hi=136190000, tlo=136164000, thi=136188000,
-       donor="DAD.h2.chr3q (source)", own="DAD.h2.chr9q (drifted copy)",  col="#D95F02", ylo=0.97, xlab="SELF.p.chr9q position (Mb)",  tract="9q/3q tract, 20 kb"),
+  list(id="9q3q", file=pat, corr=patc, qchr="chr9",  lo=136130000, hi=136190000, tlo=136164000, thi=136188000,
+       donor="chr3q", own="chr9q released", owncorr="chr9q corrected", legend="DAD h2:",  col="#D95F02", ylo=0.97, xlab="SELF.p.chr9q position (Mb)",  tract="former tract, 20 kb"),
   list(id="5q1p", file=pat, qchr="chr5",  lo=182020000, hi=182100000, tlo=182052000, thi=182080000,
        donor="1p/5q ancestral homology", own="DAD.h1.chr5q (homolog)",  col="#1F77B4", ylo=0.95, xlab="SELF.p.chr5q position (Mb)",  tract="1p/5q ancestral homology, 28 kb"),
   list(id="PAR1", file=pat, qchr="chrX",  lo=0,        hi=200000,    tlo=14000,     thi=156000,
@@ -39,8 +41,15 @@ build <- function(cfg) {
   d  <- dt[query_chrom == cfg$qchr & start >= cfg$lo & end <= cfg$hi,
            .(mid = (start + 1000) / 1e6, winner_class, id = estimated.identity)]
   d[, series := ifelse(winner_class == "same_chrom", cfg$own, cfg$donor)]
-  d$series <- factor(d$series, levels = c(cfg$donor, cfg$own))
-  COL <- setNames(c(cfg$col, GREY), c(cfg$donor, cfg$own))
+  lev <- c(cfg$donor, cfg$own); COL <- setNames(c(cfg$col, GREY), lev)
+  if (!is.null(cfg$corr)) {  # corrected assemblies: their same-chromosome series is added, the donor series is taken from them
+    dc <- fread(cmd = sprintf("zcat %s", shQuote(cfg$corr)))[query_chrom == cfg$qchr & start >= cfg$lo & end <= cfg$hi,
+            .(mid = (start + 1000) / 1e6, winner_class, id = estimated.identity)]
+    dc[, series := ifelse(winner_class == "same_chrom", cfg$owncorr, cfg$donor)]
+    d <- rbind(d[series == cfg$own], dc); lev <- c(cfg$donor, cfg$own, cfg$owncorr)
+    COL <- setNames(c(cfg$col, GREY, "#1F77B4"), lev)
+  }
+  d$series <- factor(d$series, levels = lev)
   yann <- cfg$ylo + 0.05 * (1 - cfg$ylo)
   ggplot(d, aes(mid, id, color = series)) +
     annotate("rect", xmin = cfg$tlo/1e6, xmax = cfg$thi/1e6, ymin = -Inf, ymax = Inf,
@@ -48,13 +57,13 @@ build <- function(cfg) {
     annotate("text", x = (cfg$tlo + cfg$thi)/2/1e6, y = yann,
              label = cfg$tract, size = 5.2, color = cfg$col, fontface = "bold") +
     geom_line(linewidth = 0.9) + geom_point(size = 1.7) +
-    scale_color_manual(values = COL, name = NULL) +
+    scale_color_manual(values = COL, name = cfg$legend) +
     scale_y_continuous("best-match\nidentity", limits = c(cfg$ylo, 1.002)) +
     scale_x_continuous(cfg$xlab) +
     theme_classic(base_size = 16) +
-    theme(legend.position = c(0.02, 0.34), legend.justification = c(0, 1),
+    theme(legend.position = "bottom", legend.direction = "horizontal", legend.margin = margin(0, 0, 0, 0),
           legend.key.height = unit(15, "pt"), legend.background = element_blank(),
-          legend.text = element_text(size = 16, color = TEXT),
+          legend.text = element_text(size = 13, color = TEXT), legend.title = element_text(size = 13, color = TEXT),
           axis.title = element_text(size = 15, color = TEXT),
           axis.text  = element_text(size = 13, color = TEXT),
           plot.margin = margin(8, 12, 6, 6))
@@ -63,12 +72,12 @@ build <- function(cfg) {
 if (REVIEW) {
   for (cfg in cfgs) {
     ggsave(file.path(outdir, sprintf("Fig5B_zoom_%s.png", cfg$id)), build(cfg),
-           width = 6.2, height = 3.1, dpi = 300, bg = "white")
+           width = 6.6, height = 3.0, dpi = 300, bg = "white")
     cat("wrote review", cfg$id, "\n")
   }
 } else {
   p <- build(cfgs[[1]])   # 9q/3q is the chosen paper panel
-  ggsave(file.path(mfig, "Fig5B_zoom9q3q.pdf"), p, width = 6.0, height = 2.4, bg = "white")
-  ggsave(file.path(mfig, "Fig5B_zoom9q3q.png"), p, width = 6.0, height = 2.4, dpi = 300, bg = "white")
+  ggsave(file.path(mfig, "Fig5B_zoom9q3q.pdf"), p, width = 6.6, height = 3.0, bg = "white")
+  ggsave(file.path(mfig, "Fig5B_zoom9q3q.png"), p, width = 6.6, height = 3.0, dpi = 300, bg = "white")
   cat("wrote canonical", file.path(mfig, "Fig5B_zoom9q3q.{pdf,png}"), "\n")
 }
