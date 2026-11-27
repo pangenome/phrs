@@ -1177,7 +1177,7 @@ individual's Illumina reads (Merqury) within 1\,kb. We then polished the replace
 individual's HiFi reads (bcftools haploid calls with quality at least 20). Two chromosome ends
 needed separate fixes. We replaced the terminal 150,287\,bp of the father's chr9q haplotype 2 with a
 contig assembled from his HiFi reads alone, joined at the end of a 120,784\,bp exact match to the
-assembly, and we removed a 10,434\,bp tail without telomeric repeats beyond the telomere of the
+assembly, and polished it with his HiFi reads (one indel corrected). We also removed a 10,434\,bp tail without telomeric repeats beyond the telomere of the
 daughter's maternal chr22q. In total we made 318 changes (316 reassembled pieces and the two end
 fixes). The Merqury quality value rose in all eight haplotypes (range 56.83--60.78 before, 57.18--60.85
 after) and the assembly 21-mers absent from the Illumina reads fell from 773,971 to 712,344. One
