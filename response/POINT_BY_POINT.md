@@ -37,7 +37,7 @@ Status checked against `submission/paper.tex` at `85c1840` on 2026-11-20, rows R
 | R1-M7 | mouse dependency-preserving null; arm-type assortativity | done; arm type without C7, C6, C14, C15: 14 of 31 vs 157 of 325, p = 0.67 (`arm_type_asymmetry_r1m7.tsv`) | mouse written; arm-type Results, Discussion and Methods written (paper.tex:212-218, 493-497, 809-811) | letter: exclusions are the four communities the referee named; without C1 too, 13 of 30 vs 136 of 276, p = 0.83 |
 | R1-M8 | 500 kb right-censoring, 2-5 Mb flanks | censored fraction done (`M8_flank_censoring.md`: 1,087 of 15,668). 5 Mb wfmash run 545 of 1,614 flanks (ends 2026-11-23) | not stated | PHR lengths at 5 Mb, check PHRs < 500 kb unchanged, then text |
 | R1-M9 | enrichment rests on few families | done (`M9_enrichment_dependence.md`) | written: copy counting, SEPTIN14 loci, 0 of 209 after leave-largest-family-out (179bc78) | matched-SD comparator not run |
-| R1-M10 | comparative frame | - | not stated (0 hits for Plasmodium, Phaseolus, Aqil) | Discussion paragraph, literature only |
+| R1-M10 | comparative frame | done | Discussion paragraph before the closing one: great apes (Ventura 2012: satellite caps with hyperexpanded SDs at 42/96 chimpanzee and 80/96 gorilla tips; Yoo 2025; Hirai 2019 post-bouquet associations of non-homologous termini in 32% of pachytene spermatocytes), common bean (Richard 2013 khipu; Chen 2018 repeat at most terminal knobs within 0.165 My), yeast (Brown 2010), Plasmodium var (Freitas-Junior 2000 peripheral clusters; Claessens 2014 mostly mitotic), Aqil 2026 (subtelomeric interchromosomal bias in birds and mammals); 9 references added | letter: point to the paragraph; Hirai 2019 and Freitas-Junior 2000 read as abstracts only (not in PMC) |
 | R1-m2 | scope statement | done | end of the Introduction: which analyses compare the 465 assemblies with one another and where CHM13 is the coordinate system or annotation substrate | text |
 | R1-m6 | ends vs segdup null | done | windows within 1 Mb of an end: 1.6% of 31,185 windows, 11.0% of 1,132 shared windows; SD-density null 6.1% (95% 5.1-7.1), 1.8x, p = 0.0001 (10,000 permutations); most shared windows are interstitial or pericentromeric (`scripts/ci/end_concentration_sd_null.py`, `.txt`) | Results Fig. 1A paragraph, Methods survey |
 | R1-m4 / m5 / m7 | Fig. 1A vs 1B, acro PHR track, Fig. 4A floor | - | not stated | figure and text fixes |
@@ -152,9 +152,9 @@ spermatid term; report enrichment conditional on the largest family.
 
 `TODO:` satellite-masked (minor/major) mouse flank re-analysis; sensitivity of ρ to masking.
 
-### R1-M10 — comparative frame · L0 · OPEN
+### R1-M10 — comparative frame · DONE
 
-`TODO:` short comparative paragraph (apes, yeast, Phaseolus, Plasmodium VAR) — literature only.
+Discussion paragraph "Exchange between non-homologous chromosome ends is not peculiar to humans" with great apes, common bean, yeast, Plasmodium and Aqil 2026; facts checked against the full texts (Hirai 2019 and Freitas-Junior 2000: abstracts). Note: Aqil's subtelomeric result is measured as intra- versus interchromosomal SD density (their Fig. 3c), which the paragraph states.
 
 ### R1-M3 — rate vs Lemmers 2010 · L1 partial · OPEN
 
