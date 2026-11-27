@@ -55,6 +55,7 @@ for c in sorted(set(comm.values()), key=lambda z: int(z[1:])):
     if not al: continue
     rows.append((c, st.median(ia) / st.median(al), len(ia), ",".join(arms)))
 rows.sort(key=lambda r: r[1])
+SD = {"a": [("community", "ratio_member_over_allelic", "member_pairs", "arms")] + list(rows)}  # Source Data, one sheet per panel
 ys = range(len(rows))
 ax.hlines(list(ys), 1.0, [r[1] for r in rows], color="#aaaaaa", lw=1)
 ax.scatter([r[1] for r in rows], list(ys), s=70,
@@ -85,6 +86,7 @@ def ecdf(p):
 for key, lab, col in (("allelic_between_indiv", "allelic", "#4c72b0"),
                       ("paralog_inter_chrom", "paralogous", "#D95F02")):
     xs, ys = ecdf(pts(cls[key]["hist"]))
+    SD.setdefault("b", [("class", "substitution_divergence", "cumulative_fraction_of_aligned_bp")]).extend((lab, x, y) for x, y in zip(xs, ys))
     ax.plot(xs, ys, color=col, lw=1.8,
             label=f"{lab}, median {cls[key]['d_sub_median_record']*100:.2f}%")
 ax.set_xscale("log"); ax.set_xlim(1e-4, 0.2)
@@ -107,6 +109,8 @@ for rr in arms.values():
     ys = [x["ratio"] for x in rr if x.get("ratio") and x["from_kb"] >= MASK]
     if len(xs) >= 5: ax.plot(xs, ys, color="#9a9a9a", lw=0.5, alpha=0.4)
 ax.plot(mx, my, color="k", lw=2.4, label="median, 48 arms")
+SD["c"] = [("arm", "from_kb", "to_kb", "paralogous_over_allelic_ratio")] + [(a, x["from_kb"], x["to_kb"], x["ratio"]) for a, rr in sorted(arms.items()) if sum(1 for x in rr if x.get("ratio") and x["from_kb"] >= MASK) >= 5 for x in rr if x.get("ratio") and x["from_kb"] >= MASK]  # the drawn arms
+SD["c_median"] = [("bin_mid_kb", "median_ratio_over_arms")] + list(zip(mx, my))
 ax.axvspan(1, MASK, facecolor="#eeeeee", hatch="///", edgecolor="#888888", lw=0)
 ax.text(1.15, 0.68, "TERRA\npromoter array,\nexcluded", fontsize=FS_NOTE - 1, va="bottom",
         bbox=dict(facecolor="white", edgecolor="none", alpha=0.9, pad=1.5))
@@ -119,6 +123,9 @@ ax.legend(loc="lower right")
 # ---- d: candidate competition at 9q, inside vs outside the tract
 ax = fig.add_subplot(gs[1, 1])
 cand = list(csv.DictReader(open("candidate_block_identity_9q.tsv"), delimiter="\t"))
+SD["d"] = [tuple(cand[0].keys())] + [tuple(c.values()) for c in cand]
+_pw = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../scripts/pedigree/fig5_v131_check/results/fig5d_competition/per_window.tsv")
+SD["d_windows"] = [tuple(l.rstrip("\n").split("\t")) for l in open(_pw)]  # per 2 kb window, best pair per candidate (fig5d_competition.sbatch)
 cand = cand[::-1]
 names = [c["candidate"] for c in cand]
 num = lambda x: None if x == "NA" else float(x)  # NA: no alignment in that region
@@ -141,4 +148,10 @@ fig.suptitle("Concerted evolution of human subtelomeres: identical sequence at n
              "maintained without detectable exchange within a family", fontsize=15)
 fig.savefig("figure_fig5_concerted.pdf", dpi=200, bbox_inches="tight")
 fig.savefig("figure_fig5_concerted.png", dpi=200, bbox_inches="tight")
-print("wrote figure_fig5_concerted.pdf/.png")
+import openpyxl
+wb = openpyxl.Workbook(); wb.remove(wb.active)
+for k, v in SD.items():
+    ws = wb.create_sheet(f"Fig5{k}")
+    for r in v: ws.append(list(r))
+SDF = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../submission/source_data/Source_Data_Fig5.xlsx"); wb.save(SDF)
+print("wrote figure_fig5_concerted.pdf/.png and " + SDF + " (sheets " + ", ".join(f"Fig5{k} {len(v) - 1} rows" for k, v in SD.items()) + ")")
