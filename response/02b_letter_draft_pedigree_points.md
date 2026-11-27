@@ -53,7 +53,7 @@ The earlier answer intersected the 538 odgi-untangle patches with the release QC
 ## Point: what this does not change
 
 - The genome-wide result, inter-chromosomal subtelomeric sharing organised into communities across 232 individuals, does not depend on the pedigree.
-- The pedigree now gives a clean negative result outside the obligate compartments, with PAR1 recovered as the positive control.
+- The pedigree now gives a clean negative result outside PAR1 and the acrocentric short arms, with PAR1, the obligate male crossover, recovered as the positive control.
 
 ## Tone rules for the letter
 
