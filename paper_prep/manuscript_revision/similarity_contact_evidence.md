@@ -1,6 +1,6 @@
 # Sequence similarity vs 3D proximity of PHRs: checks for the revision (R1-M4, R1-M5, R3-M3)
 
-Status 2026-11-27 09:30 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
+Status 2026-11-27 08:45 MST. All numbers come from the paper's scripts and pipelines, rerun on octopus. Tables and scripts are in `paper_prep/_brainstorming/sim_hic_null/`, `paper_prep/_brainstorming/matched_sd_control/` and `scripts/hic/`.
 
 ## 1. The question
 
@@ -185,4 +185,13 @@ We mapped 200,000 real R1 reads and the simulated reads with the paper's Bowtie2
 | CHM13 real | 1.49% | 11.5% | 46.5% | 0.81% |
 | CHM13 simulated | 0.19% | 0.02% | 75.1% | |
 
-Real reads carry 7.8 (CHM13) and 12.1 (HG002) times more mismatches, and many cross a ligation junction, which local alignment soft-clips (30% of read bases in HG002). Both effects shorten the unique part of a read and make wrong placements more likely, so the Hi-C simulations probably underestimate the errors, and sections 6-8 for Hi-C may need a rerun with an error profile taken from the real reads (base qualities and junction clipping). We are running the same check of the Pore-C and CiFi error rates (1% and 0.1%) against real reads.
+Real reads carry 7.8 (CHM13) and 12.1 (HG002) times more mismatches, and many cross a ligation junction, which local alignment soft-clips (30% of read bases in HG002). Both effects shorten the unique part of a read and make wrong placements more likely, so the Hi-C simulations probably underestimate the errors, and sections 6-8 for Hi-C may need a rerun with an error profile taken from the real reads (base qualities and junction clipping). We ran the same check for Pore-C and CiFi: the first 5,000 real Pore-C reads (42,444 monomers) and 2,000 real CiFi reads (25,024 monomers), and the simulated reads, digested and mapped with the paper's chain (all primary monomer alignments).
+
+| | Divergence per aligned base (minimap2 de) | Edit distance per aligned base | Soft-clipped monomer bases |
+|---|---|---|---|
+| Pore-C real | 1.48% | 2.00% | 7.2% |
+| Pore-C simulated | 0.98% | 0.99% | 0.38% |
+| CiFi real | 0.076% | 0.088% | 0.23% |
+| CiFi simulated | 0.099% | 0.099% | 0.14% |
+
+The CiFi simulation matches the real error rate. The Pore-C simulation has half the real edit distance (0.99% against 2.00%), so it may also underestimate the errors, less than the Hi-C one.
