@@ -70,17 +70,10 @@ cp /home/guarracino/Dropbox/git/HPRCv2/p_interchrom_karyogram_count_rainbow_inse
 ## VENDORED — copied, not computed
 
 ```bash
-# Fig3 — UCSC hs1 browser screenshots. Since 2026-11-27 the six panels come from
-#   python3 submission/scripts/figures/render_fig3_ucsc.py OUT_DIR   (internet; new UCSC session, May 2026 track
-#   configuration, label column 22 characters so that "SEDEF Segmental Dups" is not cut), then cp OUT_DIR/Fig3*.png $M/.
-# The May 2026 panels below came from slides/chm13-phr-ucsc-browser/_scripts/render_ucsc_browser_suite.py --force.
-P=slides/chm13-phr-ucsc-browser/_assets/ucsc/panels; M=submission/fig/MainFigures
-cp $P/chr4q_chr4_193304946_193574945.png   $M/Fig3a_C1_chr4q.png
-cp $P/chr10q_chr10_134488135_134758134.png $M/Fig3a_C1_chr10q.png
-cp $P/chr10p_chr10_1_105002.png            $M/Fig3b_C2_chr10p.png
-cp $P/chr18p_chr18_1_397502.png            $M/Fig3b_C2_chr18p.png
-cp $P/chr5q_chr5_181752940_182045439.png   $M/Fig3c_C11_chr5q.png
-cp $P/chr6q_chr6_171909129_172126628.png   $M/Fig3c_C11_chr6q.png
+# Fig3 — the May 2026 UCSC hs1 panels (slides/chm13-phr-ucsc-browser/_assets/ucsc/panels/, from
+#   slides/chm13-phr-ucsc-browser/_scripts/render_ucsc_browser_suite.py) without their 1 px border, with the cut "S" of
+#   "SEDEF Segmental Dups" completed from the "S" of "Scale" in the same image (6 white columns added on the left):
+python3 submission/scripts/figures/fix_fig3_sedef_label.py
 
 # Fig5 — pedigree untangle (generator is off-repo on moosefs; only the PDF is here)
 cp end-to-end-report/pedigree-plots/washu/PAN027.maternal_hap1_from_PAN010_mother.untangle.pdf \
