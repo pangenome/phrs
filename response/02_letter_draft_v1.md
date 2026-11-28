@@ -148,7 +148,12 @@ On the four requests:
 - **A genome-wide distribution of identity margins.** We no longer call a donor from a margin, and no candidate remains to locate on such a distribution.
   - We show the window-level best matches across the former tract, on the released and on the corrected assemblies (Extended Data Fig. 7B).
   - We list every run of the final scan with its mean same-chromosome and non-homologous identity (supporting_material/Fig5_pedigree_runs.tsv).
-- **A false-positive estimate from permuted parent-child pairs.** [For the authors: not run. Possible control: the same scan on an unrelated pair, the mother against the father as if one were the other's parent, reporting its non-homologous runs.]
+- **A false-positive estimate from permuted parent-child pairs.** We ran the same scan, with the same parameters, on the two permuted pairs that this family allows: the daughter's paternal haplotype against her mother, and her maternal haplotype against her father. Neither parent transmitted these copies, so the target holds no identical-by-descent homolog.
+  - **Runs between non-acrocentric chromosome ends:** 13 (226 kb) in the first pair and 9 (134 kb) in the second, against 0 in each of the three true transmissions.
+  - **Runs between acrocentric short arms:** 197 and 206, against 47 and 9 in the true paternal and maternal transmissions.
+  - **The withdrawn candidates come back:** the first pair calls the same pairs of ends, chr1p/chr5q (5 runs) and chr9q/chr3q (one run at 136.19-136.20 Mb, next to the former tract). In these runs the mother's own chr1p and chr9q did align, at identity 0.928-0.996 and 0.9975, but her chr5q and chr3q matched better (0.999 and 0.9995).
+
+  The scan therefore calls such runs when the transmitted homolog is absent, and not when it is present. The misassembled chr9q and the seed-frequency loss of the father's chr5q removed the homolog in the same way from the original calls.
 - **An unbroken contig for each tract.** No candidate tract remains. The corrected chr9q end is one contig assembled from the father's HiFi reads, joined to the assembly at the end of a 120,784 bp exact match.
 
   For the 82 runs of the final scan we also counted Merqury error k-mers (assembly 21-mers absent from the person's Illumina reads) on both sides of each run.

@@ -119,7 +119,7 @@ k-mers in the 82 runs (outside PAR1: 1 transmitted side, 0 donor side, against 3
 
 Margin distribution: answered by no longer using margins (Methods, "Why a margin alone cannot identify a donor here") plus
 ED7B and the run table. Unbroken contig: moot, no candidate remains (corrected chr9q end is one HiFi contig).
-`TODO:` permuted parent-child false-positive rate (e.g. MOM against DAD through the same scan): user decides whether to run.
+Permuted pairs (perm_pair_scan.sbatch 2889949/2889950): SELF.p vs MOM 13 runs between non-acrocentric ends (226 kb), SELF.m vs DAD 9 (134 kb), true transmissions 0; chr1p/chr5q and chr9q/chr3q reappear. Letter text in 02_letter_draft_v1.md.
 
 ### R1-M7 — mouse null and the "zygotene bouquet" claim · L4 · DONE
 
