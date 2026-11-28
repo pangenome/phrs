@@ -1,0 +1,37 @@
+simhic.2882447	simulate: 77 ends, 77 sequences, 40.0 pairs per kb of end domain, read length 250, error 0.002, s in [1000, 500000] with P(s) ~ 1/s, seed 20261126
+simhic.2882447	simulate: wrote 863400 read pairs to /scratch/guarracino/tmp/phrs/simhic.1nM4/in/hicpro_input/001/001_R1/_R2.fastq.gz; dropped draws {'partner outside extended domain': 114551}
+simhic.2882447	[2026-11-26T12:07:46-06:00] HiC-Pro done: 863389 valid pairs
+simhic.2882447	evaluate: 863389 valid pairs, 1726778 reads, 825180 placed within tolerance (0.4779); PHR-window reads moved to another end's PHR window 471214 of 1032567
+simhic13b.2887477	simulate: 38 ends, 38 sequences, 40.0 pairs per kb of end domain, read length 150, error 0.002, s in [1000, 500000] with P(s) ~ 1/s, seed 20261126
+simhic13b.2887477	simulate: wrote 425600 read pairs to /scratch/guarracino/tmp/phrs/simhic.1TvN/in/hicpro_input/001/001_R1/_R2.fastq.gz; dropped draws {'partner outside extended domain': 56393}
+simhic13b.2887477	[2026-11-27T01:26:06+00:00] HiC-Pro done: 425600 valid pairs
+simhic13b.2887477	evaluate: 425600 valid pairs, 851200 reads, 574786 placed within tolerance (0.6753); PHR-window reads moved to another end's PHR window 123504 of 509171
+simporec.2882915	simulate: 77 ends, 259879 CATG fragments inside the extended domains; 20.0 reads per kb, mean monomers 4.0, errors sub 0.005 ins 0.0025 del 0.0025, s in [1000, 500000], seed 20261126
+simporec.2882915	simulate: wrote 430921 reads with 1723287 monomers to /scratch/guarracino/tmp/phrs/simporec.9vqH/sim.fastq.gz; dropped draws {'no new fragment at the partner position': 36784, 'partner outside extended domain': 188555, 'no fragment at the first position': 779}
+simporec.2882915	[2026-11-26T22:32:51+00:00] min-mapq 1: 878102 pairs after dedup; total_mapped	1006874 pair_types/MM	1746935 pair_types/UU	1006874 
+simporec.2882915	evaluate: 1756204 pair sides; 1741618 within 1000 bp of a true monomer (0.9917); placed in the PHR window of the homologous end 1652; of another arm 4204 (0.0024)
+simporec.2882915	[2026-11-26T22:39:32+00:00] min-mapq 0: 3803782 pairs after dedup; total_mapped	4017419 pair_types/UU	4017419 
+simporec.2882915	evaluate: 7607564 pair sides; 4647034 within 1000 bp of a true monomer (0.6108); placed in the PHR window of the homologous end 509367; of another arm 1209244 (0.1590)
+simcifi.2882916	simulate: 77 ends, 189593 GATC fragments inside the extended domains; 20.0 reads per kb, mean monomers 4.0, errors sub 0.0005 ins 0.00025 del 0.00025, s in [1000, 500000], seed 20261126
+simcifi.2882916	simulate: wrote 429367 reads with 1718211 monomers to /scratch/guarracino/tmp/phrs/simporec.4Zfq/sim.fastq.gz; dropped draws {'partner outside extended domain': 192577, 'no new fragment at the partner position': 115155, 'no fragment at the first position': 2333}
+simcifi.2882916	[2026-11-26T21:35:46+00:00] min-mapq 1: 552522 pairs after dedup; total_mapped	750333 pair_types/MM	902629 pair_types/UU	750333 
+simcifi.2882916	evaluate: 1105044 pair sides; 1100620 within 1000 bp of a true monomer (0.9960); placed in the PHR window of the homologous end 228; of another arm 1860 (0.0017)
+simcifi.2882916	[2026-11-26T21:39:27+00:00] min-mapq 0: 2216141 pairs after dedup; total_mapped	2498961 pair_types/UU	2498961 
+simcifi.2882916	evaluate: 4432282 pair sides; 2934841 within 1000 bp of a true monomer (0.6622); placed in the PHR window of the homologous end 350452; of another arm 506300 (0.1142)
+wsim_hg002.2889804	profiles /moosefs/guarracino/HPRCv2/PHR_III/simhic/profiles/hg002_hic_whole.tsv.gz: mate 1 218648, mate 2 211937; longest read 251; mean mismatches per aligned base 0.01673
+wsim_hg002.2889804	simulate: 77 ends, 77 sequences, 40.0 pairs per kb of end domain, read length 251, error from profiles, s in [1000, 500000] with P(s) ~ 1/s, seed 20261126
+wsim_hg002.2889804	simulate: wrote 863400 read pairs to /scratch/guarracino/tmp/phrs/simhic.e8VV/in/hicpro_input/001/001_R1/_R2.fastq.gz; dropped draws {'partner outside extended domain': 114719}
+wsim_hg002.2889804	[2026-11-27T17:55:45+00:00] HiC-Pro done: 861979 valid pairs
+wsim_hg002.2889804	evaluate: 861979 valid pairs, 1723958 reads, 682132 placed within tolerance (0.3957); PHR-window reads moved to another end's PHR window 493563 of 1031869
+wsim_chm13.2889810	profiles /moosefs/guarracino/HPRCv2/PHR_III/simhic/profiles/chm13_hic_whole.tsv.gz: mate 1 277432, mate 2 275050; longest read 150; mean mismatches per aligned base 0.01359
+wsim_chm13.2889810	simulate: 38 ends, 38 sequences, 40.0 pairs per kb of end domain, read length 150, error from profiles, s in [1000, 500000] with P(s) ~ 1/s, seed 20261126
+wsim_chm13.2889810	simulate: wrote 425600 read pairs to /scratch/guarracino/tmp/phrs/simhic.qeor/in/hicpro_input/001/001_R1/_R2.fastq.gz; dropped draws {'partner outside extended domain': 56140}
+wsim_chm13.2889810	[2026-11-27T16:58:34+00:00] HiC-Pro done: 425383 valid pairs
+wsim_chm13.2889810	evaluate: 425383 valid pairs, 850766 reads, 542792 placed within tolerance (0.6380); PHR-window reads moved to another end's PHR window 130621 of 508656
+wsim_porec.2889814	simulate: 77 ends, 259879 CATG fragments inside the extended domains; 20.0 reads per kb, mean monomers 4.0, errors sub 0.005 ins 0.0025 del 0.0025, s in [1000, 500000], seed 20261126
+wsim_porec.2889814	profiles /moosefs/guarracino/HPRCv2/PHR_III/simhic/profiles/hg002_porec_whole.tsv.gz: 55895 reads, 347206 monomers; mean rates sub 0.00915, ins 0.00594, del 0.00855; mean clipped fraction 5' 0.0315, 3' 0.0211
+wsim_porec.2889814	simulate: wrote 430952 reads with 1723998 monomers to /scratch/guarracino/tmp/phrs/simporec.ltzC/sim.fastq.gz; dropped draws {'partner outside extended domain': 188987, 'no new fragment at the partner position': 36585, 'no fragment at the first position': 748}
+wsim_porec.2889814	[2026-11-27T19:22:59+00:00] min-mapq 1: 1496168 pairs after dedup; total_mapped	1570975 pair_types/MM	1778854 pair_types/UU	1570975 
+wsim_porec.2889814	evaluate: 2992336 pair sides; 2829447 within 1000 bp of a true monomer (0.9456); placed in the PHR window of the homologous end 8776; of another arm 88440 (0.0296)
+wsim_porec.2889814	[2026-11-27T19:32:01+00:00] min-mapq 0: 4838282 pairs after dedup; total_mapped	4962199 pair_types/UU	4962199 
+wsim_porec.2889814	evaluate: 9676564 pair sides; 6393464 within 1000 bp of a true monomer (0.6607); placed in the PHR window of the homologous end 506082; of another arm 1376390 (0.1422)

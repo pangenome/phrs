@@ -1,0 +1,8 @@
+measure	value
+ordered_pairs_of_distinct_loci	57360
+median	0.0
+p90	0.0
+p99	0.212657
+max	0.987687
+chr1p_vs_L119#0#chr9:150390337-150617247	length_a 210444, length_b 226911, intersection 92103, jaccard 0.26677
+chr1p_vs_L76#0#chr6:171971594-172126628	length_a 210444, length_b 155035, intersection 124939, jaccard 0.51941

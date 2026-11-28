@@ -1,0 +1,3 @@
+set	reads_mapq30	aligned_bases	mismatch_per_base	gap_ext_per_base	softclip_per_base	frac_0mm	frac_1mm	frac_2mm	frac_3plus
+real	2028	443786	0.0198316	0.000376307	0.121967	0.265286	0.143984	0.114398	0.319527
+sim	881	220247	0.000708296	2.27018e-05	1.36209e-05	0.858116	0.111237	0.0261067	0.0045403

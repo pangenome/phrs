@@ -1,0 +1,2 @@
+total 597291764; MAPQ >= 1 on both reads 326593675 (0.5468); MAPQ >= 2 on both reads 44667965 (0.0748)
+total 369133390; MAPQ >= 1 on both reads 358438956 (0.9710); MAPQ >= 2 on both reads 321420165 (0.8707)

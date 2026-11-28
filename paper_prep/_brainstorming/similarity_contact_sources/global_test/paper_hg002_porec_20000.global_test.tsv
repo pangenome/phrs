@@ -1,0 +1,3 @@
+test	within_mean	between_mean	n_within	n_between	U_statistic	p_value
+within_vs_between	0.03312893750322907	0.0018042194639863597	256	2670	573296.0	2.5353767471394376e-89
+mantel	NA	NA	NA	41	0.4764102603380202	0.0

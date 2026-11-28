@@ -1,0 +1,1 @@
+/moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1/cifi.mcool vs /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/cifi_output/cifi.mcool at 5000 bp: pixels 18028298 vs 18028298; differing pixels 0; total counts 35560326 vs 35560326

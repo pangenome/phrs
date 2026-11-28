@@ -1,0 +1,1144 @@
++ trap 'echo "exit status $? at line ${LINENO}"' EXIT
++ HR=0
++ '[' 4 -gt 0 ']'
++ case $1 in
++ AS=cifi
++ shift 2
++ '[' 2 -gt 0 ']'
++ case $1 in
++ O=/moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi
++ shift 2
++ '[' 0 -gt 0 ']'
++ for v in AS O
++ '[' -n cifi ']'
++ for v in AS O
++ '[' -n /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi ']'
++ export PATH=/moosefs/guarracino/condatools/porec/1.0-rebuilt/bin:/home/guarracino/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/games
++ PATH=/moosefs/guarracino/condatools/porec/1.0-rebuilt/bin:/home/guarracino/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/games
++ B=/moosefs/guarracino/HPRCv2
++ H=/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002
++ REF=/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/HG002.fa.gz
++ CS=/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/chrom.sizes
++ N=48
++ case $AS in
++ EZ=DpnII
++ PR=map-hifi
++ DT=16
++ MT=32
++ ST=16
++ IN=/moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam
++ FR=/moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/fragments_DpnII.bed
++ '[' -e /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi ']'
++ mkdir -p /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1 /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0 /scratch/guarracino/tmp/phrs
+++ mktemp -d /scratch/guarracino/tmp/phrs/rerun_cifi.XXXX
++ W=/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF
++ trap 'rc=$?; [ -z "$(jobs -p)" ] || kill $(jobs -p); rm -rf $W; echo "exit status $rc at line ${LINENO}"' EXIT
+++ hostname
+++ df -h /scratch
+++ tail -1
++ log 'host octopus11; 48 cores; assay cifi (DpnII, map-hifi); digest 16, minimap2 32, sort 16 threads; head reads 0; inputs /moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam; /dev/sdb1       894G  365G  530G  41% /scratch'
+++ date -Is
++ echo '[2026-11-27T01:02:56+00:00] host octopus11; 48 cores; assay cifi (DpnII, map-hifi); digest 16, minimap2 32, sort 16 threads; head reads 0; inputs /moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam; /dev/sdb1       894G  365G  530G  41% /scratch'
+[2026-11-27T01:02:56+00:00] host octopus11; 48 cores; assay cifi (DpnII, map-hifi); digest 16, minimap2 32, sort 16 threads; head reads 0; inputs /moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam; /dev/sdb1       894G  365G  530G  41% /scratch
+++ pore-c-py --version
+++ tail -1
+++ minimap2 --version
+++ pairtools --version
+++ awk '{print $NF}'
+++ samtools --version
+++ head -1
+++ cooler --version
+++ awk '{print $NF}'
++ log 'tools: pore-c-py 2.1.5; minimap2 2.30-r1287; pairtools 1.1.3; samtools 1.23; cooler 0.10.4'
+++ date -Is
++ echo '[2026-11-27T01:02:58+00:00] tools: pore-c-py 2.1.5; minimap2 2.30-r1287; pairtools 1.1.3; samtools 1.23; cooler 0.10.4'
+[2026-11-27T01:02:58+00:00] tools: pore-c-py 2.1.5; minimap2 2.30-r1287; pairtools 1.1.3; samtools 1.23; cooler 0.10.4
++ MQ_1=
++ MQ_0='--min-mapq 0'
++ i=0
++ for f in $IN
++ i=1
++ src=/moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam
++ '[' 0 -gt 0 ']'
++ pids=
++ for mq in 1 0
++ mkfifo /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/ann1.mq1
++ v=MQ_1
++ pids=' 12284'
++ for mq in 1 0
++ mkfifo /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/ann1.mq0
++ pairtools sort --nproc 16 --tmpdir /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF -o /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq1.sorted.pairs.gz
++ pairtools parse2 --single-end --readid-transform 'readID.split(":")[0]' --drop-sam --drop-seq --expand --output-stats /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/parse2_stats_1.mq1.txt -c /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/chrom.sizes -
++ pairtools restrict -f /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/fragments_DpnII.bed
++ v=MQ_0
++ pids=' 12284 12289'
++ log 'input 1: digest | fastq | minimap2 | annotate | tee into 2 parse2 branches (pids 12284 12289)'
++ pairtools sort --nproc 16 --tmpdir /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF -o /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq0.sorted.pairs.gz
+++ date -Is
++ pairtools restrict -f /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/fragments_DpnII.bed
++ pairtools parse2 --single-end --readid-transform 'readID.split(":")[0]' --drop-sam --drop-seq --expand --min-mapq 0 --output-stats /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/parse2_stats_1.mq0.txt -c /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/chrom.sizes -
++ echo '[2026-11-27T01:02:58+00:00] input 1: digest | fastq | minimap2 | annotate | tee into 2 parse2 branches (pids 12284 12289)'
+[2026-11-27T01:02:58+00:00] input 1: digest | fastq | minimap2 | annotate | tee into 2 parse2 branches (pids 12284 12289)
++ samtools fastq -T '*'
++ pore-c-py digest /moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam DpnII --threads 16 --max_monomers 250
++ minimap2 -ay -t 32 -x map-hifi --cap-kalloc 100m --cap-sw-mem 50m /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/HG002.fa.gz -
++ pore-c-py annotate - /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/annotated_1 --monomers --stdout
++ tee /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/ann1.mq1
+[01:02:59 - AnntateBAM] Processing reads from -
+[01:02:59 - Digest    ] Digesting concatemers from [PosixPath('/moosefs/guarracino/HPRCv2/data/CiFi/HG002/HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam')].
+[01:02:59 - Digest    ] Digesting unaligned sequences from <pysam.libcalignmentfile.AlignmentFile object at 0x7f06c2a5ab00>
+samtools fastq: Coordinate sorted file.  Read pairs may be out of order
+[M::mm_idx_gen::78.728*1.62] collected minimizers
+[M::mm_idx_gen::82.158*2.20] sorted minimizers
+[M::main::82.158*2.20] loaded/built the index for 47 target sequence(s)
+[M::mm_mapopt_update::85.070*2.16] mid_occ = 304
+[M::mm_idx_stat] kmer size: 19; skip: 19; is_hpc: 0; #seq: 47
+[M::mm_idx_stat::87.681*2.12] distinct minimizers: 219055309 (8.25% are singletons); average occurrences: 2.735; average spacing: 10.014; total length: 5999424718
+[M::worker_pipeline::483.662*1.19] mapped 1166569 sequences
+[M::worker_pipeline::673.733*1.42] mapped 1167834 sequences
+[M::worker_pipeline::944.769*1.43] mapped 1198653 sequences
+[M::worker_pipeline::1210.263*1.44] mapped 1194919 sequences
+[M::worker_pipeline::1475.962*1.45] mapped 1239595 sequences
+[M::worker_pipeline::1732.543*1.46] mapped 1206296 sequences
+[M::worker_pipeline::1970.599*1.58] mapped 1064965 sequences
+[M::worker_pipeline::2244.776*1.54] mapped 1189520 sequences
+[M::worker_pipeline::2498.744*1.55] mapped 1151176 sequences
+[M::worker_pipeline::2761.416*1.54] mapped 1180437 sequences
+[M::worker_pipeline::3018.398*1.53] mapped 1159018 sequences
+[M::worker_pipeline::3273.060*1.53] mapped 1177917 sequences
+[M::worker_pipeline::3525.199*1.52] mapped 1214300 sequences
+[M::worker_pipeline::3803.013*1.51] mapped 1212929 sequences
+[M::worker_pipeline::4067.522*1.52] mapped 1177915 sequences
+[M::worker_pipeline::4328.323*1.51] mapped 1207920 sequences
+[M::worker_pipeline::4587.951*1.51] mapped 1204765 sequences
+[M::worker_pipeline::4839.063*1.52] mapped 1185740 sequences
+[M::worker_pipeline::5103.496*1.51] mapped 1202488 sequences
+[M::worker_pipeline::5369.054*1.51] mapped 1308455 sequences
+[M::worker_pipeline::5596.464*1.52] mapped 1171411 sequences
+[M::worker_pipeline::5864.623*1.52] mapped 1241932 sequences
+[M::worker_pipeline::6111.735*1.52] mapped 1213909 sequences
+[M::worker_pipeline::6357.697*1.53] mapped 1194153 sequences
+[M::worker_pipeline::6564.034*1.57] mapped 1041518 sequences
+[M::worker_pipeline::6843.262*1.59] mapped 1025412 sequences
+[M::worker_pipeline::7099.793*1.59] mapped 1162321 sequences
+[M::worker_pipeline::7351.518*1.59] mapped 1174608 sequences
+[M::worker_pipeline::7594.788*1.58] mapped 1174330 sequences
+[M::worker_pipeline::7854.700*1.58] mapped 1167637 sequences
+[M::worker_pipeline::8111.134*1.58] mapped 1201742 sequences
+[M::worker_pipeline::8374.782*1.57] mapped 1213393 sequences
+[M::worker_pipeline::8642.761*1.57] mapped 1181885 sequences
+[M::worker_pipeline::8900.069*1.57] mapped 1195196 sequences
+[M::worker_pipeline::9160.850*1.56] mapped 1216474 sequences
+[M::worker_pipeline::9410.782*1.57] mapped 1186854 sequences
+[M::worker_pipeline::9677.845*1.56] mapped 1205420 sequences
+[M::worker_pipeline::9939.802*1.56] mapped 1239379 sequences
+[M::worker_pipeline::10192.195*1.56] mapped 1260450 sequences
+[M::worker_pipeline::10435.271*1.56] mapped 1219063 sequences
+[M::worker_pipeline::10696.291*1.56] mapped 1219031 sequences
+[M::worker_pipeline::10933.018*1.56] mapped 1198102 sequences
+[M::worker_pipeline::11176.552*1.57] mapped 1137138 sequences
+[M::worker_pipeline::11398.447*1.61] mapped 932019 sequences
+[M::worker_pipeline::11680.387*1.60] mapped 1188856 sequences
+[M::worker_pipeline::11932.403*1.60] mapped 1145327 sequences
+[M::worker_pipeline::12191.781*1.60] mapped 1179515 sequences
+[M::worker_pipeline::12442.927*1.59] mapped 1156913 sequences
+[M::worker_pipeline::12697.914*1.59] mapped 1175359 sequences
+[M::worker_pipeline::12961.674*1.59] mapped 1211966 sequences
+[M::worker_pipeline::13228.057*1.58] mapped 1206986 sequences
+[M::worker_pipeline::13481.009*1.59] mapped 1172581 sequences
+[M::worker_pipeline::13754.898*1.58] mapped 1205609 sequences
+[M::worker_pipeline::14014.040*1.58] mapped 1201525 sequences
+[M::worker_pipeline::14276.435*1.58] mapped 1181213 sequences
+[M::worker_pipeline::14530.892*1.58] mapped 1198279 sequences
+[M::worker_pipeline::14800.668*1.58] mapped 1301329 sequences
+[M::worker_pipeline::15038.415*1.58] mapped 1174595 sequences
+[M::worker_pipeline::15287.874*1.58] mapped 1235403 sequences
+[M::worker_pipeline::15546.483*1.58] mapped 1210828 sequences
+[M::worker_pipeline::15783.821*1.58] mapped 1188174 sequences
+[M::worker_pipeline::16013.220*1.60] mapped 1001067 sequences
+[M::worker_pipeline::16284.289*1.61] mapped 1057709 sequences
+[M::worker_pipeline::16540.287*1.61] mapped 1161059 sequences
+[M::worker_pipeline::16793.401*1.60] mapped 1175762 sequences
+[M::worker_pipeline::17048.719*1.60] mapped 1169071 sequences
+[M::worker_pipeline::17298.794*1.60] mapped 1176352 sequences
+[M::worker_pipeline::17547.880*1.60] mapped 1203009 sequences
+[M::worker_pipeline::17819.261*1.60] mapped 1211542 sequences
+[M::worker_pipeline::18085.428*1.60] mapped 1181217 sequences
+[M::worker_pipeline::18342.531*1.59] mapped 1198690 sequences
+[M::worker_pipeline::18602.618*1.59] mapped 1220286 sequences
+[M::worker_pipeline::18852.983*1.59] mapped 1181583 sequences
+[M::worker_pipeline::19115.052*1.59] mapped 1204970 sequences
+[M::worker_pipeline::19364.454*1.59] mapped 1253195 sequences
+[M::worker_pipeline::19622.612*1.59] mapped 1243938 sequences
+[M::worker_pipeline::19873.182*1.59] mapped 1223692 sequences
+[M::worker_pipeline::20121.784*1.59] mapped 1224223 sequences
+[M::worker_pipeline::20364.940*1.59] mapped 1192362 sequences
+[M::worker_pipeline::20576.628*1.60] mapped 1119081 sequences
+[M::worker_pipeline::20838.720*1.61] mapped 937446 sequences
+[M::worker_pipeline::21100.005*1.61] mapped 1181013 sequences
+[M::worker_pipeline::21338.226*1.61] mapped 1167976 sequences
+[M::worker_pipeline::21603.734*1.61] mapped 1185373 sequences
+[M::worker_pipeline::21851.372*1.61] mapped 1166468 sequences
+[M::worker_pipeline::22104.130*1.60] mapped 1185707 sequences
+[M::worker_pipeline::22364.774*1.60] mapped 1232169 sequences
+[M::worker_pipeline::22628.274*1.60] mapped 1204788 sequences
+[M::worker_pipeline::22875.519*1.60] mapped 1178275 sequences
+[M::worker_pipeline::23142.767*1.60] mapped 1217656 sequences
+[M::worker_pipeline::23391.393*1.60] mapped 1183943 sequences
+[M::worker_pipeline::23654.279*1.60] mapped 1208428 sequences
+[M::worker_pipeline::23906.274*1.60] mapped 1206912 sequences
+[M::worker_pipeline::24170.470*1.59] mapped 1310096 sequences
+[M::worker_pipeline::24395.992*1.60] mapped 1184130 sequences
+[M::worker_pipeline::24658.158*1.59] mapped 1240137 sequences
+[M::worker_pipeline::24905.110*1.60] mapped 1210486 sequences
+[M::worker_pipeline::25142.538*1.60] mapped 1173070 sequences
+[M::worker_pipeline::25354.516*1.61] mapped 989433 sequences
+[M::worker_pipeline::25634.109*1.61] mapped 1113490 sequences
+[M::worker_pipeline::25889.813*1.61] mapped 1160053 sequences
+[M::worker_pipeline::26145.144*1.61] mapped 1172717 sequences
+[M::worker_pipeline::26389.194*1.61] mapped 1168490 sequences
+[M::worker_pipeline::26653.344*1.61] mapped 1178027 sequences
+[M::worker_pipeline::26913.744*1.60] mapped 1205207 sequences
+[M::worker_pipeline::27179.856*1.60] mapped 1216479 sequences
+[M::worker_pipeline::27442.129*1.60] mapped 1174273 sequences
+[M::worker_pipeline::27706.463*1.60] mapped 1212400 sequences
+[M::worker_pipeline::27965.949*1.60] mapped 1213977 sequences
+[M::worker_pipeline::28217.455*1.60] mapped 1181402 sequences
+[M::worker_pipeline::28476.695*1.60] mapped 1205783 sequences
+[M::worker_pipeline::28750.712*1.60] mapped 1276799 sequences
+[M::worker_pipeline::28996.792*1.60] mapped 1216642 sequences
+[M::worker_pipeline::29252.882*1.60] mapped 1236895 sequences
+[M::worker_pipeline::29503.648*1.60] mapped 1220199 sequences
+[M::worker_pipeline::29741.234*1.60] mapped 1201211 sequences
+[M::worker_pipeline::29980.642*1.60] mapped 1093572 sequences
+[09:23:41 - Digest    ] Found 138944889 monomers in 12215869 concatemers.
+[09:23:41 - Digest    ] Excluded 0 concatemers.
+[09:23:41 - Digest    ] Finished digestion.
+[M::bam2fq_mainloop] discarded 0 singletons
+[M::bam2fq_mainloop] processed 138944889 reads
+[M::worker_pipeline::30072.329*1.61] mapped 415713 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 -ay -t 32 -x map-hifi --cap-kalloc 100m --cap-sw-mem 50m /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/HG002.fa.gz -
+[M::main] Real time: 30072.923 sec; CPU: 48505.825 sec; Peak RSS: 24.142 GB
+[09:24:12 - AnntateAln] Found 138944889 monomers in 12215869 concatemers.
+[09:24:12 - AnntateBAM] Finished BAM parsing.
++ for p in $pids
++ wait 12284
+WARNING:py.warnings:/moosefs/guarracino/condatools/porec/1.0-rebuilt/lib/python3.12/site-packages/pairtools/lib/stats.py:410: RuntimeWarning: invalid value encountered in divide
+  np.abs(dist_freqs_by_strands[strands] - avg_freq_all_strands)
+
+WARNING:py.warnings:/moosefs/guarracino/condatools/porec/1.0-rebuilt/lib/python3.12/site-packages/pairtools/lib/stats.py:410: RuntimeWarning: invalid value encountered in divide
+  np.abs(dist_freqs_by_strands[strands] - avg_freq_all_strands)
+
++ for p in $pids
++ wait 12289
++ '[' 0 -gt 0 ']'
++ for mq in 1 0
+++ zcat /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq1.sorted.pairs.gz
+++ grep -c '^[^#]'
+++ grep -E '^(total|total_mapped|total_dups)\s' /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/parse2_stats_1.mq1.txt
+++ tr '\n\t' '  '
++ log 'input 1 branch mq1: 850704562 sorted pairs; total 850704562 total_mapped 39983047 total_dups 0 '
+++ date -Is
++ echo '[2026-11-27T09:55:18+00:00] input 1 branch mq1: 850704562 sorted pairs; total 850704562 total_mapped 39983047 total_dups 0 '
+[2026-11-27T09:55:18+00:00] input 1 branch mq1: 850704562 sorted pairs; total 850704562 total_mapped 39983047 total_dups 0 
++ for mq in 1 0
+++ zcat /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq0.sorted.pairs.gz
+++ grep -c '^[^#]'
+++ grep -E '^(total|total_mapped|total_dups)\s' /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/parse2_stats_1.mq0.txt
+++ tr '\n\t' '  '
++ log 'input 1 branch mq0: 850704562 sorted pairs; total 850704562 total_mapped 255596260 total_dups 0 '
+++ date -Is
++ echo '[2026-11-27T10:02:36+00:00] input 1 branch mq0: 850704562 sorted pairs; total 850704562 total_mapped 255596260 total_dups 0 '
+[2026-11-27T10:02:36+00:00] input 1 branch mq0: 850704562 sorted pairs; total 850704562 total_mapped 255596260 total_dups 0 
++ rm -f '/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/annotated_1.*' '/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/head1.*'
++ for mq in 1 0
++ '[' cifi = porec ']'
++ pairtools dedup --output /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq1.pairs /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq1.sorted.pairs.gz
++ rm -f /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq1.sorted.pairs.gz
+++ grep -c '^[^#]' /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq1.pairs
++ log 'branch mq1: 35560326 pairs after dedup'
+++ date -Is
++ echo '[2026-11-27T10:43:54+00:00] branch mq1: 35560326 pairs after dedup'
+[2026-11-27T10:43:54+00:00] branch mq1: 35560326 pairs after dedup
++ cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/chrom.sizes:5000 /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq1.pairs /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool
+INFO:cooler.create:Writing chunk 0: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmp6tl1egjb.multi.cool::0
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmp6tl1egjb.multi.cool::/0"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 1: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmp6tl1egjb.multi.cool::1
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmp6tl1egjb.multi.cool::/1"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 2: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmp6tl1egjb.multi.cool::2
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmp6tl1egjb.multi.cool::/2"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Merging into /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool::/"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:n_merge_epochs: 2
+INFO:cooler._reduce:nnzs: [7932706, 8059308, 2084331]
+INFO:cooler._reduce:records consumed: [6589906, 8055664, 354438]
+INFO:cooler._reduce:records consumed: [7932706, 8059308, 2084331]
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
++ cooler zoomify /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool -r 5000,10000,20000,50000,100000 --balance -o /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool
+INFO:cooler.cli.zoomify:Recursively aggregating "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool"
+INFO:cooler.cli.zoomify:Writing to "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool"
+INFO:cooler._reduce:Copying base matrices and producing 5 new zoom levels.
+INFO:cooler._reduce:Bin size: 5000
+INFO:cooler._reduce:Aggregating from 5000 to 10000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/10000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000003
+INFO:cooler._reduce:10000003 18028298
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler._reduce:Aggregating from 10000 to 20000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/20000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000024
+INFO:cooler._reduce:10000024 14842576
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler._reduce:Aggregating from 10000 to 50000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/50000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000050
+INFO:cooler._reduce:10000050 14842576
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler._reduce:Aggregating from 50000 to 100000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/100000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 8654385
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 5000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/5000"
+INFO:cooler._balance:variance is 3470.4572189382666
+INFO:cooler._balance:variance is 430.8215436345219
+INFO:cooler._balance:variance is 871.3848552949817
+INFO:cooler._balance:variance is 157.62436159957954
+INFO:cooler._balance:variance is 388.4845414115067
+INFO:cooler._balance:variance is 90.24973708215725
+INFO:cooler._balance:variance is 178.93623957206097
+INFO:cooler._balance:variance is 53.65586443395839
+INFO:cooler._balance:variance is 84.72430120197123
+INFO:cooler._balance:variance is 31.462703764665513
+INFO:cooler._balance:variance is 41.14611258259244
+INFO:cooler._balance:variance is 18.088587644257355
+INFO:cooler._balance:variance is 20.420706059710362
+INFO:cooler._balance:variance is 10.218748991722702
+INFO:cooler._balance:variance is 10.314751186093774
+INFO:cooler._balance:variance is 5.692472865587569
+INFO:cooler._balance:variance is 5.28268305358335
+INFO:cooler._balance:variance is 3.137115676656147
+INFO:cooler._balance:variance is 2.734508099186317
+INFO:cooler._balance:variance is 1.714933979292376
+INFO:cooler._balance:variance is 1.4270128885498676
+INFO:cooler._balance:variance is 0.9318750035037836
+INFO:cooler._balance:variance is 0.7492732383064764
+INFO:cooler._balance:variance is 0.5041400012199984
+INFO:cooler._balance:variance is 0.3952370702355586
+INFO:cooler._balance:variance is 0.2718601518772224
+INFO:cooler._balance:variance is 0.20920961691467668
+INFO:cooler._balance:variance is 0.14626000985178061
+INFO:cooler._balance:variance is 0.11102919048779755
+INFO:cooler._balance:variance is 0.07855525506522429
+INFO:cooler._balance:variance is 0.05903960394979968
+INFO:cooler._balance:variance is 0.042140809950423685
+INFO:cooler._balance:variance is 0.03144058350417454
+INFO:cooler._balance:variance is 0.022587110609318086
+INFO:cooler._balance:variance is 0.016761852699065213
+INFO:cooler._balance:variance is 0.01209927198892522
+INFO:cooler._balance:variance is 0.008943772817397168
+INFO:cooler._balance:variance is 0.006478560942176567
+INFO:cooler._balance:variance is 0.004775286379860524
+INFO:cooler._balance:variance is 0.0034679764942179715
+INFO:cooler._balance:variance is 0.0025508949990607236
+INFO:cooler._balance:variance is 0.0018560649496614516
+INFO:cooler._balance:variance is 0.0013631735102608892
+INFO:cooler._balance:variance is 0.000993250561839611
+INFO:cooler._balance:variance is 0.0007286821303820099
+INFO:cooler._balance:variance is 0.0005314882035658467
+INFO:cooler._balance:variance is 0.0003896059515633082
+INFO:cooler._balance:variance is 0.00028438839852610285
+INFO:cooler._balance:variance is 0.00020834942621328787
+INFO:cooler._balance:variance is 0.00015216799869203682
+INFO:cooler._balance:variance is 0.00011143512390790926
+INFO:cooler._balance:variance is 8.142064510957595e-05
+INFO:cooler._balance:variance is 5.9607720977279215e-05
+INFO:cooler._balance:variance is 4.356620842297718e-05
+INFO:cooler._balance:variance is 3.1887754872280876e-05
+INFO:cooler._balance:variance is 2.3311576716856448e-05
+INFO:cooler._balance:variance is 1.7059994488377936e-05
+INFO:cooler._balance:variance is 1.2473884111107911e-05
+INFO:cooler._balance:variance is 9.127702345588688e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 10000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/10000"
+INFO:cooler._balance:variance is 10395.000437468216
+INFO:cooler._balance:variance is 1636.0825561953282
+INFO:cooler._balance:variance is 2522.7915644360255
+INFO:cooler._balance:variance is 485.52777188680227
+INFO:cooler._balance:variance is 949.5101269310109
+INFO:cooler._balance:variance is 232.8627184435351
+INFO:cooler._balance:variance is 378.1269613920522
+INFO:cooler._balance:variance is 120.31491375500165
+INFO:cooler._balance:variance is 157.78262043074068
+INFO:cooler._balance:variance is 62.12018504680743
+INFO:cooler._balance:variance is 68.31816375919405
+INFO:cooler._balance:variance is 31.59113716935552
+INFO:cooler._balance:variance is 30.41815419882026
+INFO:cooler._balance:variance is 15.818157759251692
+INFO:cooler._balance:variance is 13.82366746078726
+INFO:cooler._balance:variance is 7.820427923724602
+INFO:cooler._balance:variance is 6.375864015585687
+INFO:cooler._balance:variance is 3.829443354233069
+INFO:cooler._balance:variance is 2.9720724408021892
+INFO:cooler._balance:variance is 1.8621282612929915
+INFO:cooler._balance:variance is 1.3959448156325027
+INFO:cooler._balance:variance is 0.901014819139589
+INFO:cooler._balance:variance is 0.6592122094214157
+INFO:cooler._balance:variance is 0.4344642189316472
+INFO:cooler._balance:variance is 0.3125091527394774
+INFO:cooler._balance:variance is 0.20900017795252
+INFO:cooler._balance:variance is 0.1485622084882108
+INFO:cooler._balance:variance is 0.1003794783902783
+INFO:cooler._balance:variance is 0.07076658269930627
+INFO:cooler._balance:variance is 0.04815979641691681
+INFO:cooler._balance:variance is 0.033758753379357916
+INFO:cooler._balance:variance is 0.023090331628262475
+INFO:cooler._balance:variance is 0.016121885162555305
+INFO:cooler._balance:variance is 0.011066114115055304
+INFO:cooler._balance:variance is 0.007705448130983828
+INFO:cooler._balance:variance is 0.005302215710931895
+INFO:cooler._balance:variance is 0.0036850900893297504
+INFO:cooler._balance:variance is 0.002540210236419086
+INFO:cooler._balance:variance is 0.0017632174448776563
+INFO:cooler._balance:variance is 0.0012169345702696982
+INFO:cooler._balance:variance is 0.0008439709153033624
+INFO:cooler._balance:variance is 0.0005830063173272856
+INFO:cooler._balance:variance is 0.00040409279110442084
+INFO:cooler._balance:variance is 0.0002793203539286206
+INFO:cooler._balance:variance is 0.00019352778302940133
+INFO:cooler._balance:variance is 0.00013383333831537862
+INFO:cooler._balance:variance is 9.270361739522583e-05
+INFO:cooler._balance:variance is 6.413035975167922e-05
+INFO:cooler._balance:variance is 4.441482733544547e-05
+INFO:cooler._balance:variance is 3.073288299888318e-05
+INFO:cooler._balance:variance is 2.128271642295652e-05
+INFO:cooler._balance:variance is 1.47293669622708e-05
+INFO:cooler._balance:variance is 1.0199666479707201e-05
+INFO:cooler._balance:variance is 7.060017530341894e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 20000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/20000"
+INFO:cooler._balance:variance is 33131.30861609374
+INFO:cooler._balance:variance is 6413.183427789018
+INFO:cooler._balance:variance is 7392.715702212143
+INFO:cooler._balance:variance is 1616.2001455285872
+INFO:cooler._balance:variance is 2405.133364657658
+INFO:cooler._balance:variance is 657.6912002266628
+INFO:cooler._balance:variance is 848.5287810300513
+INFO:cooler._balance:variance is 297.1163822279553
+INFO:cooler._balance:variance is 319.07262888708044
+INFO:cooler._balance:variance is 135.87191520228964
+INFO:cooler._balance:variance is 125.55693653541124
+INFO:cooler._balance:variance is 61.540803247241236
+INFO:cooler._balance:variance is 50.96934097246549
+INFO:cooler._balance:variance is 27.53099444741897
+INFO:cooler._balance:variance is 21.129089232953763
+INFO:cooler._balance:variance is 12.189036411293568
+INFO:cooler._balance:variance is 8.882526065223853
+INFO:cooler._balance:variance is 5.3551855845129595
+INFO:cooler._balance:variance is 3.769189577490708
+INFO:cooler._balance:variance is 2.3401339221369284
+INFO:cooler._balance:variance is 1.6094049346726733
+INFO:cooler._balance:variance is 1.0188814439254636
+INFO:cooler._balance:variance is 0.6900711356950581
+INFO:cooler._balance:variance is 0.4425479195686425
+INFO:cooler._balance:variance is 0.2967163884978881
+INFO:cooler._balance:variance is 0.1919200207910605
+INFO:cooler._balance:variance is 0.12782521204509972
+INFO:cooler._balance:variance is 0.08314824367537982
+INFO:cooler._balance:variance is 0.05513904237349585
+INFO:cooler._balance:variance is 0.03600185184897921
+INFO:cooler._balance:variance is 0.023806595699799978
+INFO:cooler._balance:variance is 0.015582784064639074
+INFO:cooler._balance:variance is 0.010285278724044753
+INFO:cooler._balance:variance is 0.006743497845428452
+INFO:cooler._balance:variance is 0.004445687730007168
+INFO:cooler._balance:variance is 0.002918042727751145
+INFO:cooler._balance:variance is 0.0019222711340670512
+INFO:cooler._balance:variance is 0.00126268209102731
+INFO:cooler._balance:variance is 0.0008313972613030059
+INFO:cooler._balance:variance is 0.0005464006377196513
+INFO:cooler._balance:variance is 0.00035966437232516
+INFO:cooler._balance:variance is 0.00023645853789992544
+INFO:cooler._balance:variance is 0.0001556199400227977
+INFO:cooler._balance:variance is 0.00010233701272343952
+INFO:cooler._balance:variance is 6.734435594904232e-05
+INFO:cooler._balance:variance is 4.429440234727914e-05
+INFO:cooler._balance:variance is 2.9147267933901168e-05
+INFO:cooler._balance:variance is 1.9173702460813114e-05
+INFO:cooler._balance:variance is 1.261682491763796e-05
+INFO:cooler._balance:variance is 8.30052777800112e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 50000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/50000"
+INFO:cooler._balance:variance is 143922.82011463103
+INFO:cooler._balance:variance is 26852.164703513838
+INFO:cooler._balance:variance is 27779.31308269936
+INFO:cooler._balance:variance is 6005.94506828139
+INFO:cooler._balance:variance is 7622.873887551912
+INFO:cooler._balance:variance is 2175.522187448877
+INFO:cooler._balance:variance is 2351.6983567125935
+INFO:cooler._balance:variance is 869.0524102609174
+INFO:cooler._balance:variance is 785.9996437734325
+INFO:cooler._balance:variance is 349.67088560673704
+INFO:cooler._balance:variance is 276.53710809176323
+INFO:cooler._balance:variance is 139.10169433100293
+INFO:cooler._balance:variance is 100.48458089666487
+INFO:cooler._balance:variance is 54.67519556681099
+INFO:cooler._balance:variance is 37.257084664398874
+INFO:cooler._balance:variance is 21.29816295395737
+INFO:cooler._balance:variance is 13.989588714113099
+INFO:cooler._balance:variance is 8.246987871844517
+INFO:cooler._balance:variance is 5.294917852260239
+INFO:cooler._balance:variance is 3.181510699035132
+INFO:cooler._balance:variance is 2.0142831718652414
+INFO:cooler._balance:variance is 1.2246891362469934
+INFO:cooler._balance:variance is 0.7688082760926868
+INFO:cooler._balance:variance is 0.4708769385065174
+INFO:cooler._balance:variance is 0.2940878305184942
+INFO:cooler._balance:variance is 0.1809475402761427
+INFO:cooler._balance:variance is 0.11266918060473564
+INFO:cooler._balance:variance is 0.06952362522927673
+INFO:cooler._balance:variance is 0.04321378793494271
+INFO:cooler._balance:variance is 0.02671479347388036
+INFO:cooler._balance:variance is 0.01658892268715616
+INFO:cooler._balance:variance is 0.010267757714618572
+INFO:cooler._balance:variance is 0.006372726730664167
+INFO:cooler._balance:variance is 0.003947697131576979
+INFO:cooler._balance:variance is 0.0024496449663449285
+INFO:cooler._balance:variance is 0.0015183844764370495
+INFO:cooler._balance:variance is 0.000942167336611468
+INFO:cooler._balance:variance is 0.0005842598352806958
+INFO:cooler._balance:variance is 0.00036256590235766154
+INFO:cooler._balance:variance is 0.00022492013435105828
+INFO:cooler._balance:variance is 0.00013959622478936496
+INFO:cooler._balance:variance is 8.662786439970693e-05
+INFO:cooler._balance:variance is 5.377574040105318e-05
+INFO:cooler._balance:variance is 3.3381156929964145e-05
+INFO:cooler._balance:variance is 2.0726513958254985e-05
+INFO:cooler._balance:variance is 1.2869644280023971e-05
+INFO:cooler._balance:variance is 7.992752444488772e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 100000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/100000"
+INFO:cooler._balance:variance is 429802.2918687516
+INFO:cooler._balance:variance is 50779.20729407367
+INFO:cooler._balance:variance is 68943.57118759793
+INFO:cooler._balance:variance is 12078.745177014642
+INFO:cooler._balance:variance is 16627.468053276418
+INFO:cooler._balance:variance is 4396.116976520494
+INFO:cooler._balance:variance is 4639.592502819651
+INFO:cooler._balance:variance is 1667.010044485364
+INFO:cooler._balance:variance is 1417.6103309891532
+INFO:cooler._balance:variance is 620.4068882539503
+INFO:cooler._balance:variance is 457.24102489012313
+INFO:cooler._balance:variance is 225.8291592188092
+INFO:cooler._balance:variance is 152.2601827245506
+INFO:cooler._balance:variance is 80.87156824382559
+INFO:cooler._balance:variance is 51.66416560956523
+INFO:cooler._balance:variance is 28.655894452302814
+INFO:cooler._balance:variance is 17.72658814094568
+INFO:cooler._balance:variance is 10.088205739444199
+INFO:cooler._balance:variance is 6.122723293711076
+INFO:cooler._balance:variance is 3.5379106831856544
+INFO:cooler._balance:variance is 2.12326137056743
+INFO:cooler._balance:variance is 1.2380095690064459
+INFO:cooler._balance:variance is 0.7381204620110483
+INFO:cooler._balance:variance is 0.4326869823776453
+INFO:cooler._balance:variance is 0.2569905684163949
+INFO:cooler._balance:variance is 0.15112991489269403
+INFO:cooler._balance:variance is 0.08956465348892428
+INFO:cooler._balance:variance is 0.052771912115326024
+INFO:cooler._balance:variance is 0.031235236321487208
+INFO:cooler._balance:variance is 0.018425430434821765
+INFO:cooler._balance:variance is 0.010898269943295623
+INFO:cooler._balance:variance is 0.006433464488520909
+INFO:cooler._balance:variance is 0.0038038613898590885
+INFO:cooler._balance:variance is 0.002246536104476763
+INFO:cooler._balance:variance is 0.0013280551931602188
+INFO:cooler._balance:variance is 0.0007845844228532473
+INFO:cooler._balance:variance is 0.0004637821429046015
+INFO:cooler._balance:variance is 0.00027405224910923037
+INFO:cooler._balance:variance is 0.00016199734979039396
+INFO:cooler._balance:variance is 9.574150239424614e-05
+INFO:cooler._balance:variance is 5.659679697873704e-05
+INFO:cooler._balance:variance is 3.3453684978031205e-05
+INFO:cooler._balance:variance is 1.9777106297626358e-05
+INFO:cooler._balance:variance is 1.1691416800811777e-05
+INFO:cooler._balance:variance is 6.912247444137648e-06
++ cp /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/parse2_stats_1.mq1.txt /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1/
++ rm -f /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq1.pairs /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool
+++ stat -c %s /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1/cifi.mcool
++ log 'branch mq1: /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1/cifi.mcool (140592142 bytes)'
+++ date -Is
++ echo '[2026-11-27T10:50:21+00:00] branch mq1: /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1/cifi.mcool (140592142 bytes)'
+[2026-11-27T10:50:21+00:00] branch mq1: /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq1/cifi.mcool (140592142 bytes)
++ for mq in 1 0
++ '[' cifi = porec ']'
++ pairtools dedup --output /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq0.pairs /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq0.sorted.pairs.gz
++ rm -f /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/in1.mq0.sorted.pairs.gz
+++ grep -c '^[^#]' /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq0.pairs
++ log 'branch mq0: 240300440 pairs after dedup'
+++ date -Is
++ echo '[2026-11-27T11:53:48+00:00] branch mq0: 240300440 pairs after dedup'
+[2026-11-27T11:53:48+00:00] branch mq0: 240300440 pairs after dedup
++ cooler cload pairs -c1 2 -p1 3 -c2 4 -p2 5 /moosefs/guarracino/HPRCv2/PHR_III/HiC/HG002/chrom.sizes:5000 /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq0.pairs /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool
+INFO:cooler.create:Writing chunk 0: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::0
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/0"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 1: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::1
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/1"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 2: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::2
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/2"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 3: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::3
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/3"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 4: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::4
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/4"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 5: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::5
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/5"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 6: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::6
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/6"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 7: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::7
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/7"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 8: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::8
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/8"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 9: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::9
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/9"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 10: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::10
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/10"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 11: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::11
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/11"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 12: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::12
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/12"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 13: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::13
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/13"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 14: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::14
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/14"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 15: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::15
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/15"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Writing chunk 16: /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::16
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/tmpbwrfnn00.multi.cool::/16"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.create:Merging into /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool::/"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:n_merge_epochs: 8
+INFO:cooler._reduce:nnzs: [7253397, 7653959, 7450564, 7493249, 7355131, 7234112, 7382229, 7544214, 7389146, 7664894, 7630813, 7629926, 7508584, 7409880, 7658135, 6718872, 144238]
+INFO:cooler._reduce:records consumed: [112056, 185752, 147216, 188746, 184216, 115033, 6370428, 721199, 4454330, 1677688, 137088, 141793, 143570, 129265, 174039, 117598, 0]
+INFO:cooler._reduce:records consumed: [235569, 383175, 299209, 380795, 358970, 224643, 6481519, 853780, 5126986, 5147077, 5346336, 3376522, 934571, 264808, 350145, 235982, 0]
+INFO:cooler._reduce:records consumed: [364663, 592123, 461633, 576395, 544928, 345289, 6599806, 992184, 5224787, 5235359, 5422984, 5410320, 5396468, 5436495, 2031822, 364920, 0]
+INFO:cooler._reduce:records consumed: [4508050, 3707651, 634829, 807502, 767669, 541114, 6660623, 1238967, 5274126, 5331795, 5504054, 5496159, 5480497, 5515664, 5000589, 3530998, 0]
+INFO:cooler._reduce:records consumed: [4591781, 5613227, 5498165, 5251431, 3041834, 826825, 6660623, 1685466, 5274126, 5430995, 5593436, 5589099, 5566804, 5598090, 5162208, 3616265, 0]
+INFO:cooler._reduce:records consumed: [4693574, 5848866, 5589378, 5466520, 5623164, 6384589, 7382229, 5740138, 5365343, 5558063, 5703592, 5705032, 5679701, 5707071, 5369207, 4039709, 144238]
+INFO:cooler._reduce:records consumed: [4854026, 6191034, 5703698, 5713109, 5849313, 6530114, 7382229, 6135251, 7389146, 7664894, 7630813, 7629926, 7508584, 7409880, 7091642, 4172528, 144238]
+INFO:cooler._reduce:records consumed: [7253397, 7653959, 7450564, 7493249, 7355131, 7234112, 7382229, 7544214, 7389146, 7664894, 7630813, 7629926, 7508584, 7409880, 7658135, 6718872, 144238]
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
++ cooler zoomify /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool -r 5000,10000,20000,50000,100000 --balance -o /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool
+INFO:cooler.cli.zoomify:Recursively aggregating "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool"
+INFO:cooler.cli.zoomify:Writing to "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool"
+INFO:cooler._reduce:Copying base matrices and producing 5 new zoom levels.
+INFO:cooler._reduce:Bin size: 5000
+INFO:cooler._reduce:Aggregating from 5000 to 10000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/10000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000112
+INFO:cooler._reduce:10000112 20000145
+INFO:cooler._reduce:20000145 30000173
+INFO:cooler._reduce:30000173 40000110
+INFO:cooler._reduce:40000110 50000255
+INFO:cooler._reduce:50000255 60000004
+INFO:cooler._reduce:60000004 70000000
+INFO:cooler._reduce:70000000 80000090
+INFO:cooler._reduce:80000090 90000027
+INFO:cooler._reduce:90000027 100000059
+INFO:cooler._reduce:100000059 110000021
+INFO:cooler._reduce:110000021 118102359
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler._reduce:Aggregating from 10000 to 20000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/20000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000104
+INFO:cooler._reduce:10000104 20000127
+INFO:cooler._reduce:20000127 30000227
+INFO:cooler._reduce:30000227 40000389
+INFO:cooler._reduce:40000389 50000092
+INFO:cooler._reduce:50000092 60000057
+INFO:cooler._reduce:60000057 70000007
+INFO:cooler._reduce:70000007 80000082
+INFO:cooler._reduce:80000082 90000116
+INFO:cooler._reduce:90000116 95913328
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler._reduce:Aggregating from 10000 to 50000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/50000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000104
+INFO:cooler._reduce:10000104 20001207
+INFO:cooler._reduce:20001207 30000570
+INFO:cooler._reduce:30000570 40001059
+INFO:cooler._reduce:40001059 50000797
+INFO:cooler._reduce:50000797 60000802
+INFO:cooler._reduce:60000802 70000536
+INFO:cooler._reduce:70000536 80000350
+INFO:cooler._reduce:80000350 90000116
+INFO:cooler._reduce:90000116 95913328
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler._reduce:Aggregating from 50000 to 100000.
+INFO:cooler.create:Creating cooler at "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::/resolutions/100000"
+INFO:cooler.create:Writing chroms
+INFO:cooler.create:Writing bins
+INFO:cooler.create:Writing pixels
+INFO:cooler._reduce:0 10000162
+INFO:cooler._reduce:10000162 20001176
+INFO:cooler._reduce:20001176 30000074
+INFO:cooler._reduce:30000074 40000004
+INFO:cooler._reduce:40000004 50000208
+INFO:cooler._reduce:50000208 53516216
+INFO:cooler.create:Writing indexes
+INFO:cooler.create:Writing info
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 5000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/5000"
+INFO:cooler._balance:variance is 21077.136185408675
+INFO:cooler._balance:variance is 10802.81520222876
+INFO:cooler._balance:variance is 1488.0004998563218
+INFO:cooler._balance:variance is 3053.7735029477535
+INFO:cooler._balance:variance is 690.9296356834396
+INFO:cooler._balance:variance is 1079.5316905962527
+INFO:cooler._balance:variance is 336.63126261409724
+INFO:cooler._balance:variance is 424.89709059351986
+INFO:cooler._balance:variance is 165.8582227798058
+INFO:cooler._balance:variance is 178.41646612797308
+INFO:cooler._balance:variance is 81.73843235081293
+INFO:cooler._balance:variance is 78.04054726674431
+INFO:cooler._balance:variance is 40.12038879294173
+INFO:cooler._balance:variance is 35.0650272589543
+INFO:cooler._balance:variance is 19.593036365357396
+INFO:cooler._balance:variance is 16.047434647917886
+INFO:cooler._balance:variance is 9.524097107125568
+INFO:cooler._balance:variance is 7.439991072767369
+INFO:cooler._balance:variance is 4.612615189033
+INFO:cooler._balance:variance is 3.4820052416720864
+INFO:cooler._balance:variance is 2.2280113454033175
+INFO:cooler._balance:variance is 1.64105697173574
+INFO:cooler._balance:variance is 1.0743036107349282
+INFO:cooler._balance:variance is 0.7775333694986898
+INFO:cooler._balance:variance is 0.5174777028318303
+INFO:cooler._balance:variance is 0.36990558766383164
+INFO:cooler._balance:variance is 0.24914424107273167
+INFO:cooler._balance:variance is 0.17654671618043266
+INFO:cooler._balance:variance is 0.11994425817342881
+INFO:cooler._balance:variance is 0.0844787278750828
+INFO:cooler._balance:variance is 0.05775646828845066
+INFO:cooler._balance:variance is 0.040508709398387806
+INFO:cooler._balance:variance is 0.0278226254828977
+INFO:cooler._balance:variance is 0.019458485974061985
+INFO:cooler._balance:variance is 0.013409928472244082
+INFO:cooler._balance:variance is 0.00936080370565483
+INFO:cooler._balance:variance is 0.006467241362344139
+INFO:cooler._balance:variance is 0.004508913348181025
+INFO:cooler._balance:variance is 0.003121003518617379
+INFO:cooler._balance:variance is 0.002174285158487373
+INFO:cooler._balance:variance is 0.001507161625606816
+INFO:cooler._balance:variance is 0.0010495252034446788
+INFO:cooler._balance:variance is 0.0007283101551631249
+INFO:cooler._balance:variance is 0.0005070581334816103
+INFO:cooler._balance:variance is 0.0003521758972073413
+INFO:cooler._balance:variance is 0.0002451748766782295
+INFO:cooler._balance:variance is 0.00017040496486530102
+INFO:cooler._balance:variance is 0.00011863651304332
+INFO:cooler._balance:variance is 8.250397807813897e-05
+INFO:cooler._balance:variance is 5.7446081742924494e-05
+INFO:cooler._balance:variance is 3.9969354112851085e-05
+INFO:cooler._balance:variance is 2.7834345172821852e-05
+INFO:cooler._balance:variance is 1.9374387574300667e-05
+INFO:cooler._balance:variance is 1.3494655313879023e-05
+INFO:cooler._balance:variance is 9.396503915931761e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 10000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/10000"
+INFO:cooler._balance:variance is 57810.20346166636
+INFO:cooler._balance:variance is 34177.72602404538
+INFO:cooler._balance:variance is 4836.462295100422
+INFO:cooler._balance:variance is 9269.018393334292
+INFO:cooler._balance:variance is 2155.4193390243036
+INFO:cooler._balance:variance is 3157.197477577462
+INFO:cooler._balance:variance is 1014.2401761323333
+INFO:cooler._balance:variance is 1204.6879654104619
+INFO:cooler._balance:variance is 482.8236686849353
+INFO:cooler._balance:variance is 490.8278627702306
+INFO:cooler._balance:variance is 229.58618084891688
+INFO:cooler._balance:variance is 208.16955675698102
+INFO:cooler._balance:variance is 108.59462447376588
+INFO:cooler._balance:variance is 90.60329727433947
+INFO:cooler._balance:variance is 51.067610907959484
+INFO:cooler._balance:variance is 40.12755698373249
+INFO:cooler._balance:variance is 23.89634431655174
+INFO:cooler._balance:variance is 17.98989656661832
+INFO:cooler._balance:variance is 11.140375803936564
+INFO:cooler._balance:variance is 8.136073788604495
+INFO:cooler._balance:variance is 5.180341828727689
+INFO:cooler._balance:variance is 3.703393506724444
+INFO:cooler._balance:variance is 2.4050615698211457
+INFO:cooler._balance:variance is 1.6939148684160432
+INFO:cooler._balance:variance is 1.1156407228559135
+INFO:cooler._balance:variance is 0.7776832137977906
+INFO:cooler._balance:variance is 0.5173538990044794
+INFO:cooler._balance:variance is 0.3580842218531488
+INFO:cooler._balance:variance is 0.23992852950184085
+INFO:cooler._balance:variance is 0.1652674559612834
+INFO:cooler._balance:variance is 0.11130630732660868
+INFO:cooler._balance:variance is 0.07642322078295492
+INFO:cooler._balance:variance is 0.051662515551162476
+INFO:cooler._balance:variance is 0.03539674434072234
+INFO:cooler._balance:variance is 0.02399360811572893
+INFO:cooler._balance:variance is 0.016417221733670453
+INFO:cooler._balance:variance is 0.01115081343778036
+INFO:cooler._balance:variance is 0.007623550250202803
+INFO:cooler._balance:variance is 0.005185870545727949
+INFO:cooler._balance:variance is 0.003543860976988429
+INFO:cooler._balance:variance is 0.0024134863168368275
+INFO:cooler._balance:variance is 0.001648964131242369
+INFO:cooler._balance:variance is 0.0011240194103909111
+INFO:cooler._balance:variance is 0.0007679332578011241
+INFO:cooler._balance:variance is 0.0005238444300960443
+INFO:cooler._balance:variance is 0.0003579174792863128
+INFO:cooler._balance:variance is 0.00024429897383172153
+INFO:cooler._balance:variance is 0.0001669413718855537
+INFO:cooler._balance:variance is 0.00011400437358295332
+INFO:cooler._balance:variance is 7.791928136889517e-05
+INFO:cooler._balance:variance is 5.323422348968476e-05
+INFO:cooler._balance:variance is 3.639208252645856e-05
+INFO:cooler._balance:variance is 2.4872448659307245e-05
+INFO:cooler._balance:variance is 1.700721566721571e-05
+INFO:cooler._balance:variance is 1.1627678874345549e-05
+INFO:cooler._balance:variance is 7.952596272736042e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 20000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/20000"
+INFO:cooler._balance:variance is 172242.98589165712
+INFO:cooler._balance:variance is 120822.8654425174
+INFO:cooler._balance:variance is 16503.539034302383
+INFO:cooler._balance:variance is 32249.414020486664
+INFO:cooler._balance:variance is 7212.62441243339
+INFO:cooler._balance:variance is 10764.24140222535
+INFO:cooler._balance:variance is 3349.5491129390184
+INFO:cooler._balance:variance is 4031.6111683616
+INFO:cooler._balance:variance is 1575.335979443905
+INFO:cooler._balance:variance is 1613.9059746079024
+INFO:cooler._balance:variance is 739.9794732414439
+INFO:cooler._balance:variance is 673.1460961960253
+INFO:cooler._balance:variance is 345.6742527406439
+INFO:cooler._balance:variance is 288.38553372193195
+INFO:cooler._balance:variance is 160.51684558460906
+INFO:cooler._balance:variance is 125.82726228546878
+INFO:cooler._balance:variance is 74.16563765655262
+INFO:cooler._balance:variance is 55.61385842637453
+INFO:cooler._balance:variance is 34.141910362952515
+INFO:cooler._balance:variance is 24.811992314340753
+INFO:cooler._balance:variance is 15.678781728624804
+INFO:cooler._balance:variance is 11.147111706534309
+INFO:cooler._balance:variance is 7.189728598745991
+INFO:cooler._balance:variance is 5.034455062205693
+INFO:cooler._balance:variance is 3.2947132322648396
+INFO:cooler._balance:variance is 2.2830250193893726
+INFO:cooler._balance:variance is 1.5096069187037156
+INFO:cooler._balance:variance is 1.0386301868325665
+INFO:cooler._balance:variance is 0.69185273360526
+INFO:cooler._balance:variance is 0.47372776329094074
+INFO:cooler._balance:variance is 0.31722968202585383
+INFO:cooler._balance:variance is 0.21652683668746106
+INFO:cooler._balance:variance is 0.14554952583633574
+INFO:cooler._balance:variance is 0.09914210632199617
+INFO:cooler._balance:variance is 0.0668286110525456
+INFO:cooler._balance:variance is 0.045462491772063005
+INFO:cooler._balance:variance is 0.030707661857119196
+INFO:cooler._balance:variance is 0.02087413925618484
+INFO:cooler._balance:variance is 0.014121093482703637
+INFO:cooler._balance:variance is 0.009595218158653699
+INFO:cooler._balance:variance is 0.006498646317432365
+INFO:cooler._balance:variance is 0.004415061049140212
+INFO:cooler._balance:variance is 0.002992957523782974
+INFO:cooler._balance:variance is 0.0020333356758108563
+INFO:cooler._balance:variance is 0.0013793927671744842
+INFO:cooler._balance:variance is 0.0009372048643184643
+INFO:cooler._balance:variance is 0.0006361650934596125
+INFO:cooler._balance:variance is 0.00043229620983964385
+INFO:cooler._balance:variance is 0.0002935824653524697
+INFO:cooler._balance:variance is 0.000199536589723744
+INFO:cooler._balance:variance is 0.00013556652632034277
+INFO:cooler._balance:variance is 9.215823027821159e-05
+INFO:cooler._balance:variance is 6.263554126453344e-05
+INFO:cooler._balance:variance is 4.2588776138841814e-05
+INFO:cooler._balance:variance is 2.8954739687465285e-05
+INFO:cooler._balance:variance is 1.969186578908933e-05
+INFO:cooler._balance:variance is 1.3391649983445297e-05
+INFO:cooler._balance:variance is 9.10945332380969e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 50000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/50000"
+INFO:cooler._balance:variance is 668235.6145275008
+INFO:cooler._balance:variance is 696062.5911910675
+INFO:cooler._balance:variance is 86128.56257499843
+INFO:cooler._balance:variance is 176243.43000153665
+INFO:cooler._balance:variance is 36726.7915025296
+INFO:cooler._balance:variance is 56240.868765439045
+INFO:cooler._balance:variance is 16710.880472255405
+INFO:cooler._balance:variance is 20288.412599646796
+INFO:cooler._balance:variance is 7690.324780764642
+INFO:cooler._balance:variance is 7852.860310015262
+INFO:cooler._balance:variance is 3527.1758229757897
+INFO:cooler._balance:variance is 3174.3052496100586
+INFO:cooler._balance:variance is 1606.0737063122165
+INFO:cooler._balance:variance is 1320.0015797619924
+INFO:cooler._balance:variance is 726.1547142839888
+INFO:cooler._balance:variance is 559.6304779115713
+INFO:cooler._balance:variance is 326.48312277878887
+INFO:cooler._balance:variance is 240.52301164458956
+INFO:cooler._balance:variance is 146.21318552057028
+INFO:cooler._balance:variance is 104.40050368018089
+INFO:cooler._balance:variance is 65.31846175284653
+INFO:cooler._balance:variance is 45.64778154134738
+INFO:cooler._balance:variance is 29.140407923700458
+INFO:cooler._balance:variance is 20.06898251292523
+INFO:cooler._balance:variance is 12.99323596832946
+INFO:cooler._balance:variance is 8.860613123352602
+INFO:cooler._balance:variance is 5.793522322884165
+INFO:cooler._balance:variance is 3.9249568888403195
+INFO:cooler._balance:variance is 2.5842221541275068
+INFO:cooler._balance:variance is 1.74320019209856
+INFO:cooler._balance:variance is 1.1533906409071806
+INFO:cooler._balance:variance is 0.7758644702013839
+INFO:cooler._balance:variance is 0.5151545754961873
+INFO:cooler._balance:variance is 0.34593123863810565
+INFO:cooler._balance:variance is 0.23027108528799578
+INFO:cooler._balance:variance is 0.1544673520001999
+INFO:cooler._balance:variance is 0.10301224392603293
+INFO:cooler._balance:variance is 0.06906086558680434
+INFO:cooler._balance:variance is 0.04611905234931455
+INFO:cooler._balance:variance is 0.03091015571859986
+INFO:cooler._balance:variance is 0.020663355720369134
+INFO:cooler._balance:variance is 0.013847914845872241
+INFO:cooler._balance:variance is 0.009264729671028699
+INFO:cooler._balance:variance is 0.0062091570280897014
+INFO:cooler._balance:variance is 0.004156773176160322
+INFO:cooler._balance:variance is 0.0027861546967387395
+INFO:cooler._balance:variance is 0.0018661692744725443
+INFO:cooler._balance:variance is 0.0012510298611595194
+INFO:cooler._balance:variance is 0.0008382941750018308
+INFO:cooler._balance:variance is 0.0005620700468867424
+INFO:cooler._balance:variance is 0.0003767669662241109
+INFO:cooler._balance:variance is 0.0002526666244306697
+INFO:cooler._balance:variance is 0.00016941872073685877
+INFO:cooler._balance:variance is 0.00011363641050891735
+INFO:cooler._balance:variance is 7.621573061859999e-05
+INFO:cooler._balance:variance is 5.113043260788114e-05
+INFO:cooler._balance:variance is 3.4300950026050314e-05
+INFO:cooler._balance:variance is 2.301527119563863e-05
+INFO:cooler._balance:variance is 1.544297309366263e-05
+INFO:cooler._balance:variance is 1.0363623012993282e-05
+INFO:cooler._balance:variance is 6.955126773118171e-06
+INFO:cooler.cli.zoomify:Balancing zoom level with bin size 100000
+INFO:cooler.cli.balance:Balancing "/scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool::resolutions/100000"
+INFO:cooler._balance:variance is 1979223.046632061
+INFO:cooler._balance:variance is 2660361.5668526213
+INFO:cooler._balance:variance is 296554.26639069355
+INFO:cooler._balance:variance is 632805.4988079073
+INFO:cooler._balance:variance is 123450.68737287204
+INFO:cooler._balance:variance is 192803.46284736937
+INFO:cooler._balance:variance is 55046.7281222308
+INFO:cooler._balance:variance is 66958.19544170379
+INFO:cooler._balance:variance is 24770.828415391967
+INFO:cooler._balance:variance is 25051.719973028277
+INFO:cooler._balance:variance is 11079.456301206097
+INFO:cooler._balance:variance is 9811.332028285306
+INFO:cooler._balance:variance is 4910.332354354378
+INFO:cooler._balance:variance is 3958.7949851911526
+INFO:cooler._balance:variance is 2158.4193315564
+INFO:cooler._balance:variance is 1630.0859307847936
+INFO:cooler._balance:variance is 942.9520119556837
+INFO:cooler._balance:variance is 680.8418981048516
+INFO:cooler._balance:variance is 410.2567546503522
+INFO:cooler._balance:variance is 287.2964514700184
+INFO:cooler._balance:variance is 178.05300576520622
+INFO:cooler._balance:variance is 122.14458541446453
+INFO:cooler._balance:variance is 77.17847321658725
+INFO:cooler._balance:variance is 52.22161111815911
+INFO:cooler._balance:variance is 33.439494294356784
+INFO:cooler._balance:variance is 22.421928750800376
+INFO:cooler._balance:variance is 14.490321332987003
+INFO:cooler._balance:variance is 9.658798059640219
+INFO:cooler._balance:variance is 6.2820086612478105
+INFO:cooler._balance:variance is 4.171542412726033
+INFO:cooler._balance:variance is 2.725244573812073
+INFO:cooler._balance:variance is 1.8053872911595703
+INFO:cooler._balance:variance is 1.1831520687388533
+INFO:cooler._balance:variance is 0.7826682777755477
+INFO:cooler._balance:variance is 0.5140646096611928
+INFO:cooler._balance:variance is 0.33977587580141166
+INFO:cooler._balance:variance is 0.22352872829137393
+INFO:cooler._balance:variance is 0.1476785841942739
+INFO:cooler._balance:variance is 0.09726877985823405
+INFO:cooler._balance:variance is 0.0642504688744958
+INFO:cooler._balance:variance is 0.042356322807375064
+INFO:cooler._balance:variance is 0.02797743269785543
+INFO:cooler._balance:variance is 0.018456320603719694
+INFO:cooler._balance:variance is 0.01219165309775025
+INFO:cooler._balance:variance is 0.008046939281569299
+INFO:cooler._balance:variance is 0.005316178633535264
+INFO:cooler._balance:variance is 0.0035103632507317048
+INFO:cooler._balance:variance is 0.0023194471848142035
+INFO:cooler._balance:variance is 0.0015321004038308923
+INFO:cooler._balance:variance is 0.0010124843487849377
+INFO:cooler._balance:variance is 0.0006689840726259521
+INFO:cooler._balance:variance is 0.00044216686494600617
+INFO:cooler._balance:variance is 0.0002922260190436922
+INFO:cooler._balance:variance is 0.00019317754794082886
+INFO:cooler._balance:variance is 0.00012769660771755467
+INFO:cooler._balance:variance is 8.442693419426144e-05
+INFO:cooler._balance:variance is 5.5818947699799414e-05
+INFO:cooler._balance:variance is 3.690990969587266e-05
+INFO:cooler._balance:variance is 2.4406847496962172e-05
+INFO:cooler._balance:variance is 1.614091684901666e-05
+INFO:cooler._balance:variance is 1.0674728798022028e-05
+INFO:cooler._balance:variance is 7.060314118290814e-06
++ cp /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/parse2_stats_1.mq0.txt /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0/
++ rm -f /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/dedup.mq0.pairs /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.5000.cool /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF/cifi.mcool
+++ stat -c %s /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0/cifi.mcool
++ log 'branch mq0: /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0/cifi.mcool (735243304 bytes)'
+++ date -Is
++ echo '[2026-11-27T12:16:47+00:00] branch mq0: /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0/cifi.mcool (735243304 bytes)'
+[2026-11-27T12:16:47+00:00] branch mq0: /moosefs/guarracino/HPRCv2/PHR_III/simhic/rerun_mapq/cifi/mq0/cifi.mcool (735243304 bytes)
++ log done
+++ date -Is
++ echo '[2026-11-27T12:16:47+00:00] done'
+[2026-11-27T12:16:47+00:00] done
++ rc=0
+++ jobs -p
++ '[' -z '' ']'
++ rm -rf /scratch/guarracino/tmp/phrs/rerun_cifi.u6fF
++ echo 'exit status 0 at line 1'
+exit status 0 at line 1
